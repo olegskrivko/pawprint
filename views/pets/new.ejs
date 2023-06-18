@@ -1,0 +1,52 @@
+<% layout('layouts/boilerplate')%>
+
+<div class="container text-center">
+  <h1 class="text-center mb-4">Report pet</h1>
+  <div class="row justify-content-evenly">
+    <div class="card text-center mb-4" style="width: 18rem">
+      <div class="card-body">
+        <h5 class="card-title">
+          When your pet goes missing, there is no time to waste.
+        </h5>
+        <!-- <p class="card-text">Is your pet missing?</p> -->
+        <div>
+          <a href="/pets/report/missing" class="btn btn-primary"
+            >Report Missing Pet</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="card text-center mb-4" style="width: 18rem">
+      <div class="card-body">
+        <h5 class="card-title">
+          Have you found somebody`s pet but don`t know who owns it?
+        </h5>
+        <!-- <p class="card-text">
+          Have you found somebody`s pet but don`t know who owns it?
+        </p> -->
+        <div>
+          <a href="/pets/report/found" class="btn btn-primary"
+            >Report Found Pet</a
+          >
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col-md-4">
+      <div class="d-md-flex">
+        <p>Is your pet missing?</p>
+        <a class="btn btn-secondary btn-lg" href="/pets/report/missing"
+          >Report Missing Pet</a
+        >
+      </div>
+    </div> -->
+    <!-- <div class="col-md-4 offset-md-4">
+      <div class="d-md-flex">
+        <p>Have you found somebody`s pet but don`t know who owns it?</p>
+        <a class="btn btn-secondary btn-lg" href="/pets/report/found"
+          >Report Found Pet</a
+        >
+      </div>
+    </div> -->
+  </div>
+  <img src="/images/dogspy.png" alt="" style="max-width: 20rem" />
+</div>

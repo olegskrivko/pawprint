@@ -1,0 +1,238 @@
+<% layout('layouts/boilerplate')%>
+<div class="row row-cols-1 row-cols-md-1 g-3 justify-content-center">
+  <div class="col-md-8">
+    <ul class="nav nav-pills nav-justified">
+      <li class="nav-item">
+        <a class="nav-link" href="/auth/account/profile">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/auth/account/settings">Account Settings</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="/auth/account/watchlist">Watchlist</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<h5 class="text-center mt-5 mb-3">Manage Your watchlist</h5>
+
+<div class="row row-cols-1 row-cols-md-1 g-3 justify-content-center">
+  <div class="col-md-8">
+    <div class="my-3 p-3 bg-body rounded shadow-sm">
+      <h6 class="border-bottom pb-2 mb-0">Saved pets</h6>
+
+      <% if (pets.length > 0) {%> <% for (let pet of pets) { %>
+
+      <div class="d-flex text-body-secondary pt-3">
+        <div class="mb-3 me-2">
+          <% pet.images.forEach(function(img, i) { %>
+          <img
+            src="<%=img.thumbnail %>"
+            class="img-thumbnail"
+            alt=""
+            width="98px"
+            height="98px"
+          />
+          <!-- <div class="form-check-inline">azaz</div> -->
+          <!-- <label for="image-<%=i%>">Delete?</label> -->
+          <%})%>
+        </div>
+
+        <!-- <svg
+          class="bd-placeholder-img flex-shrink-0 me-2 rounded"
+          width="32"
+          height="32"
+          xmlns="http://www.w3.org/2000/svg"
+          role="img"
+          aria-label="Placeholder: 32x32"
+          preserveAspectRatio="xMidYMid slice"
+          focusable="false"
+        >
+          <title>Placeholder</title>
+          <rect width="100%" height="100%" fill="#007bff"></rect>
+          <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
+        </svg> -->
+
+        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+          <div class="d-flex justify-content-between">
+            <strong class="text-gray-dark"><p><%=pet.petStatus%></p></strong>
+            <button
+              class="btn btn-danger removeWatchlistBtn"
+              data-petid="<%= pet._id%>"
+            >
+              Remove
+            </button>
+          </div>
+          <span class="d-block"
+            ><a href="/pets/<%=pet._id%>">@<%=pet.species%></a></span
+          >
+        </div>
+      </div>
+
+      <% } %> <% } else { %>
+      <p>List is empty</p>
+      <% } %>
+
+      <!-- <div class="d-flex text-body-secondary pt-3">
+        <svg
+          class="bd-placeholder-img flex-shrink-0 me-2 rounded"
+          width="32"
+          height="32"
+          xmlns="http://www.w3.org/2000/svg"
+          role="img"
+          aria-label="Placeholder: 32x32"
+          preserveAspectRatio="xMidYMid slice"
+          focusable="false"
+        >
+          <title>Placeholder</title>
+          <rect width="100%" height="100%" fill="#007bff"></rect>
+          <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
+        </svg>
+        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+          <div class="d-flex justify-content-between">
+            <strong class="text-gray-dark">Full Name</strong>
+            <a href="#">Remove</a>
+          </div>
+          <span class="d-block">@username</span>
+        </div>
+      </div>
+      <div class="d-flex text-body-secondary pt-3">
+        <svg
+          class="bd-placeholder-img flex-shrink-0 me-2 rounded"
+          width="32"
+          height="32"
+          xmlns="http://www.w3.org/2000/svg"
+          role="img"
+          aria-label="Placeholder: 32x32"
+          preserveAspectRatio="xMidYMid slice"
+          focusable="false"
+        >
+          <title>Placeholder</title>
+          <rect width="100%" height="100%" fill="#007bff"></rect>
+          <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
+        </svg>
+        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+          <div class="d-flex justify-content-between">
+            <strong class="text-gray-dark">Full Name</strong>
+            <a href="#">Remove</a>
+          </div>
+          <span class="d-block">@username</span>
+        </div>
+      </div>
+      <div class="d-flex text-body-secondary pt-3">
+        <svg
+          class="bd-placeholder-img flex-shrink-0 me-2 rounded"
+          width="32"
+          height="32"
+          xmlns="http://www.w3.org/2000/svg"
+          role="img"
+          aria-label="Placeholder: 32x32"
+          preserveAspectRatio="xMidYMid slice"
+          focusable="false"
+        >
+          <title>Placeholder</title>
+          <rect width="100%" height="100%" fill="#007bff"></rect>
+          <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
+        </svg>
+        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+          <div class="d-flex justify-content-between">
+            <strong class="text-gray-dark">Full Name</strong>
+            <a href="#">Remove</a>
+          </div>
+          <span class="d-block">@username</span>
+        </div>
+      </div> -->
+
+      <small class="d-block text-end mt-3">
+        <a href="#">Remove All</a>
+      </small>
+    </div>
+  </div>
+</div>
+
+<!-- <script>
+  const updateWatchlist = async (watchlistData) => {
+    try {
+      const response = await fetch("/auth/account/watchlist", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(watchlistData),
+      });
+
+      if (response.ok) {
+        // Watchlist updated successfully
+        console.log("Watchlist updated successfully");
+      } else {
+        throw new Error("Failed to update watchlist");
+      }
+    } catch (error) {
+      console.error(error);
+      // Handle error and display appropriate message
+    }
+  };
+
+  const removeWatchlistBtnAll = document.querySelectorAll(
+    ".removeWatchlistBtn"
+  );
+  removeWatchlistBtnAll.forEach((btn) => {
+    btn.addEventListener("click", async (e) => {
+      const petId = e.currentTarget.getAttribute("data-petid");
+      console.log(petId);
+
+      const selectedPets =
+        petId; /* Code to retrieve the selected pets from the UI */
+
+      // Prepare the watchlist data to send in the request body
+      const watchlistData = {
+        pets: selectedPets,
+      };
+
+      await updateWatchlist(watchlistData);
+    });
+  });
+</script> -->
+<script>
+  const updateWatchlist = async (watchlistData) => {
+    try {
+      const response = await fetch(
+        `/auth/account/watchlist/${watchlistData.petId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.ok) {
+        // Watchlist updated successfully
+        console.log("Pet removed from watchlist successfully");
+        location.reload(); // Refresh the page (to see the result of deleted item)
+      } else {
+        throw new Error("Failed to remove pet from watchlist");
+      }
+    } catch (error) {
+      console.error(error);
+      // Handle error and display appropriate message
+    }
+  };
+
+  const removeWatchlistBtnAll = document.querySelectorAll(
+    ".removeWatchlistBtn"
+  );
+  removeWatchlistBtnAll.forEach((btn) => {
+    btn.addEventListener("click", async (e) => {
+      const petId = e.currentTarget.getAttribute("data-petid");
+      console.log(petId);
+
+      // Prepare the watchlist data to send in the request body
+      const watchlistData = {
+        petId: petId,
+      };
+
+      await updateWatchlist(watchlistData);
+    });
+  });
+</script>

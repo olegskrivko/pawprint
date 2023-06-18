@@ -1,0 +1,221 @@
+<% layout('layouts/boilerplate')%>
+<!-- <link rel="stylesheet" href="/stylesheets/stars.css" /> -->
+<style>
+  .marker-icon {
+    background-position: center;
+    background-size: 22px 22px;
+    border-radius: 50%;
+    height: 22px;
+    left: 4px;
+    position: absolute;
+    text-align: center;
+    top: 3px;
+    transform: rotate(45deg);
+    width: 22px;
+  }
+  .marker {
+    height: 30px;
+    width: 30px;
+  }
+  .marker-content {
+    background: #9b59b6 !important;
+    border-radius: 50% 50% 50% 0;
+    height: 30px;
+    left: 50%;
+    margin: -15px 0 0 -15px;
+    position: absolute;
+    top: 50%;
+    transform: rotate(-45deg);
+    width: 30px;
+  }
+  .marker-content::before {
+    background: #ffffff;
+    border-radius: 50%;
+    content: "";
+    height: 24px;
+    margin: 3px 0 0 3px;
+    position: absolute;
+    width: 24px;
+  }
+
+  .mapboxgl-popup-tip {
+    display: none !important;
+  }
+
+  .marker-border {
+    background: #c30b82;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+  }
+
+  .txt-area {
+    resize: "none";
+    height: 140px;
+  }
+
+  .show-pet-list > li {
+    padding-left: 0;
+  }
+
+  .mapboxgl-popup-content {
+    background-color: none !important;
+    background: none !important;
+    border: 3px solid white;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 50%;
+    padding: 0;
+    margin: 0;
+
+    /*all: unset;*/
+  }
+</style>
+
+<div class="row">
+  <div class="col-md-12 mb-3">
+    <h1 class="text-center"><%= service.name %></h1>
+    <h3 class="text-center"><%= service.description %></h3>
+  </div>
+  <section class="col-md-5 col-sm-12 order-2 order-md-1 mb-3">
+    <% if (service.serviceProviders.length > 0 ) {%> <% for (let serviceProvider
+    of service.serviceProviders) { %>
+
+    <div class="card mb-3 small">
+      <div class="card-header d-flex justify-content-between">
+        <div class="flex-shrink-0 dropdown">
+          <!-- <a
+            href="#"
+            class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          > -->
+          <!-- src="https://github.com/mdo.png" -->
+
+          <% if (serviceProvider.logo[0].url) { %>
+
+          <img
+            src="<%= serviceProvider.logo[0].url %>"
+            alt="mdo"
+            width="32"
+            height="32"
+            class="rounded-circle me-2"
+          />
+
+          <% } else { %>
+          <img
+            src="/images/icons/user.png"
+            alt="mdo"
+            width="32"
+            height="32"
+            class="rounded-circle me-2"
+          />
+          <% } %> <%= serviceProvider.name %>
+          <!-- </a> -->
+          <!-- <ul class="dropdown-menu text-small shadow">
+            <li><a class="dropdown-item" href="#">New project...</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul> -->
+        </div>
+
+        <div
+          data-servicecoords="<%=serviceProvider.location.coordinates %>"
+          class="d-flex jusity-content-center align-items-center geoButtonZoom"
+          style="cursor: pointer"
+        >
+          <a href="#" style="font-size: 1.2rem; pointer-events: none"
+            ><i style="pointer-events: none" class="bi bi-geo-alt-fill"></i
+          ></a>
+        </div>
+      </div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush show-pet-list">
+          <div class="row">
+            <div class="col-6 col-md-12 col-lg-6 mb-3">
+              <b><i class="bi bi-telephone-fill"></i> </b>
+              <a
+                href="tel:<%=serviceProvider.phonecode%><%=serviceProvider.phone%>"
+                ><%=serviceProvider.phonecode%><%=serviceProvider.phone%></a
+              >
+            </div>
+
+            <div class="col-6 col-md-12 col-lg-6 mb-3">
+              <b><i class="bi bi-envelope-fill"></i> </b>
+              <a
+                href="mailto:<%= serviceProvider.email %>?subject=Hello%20World&body=I%20hope%20you%20are%20doing%20well."
+                ><%= serviceProvider.email %></a
+              >
+            </div>
+          </div>
+
+          <!-- row -->
+          <div class="row">
+            <div class="col-6 col-md-12 col-lg-6 mb-3">
+              <b><i class="bi bi-facebook"></i> </b>
+              <a
+                target="_blank"
+                href="https://www.facebook.com/<%=serviceProvider.socialMedia.facebook%>"
+                ><%= serviceProvider.socialMedia.facebook %></a
+              >
+            </div>
+
+            <div class="col-6 col-md-12 col-lg-6 mb-3">
+              <b><i class="bi bi-instagram"></i> </b>
+              <a
+                target="_blank"
+                href="https://www.instagram.com/<%=serviceProvider.socialMedia.instagram%>"
+                ><%= serviceProvider.socialMedia.instagram %></a
+              >
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6 col-md-12 col-lg-6 mb-3">
+              <b><i class="bi bi-globe2"></i> </b>
+              <a href="<%= serviceProvider.website %>" target="_blank"
+                ><%= serviceProvider.website %></a
+              >
+            </div>
+
+            <div class="col-6 col-md-12 col-lg-6 mb-3">
+              <a
+                class=""
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseExample_<%= serviceProvider._id %>"
+                href="#collapseExample"
+                role="button"
+                aria-expanded="false"
+                aria-controls="collapseExample"
+              >
+                <i class="bi bi-three-dots"></i>
+              </a>
+            </div>
+          </div>
+        </ul>
+
+        <div class="collapse" id="collapseExample_<%= serviceProvider._id %>">
+          <div class="card card-body">
+            <p class="card-text"><%= serviceProvider.description %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% } %> <% } else {%>
+    <p>Services are not available</p>
+
+    <% } %>
+  </section>
+  <section class="col-md-7 col-sm-12 order-1 order-md-2 mb-3">
+    <div id="map" class="map col-sm-12" style="height: 400px"></div>
+  </section>
+</div>
+<script>
+  const services = {features: <%-JSON.stringify(service.serviceProviders)%>}
+  const TOMTOMTOKEN = "<%-process.env.TOMTOM_API_KEY%>";
+</script>
+
+<script src="/javascripts/servicePageMap.js"></script>

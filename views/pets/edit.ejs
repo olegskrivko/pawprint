@@ -1,0 +1,192 @@
+<% layout('layouts/boilerplate')%>
+
+<div class="row">
+  <h1 class="text-center">Edit Pet</h1>
+  <div class="col-md-6 offset-md-3">
+    <form
+      action="/pets/<%=pet._id %>?_method=PUT"
+      method="POST"
+      novalidate
+      class="validated-form"
+      enctype="multipart/form-data"
+    >
+      <div class="mb-3">
+        <label class="form-label" for="breed">Breed</label>
+        <input class="form-control" type="text" id="breed" name="pet[breed]" />
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="title">Name</label>
+        <input
+          class="form-control"
+          type="text"
+          id="title"
+          name="pet[title]"
+          value="<%= pet.title %>"
+          multiple
+        />
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+
+      <!-- <div class="mb-3">
+        <label class="form-label" for="location">Location</label>
+        <input
+          class="form-control"
+          type="text"
+          id="location"
+          name="pet[location]"
+          value="<= pet.location %>"
+          required
+        />
+        <div class="valid-feedback">Looks good!</div>
+      </div> -->
+      <div
+        id="map"
+        style="max-width: 100%; height: 300px; background-color: #808080"
+      ></div>
+      <div class="mb-3 d-flex">
+        <label class="form-label me-1" for="latitude">Lat: </label>
+        <input
+          id="latitude"
+          class="form-control"
+          type="number"
+          aria-label="latitude"
+          aria-describedby="latitude-label"
+          name="pet[latitude]"
+          readonly
+        />
+        <div class="valid-feedback">Looks good!</div>
+
+        <label class="form-label me-1" for="longitude">Long: </label>
+        <input
+          id="longitude"
+          class="form-control"
+          type="number"
+          aria-label="longitude"
+          aria-describedby="longitude-label"
+          name="pet[longitude]"
+          readonly
+        />
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="age">Age</label>
+        <input
+          class="form-control"
+          type="text"
+          aria-label="age"
+          aria-describedby="age-label"
+          name="pet[age]"
+        />
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="status">Status</label>
+        <select
+          class="form-select"
+          id="status"
+          aria-label="Select status"
+          form="pet-form"
+          name="pet[status]"
+        >
+          <option value="missing">Missing</option>
+          <option value="found">Found</option>
+          <option value="returned">Returned</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="lostdate">Date</label>
+        <input
+          class="form-control"
+          type="date"
+          aria-label="lostdate"
+          aria-describedby="lostdate-label"
+          name="pet[lostdate]"
+          min="2023-01-01"
+        />
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="description">Description</label>
+        <textarea
+          class="form-control"
+          type="text"
+          id="description"
+          name="pet[description]"
+          required
+        >
+<%= pet.description %></textarea
+        >
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="mb-3">
+        <label for="formFileMultiple" class="form-label">Upload Images</label>
+        <input
+          class="form-control"
+          type="file"
+          id="formFileMultiple"
+          name="image"
+          multiple
+        />
+      </div>
+      <div class="mb-3">
+        <% pet.images.forEach(function(img, i) { %>
+        <img src="<%=img.thumbnail %>" class="img-thumbnail" alt="" />
+        <div class="form-check-inline">
+          <input
+            type="checkbox"
+            name="deleteImages[]"
+            value="<%=img.filename%>"
+            id="image-<%=i%>"
+          />
+        </div>
+        <label for="image-<%=i%>">Delete?</label>
+        <%})%>
+      </div>
+      <div class="mb-3">
+        <button class="btn btn-info">Update Pet</button>
+      </div>
+    </form>
+    <a href="/pets/<%= pet._id %> ">Back To Pet</a>
+  </div>
+</div>
+<script>
+  var userLat;
+  var userLng;
+  if ("geolocation" in navigator) {
+    /* geolocation is available */
+
+    navigator.geolocation.getCurrentPosition((position) => {
+      userLat = position.coords.latitude;
+
+      userLng = position.coords.longitude;
+      console.log(userLng);
+      console.log(position.coords.latitude, position.coords.longitude);
+
+      var map = L.map("map").setView([userLat, userLng], 13);
+      var marker = L.marker([userLat, userLng], { draggable: true }).addTo(map);
+
+      marker.addEventListener("dragend", (e) => {
+        selectedPoint = e.target.getLatLng();
+        console.log(selectedPoint);
+
+        let inputLat = document.querySelector("#latitude");
+        let inputLng = document.querySelector("#longitude");
+        inputLat.value = selectedPoint.lat;
+        inputLng.value = selectedPoint.lng;
+      });
+
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution:
+          '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      }).addTo(map);
+    });
+  } else {
+    /* geolocation IS NOT available */
+    alert("geolocation IS NOT available");
+  }
+</script>

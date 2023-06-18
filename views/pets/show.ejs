@@ -1,0 +1,448 @@
+<% layout('layouts/boilerplate')%>
+<link rel="stylesheet" href="/stylesheets/stars.css" />
+<!-- <div id="map" class="map mb-5" style="width: 100wh; height: 40vh"></div> -->
+<!-- <div
+        id="map"
+        style="max-width: 100%; height: 300px; background-color: #808080"
+      ></div> -->
+
+<!-- bootstrap script, otherwise popowers did not work-->
+<div class="row d-flex flex-md-wrap">
+  <section class="col-md-6 order-1 order-md-1">
+    <div id="petCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <% if (pet.images.length > 0) {%> <% pet.images.forEach((img, i) => { %>
+        <div class="carousel-item <%= i === 0 ? 'active' : ''%>">
+          <img src="<%=img.url%>" class="d-block w-100" alt="" />
+        </div>
+
+        <% }) %> <% } else { %>
+        <div class="carousel-item active">
+          <img src="/images/placeholder.jpg" class="d-block w-100" alt="" />
+        </div>
+        <% } %>
+      </div>
+      <% if (pet.images.length > 1) {%>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#petCarousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#petCarousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <% } %>
+    <div
+      class="card d-flex flex-row bg-dark justify-content-center"
+      style="border-radius: 0"
+    >
+      <div>
+        <button
+          class="btn btn-sm btn-outline-danger my-2 mx-2"
+          id="saveWatchlistBtn"
+          data-petid="<%= pet._id%>"
+        >
+          <i class="bi bi-heart"></i> <span>Save</span>
+        </button>
+      </div>
+
+      <!-- <div>
+        <button class="btn btn-sm btn-outline-secondary my-2 me-2 text-light">
+          148 <i class="bi bi-eye"></i>
+        </button>
+      </div> -->
+      <!-- <div>
+        <button
+          onclick="location.href='/pets/<= pet._id%>/download-pdf'"
+          class="btn btn-sm btn-outline-secondary my-2 me-2 text-light"
+        >
+          <i class="bi bi-download"></i>
+          <span class="small">Download</span>
+        </button>
+      </div> -->
+
+      <!-- <div>
+        <button
+          class="btn btn-sm btn-outline-info my-2 me-2"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseWidthExample"
+          aria-expanded="false"
+          aria-controls="collapseWidthExample"
+        >
+          <i class="bi bi-share"></i> <span class="small">Share</span>
+        </button>
+      </div> -->
+      <% if(currentUser && pet.author.equals(currentUser._id)) {%>
+      <div>
+        <button
+          class="btn btn-sm btn-outline-info my-2 me-2"
+          onclick="location.href='/pets/<%= pet._id%>/edit'"
+        >
+          <i class="bi bi-pencil"></i> <span class="small">Edit</span>
+        </button>
+      </div>
+      <form
+        class="d-inline"
+        action="/pets/<%=pet.id%>?_method=DELETE"
+        method="POST"
+      >
+        <button class="btn btn-sm btn-outline-danger my-2 me-2">
+          <i class="bi-trash3"></i> <span class="small">Delete</span>
+        </button>
+      </form>
+
+      <% } %>
+    </div>
+
+    <div></div>
+  </section>
+
+  <section class="col-md-6 order-3 order-sm-3 order-md-2">
+    <div style="width: 100wh; height: 100%; min-height: 300px">
+      <div
+        id="map"
+        class="img d-block w-100"
+        style="height: 100%; min-height: 300px"
+      ></div>
+      <!-- <div class="card d-flex flex-row bg-dark" style="border-radius: 0">
+        <b style="color: antiquewhite">Add location</b>
+        < if(currentUser && pet.author.equals(currentUser._id)) {%>
+        <div>
+          <button id="add-marker" class="btn btn-sm btn-outline-info my-2 mx-2">
+            <i class="bi bi-geo-alt"></i>+
+          </button>
+        </div>
+        <div>
+          <button
+            id="remove-marker"
+            class="btn btn-sm btn-outline-danger my-2 me-2"
+          >
+            <i class="bi bi-geo-alt"></i>-
+          </button>
+        </div>
+        < } %>
+      </div> -->
+    </div>
+  </section>
+  <section class="col-md-6 order-2 order-sm-2 order-md-3">
+    <div class="card mb-3" style="border-radius: 0">
+      <div class="card-body">
+        <!-- <h5 class="card-title"><b>Name:</b> <= pet.title %></h5> -->
+
+        <ul class="list-group list-group-flush show-pet-list">
+          <!-- <li class="list-group-item">
+        <b>Last seen in:</b> <span id="pet-location"> <= pet.location %></span>
+      </li> -->
+
+          <li class="list-group-item" style="text-transform: capitalize">
+            <b>
+              <% if (pet.petStatus === "Found") { %> Finder's Name: <% } else {
+              %> Owner's Name: <% } %></b
+            >
+            <%= pet.author.username %>
+          </li>
+          <li class="list-group-item" style="text-transform: capitalize">
+            <b>Pet's Name:</b> <%= pet.title %>
+          </li>
+          <li class="list-group-item">
+            <b>Species:</b><span id="pet-species"> <%= pet.species %></span>
+          </li>
+          <li class="list-group-item"><b>Breed:</b> <%= pet.breed %></li>
+          <li class="list-group-item">
+            <b>Coat Pattern:</b> <%= pet.pattern %>
+          </li>
+          <li class="list-group-item">
+            <b>Pet's Gender: </b><%= pet.gender %>
+          </li>
+          <li class="list-group-item">
+            <b>First Color:</b> <%= pet.color[0] %>
+          </li>
+          <% if (pet.color.length > 1) {%>
+          <li class="list-group-item">
+            <b>
+              <% if (pet.pattern === "Pointed") { %> Point Color: <% } else if
+              (pet.pattern === "Spotted") { %> Spot Color: <% } else if
+              (pet.pattern === "Striped") { %> Stripe Color: <% } else { %>
+              Second Color: <% } %>
+            </b>
+            <%= pet.color[1] %>
+          </li>
+          <% } %> <% if (pet.color.length > 2) {%>
+          <li class="list-group-item">
+            <b>Third Color:</b> <%= pet.color[2] %>
+          </li>
+          <% } %>
+
+          <li class="list-group-item">
+            <b>Last Seen:</b> <%= lostDateInWords %>
+          </li>
+          <li class="list-group-item"><b>Age:</b> <%= pet.age %></li>
+          <li class="list-group-item"><b>Coat Type:</b> <%= pet.coat %></li>
+          <li class="list-group-item"><b>Pet's Size:</b> <%= pet.size %></li>
+          <li class="list-group-item">
+            <b>Status:</b> <span id="pet-status"> <%= pet.petStatus %></span>
+          </li>
+          <li class="list-group-item d-none">
+            <b>Lat: </b><span class="pet-latitude"><%=pet.latitude%></span
+            ><b>Lng: </b><span class="pet-longitude"><%=pet.longitude%></span>
+          </li>
+          <li class="list-group-item">
+            <b>Identifier:</b> <%= pet.identifier %>
+          </li>
+          <li class="list-group-item">
+            <p class="card-text">
+              <b>Description:</b>
+              <span id="pet-description"> <%= pet.description %></span>
+            </p>
+          </li>
+        </ul>
+      </div>
+      <div class="d-flex flex-column">
+        <div class="card-footer small text-muted">
+          Added <%=createDateInWords%>
+        </div>
+        <div class="card-footer small text-muted">
+          Updated <%=updateDateInWords%>
+        </div>
+      </div>
+    </div>
+    <!-- Share Buttons -->
+    <div class="d-flex justify-content-center mb-4 mt-4">
+      <div class="share-btn-facebook" onclick="shareOnFacebook()">
+        <!-- Facebook Share Button -->
+        <a class="facebook" id="facebook-share-button" href="#"
+          ><i class="bi bi-facebook"></i
+        ></a>
+      </div>
+
+      <div class="share-btn-twitter" onclick="shareOnTwitter()">
+        <!-- Twitter Share Button -->
+        <a class="twitter" id="twitter-share-button" href="#"
+          ><i class="bi bi-twitter"></i
+        ></a>
+      </div>
+
+      <div class="share-btn-whatsapp" onclick="shareOnWhatsApp()">
+        <!-- WhatsApp Share Button -->
+        <a class="whatsapp" id="whatsapp-share-button" href="#"
+          ><i class="bi bi-whatsapp"></i
+        ></a>
+      </div>
+
+      <div class="share-btn-messenger" onclick="shareOnMessenger()">
+        <!-- Facebook Messenger Share Button -->
+        <a class="messenger" id="messenger-share-button" href="#"
+          ><i class="bi bi-messenger"></i
+        ></a>
+      </div>
+
+      <div class="share-btn-linkedin" onclick="shareOnLinkedIn()">
+        <!-- LinkedIn Share Button -->
+        <a class="linkedin" id="linkedin-share-button" href="#"
+          ><i class="bi bi-linkedin"></i
+        ></a>
+      </div>
+    </div>
+  </section>
+  <!-- <div><p id="distance" class="text-muted"></p></div> -->
+
+  <!-- comment section -->
+  <section class="col-md-6 order-4 order-md-4 mt-4" id="comment-section">
+    <div>
+      <!-- check if person is logged -->
+      <% if (currentUser) { %>
+
+        <div class="card p-3">
+      <form
+        action="/pets/<%=pet._id%>/comments"
+        method="POST"
+        class="mb-3 validated-form d-flex"
+        novalidate
+      >
+        <div>
+
+
+          <% if (currentUser.avatar.length > 0) { %>
+          <img
+            src="<%= currentUser.avatar[0].url %>"
+            alt="mdo"
+            width="32"
+            height="32"
+            class="rounded-circle me-2"
+          />
+          <% } else { %>
+          <img
+            src="/images/icons/user.png"
+            alt="mdo"
+            width="32"
+            height="32"
+            class="rounded-circle me-2"
+          />
+          <% } %>
+        </div>
+ 
+        <div class="form-floating flex-grow-1 me-2">
+          <textarea
+            class="form-control"
+            name="comment[body]"
+            required
+            placeholder="Add a comment..."
+            id="body"
+            style="
+              height: 80px;
+              border-radius: 3px;
+              resize: none;
+              width: 100%;
+            "
+          ></textarea>
+          <label for="body" class="small">Add comment...</label>
+          <div class="valid-feedback">Looks good!</div>
+          <div>
+            <button class="btn btn-sm btn-success mt-2"><small>Send</small></button>
+          </div>
+        </div>
+     
+        <!-- <div>
+          <button class="btn btn-success mb-3">Send</button>
+        </div> -->
+      </form>
+    </div>
+      <% } %>
+
+      <!-- SHOW COMMENTS -->
+      <div class="mt-5">
+        <!--- ADEDE NEW LINES-->
+        <% if (pet.comments.length > 0) {%> <% } else { %>
+
+        <p>No comment uet</p>
+
+        <% } %>
+        <!--- ADEDE NEW LINES-->
+
+        <% for(let comment of pet.comments) { %>
+          <div class="card mt-3">
+            <div class="card-body d-flex">
+
+              <div class="d-flex me-4">
+                <% if (comment.author.avatar.length > 0) { %>
+                  <img src="<%= comment.author.avatar[0].url %>" alt="mdo" width="32" height="32" class="rounded-circle me-2" />
+                <% } else { %>
+                  <img src="/images/icons/user.png" alt="mdo" width="32" height="32" class="rounded-circle me-2" />
+                <% } %>
+                <div class="d-flex flex-column">
+                  <h5 class="card-title small">@<%= comment.author.username %></h5>
+                  <% if(comment.author.equals(currentUser._id)) { %>
+                    <h6 class="card-text text-muted small">Author</h6>
+                  <% } %>
+                </div>
+              </div>
+              
+              <div>
+
+              
+              <p class="card-text" style="text-align: justify;"><small><%= comment.body %></small></p>
+              <% if(currentUser && comment.author.equals(currentUser._id)) { %>
+                <form action="/pets/<%= pet._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                  <button class="btn btn-sm btn-danger"><small>Delete</small></button>
+                  <!-- <a class="" style="text-decoration: none;"><small><i class="bi-trash3"></i> Delete</small></a> -->
+                </form>
+              <% } %>
+            </div>
+              
+              
+              
+            </div>
+
+
+            
+          </div>
+        <% } %>
+        
+
+
+    </div>
+  </section>
+
+  <!--- row --->
+</div>
+
+<!-- <script>
+  const saveWatchlistBtn = document.querySelector("#saveWatchlistBtn");
+  saveWatchlistBtn.addEventListener("click", async (e) => {
+
+    const petId = e.currentTarget.getAttribute("data-petid");
+    console.log(petId);
+
+  })
+
+</script> -->
+
+<script>
+  const updateWatchlist = async (watchlistData) => {
+    try {
+      const response = await fetch("/auth/account/watchlist", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(watchlistData),
+      });
+
+      if (response.ok) {
+        // Watchlist updated successfully
+        console.log("Watchlist updated successfully");
+      } else {
+        throw new Error("Failed to update watchlist");
+      }
+    } catch (error) {
+      console.error(error);
+      // Handle error and display appropriate message
+    }
+  };
+
+  const saveWatchlistBtn = document.querySelector("#saveWatchlistBtn");
+
+  saveWatchlistBtn.addEventListener("click", async (e) => {
+    // Retrieve the selected pets from the UI
+    const petId = e.currentTarget.getAttribute("data-petid");
+    const selectedPets =
+      petId; /* Code to retrieve the selected pets from the UI */
+
+    // Prepare the watchlist data to send in the request body
+    const watchlistData = {
+      pets: selectedPets,
+    };
+
+    await updateWatchlist(watchlistData);
+  });
+</script>
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+  integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+<script>
+  const TOMTOMTOKEN = "<%-process.env.TOMTOM_API_KEY%>";
+  const pet = {features: <%-JSON.stringify(pet)%>}
+</script>
+<script src="/javascripts/showPetShareButtons.js"></script>
+<script src="/javascripts/showPageMap.js"></script>
+<!-- uztaisit jaunu lapu ar sunim draudzigam vietam -->
+<!-- uztaisit jaunu lapu ar stastiem -->
+<!-- uztaisit jaunu lapu ar instrukcijam -->

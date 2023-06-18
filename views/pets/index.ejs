@@ -1,0 +1,1093 @@
+<% layout('layouts/boilerplate')%>
+<!-- <script>
+  import formatDistanceToNow from "date-fns/formatDistanceToNow";
+</script> -->
+
+<style>
+  .marker-icon {
+    background-position: center;
+    background-size: 22px 22px;
+    border-radius: 50%;
+    height: 22px;
+    left: 4px;
+    position: absolute;
+    text-align: center;
+    top: 3px;
+    transform: rotate(45deg);
+    width: 22px;
+  }
+  .marker {
+    height: 30px;
+    width: 30px;
+  }
+  .marker-content {
+    background: #9b59b6 !important;
+    border-radius: 50% 50% 50% 0;
+    height: 30px;
+    left: 50%;
+    margin: -15px 0 0 -15px;
+    position: absolute;
+    top: 50%;
+    transform: rotate(-45deg);
+    width: 30px;
+  }
+  .marker-content::before {
+    background: #ffffff;
+    border-radius: 50%;
+    content: "";
+    height: 24px;
+    margin: 3px 0 0 3px;
+    position: absolute;
+    width: 24px;
+  }
+</style>
+<style>
+  .mapboxgl-popup-tip {
+    display: none !important;
+  }
+</style>
+<div id="map" class="map" style="width: 100%; height: 400px"></div>
+
+
+<div class="col-md-12 mt-3">
+  
+  <form action="/pets" method="GET" class="row mx-auto" role="search" id="filterForm">
+    <!-- <h5 class="text-white text-center mt-2">Filter Pets</h5> -->
+  <p>
+    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+      <i class="bi bi-sliders"></i> Filters
+    </a>
+    <a class="btn btn-warning d-none compare-btn" href="" role="button">
+      <i class="bi bi-intersect"></i> Compare
+    </a>
+    <!-- <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Button with data-bs-target
+    </button> -->
+  </p>
+  <div class="collapse" id="collapseExample">
+    <div class="row g-3">
+      <div class="d-flex flex-column d-none">
+        <p class="small text-muted">Distance-based search is available when your location is provided. Please wait a moment.</p>
+        <span>Latitude: <input class="user-latitude" id="user-latitude" type="text" name="userlatitude" readonly></span>
+        <span>Longitude: <input class="user-longitude" id="user-longitude" type="text" name="userlongitude" readonly></span>
+        
+      </div>
+
+            <!-- Pet Status -->
+            <div class="col-md-3">
+              <label class="form-label">Pet Status:</label>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="bi bi-question-diamond-fill"></i>
+                </span>       
+                <select class="form-select" id="petStatus" name="petStatus">
+                  <option value="">All</option>
+                  <option value="Missing">Missing</option>
+                  <option value="Found">Found</option>
+                </select>
+            </div>
+          </div>
+
+           <!-- Pet Species -->
+       <div class="col-md-3">
+        <label class="form-label">Species:</label>
+        <div class="input-group">
+          <span class="input-group-text">
+            <i class="bi bi-diamond-half"></i>
+          </span>       
+          <select class="form-select" id="species" name="species">
+            <option value="">All</option>
+            <option value="Dog">Dog</option>
+            <option value="Cat">Cat</option>
+          </select>
+      </div>
+    </div>
+
+       <!-- Pet Gender -->
+       <div class="col-md-3">
+        <label class="form-label">Pet Gender:</label>
+        <div class="input-group">
+          <span class="input-group-text">
+            <i class="bi bi-gender-ambiguous"></i>
+          </span>       
+          <select class="form-select" id="gender" name="gender">
+            <option value="">All</option>
+            <option value="She">She</option>
+            <option value="He">He</option>
+
+          </select>
+      </div>
+    </div>
+ <!-- Pet Breed -->
+     <div class="col-md-3">
+      <label class="form-label">Breed:</label>
+      <div class="input-group">
+        <span class="input-group-text">
+          <i class="bi bi-grid-fill"></i>
+        </span>       
+        <select class="form-select" id="petBreed" name="breed">
+          <option value="">All</option>
+          <optgroup label="Cat Breed">
+            <option value="Abyssinian">Abyssinian</option>
+            <option value="American Bobtail">American Bobtail</option>
+            <option value="American Shorthair">American Shorthair</option>
+            <option value="Australian Mist">Australian Mist</option>
+            <option value="Balinese">Balinese</option>
+            <option value="Bengal">Bengal</option>
+            <option value="Birman">Birman</option>
+            <option value="Bombay">Bombay</option>
+            <option value="British Shorthair">British Shorthair</option>
+            <option value="Burmese">Burmese</option>
+            <option value="Burmilla">Burmilla</option>
+            <option value="Chartreux">Chartreux</option>
+            <option value="Chausie">Chausie</option>
+            <option value="Cornish Rex">Cornish Rex</option>
+            <option value="Cymric">Cymric</option>
+            <option value="Devon Rex">Devon Rex</option>
+            <option value="Egyptian Mau">Egyptian Mau</option>
+            <option value="Exotic Shorthair">Exotic Shorthair</option>
+            <option value="Himalayan">Himalayan</option>
+            <option value="Highlander">Highlander</option>
+            <option value="Japanese Bobtail">Japanese Bobtail</option>
+            <option value="Korat">Korat</option>
+            <option value="LaPerm">LaPerm</option>
+            <option value="Maine Coon">Maine Coon</option>
+            <option value="Manx">Manx</option>
+            <option value="Munchkin">Munchkin</option>
+            <option value="Nebelung">Nebelung</option>
+            <option value="Norwegian Forest Cat">Norwegian Forest Cat</option>
+            <option value="Oriental Shorthair">Oriental Shorthair</option>
+            <option value="Peterbald">Peterbald</option>
+            <option value="Persian">Persian</option>
+            <option value="Pixiebob">Pixiebob</option>
+            <option value="Ragdoll">Ragdoll</option>
+            <option value="Russian Blue">Russian Blue</option>
+            <option value="Scottish Fold">Scottish Fold</option>
+            <option value="Selkirk Rex">Selkirk Rex</option>
+            <option value="Serengeti">Serengeti</option>
+            <option value="Siberian">Siberian</option>
+            <option value="Siamese">Siamese</option>
+            <option value="Singapura">Singapura</option>
+            <option value="Snowshoe">Snowshoe</option>
+            <option value="Sokoke">Sokoke</option>
+            <option value="Sphynx">Sphynx</option>
+            <option value="Tonkinese">Tonkinese</option>
+            <option value="Toyger">Toyger</option>
+            <option value="Turkish Angora">Turkish Angora</option>
+            <option value="Turkish Van">Turkish Van</option>   
+          </optgroup>
+          <optgroup label="Dog Breed">
+            <option value="Airedale Terrier">Airedale Terrier</option>
+            <option value="Akita">Akita</option>
+            <option value="Alaskan Malamute">Alaskan Malamute</option>
+            <option value="American Bulldog">American Bulldog</option>
+            <option value="American Cocker Spaniel">American Cocker Spaniel</option>
+            <option value="American Eskimo Dog">American Eskimo Dog</option>
+            <option value="American Staffordshire Terrier">American Staffordshire Terrier</option>
+            <option value="Anatolian Shepherd Dog">Anatolian Shepherd Dog</option>
+            <option value="Australian Cattle Dog">Australian Cattle Dog</option>
+            <option value="Australian Shepherd">Australian Shepherd</option>
+            <option value="Australian Terrier">Australian Terrier</option>
+            <option value="Basset Hound">Basset Hound</option>
+            <option value="Beagle">Beagle</option>
+            <option value="Bearded Collie">Bearded Collie</option>
+            <option value="Beauceron">Beauceron</option>
+            <option value="Bedlington Terrier">Bedlington Terrier</option>
+            <option value="Belgian Malinois">Belgian Malinois</option>
+            <option value="Belgian Sheepdog">Belgian Sheepdog</option>
+            <option value="Belgian Tervuren">Belgian Tervuren</option>
+            <option value="Bernese Mountain Dog">Bernese Mountain Dog</option>
+            <option value="Bichon Frise">Bichon Frise</option>
+            <option value="Black and Tan Coonhound">Black and Tan Coonhound</option>
+            <option value="Black Russian Terrier">Black Russian Terrier</option>
+            <option value="Bloodhound">Bloodhound</option>
+            <option value="Border Collie">Border Collie</option>
+            <option value="Border Terrier">Border Terrier</option>
+            <option value="Boston Terrier">Boston Terrier</option>
+            <option value="Bouvier des Flandres">Bouvier des Flandres</option>
+            <option value="Boxer">Boxer</option>
+            <option value="Briard">Briard</option>
+            <option value="Brittany">Brittany</option>
+            <option value="Brussels Griffon">Brussels Griffon</option>
+            <option value="Bull Terrier">Bull Terrier</option>
+            <option value="Bulldog">Bulldog</option>
+            <option value="Bullmastiff">Bullmastiff</option>
+            <option value="Cairn Terrier">Cairn Terrier</option>
+            <option value="Cane Corso">Cane Corso</option>
+            <option value="Cardigan Welsh Corgi">Cardigan Welsh Corgi</option>
+            <option value="Cavalier King Charles Spaniel">Cavalier King Charles Spaniel</option>
+            <option value="Chesapeake Bay Retriever">Chesapeake Bay Retriever</option>
+            <option value="Chihuahua">Chihuahua</option>
+            <option value="Chinese Crested">Chinese Crested</option>
+            <option value="Chinese Shar-Pei">Chinese Shar-Pei</option>
+            <option value="Chow Chow">Chow Chow</option>
+            <option value="Clumber Spaniel">Clumber Spaniel</option>
+            <option value="Cocker Spaniel">Cocker Spaniel</option>
+            <option value="Collie">Collie</option>
+            <option value="Curly-Coated Retriever">Curly-Coated Retriever</option>
+            <option value="Dachshund">Dachshund</option>
+            <option value="Dalmatian">Dalmatian</option>
+            <option value="Dandie Dinmont Terrier">Dandie Dinmont Terrier</option>
+            <option value="Doberman Pinscher">Doberman Pinscher</option>
+            <option value="Dogue de Bordeaux">Dogue de Bordeaux</option>
+            <option value="English Bulldog">English Bulldog</option>
+            <option value="English Cocker Spaniel">English Cocker Spaniel</option>
+            <option value="English Foxhound">English Foxhound</option>
+            <option value="English Setter">English Setter</option>
+            <option value="English Springer Spaniel">English Springer Spaniel</option>
+            <option value="English Toy Spaniel">English Toy Spaniel</option>
+            <option value="Entlebucher Mountain Dog">Entlebucher Mountain Dog</option>
+            <option value="Field Spaniel">Field Spaniel</option>
+            <option value="Finnish Lapphund">Finnish Lapphund</option>
+            <option value="Finnish Spitz">Finnish Spitz</option>
+            <option value="Flat-Coated Retriever">Flat-Coated Retriever</option>
+            <option value="French Bulldog">French Bulldog</option>
+            <option value="German Pinscher">German Pinscher</option>
+            <option value="German Shepherd Dog">German Shepherd Dog</option>
+            <option value="German Shorthaired Pointer">German Shorthaired Pointer</option>
+            <option value="German Wirehaired Pointer">German Wirehaired Pointer</option>
+            <option value="Giant Schnauzer">Giant Schnauzer</option>
+            <option value="Glen of Imaal Terrier">Glen of Imaal Terrier</option>
+            <option value="Golden Retriever">Golden Retriever</option>
+            <option value="Goldendoodle">Goldendoodle</option>
+            <option value="Gordon Setter">Gordon Setter</option>
+            <option value="Great Dane">Great Dane</option>
+            <option value="Great Pyrenees">Great Pyrenees</option>
+            <option value="Greater Swiss Mountain Dog">Greater Swiss Mountain Dog</option>
+            <option value="Greyhound">Greyhound</option>
+            <option value="Havanese">Havanese</option>
+            <option value="Ibizan Hound">Ibizan Hound</option>
+            <option value="Icelandic Sheepdog">Icelandic Sheepdog</option>
+            <option value="Irish Red and White Setter">Irish Red and White Setter</option>
+            <option value="Irish Setter">Irish Setter</option>
+            <option value="Irish Terrier">Irish Terrier</option>
+            <option value="Irish Water Spaniel">Irish Water Spaniel</option>
+            <option value="Irish Wolfhound">Irish Wolfhound</option>
+            <option value="Italian Greyhound">Italian Greyhound</option>
+            <option value="Jack Russell Terrier">Jack Russell Terrier</option>
+            <option value="Japanese Chin">Japanese Chin</option>
+            <option value="Japanese Spitz">Japanese Spitz</option>
+            <option value="Keeshond">Keeshond</option>
+            <option value="Kerry Blue Terrier">Kerry Blue Terrier</option>
+            <option value="Komondor">Komondor</option>
+            <option value="Kuvasz">Kuvasz</option>
+            <option value="Labradoodle">Labradoodle</option>
+            <option value="Labrador Retriever">Labrador Retriever</option>
+            <option value="Lakeland Terrier">Lakeland Terrier</option>
+            <option value="Lhasa Apso">Lhasa Apso</option>
+            <option value="Maltese">Maltese</option>
+            <option value="Manchester Terrier">Manchester Terrier</option>
+            <option value="Mastiff">Mastiff</option>
+            <option value="Miniature Bull Terrier">Miniature Bull Terrier</option>
+            <option value="Miniature Pinscher">Miniature Pinscher</option>
+            <option value="Miniature Schnauzer">Miniature Schnauzer</option>
+            <option value="Neapolitan Mastiff">Neapolitan Mastiff</option>
+            <option value="Newfoundland">Newfoundland</option>
+            <option value="Norfolk Terrier">Norfolk Terrier</option>
+            <option value="Norwegian Buhund">Norwegian Buhund</option>
+            <option value="Norwegian Elkhound">Norwegian Elkhound</option>
+            <option value="Norwegian Lundehund">Norwegian Lundehund</option>
+            <option value="Norwich Terrier">Norwich Terrier</option>
+            <option value="Nova Scotia Duck Tolling Retriever">Nova Scotia Duck Tolling Retriever</option>
+            <option value="Old English Sheepdog">Old English Sheepdog</option>
+            <option value="Otterhound">Otterhound</option>
+            <option value="Papillon">Papillon</option>
+            <option value="Pekingese">Pekingese</option>
+            <option value="Pembroke Welsh Corgi">Pembroke Welsh Corgi</option>
+            <option value="Petit Basset Griffon Vendeen">Petit Basset Griffon Vendeen</option>
+            <option value="Pharaoh Hound">Pharaoh Hound</option>
+            <option value="Plott">Plott</option>
+            <option value="Pointer">Pointer</option>
+            <option value="Polish Lowland Sheepdog">Polish Lowland Sheepdog</option>
+            <option value="Pomeranian">Pomeranian</option>
+            <option value="Poodle">Poodle</option>
+            <option value="Portuguese Water Dog">Portuguese Water Dog</option>
+            <option value="Pug">Pug</option>
+            <option value="Puli">Puli</option>
+            <option value="Pumi">Pumi</option>
+            <option value="Pyrenean Shepherd">Pyrenean Shepherd</option>
+            <option value="Rat Terrier">Rat Terrier</option>
+            <option value="Redbone Coonhound">Redbone Coonhound</option>
+            <option value="Rhodesian Ridgeback">Rhodesian Ridgeback</option>
+            <option value="Rottweiler">Rottweiler</option>
+            <option value="Saint Bernard">Saint Bernard</option>
+            <option value="Saluki">Saluki</option>
+            <option value="Samoyed">Samoyed</option>
+            <option value="Schipperke">Schipperke</option>
+            <option value="Scottish Deerhound">Scottish Deerhound</option>
+            <option value="Scottish Terrier">Scottish Terrier</option>
+            <option value="Sealyham Terrier">Sealyham Terrier</option>
+            <option value="Shetland Sheepdog">Shetland Sheepdog</option>
+            <option value="Shiba Inu">Shiba Inu</option>
+            <option value="Shih Tzu">Shih Tzu</option>
+            <option value="Siberian Husky">Siberian Husky</option>
+            <option value="Silky Terrier">Silky Terrier</option>
+            <option value="Skye Terrier">Skye Terrier</option>
+            <option value="Sloughi">Sloughi</option>
+            <option value="Small Munsterlander Pointer">Small Munsterlander Pointer</option>
+            <option value="Soft-Coated Wheaten Terrier">Soft-Coated Wheaten Terrier</option>
+            <option value="Spanish Water Dog">Spanish Water Dog</option>
+            <option value="Spinone Italiano">Spinone Italiano</option>
+            <option value="Staffordshire Bull Terrier">Staffordshire Bull Terrier</option>
+            <option value="Standard Schnauzer">Standard Schnauzer</option>
+            <option value="Sussex Spaniel">Sussex Spaniel</option>
+            <option value="Swedish Vallhund">Swedish Vallhund</option>
+            <option value="Tibetan Mastiff">Tibetan Mastiff</option>
+            <option value="Tibetan Spaniel">Tibetan Spaniel</option>
+            <option value="Tibetan Terrier">Tibetan Terrier</option>
+            <option value="Toy Fox Terrier">Toy Fox Terrier</option>
+            <option value="Treeing Tennessee Brindle">Treeing Tennessee Brindle</option>
+            <option value="Treeing Walker Coonhound">Treeing Walker Coonhound</option>
+            <option value="Vizsla">Vizsla</option>
+            <option value="Weimaraner">Weimaraner</option>
+            <option value="Welsh Springer Spaniel">Welsh Springer Spaniel</option>
+            <option value="Welsh Terrier">Welsh Terrier</option>
+            <option value="West Highland White Terrier">West Highland White Terrier</option>
+            <option value="Whippet">Whippet</option>
+            <option value="Wire Fox Terrier">Wire Fox Terrier</option>
+            <option value="Wirehaired Pointing Griffon">Wirehaired Pointing Griffon</option>
+            <option value="Wirehaired Vizsla">Wirehaired Vizsla</option>
+            <option value="Working Kelpie">Working Kelpie</option>
+            <option value="Xoloitzcuintli">Xoloitzcuintli</option>
+            <option value="Yorkshire Terrier">Yorkshire Terrier</option>
+          
+          </optgroup>
+         
+        </select>
+    </div>
+  </div>
+
+ 
+      <div class="col-md-3">
+        <label class="form-label">Pet color:</label>
+        <div class="input-group">
+          <span class="input-group-text">
+            <i class="bi bi-palette"></i>
+          </span>       
+          <select class="form-select" id="color" name="color">
+            <option value="">All</option>
+            <option value="Black">Black</option>
+            <option value="Brown">Brown</option>
+            <option value="White">White</option>
+            <option value="Red">Red</option>
+            <option value="Gold">Gold</option>
+            <option value="Blue">Blue</option>
+            <option value="Gray">Gray</option>
+            <option value="Cream">Cream</option>
+            <option value="Yellow">Yellow</option>
+          </select>
+      </div>
+    </div>
+
+ 
+      
+
+
+
+
+      <div class="col-md-3">
+        <label class="form-label" for="distance">Distance (km):</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-rulers"></i></span>
+          <input
+            type="text"
+            class="form-control distance"
+            id="distance"
+            min="0"
+            name="maxDistance"
+            value=""
+          />
+        </div>
+      </div>
+
+      <!-- Age -->
+      <div class="col-md-3">
+        <label class="form-label">Pet Age:</label>
+        <div class="input-group">
+          <span class="input-group-text">
+            <i class="bi bi-calendar2-heart"></i>
+          </span>       
+          <select class="form-select" id="age" name="age">
+            <option value="">All</option>
+            <option value="Kitten">Kitten</option>
+            <option value="Puppy">Puppy</option>
+            <option value="Adolescent">Adolescent</option>
+            <option value="Adult">Adult</option>
+            <option value="Senior">Senior</option>
+          </select>
+      </div>
+    </div>
+
+   
+
+      <!-- Coat type -->
+      <div class="col-md-3">
+        <label class="form-label">Coat Type:</label>
+        <div class="input-group">
+          <span class="input-group-text">
+            <i class="bi bi-wind"></i>
+          </span>       
+          <select class="form-select" id="coat" name="coat">
+            <option value="">All</option>
+            <option value="Hairless">Hairless</option>
+            <option value="Short">Short Coated</option>
+            <option value="Medium">Medium Coated</option>
+            <option value="Long">Long Coated</option>
+            <option value="Wire">Wire Coated</option>
+            <option value="Curly">Curly Coated</option>
+          </select>
+      </div>
+    </div>
+
+
+
+
+       <div class="col-md-3">
+        <label class="form-label">Pet Size:</label>
+        <div class="input-group">
+          <span class="input-group-text">
+            <i class="bi bi-arrows-angle-expand"></i>
+          </span>
+        
+          <select class="form-select" id="size" name="size">
+            <!-- <option hidden disabled selected value>-- Select an option --</option> -->
+            <option value="">All</option>
+            <option value="Small">Small</option>
+            <option value="Medium">Medium</option>
+            <option value="Large">Large</option>
+          </select>
+        <!-- <select class="form-control" id="mealType" name="mealTypes">
+          < mealTypesOptions.forEach(option => { %>
+            <option value="<= option %>" <= mealTypeValue === option ? 'selected' : '' %>>
+              <= option %>
+            </option>
+          < }) %>
+        </select> -->
+      </div>
+    </div>
+
+
+      <div class="col-md-3">
+        <label class="form-label" for="identifier">Identifier</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-fingerprint"></i></span>
+          <input
+            type="text"
+            class="form-control identifier"
+            id="identifier"
+            min="0"
+            name="identifier"
+            value="<%= identifier || '' %>"
+          />
+        </div>
+      </div>
+  
+
+      <div class="col-md-3">
+        <label class="form-label">Location:</label>
+        <div class="input-group">
+          <span class="input-group-text">
+            <i class="bi bi-geo-alt-fill"></i>
+          </span>       
+          <select class="form-select" id="region" name="selectedRegion">
+            <option value="">All</option>
+            <optgroup label="City">
+              <option value="Riga">Riga</option>
+              <option value="Daugavpils">Daugavpils</option>
+              <option value="Jelgava">Jelgava</option>
+              <option value="Jurmala">Jurmala</option>
+              <option value="Liepaja">Liepaja</option>
+              <option value="Rezekne">Rezekne</option>          
+              <option value="Valmiera">Valmiera</option>
+              <option value="Ventspils">Ventspils</option>              
+            </optgroup>
+            <optgroup label="Municipality">
+            <option value="Adazu nov">Adazu nov</option>
+            <option value="Aizkraukles nov">Aizkraukles nov</option>
+            <option value="Aluksnes nov">Aluksnes nov</option>
+            <option value="Augsdaugavas nov">Augsdaugavas nov</option>
+            <option value="Balvu nov">Balvu nov</option>
+            <option value="Bauskas nov">Bauskas nov</option>
+            <option value="Cesu nov">Cesu nov</option>
+            <option value="Dienvidkurzemes nov">Dienvidkurzemes nov</option>
+            <option value="Dobeles nov">Dobeles nov</option>
+            <option value="Gulbenes nov">Gulbenes nov</option>
+            <option value="Jekabpils nov">Jekabpils nov</option>
+            <option value="Jelgavas nov">Jelgavas nov</option>
+            <option value="Kekavas nov">Kekavas nov</option>
+            <option value="Kraslavas nov">Kraslavas nov</option>
+            <option value="Kuldigas nov">Kuldigas nov</option>
+            <option value="Limbazu novads">Limbazu novads</option>
+            <option value="Livanu nov">Livanu nov</option>
+            <option value="Ludzas nov">Ludzas nov</option>
+            <option value="Madonas nov">Madonas nov</option>
+            <option value="Marupes nov">Marupes nov</option>
+            <option value="Ogres nov">Ogres nov</option>
+            <option value="Olaines nov">Olaines nov</option>
+            <option value="Preilu nov">Preilu nov</option>
+            <option value="Rezeknes nov">Rezeknes nov</option>
+            <option value="Ropazu nov">Ropazu nov</option>
+            <option value="Salaspils nov">Salaspils nov</option>
+            <option value="Saldus nov">Saldus nov</option>
+            <option value="Saulkrastu nov">Saulkrastu nov</option>
+            <option value="Siguldas nov">Siguldas nov</option>
+            <option value="Smiltenes nov">Smiltenes nov</option>
+            <option value="Talsu nov">Talsu nov</option>
+            <option value="Tukuma nov">Tukuma nov</option>
+            <option value="Valkas nov">Valkas nov</option>
+            <option value="Valmieras nov">Valmieras nov</option>
+            <option value="Varaklanu nov">Varaklanu nov</option>
+            <option value="Ventspils nov">Ventspils nov</option>
+          </optgroup>
+          </select>
+      </div>
+    </div>
+
+      <!-- Lost Date -->
+      <div class="col-md-3">
+        <label class="form-label" for="lostdate">Lost Date</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
+          <input
+            type="date"
+            class="form-control lostdate"
+            id="lostdate"
+            min="0"
+            name="lostdate"
+            value="<%= lostdate || '' %>"
+          />
+        </div>
+      </div>
+
+
+
+      <!-- <div class="col-md-12">
+        <div class="d-flex my-2">
+          <div class="form-check form-switch me-3">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              role="switch"
+              id="flexSwitchCheckDefault"
+              name="petStatus"
+              value="missing"
+              checked
+            />
+            <label class="form-check-label" for="flexSwitchCheckDefault"
+              >Show missing pets</label
+            >
+          </div>
+          <div class="form-check form-switch me-3">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              role="switch"
+              id="flexSwitchCheckDefault2"
+              name="petStatus"
+              value="found"
+              
+            />
+            <label class="form-check-label" for="flexSwitchCheckDefault2"
+              >Show found pets</label
+            >
+          </div>
+        </div>
+      </div> -->
+
+      <div class="col-md-12 my-3 d-flex ">
+        <button class="btn btn-warning search-form-btn  me-2 " type="submit"><i class="bi bi-search"></i> Search</button>
+        <button class="btn btn-secondary reset-form-btn"><i class="bi bi-eraser-fill"></i> Clear</button>
+      </div>
+    </div>
+ 
+  </div>
+ 
+  </form>
+</div>
+
+<!-- <h1>All Pets</h1> -->
+
+
+<div class="row ">
+  <% if (pets.length > 0) {%>
+  <div class="col-md-12 mb-3">
+    <div class="row row-cols-2 row-cols-sm-2 row-cols-md-5 g-3">
+      <% for (let pet of pets) { %>
+      <div class="col">
+      
+
+
+
+          <div class="card shadow-sm pet-card" >
+            <a
+            href="/pets/<%=pet._id%>"
+            style="text-decoration: none; color: #d4d4d4"
+          >
+            <div>
+
+            <% if(pet.images.length) {%>
+
+            <!-- <img src="<=pet.image.url%>" alt="<=pet.title%>" /> -->
+            <img
+              src="<%=pet.images[0].url%>"
+              class="bd-placeholder-img card-img-top"
+              alt=""
+              width="100%"
+              max-height="225"
+              role="img"
+              aria-label="Placeholder: Thumbnail"
+              preserveAspectRatio="xMidYMid slice"
+              focusable="false"
+            />
+
+            <% } else { %>
+            <img class="img-fluid" src="/images/placeholder.jpg" alt="" />
+
+            <% } %>
+          </div>
+        </a>
+
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <p class="card-text pet-latitude d-none"><%=pet.latitude%></p>
+                <p class="card-text pet-longitude d-none"><%=pet.longitude%></p>
+                <small class="text-body-secondary d-flex"
+                  ><div data-petcoords="<%=pet.location.coordinates %>" class="petButtonZoom" style="cursor: pointer;"><i class="bi bi-geo-alt-fill" style="pointer-events: none;"></i></div>
+                  <div class="distance-text mx-2">Calculating...</div></small
+                >
+                <div class="form-check text-secondary" >
+                  <input class="form-check-input compare-checkbox" type="checkbox" value="" id="pet_<%=pet._id%>" style="cursor: pointer;">
+                  <label class="form-check-label" for="pet_<%=pet._id%>" style="cursor: pointer;">
+                    <i class="bi bi-intersect"></i>
+                  </label>
+                </div>
+                
+              </div>
+            </div>
+
+
+          </div>
+
+
+
+       
+      </div>
+      <% } %>
+    </div>
+  </div>
+  <% } else { %>
+  <div class="col-md-12">
+    <p class="text-center">
+      No matching pets found. Please adjust your search criteria.
+    </p>
+  </div>
+  <% } %>
+</div>
+
+<!-- TOP PAGINATION ON MAP-->
+
+<div class="col-md-12">
+  <nav class="mt-5" aria-label="Page navigation">
+    <ul class="d-flex justify-content-center" style="padding: 0">
+      <div class="custom-page-link prev" style="width: 120px;text-align: center; ">
+        <a
+         
+          class="btn btn-primary custom-page-link <%= currentPage <= 1 ? 'disabled' : '' %>"
+          href="/pets?page=<%= currentPage - 1  %>&limit=<%= limitPerPage %>"
+          aria-label="Previous"
+        >
+          <span aria-hidden="true"><i class="bi bi-arrow-left"></i><span id="d-none d-sm-inline-block">Prev Page</span>
+        </a>
+      </div>
+
+      <div class=" custom-page-link next"  style="width: 120px; text-align: center; ">
+        <a
+        
+          class="btn btn-primary  custom-page-link <%= currentPage >= totalPages ? 'disabled' : '' %>"
+          href="/pets?page=<%= currentPage < totalPages ? currentPage + 1 : currentPage  %>&limit=<%= limitPerPage %>"
+          aria-label="Next"
+        >
+          <span id="d-none d-sm-inline-block">Next Page</span
+          ><span aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
+        </a>
+      </div>
+    </ul>
+  </nav>
+</div>
+
+<!-- PAGINATION v2-->
+<!-- <div class="col-md-12 d-none">
+  <nav class="mt-5">
+
+    <ul class="d-flex justify-content-end">
+
+      <div class="d-flex align-items-center">
+      <div class="page-item">
+        <input
+          class="custom-pagination-value"
+          id="inputPageNumber"
+          type="text"
+          min="1"
+          max="<%=totalPages%>"
+          style="border: 1px solid #cfd9e0;
+          width: 50px;
+          height: 33px;
+          text-align: center;
+          padding: 0;
+          margin: 0 10px 0 0;"
+          value="<%=currentPage %>"
+        />
+      </div>
+ 
+
+      <div class="">
+        <input class="custom-pagination total-pages" value="of <%=totalPages%>" readonly style="border: none; outline: none; max-width: 3rem">
+      </div>
+
+      <div class=" custom-page-link prev" style="margin-right: 2px;">
+        <a
+        
+          class="btn btn-secondary btn-sm custom-page-link <%= currentPage <= 1 ? 'disabled' : '' %>"
+          href="/pets?page=<%= currentPage - 1  %>&limit=<%= limitPerPage %>"
+          aria-label="Previous"
+        >
+          <span aria-hidden="true"><i class="bi bi-caret-left-fill"></i></span
+          ><span class="d-none d-sm-inline-block"></span>
+        </a>
+      </div>
+      <div class=" custom-page-link next"  style="margin-left: 2px;">
+        <a
+        
+          class="btn btn-secondary btn-sm custom-page-link <%= currentPage >= totalPages ? 'disabled' : '' %>"
+          href="/pets?page=<%= currentPage < totalPages ? currentPage + 1 : currentPage  %>&limit=<%= limitPerPage %>"
+          aria-label="Next"
+        >
+          <span class="d-none d-sm-inline-block"></span
+          ><span aria-hidden="true"
+            ><i class="bi bi-caret-right-fill"></i
+          ></span>
+        </a>
+      </div>
+    </div>
+    </ul>
+  </nav>
+</div> -->
+
+<!-- PAGINATION v3-->
+<!-- <div class="col-md-12">
+  <nav class="mt-5" aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      <li class="page-item custom-page-link prev">
+        <a
+          style="border: none"
+          class="page-link custom-page-link <= currentPage <= 1 ? 'disabled' : '' %>"
+          href="/pets?page=<= currentPage - 1  %>&limit=<= limitPerPage %>"
+          aria-label="Previous"
+        >
+          <span aria-hidden="true"><i class="bi bi-caret-left-fill"></i></span
+          ><span class="d-none d-sm-inline-block">Prev</span>
+        </a>
+      </li>
+      <li class="page-item">
+        <p class="page-link custom-pagination disabled">Page</p>
+      </li>
+      <li class="page-item">
+        <input
+          class="page-link custom-pagination-value"
+          type="text"
+          min="1"
+          max="<=totalPages%>"
+          style="width: 3rem"
+          value="<=currentPage %>"
+        />
+      </li>
+      <li class="page-item">
+        <p class="page-link custom-pagination disabled">
+          of <span class="total-pages"><=totalPages%></span>
+        </p>
+      </li>
+      <li class="page-item">
+        <button class="btn btn-warning pagination-btn">Go</button>
+      </li>
+      <li class="page-item custom-page-link next">
+        <a
+          style="border: none"
+          class="page-link custom-page-link <= currentPage >= totalPages ? 'disabled' : '' %>"
+          href="/pets?page=<= currentPage < totalPages ? currentPage + 1 : currentPage  %>&limit=<= limitPerPage %>"
+          aria-label="Next"
+        >
+          <span class="d-none d-sm-inline-block">Next</span
+          ><span aria-hidden="true"
+            ><i class="bi bi-caret-right-fill"></i
+          ></span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div> -->
+
+<!-- <script>
+  let checkboxMissing = document.querySelector("#flexSwitchCheckDefault");
+  let checkboxFound = document.querySelector("#flexSwitchCheckDefault2");
+  checkboxMissing.addEventListener("change", () => {
+    if (checkboxMissing.checked == true) {
+      console.log("nothing hapens");
+      checkboxFound.checked = false;
+    } 
+  });
+
+  checkboxFound.addEventListener("change", () => {
+    if (checkboxFound.checked == true) {
+      console.log("nothing hapens");
+      checkboxMissing.checked = false;
+    } 
+  });
+</script> -->
+<script>
+  if ("geolocation" in navigator) {
+    let userLatitude = document.querySelector('#user-latitude')
+    let userLongitude = document.querySelector('#user-longitude')
+    // geolocation is available
+    navigator.geolocation.getCurrentPosition((position) => {
+      userLatitude.value = position.coords.latitude;
+    
+      userLongitude.value = position.coords.longitude;
+      console.log('lat, lng', userLatitude, userLongitude)
+    })}
+</script>
+
+<!-- <script>
+
+  let compareCheckbox = document.querySelectorAll('.compare-checkbox')
+  let compareBtn = document.querySelector('.compare-btn')
+
+  compareBtn.addEventListener('submit', ()=> {
+    // submit
+    // empty array
+  })
+  
+  let petsToCompare = []
+
+  compareCheckbox.forEach(item => {
+    //item.disabled = true;
+    item.addEventListener('click', (e)=> {
+
+      if (petsToCompare.length === 1) {
+        compareBtn.classList.remove('d-none')
+      }
+
+      if (e.target.checked) {
+        // Perform actions when the checkbox is checked
+        //console.log('Checkbox is checked');
+        let selectedPet = e.target.getAttribute('id')
+        let petIdparts = selectedPet.split('_');
+        let petId = petIdparts[petIdparts.length - 1];
+        petsToCompare.push(petId)
+      
+        console.log(petsToCompare)
+
+      } else {
+        // Perform actions when the checkbox is not checked
+        //console.log('Checkbox is not checked');
+        let selectedPet = e.target.getAttribute('id')
+        let petIdparts = selectedPet.split('_');
+        let petIdToRemove = petIdparts[petIdparts.length - 1];
+        let index = petsToCompare.indexOf(petIdToRemove);
+        if (index !== -1) {
+          petsToCompare.splice(index, 1);
+        }
+      }
+
+    
+    })
+  })
+
+
+  
+</script> -->
+
+
+<!-- <script>
+  let petButtonZoomAll = document.querySelectorAll(".petButtonZoom");
+  petButtonZoomAll.forEach((item) => {
+    
+    item.addEventListener("click", (e) => {
+      //var attributeValue = element.getAttribute("data-myattribute");
+      
+      let coords = e.target.dataset.petcoords;
+      let coordsArray = coords.split(",");
+  
+      map.easeTo({
+        center: coordsArray,
+        zoom: 12,
+      });
+    });
+  });
+</script> -->
+
+<script>
+  let allPetCards = document.querySelectorAll(".pet-card");
+  allPetCards.forEach((card) => {
+
+    let petLat = card.querySelector(".pet-latitude").innerHTML;
+    let petLng = card.querySelector(".pet-longitude").innerHTML;
+    let newDist = card.querySelector(".distance-text");
+    // add button on map to zoom to current location
+    let userLat;
+    let userLng;
+
+    //card.addEventListener("click", (e)=> {
+    //  let coords = e.target.dataset.servicecoords;
+    //  let coordsArray = coords.split(",");
+   // })
+
+
+
+
+
+
+
+    if ("geolocation" in navigator) {
+      // geolocation is available
+      navigator.geolocation.getCurrentPosition((position) => {
+        userLat = position.coords.latitude;
+        userLng = position.coords.longitude;
+
+        function DegreeToRadian(coordinate) {
+          return (coordinate * Math.PI) / 180;
+        }
+        function CalculateDistance() {
+          const latitude1 = DegreeToRadian(Number(userLat));
+          const longitude1 = DegreeToRadian(Number(userLng));
+
+          const latitude2 = DegreeToRadian(Number(petLat));
+          const longitude2 = DegreeToRadian(Number(petLng));
+
+          // The formula
+          const latDiff = latitude2 - latitude1;
+          const lonDiff = longitude2 - longitude1;
+          const R = 6371000 / 1000;
+
+          const a =
+            Math.sin(latDiff / 2) * Math.sin(latDiff / 2) +
+            Math.cos(latitude1) *
+              Math.cos(latitude2) *
+              Math.sin(lonDiff / 2) *
+              Math.sin(lonDiff / 2);
+          const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+          const d = R * c;
+
+          const dist =
+            Math.acos(
+              Math.sin(latitude1) * Math.sin(latitude2) +
+                Math.cos(latitude1) * Math.cos(latitude2) * Math.cos(lonDiff)
+            ) * R;
+          return dist.toFixed(2);
+        }
+        let result = CalculateDistance();
+
+        newDist.innerHTML = `${result} km`;
+        //newDist.innerHTML = `${result} km from you`;
+      });
+    }
+  });
+</script>
+
+<style>
+  .mapboxgl-popup-content {
+    background-color: none !important;
+    background: none !important;
+    border: 3px solid white;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 50%;
+    padding: 0;
+    margin: 0;
+
+    /*all: unset;*/
+  }
+</style>
+<script>
+    let searchFormBtn = document.querySelector(".search-form-btn");
+    let resetFormBtn = document.querySelector(".reset-form-btn")
+    //let paginationBtn = document.querySelector(".pagination-btn");
+  
+    let filterPetStatus = document.querySelector("#petStatus");
+    let filterSpecies = document.querySelector("#species");
+    let filterGender = document.querySelector("#gender");
+    let filterBreed = document.querySelector("#petBreed");
+    let filterColor = document.querySelector("#color");
+    let filterDistance = document.querySelector("#distance");
+    let filterAge = document.querySelector("#age");
+    let filterCoat = document.querySelector("#coat");
+    let filterSize = document.querySelector("#size");
+    let filterIdentifier = document.querySelector("#identifier");
+    let filterRegion = document.querySelector("#region");
+    let filterLostDate = document.querySelector("#lostdate");
+  
+
+ 
+    //function clearFormFilterValues() {
+    //  filterPetStatus.selectedIndex = -1;
+     // filterSpecies.selectedIndex = -1;
+     // filterGender.selectedIndex = -1;
+     // filterBreed.selectedIndex = -1;
+    //  filterColor.selectedIndex = -1;
+    //  filterDistance.value = "";
+    //  filterAge.selectedIndex = -1;
+    //  filterCoat.selectedIndex = -1;
+     // filterSize.selectedIndex = -1;
+     // filterIdentifier.value = "";
+     // filterRegion.selectedIndex = -1;
+     // filterLostDate.value = "";
+   // }
+
+   function clearFormFilterValues() {
+    filterPetStatus.selectedIndex = 0;
+    filterSpecies.selectedIndex = 0;
+    filterGender.selectedIndex = 0;
+    filterBreed.selectedIndex = 0;
+    filterColor.selectedIndex = 0;
+    filterDistance.value = "";
+    filterAge.selectedIndex = 0;
+    filterCoat.selectedIndex = 0;
+    filterSize.selectedIndex = 0;
+    filterIdentifier.value = "";
+    filterRegion.selectedIndex = 0;
+    filterLostDate.value = "";
+  }
+
+
+    resetFormBtn.addEventListener("click", (e) => {
+      e.preventDefault()
+      clearFormFilterValues()
+    
+    })
+
+    //searchFormBtn.addEventListener("submit", (e) => {
+    //  e.preventDefault()
+   // })
+
+//const inputPageNumber = document.querySelector('#inputPageNumber');
+//inputPageNumber.addEventListener('keyup', function(event) {
+  //if (event.key === 'Enter') {
+    // Enter key was pressed
+  //  goToPage();
+  //}
+//});
+
+// Example search function
+//function goToPage() {
+  // Perform search operation
+ // console.log('go to page!');
+//}
+
+</script>
+<script>
+  const TOMTOMTOKEN = "<%-process.env.TOMTOM_API_KEY%>";
+  const pets = {features: <%-JSON.stringify(pets)%>}
+  const selectedPolygonCoordinates = {features: <%-JSON.stringify(selectedPolygonCoordinates)%>}
+</script>
+
+<script src="/javascripts/clusterMap.js"></script>

@@ -1,0 +1,102 @@
+<% layout('layouts/boilerplate')%>
+<div class="row row-cols-1 row-cols-md-1 g-3 justify-content-center">
+  <div class="col-md-8">
+    <ul class="nav nav-pills nav-justified">
+      <li class="nav-item">
+        <a class="nav-link" href="/auth/account/profile">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="/auth/account/settings"
+          >Account Settings</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/auth/account/watchlist">Watchlist</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<h5 class="text-center mt-5 mb-3">Change Your Account Settings</h5>
+
+<div class="row row-cols-1 row-cols-md-1 g-3 justify-content-center">
+  <div class="col-md-8">
+    <label for="notificationDistance" class="form-label"
+      >Maximum distance</label
+    >
+    <input
+      type="range"
+      class="form-range"
+      min="0"
+      max="5"
+      step="0.5"
+      id="notificationDistance"
+    />
+  </div>
+
+  <div class="col-md-8">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      id="receiveNotifications"
+      name="receiveNotifications"
+      value=""
+    />
+    <label class="form-check-label" for="receiveNotifications"
+      >Receive push notifications</label
+    >
+  </div>
+
+  <div class="col-md-8">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      id="receiveUpdates"
+      name="receiveUpdates"
+      value=""
+    />
+    <label class="form-check-label" for="receiveUpdates"
+      >Receive updates and newsletters</label
+    >
+  </div>
+
+  <div class="col-md-8 d-flex">
+    <div class="form-check me-3">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="theme"
+        id="darkTheme"
+        value="dark"
+      />
+      <label class="form-check-label" for="darkTheme"> Dark theme </label>
+    </div>
+    <div class="form-check me-3">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="theme"
+        id="lightTheme"
+        value="light"
+        checked
+      />
+      <label class="form-check-label" for="lightTheme"> Light theme </label>
+    </div>
+  </div>
+
+  <div class="col-md-8">
+    <label class="form-label" for="language"
+      >Select your preferred language</label
+    >
+    <select class="form-select" id="language">
+      <option selected value=""></option>
+      <option value="lv">Latvian</option>
+      <option value="ru">Russian</option>
+      <option value="en">English</option>
+      <option value="ee">Estonian</option>
+      <option value="lt">Lithuanian</option>
+    </select>
+  </div>
+  <div class="col-md-8 my-5">
+    <button id="" type="button" class="btn btn-warning">Save Changes</button>
+  </div>
+</div>

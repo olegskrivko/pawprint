@@ -1,0 +1,290 @@
+<% layout('layouts/boilerplate')%>
+
+<!-- <h4 class="mb-3">Billing address</h4> -->
+
+<form class="needs-validation" novalidate="" action="/services" method="POST"  enctype="multipart/form-data">
+  <div class="row g-3">
+    <div class="col-sm-12 col-md-6">
+      
+      <label for="firstName" class="form-label">Organization or Individual Name</label>
+      <!--business,company, organization, person, individual-->
+
+      <div class="input-group has-validation">
+        <span class="input-group-text"><i class="bi bi-buildings"></i></span>
+        <select class="form-control" style="max-width: 20%;"  name="serviceProviderType">
+          <option value=""></option>
+          <option value="Organization">Organization</option>
+          <option value="Individual">Individual</option>
+        </select>
+      <input
+      style="max-width: 80%;"
+        type="text"
+        class="form-control"
+        id="firstName"
+        placeholder=""
+        value=""
+        required=""
+        name="name"
+      />
+      <div class="invalid-feedback">Valid first name is required.</div>
+    </div>
+  </div>
+    <div class="col-sm-12 col-md-6">
+      <label for="state" class="form-label"></i> Service Type</label>
+        <div class="input-group has-validation">
+        <span class="input-group-text"><i class="bi bi-x-diamond-fill"></i></span>
+      <select class="form-select" id="state" required="" name="serviceType">
+        <option value=""></option>
+        <option value="Animal Shelters">Animal Shelters</option>
+        <option value="Pet Breeders">Pet Breeders</option>
+        <option value="Pet Burial Services">Pet Burial Services</option>
+        <option value="Dog Walking">Dog Walking</option>
+        <option value="Pet Grooming">Pet Grooming</option>
+        <option value="Pet Supplies and Accessories">Pet Supplies and Accessories</option>
+        <option value="Pet Art and Crafts">Pet Art and Crafts</option>
+        <option value="Pet Photography">Pet Photography</option>
+        <option value="Pet Boarding">Pet Boarding</option>
+        <option value="Pet Friendly Accommodation">Pet Friendly Accommodation</option>
+        <option value="Pet Insurance and Legal Services">Pet Insurance and Legal Services</option>
+        <option value="Cat Cafe">Cat Cafe</option>
+        <option value="Pet Search and Rescue Services">Pet Search and Rescue Services</option>
+        <option value="Pet Sitting">Pet Sitting</option>
+        <option value="Pet Training">Pet Training</option>
+        <option value="Pet Transportation">Pet Transportation</option>
+        <option value="Pet Expo">Pet Expo</option>
+        <option value="Veterinary Services">Veterinary Services</option>
+        <option value="Other Services">Other Services</option>
+      </select>
+      <div class="invalid-feedback">Please provide a valid state.</div>
+    </div>
+  </div>
+    <div class="col-sm-12 col-md-6">
+      <label for="website" class="form-label">Website</label>
+      <div class="input-group has-validation">
+      <span class="input-group-text"><i class="bi bi-globe-americas"></i></span>
+      <input
+        type="text"
+        class="form-control"
+        id="website"
+        placeholder="www.example.com"
+        value=""
+        required=""
+        name="website"
+      />
+    
+      <div class="invalid-feedback">Valid last name is required.</div>
+    </div>
+    </div>
+
+    <div class="col-12 col-md-6">
+      <label for="username" class="form-label">Facebook</label>
+      <div class="input-group has-validation">
+        <span class="input-group-text"><i class="bi bi-facebook"></i></span>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          placeholder="username"
+          required=""
+          name="facebook"
+        />
+        <div class="invalid-feedback">Your username is required.</div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <label for="username" class="form-label">Instagram</label>
+      <div class="input-group has-validation">
+        <span class="input-group-text"><i class="bi bi-instagram"></i></span>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          placeholder="username"
+          required=""
+          name="instagram"
+        />
+        <div class="invalid-feedback">Your username is required.</div>
+      </div>
+    </div>
+    <!-- <div class="col-6">
+      <label for="username" class="form-label">LinkedIn</label>
+      <div class="input-group has-validation">
+        <span class="input-group-text"><i class="bi bi-linkedin"></i></span>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          placeholder="Username"
+          required=""
+          name="socialMedia[linkedin][]"
+        />
+        <div class="invalid-feedback">Your username is required.</div>
+      </div>
+    </div> -->
+    <!-- <div class="col-6">
+      <label for="username" class="form-label">Twitter</label>
+      <div class="input-group has-validation">
+        <span class="input-group-text"><i class="bi bi-twitter"></i></span>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          placeholder="Username"
+          required=""
+          name="socialMedia[twitter][]"
+        />
+        <div class="invalid-feedback">Your username is required.</div>
+      </div>
+    </div> -->
+
+
+  
+    
+    <div class="col-12 col-md-6">
+      <label for="email" class="form-label"
+        >Email</label
+      >
+      <div class="input-group has-validation">
+      <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+      
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        placeholder="you@example.com"
+        name="email"
+      />
+      <div class="invalid-feedback">
+        Please enter a valid email address for shipping updates.
+      </div>
+    </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <label for="email" class="form-label"
+        >Phone</label
+      >
+      <div class="input-group has-validation">
+      <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+      <!-- <select class="form-control">
+        <option value=""></option>
+        <option value="+371">+371</option>
+        <option value="+372">+372</option>
+        <option value="+370">+370</option>
+      </select> -->
+      <input
+      type="text"
+      class="form-control"
+      id="phonecodes"
+      placeholder="+371"
+      name="phonecode"
+      style="max-width: 30%;"
+    />
+      
+      <input
+      style="max-width: 70%;"
+        type="text"
+        class="form-control"
+        id="phone"
+        placeholder="28877889"
+        name="phone"
+      />
+      <div class="invalid-feedback">
+        Please enter a valid phone number.
+      </div>
+    </div>
+    </div>
+    
+  <div class="col-12 col-md-6">
+    <label for="image" class="form-label">Upload Logo</label>
+    <input
+      class="form-control"
+      type="file"
+      id="image"
+      name="logo"
+      accept="image/png, image/jpeg, image/jpg"
+    />
+  </div>
+    <div class="col-md-12">
+      <label class="form-label" for="description">Description</label>
+      <textarea
+        maxlength="400"
+        style="resize: none; height: 140px"
+        class="form-control"
+        type="text"
+        id="description"
+        name="description"
+        placeholder="Max 400 characters"
+      ></textarea>
+      <div class="valid-feedback">Looks good!</div>
+    </div>
+    <div class="col-md-12">
+     
+        <label for="placemap" class="form-label">Please provide your approximate location or nearest city</label>
+     <!-- map -->
+  <div
+  id="map"
+  style="max-width: 100%; height: 300px; background-color: #808080"
+></div>
+</div>
+   
+
+  </div>
+
+ 
+    <div class="col-md-2 col-sm-3 col-6 mb-3 d-none">
+      <label class="form-label me-1" for="latitude">Latitude</label>
+      <input
+        id="latitude"
+        class="form-control text-muted"
+        type="number"
+        aria-label="latitude"
+        aria-describedby="latitude-label"
+        name="user[latitude]"
+        readonly
+      />
+      <div class="valid-feedback">Looks good!</div>
+    </div>
+  
+    <div class="col-md-2 col-sm-3 col-6 mb-3 d-none">
+      <label class="form-label me-1" for="longitude">Longitude</label>
+      <input
+        id="longitude"
+        class="form-control text-muted"
+        type="number"
+        aria-label="longitude"
+        aria-describedby="longitude-label"
+        name="user[longitude]"
+        readonly
+      />
+      <div class="valid-feedback">Looks good!</div>
+    </div>
+  </div>
+
+
+
+  <!-- <hr class="my-4" /> -->
+
+  <button class="w-100 btn btn-primary btn-lg mt-5" type="submit">
+    Add Service
+  </button>
+</form>
+<div class="alert alert-success d-flex align-items-center mt-3" role="alert">
+  <svg
+    class="bi flex-shrink-0 me-2"
+    role="img"
+    aria-label="Success:"
+    style="height: 1.5rem; width: 1.5rem"
+    fill="#198754"
+  >
+    <use xlink:href="#info-fill" />
+  </svg>
+  <div>
+    NOTE: this will be made public, please do not provide sensitive information
+    that you would like kept private
+  </div>
+</div>
+
+<script>
+  const TOMTOMTOKEN = "<%-process.env.TOMTOM_API_KEY%>";
+</script>
+<script src="/javascripts/addServiceMap.js"></script>

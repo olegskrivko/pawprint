@@ -1,0 +1,111 @@
+.share-btn-twitter:hover {
+  background-color: #1da0f24b;
+  border-color: #1da1f2;
+  cursor: pointer;
+}
+
+.share-btn-facebook:hover {
+  background-color: #4267b24b;
+  border-color: #4267b2;
+  cursor: pointer;
+}
+
+.share-btn-whatsapp:hover {
+  background-color: #25d3653c;
+  border-color: #25d366;
+  cursor: pointer;
+}
+
+.share-btn-linkedin:hover {
+  background-color: #00a1dc52;
+  border-color: #00a0dc;
+  cursor: pointer;
+}
+
+.share-btn-messenger:hover {
+  background-color: #1da0f24b;
+  border-color: #1da1f2;
+  cursor: pointer;
+}
+
+.share-btn-facebook {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: solid 1px #4267b2;
+  margin: 0 5px;
+}
+
+.share-btn-twitter {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: solid 1px #1da1f2;
+  margin: 0 5px;
+}
+
+.share-btn-whatsapp {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: solid 1px #25d366;
+  margin: 0 5px;
+}
+
+.share-btn-linkedin {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: solid 1px #00a0dc;
+  margin: 0 5px;
+}
+
+.share-btn-facebook {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: solid 1px #4267b2;
+  margin: 0 5px;
+}
+
+.share-btn-messenger {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: solid 1px #1da1f2;
+  margin: 0 5px;
+}
+
+.twitter {
+  color: #1da1f2;
+}
+.facebook {
+  color: #4267b2;
+}
+.whatsapp {
+  color: #25d366;
+}
+.linkedin {
+  color: #00a0dc;
+}
+.messenger {
+  color: #1da1f2;
+}

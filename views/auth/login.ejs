@@ -1,0 +1,85 @@
+<% layout('layouts/boilerplate')%>
+<!-- <h1>Login</h1>
+<form action="/auth/login" method="POST" class="validated-form" novalidate>
+  <div class="mb-3">
+    <label class="form-label" for="username">Username</label>
+    <input
+      class="form-control"
+      type="text"
+      id="username"
+      name="username"
+      required
+      autofocus
+    />
+    <div class="valid-feedback">Looks good!</div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="password">Password</label>
+    <input
+      class="form-control"
+      type="password"
+      id="password"
+      name="password"
+      required
+    />
+    <div class="valid-feedback">Looks good!</div>
+  </div>
+  <button class="btn btn-success">Login</button>
+</form> -->
+
+<main class="form-signin w-100 m-auto" style="max-width: 400px">
+  <form action="/auth/login" method="POST" class="validated-form" novalidate>
+    <!-- <img
+      class="mb-4"
+      src="/images/Paw_Print.svg"
+      alt=""
+      width="72"
+      height="57"
+    /> -->
+    <h1 class="h3 mb-3 fw-normal text-center">Please log in</h1>
+
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="floatingUsername"
+        name="username"
+        placeholder="Username"
+        required
+        autofocus
+      />
+      <label for="floatingUsername">Username</label>
+    </div>
+
+    <!-- <div class="form-floating mb-3">
+      <input
+        type="email"
+        class="form-control"
+        id="floatingEmail"
+        name="email"
+        placeholder="name@example.com"
+        required
+        autofocus
+      />
+      <label for="floatingEmail">Email address</label>
+    </div> -->
+
+    <div class="form-floating mb-3">
+      <input
+        type="password"
+        class="form-control"
+        id="floatingPassword"
+        name="password"
+        placeholder="Password"
+        required
+      />
+      <label for="floatingPassword">Password</label>
+    </div>
+
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Log in</button>
+    <p class="mt-2 small text-center mb-3 text-muted">
+      Don`t have an account yet? <a href="/auth/register">Sign up</a>
+    </p>
+  </form>
+</main>

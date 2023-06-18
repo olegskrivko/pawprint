@@ -1,0 +1,23 @@
+.gdpr {
+  text-decoration: underline;
+}
+
+.gdpr:hover {
+  cursor: pointer;
+}
+
+.marker-border {
+  background: #c30b82;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+.txt-area {
+  resize: "none";
+  height: 140px;
+}
+
+.show-pet-list > li {
+  padding-left: 0;
+}

@@ -1,0 +1,78 @@
+<% layout('layouts/boilerplate')%>
+<div class="container px-4" id="custom-cards">
+  <div class="d-flex justify-content-between">
+    <h2 class="pb-2">Services</h2>
+    <div>
+      <button class="btn btn-warning" onClick="location.href='/services/new'">
+        <i class="bi bi-plus-circle"></i> Add Service
+      </button>
+    </div>
+  </div>
+
+  <div
+    class="row row-cols-2 row-cols-md-3 row-cols-lg-4 align-items-stretch g-4 py-5"
+  >
+    <% for (let service of services) {%>
+
+    <div class="col">
+      <a href="/services/<%=service._id%>" style="text-decoration: none">
+        <div
+          class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+        >
+          <!-- remove style if dont want background (from div I removed h-100)-->
+          <!-- <div
+            class="d-flex flex-column p-3 pb-3 text-white text-shadow-1"
+            style="
+              background-image: url(../images/paw.png);
+              background-size: cover;
+              background-position: center;
+              min-height: 200px;
+            "
+          > -->
+          <div class="d-flex flex-column p-3 pb-3 text-white text-shadow-1">
+            <p class="mt-2 mb-2 lh-1 fw-bold text-center">
+              <%= service.name %>
+            </p>
+            <ul class="d-flex list-unstyled mt-auto">
+              <li class="mx-auto">
+                <svg
+                  class="bi"
+                  width="50"
+                  height="50"
+                  fill="#fff"
+                  style="display: block"
+                >
+                  <use xlink:href="#<%=service.icon%>"></use>
+                </svg>
+                <!-- <img
+                  src="https://github.com/twbs.png"
+                  alt="Bootstrap"
+                  class="rounded-circle border border-white"
+                  width="32"
+                  height="32"
+                /> -->
+                <!-- <svg class="bi me-2" width="2em" height="2em" fill="#fff">
+                  <use xlink:href="#paw"></use>
+                </svg> -->
+              </li>
+            </ul>
+            <div class="d-flex justify-content-end align-items-center">
+              <small
+                ><%=service.serviceProviders.length %>
+                <i class="bi bi-send-fill"></i
+              ></small>
+            </div>
+            <!-- <li class="d-flex align-items-center">
+                <svg class="bi me-2" width="1em" height="1em">
+                  <use xlink:href="#calendar3"></use>
+                </svg>
+                <small><= service.items.length %> Items</small>
+              </li> -->
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <% } %>
+  </div>
+</div>

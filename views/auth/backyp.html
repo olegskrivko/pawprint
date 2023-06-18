@@ -1,0 +1,28 @@
+<!------>
+<% if(currentUser && comment.author.equals(currentUser._id)) {%>
+<div class="card mb-3 coord-card">
+  <div class="card-body">
+    <h5 class="card-title">By <%=comment.author.username%></h5>
+
+    <!-- <div class="comment-coords">
+              <h5 id="comment-latitde" class="card-title d-none">
+                <=comment.latitude%>
+              </h5>
+              <h5 id="comment-longitude" class="card-title d-none">
+                <=comment.longitude%>
+              </h5>
+            </div> -->
+    <p class="card-text">Comment: <%=comment.body%></p>
+    <!-- <p class="card-text">Added: <=comment.createdAt%></p> -->
+    <% if(currentUser && comment.author.equals(currentUser._id)) {%>
+    <form
+      action="/pets/<%=pet._id%>/comments/<%=comment._id%>?_method=DELETE"
+      method="POST"
+    >
+      <button class="btn btn-sm btn-danger">Delete</button>
+    </form>
+    <% } %>
+  </div>
+</div>
+
+<% }%>
