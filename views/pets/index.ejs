@@ -843,6 +843,8 @@
     } 
   });
 </script> -->
+
+
 <script>
   if ("geolocation" in navigator) {
     let userLatitude = document.querySelector('#user-latitude')
@@ -856,55 +858,72 @@
     })}
 </script>
 
-<!-- <script>
 
-  let compareCheckbox = document.querySelectorAll('.compare-checkbox')
-  let compareBtn = document.querySelector('.compare-btn')
 
-  compareBtn.addEventListener('submit', ()=> {
-    // submit
-    // empty array
-  })
-  
-  let petsToCompare = []
+<script>
+  let compareCheckbox = document.querySelectorAll('.compare-checkbox');
+  let compareBtn = document.querySelector('.compare-btn');
+  let petsToCompare = [];
 
   compareCheckbox.forEach(item => {
-    //item.disabled = true;
-    item.addEventListener('click', (e)=> {
-
-      if (petsToCompare.length === 1) {
-        compareBtn.classList.remove('d-none')
-      }
-
+    item.addEventListener('click', (e) => {
       if (e.target.checked) {
-        // Perform actions when the checkbox is checked
-        //console.log('Checkbox is checked');
-        let selectedPet = e.target.getAttribute('id')
-        let petIdparts = selectedPet.split('_');
-        let petId = petIdparts[petIdparts.length - 1];
-        petsToCompare.push(petId)
-      
-        console.log(petsToCompare)
-
+        let selectedPet = e.target.getAttribute('id');
+        let petIdParts = selectedPet.split('_');
+        let petId = petIdParts[petIdParts.length - 1];
+        petsToCompare.push(petId);
+        if (petsToCompare.length === 1) {
+          compareBtn.classList.remove('d-none')
+        }
       } else {
-        // Perform actions when the checkbox is not checked
-        //console.log('Checkbox is not checked');
-        let selectedPet = e.target.getAttribute('id')
-        let petIdparts = selectedPet.split('_');
-        let petIdToRemove = petIdparts[petIdparts.length - 1];
+        let selectedPet = e.target.getAttribute('id');
+        let petIdParts = selectedPet.split('_');
+        let petIdToRemove = petIdParts[petIdParts.length - 1];
         let index = petsToCompare.indexOf(petIdToRemove);
         if (index !== -1) {
           petsToCompare.splice(index, 1);
         }
       }
+    });
+  });
 
-    
-    })
-  })
+  const comparePets = async () => {
+    try {
+      const selectedPets = petsToCompare.join(',');
+      const url = `/compare/${selectedPets}`;
+      console.log(url)
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        console.log('Comparison request sent successfully');
+        console.log(response);
+        // Handle the response from the server if needed
+        // The compare page will be rendered in the response handler of the compare controller
+        window.location.href = url;
+      } else {
+        throw new Error('Failed to send comparison request');
+      }
+    } catch (error) {
+      console.error(error);
+      // Handle error and display appropriate message
+    }
+  };
+
+  compareBtn.addEventListener('click', async () => {
+    if (petsToCompare.length === 2) {
+      await comparePets();
+    } else {
+      console.log('Please select exactly 2 pets to compare.');
+    }
+  });
+</script>
 
 
-  
-</script> -->
 
 
 <!-- <script>

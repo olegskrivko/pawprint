@@ -21,6 +21,7 @@ const userRoutes = require("./routes/userRoutes");
 const aboutRoutes = require("./routes/aboutRoutes");
 const serviceRoutes = require("./routes/serviceRoutes");
 const petRoutes = require("./routes/petRoutes");
+const compareRoutes = require("./routes/compareRoutes");
 const commentRoutes = require("./routes/commentRoutes");
 const locationRoutes = require("./routes/locationRoutes");
 
@@ -106,6 +107,7 @@ app.use((req, res, next) => {
 // Routes petRoutes userRoutes
 
 app.use("/auth", userRoutes);
+app.use("/compare", compareRoutes);
 app.use("/pets", petRoutes);
 app.use("/about", aboutRoutes);
 app.use("/pets/:id/comments", commentRoutes);
@@ -116,10 +118,10 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
-app.all("*", (req, res, next) => {
-  // next(new ExpressError("Page Not Found", 404));
-  res.render("pagenotfound");
-});
+// app.all("*", (req, res, next) => {
+//   // next(new ExpressError("Page Not Found", 404));
+//   res.render("pagenotfound");
+// });
 
 app.use((err, req, res, next) => {
   const { statuscode = 500 } = err;
