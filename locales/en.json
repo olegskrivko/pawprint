@@ -1,7 +1,7 @@
 {
   "about": {
     "title": "Our Goal",
-    "support": "Support",
-    "feedback": "Feedback"
+    "paragraph1": "Our app utilizes advanced technology to facilitate the reunification of lost pets with their owners. We provide a platform for posting lost pet listings and actively work to connect owners with individuals who have found them.",
+    "paragraph2": "Additionally, our app connects you with a wide range of pet-related services, including veterinary clinics, groomers, trainers, and more. We ensure that you have access to the right resources for your pet's specific needs."
   }
 }

@@ -39,7 +39,8 @@ router
 
 router
   .route("/account/settings")
-  .get(isLoggedIn, usersController.renderAccountSettings);
+  .get(isLoggedIn, usersController.renderAccountSettings)
+  .put(isLoggedIn, usersController.updateAccountSettings);
 
 router
   .route("/account/watchlist")

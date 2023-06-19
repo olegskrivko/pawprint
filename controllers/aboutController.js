@@ -5,20 +5,24 @@
 //     console.error(err.message);
 //   }
 // };
-//const User = require("../models/user"); // Assuming your user model is defined in '../models/user.js'
+const User = require("../models/user"); // Assuming your user model is defined in '../models/user.js'
 const enData = require("../locales/en.json");
 const lvData = require("../locales/lv.json");
 
 module.exports.index = async (req, res) => {
   try {
-    // const userLanguage = req.userLanguage; // Access the user's preferred language from the request object
-    // console.log(userLanguage);
-    // // Retrieve the corresponding data based on the user's language
-    // const data = userLanguage === "lv" ? lvData : enData;
+    let userLanguage;
 
-    const userLanguage = req.headers["accept-language"]; // Access the user's preferred language from the request headers
-    console.log(userLanguage);
-    // Retrieve the corresponding data based on the user's language
+    if (req.isAuthenticated()) {
+      // User is logged in, retrieve language preference from user profile
+      const user = await User.findById(req.user.id);
+      userLanguage = user.language;
+    } else {
+      // User is not logged in, retrieve language preference from request headers
+      userLanguage = req.headers["accept-language"];
+    }
+
+    // Retrieve the corresponding data based on the user's language preference
     const data =
       userLanguage && userLanguage.startsWith("lv") ? lvData : enData;
 

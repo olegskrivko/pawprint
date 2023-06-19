@@ -4,6 +4,7 @@ const Pet = require("../models/pet");
 const {
   phoneCodeOptions,
   countryOptions,
+  languageOptions,
 } = require("../utils/userSelectOptions");
 const { cloudinary } = require("../cloudinary");
 
@@ -96,7 +97,7 @@ module.exports.renderAccountProfile = (req, res) => {
 module.exports.renderAccountSettings = (req, res) => {
   try {
     // Render the account settings page template
-    res.render("auth/settings");
+    res.render("auth/settings", { languageOptions });
   } catch (error) {
     // Log the error for debugging purposes
     console.error("Error rendering account page:", error);
@@ -267,6 +268,41 @@ module.exports.updateAccount = async (req, res, next) => {
     res
       .status(500)
       .json({ success: false, message: "Failed to update account" });
+  }
+};
+
+module.exports.updateAccountSettings = async (req, res, next) => {
+  const { language } = req.body;
+  console.log(language);
+  const userId = req.user._id;
+
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      {
+        $set: {
+          language,
+        },
+      },
+      { new: true }
+    );
+
+    // Update the session with the new user information
+    req.login(updatedUser, (err) => {
+      if (err) {
+        console.error("Error updating session:", err);
+        // Handle the error appropriately
+      }
+
+      // Send a success response to the client
+      res.json({ success: true });
+    });
+  } catch (error) {
+    console.error("Error updating account:", error);
+    // Handle the error appropriately
+    res
+      .status(500)
+      .json({ success: false, message: "Failed to update account settings" });
   }
 };
 
