@@ -2,15 +2,14 @@ const Pet = require("../models/pet");
 const Location = require("../models/location");
 const { ObjectId } = require("mongoose").Types;
 const { cloudinary } = require("../cloudinary");
-const tt = require("@tomtom-international/web-sdk-services/dist/services-node.min.js");
+// const tt = require("@tomtom-international/web-sdk-services/dist/services-node.min.js");
 const fns = require("date-fns");
-const PDFDocument = require("pdfkit");
+// const PDFDocument = require("pdfkit");
 const path = require("path");
 const axios = require("axios");
 const fs = require("fs");
-const pdf = require("html-pdf");
-const ejs = require("ejs");
-const puppeteer = require("puppeteer");
+// const pdf = require("html-pdf");
+// const puppeteer = require("puppeteer");
 
 module.exports.index = async (req, res) => {
   const ITEMS_PER_PAGE = 10; // Number of items to display per page
@@ -443,100 +442,100 @@ module.exports.deletePet = async (req, res) => {
 // };
 
 // Function to download an image from a URL and save it to the specified path
-const downloadImage = async (imageUrl, imagePath) => {
-  const response = await axios({
-    method: "GET",
-    url: imageUrl,
-    responseType: "stream",
-  });
+// const downloadImage = async (imageUrl, imagePath) => {
+//   const response = await axios({
+//     method: "GET",
+//     url: imageUrl,
+//     responseType: "stream",
+//   });
 
-  response.data.pipe(fs.createWriteStream(imagePath));
+//   response.data.pipe(fs.createWriteStream(imagePath));
 
-  return new Promise((resolve, reject) => {
-    response.data.on("end", () => resolve());
-    response.data.on("error", (error) => reject(error));
-  });
-};
+//   return new Promise((resolve, reject) => {
+//     response.data.on("end", () => resolve());
+//     response.data.on("error", (error) => reject(error));
+//   });
+// };
 
-module.exports.renderPdf = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const pet = await Pet.findById(id);
+// module.exports.renderPdf = async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     const pet = await Pet.findById(id);
 
-    if (!pet) {
-      req.flash("error", "Cannot find that pet!");
-      return res.redirect("/pets");
-    }
+//     if (!pet) {
+//       req.flash("error", "Cannot find that pet!");
+//       return res.redirect("/pets");
+//     }
 
-    const imageUrl = pet.images[0].url; // Cloudinary image URL
-    const imagePath = path.join(__dirname, "../public/images/pet-image.jpg");
+//     const imageUrl = pet.images[0].url; // Cloudinary image URL
+//     const imagePath = path.join(__dirname, "../public/images/pet-image.jpg");
 
-    await downloadImage(imageUrl, imagePath); // Download the image from Cloudinary
+//     await downloadImage(imageUrl, imagePath); // Download the image from Cloudinary
 
-    const myTemplate = `
-      <!DOCTYPE html>
-      <html>
-        <head>
-          <meta charset="utf-8" />
-          <title>Pet Information</title>
-          <style>
-            body {
-              font-family: Arial, sans-serif;
-              margin: 0;
-              padding: 20px;
-            }
-            h1 {
-              font-size: 24px;
-              margin-bottom: 20px;
-              text-align: center;
-            }
-            p {
-              margin: 5px 0;
-            }
-          </style>
-        </head>
-        <body>
-          <h1>Pet Information</h1>
-          <p><strong>Name:</strong> ${pet.title}</p>
-          <p><strong>Species:</strong> ${pet.species}</p>
-          <p><strong>Breed:</strong> ${pet.breed}</p>
-          <p><strong>Pattern:</strong> ${pet.pattern}</p>
-          <p><strong>Age:</strong> ${pet.age}</p>
-          <p><strong>Coat:</strong> ${pet.coat}</p>
-          <p><strong>Size:</strong> ${pet.size}</p>
-          <p><strong>Status:</strong> ${pet.petStatus}</p>
-          <p><strong>Description:</strong> ${pet.description}</p>
-          <img src="${imageUrl}" alt="Pet Image" style="width: 800px; height: 700px; object-fit: cover;" />
-        </body>
-      </html>
-    `;
+//     const myTemplate = `
+//       <!DOCTYPE html>
+//       <html>
+//         <head>
+//           <meta charset="utf-8" />
+//           <title>Pet Information</title>
+//           <style>
+//             body {
+//               font-family: Arial, sans-serif;
+//               margin: 0;
+//               padding: 20px;
+//             }
+//             h1 {
+//               font-size: 24px;
+//               margin-bottom: 20px;
+//               text-align: center;
+//             }
+//             p {
+//               margin: 5px 0;
+//             }
+//           </style>
+//         </head>
+//         <body>
+//           <h1>Pet Information</h1>
+//           <p><strong>Name:</strong> ${pet.title}</p>
+//           <p><strong>Species:</strong> ${pet.species}</p>
+//           <p><strong>Breed:</strong> ${pet.breed}</p>
+//           <p><strong>Pattern:</strong> ${pet.pattern}</p>
+//           <p><strong>Age:</strong> ${pet.age}</p>
+//           <p><strong>Coat:</strong> ${pet.coat}</p>
+//           <p><strong>Size:</strong> ${pet.size}</p>
+//           <p><strong>Status:</strong> ${pet.petStatus}</p>
+//           <p><strong>Description:</strong> ${pet.description}</p>
+//           <img src="${imageUrl}" alt="Pet Image" style="width: 800px; height: 700px; object-fit: cover;" />
+//         </body>
+//       </html>
+//     `;
 
-    // Create the Puppeteer browser instance
-    const browser = await puppeteer.launch();
+//     // Create the Puppeteer browser instance
+//     const browser = await puppeteer.launch();
 
-    // Generate PDF using html-pdf package with Puppeteer options
-    pdf
-      .create(myTemplate, { puppeteer: browser })
-      .toBuffer(async (err, buffer) => {
-        if (err) {
-          console.error(err);
-          req.flash("error", "Failed to generate PDF");
-          return res.redirect("/pets");
-        }
+//     // Generate PDF using html-pdf package with Puppeteer options
+//     pdf
+//       .create(myTemplate, { puppeteer: browser })
+//       .toBuffer(async (err, buffer) => {
+//         if (err) {
+//           console.error(err);
+//           req.flash("error", "Failed to generate PDF");
+//           return res.redirect("/pets");
+//         }
 
-        res.set({
-          "Content-Type": "application/pdf",
-          "Content-Disposition": "attachment;filename=petinfo.pdf",
-        });
+//         res.set({
+//           "Content-Type": "application/pdf",
+//           "Content-Disposition": "attachment;filename=petinfo.pdf",
+//         });
 
-        res.send(buffer); // Send the PDF buffer as the response
+//         res.send(buffer); // Send the PDF buffer as the response
 
-        // Close the Puppeteer browser instance
-        await browser.close();
-      });
-  } catch (error) {
-    console.error(error);
-    req.flash("error", "Failed to generate PDF");
-    res.redirect("/pets");
-  }
-};
+//         // Close the Puppeteer browser instance
+//         await browser.close();
+//       });
+//   } catch (error) {
+//     console.error(error);
+//     req.flash("error", "Failed to generate PDF");
+//     res.redirect("/pets");
+//   }
+// };

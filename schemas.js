@@ -57,3 +57,5 @@ module.exports.commentSchema = Joi.object({
     body: Joi.string().required().escapeHTML(),
   }).required(),
 });
+
+//  "@tomtom-international/web-sdk-services": "^6.23.0",
