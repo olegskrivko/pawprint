@@ -35,7 +35,7 @@ module.exports.register = async (req, res, next) => {
       if (err) return next(err);
 
       // Compose the email message
-      const verificationLink = `https://pawprint.cyclic.app/auth/verify/${verificationToken}`;
+      const verificationLink = `http://pawprint.cyclic.app/auth/verify/${verificationToken}`;
       const msg = {
         to: email,
         from: "olegs.krivko@gmail.com", // Replace with your SendGrid verified email address
@@ -56,7 +56,7 @@ module.exports.register = async (req, res, next) => {
   } catch (error) {
     // Handle errors during registration
     req.flash("error", error.message);
-    res.redirect("auth/register");
+    res.redirect("/auth/register");
   }
 };
 
