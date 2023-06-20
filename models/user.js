@@ -83,12 +83,21 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  verificationToken: {
+    type: String,
+  },
+  verificationTokenExpires: {
+    type: Date,
+  },
   status: {
     type: String,
     enum: ["active", "deleted"],
     default: "active",
   },
-
+  isVerified: {
+    type: Boolean,
+    default: false,
+  },
   passwordResetToken: {
     type: String,
   },

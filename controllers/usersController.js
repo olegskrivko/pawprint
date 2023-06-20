@@ -7,17 +7,22 @@ const {
   languageOptions,
 } = require("../utils/userSelectOptions");
 const { cloudinary } = require("../cloudinary");
+// Import the nodemailer module
+const crypto = require("crypto");
+const sgMail = require("@sendgrid/mail");
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-// Controller for rendering the registration form
-module.exports.renderRegister = (req, res) => {
-  res.render("auth/register");
-};
-
-// Controller for user registration
 module.exports.register = async (req, res, next) => {
   try {
     const { email, username, password } = req.body;
     const user = new User({ email, username });
+
+    // Generate a verification token
+    const verificationToken = await generateVerificationToken();
+
+    // Set the verification token and its expiration time for the user
+    user.verificationToken = verificationToken;
+    user.verificationTokenExpires = Date.now() + 3600000; // Token expires in 1 hour
 
     // Register the user using the provided password
     const registeredUser = await User.register(user, password);
@@ -26,9 +31,26 @@ module.exports.register = async (req, res, next) => {
     await registeredUser.save();
 
     // Log in the registered user
-    req.login(registeredUser, (err) => {
+    req.login(registeredUser, async (err) => {
       if (err) return next(err);
-      req.flash("success", "Registration successful!"); // Flash message for successful registration
+
+      // Compose the email message
+      const verificationLink = `http://localhost:3000/auth/verify/${verificationToken}`;
+      const msg = {
+        to: email,
+        from: "olegs.krivko@gmail.com", // Replace with your SendGrid verified email address
+        subject: "Welcome to PawPrint - Verify Your Email",
+        text: `Dear ${username}, thank you for registering on PawPrint! Please click the following link to verify your email: ${verificationLink}`,
+        html: `<p>Dear ${username},</p><p>Thank you for registering on PawPrint! Please click the following link to verify your email:</p><p><a href="${verificationLink}">${verificationLink}</a></p>`,
+      };
+
+      // Send the email
+      await sgMail.send(msg);
+
+      req.flash(
+        "success",
+        "Registration successful! An email with a verification link has been sent to your email address."
+      );
       res.redirect("/pets");
     });
   } catch (error) {
@@ -37,6 +59,139 @@ module.exports.register = async (req, res, next) => {
     res.redirect("auth/register");
   }
 };
+
+// Function to generate a random verification token
+async function generateVerificationToken() {
+  //const crypto = require("crypto");
+  return crypto.randomBytes(32).toString("hex");
+}
+
+// Controller for rendering the registration form
+module.exports.renderRegister = (req, res) => {
+  res.render("auth/register");
+};
+
+module.exports.verifyEmail = async (req, res, next) => {
+  try {
+    const { token } = req.params;
+    console.log("token", token);
+
+    // Find the user with the provided verification token
+    const user = await User.findOne({
+      verificationToken: token,
+      verificationTokenExpires: { $gt: Date.now() },
+    });
+    console.log("user", user);
+    // If no user found or the token has expired
+    if (!user) {
+      req.flash("error", "Invalid or expired verification token.");
+      return res.redirect("/auth/login");
+    }
+
+    // Update the user's verification status
+    user.isVerified = true;
+    user.verificationToken = undefined;
+    user.verificationTokenExpires = undefined;
+
+    // Save the updated user
+    await user.save();
+
+    req.flash(
+      "success",
+      "Your email has been verified successfully. You can now log in."
+    );
+    res.redirect("/auth/login");
+  } catch (error) {
+    req.flash(
+      "error",
+      "An error occurred while verifying your email. Please try again."
+    );
+    res.redirect("/auth/login");
+  }
+};
+
+// module.exports.register = async (req, res, next) => {
+//   try {
+//     const { email, username, password } = req.body;
+//     const user = new User({ email, username });
+
+//     // Register the user using the provided password
+//     const registeredUser = await User.register(user, password);
+
+//     // Save the registered user
+//     await registeredUser.save();
+
+//     // Log in the registered user
+//     req.login(registeredUser, async (err) => {
+//       if (err) return next(err);
+
+//       // Compose the email message
+//       const msg = {
+//         to: `${email}`,
+//         from: "olegs.krivko@gmail.com", // Replace with your SendGrid verified email address
+//         subject: "Welcome to PawPrint",
+//         text: `Dear ${username}, thank you for registering on PawPrint!`,
+//         html: `<p>Dear ${username},</p><p>Thank you for registering on PawPrint!</p>`,
+//       };
+
+//       // Send the email
+//       await sgMail.send(msg);
+
+//       req.flash(
+//         "success",
+//         "Registration successful! An email has been sent to your email address."
+//       );
+//       res.redirect("/pets");
+//     });
+//   } catch (error) {
+//     // Handle errors during registration
+//     req.flash("error", error.message);
+//     res.redirect("auth/register");
+//   }
+// };
+
+// const sgMail = require("@sendgrid/mail");
+// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+// const msg = {
+//   to: "olegs.krivko@inbox.lv", // Change to your recipient
+//   from: "olegs.krivko@gmail.com", // Change to your verified sender
+//   subject: "Sending with SendGrid is Fun",
+//   text: "and easy to do anywhere, even with Node.js",
+//   html: "<strong>and easy to do anywhere, even with Node.js</strong>",
+// };
+// sgMail
+//   .send(msg)
+//   .then(() => {
+//     console.log("Email sent");
+//   })
+//   .catch((error) => {
+//     console.error(error);
+//   });
+
+// Controller for user registration
+// module.exports.register = async (req, res, next) => {
+//   try {
+//     const { email, username, password } = req.body;
+//     const user = new User({ email, username });
+
+//     // Register the user using the provided password
+//     const registeredUser = await User.register(user, password);
+
+//     // Save the registered user
+//     await registeredUser.save();
+
+//     // Log in the registered user
+//     req.login(registeredUser, (err) => {
+//       if (err) return next(err);
+//       req.flash("success", "Registration successful!"); // Flash message for successful registration
+//       res.redirect("/pets");
+//     });
+//   } catch (error) {
+//     // Handle errors during registration
+//     req.flash("error", error.message);
+//     res.redirect("auth/register");
+//   }
+// };
 
 // Controller for rendering the login page
 module.exports.renderLogin = (req, res) => {

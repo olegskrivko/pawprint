@@ -24,7 +24,7 @@ const petRoutes = require("./routes/petRoutes");
 const compareRoutes = require("./routes/compareRoutes");
 const commentRoutes = require("./routes/commentRoutes");
 const locationRoutes = require("./routes/locationRoutes");
-
+// const nodemailer = require("nodemailer");
 // const favicon = require("serve-favicon");
 const MongoStore = require("connect-mongo");
 const dbURL = process.env.DB_URL || "mongodb://localhost:27017/pet-finder";

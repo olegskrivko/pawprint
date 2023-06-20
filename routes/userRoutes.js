@@ -30,6 +30,9 @@ router
 // Logout Route
 router.get("/logout", usersController.logout);
 
+// Define the user routes
+router.get("/verify/:token", usersController.verifyEmail);
+
 // Account Routes
 router
   .route("/account/profile")
