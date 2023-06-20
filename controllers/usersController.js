@@ -9,8 +9,10 @@ const {
 const { cloudinary } = require("../cloudinary");
 // Import the nodemailer module
 const crypto = require("crypto");
-const sgMail = require("@sendgrid/mail");
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+// const sgMail = require("@sendgrid/mail");
+// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+const nodemailer = require("nodemailer");
 
 module.exports.register = async (req, res, next) => {
   try {
@@ -36,16 +38,45 @@ module.exports.register = async (req, res, next) => {
 
       // Compose the email message
       const verificationLink = `https://pawprint.cyclic.app/auth/verify/${verificationToken}`;
-      const msg = {
-        to: email,
-        from: "olegs.krivko@gmail.com", // Replace with your SendGrid verified email address
-        subject: "Welcome to PawPrint - Verify Your Email",
-        text: `Dear ${username}, thank you for registering on PawPrint! Please click the following link to verify your email: ${verificationLink}`,
-        html: `<p>Dear ${username},</p><p>Thank you for registering on PawPrint! Please click the following link to verify your email:</p><p><a href="${verificationLink}">${verificationLink}</a></p>`,
+
+      // Create a transporter using SMTP
+      const transporter = nodemailer.createTransport({
+        service: "gmail",
+        port: 587,
+        secure: false, // upgrade later with STARTTLS
+        auth: {
+          user: process.env.EMAIL_USERNAME, // Replace with your Gmail address
+          pass: process.env.EMAIL_PASSWORD, // Replace with your Gmail password
+        },
+      });
+
+      // Define the email options
+      const mailOptions = {
+        from: process.env.EMAIL_USERNAME, // Replace with your Gmail address
+        to: "olegs.krivko@inbox.lv", // Replace with the recipient's email address
+        subject: "Test Email",
+        text: `Hello from Nodemailer! ${verificationLink}`,
       };
 
       // Send the email
-      await sgMail.send(msg);
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.error("Error sending email:", error);
+        } else {
+          console.log("Email sent:", info.response);
+        }
+      });
+
+      // const msg = {
+      //   to: email,
+      //   from: "olegs.krivko@gmail.com", // Replace with your SendGrid verified email address
+      //   subject: "Welcome to PawPrint - Verify Your Email",
+      //   text: `Dear ${username}, thank you for registering on PawPrint! Please click the following link to verify your email: ${verificationLink}`,
+      //   html: `<p>Dear ${username},</p><p>Thank you for registering on PawPrint! Please click the following link to verify your email:</p><p><a href="${verificationLink}">${verificationLink}</a></p>`,
+      // };
+
+      // Send the email
+      // await sgMail.send(msg);
 
       req.flash(
         "success",
@@ -59,6 +90,54 @@ module.exports.register = async (req, res, next) => {
     res.redirect("/auth/register");
   }
 };
+
+// module.exports.register = async (req, res, next) => {
+//   try {
+//     const { email, username, password } = req.body;
+//     const user = new User({ email, username });
+
+//     // Generate a verification token
+//     const verificationToken = await generateVerificationToken();
+
+//     // Set the verification token and its expiration time for the user
+//     user.verificationToken = verificationToken;
+//     user.verificationTokenExpires = Date.now() + 3600000; // Token expires in 1 hour
+
+//     // Register the user using the provided password
+//     const registeredUser = await User.register(user, password);
+
+//     // Save the registered user
+//     await registeredUser.save();
+
+//     // Log in the registered user
+//     req.login(registeredUser, async (err) => {
+//       if (err) return next(err);
+
+//       // Compose the email message
+//       const verificationLink = `https://pawprint.cyclic.app/auth/verify/${verificationToken}`;
+//       const msg = {
+//         to: email,
+//         from: "olegs.krivko@gmail.com", // Replace with your SendGrid verified email address
+//         subject: "Welcome to PawPrint - Verify Your Email",
+//         text: `Dear ${username}, thank you for registering on PawPrint! Please click the following link to verify your email: ${verificationLink}`,
+//         html: `<p>Dear ${username},</p><p>Thank you for registering on PawPrint! Please click the following link to verify your email:</p><p><a href="${verificationLink}">${verificationLink}</a></p>`,
+//       };
+
+//       // Send the email
+//       await sgMail.send(msg);
+
+//       req.flash(
+//         "success",
+//         "Registration successful! An email with a verification link has been sent to your email address."
+//       );
+//       res.redirect("/pets");
+//     });
+//   } catch (error) {
+//     // Handle errors during registration
+//     req.flash("error", error.message);
+//     res.redirect("/auth/register");
+//   }
+// };
 
 // Function to generate a random verification token
 async function generateVerificationToken() {
