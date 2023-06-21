@@ -53,17 +53,25 @@
   
   <form action="/pets" method="GET" class="row mx-auto" role="search" id="filterForm">
     <!-- <h5 class="text-white text-center mt-2">Filter Pets</h5> -->
-  <p>
+  <div class="d-flex justify-content-between mb-3">
+    <div>
     <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
       <i class="bi bi-sliders"></i> Filters
     </a>
+    
     <a class="btn btn-warning d-none compare-btn" href="" role="button">
       <i class="bi bi-intersect"></i> Compare
     </a>
+  </div>
+
+  <div>
+    <a class="btn btn-primary  ms-1" href="/pets/report">Report pet</a>
     <!-- <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
       Button with data-bs-target
     </button> -->
-  </p>
+  </div>
+  </div>
+
   <div class="collapse" id="collapseExample">
     <div class="row g-3">
       <div class="d-flex flex-column d-none">

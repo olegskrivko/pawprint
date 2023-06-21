@@ -283,6 +283,7 @@
             width="32"
             height="32"
             class="rounded-circle me-2"
+            style="box-shadow: 0 0 0 2px #CCCCCC; margin: -2px"
           />
           <% } else { %>
           <img
@@ -291,6 +292,7 @@
             width="32"
             height="32"
             class="rounded-circle me-2"
+            style="box-shadow: 0 0 0 2px #CCCCCC; margin: -2px"
           />
           <% } %>
         </div>
@@ -341,15 +343,15 @@
 
               <div class="d-flex me-2 mb-2">
                 <% if (comment.author.avatar.length > 0) { %>
-                  <img src="<%= comment.author.avatar[0].url %>" alt="mdo" width="32" height="32" class="rounded-circle me-2" />
+                  <img src="<%= comment.author.avatar[0].url %>" alt="mdo" width="32" height="32" class="rounded-circle me-2"   style="box-shadow: 0 0 0 2px #CCCCCC; margin: -2px"/>
                 <% } else { %>
-                  <img src="/images/icons/user.png" alt="mdo" width="32" height="32" class="rounded-circle me-2" />
+                  <img src="/images/icons/user.png" alt="mdo" width="32" height="32" class="rounded-circle me-2" style="box-shadow: 0 0 0 2px #CCCCCC; margin: -2px"/>
                 <% } %>
                 <div class="d-flex flex-column">
                   <h5 class="card-title small">@<%= comment.author.username %> <% if (comment.author.isVerified) { %>
-                    <span class="text-success"><i class="bi bi-patch-check-fill"></i></span>
+                    <span class="text-success"><i class="bi bi-shield-fill-check"></i></span>
                   <% } else { %>
-                    <span class="text-danger"><i class="bi bi-patch-question-fill"></i></span>
+                    <span class="text-danger"><i class="bi bi-shield-fill-x"></i></span>
                   <% } %>
                   
                   </h5>
