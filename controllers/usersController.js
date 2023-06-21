@@ -53,7 +53,7 @@ module.exports.register = async (req, res, next) => {
       // Define the email options
       const mailOptions = {
         from: process.env.EMAIL_USERNAME, // Replace with your Gmail address
-        to: "olegs.krivko@inbox.lv", // Replace with the recipient's email address
+        to: email, // Replace with the recipient's email address
         subject: "Test Email",
         text: `Hello from Nodemailer! ${verificationLink}`,
       };
