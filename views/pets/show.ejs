@@ -343,7 +343,14 @@
                   <img src="/images/icons/user.png" alt="mdo" width="32" height="32" class="rounded-circle me-2" />
                 <% } %>
                 <div class="d-flex flex-column">
-                  <h5 class="card-title small">@<%= comment.author.username %></h5>
+                  <h5 class="card-title small">@<%= comment.author.username %> <% if (comment.author.isVerified) { %>
+                    <span class="text-success"><i class="bi bi-patch-check-fill"></i></span>
+                  <% } else { %>
+                    <span class="text-warning"><i class="bi bi-patch-question-fill"></i></span>
+                  <% } %>
+                  
+                  </h5>
+                 
                   <!-- < if(currentUser && comment.author.equals(currentUser._id)) { %>
                     <h6 class="card-text text-muted small">Author</h6>
                   < } %> -->
@@ -354,6 +361,7 @@
                     <!-- Code to execute if the emails do not match -->
                     <!-- <p>no</p> -->
                   <% } %>
+                 
                 </div>
               </div>
               
