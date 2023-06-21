@@ -85,8 +85,8 @@
           <i class="bi bi-share"></i> <span class="small">Share</span>
         </button>
       </div> -->
-      <% if(currentUser && pet.author.equals(currentUser._id)) {%>
-      <div>
+      <% if (currentUser && pet.author && currentUser._id && pet.author.equals(currentUser._id)) { %>
+          <div>
         <button
           class="btn btn-sm btn-outline-info my-2 me-2"
           onclick="location.href='/pets/<%= pet._id%>/edit'"
@@ -346,7 +346,7 @@
                   <h5 class="card-title small">@<%= comment.author.username %> <% if (comment.author.isVerified) { %>
                     <span class="text-success"><i class="bi bi-patch-check-fill"></i></span>
                   <% } else { %>
-                    <span class="text-warning"><i class="bi bi-patch-question-fill"></i></span>
+                    <span class="text-danger"><i class="bi bi-patch-question-fill"></i></span>
                   <% } %>
                   
                   </h5>
@@ -354,12 +354,11 @@
                   <!-- < if(currentUser && comment.author.equals(currentUser._id)) { %>
                     <h6 class="card-text text-muted small">Author</h6>
                   < } %> -->
-                  <% if (pet.author.email.toLowerCase() === comment.author.email.toLowerCase()) { %>
+                  <% if (pet.author && comment.author && pet.author.email && comment.author.email && pet.author.email.toLowerCase() === comment.author.email.toLowerCase()) { %>
                     <!-- Code to execute if the emails match (case-insensitive) -->
                     <h6 class="card-text text-muted small">Author</h6>
                   <% } else { %>
-                    <!-- Code to execute if the emails do not match -->
-                    <!-- <p>no</p> -->
+                    <!-- Code to execute if the emails don't match or are null/undefined -->
                   <% } %>
                  
                 </div>
