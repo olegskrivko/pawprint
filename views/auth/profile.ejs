@@ -502,15 +502,17 @@ id="phoneCode"
   });
   
 </script>
-  <script>
-   
+<script>
+  ////////// DELETE
+  const deleteUser = async () => {
+    try {
+      const confirmed = confirm("Are you sure you want to delete your account?");
 
-    ////////// DELETE
-    const deleteUser = async () => {
-      try {
+      if (confirmed) {
         const response = await fetch("/auth/account/profile", {
           method: "DELETE",
         });
+
         if (response.ok) {
           // User deleted successfully
           // Redirect to a landing page or any other appropriate page
@@ -518,21 +520,23 @@ id="phoneCode"
         } else {
           throw new Error("Failed to delete account");
         }
-      } catch (err) {
-        console.error(err);
-        // Handle error and display appropriate message
       }
-    };
+    } catch (err) {
+      console.error(err);
+      // Handle error and display appropriate message
+    }
+  };
 
-    // Get the delete button element
-    const deleteBtn = document.querySelector("#deleteUserBtn");
+  // Get the delete button element
+  const deleteBtn = document.querySelector("#deleteUserBtn");
 
-    // Add event listener to the button click event
-    deleteBtn.addEventListener("click", async () => {
-      // Call the deleteUser function to initiate the deletion process
-      await deleteUser();
-    });
-  </script>
+  // Add event listener to the button click event
+  deleteBtn.addEventListener("click", async () => {
+    // Call the deleteUser function to initiate the deletion process
+    await deleteUser();
+  });
+</script>
+
 </div>
 
 <!-- <script>

@@ -98,6 +98,7 @@
         class="d-inline"
         action="/pets/<%=pet.id%>?_method=DELETE"
         method="POST"
+        onsubmit="return confirm('Are you sure you want to delete this pet?');"
       >
         <button class="btn btn-sm btn-outline-danger my-2 me-2">
           <i class="bi-trash3"></i> <span class="small">Delete</span>
@@ -370,8 +371,9 @@
               <p class="card-text" style="text-align: justify;"><small><%= comment.body %></small></p>
               <% if(comment.author && currentUser && comment.author.equals(currentUser._id)) { %>
                 <form action="/pets/<%= pet._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                  <button class="btn btn-sm btn-danger"><small>Delete</small></button>
-                  <!-- <a class="" style="text-decoration: none;"><small><i class="bi-trash3"></i> Delete</small></a> -->
+                  <!-- <button class="btn btn-sm btn-danger"><small>Delete</small></button>
+                  <a class="text-danger" style="text-decoration: none;"><small><i class="bi-trash3"></i> Delete</small></a> -->
+                  <a href="#" class="text-danger" style="text-decoration: none;" onclick="deleteComment(event)"><small><i class="bi-trash3"></i> Delete</small></a>
                 </form>
               <% } %>
             </div>
@@ -403,6 +405,19 @@
   })
 
 </script> -->
+
+<script>
+  function deleteComment(event) {
+    event.preventDefault(); // Prevent the default anchor tag behavior
+  
+    const confirmed = confirm("Are you sure you want to delete this comment?"); // Display a confirmation dialog
+  
+    if (confirmed) {
+      event.target.closest("form").submit(); // Find the closest form and submit it
+    }
+  }
+  
+</script>
 
 <script>
   const updateWatchlist = async (watchlistData) => {
