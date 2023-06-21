@@ -311,8 +311,10 @@
           ></textarea>
           <label for="body" class="small">Add comment...</label>
           <div class="valid-feedback">Looks good!</div>
-          <div>
-            <button class="btn btn-sm btn-success mt-2"><small>Send</small></button>
+          <div class="mt-2">
+            <!-- <button class="btn btn-sm btn-success mt-2"><small>Send</small></button>
+            <a class="text-success" style="text-decoration: none;"><i class="bi bi-send-fill"></i> <small>Send</small></a> -->
+            <a href="#" class="text-secondary " onclick="event.preventDefault(); this.closest('form').submit();" style="text-decoration: none;"><i class="bi bi-send-fill"></i> <small>Send</small></a>
           </div>
         </div>
      
@@ -328,7 +330,7 @@
         <!--- ADEDE NEW LINES-->
         <% if (pet.comments.length > 0) {%> <% } else { %>
 
-        <p>No comment uet</p>
+        <p>No comment yet</p>
 
         <% } %>
         <!--- ADEDE NEW LINES-->
