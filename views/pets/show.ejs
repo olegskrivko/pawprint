@@ -369,7 +369,7 @@
 
               
               <p class="card-text" style="text-align: justify;"><small><%= comment.body %></small></p>
-              <% if(currentUser && comment.author.equals(currentUser._id)) { %>
+              <% if(comment.author && currentUser && comment.author.equals(currentUser._id)) { %>
                 <form action="/pets/<%= pet._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
                   <button class="btn btn-sm btn-danger"><small>Delete</small></button>
                   <!-- <a class="" style="text-decoration: none;"><small><i class="bi-trash3"></i> Delete</small></a> -->
