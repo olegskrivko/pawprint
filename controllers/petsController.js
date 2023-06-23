@@ -11,8 +11,9 @@ const fs = require("fs");
 // const pdf = require("html-pdf");
 // const puppeteer = require("puppeteer");
 
+// Handle the index route for displaying a list of pets
 module.exports.index = async (req, res) => {
-  const ITEMS_PER_PAGE = 10; // Number of items to display per page
+  const ITEMS_PER_PAGE = 10;
   const {
     page,
     limit,
@@ -35,10 +36,12 @@ module.exports.index = async (req, res) => {
     selectedRegion,
   } = req.query;
 
+  // Find the selected location based on the selected region
   const selectedLocation = await Location.findOne({ region: selectedRegion });
 
   let selectedPolygonCoordinates = [];
 
+  // Extract coordinates from the selected location's geometry if available
   if (selectedLocation && selectedLocation.geometry) {
     const selectedPolygon = selectedLocation.geometry.coordinates[0];
     selectedPolygonCoordinates = selectedPolygon.map((coord) => [
@@ -47,11 +50,11 @@ module.exports.index = async (req, res) => {
     ]);
   }
 
-  // Validate and sanitize input parameters
+  // Parse and sanitize the query parameters
   const currentPage = parseInt(page) || 1;
   const limitPerPage = parseInt(limit) || ITEMS_PER_PAGE;
 
-  // Define filter options for the search query
+  // Define the filter options based on the query parameters
   const filterOptions = {};
   if (age) {
     filterOptions.age = { $regex: new RegExp(age, "i") };
@@ -64,9 +67,6 @@ module.exports.index = async (req, res) => {
   }
   if (pattern) {
     filterOptions.pattern = { $regex: new RegExp(pattern, "i") };
-  }
-  if (breed) {
-    filterOptions.breed = { $regex: new RegExp(breed, "i") };
   }
   if (coat) {
     filterOptions.coat = { $regex: new RegExp(coat, "i") };
@@ -92,38 +92,10 @@ module.exports.index = async (req, res) => {
   if (userlongitude && userlatitude && maxDistance) {
     filterOptions.location = {
       $geoWithin: {
-        $centerSphere: [[userlongitude, userlatitude], maxDistance / 6371], // Divide maxDistance by the radius of the Earth in kilometers (6371)
+        $centerSphere: [[userlongitude, userlatitude], maxDistance / 6371],
       },
     };
   }
-
-  // if (selectedLocation) {
-  //   const selectedPolygon = selectedLocation.geometry; // Assuming the GeoJSON polygon is stored in a field named 'geometry'
-
-  //   // Update the filter options to include the selected region
-  //   if (selectedPolygon) {
-  //     filterOptions.location = {
-  //       $geoWithin: {
-  //         $geometry: {
-  //           type: "Polygon",
-  //           coordinates: selectedPolygon.coordinates,
-  //         },
-  //       },
-  //     };
-  //   }
-  // }
-
-  // // Update the filter options to include the selected region
-  // if (selectedPolygonCoordinates.length > 0) {
-  //   filterOptions.location = {
-  //     $geoWithin: {
-  //       $geometry: {
-  //         type: "Polygon",
-  //         coordinates: [selectedPolygonCoordinates],
-  //       },
-  //     },
-  //   };
-  // }
 
   // Add the condition for search within the selected polygon
   if (selectedPolygonCoordinates.length > 0) {
@@ -141,45 +113,27 @@ module.exports.index = async (req, res) => {
     ];
   }
 
-  // later make that it checks in first, second and third color. so need to save colors in one field as array
   if (color) {
     filterOptions.color = { $regex: new RegExp(color, "i") };
   }
 
-  // Retrieve total number of pets for pagination logic
+  // Count the total number of pets matching the filter options
   const totalPets = await Pet.countDocuments(filterOptions);
 
-  // Calculate starting index based on current page and limit
+  // Calculate the starting index for pagination
   const startIndex = (currentPage - 1) * limitPerPage;
 
-  // Retrieve pets for current page with applied filter options
+  // Fetch pets based on the filter options and pagination parameters
   const pets = await Pet.find(filterOptions)
     .skip(startIndex)
     .limit(limitPerPage);
 
-  // Calculate total number of pages based on total pets and limit per page
-  const totalPages = Math.ceil(totalPets / limitPerPage);
-  // Render response with pagination data
+  // Render the index view with the retrieved pets and pagination data
   res.render("pets/index", {
     pets,
     currentPage,
-    limitPerPage,
+    totalPages: Math.ceil(totalPets / limitPerPage),
     totalPets,
-    totalPages,
-    age,
-    gender,
-    breed,
-    species,
-    pattern,
-    coat,
-    size,
-    petStatus,
-    identifier,
-    name,
-    location,
-    color,
-    lostdate,
-    selectedPolygonCoordinates,
   });
 };
 
@@ -196,17 +150,9 @@ module.exports.renderFoundForm = (req, res) => {
 };
 
 module.exports.createPet = async (req, res, next) => {
-  // tt.services
-  // .geocode({
-  //   key: process.env.TOMTOM_API_KEY,
-  //   query: req.body.pet.location,
-  //   limit: 1,
-  // })
-  // .then(function (geoResult) {
-  // const coords = geoResult.toGeoJson();
-
-  //const { latitude, longitude } = req.body;
   let colorsFormated = [];
+
+  // Check and format the colors from the request body
   if (req.body.pet.firstcolor) {
     colorsFormated.push(req.body.pet.firstcolor);
   }
@@ -217,13 +163,9 @@ module.exports.createPet = async (req, res, next) => {
     colorsFormated.push(req.body.pet.thirdcolor);
   }
 
-  // let imagesFormated = [];
-  // imagesFormated = req.files.map((f) => ({
-  //   url: f.path,
-  //   filename: f.filename,
-  // }));
-
   console.log(colorsFormated);
+
+  // Prepare the unprocessed body for creating a new pet
   const unprocessedBody = {
     species: req.body.pet.species,
     breed: req.body.pet.breed,
@@ -237,10 +179,8 @@ module.exports.createPet = async (req, res, next) => {
         parseFloat(req.body.pet.latitude),
       ],
     },
-
     latitude: parseFloat(req.body.pet.latitude),
     longitude: parseFloat(req.body.pet.longitude),
-
     pattern: req.body.pet.pattern,
     color: colorsFormated,
     coat: req.body.pet.coat,
@@ -250,17 +190,10 @@ module.exports.createPet = async (req, res, next) => {
     lostdate: req.body.pet.lostdate,
     description: req.body.pet.description,
   };
-  // console.log(unprocessedBody.title);
-  // console.log(unprocessedBody.latitude);
-  //console.log("unprocesed", unprocessedBody);
-  // const resul = req.body.pet;
 
-  //console.log(pet);
-
-  //const pet = new Pet(req.body.pet);
   const pet = new Pet(unprocessedBody);
 
-  // pet.geometry = coords.features[0].geometry;
+  // Assign images to the new pet
   pet.images = req.files.map((f) => ({
     url: f.path,
     filename: f.filename,
@@ -268,18 +201,17 @@ module.exports.createPet = async (req, res, next) => {
 
   pet.author = req.user._id;
 
-  pet.save(); // await is needed? and next
+  // Save the pet to the database
+  await pet.save();
+
   console.log(pet);
-  req.flash("success", "Successfully made a new pet");
+
+  req.flash("success", "Successfully created a new pet");
   res.redirect(`/pets/${pet._id}`);
-  //console.log(pet);
-  // })
-  // .catch(function (reason) {
-  //   console.log("Copyrights", reason);
-  // });
 };
 
 module.exports.showPet = async (req, res) => {
+  // Find the pet with the provided ID and populate its comments and author
   const pet = await Pet.findById(req.params.id)
     .populate({
       path: "comments",
@@ -288,33 +220,25 @@ module.exports.showPet = async (req, res) => {
       },
     })
     .populate("author");
+
+  // Check if the pet is found
   if (!pet) {
     req.flash("error", "Cannot find that pet!");
     return res.redirect("/pets");
   }
-  // console.log(
-  //   fns.formatDistanceToNow(new Date(pet.createdAt), { addSuffix: true })
-  // );
-  //console.log(pet);
 
+  // Format the creation, update, and lost dates in words
   const createDateInWords = fns.formatDistanceToNow(new Date(pet.createdAt), {
     addSuffix: true,
   });
   const updateDateInWords = fns.formatDistanceToNow(new Date(pet.updatedAt), {
     addSuffix: true,
   });
-
   const lostDateInWords = fns.formatDistanceToNow(new Date(pet.lostdate), {
     addSuffix: true,
   });
-  // console.log(lostDateInWords);
 
-  // console.log(fns.formatRelative(new Date(pet.createdAt), new Date()));
-  // console.log(fns.formatRelative(new Date(pet.updatedAt), new Date()));
-  // console.log(fns.formatRelative(fns.subDays(new Date(), 5), new Date()));
-  // console.log(fns.format(new Date(), "'Today is a' eeee"));
-  // console.log(fns.format(new Date(), "'Today is a' eeee"));
-
+  // Render the pet show page and pass the pet object and date information
   res.render("pets/show", {
     pet: pet,
     createDateInWords,
