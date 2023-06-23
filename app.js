@@ -1,3 +1,8 @@
+// Load environment variables from .env file if not in production
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
 // Import required libraries
 const express = require("express");
 const path = require("path");
@@ -31,11 +36,6 @@ const User = require("./models/user");
 // Create Express app
 const app = express();
 
-// Load environment variables from .env file if not in production
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
-
 // Configure i18n middleware
 i18n.configure({
   locales: ["en", "lv"],
@@ -46,16 +46,11 @@ i18n.configure({
   register: global,
 });
 app.use(i18n.init);
-
+//   "mongoose": "^6.8.4",
 // Connect to MongoDB
 const dbURL = process.env.DB_URL;
 mongoose
-  .connect(dbURL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true,
-  })
+  .connect(dbURL, {})
   .then(() => {
     console.log("Connected to MongoDB");
   })
@@ -64,7 +59,6 @@ mongoose
   });
 
 // Set the value of strictQuery explicitly (no longer necessary in recent versions of Mongoose)
-mongoose.set("strictQuery", false);
 
 // Set up the session store
 const secret = process.env.SECRET;
