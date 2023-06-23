@@ -19,9 +19,9 @@ module.exports.index = async (req, res) => {
 
 module.exports.showService = async (req, res) => {
   try {
-    const service = await Service.findById(req.params.id)
-      .populate("serviceProviders")
-      .exec();
+    const service = await Service.findById(req.params.id).populate(
+      "serviceProviders"
+    );
 
     if (!service) {
       req.flash("error", "Cannot find that service!");
