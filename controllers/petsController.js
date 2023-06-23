@@ -11,9 +11,8 @@ const fs = require("fs");
 // const pdf = require("html-pdf");
 // const puppeteer = require("puppeteer");
 
-// Handle the index route for displaying a list of pets
 module.exports.index = async (req, res) => {
-  const ITEMS_PER_PAGE = 10;
+  const ITEMS_PER_PAGE = 10; // Number of items to display per page
   const {
     page,
     limit,
@@ -36,12 +35,10 @@ module.exports.index = async (req, res) => {
     selectedRegion,
   } = req.query;
 
-  // Find the selected location based on the selected region
   const selectedLocation = await Location.findOne({ region: selectedRegion });
 
   let selectedPolygonCoordinates = [];
 
-  // Extract coordinates from the selected location's geometry if available
   if (selectedLocation && selectedLocation.geometry) {
     const selectedPolygon = selectedLocation.geometry.coordinates[0];
     selectedPolygonCoordinates = selectedPolygon.map((coord) => [
@@ -50,11 +47,11 @@ module.exports.index = async (req, res) => {
     ]);
   }
 
-  // Parse and sanitize the query parameters
+  // Validate and sanitize input parameters
   const currentPage = parseInt(page) || 1;
   const limitPerPage = parseInt(limit) || ITEMS_PER_PAGE;
 
-  // Define the filter options based on the query parameters
+  // Define filter options for the search query
   const filterOptions = {};
   if (age) {
     filterOptions.age = { $regex: new RegExp(age, "i") };
@@ -67,6 +64,9 @@ module.exports.index = async (req, res) => {
   }
   if (pattern) {
     filterOptions.pattern = { $regex: new RegExp(pattern, "i") };
+  }
+  if (breed) {
+    filterOptions.breed = { $regex: new RegExp(breed, "i") };
   }
   if (coat) {
     filterOptions.coat = { $regex: new RegExp(coat, "i") };
@@ -92,10 +92,38 @@ module.exports.index = async (req, res) => {
   if (userlongitude && userlatitude && maxDistance) {
     filterOptions.location = {
       $geoWithin: {
-        $centerSphere: [[userlongitude, userlatitude], maxDistance / 6371],
+        $centerSphere: [[userlongitude, userlatitude], maxDistance / 6371], // Divide maxDistance by the radius of the Earth in kilometers (6371)
       },
     };
   }
+
+  // if (selectedLocation) {
+  //   const selectedPolygon = selectedLocation.geometry; // Assuming the GeoJSON polygon is stored in a field named 'geometry'
+
+  //   // Update the filter options to include the selected region
+  //   if (selectedPolygon) {
+  //     filterOptions.location = {
+  //       $geoWithin: {
+  //         $geometry: {
+  //           type: "Polygon",
+  //           coordinates: selectedPolygon.coordinates,
+  //         },
+  //       },
+  //     };
+  //   }
+  // }
+
+  // // Update the filter options to include the selected region
+  // if (selectedPolygonCoordinates.length > 0) {
+  //   filterOptions.location = {
+  //     $geoWithin: {
+  //       $geometry: {
+  //         type: "Polygon",
+  //         coordinates: [selectedPolygonCoordinates],
+  //       },
+  //     },
+  //   };
+  // }
 
   // Add the condition for search within the selected polygon
   if (selectedPolygonCoordinates.length > 0) {
@@ -113,27 +141,45 @@ module.exports.index = async (req, res) => {
     ];
   }
 
+  // later make that it checks in first, second and third color. so need to save colors in one field as array
   if (color) {
     filterOptions.color = { $regex: new RegExp(color, "i") };
   }
 
-  // Count the total number of pets matching the filter options
+  // Retrieve total number of pets for pagination logic
   const totalPets = await Pet.countDocuments(filterOptions);
 
-  // Calculate the starting index for pagination
+  // Calculate starting index based on current page and limit
   const startIndex = (currentPage - 1) * limitPerPage;
 
-  // Fetch pets based on the filter options and pagination parameters
+  // Retrieve pets for current page with applied filter options
   const pets = await Pet.find(filterOptions)
     .skip(startIndex)
     .limit(limitPerPage);
 
-  // Render the index view with the retrieved pets and pagination data
+  // Calculate total number of pages based on total pets and limit per page
+  const totalPages = Math.ceil(totalPets / limitPerPage);
+  // Render response with pagination data
   res.render("pets/index", {
     pets,
     currentPage,
-    totalPages: Math.ceil(totalPets / limitPerPage),
+    limitPerPage,
     totalPets,
+    totalPages,
+    age,
+    gender,
+    breed,
+    species,
+    pattern,
+    coat,
+    size,
+    petStatus,
+    identifier,
+    name,
+    location,
+    color,
+    lostdate,
+    selectedPolygonCoordinates,
   });
 };
 
