@@ -1,7 +1,5 @@
 <% layout('layouts/boilerplate')%>
-<!-- <script>
-  import formatDistanceToNow from "date-fns/formatDistanceToNow";
-</script> -->
+
 
 <style>
   .marker-icon {
@@ -46,6 +44,12 @@
     display: none !important;
   }
 </style>
+
+<!-- <div class="ad-container" style="height: 100px; width: 100%; background-color:lightgrey">
+
+  <p>Advertisement text</p>
+</div> -->
+
 <div id="map" class="map" style="width: 100%; height: 400px"></div>
 
 
@@ -86,7 +90,7 @@
               <label class="form-label">Pet Status:</label>
               <div class="input-group">
                 <span class="input-group-text">
-                  <i class="bi bi-question-diamond-fill"></i>
+                  <i class="bi bi-question-diamond"></i>
                 </span>       
                 <select class="form-select" id="petStatus" name="petStatus">
                   <option value="">All</option>
@@ -131,7 +135,7 @@
       <label class="form-label">Breed:</label>
       <div class="input-group">
         <span class="input-group-text">
-          <i class="bi bi-grid-fill"></i>
+          <i class="bi bi-x-diamond-fill"></i>
         </span>       
         <select class="form-select" id="petBreed" name="breed">
           <option value="">All</option>
@@ -1035,23 +1039,111 @@
     /*all: unset;*/
   }
 </style>
+
+
+
 <script>
-    let searchFormBtn = document.querySelector(".search-form-btn");
+
+  // Get the filter form element
+  let filterForm = document.getElementById('filterForm');
+
+  // Add an event listener to the form's submit event
+  filterForm.addEventListener('submit', function(e) {
+    // Get the selected filter values
+    var petStatus = document.querySelector('#petStatus').value;
+    var species = document.querySelector('#species').value;
+    var gender = document.querySelector('#gender').value;
+    var petBreed = document.querySelector('#petBreed').value;
+    var color = document.querySelector('#color').value;
+    var distance = document.querySelector('#distance').value;
+    var age = document.querySelector('#age').value;
+    var coat = document.querySelector('#coat').value;
+    var size = document.querySelector('#size').value;
+    var identifier = document.querySelector('#identifier').value;
+    var region = document.querySelector('#region').value;
+    var lostdate = document.querySelector('#lostdate').value;
+
+    // Save the filter values to the local storage
+    localStorage.setItem('petStatus', petStatus);
+    localStorage.setItem('species', species);
+    localStorage.setItem('gender', gender);
+    localStorage.setItem('petBreed', petBreed);
+    localStorage.setItem('color', color);
+    localStorage.setItem('distance', distance);
+    localStorage.setItem('age', age);
+    localStorage.setItem('coat', coat);
+    localStorage.setItem('size', size);
+    localStorage.setItem('identifier', identifier);
+    localStorage.setItem('region', region);
+    localStorage.setItem('lostdate', lostdate);
+  });
+
+  // Set the saved filter values from the local storage
+  document.querySelector('#petStatus').value = localStorage.getItem('petStatus') || '';
+  document.querySelector('#species').value = localStorage.getItem('species') || '';
+  document.querySelector('#gender').value = localStorage.getItem('gender') || '';
+  document.querySelector('#petBreed').value = localStorage.getItem('petBreed') || '';
+  document.querySelector('#color').value = localStorage.getItem('color') || '';
+  document.querySelector('#distance').value = localStorage.getItem('distance') || '';
+  document.querySelector('#age').value = localStorage.getItem('age') || '';
+  document.querySelector('#coat').value = localStorage.getItem('coat') || '';
+  document.querySelector('#size').value = localStorage.getItem('size') || '';
+  document.querySelector('#identifier').value = localStorage.getItem('identifier') || '';
+  document.querySelector('#region').value = localStorage.getItem('region') || '';
+  document.querySelector('#lostdate').value = localStorage.getItem('lostdate') || '';
+
+
+    //let searchFormBtn = document.querySelector(".search-form-btn");
     let resetFormBtn = document.querySelector(".reset-form-btn")
+
+
+    // Function to clear the form filter values
+    function clearFormFilterValues() {
+      document.querySelector('#petStatus').value = '';
+      document.querySelector('#species').value = '';
+      document.querySelector('#gender').value = '';
+      document.querySelector('#petBreed').value = '';
+      document.querySelector('#color').value = '';
+      document.querySelector('#distance').value = '';
+      document.querySelector('#age').value = '';
+      document.querySelector('#coat').value = '';
+      document.querySelector('#size').value = '';
+      document.querySelector('#identifier').value = '';
+      document.querySelector('#region').value = '';
+      document.querySelector('#lostdate').value = '';
+    }
+
+
+
+
+
+// Event listener for the reset button
+resetFormBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  clearFormFilterValues();
+});
+
+
+
+
+
+
+
+
     //let paginationBtn = document.querySelector(".pagination-btn");
   
-    let filterPetStatus = document.querySelector("#petStatus");
-    let filterSpecies = document.querySelector("#species");
-    let filterGender = document.querySelector("#gender");
-    let filterBreed = document.querySelector("#petBreed");
-    let filterColor = document.querySelector("#color");
-    let filterDistance = document.querySelector("#distance");
-    let filterAge = document.querySelector("#age");
-    let filterCoat = document.querySelector("#coat");
-    let filterSize = document.querySelector("#size");
-    let filterIdentifier = document.querySelector("#identifier");
-    let filterRegion = document.querySelector("#region");
-    let filterLostDate = document.querySelector("#lostdate");
+    //let filterPetStatus = document.querySelector("#petStatus");
+    //let filterSpecies = document.querySelector("#species");
+    //let filterGender = document.querySelector("#gender");
+    //let filterBreed = document.querySelector("#petBreed");
+    //let filterColor = document.querySelector("#color");
+    //let filterDistance = document.querySelector("#distance");
+    //let filterAge = document.querySelector("#age");
+    //let filterCoat = document.querySelector("#coat");
+    //let filterSize = document.querySelector("#size");
+    //let filterIdentifier = document.querySelector("#identifier");
+    //let filterRegion = document.querySelector("#region");
+    //let filterLostDate = document.querySelector("#lostdate");
   
 
  
@@ -1070,27 +1162,27 @@
      // filterLostDate.value = "";
    // }
 
-   function clearFormFilterValues() {
-    filterPetStatus.selectedIndex = 0;
-    filterSpecies.selectedIndex = 0;
-    filterGender.selectedIndex = 0;
-    filterBreed.selectedIndex = 0;
-    filterColor.selectedIndex = 0;
-    filterDistance.value = "";
-    filterAge.selectedIndex = 0;
-    filterCoat.selectedIndex = 0;
-    filterSize.selectedIndex = 0;
-    filterIdentifier.value = "";
-    filterRegion.selectedIndex = 0;
-    filterLostDate.value = "";
-  }
+   //function clearFormFilterValues() {
+   // filterPetStatus.selectedIndex = 0;
+   // filterSpecies.selectedIndex = 0;
+   // filterGender.selectedIndex = 0;
+   // filterBreed.selectedIndex = 0;
+   // filterColor.selectedIndex = 0;
+   // filterDistance.value = "";
+   // filterAge.selectedIndex = 0;
+   // filterCoat.selectedIndex = 0;
+   // filterSize.selectedIndex = 0;
+   // filterIdentifier.value = "";
+   // filterRegion.selectedIndex = 0;
+   // filterLostDate.value = "";
+ // }
 
 
-    resetFormBtn.addEventListener("click", (e) => {
-      e.preventDefault()
-      clearFormFilterValues()
+   // resetFormBtn.addEventListener("click", (e) => {
+   //   e.preventDefault()
+   //   clearFormFilterValues()
     
-    })
+   // })
 
     //searchFormBtn.addEventListener("submit", (e) => {
     //  e.preventDefault()

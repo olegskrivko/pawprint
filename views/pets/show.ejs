@@ -155,25 +155,20 @@
             >
             <= pet.author.username %>
           </li> -->
-          <li class="list-group-item" style="text-transform: capitalize">
-            <b>Pet's Name:</b> <%= pet.title %>
+          <!-- <li class="list-group-item" style="text-transform: capitalize">
+            <b>Pet's Name:</b> <= pet.title %>
+          </li> -->
+          <li class="list-group-item"><i class="bi bi-diamond-half"></i> <b>Species:</b><span id="pet-species"> <%= pet.species %></span>
           </li>
-          <li class="list-group-item">
-            <b>Species:</b><span id="pet-species"> <%= pet.species %></span>
+          <li class="list-group-item"><i class="bi bi-x-diamond-fill"></i> <b>Breed:</b> <%= pet.breed %></li>
+          <li class="list-group-item"><i class="bi bi-grid-3x3-gap"></i> <b>Coat Pattern:</b> <%= pet.pattern %>
           </li>
-          <li class="list-group-item"><b>Breed:</b> <%= pet.breed %></li>
-          <li class="list-group-item">
-            <b>Coat Pattern:</b> <%= pet.pattern %>
+          <li class="list-group-item"><i class="bi bi-gender-ambiguous"></i> <b>Pet's Gender: </b><%= pet.gender %>
           </li>
-          <li class="list-group-item">
-            <b>Pet's Gender: </b><%= pet.gender %>
-          </li>
-          <li class="list-group-item">
-            <b>First Color:</b> <%= pet.color[0] %>
+          <li class="list-group-item"><i class="bi bi-palette"></i> <b>First Color:</b> <%= pet.color[0] %>
           </li>
           <% if (pet.color.length > 1) {%>
-          <li class="list-group-item">
-            <b>
+          <li class="list-group-item"><i class="bi bi-palette"></i> <b>
               <% if (pet.pattern === "Pointed") { %> Point Color: <% } else if
               (pet.pattern === "Spotted") { %> Spot Color: <% } else if
               (pet.pattern === "Striped") { %> Stripe Color: <% } else { %>
@@ -182,30 +177,25 @@
             <%= pet.color[1] %>
           </li>
           <% } %> <% if (pet.color.length > 2) {%>
-          <li class="list-group-item">
-            <b>Third Color:</b> <%= pet.color[2] %>
+          <li class="list-group-item"><i class="bi bi-palette"></i> <b>Third Color:</b> <%= pet.color[2] %>
           </li>
           <% } %>
 
-          <li class="list-group-item">
-            <b>Last Seen:</b> <%= lostDateInWords %>
+          <li class="list-group-item"><i class="bi bi-calendar3"></i> <b>Last Seen:</b> <%= lostDateInWords %>
           </li>
-          <li class="list-group-item"><b>Age:</b> <%= pet.age %></li>
-          <li class="list-group-item"><b>Coat Type:</b> <%= pet.coat %></li>
-          <li class="list-group-item"><b>Pet's Size:</b> <%= pet.size %></li>
-          <li class="list-group-item">
-            <b>Status:</b> <span id="pet-status"> <%= pet.petStatus %></span>
+          <li class="list-group-item"><i class="bi bi-calendar2-heart"></i> <b>Age:</b> <%= pet.age %></li>
+          <li class="list-group-item"><i class="bi bi-wind"></i> <b>Coat Type:</b> <%= pet.coat %></li>
+          <li class="list-group-item"><i class="bi bi-arrows-angle-expand"></i> <b>Pet's Size:</b> <%= pet.size %></li>
+          <li class="list-group-item"><i class="bi bi-question-diamond"></i> <b>Status:</b> <span id="pet-status"> <%= pet.petStatus %></span>
           </li>
           <li class="list-group-item d-none">
             <b>Lat: </b><span class="pet-latitude"><%=pet.latitude%></span
             ><b>Lng: </b><span class="pet-longitude"><%=pet.longitude%></span>
           </li>
-          <li class="list-group-item">
-            <b>Identifier:</b> <%= pet.identifier %>
+          <li class="list-group-item"><i class="bi bi-fingerprint"></i> <b>Identifier:</b> <%= pet.identifier %>
           </li>
           <li class="list-group-item">
-            <p class="card-text">
-              <b>Description:</b>
+            <p class="card-text"><i class="bi bi-chat-square-text"></i> <b>Description:</b>
               <span id="pet-description"> <%= pet.description %></span>
             </p>
           </li>
@@ -313,10 +303,12 @@
           ></textarea>
           <label for="body" class="small">Add comment...</label>
           <div class="valid-feedback">Looks good!</div>
-          <div class="mt-2">
+          <div class="mt-1">
             <!-- <button class="btn btn-sm btn-success mt-2"><small>Send</small></button>
             <a class="text-success" style="text-decoration: none;"><i class="bi bi-send-fill"></i> <small>Send</small></a> -->
-            <a href="#" class="text-secondary " onclick="event.preventDefault(); this.closest('form').submit();" style="text-decoration: none;"><i class="bi bi-send-fill"></i> <small>Send</small></a>
+            <a href="#" class="text-secondary" onclick="event.preventDefault(); this.closest('form').submit();" style="text-decoration: none;"><i class="bi bi-send-fill"></i> <small>Send</small></a>
+            <a href="#" class="text-secondary" style="text-decoration: none;"><i class="bi bi-geo-alt-fill"></i><small>+</small></a>
+            <!-- <a><i class="bi bi-geo-alt-fill"></i>-</a> -->
           </div>
         </div>
      
@@ -377,7 +369,12 @@
                 <form action="/pets/<%= pet._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
                   <!-- <button class="btn btn-sm btn-danger"><small>Delete</small></button>
                   <a class="text-danger" style="text-decoration: none;"><small><i class="bi-trash3"></i> Delete</small></a> -->
-                  <a href="#" class="text-danger" style="text-decoration: none;" onclick="deleteComment(event)"><small><i class="bi-trash3"></i> Delete</small></a>
+                  <a href="#" class="text-danger" style="text-decoration: none;" onclick="deleteComment(event)"><small><i class="bi-trash3"></i> Delete</small></a>           
+                               
+                    <!-- < if (comment.author.isVerified && comment.author.email) { %>
+                      <a style="text-decoration: none;" href="mailto:<= comment.author.email %>" class="text-secondary" ><i class="bi bi-envelope-fill"></i> Send</a>
+                    < } %> -->
+
                 </form>
               <% } %>
             </div>

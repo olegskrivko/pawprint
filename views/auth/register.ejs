@@ -1,46 +1,7 @@
-<% layout('layouts/boilerplate')%>
-<!-- <h1>Register</h1>
-<form action="/auth/register" method="POST" class="validated-form" novalidate>
-  <div class="mb-3">
-    <label class="form-label" for="username">Username</label>
-    <input
-      class="form-control"
-      type="text"
-      id="username"
-      name="username"
-      required
-      autofocus
-    />
-    <div class="valid-feedback">Looks good!</div>
-  </div>
-  <div class="mb-3">
-    <label class="form-label" for="email">Email</label>
-    <input class="form-control" type="email" id="email" name="email" required />
-    <div class="valid-feedback">Looks good!</div>
-  </div>
-  <div class="mb-3">
-    <label class="form-label" for="password">Password</label>
-    <input
-      class="form-control"
-      type="password"
-      id="password"
-      name="password"
-      required
-    />
-    <div class="valid-feedback">Looks good!</div>
-  </div>
-  <button class="btn btn-success">Register</button>
-</form> -->
+<% layout('layouts/boilerplate') %>
 
 <main class="form-signin w-100 m-auto" style="max-width: 400px">
   <form action="/auth/register" method="POST" class="validated-form" novalidate>
-    <!-- <img
-        class="mb-4"
-        src="/docs/5.3/assets/brand/bootstrap-logo.svg"
-        alt=""
-        width="72"
-        height="57"
-      /> -->
     <h1 class="h3 mb-3 fw-normal text-center">Please sign up</h1>
 
     <div class="form-floating mb-3">
@@ -60,7 +21,7 @@
       <input
         type="email"
         class="form-control"
-        id="floatingInput"
+        id="floatingEmail"
         name="email"
         placeholder="name@example.com"
         required
@@ -94,7 +55,7 @@
         data-bs-toggle="modal"
         data-bs-target="#staticBackdrop-termsandconditions"
       >
-        Terms & Conditions</span
+        Terms &amp; Conditions</span
       >.
     </p>
 
@@ -105,22 +66,6 @@
   </form>
 </main>
 
-<!-- Button trigger modal -->
-<!-- <button
-  type="button"
-  class="btn btn-primary"
-  data-bs-toggle="modal"
-  data-bs-target="#staticBackdrop"
->
-  Launch static backdrop modal
-</button> -->
-
-<!-- Scrollable modal -->
-<!-- <div class="modal-dialog modal-dialog-scrollable">
-  ...
-</div> -->
-
-<!-- Modal -->
 <div
   class="modal fade"
   id="staticBackdrop-privacypolicy"
@@ -133,7 +78,7 @@
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel-privacypolicy">
+        <h1 class="modal-title fs-4" id="staticBackdropLabel-privacypolicy">
           <strong>Privacy Policy</strong>
         </h1>
         <button
@@ -144,14 +89,12 @@
         ></button>
       </div>
 
-      <div class="modal-body"><%-include('../policies/privacypolicy')%></div>
+      <div class="modal-body"><% include('../policies/privacypolicy') %></div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Understood
         </button>
-
-        <!-- <button type="button" class="btn btn-primary">Understood</button> -->
       </div>
     </div>
   </div>
@@ -170,7 +113,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h1
-          class="modal-title fs-5"
+          class="modal-title fs-4"
           id="staticBackdropLabel-termsandconditions"
         >
           <strong>Terms and Conditions</strong>
@@ -184,15 +127,13 @@
       </div>
 
       <div class="modal-body">
-        <%-include('../policies/termsandconditions')%>
+        <% include('../policies/termsandconditions') %>
       </div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Understood
         </button>
-
-        <!-- <button type="button" class="btn btn-primary">Understood</button> -->
       </div>
     </div>
   </div>
