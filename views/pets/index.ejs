@@ -697,7 +697,7 @@
 </div>
 
 <!-- TOP PAGINATION ON MAP-->
-
+<p class="d-none current-page"><%= currentPage %></p>
 <div class="col-md-12">
   <nav class="mt-5" aria-label="Page navigation">
     <ul class="d-flex justify-content-center" style="padding: 0">
@@ -1078,6 +1078,10 @@
     localStorage.setItem('lostdate', lostdate);
   });
 
+
+
+// Function to retrieve filter values from local storage
+function retrieveFilterValues() {
   // Set the saved filter values from the local storage
   document.querySelector('#petStatus').value = localStorage.getItem('petStatus') || '';
   document.querySelector('#species').value = localStorage.getItem('species') || '';
@@ -1091,8 +1095,9 @@
   document.querySelector('#identifier').value = localStorage.getItem('identifier') || '';
   document.querySelector('#region').value = localStorage.getItem('region') || '';
   document.querySelector('#lostdate').value = localStorage.getItem('lostdate') || '';
+}
 
-
+ 
     //let searchFormBtn = document.querySelector(".search-form-btn");
     let resetFormBtn = document.querySelector(".reset-form-btn")
 
@@ -1119,12 +1124,49 @@
 
 // Event listener for the reset button
 resetFormBtn.addEventListener("click", (e) => {
-  e.preventDefault();
+ // e.preventDefault();
   clearFormFilterValues();
 });
 
+const nextBtn = document.querySelector('.next')
+const prevBtn = document.querySelector('.prev')
+let currentPage = document.querySelector('.current-page').innerText
+
+console.log('currentPage',currentPage)
+// Function to handle pagination
+//function navigateToPage(pageNumber) {
+  // Perform logic to navigate to the specified page
+//  retrieveFilterValues(); // Retrieve filter values before navigating to the page
+//}
 
 
+// Previous button event listener
+prevBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  navigateToPage(Number(currentPage) - 1);
+});
+
+// Next button event listener
+nextBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  navigateToPage(Number(currentPage) + 1);
+});
+
+// Function to handle pagination
+function navigateToPage(pageNumber) {
+  // Perform logic to navigate to the specified page
+  const limitPerPage = 10; // Replace with your limit per page value
+  const url = `/pets?page=${pageNumber}&limit=${limitPerPage}`;
+  
+  // Perform additional logic if needed, such as making an API request or updating the UI
+  
+  window.location.href = url; // Navigate to the specified page
+}
+
+
+
+ // On page load, retrieve filter values
+ window.addEventListener("load", retrieveFilterValues);
 
 
 
