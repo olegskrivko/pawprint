@@ -25,17 +25,9 @@
 
       <div class="d-flex text-body-secondary pt-3">
         <div class="mb-3 me-2">
-          <% pet.images.forEach(function(img, i) { %>
-          <img
-            src="<%=img.thumbnail %>"
-            class="img-thumbnail"
-            alt=""
-            width="98px"
-            height="98px"
-          />
+          <img src="<%= pet.images[0].thumbnail%>" class="img-thumbnail" alt="" width="98px" height="98px" />
           <!-- <div class="form-check-inline">azaz</div> -->
-          <!-- <label for="image-<%=i%>">Delete?</label> -->
-          <%})%>
+          <!-- <label for="image-<=i%>">Delete?</label> -->
         </div>
 
         <!-- <svg
@@ -56,16 +48,9 @@
         <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
           <div class="d-flex justify-content-between">
             <strong class="text-gray-dark"><p><%=pet.petStatus%></p></strong>
-            <button
-              class="btn btn-danger removeWatchlistBtn"
-              data-petid="<%= pet._id%>"
-            >
-              Remove
-            </button>
+            <button class="btn btn-danger removeWatchlistBtn" data-petid="<%= pet._id%>">Remove</button>
           </div>
-          <span class="d-block"
-            ><a href="/pets/<%=pet._id%>">@<%=pet.species%></a></span
-          >
+          <span class="d-block"><a href="/pets/<%=pet._id%>">@<%=pet.species%></a></span>
         </div>
       </div>
 
@@ -196,22 +181,19 @@
 <script>
   const updateWatchlist = async (watchlistData) => {
     try {
-      const response = await fetch(
-        `/auth/account/watchlist/${watchlistData.petId}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await fetch(`/auth/account/watchlist/${watchlistData.petId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
       if (response.ok) {
         // Watchlist updated successfully
-        console.log("Pet removed from watchlist successfully");
+        console.log('Pet removed from watchlist successfully');
         location.reload(); // Refresh the page (to see the result of deleted item)
       } else {
-        throw new Error("Failed to remove pet from watchlist");
+        throw new Error('Failed to remove pet from watchlist');
       }
     } catch (error) {
       console.error(error);
@@ -219,12 +201,10 @@
     }
   };
 
-  const removeWatchlistBtnAll = document.querySelectorAll(
-    ".removeWatchlistBtn"
-  );
+  const removeWatchlistBtnAll = document.querySelectorAll('.removeWatchlistBtn');
   removeWatchlistBtnAll.forEach((btn) => {
-    btn.addEventListener("click", async (e) => {
-      const petId = e.currentTarget.getAttribute("data-petid");
+    btn.addEventListener('click', async (e) => {
+      const petId = e.currentTarget.getAttribute('data-petid');
       console.log(petId);
 
       // Prepare the watchlist data to send in the request body
