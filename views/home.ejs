@@ -1,17 +1,18 @@
 <% layout('layouts/boilerplate')%>
 
-<main class="form-signin w-100 m-auto" style="max-width: 400px">
+<main class="w-100 m-auto" style="max-width: 600px">
+  <div class="icon d-flex justify-content-center">
+    <span>
+      <svg class="bi" width="180" height="144" fill="#6F7174">
+        <use xlink:href="#catlogo"></use>
+      </svg>
+    </span>
+  </div>
   <div class="py-3 my-2 text-center">
-    <h1 class="display-5 fw-bold">
-      <span class="text-warning"
-        >PawPrint<span>
-          <svg class="bi" width="90" height="72" fill="#adb5bd">
-            <use xlink:href="#paw"></use></svg></span
-      ></span>
-    </h1>
+    <h1 class="display-5 fw-bold">Welcome to <span class="text-warning">PawPrint</span></h1>
   </div>
 
-  <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5" style="text-align: justify">With our mobile-friendly app, you can quickly and easily search for missing pets in your area, no matter where you are. Try it out today and see for yourself how easy it is to find your furry friend with PawPrint.</div>
+  <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5" style="text-align: justify">Find your furry friend with PawPrint. Try it today, no matter where you are.</div>
 
   <% if(!currentUser) { %>
   <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
