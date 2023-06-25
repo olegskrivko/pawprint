@@ -1,7 +1,42 @@
 {
+  "home": {
+    "appName": "PawPrint",
+    "welcomeTitle": "Welcome to ",
+    "welcomeText": "Find your furry friend with PawPrint. Try it today, no matter where you are.",
+    "welcomeBtn": "Find a Pet",
+    "loginBtn": "Find a Pet",
+    "signupBtn": "Find a Pet"
+  },
   "about": {
-    "title": "Our Goal",
-    "paragraph1": "Our app utilizes advanced technology to facilitate the reunification of lost pets with their owners. We provide a platform for posting lost pet listings and actively work to connect owners with individuals who have found them.",
-    "paragraph2": "Additionally, our app connects you with a wide range of pet-related services, including veterinary clinics, groomers, trainers, and more. We ensure that you have access to the right resources for your pet's specific needs."
+    "ourGoalTitle": "Our Goal",
+    "ourGoalText1": "Our app utilizes advanced technology to facilitate the reunification of lost pets with their owners. We provide a platform for posting lost pet listings and actively work to connect owners with individuals who have found them.",
+    "ourGoalText2": "Additionally, our app connects you with a wide range of pet-related services, including veterinary clinics, groomers, trainers, and more. We ensure that you have access to the right resources for your pet's specific needs.",
+    "featureTitle": "Features",
+    "featureSubtitle1": "Mobile-Optimized and Secure Platform",
+    "featureText1": "Our mobile-friendly app uses the latest technologies to provide a safe and secure platform for reuniting lost pets with their owners.",
+    "featureSubtitle2": "Pet Health and Care Information",
+    "featureText2": "Our app provides valuable information on pet health and emergency care, including the importance of vaccinations and regular check-ups to ensure your pet stays healthy and happy.",
+    "featureSubtitle3": "Community Resources",
+    "featureText3": "A section that provides information on local animal shelters, veterinarians, and other resources for pet owners.",
+    "featureSubtitle4": "Tips and Resources",
+    "featureText4": "A section that provides tips and resources for pet owners on how to prevent their pets from getting lost, as well as what to do if their pet goes missing.",
+    "featureSubtitle5": "Pet Profile Creation",
+    "featureText5": "A feature that allows users to create a profile for their lost pet, including a photo, description, and contact information.",
+    "featureSubtitle6": "Social Media Integration",
+    "featureText6": "Integration with social media platforms to help spread the word about lost pets and facilitate communication among users.",
+    "featureSubtitle7": "Searchable Database",
+    "featureText7": "A searchable database of lost and found pets, which allows users to search for pets based on location, breed, color, and other characteristics.",
+    "featureSubtitle8": "Lost and Found Pet Map",
+    "featureText8": "A feature that displays a map of lost and found pets in the area, allowing users to easily locate and identify lost pets.",
+    "featureSubtitle9": "Lost Pet Flyers",
+    "featureText9": "A feature that allows users to easily create and print lost pet flyers to distribute in their local community.",
+    "supportOurProjectTitle": "Support Our Project",
+    "supportOurProjectText": "Your contribution can help us continue our mission to reunite lost pets with their families and provide them with the care they need. Every little bit counts and we appreciate your support!",
+    "supportBtn": "Support",
+    "shareYourThoughtsTitle": "Share Your Thoughts",
+    "shareYourThoughtsText": "Your feedback is incredibly valuable to us as we strive to improve our app and provide the best possible service to pet owners. We appreciate any comments, suggestions, or criticisms you may have, and we will use them to make our app even better. Please take a moment to share your thoughts with us.",
+    "leaveFeedbackBtn": "Leave feedback",
+    "sponsorsTitle": "Sponsors",
+    "sponsorsText": "Our sponsors play a crucial role in helping us continue our mission to reunite lost pets with their families and provide them with the care they need. Their generous support not only helps us keep the lights on, but also makes a real difference in the lives of lost and abandoned animals."
   }
 }

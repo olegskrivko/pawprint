@@ -1,7 +1,42 @@
 {
+  "home": {
+    "appName": "PawPrint",
+    "welcomeTitle": "Laipni lūdzam ",
+    "welcomeText": "Atrodi savu pūkaino draugu ar PawPrint. Pamēģini to šodien, neatkarīgi no tā, kur tu atrodies.",
+    "welcomeBtn": "Atrast mājdzīvnieku",
+    "loginBtn": "Pierakstīties",
+    "signupBtn": "Reģistrēties"
+  },
   "about": {
-    "title": "Mūsu mērķis",
-    "paragraph1": "Mūsu lietotne izmanto augstas tehnoloģijas, lai atvieglotu pazudušo mājdzīvnieku atgriešanos pie saviem īpašniekiem. Mēs nodrošinām platformu zaudēto mājdzīvnieku sludinājumu publicēšanai un aktīvi strādājam, lai savienotu īpašniekus ar personām, kuras tos ir atradušas.",
-    "paragraph2": "Papildus tam mūsu lietotne jums nodrošina piekļuvi plašam mājdzīvnieku saistītu pakalpojumu klāstam, tostarp veterinārām klīnikām, frizētavām, apmācītājiem un citiem. Mēs nodrošinām, ka jums ir pieejami pareizie resursi jūsu mājdzīvnieka specifiskajām vajadzībām."
+    "ourGoalTitle": "Mūsu mērķis",
+    "ourGoalText1": "Mūsu lietotne izmanto augstas tehnoloģijas, lai atvieglotu pazudušo mājdzīvnieku atgriešanos pie saviem īpašniekiem. Mēs nodrošinām platformu zaudēto mājdzīvnieku sludinājumu publicēšanai un aktīvi strādājam, lai savienotu īpašniekus ar personām, kuras tos ir atradušas.",
+    "ourGoalText2": "Papildus tam mūsu lietotne jums nodrošina piekļuvi plašam mājdzīvnieku saistītu pakalpojumu klāstam, tostarp veterinārām klīnikām, frizētavām, apmācītājiem un citiem. Mēs nodrošinām, ka jums ir pieejami pareizie resursi jūsu mājdzīvnieka specifiskajām vajadzībām.",
+    "featureTitle": "Funkcijas",
+    "featureSubtitle1": "Mobilajai ierīcei optimizēta un droša platforma",
+    "featureText1": "Mūsu mobilā lietotne izmanto jaunākās tehnoloģijas, lai nodrošinātu drošu un drošu platformu, kas palīdz atgriezt pazudušos mājdzīvniekus pie viņu īpašniekiem.",
+    "featureSubtitle2": "Mājdzīvnieku veselības un aprūpes informācija",
+    "featureText2": "Mūsu lietotne sniedz vērtīgu informāciju par mājdzīvnieku veselību un neatliekamo aprūpi, ieskaitot vakcinācijas nozīmi un regulāras pārbaudes, lai nodrošinātu, ka jūsu mājdzīvnieks ir vesels un laimīgs.",
+    "featureSubtitle3": "Kopienas resursi",
+    "featureText3": "Sadaļa, kas sniedz informāciju par vietējiem dzīvnieku patversmēm, veterināriem un citiem resursiem mājdzīvnieku īpašniekiem.",
+    "featureSubtitle4": "Padomi un resursi",
+    "featureText4": "Sadaļa, kas sniedz padomus un resursus mājdzīvnieku īpašniekiem par to, kā novērst mājdzīvnieku pazaudēšanu, kā arī ko darīt, ja mājdzīvnieks pazūd.",
+    "featureSubtitle5": "Mājdzīvnieku profila izveide",
+    "featureText5": "Funkcija, kas ļauj lietotājiem izveidot profila lapu savam pazudušajam mājdzīvniekam, iekļaujot fotogrāfiju, aprakstu un kontaktinformāciju.",
+    "featureSubtitle6": "Sociālo tīklu integrācija",
+    "featureText6": "Integrācija ar sociālo tīklu platformām, lai palīdzētu izplatīt informāciju par pazudušiem mājdzīvniekiem un veicinātu saziņu starp lietotājiem.",
+    "featureSubtitle7": "Meklējamā datu bāze",
+    "featureText7": "Meklējama datu bāze par pazudušiem un atrastiem mājdzīvniekiem, kas ļauj lietotājiem meklēt mājdzīvniekus pēc atrašanās vietas, šķirnes, krāsas un citiem raksturlielumiem.",
+    "featureSubtitle8": "Pazudušo un atrasto mājdzīvnieku karte",
+    "featureText8": "Funkcija, kas attēlo karti ar pazudušajiem un atrastajiem mājdzīvniekiem apgabalā, ļaujot lietotājiem viegli atrast un identificēt pazudušos mājdzīvniekus.",
+    "featureSubtitle9": "Pazudušo mājdzīvnieku plakāti",
+    "featureText9": "Funkcija, kas ļauj lietotājiem viegli izveidot un izdrukāt pazudušo mājdzīvnieku plakātus, lai tos izplatītu savā vietējā kopienā.",
+    "supportOurProjectTitle": "Atbalsti mūsu projektu",
+    "supportOurProjectText": "Tavs ieguldījums var palīdzēt mums turpināt mūsu misiju atgriezt pazudušos mājdzīvniekus pie viņu ģimenēm un nodrošināt viņiem nepieciešamo aprūpi. Katrs mazs ieguldījums ir nozīmīgs, un mēs novērtējam tavu atbalstu!",
+    "supportBtn": "Atbalsti",
+    "shareYourThoughtsTitle": "Dalies ar savām domām",
+    "shareYourThoughtsText": "Tava atsauksme ir ļoti vērtīga mums, jo mēs cenšamies uzlabot mūsu lietotni un sniegt vislabāko iespējamo servisu mājdzīvnieku īpašniekiem. Mēs novērtējam jebkādas komentārus, ieteikumus vai kritiku, ko tev varētu būt, un izmantosim tos, lai padarītu mūsu lietotni vēl labāku. Lūdzu, ņem vērā brīdi un dalies ar savām domām ar mums.",
+    "leaveFeedbackBtn": "Sniedz atsauksmi",
+    "sponsorsTitle": "Sponsori",
+    "sponsorsText": "Mūsu sponsoriem ir būtiska loma, palīdzot mums turpināt mūsu misiju atgriezt pazudušos mājdzīvniekus pie viņu ģimenēm un nodrošināt viņiem nepieciešamo aprūpi. Viņu dāsnuma atbalsts ne tikai palīdz mums uzturēt darbību, bet arī veido reālu atšķirību pazudušo un atstumto dzīvnieku dzīvēs."
   }
 }

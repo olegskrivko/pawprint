@@ -6,52 +6,20 @@
       <div class="d-flex">
         <% if (!currentUser) { %>
         <!-- Define the behavior when user is not logged in -->
-        <button
-          type="button"
-          onclick="location.href='/auth/login'"
-          class="btn btn-sm btn-outline-light me-2"
-        >
-          Log in
-        </button>
-        <button
-          type="button"
-          onclick="location.href='/auth/register'"
-          class="btn btn-sm btn-warning"
-        >
-          Sign up
-        </button>
+        <button type="button" onclick="location.href='/auth/login'" class="btn btn-sm btn-outline-light me-2">Log in</button>
+        <button type="button" onclick="location.href='/auth/register'" class="btn btn-sm btn-warning">Sign up</button>
         <% } else { %>
         <!-- Define the behavior when user is logged in -->
         <p class="my-0 mx-3 d-flex" style="text-transform: capitalize">
-          <a
-            href="/auth/account/profile"
-            class="me-2 mb-md-0 text-white text-decoration-none lh-1"
-          >
+          <a href="/auth/account/profile" class="me-2 mb-md-0 text-white text-decoration-none lh-1">
             <% if (currentUser.avatar.length > 0) { %>
-            <img
-              src="<%= currentUser.avatar[0].url %>"
-              alt="mdo"
-              width="32"
-              height="32"
-              class="rounded-circle me-2"
-              style="box-shadow: 0 0 0 2px #cccccc; margin: -2px"
-            />
+            <img src="<%= currentUser.avatar[0].url %>" alt="mdo" width="32" height="32" class="rounded-circle me-2" style="box-shadow: 0 0 0 2px #cccccc; margin: -2px" />
             <% } else { %>
-            <img
-              src="/images/icons/user.png"
-              alt="mdo"
-              width="32"
-              height="32"
-              class="rounded-circle me-2"
-              style="box-shadow: 0 0 0 2px #cccccc; margin: -2px"
-            />
+            <img src="/images/icons/user.png" alt="mdo" width="32" height="32" class="rounded-circle me-2" style="box-shadow: 0 0 0 2px #cccccc; margin: -2px" />
             <% } %> Hello, <%= currentUser.username %>!
           </a>
         </p>
-        <a
-          href="/auth/logout"
-          class="me-2 mb-md-0 text-white text-decoration-none lh-1 d-flex align-items-center"
-        >
+        <a href="/auth/logout" class="me-2 mb-md-0 text-white text-decoration-none lh-1 d-flex align-items-center">
           <svg class="bi" width="30" height="24" fill="#ced4da">
             <use xlink:href="#bi-box-arrow-right"></use>
           </svg>
@@ -60,15 +28,7 @@
         <% } %>
       </div>
 
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
