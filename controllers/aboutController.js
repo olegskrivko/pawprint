@@ -5,32 +5,43 @@
 //     console.error(err.message);
 //   }
 // };
-const User = require("../models/user"); // Assuming your user model is defined in '../models/user.js'
-const enData = require("../locales/en.json");
-const lvData = require("../locales/lv.json");
+// const User = require('../models/user'); // Assuming your user model is defined in '../models/user.js'
+// const enData = require('../locales/en.json');
+// const lvData = require('../locales/lv.json');
+
+// module.exports.index = async (req, res) => {
+//   try {
+//     let userLanguage;
+
+//     if (req.isAuthenticated()) {
+//       // User is logged in, retrieve language preference from user profile
+//       const user = await User.findById(req.user.id);
+//       userLanguage = user.language;
+//     } else {
+//       // User is not logged in, retrieve language preference from request headers
+//       userLanguage = req.headers['accept-language'];
+//       console.log(userLanguage);
+//     }
+
+//     // Retrieve the corresponding data based on the user's language preference
+//     const data = userLanguage && userLanguage.startsWith('lv') ? lvData : enData;
+
+//     res.render('about/index', { data });
+//   } catch (err) {
+//     console.error(err.message);
+//     // Handle the error or redirect to an appropriate error page
+//     res.redirect('/error');
+//   }
+// };
 
 module.exports.index = async (req, res) => {
   try {
-    let userLanguage;
+    const data = req.data; // Language data is available from the middleware
 
-    if (req.isAuthenticated()) {
-      // User is logged in, retrieve language preference from user profile
-      const user = await User.findById(req.user.id);
-      userLanguage = user.language;
-    } else {
-      // User is not logged in, retrieve language preference from request headers
-      userLanguage = req.headers["accept-language"];
-    }
-
-    // Retrieve the corresponding data based on the user's language preference
-    const data =
-      userLanguage && userLanguage.startsWith("lv") ? lvData : enData;
-
-    res.render("about/index", { data });
+    res.render('about/index', { data });
   } catch (err) {
     console.error(err.message);
-    // Handle the error or redirect to an appropriate error page
-    res.redirect("/error");
+    res.redirect('/error');
   }
 };
 
@@ -81,7 +92,7 @@ module.exports.index = async (req, res) => {
 
 module.exports.support = async (req, res) => {
   try {
-    res.render("about/support");
+    res.render('about/support');
   } catch (err) {
     console.error(err.message);
   }
@@ -89,7 +100,7 @@ module.exports.support = async (req, res) => {
 
 module.exports.feedback = async (req, res) => {
   try {
-    res.render("about/feedback");
+    res.render('about/feedback');
   } catch (err) {
     console.error(err.message);
   }

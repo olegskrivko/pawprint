@@ -15,10 +15,10 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const MongoStore = require('connect-mongo');
 const mongoSanitize = require('express-mongo-sanitize');
-const i18n = require('i18n');
+//const i18n = require('i18n');
 
 // Import middleware and utility
-const { languageMiddleware } = require('./middleware/middleware');
+//const { languageMiddleware } = require('./middleware/middleware');
 const ExpressError = require('./utils/ExpressError');
 
 // Import routes
@@ -41,15 +41,15 @@ const User = require('./models/user');
 const app = express();
 
 // Configure i18n middleware
-i18n.configure({
-  locales: ['en', 'lv'],
-  defaultLocale: 'en',
-  directory: __dirname + '/locales',
-  queryParameter: 'lang',
-  cookie: 'lang',
-  register: global,
-});
-app.use(i18n.init);
+// i18n.configure({
+//   locales: ['en', 'lv'],
+//   defaultLocale: 'en',
+//   directory: __dirname + '/locales',
+//   queryParameter: 'lang',
+//   cookie: 'lang',
+//   register: global,
+// });
+// app.use(i18n.init);
 //   "mongoose": "^6.8.4",
 // Connect to MongoDB
 const dbURL = process.env.DB_URL;

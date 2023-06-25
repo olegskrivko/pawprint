@@ -1,18 +1,14 @@
-const User = require("../models/user");
-const Comment = require("../models/comment");
-const Pet = require("../models/pet");
-const {
-  phoneCodeOptions,
-  countryOptions,
-  languageOptions,
-} = require("../utils/userSelectOptions");
-const { cloudinary } = require("../cloudinary");
+const User = require('../models/user');
+const Comment = require('../models/comment');
+const Pet = require('../models/pet');
+const { phoneCodeOptions, countryOptions, languageOptions } = require('../utils/userSelectOptions');
+const { cloudinary } = require('../cloudinary');
 // Import the nodemailer module
-const crypto = require("crypto");
+const crypto = require('crypto');
 // const sgMail = require("@sendgrid/mail");
 // sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-const nodemailer = require("nodemailer");
+const nodemailer = require('nodemailer');
 
 module.exports.register = async (req, res, next) => {
   try {
@@ -41,7 +37,7 @@ module.exports.register = async (req, res, next) => {
 
       // Create a transporter using SMTP
       const transporter = nodemailer.createTransport({
-        service: "gmail",
+        service: 'gmail',
         port: 587,
         secure: false, // upgrade later with STARTTLS
         auth: {
@@ -54,16 +50,16 @@ module.exports.register = async (req, res, next) => {
       const mailOptions = {
         from: process.env.EMAIL_USERNAME, // Replace with your Gmail address
         to: email, // Replace with the recipient's email address
-        subject: "Test Email",
+        subject: 'Test Email',
         text: `Hello from Nodemailer! ${verificationLink}`,
       };
 
       // Send the email
       transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-          console.error("Error sending email:", error);
+          console.error('Error sending email:', error);
         } else {
-          console.log("Email sent:", info.response);
+          console.log('Email sent:', info.response);
         }
       });
 
@@ -78,16 +74,13 @@ module.exports.register = async (req, res, next) => {
       // Send the email
       // await sgMail.send(msg);
 
-      req.flash(
-        "success",
-        "Registration successful! An email with a verification link has been sent to your email address."
-      );
-      res.redirect("/pets");
+      req.flash('success', 'Registration successful! An email with a verification link has been sent to your email address.');
+      res.redirect('/pets');
     });
   } catch (error) {
     // Handle errors during registration
-    req.flash("error", error.message);
-    res.redirect("/auth/register");
+    req.flash('error', error.message);
+    res.redirect('/auth/register');
   }
 };
 
@@ -142,29 +135,29 @@ module.exports.register = async (req, res, next) => {
 // Function to generate a random verification token
 async function generateVerificationToken() {
   //const crypto = require("crypto");
-  return crypto.randomBytes(32).toString("hex");
+  return crypto.randomBytes(32).toString('hex');
 }
 
 // Controller for rendering the registration form
 module.exports.renderRegister = (req, res) => {
-  res.render("auth/register");
+  res.render('auth/register');
 };
 
 module.exports.verifyEmail = async (req, res, next) => {
   try {
     const { token } = req.params;
-    console.log("token", token);
+    console.log('token', token);
 
     // Find the user with the provided verification token
     const user = await User.findOne({
       verificationToken: token,
       verificationTokenExpires: { $gt: Date.now() },
     });
-    console.log("user", user);
+    console.log('user', user);
     // If no user found or the token has expired
     if (!user) {
-      req.flash("error", "Invalid or expired verification token.");
-      return res.redirect("/auth/login");
+      req.flash('error', 'Invalid or expired verification token.');
+      return res.redirect('/auth/login');
     }
 
     // Update the user's verification status
@@ -175,17 +168,11 @@ module.exports.verifyEmail = async (req, res, next) => {
     // Save the updated user
     await user.save();
 
-    req.flash(
-      "success",
-      "Your email has been verified successfully. You can now log in."
-    );
-    res.redirect("/auth/login");
+    req.flash('success', 'Your email has been verified successfully. You can now log in.');
+    res.redirect('/auth/login');
   } catch (error) {
-    req.flash(
-      "error",
-      "An error occurred while verifying your email. Please try again."
-    );
-    res.redirect("/auth/login");
+    req.flash('error', 'An error occurred while verifying your email. Please try again.');
+    res.redirect('/auth/login');
   }
 };
 
@@ -274,7 +261,7 @@ module.exports.verifyEmail = async (req, res, next) => {
 
 // Controller for rendering the login page
 module.exports.renderLogin = (req, res) => {
-  res.render("auth/login"); // Render the login view
+  res.render('auth/login'); // Render the login view
 };
 
 // Controller for user login
@@ -283,10 +270,10 @@ module.exports.login = (req, res) => {
   const { username } = req.user;
 
   // Display a flash message with a welcome greeting and the user's name
-  req.flash("success", `Welcome, ${username}!`);
+  req.flash('success', `Welcome, ${username}!`);
 
   // Retrieve the redirect URL from the session or set a default value
-  const redirectUrl = req.session.returnTo || "/pets";
+  const redirectUrl = req.session.returnTo || '/pets';
 
   // Delete the returnTo property from the session to prevent future redirections
   delete req.session.returnTo;
@@ -299,15 +286,15 @@ module.exports.login = (req, res) => {
 module.exports.logout = (req, res) => {
   req.logout((err) => {
     if (err) {
-      console.error("Logout error:", err);
+      console.error('Logout error:', err);
       // Handle the error appropriately, such as displaying an error message
-      req.flash("error", "Failed to logout.");
+      req.flash('error', 'Failed to logout.');
     } else {
       // Display a flash message indicating successful logout
-      req.flash("success", "You have been logged out successfully!");
+      req.flash('success', 'You have been logged out successfully!');
 
       // Redirect the user to the desired page after logout
-      res.redirect("/pets");
+      res.redirect('/pets');
     }
   });
 };
@@ -316,14 +303,14 @@ module.exports.logout = (req, res) => {
 module.exports.renderAccountProfile = (req, res) => {
   try {
     // Render the account page template
-    res.render("auth/profile", { phoneCodeOptions, countryOptions });
+    res.render('auth/profile', { phoneCodeOptions, countryOptions });
   } catch (error) {
     // Log the error for debugging purposes
-    console.error("Error rendering account page:", error);
+    console.error('Error rendering account page:', error);
 
     // Handle the error appropriately, such as displaying an error message or redirecting to an error page
-    req.flash("error", "Failed to render account page.");
-    res.redirect("/pets"); // Redirect to an appropriate error page or fallback route
+    req.flash('error', 'Failed to render account page.');
+    res.redirect('/pets'); // Redirect to an appropriate error page or fallback route
   }
 };
 
@@ -331,14 +318,14 @@ module.exports.renderAccountProfile = (req, res) => {
 module.exports.renderAccountSettings = (req, res) => {
   try {
     // Render the account settings page template
-    res.render("auth/settings", { languageOptions });
+    res.render('auth/settings', { languageOptions });
   } catch (error) {
     // Log the error for debugging purposes
-    console.error("Error rendering account page:", error);
+    console.error('Error rendering account page:', error);
 
     // Handle the error appropriately, such as displaying an error message or redirecting to an error page
-    req.flash("error", "Failed to render account page.");
-    res.redirect("/pets"); // Redirect to an appropriate error page or fallback route
+    req.flash('error', 'Failed to render account page.');
+    res.redirect('/pets'); // Redirect to an appropriate error page or fallback route
   }
 };
 
@@ -450,10 +437,10 @@ module.exports.updateProfileAvatar = async (req, res, next) => {
             },
           },
         },
-        { new: true }
+        { new: true },
       );
 
-      req.flash("success", "Successfully uploaded avatar!");
+      req.flash('success', 'Successfully uploaded avatar!');
       // return res.redirect(`/auth/account/profile`);
     }
   } catch (err) {
@@ -480,16 +467,16 @@ module.exports.updateAccount = async (req, res, next) => {
           lastName,
           phoneCode,
           phoneNumber,
-          "address.country": country,
+          'address.country': country,
         },
       },
-      { new: true }
+      { new: true },
     );
 
     // Update the session with the new user information
     req.login(updatedUser, (err) => {
       if (err) {
-        console.error("Error updating session:", err);
+        console.error('Error updating session:', err);
         // Handle the error appropriately
       }
 
@@ -497,11 +484,9 @@ module.exports.updateAccount = async (req, res, next) => {
       res.json({ success: true });
     });
   } catch (error) {
-    console.error("Error updating account:", error);
+    console.error('Error updating account:', error);
     // Handle the error appropriately
-    res
-      .status(500)
-      .json({ success: false, message: "Failed to update account" });
+    res.status(500).json({ success: false, message: 'Failed to update account' });
   }
 };
 
@@ -518,13 +503,13 @@ module.exports.updateAccountSettings = async (req, res, next) => {
           language,
         },
       },
-      { new: true }
+      { new: true },
     );
 
     // Update the session with the new user information
     req.login(updatedUser, (err) => {
       if (err) {
-        console.error("Error updating session:", err);
+        console.error('Error updating session:', err);
         // Handle the error appropriately
       }
 
@@ -532,11 +517,9 @@ module.exports.updateAccountSettings = async (req, res, next) => {
       res.json({ success: true });
     });
   } catch (error) {
-    console.error("Error updating account:", error);
+    console.error('Error updating account:', error);
     // Handle the error appropriately
-    res
-      .status(500)
-      .json({ success: false, message: "Failed to update account settings" });
+    res.status(500).json({ success: false, message: 'Failed to update account settings' });
   }
 };
 
@@ -557,26 +540,26 @@ module.exports.deleteAccount = async (req, res) => {
     // Logout the user session with a callback function
     req.logout((err) => {
       if (err) {
-        console.error("Error logging out:", err);
-        req.flash("error", "Failed to delete account. Please try again.");
-        res.redirect("/");
+        console.error('Error logging out:', err);
+        req.flash('error', 'Failed to delete account. Please try again.');
+        res.redirect('/');
         return;
       }
 
       // Flash a success message
-      req.flash("success", "Account deleted successfully!");
+      req.flash('success', 'Account deleted successfully!');
 
       // Redirect to the homepage or any other appropriate page
-      res.redirect("/auth/register");
+      res.redirect('/auth/register');
     });
   } catch (error) {
-    console.error("Error deleting account:", error);
+    console.error('Error deleting account:', error);
 
     // Flash an error message
-    req.flash("error", "Failed to delete account. Please try again.");
+    req.flash('error', 'Failed to delete account. Please try again.');
 
     // Redirect to the account page or any other appropriate page
-    res.redirect("/");
+    res.redirect('/');
   }
 };
 
@@ -590,10 +573,10 @@ module.exports.renderAccountWatchlist = async (req, res) => {
     const pets = await Pet.find({ _id: { $in: watchlist } });
 
     // Render the watchlist page with the watchlist data
-    res.render("auth/watchlist", { pets });
+    res.render('auth/watchlist', { pets });
   } catch (error) {
     // Log the error for debugging purposes
-    console.error("Error rendering account watchlist:", error);
+    console.error('Error rendering account watchlist:', error);
 
     // Handle the error appropriately, such as displaying an error message or redirecting to an error page
     //req.flash("error", "Failed to render account watchlist.");
@@ -625,10 +608,10 @@ module.exports.updateAccountWatchlist = async (req, res) => {
     // Save the updated user data
     await user.save();
 
-    res.status(200).json({ message: "Watchlist updated successfully" });
+    res.status(200).json({ message: 'Watchlist updated successfully' });
   } catch (error) {
-    console.error("Error updating watchlist:", error);
-    res.status(500).json({ error: "Failed to update watchlist" });
+    console.error('Error updating watchlist:', error);
+    res.status(500).json({ error: 'Failed to update watchlist' });
   }
 };
 // Controller for deleting user account watchlist item
@@ -636,7 +619,7 @@ module.exports.deleteAccountWatchlist = async (req, res) => {
   try {
     const userId = req.user._id;
     const petId = req.params.petId;
-    console.log("petId", petId);
+    console.log('petId', petId);
 
     // Find the user by ID
     const user = await User.findById(userId);
@@ -650,14 +633,12 @@ module.exports.deleteAccountWatchlist = async (req, res) => {
       // Save the updated user data
       await user.save();
 
-      res
-        .status(200)
-        .json({ message: "Pet removed from watchlist successfully" });
+      res.status(200).json({ message: 'Pet removed from watchlist successfully' });
     } else {
-      res.status(404).json({ error: "Pet not found in watchlist" });
+      res.status(404).json({ error: 'Pet not found in watchlist' });
     }
   } catch (error) {
-    console.error("Error removing pet from watchlist:", error);
-    res.status(500).json({ error: "Failed to remove pet from watchlist" });
+    console.error('Error removing pet from watchlist:', error);
+    res.status(500).json({ error: 'Failed to remove pet from watchlist' });
   }
 };

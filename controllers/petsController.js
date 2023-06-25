@@ -1,39 +1,23 @@
-const Pet = require("../models/pet");
-const Location = require("../models/location");
-const { ObjectId } = require("mongoose").Types;
-const { cloudinary } = require("../cloudinary");
+const Pet = require('../models/pet');
+const Location = require('../models/location');
+const { ObjectId } = require('mongoose').Types;
+const { cloudinary } = require('../cloudinary');
 // const tt = require("@tomtom-international/web-sdk-services/dist/services-node.min.js");
-const fns = require("date-fns");
+const fns = require('date-fns');
 // const PDFDocument = require("pdfkit");
-const path = require("path");
-const axios = require("axios");
-const fs = require("fs");
+const path = require('path');
+const axios = require('axios');
+const fs = require('fs');
+// const { genderOptions } = require('../utils/userSelectOptions');
 // const pdf = require("html-pdf");
 // const puppeteer = require("puppeteer");
 
 module.exports.index = async (req, res) => {
   const ITEMS_PER_PAGE = 10; // Number of items to display per page
-  const {
-    page,
-    limit,
-    age,
-    gender,
-    breed,
-    species,
-    pattern,
-    coat,
-    size,
-    petStatus,
-    identifier,
-    name,
-    location,
-    color,
-    lostdate,
-    maxDistance,
-    userlongitude,
-    userlatitude,
-    selectedRegion,
-  } = req.query;
+  const { page, limit, age, gender, breed, species, pattern, coat, size, petStatus, identifier, name, location, color, lostdate, maxDistance, userlongitude, userlatitude, selectedRegion } = req.query;
+
+  // Retrieve the language preference and data from the response locals
+  const data = req.data; // Language data is available from the middleware
 
   const selectedLocation = await Location.findOne({ region: selectedRegion });
 
@@ -41,10 +25,7 @@ module.exports.index = async (req, res) => {
 
   if (selectedLocation && selectedLocation.geometry) {
     const selectedPolygon = selectedLocation.geometry.coordinates[0];
-    selectedPolygonCoordinates = selectedPolygon.map((coord) => [
-      coord[0],
-      coord[1],
-    ]);
+    selectedPolygonCoordinates = selectedPolygon.map((coord) => [coord[0], coord[1]]);
   }
 
   // Validate and sanitize input parameters
@@ -54,37 +35,37 @@ module.exports.index = async (req, res) => {
   // Define filter options for the search query
   const filterOptions = {};
   if (age) {
-    filterOptions.age = { $regex: new RegExp(age, "i") };
+    filterOptions.age = { $regex: new RegExp(age, 'i') };
   }
   if (species) {
-    filterOptions.species = { $regex: new RegExp(species, "i") };
+    filterOptions.species = { $regex: new RegExp(species, 'i') };
   }
   if (breed) {
-    filterOptions.breed = { $regex: new RegExp(breed, "i") };
+    filterOptions.breed = { $regex: new RegExp(breed, 'i') };
   }
   if (pattern) {
-    filterOptions.pattern = { $regex: new RegExp(pattern, "i") };
+    filterOptions.pattern = { $regex: new RegExp(pattern, 'i') };
   }
   if (breed) {
-    filterOptions.breed = { $regex: new RegExp(breed, "i") };
+    filterOptions.breed = { $regex: new RegExp(breed, 'i') };
   }
   if (coat) {
-    filterOptions.coat = { $regex: new RegExp(coat, "i") };
+    filterOptions.coat = { $regex: new RegExp(coat, 'i') };
   }
   if (size) {
-    filterOptions.size = { $regex: new RegExp(size, "i") };
+    filterOptions.size = { $regex: new RegExp(size, 'i') };
   }
   if (petStatus) {
-    filterOptions.petStatus = { $regex: new RegExp(petStatus, "i") };
+    filterOptions.petStatus = { $regex: new RegExp(petStatus, 'i') };
   }
   if (identifier) {
     filterOptions.identifier = { $eq: parseInt(identifier) };
   }
   if (name) {
-    filterOptions.name = { $regex: new RegExp(name, "i") };
+    filterOptions.name = { $regex: new RegExp(name, 'i') };
   }
   if (gender) {
-    filterOptions.gender = { $regex: new RegExp(gender, "i") };
+    filterOptions.gender = { $regex: new RegExp(gender, 'i') };
   }
   if (lostdate) {
     filterOptions.lostdate = { $gte: new Date(lostdate) };
@@ -97,34 +78,6 @@ module.exports.index = async (req, res) => {
     };
   }
 
-  // if (selectedLocation) {
-  //   const selectedPolygon = selectedLocation.geometry; // Assuming the GeoJSON polygon is stored in a field named 'geometry'
-
-  //   // Update the filter options to include the selected region
-  //   if (selectedPolygon) {
-  //     filterOptions.location = {
-  //       $geoWithin: {
-  //         $geometry: {
-  //           type: "Polygon",
-  //           coordinates: selectedPolygon.coordinates,
-  //         },
-  //       },
-  //     };
-  //   }
-  // }
-
-  // // Update the filter options to include the selected region
-  // if (selectedPolygonCoordinates.length > 0) {
-  //   filterOptions.location = {
-  //     $geoWithin: {
-  //       $geometry: {
-  //         type: "Polygon",
-  //         coordinates: [selectedPolygonCoordinates],
-  //       },
-  //     },
-  //   };
-  // }
-
   // Add the condition for search within the selected polygon
   if (selectedPolygonCoordinates.length > 0) {
     filterOptions.$and = [
@@ -132,7 +85,7 @@ module.exports.index = async (req, res) => {
         location: {
           $geoWithin: {
             $geometry: {
-              type: "Polygon",
+              type: 'Polygon',
               coordinates: [selectedPolygonCoordinates],
             },
           },
@@ -143,7 +96,7 @@ module.exports.index = async (req, res) => {
 
   // later make that it checks in first, second and third color. so need to save colors in one field as array
   if (color) {
-    filterOptions.color = { $regex: new RegExp(color, "i") };
+    filterOptions.color = { $regex: new RegExp(color, 'i') };
   }
 
   // Retrieve total number of pets for pagination logic
@@ -153,14 +106,12 @@ module.exports.index = async (req, res) => {
   const startIndex = (currentPage - 1) * limitPerPage;
 
   // Retrieve pets for current page with applied filter options
-  const pets = await Pet.find(filterOptions)
-    .skip(startIndex)
-    .limit(limitPerPage);
+  const pets = await Pet.find(filterOptions).skip(startIndex).limit(limitPerPage);
 
   // Calculate total number of pages based on total pets and limit per page
   const totalPages = Math.ceil(totalPets / limitPerPage);
   // Render response with pagination data
-  res.render("pets/index", {
+  res.render('pets/index', {
     pets,
     currentPage,
     limitPerPage,
@@ -180,19 +131,21 @@ module.exports.index = async (req, res) => {
     color,
     lostdate,
     selectedPolygonCoordinates,
+    // select options (better to have them in one place on the server)
+    data, // Pass the language data to the view
   });
 };
 
 module.exports.renderNewForm = (req, res) => {
-  res.render("pets/new");
+  res.render('pets/new');
 };
 
 module.exports.renderMissingForm = (req, res) => {
-  res.render("pets/missing");
+  res.render('pets/missing');
 };
 
 module.exports.renderFoundForm = (req, res) => {
-  res.render("pets/found");
+  res.render('pets/found');
 };
 
 module.exports.createPet = async (req, res, next) => {
@@ -219,11 +172,8 @@ module.exports.createPet = async (req, res, next) => {
     identifier: req.body.pet.identifier,
     gender: req.body.pet.gender,
     location: {
-      type: "Point",
-      coordinates: [
-        parseFloat(req.body.pet.longitude),
-        parseFloat(req.body.pet.latitude),
-      ],
+      type: 'Point',
+      coordinates: [parseFloat(req.body.pet.longitude), parseFloat(req.body.pet.latitude)],
     },
     latitude: parseFloat(req.body.pet.latitude),
     longitude: parseFloat(req.body.pet.longitude),
@@ -252,7 +202,7 @@ module.exports.createPet = async (req, res, next) => {
 
   console.log(pet);
 
-  req.flash("success", "Successfully created a new pet");
+  req.flash('success', 'Successfully created a new pet');
   res.redirect(`/pets/${pet._id}`);
 };
 
@@ -260,17 +210,17 @@ module.exports.showPet = async (req, res) => {
   // Find the pet with the provided ID and populate its comments and author
   const pet = await Pet.findById(req.params.id)
     .populate({
-      path: "comments",
+      path: 'comments',
       populate: {
-        path: "author",
+        path: 'author',
       },
     })
-    .populate("author");
+    .populate('author');
 
   // Check if the pet is found
   if (!pet) {
-    req.flash("error", "Cannot find that pet!");
-    return res.redirect("/pets");
+    req.flash('error', 'Cannot find that pet!');
+    return res.redirect('/pets');
   }
 
   // Format the creation, update, and lost dates in words
@@ -285,7 +235,7 @@ module.exports.showPet = async (req, res) => {
   });
 
   // Render the pet show page and pass the pet object and date information
-  res.render("pets/show", {
+  res.render('pets/show', {
     pet: pet,
     createDateInWords,
     updateDateInWords,
@@ -297,10 +247,10 @@ module.exports.renderEditForm = async (req, res) => {
   const { id } = req.params;
   const pet = await Pet.findById(id);
   if (!pet) {
-    req.flash("error", "Cannot find that pet!");
-    return res.redirect("/pets");
+    req.flash('error', 'Cannot find that pet!');
+    return res.redirect('/pets');
   }
-  res.render("pets/edit", { pet });
+  res.render('pets/edit', { pet });
 };
 
 module.exports.updatePet = async (req, res) => {
@@ -322,15 +272,15 @@ module.exports.updatePet = async (req, res) => {
       $pull: { images: { filename: { $in: req.body.deleteImages } } },
     });
   }
-  req.flash("success", "Successfully updated pet!");
+  req.flash('success', 'Successfully updated pet!');
   res.redirect(`/pets/${pet._id}`);
 };
 
 module.exports.deletePet = async (req, res) => {
   const { id } = req.params;
   await Pet.findByIdAndDelete(id);
-  req.flash("success", "Successfully deleted pet");
-  res.redirect("/pets");
+  req.flash('success', 'Successfully deleted pet');
+  res.redirect('/pets');
 };
 
 // Function to download the image from Cloudinary

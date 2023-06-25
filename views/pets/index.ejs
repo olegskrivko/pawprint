@@ -52,7 +52,6 @@
 
 <div id="map" class="map" style="width: 100%; height: 400px"></div>
 
-
 <div class="col-md-12 mt-3">
   
   <form action="/pets" method="GET" class="row mx-auto" role="search" id="filterForm">
@@ -60,16 +59,14 @@
   <div class="d-flex justify-content-between mb-3">
     <div>
     <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-      <i class="bi bi-sliders"></i> Filters
-    </a>
+      <i class="bi bi-sliders"></i> <%= data.pets.filterBtn %></a>
     
     <a class="btn btn-warning d-none compare-btn" href="" role="button">
-      <i class="bi bi-intersect"></i> Compare
-    </a>
+      <i class="bi bi-intersect"></i> <%= data.pets.compareBtn %></a>
   </div>
 
   <div>
-    <a class="btn btn-primary  ms-1" href="/pets/report">Report pet</a>
+    <a class="btn btn-primary  ms-1" href="/pets/report"><%= data.pets.reportPetBtn %></a>
     <!-- <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
       Button with data-bs-target
     </button> -->
@@ -87,282 +84,80 @@
 
             <!-- Pet Status -->
             <div class="col-md-3">
-              <label class="form-label">Pet Status:</label>
+              <label class="form-label"><%= data.pets.filterPetStatus %></label>
               <div class="input-group">
                 <span class="input-group-text">
                   <i class="bi bi-question-diamond"></i>
                 </span>       
                 <select class="form-select" id="petStatus" name="petStatus">
-                  <option value="">All</option>
-                  <option value="Missing">Missing</option>
-                  <option value="Found">Found</option>
+                  <% data.statusOptions.forEach(option => { %>
+                    <option value="<%= option.value %>">
+                      <%= option.text %>
+                    </option>
+                  <% }); %>
                 </select>
             </div>
           </div>
 
            <!-- Pet Species -->
        <div class="col-md-3">
-        <label class="form-label">Species:</label>
+        <label class="form-label"><%= data.pets.filterSpecies %></label>
         <div class="input-group">
           <span class="input-group-text">
             <i class="bi bi-diamond-half"></i>
           </span>       
           <select class="form-select" id="species" name="species">
-            <option value="">All</option>
-            <option value="Dog">Dog</option>
-            <option value="Cat">Cat</option>
+            <% data.speciesOptions.forEach(option => { %>
+              <option value="<%= option.value %>">
+                <%= option.text %>
+              </option>
+            <% }); %>
           </select>
       </div>
     </div>
+<!-- <p><= data.genderOptions %></p> -->
 
        <!-- Pet Gender -->
        <div class="col-md-3">
-        <label class="form-label">Pet Gender:</label>
+        <label class="form-label"><%= data.pets.filterPetGender %></label>
         <div class="input-group">
           <span class="input-group-text">
             <i class="bi bi-gender-ambiguous"></i>
-          </span>       
-          <select class="form-select" id="gender" name="gender">
-            <option value="">All</option>
-            <option value="She">She</option>
-            <option value="He">He</option>
-
+          </span>   
+          
+          <select class="form-select" id="gender" name="gender" >
+            <% data.genderOptions.forEach(option => { %>
+              <option value="<%= option.value %>">
+                <%= option.text %>
+              </option>
+            <% }); %>
           </select>
+
       </div>
     </div>
  <!-- Pet Breed -->
      <div class="col-md-3">
-      <label class="form-label">Breed:</label>
+      <label class="form-label"><%= data.pets.filterBreed %></label>
       <div class="input-group">
         <span class="input-group-text">
           <i class="bi bi-x-diamond-fill"></i>
         </span>       
         <select class="form-select" id="petBreed" name="breed">
-          <option value="">All</option>
-          <optgroup label="Cat Breed">
-            <option value="Abyssinian">Abyssinian</option>
-            <option value="American Bobtail">American Bobtail</option>
-            <option value="American Shorthair">American Shorthair</option>
-            <option value="Australian Mist">Australian Mist</option>
-            <option value="Balinese">Balinese</option>
-            <option value="Bengal">Bengal</option>
-            <option value="Birman">Birman</option>
-            <option value="Bombay">Bombay</option>
-            <option value="British Shorthair">British Shorthair</option>
-            <option value="Burmese">Burmese</option>
-            <option value="Burmilla">Burmilla</option>
-            <option value="Chartreux">Chartreux</option>
-            <option value="Chausie">Chausie</option>
-            <option value="Cornish Rex">Cornish Rex</option>
-            <option value="Cymric">Cymric</option>
-            <option value="Devon Rex">Devon Rex</option>
-            <option value="Egyptian Mau">Egyptian Mau</option>
-            <option value="Exotic Shorthair">Exotic Shorthair</option>
-            <option value="Himalayan">Himalayan</option>
-            <option value="Highlander">Highlander</option>
-            <option value="Japanese Bobtail">Japanese Bobtail</option>
-            <option value="Korat">Korat</option>
-            <option value="LaPerm">LaPerm</option>
-            <option value="Maine Coon">Maine Coon</option>
-            <option value="Manx">Manx</option>
-            <option value="Munchkin">Munchkin</option>
-            <option value="Nebelung">Nebelung</option>
-            <option value="Norwegian Forest Cat">Norwegian Forest Cat</option>
-            <option value="Oriental Shorthair">Oriental Shorthair</option>
-            <option value="Peterbald">Peterbald</option>
-            <option value="Persian">Persian</option>
-            <option value="Pixiebob">Pixiebob</option>
-            <option value="Ragdoll">Ragdoll</option>
-            <option value="Russian Blue">Russian Blue</option>
-            <option value="Scottish Fold">Scottish Fold</option>
-            <option value="Selkirk Rex">Selkirk Rex</option>
-            <option value="Serengeti">Serengeti</option>
-            <option value="Siberian">Siberian</option>
-            <option value="Siamese">Siamese</option>
-            <option value="Singapura">Singapura</option>
-            <option value="Snowshoe">Snowshoe</option>
-            <option value="Sokoke">Sokoke</option>
-            <option value="Sphynx">Sphynx</option>
-            <option value="Tonkinese">Tonkinese</option>
-            <option value="Toyger">Toyger</option>
-            <option value="Turkish Angora">Turkish Angora</option>
-            <option value="Turkish Van">Turkish Van</option>   
+          <option value="<%= data.breeds.all[0].value %>"><%= data.breeds.all[0].text %></option>
+          <optgroup label="<%= data.breeds.catOptiongroupLabel[0].text %>">
+            <% data.breeds.cats.forEach(option => { %>
+              <option value="<%= option.value %>">
+                <%= option.text %>
+              </option>
+            <% }); %>
+        
           </optgroup>
-          <optgroup label="Dog Breed">
-            <option value="Airedale Terrier">Airedale Terrier</option>
-            <option value="Akita">Akita</option>
-            <option value="Alaskan Malamute">Alaskan Malamute</option>
-            <option value="American Bulldog">American Bulldog</option>
-            <option value="American Cocker Spaniel">American Cocker Spaniel</option>
-            <option value="American Eskimo Dog">American Eskimo Dog</option>
-            <option value="American Staffordshire Terrier">American Staffordshire Terrier</option>
-            <option value="Anatolian Shepherd Dog">Anatolian Shepherd Dog</option>
-            <option value="Australian Cattle Dog">Australian Cattle Dog</option>
-            <option value="Australian Shepherd">Australian Shepherd</option>
-            <option value="Australian Terrier">Australian Terrier</option>
-            <option value="Basset Hound">Basset Hound</option>
-            <option value="Beagle">Beagle</option>
-            <option value="Bearded Collie">Bearded Collie</option>
-            <option value="Beauceron">Beauceron</option>
-            <option value="Bedlington Terrier">Bedlington Terrier</option>
-            <option value="Belgian Malinois">Belgian Malinois</option>
-            <option value="Belgian Sheepdog">Belgian Sheepdog</option>
-            <option value="Belgian Tervuren">Belgian Tervuren</option>
-            <option value="Bernese Mountain Dog">Bernese Mountain Dog</option>
-            <option value="Bichon Frise">Bichon Frise</option>
-            <option value="Black and Tan Coonhound">Black and Tan Coonhound</option>
-            <option value="Black Russian Terrier">Black Russian Terrier</option>
-            <option value="Bloodhound">Bloodhound</option>
-            <option value="Border Collie">Border Collie</option>
-            <option value="Border Terrier">Border Terrier</option>
-            <option value="Boston Terrier">Boston Terrier</option>
-            <option value="Bouvier des Flandres">Bouvier des Flandres</option>
-            <option value="Boxer">Boxer</option>
-            <option value="Briard">Briard</option>
-            <option value="Brittany">Brittany</option>
-            <option value="Brussels Griffon">Brussels Griffon</option>
-            <option value="Bull Terrier">Bull Terrier</option>
-            <option value="Bulldog">Bulldog</option>
-            <option value="Bullmastiff">Bullmastiff</option>
-            <option value="Cairn Terrier">Cairn Terrier</option>
-            <option value="Cane Corso">Cane Corso</option>
-            <option value="Cardigan Welsh Corgi">Cardigan Welsh Corgi</option>
-            <option value="Cavalier King Charles Spaniel">Cavalier King Charles Spaniel</option>
-            <option value="Chesapeake Bay Retriever">Chesapeake Bay Retriever</option>
-            <option value="Chihuahua">Chihuahua</option>
-            <option value="Chinese Crested">Chinese Crested</option>
-            <option value="Chinese Shar-Pei">Chinese Shar-Pei</option>
-            <option value="Chow Chow">Chow Chow</option>
-            <option value="Clumber Spaniel">Clumber Spaniel</option>
-            <option value="Cocker Spaniel">Cocker Spaniel</option>
-            <option value="Collie">Collie</option>
-            <option value="Curly-Coated Retriever">Curly-Coated Retriever</option>
-            <option value="Dachshund">Dachshund</option>
-            <option value="Dalmatian">Dalmatian</option>
-            <option value="Dandie Dinmont Terrier">Dandie Dinmont Terrier</option>
-            <option value="Doberman Pinscher">Doberman Pinscher</option>
-            <option value="Dogue de Bordeaux">Dogue de Bordeaux</option>
-            <option value="English Bulldog">English Bulldog</option>
-            <option value="English Cocker Spaniel">English Cocker Spaniel</option>
-            <option value="English Foxhound">English Foxhound</option>
-            <option value="English Setter">English Setter</option>
-            <option value="English Springer Spaniel">English Springer Spaniel</option>
-            <option value="English Toy Spaniel">English Toy Spaniel</option>
-            <option value="Entlebucher Mountain Dog">Entlebucher Mountain Dog</option>
-            <option value="Field Spaniel">Field Spaniel</option>
-            <option value="Finnish Lapphund">Finnish Lapphund</option>
-            <option value="Finnish Spitz">Finnish Spitz</option>
-            <option value="Flat-Coated Retriever">Flat-Coated Retriever</option>
-            <option value="French Bulldog">French Bulldog</option>
-            <option value="German Pinscher">German Pinscher</option>
-            <option value="German Shepherd Dog">German Shepherd Dog</option>
-            <option value="German Shorthaired Pointer">German Shorthaired Pointer</option>
-            <option value="German Wirehaired Pointer">German Wirehaired Pointer</option>
-            <option value="Giant Schnauzer">Giant Schnauzer</option>
-            <option value="Glen of Imaal Terrier">Glen of Imaal Terrier</option>
-            <option value="Golden Retriever">Golden Retriever</option>
-            <option value="Goldendoodle">Goldendoodle</option>
-            <option value="Gordon Setter">Gordon Setter</option>
-            <option value="Great Dane">Great Dane</option>
-            <option value="Great Pyrenees">Great Pyrenees</option>
-            <option value="Greater Swiss Mountain Dog">Greater Swiss Mountain Dog</option>
-            <option value="Greyhound">Greyhound</option>
-            <option value="Havanese">Havanese</option>
-            <option value="Ibizan Hound">Ibizan Hound</option>
-            <option value="Icelandic Sheepdog">Icelandic Sheepdog</option>
-            <option value="Irish Red and White Setter">Irish Red and White Setter</option>
-            <option value="Irish Setter">Irish Setter</option>
-            <option value="Irish Terrier">Irish Terrier</option>
-            <option value="Irish Water Spaniel">Irish Water Spaniel</option>
-            <option value="Irish Wolfhound">Irish Wolfhound</option>
-            <option value="Italian Greyhound">Italian Greyhound</option>
-            <option value="Jack Russell Terrier">Jack Russell Terrier</option>
-            <option value="Japanese Chin">Japanese Chin</option>
-            <option value="Japanese Spitz">Japanese Spitz</option>
-            <option value="Keeshond">Keeshond</option>
-            <option value="Kerry Blue Terrier">Kerry Blue Terrier</option>
-            <option value="Komondor">Komondor</option>
-            <option value="Kuvasz">Kuvasz</option>
-            <option value="Labradoodle">Labradoodle</option>
-            <option value="Labrador Retriever">Labrador Retriever</option>
-            <option value="Lakeland Terrier">Lakeland Terrier</option>
-            <option value="Lhasa Apso">Lhasa Apso</option>
-            <option value="Maltese">Maltese</option>
-            <option value="Manchester Terrier">Manchester Terrier</option>
-            <option value="Mastiff">Mastiff</option>
-            <option value="Miniature Bull Terrier">Miniature Bull Terrier</option>
-            <option value="Miniature Pinscher">Miniature Pinscher</option>
-            <option value="Miniature Schnauzer">Miniature Schnauzer</option>
-            <option value="Neapolitan Mastiff">Neapolitan Mastiff</option>
-            <option value="Newfoundland">Newfoundland</option>
-            <option value="Norfolk Terrier">Norfolk Terrier</option>
-            <option value="Norwegian Buhund">Norwegian Buhund</option>
-            <option value="Norwegian Elkhound">Norwegian Elkhound</option>
-            <option value="Norwegian Lundehund">Norwegian Lundehund</option>
-            <option value="Norwich Terrier">Norwich Terrier</option>
-            <option value="Nova Scotia Duck Tolling Retriever">Nova Scotia Duck Tolling Retriever</option>
-            <option value="Old English Sheepdog">Old English Sheepdog</option>
-            <option value="Otterhound">Otterhound</option>
-            <option value="Papillon">Papillon</option>
-            <option value="Pekingese">Pekingese</option>
-            <option value="Pembroke Welsh Corgi">Pembroke Welsh Corgi</option>
-            <option value="Petit Basset Griffon Vendeen">Petit Basset Griffon Vendeen</option>
-            <option value="Pharaoh Hound">Pharaoh Hound</option>
-            <option value="Plott">Plott</option>
-            <option value="Pointer">Pointer</option>
-            <option value="Polish Lowland Sheepdog">Polish Lowland Sheepdog</option>
-            <option value="Pomeranian">Pomeranian</option>
-            <option value="Poodle">Poodle</option>
-            <option value="Portuguese Water Dog">Portuguese Water Dog</option>
-            <option value="Pug">Pug</option>
-            <option value="Puli">Puli</option>
-            <option value="Pumi">Pumi</option>
-            <option value="Pyrenean Shepherd">Pyrenean Shepherd</option>
-            <option value="Rat Terrier">Rat Terrier</option>
-            <option value="Redbone Coonhound">Redbone Coonhound</option>
-            <option value="Rhodesian Ridgeback">Rhodesian Ridgeback</option>
-            <option value="Rottweiler">Rottweiler</option>
-            <option value="Saint Bernard">Saint Bernard</option>
-            <option value="Saluki">Saluki</option>
-            <option value="Samoyed">Samoyed</option>
-            <option value="Schipperke">Schipperke</option>
-            <option value="Scottish Deerhound">Scottish Deerhound</option>
-            <option value="Scottish Terrier">Scottish Terrier</option>
-            <option value="Sealyham Terrier">Sealyham Terrier</option>
-            <option value="Shetland Sheepdog">Shetland Sheepdog</option>
-            <option value="Shiba Inu">Shiba Inu</option>
-            <option value="Shih Tzu">Shih Tzu</option>
-            <option value="Siberian Husky">Siberian Husky</option>
-            <option value="Silky Terrier">Silky Terrier</option>
-            <option value="Skye Terrier">Skye Terrier</option>
-            <option value="Sloughi">Sloughi</option>
-            <option value="Small Munsterlander Pointer">Small Munsterlander Pointer</option>
-            <option value="Soft-Coated Wheaten Terrier">Soft-Coated Wheaten Terrier</option>
-            <option value="Spanish Water Dog">Spanish Water Dog</option>
-            <option value="Spinone Italiano">Spinone Italiano</option>
-            <option value="Staffordshire Bull Terrier">Staffordshire Bull Terrier</option>
-            <option value="Standard Schnauzer">Standard Schnauzer</option>
-            <option value="Sussex Spaniel">Sussex Spaniel</option>
-            <option value="Swedish Vallhund">Swedish Vallhund</option>
-            <option value="Tibetan Mastiff">Tibetan Mastiff</option>
-            <option value="Tibetan Spaniel">Tibetan Spaniel</option>
-            <option value="Tibetan Terrier">Tibetan Terrier</option>
-            <option value="Toy Fox Terrier">Toy Fox Terrier</option>
-            <option value="Treeing Tennessee Brindle">Treeing Tennessee Brindle</option>
-            <option value="Treeing Walker Coonhound">Treeing Walker Coonhound</option>
-            <option value="Vizsla">Vizsla</option>
-            <option value="Weimaraner">Weimaraner</option>
-            <option value="Welsh Springer Spaniel">Welsh Springer Spaniel</option>
-            <option value="Welsh Terrier">Welsh Terrier</option>
-            <option value="West Highland White Terrier">West Highland White Terrier</option>
-            <option value="Whippet">Whippet</option>
-            <option value="Wire Fox Terrier">Wire Fox Terrier</option>
-            <option value="Wirehaired Pointing Griffon">Wirehaired Pointing Griffon</option>
-            <option value="Wirehaired Vizsla">Wirehaired Vizsla</option>
-            <option value="Working Kelpie">Working Kelpie</option>
-            <option value="Xoloitzcuintli">Xoloitzcuintli</option>
-            <option value="Yorkshire Terrier">Yorkshire Terrier</option>
-          
+          <optgroup label="<%= data.breeds.dogOptiongroupLabel[0].text %>">
+            <% data.breeds.dogs.forEach(option => { %>
+              <option value="<%= option.value %>">
+                <%= option.text %>
+              </option>
+            <% }); %>
           </optgroup>
          
         </select>
@@ -371,22 +166,17 @@
 
  
       <div class="col-md-3">
-        <label class="form-label">Pet color:</label>
+        <label class="form-label"><%= data.pets.filterPetColor %></label>
         <div class="input-group">
           <span class="input-group-text">
             <i class="bi bi-palette"></i>
           </span>       
           <select class="form-select" id="color" name="color">
-            <option value="">All</option>
-            <option value="Black">Black</option>
-            <option value="Brown">Brown</option>
-            <option value="White">White</option>
-            <option value="Red">Red</option>
-            <option value="Gold">Gold</option>
-            <option value="Blue">Blue</option>
-            <option value="Gray">Gray</option>
-            <option value="Cream">Cream</option>
-            <option value="Yellow">Yellow</option>
+            <% data.colorOptions.forEach(option => { %>
+              <option value="<%= option.value %>">
+                <%= option.text %>
+              </option>
+            <% }); %>
           </select>
       </div>
     </div>
@@ -398,7 +188,7 @@
 
 
       <div class="col-md-3">
-        <label class="form-label" for="distance">Distance (km):</label>
+        <label class="form-label" for="distance"><%= data.pets.filterDistance %></label>
         <div class="input-group">
           <span class="input-group-text"><i class="bi bi-rulers"></i></span>
           <input
@@ -414,18 +204,17 @@
 
       <!-- Age -->
       <div class="col-md-3">
-        <label class="form-label">Pet Age:</label>
+        <label class="form-label"><%= data.pets.filterPetAge %></label>
         <div class="input-group">
           <span class="input-group-text">
             <i class="bi bi-calendar2-heart"></i>
           </span>       
           <select class="form-select" id="age" name="age">
-            <option value="">All</option>
-            <option value="Kitten">Kitten</option>
-            <option value="Puppy">Puppy</option>
-            <option value="Adolescent">Adolescent</option>
-            <option value="Adult">Adult</option>
-            <option value="Senior">Senior</option>
+            <% data.ageOptions.forEach(option => { %>
+              <option value="<%= option.value %>">
+                <%= option.text %>
+              </option>
+            <% }); %>
           </select>
       </div>
     </div>
@@ -434,19 +223,17 @@
 
       <!-- Coat type -->
       <div class="col-md-3">
-        <label class="form-label">Coat Type:</label>
+        <label class="form-label"><%= data.pets.filterCoatType %></label>
         <div class="input-group">
           <span class="input-group-text">
             <i class="bi bi-wind"></i>
           </span>       
           <select class="form-select" id="coat" name="coat">
-            <option value="">All</option>
-            <option value="Hairless">Hairless</option>
-            <option value="Short">Short Coated</option>
-            <option value="Medium">Medium Coated</option>
-            <option value="Long">Long Coated</option>
-            <option value="Wire">Wire Coated</option>
-            <option value="Curly">Curly Coated</option>
+            <% data.coatOptions.forEach(option => { %>
+              <option value="<%= option.value %>">
+                <%= option.text %>
+              </option>
+            <% }); %>
           </select>
       </div>
     </div>
@@ -455,7 +242,7 @@
 
 
        <div class="col-md-3">
-        <label class="form-label">Pet Size:</label>
+        <label class="form-label"><%= data.pets.filterPetSize %></label>
         <div class="input-group">
           <span class="input-group-text">
             <i class="bi bi-arrows-angle-expand"></i>
@@ -463,10 +250,11 @@
         
           <select class="form-select" id="size" name="size">
             <!-- <option hidden disabled selected value>-- Select an option --</option> -->
-            <option value="">All</option>
-            <option value="Small">Small</option>
-            <option value="Medium">Medium</option>
-            <option value="Large">Large</option>
+            <% data.sizeOptions.forEach(option => { %>
+              <option value="<%= option.value %>">
+                <%= option.text %>
+              </option>
+            <% }); %>
           </select>
         <!-- <select class="form-control" id="mealType" name="mealTypes">
           < mealTypesOptions.forEach(option => { %>
@@ -480,7 +268,7 @@
 
 
       <div class="col-md-3">
-        <label class="form-label" for="identifier">Identifier</label>
+        <label class="form-label" for="identifier"><%= data.pets.filterIdentifier %></label>
         <div class="input-group">
           <span class="input-group-text"><i class="bi bi-fingerprint"></i></span>
           <input
@@ -493,63 +281,28 @@
           />
         </div>
       </div>
-  
 
       <div class="col-md-3">
-        <label class="form-label">Location:</label>
+        <label class="form-label"><%= data.pets.filterLocation %></label>
         <div class="input-group">
           <span class="input-group-text">
             <i class="bi bi-geo-alt-fill"></i>
           </span>       
           <select class="form-select" id="region" name="selectedRegion">
-            <option value="">All</option>
+            <option value="<%= data.regionOptions.all[0].value %>"><%= data.regionOptions.all[0].text %></option>
             <optgroup label="City">
-              <option value="Riga">Riga</option>
-              <option value="Daugavpils">Daugavpils</option>
-              <option value="Jelgava">Jelgava</option>
-              <option value="Jurmala">Jurmala</option>
-              <option value="Liepaja">Liepaja</option>
-              <option value="Rezekne">Rezekne</option>          
-              <option value="Valmiera">Valmiera</option>
-              <option value="Ventspils">Ventspils</option>              
-            </optgroup>
-            <optgroup label="Municipality">
-            <option value="Adazu nov">Adazu nov</option>
-            <option value="Aizkraukles nov">Aizkraukles nov</option>
-            <option value="Aluksnes nov">Aluksnes nov</option>
-            <option value="Augsdaugavas nov">Augsdaugavas nov</option>
-            <option value="Balvu nov">Balvu nov</option>
-            <option value="Bauskas nov">Bauskas nov</option>
-            <option value="Cesu nov">Cesu nov</option>
-            <option value="Dienvidkurzemes nov">Dienvidkurzemes nov</option>
-            <option value="Dobeles nov">Dobeles nov</option>
-            <option value="Gulbenes nov">Gulbenes nov</option>
-            <option value="Jekabpils nov">Jekabpils nov</option>
-            <option value="Jelgavas nov">Jelgavas nov</option>
-            <option value="Kekavas nov">Kekavas nov</option>
-            <option value="Kraslavas nov">Kraslavas nov</option>
-            <option value="Kuldigas nov">Kuldigas nov</option>
-            <option value="Limbazu novads">Limbazu novads</option>
-            <option value="Livanu nov">Livanu nov</option>
-            <option value="Ludzas nov">Ludzas nov</option>
-            <option value="Madonas nov">Madonas nov</option>
-            <option value="Marupes nov">Marupes nov</option>
-            <option value="Ogres nov">Ogres nov</option>
-            <option value="Olaines nov">Olaines nov</option>
-            <option value="Preilu nov">Preilu nov</option>
-            <option value="Rezeknes nov">Rezeknes nov</option>
-            <option value="Ropazu nov">Ropazu nov</option>
-            <option value="Salaspils nov">Salaspils nov</option>
-            <option value="Saldus nov">Saldus nov</option>
-            <option value="Saulkrastu nov">Saulkrastu nov</option>
-            <option value="Siguldas nov">Siguldas nov</option>
-            <option value="Smiltenes nov">Smiltenes nov</option>
-            <option value="Talsu nov">Talsu nov</option>
-            <option value="Tukuma nov">Tukuma nov</option>
-            <option value="Valkas nov">Valkas nov</option>
-            <option value="Valmieras nov">Valmieras nov</option>
-            <option value="Varaklanu nov">Varaklanu nov</option>
-            <option value="Ventspils nov">Ventspils nov</option>
+            <% data.regionOptions.city.forEach(option => { %>
+              <option value="<%= option.value %>">
+                <%= option.text %>
+              </option>
+            <% }); %>
+          </optgroup>
+          <optgroup label="Municipality">
+            <% data.regionOptions.municipality.forEach(option => { %>
+              <option value="<%= option.value %>">
+                <%= option.text %>
+              </option>
+            <% }); %>
           </optgroup>
           </select>
       </div>
@@ -557,7 +310,7 @@
 
       <!-- Lost Date -->
       <div class="col-md-3">
-        <label class="form-label" for="lostdate">Lost Date</label>
+        <label class="form-label" for="lostdate"><%= data.pets.filterLostDate %></label>
         <div class="input-group">
           <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
           <input
@@ -607,8 +360,8 @@
       </div> -->
 
       <div class="col-md-12 my-3 d-flex ">
-        <button class="btn btn-warning search-form-btn  me-2 " type="submit"><i class="bi bi-search"></i> Search</button>
-        <button class="btn btn-secondary reset-form-btn"><i class="bi bi-eraser-fill"></i> Clear</button>
+        <button class="btn btn-warning search-form-btn  me-2 " type="submit"><i class="bi bi-search"></i> <%= data.pets.searchBtn %></button>
+        <button class="btn btn-secondary reset-form-btn"><i class="bi bi-eraser-fill"></i> <%= data.pets.clearBtn %></button>
       </div>
     </div>
  
@@ -715,7 +468,7 @@
           href="/pets?page=<%= currentPage - 1  %>&limit=<%= limitPerPage %>"
           aria-label="Previous"
         >
-          <span aria-hidden="true"><i class="bi bi-arrow-left"></i><span id="d-none d-sm-inline-block">Prev Page</span>
+          <span aria-hidden="true"><i class="bi bi-arrow-left"></i><span id="d-none d-sm-inline-block"><%= data.pets.prevPageBtn %></span>
         </a>
       </div>
 
@@ -726,7 +479,7 @@
           href="/pets?page=<%= currentPage < totalPages ? currentPage + 1 : currentPage  %>&limit=<%= limitPerPage %>"
           aria-label="Next"
         >
-          <span id="d-none d-sm-inline-block">Next Page</span
+          <span id="d-none d-sm-inline-block"><%= data.pets.nextPageBtn %></span
           ><span aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
         </a>
       </div>
