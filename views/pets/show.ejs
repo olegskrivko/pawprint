@@ -1,14 +1,10 @@
 <% layout('layouts/boilerplate')%>
-<link rel="stylesheet" href="/stylesheets/stars.css" />
-<!-- <div id="map" class="map mb-5" style="width: 100wh; height: 40vh"></div> -->
-<!-- <div
-        id="map"
-        style="max-width: 100%; height: 300px; background-color: #808080"
-      ></div> -->
 
-<!-- bootstrap script, otherwise popowers did not work-->
 <div class="row d-flex flex-md-wrap">
-  <section class="col-md-6 order-1 order-md-1">
+  <section class="col-md-12 order-3 order-sm-3 order-md-1 mb-4">
+    <div id="map" class="map" style="width: 100%; height: 400px"></div>
+    </section>
+  <section class="col-md-6 order-1 order-md-2">
     <div id="petCarousel" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <% if (pet.images.length > 0) {%> <% pet.images.forEach((img, i) => { %>
@@ -43,8 +39,9 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
+   
     <% } %>
-    <div
+    <!-- <div
       class="card d-flex flex-row bg-dark justify-content-center"
       style="border-radius: 0"
     >
@@ -58,7 +55,7 @@
         </button>
       </div>
 
-      <!-- <div>
+      <div>
         <button class="btn btn-sm btn-outline-secondary my-2 me-2 text-light">
           148 <i class="bi bi-eye"></i>
         </button>
@@ -84,7 +81,7 @@
         >
           <i class="bi bi-share"></i> <span class="small">Share</span>
         </button>
-      </div> -->
+      </div> 
       <% if (currentUser && pet.author && currentUser._id && pet.author.equals(currentUser._id)) { %>
           <div>
         <button
@@ -106,18 +103,127 @@
       </form>
 
       <% } %>
+    </div> -->
+    <div class="col-md-12 ">
+      <div class="card mb-3" style="border-radius: 0">
+        <div class="card-body">
+          <!-- <h5 class="card-title"><b>Name:</b> <= pet.title %></h5> -->
+  
+          <ul class="list-group list-group-flush show-pet-list">
+            <!-- <li class="list-group-item">
+          <b>Last seen in:</b> <span id="pet-location"> <= pet.location %></span>
+        </li> -->
+  
+            <!-- <li class="list-group-item" style="text-transform: capitalize">
+              <b>
+                < if (pet.petStatus === "Found") { %> Finder's Name: < } else {
+                %> Owner's Name: <} %></b
+              >
+              <= pet.author.username %>
+            </li> -->
+            <!-- <li class="list-group-item" style="text-transform: capitalize">
+              <b>Pet's Name:</b> <= pet.title %>
+            </li> -->
+            <li class="list-group-item"><i class="bi bi-diamond-half"></i> <b>Species:</b><span id="pet-species"> <%= pet.species %></span>
+            </li>
+            <li class="list-group-item"><i class="bi bi-x-diamond-fill"></i> <b>Breed:</b> <%= pet.breed %></li>
+            <li class="list-group-item"><i class="bi bi-grid-3x3-gap"></i> <b>Coat Pattern:</b> <%= pet.pattern %>
+            </li>
+            <li class="list-group-item"><i class="bi bi-gender-ambiguous"></i> <b>Pet's Gender: </b><%= pet.gender %>
+            </li>
+            <li class="list-group-item"><i class="bi bi-palette"></i> <b>First Color:</b> <%= pet.color[0] %>
+            </li>
+            <% if (pet.color.length > 1) {%>
+            <li class="list-group-item"><i class="bi bi-palette"></i> <b>
+                <% if (pet.pattern === "Pointed") { %> Point Color: <% } else if
+                (pet.pattern === "Spotted") { %> Spot Color: <% } else if
+                (pet.pattern === "Striped") { %> Stripe Color: <% } else { %>
+                Second Color: <% } %>
+              </b>
+              <%= pet.color[1] %>
+            </li>
+            <% } %> <% if (pet.color.length > 2) {%>
+            <li class="list-group-item"><i class="bi bi-palette"></i> <b>Third Color:</b> <%= pet.color[2] %>
+            </li>
+            <% } %>
+  
+            <li class="list-group-item"><i class="bi bi-calendar3"></i> <b>Last Seen:</b> <%= lostDateInWords %>
+            </li>
+            <li class="list-group-item"><i class="bi bi-calendar2-heart"></i> <b>Age:</b> <%= pet.age %></li>
+            <li class="list-group-item"><i class="bi bi-wind"></i> <b>Coat Type:</b> <%= pet.coat %></li>
+            <li class="list-group-item"><i class="bi bi-arrows-angle-expand"></i> <b>Pet's Size:</b> <%= pet.size %></li>
+            <li class="list-group-item"><i class="bi bi-question-diamond"></i> <b>Status:</b> <span id="pet-status"> <%= pet.petStatus %></span>
+            </li>
+            <li class="list-group-item d-none">
+              <b>Lat: </b><span class="pet-latitude"><%=pet.latitude%></span
+              ><b>Lng: </b><span class="pet-longitude"><%=pet.longitude%></span>
+            </li>
+            <li class="list-group-item"><i class="bi bi-fingerprint"></i> <b>Identifier:</b> <%= pet.identifier %>
+            </li>
+            <li class="list-group-item">
+              <p class="card-text"><i class="bi bi-chat-square-text"></i> <b>Description:</b>
+                <span id="pet-description"> <%= pet.description %></span>
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div class="d-flex flex-column">
+          <div class="card-footer small text-muted">
+            Added <%=createDateInWords%>
+          </div>
+          <div class="card-footer small text-muted">
+            Updated <%=updateDateInWords%>
+          </div>
+        </div>
+      </div>
+      <!-- Share Buttons -->
+      <div class="d-flex justify-content-center mb-4 mt-4">
+        <div class="share-btn-facebook" onclick="shareOnFacebook()">
+          <!-- Facebook Share Button -->
+          <a class="facebook" id="facebook-share-button" href="#"
+            ><i class="bi bi-facebook"></i
+          ></a>
+        </div>
+  
+        <div class="share-btn-twitter" onclick="shareOnTwitter()">
+          <!-- Twitter Share Button -->
+          <a class="twitter" id="twitter-share-button" href="#"
+            ><i class="bi bi-twitter"></i
+          ></a>
+        </div>
+  
+        <div class="share-btn-whatsapp" onclick="shareOnWhatsApp()">
+          <!-- WhatsApp Share Button -->
+          <a class="whatsapp" id="whatsapp-share-button" href="#"
+            ><i class="bi bi-whatsapp"></i
+          ></a>
+        </div>
+  
+        <div class="share-btn-messenger" onclick="shareOnMessenger()">
+          <!-- Facebook Messenger Share Button -->
+          <a class="messenger" id="messenger-share-button" href="#"
+            ><i class="bi bi-messenger"></i
+          ></a>
+        </div>
+  
+        <div class="share-btn-linkedin" onclick="shareOnLinkedIn()">
+          <!-- LinkedIn Share Button -->
+          <a class="linkedin" id="linkedin-share-button" href="#"
+            ><i class="bi bi-linkedin"></i
+          ></a>
+        </div>
+      </div>
     </div>
-
-    <div></div>
+    
   </section>
 
-  <section class="col-md-6 order-3 order-sm-3 order-md-2">
+  <!-- <section class="col-md-6 order-3 order-sm-3 order-md-2">
     <div style="width: 100wh; height: 100%; min-height: 300px">
       <div
         id="map"
         class="img d-block w-100"
         style="height: 100%; min-height: 300px"
-      ></div>
+      ></div> -->
       <!-- <div class="card d-flex flex-row bg-dark" style="border-radius: 0">
         <b style="color: antiquewhite">Add location</b>
         < if(currentUser && pet.author.equals(currentUser._id)) {%>
@@ -136,122 +242,13 @@
         </div>
         < } %>
       </div> -->
-    </div>
-  </section>
-  <section class="col-md-6 order-2 order-sm-2 order-md-3">
-    <div class="card mb-3" style="border-radius: 0">
-      <div class="card-body">
-        <!-- <h5 class="card-title"><b>Name:</b> <= pet.title %></h5> -->
-
-        <ul class="list-group list-group-flush show-pet-list">
-          <!-- <li class="list-group-item">
-        <b>Last seen in:</b> <span id="pet-location"> <= pet.location %></span>
-      </li> -->
-
-          <!-- <li class="list-group-item" style="text-transform: capitalize">
-            <b>
-              < if (pet.petStatus === "Found") { %> Finder's Name: < } else {
-              %> Owner's Name: <} %></b
-            >
-            <= pet.author.username %>
-          </li> -->
-          <!-- <li class="list-group-item" style="text-transform: capitalize">
-            <b>Pet's Name:</b> <= pet.title %>
-          </li> -->
-          <li class="list-group-item"><i class="bi bi-diamond-half"></i> <b>Species:</b><span id="pet-species"> <%= pet.species %></span>
-          </li>
-          <li class="list-group-item"><i class="bi bi-x-diamond-fill"></i> <b>Breed:</b> <%= pet.breed %></li>
-          <li class="list-group-item"><i class="bi bi-grid-3x3-gap"></i> <b>Coat Pattern:</b> <%= pet.pattern %>
-          </li>
-          <li class="list-group-item"><i class="bi bi-gender-ambiguous"></i> <b>Pet's Gender: </b><%= pet.gender %>
-          </li>
-          <li class="list-group-item"><i class="bi bi-palette"></i> <b>First Color:</b> <%= pet.color[0] %>
-          </li>
-          <% if (pet.color.length > 1) {%>
-          <li class="list-group-item"><i class="bi bi-palette"></i> <b>
-              <% if (pet.pattern === "Pointed") { %> Point Color: <% } else if
-              (pet.pattern === "Spotted") { %> Spot Color: <% } else if
-              (pet.pattern === "Striped") { %> Stripe Color: <% } else { %>
-              Second Color: <% } %>
-            </b>
-            <%= pet.color[1] %>
-          </li>
-          <% } %> <% if (pet.color.length > 2) {%>
-          <li class="list-group-item"><i class="bi bi-palette"></i> <b>Third Color:</b> <%= pet.color[2] %>
-          </li>
-          <% } %>
-
-          <li class="list-group-item"><i class="bi bi-calendar3"></i> <b>Last Seen:</b> <%= lostDateInWords %>
-          </li>
-          <li class="list-group-item"><i class="bi bi-calendar2-heart"></i> <b>Age:</b> <%= pet.age %></li>
-          <li class="list-group-item"><i class="bi bi-wind"></i> <b>Coat Type:</b> <%= pet.coat %></li>
-          <li class="list-group-item"><i class="bi bi-arrows-angle-expand"></i> <b>Pet's Size:</b> <%= pet.size %></li>
-          <li class="list-group-item"><i class="bi bi-question-diamond"></i> <b>Status:</b> <span id="pet-status"> <%= pet.petStatus %></span>
-          </li>
-          <li class="list-group-item d-none">
-            <b>Lat: </b><span class="pet-latitude"><%=pet.latitude%></span
-            ><b>Lng: </b><span class="pet-longitude"><%=pet.longitude%></span>
-          </li>
-          <li class="list-group-item"><i class="bi bi-fingerprint"></i> <b>Identifier:</b> <%= pet.identifier %>
-          </li>
-          <li class="list-group-item">
-            <p class="card-text"><i class="bi bi-chat-square-text"></i> <b>Description:</b>
-              <span id="pet-description"> <%= pet.description %></span>
-            </p>
-          </li>
-        </ul>
-      </div>
-      <div class="d-flex flex-column">
-        <div class="card-footer small text-muted">
-          Added <%=createDateInWords%>
-        </div>
-        <div class="card-footer small text-muted">
-          Updated <%=updateDateInWords%>
-        </div>
-      </div>
-    </div>
-    <!-- Share Buttons -->
-    <div class="d-flex justify-content-center mb-4 mt-4">
-      <div class="share-btn-facebook" onclick="shareOnFacebook()">
-        <!-- Facebook Share Button -->
-        <a class="facebook" id="facebook-share-button" href="#"
-          ><i class="bi bi-facebook"></i
-        ></a>
-      </div>
-
-      <div class="share-btn-twitter" onclick="shareOnTwitter()">
-        <!-- Twitter Share Button -->
-        <a class="twitter" id="twitter-share-button" href="#"
-          ><i class="bi bi-twitter"></i
-        ></a>
-      </div>
-
-      <div class="share-btn-whatsapp" onclick="shareOnWhatsApp()">
-        <!-- WhatsApp Share Button -->
-        <a class="whatsapp" id="whatsapp-share-button" href="#"
-          ><i class="bi bi-whatsapp"></i
-        ></a>
-      </div>
-
-      <div class="share-btn-messenger" onclick="shareOnMessenger()">
-        <!-- Facebook Messenger Share Button -->
-        <a class="messenger" id="messenger-share-button" href="#"
-          ><i class="bi bi-messenger"></i
-        ></a>
-      </div>
-
-      <div class="share-btn-linkedin" onclick="shareOnLinkedIn()">
-        <!-- LinkedIn Share Button -->
-        <a class="linkedin" id="linkedin-share-button" href="#"
-          ><i class="bi bi-linkedin"></i
-        ></a>
-      </div>
-    </div>
-  </section>
+    <!-- </div>
+  </section> -->
+  
   <!-- <div><p id="distance" class="text-muted"></p></div> -->
 
   <!-- comment section -->
-  <section class="col-md-6 order-4 order-md-4 mt-4" id="comment-section">
+  <section class="col-md-6 order-4 order-md-4" id="comment-section">
     <div>
       <!-- check if person is logged -->
       <% if (currentUser) { %>

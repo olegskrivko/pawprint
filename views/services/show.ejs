@@ -71,119 +71,132 @@
     /*all: unset;*/
   }
 </style>
+<div class="col-md-12 mb-3">
+  <h1 class="text-center"><%= service.name %></h1>
+  <h3 class="text-center"><%= service.description %></h3>
+</div>
+<div id="map" class="map" style="width: 100%; height: 400px"></div>
 
-<div class="row">
+<div class="row mt-3">
+  <% if (service.serviceProviders.length> 0) {%>
+
   <div class="col-md-12 mb-3">
-    <h1 class="text-center"><%= service.name %></h1>
-    <h3 class="text-center"><%= service.description %></h3>
-  </div>
-  <section class="col-md-5 col-sm-12 order-2 order-md-1 mb-3">
-    <% if (service.serviceProviders.length > 0 ) {%> <% for (let serviceProvider of service.serviceProviders) { %>
+    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-3 g-3">
+      <% for (let serviceProvider of service.serviceProviders) { %>
+      <div class="col">
+      <div class="card mb-3 small">
+        <div class="card-header d-flex justify-content-between">
+          <div class="flex-shrink-0 dropdown">
+            <!-- <a
+      href="#"
+      class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    > -->
+            <!-- src="https://github.com/mdo.png" -->
 
-    <div class="card mb-3 small">
-      <div class="card-header d-flex justify-content-between">
-        <div class="flex-shrink-0 dropdown">
-          <!-- <a
-            href="#"
-            class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          > -->
-          <!-- src="https://github.com/mdo.png" -->
+            <% if (serviceProvider.logo[0].url) { %>
 
-          <% if (serviceProvider.logo[0].url) { %>
+            <img src="<%= serviceProvider.logo[0].url %>" alt="mdo" width="32" height="32" class="rounded-circle me-2" />
 
-          <img src="<%= serviceProvider.logo[0].url %>" alt="mdo" width="32" height="32" class="rounded-circle me-2" />
-
-          <% } else { %>
-          <img src="/images/icons/user.png" alt="mdo" width="32" height="32" class="rounded-circle me-2" />
-          <% } %> <%= serviceProvider.name %>
-          <!-- </a> -->
-          <!-- <ul class="dropdown-menu text-small shadow">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-          </ul> -->
-        </div>
-        <div class="d-flex jusity-content-center align-items-center">
-          <a class="" data-bs-toggle="collapse" data-bs-target="#collapseExample_<%= serviceProvider._id %>" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            <i class="bi bi-three-dots"></i>
-          </a>
-        </div>
-        <div class="d-flex jusity-content-center align-items-center" style="cursor: pointer">
-          <a href="#" style="font-size: 1.2rem; pointer-events: none">
-            <i class="bi bi-bookmark-fill"></i>
-          </a>
-        </div>
-        <div class="d-flex jusity-content-center align-items-center" style="cursor: pointer">
-          <a href="#" style="font-size: 1.2rem; pointer-events: none">
-            <i class="bi bi-star-fill"></i>
-          </a>
-        </div>
-
-        <div data-servicecoords="<%=serviceProvider.location.coordinates %>" class="d-flex jusity-content-center align-items-center geoButtonZoom" style="cursor: pointer">
-          <a href="#" style="font-size: 1.2rem; pointer-events: none"><i style="pointer-events: none" class="bi bi-geo-alt-fill"></i></a>
-        </div>
-      </div>
-      <div class="card-body">
-        <ul class="list-group list-group-flush show-pet-list">
-          <div class="row">
-            <div class="col-12 col-md-12 col-lg-6 mb-3">
-              <b><i class="bi bi-telephone-fill"></i> </b>
-              <a href="tel:<%=serviceProvider.phonecode%><%=serviceProvider.phone%>"><%=serviceProvider.phonecode%><%=serviceProvider.phone%></a>
-            </div>
-
-            <div class="col-12 col-md-12 col-lg-6 mb-3">
-              <b><i class="bi bi-envelope-fill"></i> </b>
-              <a href="mailto:<%= serviceProvider.email %>?subject=Hello%20World&body=I%20hope%20you%20are%20doing%20well."><%= serviceProvider.email %></a>
-            </div>
+            <% } else { %>
+            <img src="/images/icons/user.png" alt="mdo" width="32" height="32" class="rounded-circle me-2" />
+            <% } %> <%= serviceProvider.name %>
+            <!-- </a> -->
+            <!-- <ul class="dropdown-menu text-small shadow">
+      <li><a class="dropdown-item" href="#">New project...</a></li>
+      <li><a class="dropdown-item" href="#">Settings</a></li>
+      <li><a class="dropdown-item" href="#">Profile</a></li>
+      <li><hr class="dropdown-divider" /></li>
+      <li><a class="dropdown-item" href="#">Sign out</a></li>
+    </ul> -->
           </div>
-
-          <!-- row -->
-          <div class="row">
-            <div class="col-12 col-md-12 col-lg-6 mb-3">
-              <b><i class="bi bi-facebook"></i> </b>
-              <a target="_blank" href="https://www.facebook.com/<%=serviceProvider.socialMedia.facebook%>"><%= serviceProvider.socialMedia.facebook %></a>
-            </div>
-
-            <div class="col-12 col-md-12 col-lg-6 mb-3">
-              <b><i class="bi bi-instagram"></i> </b>
-              <a target="_blank" href="https://www.instagram.com/<%=serviceProvider.socialMedia.instagram%>"><%= serviceProvider.socialMedia.instagram %></a>
-            </div>
+          <div class="d-flex jusity-content-center align-items-center">
+            <a class="" data-bs-toggle="collapse" data-bs-target="#collapseExample_<%= serviceProvider._id %>" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+              <i class="bi bi-three-dots"></i>
+            </a>
           </div>
-
-          <div class="row">
-            <div class="col-6 col-md-12 col-lg-6 mb-3">
-              <b><i class="bi bi-globe2"></i> </b>
-              <a href="<%= serviceProvider.website %>" target="_blank"><%= serviceProvider.website %></a>
-            </div>
-
-            <div class="col-6 col-md-12 col-lg-6 mb-3"></div>
+          <!-- <div class="d-flex jusity-content-center align-items-center" style="cursor: pointer">
+            <a href="#" style="font-size: 1.2rem; pointer-events: none">
+              <i class="bi bi-bookmark-fill"></i>
+            </a>
           </div>
-        </ul>
+          <div class="d-flex jusity-content-center align-items-center" style="cursor: pointer">
+            <a href="#" style="font-size: 1.2rem; pointer-events: none">
+              <i class="bi bi-star-fill"></i>
+            </a>
+          </div> -->
 
-        <div class="collapse" id="collapseExample_<%= serviceProvider._id %>">
-          <div class="card card-body">
-            <p class="card-text"><%= serviceProvider.description %></p>
+          <div data-servicecoords="<%=serviceProvider.location.coordinates %>" class="d-flex jusity-content-center align-items-center geoButtonZoom" style="cursor: pointer">
+            <a href="#" style="font-size: 1.2rem; pointer-events: none"><i style="pointer-events: none" class="bi bi-geo-alt-fill"></i></a>
+          </div>
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush show-pet-list">
+            <div class="row">
+              <div class="col-12 col-md-12 col-lg-12 mb-1">
+                <b><i class="bi bi-telephone-fill"></i> Phone: </b>
+                <a href="tel:<%=serviceProvider.phonecode%><%=serviceProvider.phone%>"><%=serviceProvider.phonecode%><%=serviceProvider.phone%></a>
+              </div>
+
+              <div class="col-12 col-md-12 col-lg-12 mb-1">
+                <b><i class="bi bi-envelope-fill"></i> Email: </b>
+                <a href="mailto:<%= serviceProvider.email %>?subject=Hello%20World&body=I%20hope%20you%20are%20doing%20well."><%= serviceProvider.email %></a>
+              </div>
+            
+
+            <!-- row -->
+         
+              <div class="col-12 col-md-12 col-lg-12 mb-1">
+                <b><i class="bi bi-facebook"></i> Facebook: </b>
+                <a target="_blank" href="https://www.facebook.com/<%=serviceProvider.socialMedia.facebook%>"><%= serviceProvider.socialMedia.facebook %></a>
+              </div>
+
+              <div class="col-12 col-md-12 col-lg-12 mb-1">
+                <b><i class="bi bi-instagram"></i> Instagram: </b>
+                <a target="_blank" href="https://www.instagram.com/<%=serviceProvider.socialMedia.instagram%>"><%= serviceProvider.socialMedia.instagram %></a>
+              </div>
+          
+
+          
+              <div class="col-6 col-md-12 col-lg-12 mb-1">
+                <b><i class="bi bi-globe2"></i> Website: </b>
+                <a href="<%= serviceProvider.website %>" target="_blank"><%= serviceProvider.website %></a>
+              </div>
+
+              <div class="col-6 col-md-12 col-lg-12 mb-1"></div>
+            </div>
+          </ul>
+
+          <div class="collapse" id="collapseExample_<%= serviceProvider._id %>">
+            <div class="card card-body">
+              <p class="card-text"><%= serviceProvider.description %></p>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <% } %> <% } else {%>
-    <p>Services are not available</p>
-
-    <% } %>
-  </section>
-  <section class="col-md-7 col-sm-12 order-1 order-md-2 mb-3">
-    <div id="map" class="map col-sm-12" style="height: 400px"></div>
-  </section>
+      <% } %>
+    </div>
+  </div>
+  <% } else { %>
+    <div class="col-md-12 mb-3">
+      <p>No services</p>
+    </div>
+  <% } %>
+ 
 </div>
-<script>
-  const services = {features: <%-JSON.stringify(service.serviceProviders)%>}
-  const TOMTOMTOKEN = "<%-process.env.TOMTOM_API_KEY%>";
-</script>
 
-<script src="/javascripts/servicePageMap.js"></script>
+<!-- OLD -->
+      
+        <script>
+          const services = {features: <%-JSON.stringify(service.serviceProviders)%>}
+          const TOMTOMTOKEN = "<%-process.env.TOMTOM_API_KEY%>";
+        </script>
+
+        <script src="/javascripts/servicePageMap.js"></script>
+      </div>
+    </div>
+  </div>
+</div>

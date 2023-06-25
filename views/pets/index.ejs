@@ -623,7 +623,7 @@
 <div class="row ">
   <% if (pets.length > 0) {%>
   <div class="col-md-12 mb-3">
-    <div class="row row-cols-2 row-cols-sm-2 row-cols-md-5 g-3">
+    <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 g-3">
       <% for (let pet of pets) { %>
       <div class="col">
       
@@ -659,23 +659,30 @@
           </div>
         </a>
 
-            <div class="card-body">
-              <div class="d-flex justify-content-between align-items-center">
-                <p class="card-text pet-latitude d-none"><%=pet.latitude%></p>
-                <p class="card-text pet-longitude d-none"><%=pet.longitude%></p>
-                <small class="text-body-secondary d-flex"
-                  ><div data-petcoords="<%=pet.location.coordinates %>" class="petButtonZoom" style="cursor: pointer;"><i class="bi bi-geo-alt-fill" style="pointer-events: none;"></i></div>
-                  <div class="distance-text mx-2">Calculating...</div></small
-                >
-                <div class="form-check text-secondary" >
-                  <input class="form-check-input compare-checkbox" type="checkbox" value="" id="pet_<%=pet._id%>" style="cursor: pointer;">
-                  <label class="form-check-label" for="pet_<%=pet._id%>" style="cursor: pointer;">
-                    <i class="bi bi-intersect"></i>
-                  </label>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-8 d-flex justify-content-between align-items-center">
+              <p class="card-text pet-latitude d-none"><%=pet.latitude%></p>
+              <p class="card-text pet-longitude d-none"><%=pet.longitude%></p>
+
+              <div class="d-flex">
+                <div data-petcoords="<%=pet.location.coordinates %>" class="petButtonZoom" style="cursor: pointer;">
+                  <i class="bi bi-geo-alt-fill" style="pointer-events: none;"></i>
                 </div>
-                
+                <div class="text-body-secondary distance-text mx-2">Calculating...</div>
               </div>
             </div>
+            <div class="col-sm-12 col-md-12 col-lg-4  d-flex justify-content-end align-items-center">
+              <div class="form-check text-secondary">
+                <input class="form-check-input compare-checkbox" type="checkbox" value="" id="pet_<%=pet._id%>" style="cursor: pointer;">
+                <label class="form-check-label" for="pet_<%=pet._id%>" style="cursor: pointer;">
+                  <i class="bi bi-intersect"></i>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        
 
 
           </div>
