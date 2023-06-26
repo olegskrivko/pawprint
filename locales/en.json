@@ -1,11 +1,20 @@
 {
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "pets": "Pets",
+    "services": "Services",
+    "login": "Log in",
+    "signup": "Sign up",
+    "greeting": "Hello"
+  },
   "home": {
     "appName": "PawPrint",
     "welcomeTitle": "Welcome to ",
     "welcomeText": "Find your furry friend with PawPrint. Try it today, no matter where you are.",
     "welcomeBtn": "Find a Pet",
-    "loginBtn": "Find a Pet",
-    "signupBtn": "Find a Pet"
+    "loginBtn": "Log in",
+    "signupBtn": "Sign up"
   },
   "about": {
     "ourGoalTitle": "Our Goal",
@@ -432,5 +441,28 @@
       { "value": "Whippet", "text": "Whippet" },
       { "value": "Yorkshire Terrier", "text": "Yorkshire Terrier" }
     ]
+  },
+  "services": {
+    "serviceTitle": "Services",
+    "addServiceBtn": "Add Service",
+    "service1": "Animal Shelters",
+    "service2": "Pet Grooming",
+    "service3": "Pet Insurance and Legal Services",
+    "service4": "Cat Cafe",
+    "service5": "Pet Search and Rescue Services",
+    "service6": "Pet Training",
+    "service7": "Pet Art and Crafts",
+    "service8": "Pet Boarding",
+    "service9": "Pet Sitting",
+    "service10": "Pet Transportation",
+    "service11": "Other Services",
+    "service12": "Pet Burial Services",
+    "service13": "Pet Photography",
+    "service14": "Pet Friendly Accommodation",
+    "service15": "Pet Breeders",
+    "service16": "Dog Walking",
+    "service17": "Pet Supplies and Accessories",
+    "service18": "Pet Expo",
+    "service19": "Veterinary Services"
   }
 }

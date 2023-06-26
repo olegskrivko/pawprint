@@ -1,0 +1,468 @@
+{
+  "navbar": {
+    "home": "Главная",
+    "about": "О нас",
+    "pets": "Животные",
+    "services": "Услуги",
+    "login": "Войти",
+    "signup": "Зарегистрироваться",
+    "greeting": "Привет"
+  },
+  "home": {
+    "appName": "PawPrint",
+    "welcomeTitle": "Добро пожаловать в",
+    "welcomeText": "Найдите своего пушистого друга с помощью PawPrint. Попробуйте прямо сейчас, где бы вы ни находились.",
+    "welcomeBtn": "Найти питомца",
+    "loginBtn": "Войти",
+    "signupBtn": "Зарегистрироваться"
+  },
+  "about": {
+    "ourGoalTitle": "Наша цель",
+    "ourGoalText1": "Наше приложение использует передовые технологии для облегчения воссоединения потерянных животных с их владельцами. Мы предоставляем платформу для размещения объявлений о потерянных питомцах и активно работаем над связью владельцев с людьми, которые их нашли.",
+    "ourGoalText2": "Кроме того, наше приложение соединяет вас с широким спектром услуг, связанных с животными, включая ветеринарные клиники, грумеры, тренеров и многое другое. Мы обеспечиваем доступ к правильным ресурсам для конкретных потребностей вашего питомца.",
+    "featureTitle": "Особенности",
+    "featureSubtitle1": "Оптимизированная для мобильных устройств и безопасная платформа",
+    "featureText1": "Наше мобильное приложение, оптимизированное для работы на мобильных устройствах, использует последние технологии для обеспечения безопасной платформы для воссоединения потерянных животных с их владельцами.",
+    "featureSubtitle2": "Информация о здоровье и уходе за питомцами",
+    "featureText2": "Наше приложение предоставляет ценную информацию о здоровье питомцев и экстренном уходе, включая важность вакцинации и регулярных проверок, чтобы ваш питомец оставался здоровым и счастливым.",
+    "featureSubtitle3": "Ресурсы сообщества",
+    "featureText3": "Раздел, предоставляющий информацию о местных приютах для животных, ветеринарных клиниках и других ресурсах для владельцев питомцев.",
+    "featureSubtitle4": "Советы и ресурсы",
+    "featureText4": "Раздел, предоставляющий советы и ресурсы владельцам питомцев о том, как предотвратить их пропажу, а также о действиях в случае пропажи питомца.",
+    "featureSubtitle5": "Создание профиля питомца",
+    "featureText5": "Функция, позволяющая пользователям создать профиль для своего потерянного питомца, включая фотографию, описание и контактную информацию.",
+    "featureSubtitle6": "Интеграция с социальными сетями",
+    "featureText6": "Интеграция с платформами социальных сетей, чтобы помочь распространить информацию о потерянных животных и облегчить коммуникацию между пользователями.",
+    "featureSubtitle7": "Поиск в базе данных",
+    "featureText7": "Поиск в базе данных потерянных и найденных животных, позволяющий пользователям искать питомцев по местоположению, породе, цвету и другим характеристикам.",
+    "featureSubtitle8": "Карта потерянных и найденных питомцев",
+    "featureText8": "Функция, отображающая на карте потерянных и найденных питомцев в вашем районе, позволяющая пользователям легко находить и идентифицировать потерянных питомцев.",
+    "featureSubtitle9": "Листовки о потерянных питомцах",
+    "featureText9": "Функция, позволяющая пользователям легко создавать и печатать листовки о потерянных питомцах для распространения в их местном сообществе.",
+    "supportOurProjectTitle": "Поддержите наш проект",
+    "supportOurProjectText": "Ваш вклад может помочь нам продолжать нашу миссию воссоединения потерянных животных с их семьями и предоставления им необходимой помощи. Каждый вклад имеет значение, и мы ценим вашу поддержку!",
+    "supportBtn": "Поддержать",
+    "shareYourThoughtsTitle": "Поделитесь своими мыслями",
+    "shareYourThoughtsText": "Ваши отзывы очень важны для нас, поскольку мы стремимся улучшить наше приложение и предоставить наилучший сервис владельцам питомцев. Мы ценим любые комментарии, предложения или замечания, и мы будем использовать их для улучшения нашего приложения. Пожалуйста, найдите минуту, чтобы поделиться своими мыслями с нами.",
+    "leaveFeedbackBtn": "Оставить отзыв",
+    "sponsorsTitle": "Спонсоры",
+    "sponsorsText": "Наши спонсоры играют важную роль в помощи нам продолжать нашу миссию воссоединения потерянных животных с их семьями и предоставления им необходимой помощи. Их щедрая поддержка не только помогает нам продолжать свою работу, но и делает реальную разницу в жизни потерянных и бездомных животных."
+  },
+
+  "pets": {
+    "filterBtn": "Фильтры",
+    "compareBtn": "Сравнить",
+    "reportPetBtn": "Сообщить о животном",
+    "searchBtn": "Поиск",
+    "clearBtn": "Очистить",
+    "prevPageBtn": "Предыдущая",
+    "nextPageBtn": "Следующая",
+    "filterPetStatus": "Статус животного:",
+    "filterSpecies": "Вид:",
+    "filterPetGender": "Пол животного:",
+    "filterBreed": "Порода:",
+    "filterPetColor": "Цвет животного:",
+    "filterDistance": "Расстояние (км):",
+    "filterPetAge": "Возраст животного:",
+    "filterCoatType": "Тип шерсти:",
+    "filterPetSize": "Размер животного:",
+    "filterIdentifier": "Идентификатор:",
+    "filterLocation": "Местоположение:",
+    "filterLostDate": "Дата пропажи:"
+  },
+  "statusOptions": [
+    { "value": "", "text": "" },
+    { "value": "Missing", "text": "Пропавшее" },
+    { "value": "Found", "text": "Найденное" },
+    { "value": "Reunited", "text": "Воссоединенное" },
+    { "value": "Adopted", "text": "Усыновленное" },
+    { "value": "Fostered", "text": "Приютское" },
+    { "value": "Deceased", "text": "Умершее" }
+  ],
+  "speciesOptions": [
+    { "value": "", "text": "" },
+    { "value": "Dog", "text": "Собака" },
+    { "value": "Cat", "text": "Кот" },
+    { "value": "Other", "text": "Другое" }
+  ],
+  "genderOptions": [
+    { "value": "", "text": "" },
+    { "value": "She", "text": "Она" },
+    { "value": "He", "text": "Он" }
+  ],
+  "colorOptions": [
+    { "value": "", "text": "" },
+    { "value": "Black", "text": "Черный" },
+    { "value": "Brown", "text": "Коричневый" },
+    { "value": "White", "text": "Белый" },
+    { "value": "Red", "text": "Красный" },
+    { "value": "Gold", "text": "Золотой" },
+    { "value": "Blue", "text": "Синий" },
+    { "value": "Gray", "text": "Серый" },
+    { "value": "Cream", "text": "Кремовый" },
+    { "value": "Yellow", "text": "Желтый" }
+  ],
+  "ageOptions": [
+    { "value": "", "text": "" },
+    { "value": "Kitten", "text": "Котенок" },
+    { "value": "Puppy", "text": "Щенок" },
+    { "value": "Adolescent", "text": "Подросток" },
+    { "value": "Adult", "text": "Взрослое" },
+    { "value": "Senior", "text": "Пожилое" }
+  ],
+  "coatOptions": [
+    { "value": "", "text": "" },
+    { "value": "Hairless", "text": "Безшерстное" },
+    { "value": "Short", "text": "Короткошерстное" },
+    { "value": "Medium", "text": "Средней длины шерсть" },
+    { "value": "Long", "text": "Длинношерстное" },
+    { "value": "Wire", "text": "Жесткая шерсть" },
+    { "value": "Curly", "text": "Кудрявая шерсть" },
+    { "value": "Smooth", "text": "Гладкая шерсть" },
+    { "value": "Double", "text": "Двойная шерсть" },
+    { "value": "Silky", "text": "Шелковистая шерсть" },
+    { "value": "Wavy", "text": "Волнистая шерсть" },
+    { "value": "Corded", "text": "Шерсть в косичках" }
+  ],
+  "sizeOptions": [
+    { "value": "", "text": "" },
+    { "value": "Small", "text": "Маленький" },
+    { "value": "Medium", "text": "Средний" },
+    { "value": "Large", "text": "Большой" }
+  ],
+  "regionOptions": {
+    "all": [{ "value": "", "text": "" }],
+    "city": [
+      {
+        "value": "Riga",
+        "text": "Riga"
+      },
+      {
+        "value": "Daugavpils",
+        "text": "Daugavpils"
+      },
+      {
+        "value": "Jelgava",
+        "text": "Jelgava"
+      },
+      {
+        "value": "Jurmala",
+        "text": "Jurmala"
+      },
+      {
+        "value": "Liepaja",
+        "text": "Liepaja"
+      },
+      {
+        "value": "Rezekne",
+        "text": "Rezekne"
+      },
+      {
+        "value": "Valmiera",
+        "text": "Valmiera"
+      },
+      {
+        "value": "Ventspils",
+        "text": "Ventspils"
+      }
+    ],
+    "municipality": [
+      {
+        "value": "Adazu nov",
+        "text": "Adazu nov"
+      },
+      {
+        "value": "Aizkraukles nov",
+        "text": "Aizkraukles nov"
+      },
+      {
+        "value": "Aluksnes nov",
+        "text": "Aluksnes nov"
+      },
+      {
+        "value": "Augsdaugavas nov",
+        "text": "Augsdaugavas nov"
+      },
+      {
+        "value": "Balvu nov",
+        "text": "Balvu nov"
+      },
+      {
+        "value": "Bauskas nov",
+        "text": "Bauskas nov"
+      },
+      {
+        "value": "Cesu nov",
+        "text": "Cesu nov"
+      },
+      {
+        "value": "Dienvidkurzemes nov",
+        "text": "Dienvidkurzemes nov"
+      },
+      {
+        "value": "Dobeles nov",
+        "text": "Dobeles nov"
+      },
+      {
+        "value": "Gulbenes nov",
+        "text": "Gulbenes nov"
+      },
+      {
+        "value": "Jekabpils nov",
+        "text": "Jekabpils nov"
+      },
+      {
+        "value": "Jelgavas nov",
+        "text": "Jelgavas nov"
+      },
+      {
+        "value": "Kekavas nov",
+        "text": "Kekavas nov"
+      },
+      {
+        "value": "Kraslavas nov",
+        "text": "Kraslavas nov"
+      },
+      {
+        "value": "Kuldigas nov",
+        "text": "Kuldigas nov"
+      },
+      {
+        "value": "Limbazu novads",
+        "text": "Limbazu novads"
+      },
+      {
+        "value": "Livanu nov",
+        "text": "Livanu nov"
+      },
+      {
+        "value": "Ludzas nov",
+        "text": "Ludzas nov"
+      },
+      {
+        "value": "Madonas nov",
+        "text": "Madonas nov"
+      },
+      {
+        "value": "Marupes nov",
+        "text": "Marupes nov"
+      },
+      {
+        "value": "Ogres nov",
+        "text": "Ogres nov"
+      },
+      {
+        "value": "Olaines nov",
+        "text": "Olaines nov"
+      },
+      {
+        "value": "Preilu nov",
+        "text": "Preilu nov"
+      },
+      {
+        "value": "Rezeknes nov",
+        "text": "Rezeknes nov"
+      },
+      {
+        "value": "Ropazu nov",
+        "text": "Ropazu nov"
+      },
+      {
+        "value": "Salaspils nov",
+        "text": "Salaspils nov"
+      },
+      {
+        "value": "Saldus nov",
+        "text": "Saldus nov"
+      },
+      {
+        "value": "Saulkrastu nov",
+        "text": "Saulkrastu nov"
+      },
+      {
+        "value": "Siguldas nov",
+        "text": "Siguldas nov"
+      },
+      {
+        "value": "Smiltenes nov",
+        "text": "Smiltenes nov"
+      },
+      {
+        "value": "Talsu nov",
+        "text": "Talsu nov"
+      },
+      {
+        "value": "Tukuma nov",
+        "text": "Tukuma nov"
+      },
+      {
+        "value": "Valkas nov",
+        "text": "Valkas nov"
+      },
+      {
+        "value": "Valmieras nov",
+        "text": "Valmieras nov"
+      },
+      {
+        "value": "Varaklanu nov",
+        "text": "Varaklanu nov"
+      },
+      {
+        "value": "Ventspils nov",
+        "text": "Ventspils nov"
+      }
+    ]
+  },
+
+  "breeds": {
+    "all": [{ "value": "", "text": "" }],
+    "catOptiongroupLabel": [{ "value": "Cat Breed", "text": "Cat Breed" }],
+    "dogOptiongroupLabel": [{ "value": "Dog Breed", "text": "Dog Breed" }],
+    "cats": [
+      { "value": "Abyssinian", "text": "Abyssinian" },
+      { "value": "American Bobtail", "text": "American Bobtail" },
+      { "value": "American Shorthair", "text": "American Shorthair" },
+      { "value": "Australian Mist", "text": "Australian Mist" },
+      { "value": "Balinese", "text": "Balinese" },
+      { "value": "Bengal", "text": "Bengal" },
+      { "value": "Birman", "text": "Birman" },
+      { "value": "Bombay", "text": "Bombay" },
+      { "value": "British Shorthair", "text": "British Shorthair" },
+      { "value": "Burmese", "text": "Burmese" },
+      { "value": "Burmilla", "text": "Burmilla" },
+      { "value": "Chartreux", "text": "Chartreux" },
+      { "value": "Chausie", "text": "Chausie" },
+      { "value": "Cornish Rex", "text": "Cornish Rex" },
+      { "value": "Cymric", "text": "Cymric" },
+      { "value": "Devon Rex", "text": "Devon Rex" },
+      { "value": "Egyptian Mau", "text": "Egyptian Mau" },
+      { "value": "Exotic Shorthair", "text": "Exotic Shorthair" },
+      { "value": "Himalayan", "text": "Himalayan" },
+      { "value": "Highlander", "text": "Highlander" },
+      { "value": "Japanese Bobtail", "text": "Japanese Bobtail" },
+      { "value": "Korat", "text": "Korat" },
+      { "value": "LaPerm", "text": "LaPerm" },
+      { "value": "Maine Coon", "text": "Maine Coon" },
+      { "value": "Manx", "text": "Manx" },
+      { "value": "Munchkin", "text": "Munchkin" },
+      { "value": "Nebelung", "text": "Nebelung" },
+      { "value": "Norwegian Forest Cat", "text": "Norwegian Forest Cat" },
+      { "value": "Oriental Shorthair", "text": "Oriental Shorthair" },
+      { "value": "Peterbald", "text": "Peterbald" },
+      { "value": "Persian", "text": "Persian" },
+      { "value": "Pixiebob", "text": "Pixiebob" },
+      { "value": "Ragdoll", "text": "Ragdoll" },
+      { "value": "Russian Blue", "text": "Russian Blue" },
+      { "value": "Scottish Fold", "text": "Scottish Fold" },
+      { "value": "Selkirk Rex", "text": "Selkirk Rex" },
+      { "value": "Serengeti", "text": "Serengeti" },
+      { "value": "Siberian", "text": "Siberian" },
+      { "value": "Siamese", "text": "Siamese" },
+      { "value": "Singapura", "text": "Singapura" },
+      { "value": "Snowshoe", "text": "Snowshoe" },
+      { "value": "Sokoke", "text": "Sokoke" },
+      { "value": "Sphynx", "text": "Sphynx" },
+      { "value": "Tonkinese", "text": "Tonkinese" },
+      { "value": "Toyger", "text": "Toyger" },
+      { "value": "Turkish Angora", "text": "Turkish Angora" },
+      { "value": "Turkish Van", "text": "Turkish Van" }
+    ],
+    "dogs": [
+      { "value": "Afghan Hound", "text": "Afghan Hound" },
+      { "value": "Akita", "text": "Akita" },
+      { "value": "Akita Inu", "text": "Akita Inu" },
+      { "value": "Alaskan Malamute", "text": "Alaskan Malamute" },
+      { "value": "American Bulldog", "text": "American Bulldog" },
+      { "value": "Australian Cattle Dog", "text": "Australian Cattle Dog" },
+      { "value": "Basset Hound", "text": "Basset Hound" },
+      { "value": "Basenji", "text": "Basenji" },
+      { "value": "Bernese Mountain Dog", "text": "Bernese Mountain Dog" },
+      { "value": "Bloodhound", "text": "Bloodhound" },
+      { "value": "Boston Terrier", "text": "Boston Terrier" },
+      { "value": "Bullmastiff", "text": "Bullmastiff" },
+      { "value": "Cairn Terrier", "text": "Cairn Terrier" },
+      { "value": "Cane Corso", "text": "Cane Corso" },
+      { "value": "Cavalier King Charles Spaniel", "text": "Cavalier King Charles Spaniel" },
+      { "value": "Chesapeake Bay Retriever", "text": "Chesapeake Bay Retriever" },
+      { "value": "Chinese Crested", "text": "Chinese Crested" },
+      { "value": "Chinese Shar-Pei", "text": "Chinese Shar-Pei" },
+      { "value": "Collie", "text": "Collie" },
+      { "value": "Corgi", "text": "Corgi" },
+      { "value": "Dandie Dinmont Terrier", "text": "Dandie Dinmont Terrier" },
+      { "value": "Dogo Argentino", "text": "Dogo Argentino" },
+      { "value": "Dogo Canario", "text": "Dogo Canario" },
+      { "value": "English Bulldog", "text": "English Bulldog" },
+      { "value": "English Setter", "text": "English Setter" },
+      { "value": "English Springer Spaniel", "text": "English Springer Spaniel" },
+      { "value": "French Bulldog", "text": "French Bulldog" },
+      { "value": "German Shepherd", "text": "German Shepherd" },
+      { "value": "Golden Retriever", "text": "Golden Retriever" },
+      { "value": "Great Dane", "text": "Great Dane" },
+      { "value": "Great Pyrenees", "text": "Great Pyrenees" },
+      { "value": "Havanese", "text": "Havanese" },
+      { "value": "Irish Terrier", "text": "Irish Terrier" },
+      { "value": "Irish Wolfhound", "text": "Irish Wolfhound" },
+      { "value": "Italian Greyhound", "text": "Italian Greyhound" },
+      { "value": "Jack Russell Terrier", "text": "Jack Russell Terrier" },
+      { "value": "Japanese Chin", "text": "Japanese Chin" },
+      { "value": "Keeshond", "text": "Keeshond" },
+      { "value": "Labrador Retriever", "text": "Labrador Retriever" },
+      { "value": "Leonberger", "text": "Leonberger" },
+      { "value": "Lhasa Apso", "text": "Lhasa Apso" },
+      { "value": "Maltese", "text": "Maltese" },
+      { "value": "Mastiff", "text": "Mastiff" },
+      { "value": "Miniature Bull Terrier", "text": "Miniature Bull Terrier" },
+      { "value": "Newfoundland", "text": "Newfoundland" },
+      { "value": "Norfolk Terrier", "text": "Norfolk Terrier" },
+      { "value": "Norwegian Buhund", "text": "Norwegian Buhund" },
+      { "value": "Norwegian Elkhound", "text": "Norwegian Elkhound" },
+      { "value": "Norwich Terrier", "text": "Norwich Terrier" },
+      { "value": "Pekingese", "text": "Pekingese" },
+      { "value": "Petit Basset Griffon Vendeen", "text": "Petit Basset Griffon Vendeen" },
+      { "value": "Pit Bull Terrier", "text": "Pit Bull Terrier" },
+      { "value": "Pomeranian", "text": "Pomeranian" },
+      { "value": "Poodle", "text": "Poodle" },
+      { "value": "Pug", "text": "Pug" },
+      { "value": "Rottweiler", "text": "Rottweiler" },
+      { "value": "Saint Bernard", "text": "Saint Bernard" },
+      { "value": "Samoyed", "text": "Samoyed" },
+      { "value": "Scottish Terrier", "text": "Scottish Terrier" },
+      { "value": "Shetland Sheepdog", "text": "Shetland Sheepdog" },
+      { "value": "Shiba Inu", "text": "Shiba Inu" },
+      { "value": "Shih Tzu", "text": "Shih Tzu" },
+      { "value": "Siberian Husky", "text": "Siberian Husky" },
+      { "value": "Staffordshire Bull Terrier", "text": "Staffordshire Bull Terrier" },
+      { "value": "Tibetan Mastiff", "text": "Tibetan Mastiff" },
+      { "value": "Tibetan Spaniel", "text": "Tibetan Spaniel" },
+      { "value": "Tibetan Terrier", "text": "Tibetan Terrier" },
+      { "value": "Toy Fox Terrier", "text": "Toy Fox Terrier" },
+      { "value": "Weimaraner", "text": "Weimaraner" },
+      { "value": "West Highland White Terrier", "text": "West Highland White Terrier" },
+      { "value": "Whippet", "text": "Whippet" },
+      { "value": "Yorkshire Terrier", "text": "Yorkshire Terrier" }
+    ]
+  },
+  "services": {
+    "serviceTitle": "Услуги",
+    "addServiceBtn": "Добавить услугу",
+    "service1": "Приюты для животных",
+    "service2": "Уход за питомцами",
+    "service3": "Страхование питомцев и юридические услуги",
+    "service4": "Кошачий кафе",
+    "service5": "Службы поиска и спасения животных",
+    "service6": "Обучение питомцев",
+    "service7": "Искусство и ремесла для питомцев",
+    "service8": "Присмотр за питомцами",
+    "service9": "Уход за питомцами в отсутствие владельца",
+    "service10": "Транспортировка питомцев",
+    "service11": "Другие услуги",
+    "service12": "Похоронные услуги для питомцев",
+    "service13": "Фотография питомцев",
+    "service14": "Жилье, где допускаются питомцы",
+    "service15": "Питомцеводы",
+    "service16": "Выгул собак",
+    "service17": "Товары и аксессуары для питомцев",
+    "service18": "Выставка питомцев",
+    "service19": "Ветеринарные услуги"
+  }
+}

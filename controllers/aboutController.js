@@ -92,7 +92,8 @@ module.exports.index = async (req, res) => {
 
 module.exports.support = async (req, res) => {
   try {
-    res.render('about/support');
+    const data = req.data; // Language data is available from the middleware
+    res.render('about/support', { data });
   } catch (err) {
     console.error(err.message);
   }
@@ -100,7 +101,8 @@ module.exports.support = async (req, res) => {
 
 module.exports.feedback = async (req, res) => {
   try {
-    res.render('about/feedback');
+    const data = req.data; // Language data is available from the middleware
+    res.render('about/feedback', { data });
   } catch (err) {
     console.error(err.message);
   }

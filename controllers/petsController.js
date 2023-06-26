@@ -137,15 +137,21 @@ module.exports.index = async (req, res) => {
 };
 
 module.exports.renderNewForm = (req, res) => {
-  res.render('pets/new');
+  // Retrieve the language preference and data from the response locals
+  const data = req.data; // Language data is available from the middleware
+  res.render('pets/new', { data });
 };
 
 module.exports.renderMissingForm = (req, res) => {
-  res.render('pets/missing');
+  // Retrieve the language preference and data from the response locals
+  const data = req.data; // Language data is available from the middleware
+  res.render('pets/missing', { data });
 };
 
 module.exports.renderFoundForm = (req, res) => {
-  res.render('pets/found');
+  // Retrieve the language preference and data from the response locals
+  const data = req.data; // Language data is available from the middleware
+  res.render('pets/found', { data });
 };
 
 module.exports.createPet = async (req, res, next) => {
@@ -207,6 +213,8 @@ module.exports.createPet = async (req, res, next) => {
 };
 
 module.exports.showPet = async (req, res) => {
+  // Retrieve the language preference and data from the response locals
+  const data = req.data; // Language data is available from the middleware
   // Find the pet with the provided ID and populate its comments and author
   const pet = await Pet.findById(req.params.id)
     .populate({
@@ -240,17 +248,20 @@ module.exports.showPet = async (req, res) => {
     createDateInWords,
     updateDateInWords,
     lostDateInWords,
+    data,
   });
 };
 
 module.exports.renderEditForm = async (req, res) => {
+  // Retrieve the language preference and data from the response locals
+  const data = req.data; // Language data is available from the middleware
   const { id } = req.params;
   const pet = await Pet.findById(id);
   if (!pet) {
     req.flash('error', 'Cannot find that pet!');
     return res.redirect('/pets');
   }
-  res.render('pets/edit', { pet });
+  res.render('pets/edit', { pet, data });
 };
 
 module.exports.updatePet = async (req, res) => {

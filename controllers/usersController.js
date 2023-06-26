@@ -140,7 +140,8 @@ async function generateVerificationToken() {
 
 // Controller for rendering the registration form
 module.exports.renderRegister = (req, res) => {
-  res.render('auth/register');
+  const data = req.data; // Language data is available from the middleware
+  res.render('auth/register', { data });
 };
 
 module.exports.verifyEmail = async (req, res, next) => {
@@ -261,7 +262,8 @@ module.exports.verifyEmail = async (req, res, next) => {
 
 // Controller for rendering the login page
 module.exports.renderLogin = (req, res) => {
-  res.render('auth/login'); // Render the login view
+  const data = req.data; // Language data is available from the middleware
+  res.render('auth/login', { data }); // Render the login view
 };
 
 // Controller for user login
@@ -302,8 +304,9 @@ module.exports.logout = (req, res) => {
 // Controller for rendering the account page
 module.exports.renderAccountProfile = (req, res) => {
   try {
+    const data = req.data; // Language data is available from the middleware
     // Render the account page template
-    res.render('auth/profile', { phoneCodeOptions, countryOptions });
+    res.render('auth/profile', { phoneCodeOptions, countryOptions, data });
   } catch (error) {
     // Log the error for debugging purposes
     console.error('Error rendering account page:', error);
@@ -317,8 +320,9 @@ module.exports.renderAccountProfile = (req, res) => {
 // Controller for rendering the account settings page
 module.exports.renderAccountSettings = (req, res) => {
   try {
+    const data = req.data; // Language data is available from the middleware
     // Render the account settings page template
-    res.render('auth/settings', { languageOptions });
+    res.render('auth/settings', { languageOptions, data });
   } catch (error) {
     // Log the error for debugging purposes
     console.error('Error rendering account page:', error);
@@ -568,12 +572,12 @@ module.exports.renderAccountWatchlist = async (req, res) => {
   try {
     // Retrieve the user's watchlist from the database
     const watchlist = req.user.watchlist;
-
+    const data = req.data; // Language data is available from the middleware
     // Fetch the pets from the database based on the pet IDs in the watchlist
     const pets = await Pet.find({ _id: { $in: watchlist } });
 
     // Render the watchlist page with the watchlist data
-    res.render('auth/watchlist', { pets });
+    res.render('auth/watchlist', { pets, data });
   } catch (error) {
     // Log the error for debugging purposes
     console.error('Error rendering account watchlist:', error);

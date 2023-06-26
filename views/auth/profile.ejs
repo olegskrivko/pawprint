@@ -255,7 +255,17 @@ id="phoneCode"
       <input class="form-control" type="email" readonly disabled id="email" name="email" value="<%=currentUser.email%>" required />
   </div>
 </div>
-
+<div class="row row-cols-1 row-cols-md-2 g-3 justify-content-center mt-2">
+  <div class="col-md-8">
+    <% if (currentUser.isVerified) { %>
+      <p><span class="text-success"><i class="bi bi-shield-fill-check"></i></span> Email is verified</p>
+    <% } else { %>
+      <p><span class="text-danger"><i class="bi bi-shield-fill-x"></i></span> Email is not verified</p>
+      <p>Click <a href="#">here</a> to verify your email</p>
+    <% } %>
+  </div>
+  
+</div>
 
 
 <!-- <div class="row row-cols-1 row-cols-md-2 g-3 justify-content-center">

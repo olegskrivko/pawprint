@@ -33,6 +33,9 @@ const locationRoutes = require('./routes/locationRoutes');
 // Import locales
 const enData = require('./locales/en.json');
 const lvData = require('./locales/lv.json');
+const ruData = require('./locales/ru.json');
+const ltData = require('./locales/lt.json');
+const etData = require('./locales/et.json');
 
 // Import model
 const User = require('./models/user');
@@ -135,7 +138,23 @@ app.get('/', async (req, res) => {
     }
 
     // Retrieve the corresponding data based on the user's language preference
-    const data = userLanguage && userLanguage.startsWith('lv') ? lvData : enData;
+    let data;
+
+    if (userLanguage && userLanguage.startsWith('lv')) {
+      data = lvData;
+    } else if (userLanguage && userLanguage.startsWith('ru')) {
+      data = ruData;
+    } else if (userLanguage && userLanguage.startsWith('lt')) {
+      data = ltData;
+    } else if (userLanguage && userLanguage.startsWith('et')) {
+      data = etData;
+    } else {
+      data = enData;
+    }
+
+    // Attach the language data to the request object for access in subsequent middleware or routes
+    req.data = data;
+
     res.render('home', { data });
   } catch (err) {
     console.error(err.message);
