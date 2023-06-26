@@ -9,19 +9,19 @@
     </span>
   </div>
   <div class="py-3 my-2 text-center">
-    <h1 class="display-5 fw-bold"><%= data.home.welcomeTitle %> <span class="text-warning"><%= data.home.appName %></span></h1>
+    <h1 class="display-5 fw-bold"><%= home.welcomeTitle %> <span class="text-warning"><%= home.appName %></span></h1>
   </div>
 
-  <div class="d-grid gap-2 px-4 d-sm-flex justify-content-sm-center mb-5" style="text-align: justify"><%= data.home.welcomeText %></div>
+  <div class="d-grid gap-2 px-4 d-sm-flex justify-content-sm-center mb-5" style="text-align: justify"><%= home.welcomeText %></div>
 
   <% if(!currentUser) { %>
   <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-    <button type="button" onClick="location.href='/auth/login'" class="btn btn-primary btn-lg px-4 gap-3"><%= data.home.loginBtn %></button>
-    <button type="button" onClick="location.href='/auth/register'" class="btn btn-outline-secondary btn-lg px-4"><%= data.home.signupBtn %></button>
+    <button type="button" onClick="location.href='/auth/login'" class="btn btn-primary btn-lg px-4 gap-3"><%= home.loginBtn %></button>
+    <button type="button" onClick="location.href='/auth/register'" class="btn btn-outline-secondary btn-lg px-4"><%= home.signupBtn %></button>
   </div>
   <% } else if (currentUser) {%>
   <div class="d-flex justify-content-center">
-    <button type="button" onClick="location.href='/pets'" class="btn btn-warning btn-lg px-4"><%= data.home.welcomeBtn %></button>
+    <button type="button" onClick="location.href='/pets'" class="btn btn-warning btn-lg px-4"><%= home.welcomeBtn %></button>
   </div>
   <% } %>
 </main>

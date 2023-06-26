@@ -15,13 +15,12 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const MongoStore = require('connect-mongo');
 const mongoSanitize = require('express-mongo-sanitize');
-//const i18n = require('i18n');
-
-// Import middleware and utility
-//const { languageMiddleware } = require('./middleware/middleware');
+const i18n = require('i18n');
+const cookieParser = require('cookie-parser');
 const ExpressError = require('./utils/ExpressError');
 
 // Import routes
+const homeRoutes = require('./routes/homeRoutes');
 const userRoutes = require('./routes/userRoutes');
 const aboutRoutes = require('./routes/aboutRoutes');
 const serviceRoutes = require('./routes/serviceRoutes');
@@ -30,30 +29,44 @@ const compareRoutes = require('./routes/compareRoutes');
 const commentRoutes = require('./routes/commentRoutes');
 const locationRoutes = require('./routes/locationRoutes');
 
-// Import locales
-const enData = require('./locales/en.json');
-const lvData = require('./locales/lv.json');
-const ruData = require('./locales/ru.json');
-const ltData = require('./locales/lt.json');
-const etData = require('./locales/et.json');
-
 // Import model
 const User = require('./models/user');
 
 // Create Express app
 const app = express();
 
+// Set up Express app
+app.engine('ejs', engine);
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(mongoSanitize());
+app.use(express.json());
+app.use(cookieParser());
+
 // Configure i18n middleware
-// i18n.configure({
-//   locales: ['en', 'lv'],
-//   defaultLocale: 'en',
-//   directory: __dirname + '/locales',
-//   queryParameter: 'lang',
-//   cookie: 'lang',
-//   register: global,
-// });
-// app.use(i18n.init);
-//   "mongoose": "^6.8.4",
+i18n.configure({
+  locales: ['en', 'lv', 'ru', 'lt', 'et'], // Add all supported locales here
+  defaultLocale: 'en', // Set the default locale
+  directory: path.join(__dirname, 'locales'), // Set the directory where translation files are located
+  header: 'accept-language', // Set the header field to retrieve the language preference from the request headers
+  queryParameter: 'lang', // Set the query parameter to specify the language in the URL
+  cookie: 'lang', // Set the cookie name to store the selected language
+  register: global, // Register the i18n module in the global scope for easy access
+});
+
+app.use(i18n.init); // Initialize the i18n module
+
+// Middleware to set the language cookie
+app.use((req, res, next) => {
+  console.log('req.cookies.lang', req.cookies.lang);
+  const selectedLanguage = req.cookies.lang || req.get('accept-language') || 'en';
+  res.cookie('lang', selectedLanguage, { maxAge: 1000 * 60 * 60 * 24 * 7 }); // Set the language cookie with a maxAge of 7 days
+  next();
+});
+
 // Connect to MongoDB
 const dbURL = process.env.DB_URL;
 mongoose
@@ -64,8 +77,6 @@ mongoose
   .catch((error) => {
     console.log('MongoDB connection error: ', error);
   });
-
-// Set the value of strictQuery explicitly (no longer necessary in recent versions of Mongoose)
 
 // Set up the session store
 const secret = process.env.SECRET;
@@ -87,15 +98,6 @@ const sessionConfig = {
   },
 };
 
-// Set up Express app
-app.engine('ejs', engine);
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-app.use(express.urlencoded({ extended: true }));
-app.use(methodOverride('_method'));
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(mongoSanitize());
-app.use(express.json());
 app.use(session(sessionConfig));
 app.use(flash());
 app.use(passport.initialize());
@@ -115,6 +117,7 @@ app.use((req, res, next) => {
 });
 
 // Define routes
+app.use('/', homeRoutes);
 app.use('/auth', userRoutes);
 app.use('/compare', compareRoutes);
 app.use('/pets', petRoutes);
@@ -123,54 +126,72 @@ app.use('/pets/:id/comments', commentRoutes);
 app.use('/services', serviceRoutes);
 app.use('/regions', locationRoutes);
 
-// Home route
-app.get('/', async (req, res) => {
-  try {
-    let userLanguage;
-
-    if (req.isAuthenticated()) {
-      // User is logged in, retrieve language preference from user profile
-      const user = await User.findById(req.user.id);
-      userLanguage = user.language;
-    } else {
-      // User is not logged in, retrieve language preference from request headers
-      userLanguage = req.headers['accept-language'];
-    }
-
-    // Retrieve the corresponding data based on the user's language preference
-    let data;
-
-    if (userLanguage && userLanguage.startsWith('lv')) {
-      data = lvData;
-    } else if (userLanguage && userLanguage.startsWith('ru')) {
-      data = ruData;
-    } else if (userLanguage && userLanguage.startsWith('lt')) {
-      data = ltData;
-    } else if (userLanguage && userLanguage.startsWith('et')) {
-      data = etData;
-    } else {
-      data = enData;
-    }
-
-    // Attach the language data to the request object for access in subsequent middleware or routes
-    req.data = data;
-
-    res.render('home', { data });
-  } catch (err) {
-    console.error(err.message);
-    // Handle the error or redirect to an appropriate error page
-    res.redirect('/error');
-  }
-});
+// app.get('/example', (req, res, next) => {
+//   // Throw a custom error
+//   const err = new ExpressError('Custom error message', 400);
+//   next(err);
+// });
 
 // Error handling middleware
 app.use((err, req, res, next) => {
-  const { statuscode = 500 } = err;
-  if (!err.message) {
-    err.message = 'Something went wrong!';
+  let statusCode = err.statusCode || 500;
+  let message = err.message || 'Something went wrong!';
+
+  if (!(err instanceof ExpressError)) {
+    // If the error is not an instance of ExpressError, create a new instance with default values
+    const defaultError = new ExpressError(message, statusCode);
+    err = defaultError;
   }
-  res.status(statuscode).render('error', { err });
+
+  res.status(err.statusCode).render('error', { err });
 });
+
+// Error handling middleware
+// app.use((err, req, res, next) => {
+//   const { statuscode = 500 } = err;
+//   if (!err.message) {
+//     err.message = 'Something went wrong!';
+//   }
+//   res.status(statuscode).render('error', { err });
+// });
+
+// Example 1: Handling specific error types differently
+// app.use((err, req, res, next) => {
+//   if (err instanceof CustomError) {
+//     // Handle specific error type differently
+//     res.status(400).render('custom-error', { err });
+//   } else if (err instanceof AnotherError) {
+//     // Handle another specific error type differently
+//     res.status(404).render('another-error', { err });
+//   } else {
+//     // For other errors, use the default error template
+//     res.status(500).render('error', { err });
+//   }
+// });
+
+// Example 2: Logging errors
+// app.use((err, req, res, next) => {
+//   // Log the error
+//   console.error(err);
+
+//   // Render the default error template
+//   res.status(500).render('error', { err });
+// });
+
+// Example 3: Customizing error message based on the request
+// app.use((err, req, res, next) => {
+//   let message = 'Something went wrong!';
+
+//   if (req.method === 'POST') {
+//     message = 'Error occurred while processing the form submission.';
+//   }
+
+//   // Create a new instance of ExpressError with the customized message
+//   const customError = new ExpressError(message, 500);
+
+//   // Render the error template
+//   res.status(customError.statusCode).render('error', { err: customError });
+// });
 
 // Start the server
 const port = process.env.PORT || 3000;

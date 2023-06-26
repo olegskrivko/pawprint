@@ -59,14 +59,14 @@
   <div class="d-flex justify-content-between mb-3">
     <div>
     <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-      <i class="bi bi-sliders"></i> <%= data.pets.filterBtn %></a>
+      <i class="bi bi-sliders"></i> <%=  petsLocale.filterBtn %></a>
     
     <a class="btn btn-warning d-none compare-btn" href="" role="button">
-      <i class="bi bi-intersect"></i> <%= data.pets.compareBtn %></a>
+      <i class="bi bi-intersect"></i> <%=  petsLocale.compareBtn %></a>
   </div>
 
   <div>
-    <a class="btn btn-primary  ms-1" href="/pets/report"><%= data.pets.reportPetBtn %></a>
+    <a class="btn btn-primary  ms-1" href="/pets/report"><%=  petsLocale.reportPetBtn %></a>
     <!-- <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
       Button with data-bs-target
     </button> -->
@@ -84,13 +84,13 @@
 
             <!-- Pet Status -->
             <div class="col-md-3">
-              <label class="form-label"><%= data.pets.filterPetStatus %></label>
+              <label class="form-label"><%=  petsLocale.filterPetStatus %></label>
               <div class="input-group">
                 <span class="input-group-text">
                   <i class="bi bi-question-diamond"></i>
                 </span>       
                 <select class="form-select" id="petStatus" name="petStatus">
-                  <% data.statusOptions.forEach(option => { %>
+                  <% statusOptions.forEach(option => { %>
                     <option value="<%= option.value %>">
                       <%= option.text %>
                     </option>
@@ -101,13 +101,13 @@
 
            <!-- Pet Species -->
        <div class="col-md-3">
-        <label class="form-label"><%= data.pets.filterSpecies %></label>
+        <label class="form-label"><%=  petsLocale.filterSpecies %></label>
         <div class="input-group">
           <span class="input-group-text">
             <i class="bi bi-diamond-half"></i>
           </span>       
           <select class="form-select" id="species" name="species">
-            <% data.speciesOptions.forEach(option => { %>
+            <% speciesOptions.forEach(option => { %>
               <option value="<%= option.value %>">
                 <%= option.text %>
               </option>
@@ -115,18 +115,18 @@
           </select>
       </div>
     </div>
-<!-- <p><= data.genderOptions %></p> -->
+<!-- <p><= genderOptions %></p> -->
 
        <!-- Pet Gender -->
        <div class="col-md-3">
-        <label class="form-label"><%= data.pets.filterPetGender %></label>
+        <label class="form-label"><%=  petsLocale.filterPetGender %></label>
         <div class="input-group">
           <span class="input-group-text">
             <i class="bi bi-gender-ambiguous"></i>
           </span>   
           
           <select class="form-select" id="gender" name="gender" >
-            <% data.genderOptions.forEach(option => { %>
+            <% genderOptions.forEach(option => { %>
               <option value="<%= option.value %>">
                 <%= option.text %>
               </option>
@@ -137,23 +137,23 @@
     </div>
  <!-- Pet Breed -->
      <div class="col-md-3">
-      <label class="form-label"><%= data.pets.filterBreed %></label>
+      <label class="form-label"><%=  petsLocale.filterBreed %></label>
       <div class="input-group">
         <span class="input-group-text">
           <i class="bi bi-x-diamond-fill"></i>
         </span>       
         <select class="form-select" id="petBreed" name="breed">
-          <option value="<%= data.breeds.all[0].value %>"><%= data.breeds.all[0].text %></option>
-          <optgroup label="<%= data.breeds.catOptiongroupLabel[0].text %>">
-            <% data.breeds.cats.forEach(option => { %>
+          <option value="<%= breedsOptions.all[0].value %>"><%= breedsOptions.all[0].text %></option>
+          <optgroup label="<%= breedsOptions.catOptiongroupLabel[0].text %>">
+            <% breedsOptions.cats.forEach(option => { %>
               <option value="<%= option.value %>">
                 <%= option.text %>
               </option>
             <% }); %>
         
           </optgroup>
-          <optgroup label="<%= data.breeds.dogOptiongroupLabel[0].text %>">
-            <% data.breeds.dogs.forEach(option => { %>
+          <optgroup label="<%= breedsOptions.dogOptiongroupLabel[0].text %>">
+            <% breedsOptions.dogs.forEach(option => { %>
               <option value="<%= option.value %>">
                 <%= option.text %>
               </option>
@@ -166,13 +166,13 @@
 
  
       <div class="col-md-3">
-        <label class="form-label"><%= data.pets.filterPetColor %></label>
+        <label class="form-label"><%=  petsLocale.filterPetColor %></label>
         <div class="input-group">
           <span class="input-group-text">
             <i class="bi bi-palette"></i>
           </span>       
           <select class="form-select" id="color" name="color">
-            <% data.colorOptions.forEach(option => { %>
+            <% colorOptions.forEach(option => { %>
               <option value="<%= option.value %>">
                 <%= option.text %>
               </option>
@@ -188,7 +188,7 @@
 
 
       <div class="col-md-3">
-        <label class="form-label" for="distance"><%= data.pets.filterDistance %></label>
+        <label class="form-label" for="distance"><%=  petsLocale.filterDistance %></label>
         <div class="input-group">
           <span class="input-group-text"><i class="bi bi-rulers"></i></span>
           <input
@@ -204,13 +204,13 @@
 
       <!-- Age -->
       <div class="col-md-3">
-        <label class="form-label"><%= data.pets.filterPetAge %></label>
+        <label class="form-label"><%=  petsLocale.filterPetAge %></label>
         <div class="input-group">
           <span class="input-group-text">
             <i class="bi bi-calendar2-heart"></i>
           </span>       
           <select class="form-select" id="age" name="age">
-            <% data.ageOptions.forEach(option => { %>
+            <% ageOptions.forEach(option => { %>
               <option value="<%= option.value %>">
                 <%= option.text %>
               </option>
@@ -223,13 +223,13 @@
 
       <!-- Coat type -->
       <div class="col-md-3">
-        <label class="form-label"><%= data.pets.filterCoatType %></label>
+        <label class="form-label"><%=  petsLocale.filterCoatType %></label>
         <div class="input-group">
           <span class="input-group-text">
             <i class="bi bi-wind"></i>
           </span>       
           <select class="form-select" id="coat" name="coat">
-            <% data.coatOptions.forEach(option => { %>
+            <% coatOptions.forEach(option => { %>
               <option value="<%= option.value %>">
                 <%= option.text %>
               </option>
@@ -242,7 +242,7 @@
 
 
        <div class="col-md-3">
-        <label class="form-label"><%= data.pets.filterPetSize %></label>
+        <label class="form-label"><%=  petsLocale.filterPetSize %></label>
         <div class="input-group">
           <span class="input-group-text">
             <i class="bi bi-arrows-angle-expand"></i>
@@ -250,7 +250,7 @@
         
           <select class="form-select" id="size" name="size">
             <!-- <option hidden disabled selected value>-- Select an option --</option> -->
-            <% data.sizeOptions.forEach(option => { %>
+            <% sizeOptions.forEach(option => { %>
               <option value="<%= option.value %>">
                 <%= option.text %>
               </option>
@@ -268,7 +268,7 @@
 
 
       <div class="col-md-3">
-        <label class="form-label" for="identifier"><%= data.pets.filterIdentifier %></label>
+        <label class="form-label" for="identifier"><%=  petsLocale.filterIdentifier %></label>
         <div class="input-group">
           <span class="input-group-text"><i class="bi bi-fingerprint"></i></span>
           <input
@@ -283,22 +283,22 @@
       </div>
 
       <div class="col-md-3">
-        <label class="form-label"><%= data.pets.filterLocation %></label>
+        <label class="form-label"><%=  petsLocale.filterLocation %></label>
         <div class="input-group">
           <span class="input-group-text">
             <i class="bi bi-geo-alt-fill"></i>
           </span>       
           <select class="form-select" id="region" name="selectedRegion">
-            <option value="<%= data.regionOptions.all[0].value %>"><%= data.regionOptions.all[0].text %></option>
+            <option value="<%= regionOptions.all[0].value %>"><%= regionOptions.all[0].text %></option>
             <optgroup label="City">
-            <% data.regionOptions.city.forEach(option => { %>
+            <% regionOptions.city.forEach(option => { %>
               <option value="<%= option.value %>">
                 <%= option.text %>
               </option>
             <% }); %>
           </optgroup>
           <optgroup label="Municipality">
-            <% data.regionOptions.municipality.forEach(option => { %>
+            <% regionOptions.municipality.forEach(option => { %>
               <option value="<%= option.value %>">
                 <%= option.text %>
               </option>
@@ -310,7 +310,7 @@
 
       <!-- Lost Date -->
       <div class="col-md-3">
-        <label class="form-label" for="lostdate"><%= data.pets.filterLostDate %></label>
+        <label class="form-label" for="lostdate"><%=  petsLocale.filterLostDate %></label>
         <div class="input-group">
           <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
           <input
@@ -360,8 +360,8 @@
       </div> -->
 
       <div class="col-md-12 my-3 d-flex ">
-        <button class="btn btn-warning search-form-btn  me-2 " type="submit"><i class="bi bi-search"></i> <%= data.pets.searchBtn %></button>
-        <button class="btn btn-secondary reset-form-btn"><i class="bi bi-eraser-fill"></i> <%= data.pets.clearBtn %></button>
+        <button class="btn btn-warning search-form-btn  me-2 " type="submit"><i class="bi bi-search"></i> <%=  petsLocale.searchBtn %></button>
+        <button class="btn btn-secondary reset-form-btn"><i class="bi bi-eraser-fill"></i> <%=  petsLocale.clearBtn %></button>
       </div>
     </div>
  
@@ -468,7 +468,7 @@
           href="/pets?page=<%= currentPage - 1  %>&limit=<%= limitPerPage %>"
           aria-label="Previous"
         >
-          <span aria-hidden="true"><i class="bi bi-arrow-left"></i><span id="d-none d-sm-inline-block"><%= data.pets.prevPageBtn %></span>
+          <span aria-hidden="true"><i class="bi bi-arrow-left"></i><span id="d-none d-sm-inline-block"><%=  petsLocale.prevPageBtn %></span>
         </a>
       </div>
 
@@ -479,7 +479,7 @@
           href="/pets?page=<%= currentPage < totalPages ? currentPage + 1 : currentPage  %>&limit=<%= limitPerPage %>"
           aria-label="Next"
         >
-          <span id="d-none d-sm-inline-block"><%= data.pets.nextPageBtn %></span
+          <span id="d-none d-sm-inline-block"><%=  petsLocale.nextPageBtn %></span
           ><span aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
         </a>
       </div>

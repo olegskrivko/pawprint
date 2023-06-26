@@ -1,466 +1,983 @@
 {
-  "navbar": {
-    "home": "Sākums",
-    "about": "Par mums",
-    "pets": "Mājdzīvnieki",
-    "services": "Pakalpojumi",
-    "login": "Pierakstīties",
-    "signup": "Reģistrēties",
-    "greeting": "Sveiki"
-  },
-  "home": {
-    "appName": "PawPrint",
-    "welcomeTitle": "Laipni lūdzam ",
-    "welcomeText": "Atrodi savu pūkaino draugu ar PawPrint. Pamēģini to šodien, neatkarīgi no tā, kur tu atrodies.",
-    "welcomeBtn": "Atrast mājdzīvnieku",
-    "loginBtn": "Pierakstīties",
-    "signupBtn": "Reģistrēties"
-  },
-  "about": {
-    "ourGoalTitle": "Mūsu mērķis",
-    "ourGoalText1": "Mūsu lietotne izmanto augstas tehnoloģijas, lai atvieglotu pazudušo mājdzīvnieku atgriešanos pie saviem īpašniekiem. Mēs nodrošinām platformu zaudēto mājdzīvnieku sludinājumu publicēšanai un aktīvi strādājam, lai savienotu īpašniekus ar personām, kuras tos ir atradušas.",
-    "ourGoalText2": "Papildus tam mūsu lietotne jums nodrošina piekļuvi plašam mājdzīvnieku saistītu pakalpojumu klāstam, tostarp veterinārām klīnikām, frizētavām, apmācītājiem un citiem. Mēs nodrošinām, ka jums ir pieejami pareizie resursi jūsu mājdzīvnieka specifiskajām vajadzībām.",
-    "featureTitle": "Funkcijas",
-    "featureSubtitle1": "Mobilajai ierīcei optimizēta un droša platforma",
-    "featureText1": "Mūsu mobilā lietotne izmanto jaunākās tehnoloģijas, lai nodrošinātu drošu un drošu platformu, kas palīdz atgriezt pazudušos mājdzīvniekus pie viņu īpašniekiem.",
-    "featureSubtitle2": "Mājdzīvnieku veselības un aprūpes informācija",
-    "featureText2": "Mūsu lietotne sniedz vērtīgu informāciju par mājdzīvnieku veselību un neatliekamo aprūpi, ieskaitot vakcinācijas nozīmi un regulāras pārbaudes, lai nodrošinātu, ka jūsu mājdzīvnieks ir vesels un laimīgs.",
-    "featureSubtitle3": "Kopienas resursi",
-    "featureText3": "Sadaļa, kas sniedz informāciju par vietējiem dzīvnieku patversmēm, veterināriem un citiem resursiem mājdzīvnieku īpašniekiem.",
-    "featureSubtitle4": "Padomi un resursi",
-    "featureText4": "Sadaļa, kas sniedz padomus un resursus mājdzīvnieku īpašniekiem par to, kā novērst mājdzīvnieku pazaudēšanu, kā arī ko darīt, ja mājdzīvnieks pazūd.",
-    "featureSubtitle5": "Mājdzīvnieku profila izveide",
-    "featureText5": "Funkcija, kas ļauj lietotājiem izveidot profila lapu savam pazudušajam mājdzīvniekam, iekļaujot fotogrāfiju, aprakstu un kontaktinformāciju.",
-    "featureSubtitle6": "Sociālo tīklu integrācija",
-    "featureText6": "Integrācija ar sociālo tīklu platformām, lai palīdzētu izplatīt informāciju par pazudušiem mājdzīvniekiem un veicinātu saziņu starp lietotājiem.",
-    "featureSubtitle7": "Meklējamā datu bāze",
-    "featureText7": "Meklējama datu bāze par pazudušiem un atrastiem mājdzīvniekiem, kas ļauj lietotājiem meklēt mājdzīvniekus pēc atrašanās vietas, šķirnes, krāsas un citiem raksturlielumiem.",
-    "featureSubtitle8": "Pazudušo un atrasto mājdzīvnieku karte",
-    "featureText8": "Funkcija, kas attēlo karti ar pazudušajiem un atrastajiem mājdzīvniekiem apgabalā, ļaujot lietotājiem viegli atrast un identificēt pazudušos mājdzīvniekus.",
-    "featureSubtitle9": "Pazudušo mājdzīvnieku plakāti",
-    "featureText9": "Funkcija, kas ļauj lietotājiem viegli izveidot un izdrukāt pazudušo mājdzīvnieku plakātus, lai tos izplatītu savā vietējā kopienā.",
-    "supportOurProjectTitle": "Atbalsti mūsu projektu",
-    "supportOurProjectText": "Tavs ieguldījums var palīdzēt mums turpināt mūsu misiju atgriezt pazudušos mājdzīvniekus pie viņu ģimenēm un nodrošināt viņiem nepieciešamo aprūpi. Katrs mazs ieguldījums ir nozīmīgs, un mēs novērtējam tavu atbalstu!",
-    "supportBtn": "Atbalsti",
-    "shareYourThoughtsTitle": "Dalies ar savām domām",
-    "shareYourThoughtsText": "Tava atsauksme ir ļoti vērtīga mums, jo mēs cenšamies uzlabot mūsu lietotni un sniegt vislabāko iespējamo servisu mājdzīvnieku īpašniekiem. Mēs novērtējam jebkādas komentārus, ieteikumus vai kritiku, ko tev varētu būt, un izmantosim tos, lai padarītu mūsu lietotni vēl labāku. Lūdzu, ņem vērā brīdi un dalies ar savām domām ar mums.",
-    "leaveFeedbackBtn": "Sniedz atsauksmi",
-    "sponsorsTitle": "Sponsori",
-    "sponsorsText": "Mūsu sponsoriem ir būtiska loma, palīdzot mums turpināt mūsu misiju atgriezt pazudušos mājdzīvniekus pie viņu ģimenēm un nodrošināt viņiem nepieciešamo aprūpi. Viņu dāsnuma atbalsts ne tikai palīdz mums uzturēt darbību, bet arī veido reālu atšķirību pazudušo un atstumto dzīvnieku dzīvēs."
-  },
-  "pets": {
-    "filterBtn": "Filtri",
-    "compareBtn": "Salīdzināt",
-    "reportPetBtn": "Ziņot par dzīvnieku",
-    "searchBtn": "Meklēt",
-    "clearBtn": "Notīrīt",
-    "prevPageBtn": "Nākamā",
-    "nextPageBtn": "Iepriekšējā",
-    "filterPetStatus": "Dzīvnieka statuss:",
-    "filterSpecies": "Suga:",
-    "filterPetGender": "Dzīvnieka dzimums:",
-    "filterBreed": "Šķirne:",
-    "filterPetColor": "Dzīvnieka krāsa:",
-    "filterDistance": "Attālums (km):",
-    "filterPetAge": "Dzīvnieka vecums:",
-    "filterCoatType": "Kažoka tips:",
-    "filterPetSize": "Dzīvnieka izmērs:",
-    "filterIdentifier": "Identifikators:",
-    "filterLocation": "Atrašanās vieta:",
-    "filterLostDate": "Zaudēšanas datums:"
-  },
-  "statusOptions": [
-    { "value": "", "text": "" },
-    { "value": "Missing", "text": "Pazudis" },
-    { "value": "Found", "text": "Atrasts" },
-    { "value": "Reunited", "text": "Savienots" },
-    { "value": "Adopted", "text": "Adoptēts" },
-    { "value": "Fostered", "text": "Audžuģimenē" },
-    { "value": "Deceased", "text": "Miris" }
-  ],
-  "speciesOptions": [
-    { "value": "", "text": "" },
-    { "value": "Dog", "text": "Suns" },
-    { "value": "Cat", "text": "Kaķis" },
-    { "value": "Other", "text": "Cits" }
-  ],
-  "genderOptions": [
-    { "value": "", "text": "" },
-    { "value": "She", "text": "Viņa" },
-    { "value": "He", "text": "Viņš" }
-  ],
-  "colorOptions": [
-    { "value": "", "text": "" },
-    { "value": "Black", "text": "Melns" },
-    { "value": "Brown", "text": "Brūns" },
-    { "value": "White", "text": "Balts" },
-    { "value": "Red", "text": "Sarkans" },
-    { "value": "Gold", "text": "Zeltains" },
-    { "value": "Blue", "text": "Zils" },
-    { "value": "Gray", "text": "Pelēks" },
-    { "value": "Cream", "text": "Krēmkrāsains" },
-    { "value": "Yellow", "text": "Dzeltens" }
-  ],
-  "ageOptions": [
-    { "value": "", "text": "" },
-    { "value": "Kitten", "text": "Kaķēns" },
-    { "value": "Puppy", "text": "Kucēns" },
-    { "value": "Adolescent", "text": "Pusaudzis" },
-    { "value": "Adult", "text": "Pieaugušais" },
-    { "value": "Senior", "text": "Gados vecs" }
-  ],
-  "coatOptions": [
-    { "value": "", "text": "" },
-    { "value": "Hairless", "text": "Bez matiem" },
-    { "value": "Short", "text": "Īsi" },
-    { "value": "Medium", "text": "Vidēji" },
-    { "value": "Long", "text": "Gari" },
-    { "value": "Wire", "text": "Dzīslaini" },
-    { "value": "Curly", "text": "Lokaini" },
-    { "value": "Smooth", "text": "Gludi" },
-    { "value": "Double", "text": "Dubulti" },
-    { "value": "Silky", "text": "Sārti" },
-    { "value": "Wavy", "text": "Briestaini" },
-    { "value": "Corded", "text": "Vītāti" }
-  ],
-  "sizeOptions": [
-    { "value": "", "text": "" },
-    { "value": "Small", "text": "Mazs" },
-    { "value": "Medium", "text": "Vidējs" },
-    { "value": "Large", "text": "Liels" }
-  ],
-  "regionOptions": {
-    "all": [{ "value": "", "text": "" }],
-    "city": [
-      {
-        "value": "Riga",
-        "text": "Riga"
-      },
-      {
-        "value": "Daugavpils",
-        "text": "Daugavpils"
-      },
-      {
-        "value": "Jelgava",
-        "text": "Jelgava"
-      },
-      {
-        "value": "Jurmala",
-        "text": "Jurmala"
-      },
-      {
-        "value": "Liepaja",
-        "text": "Liepaja"
-      },
-      {
-        "value": "Rezekne",
-        "text": "Rezekne"
-      },
-      {
-        "value": "Valmiera",
-        "text": "Valmiera"
-      },
-      {
-        "value": "Ventspils",
-        "text": "Ventspils"
-      }
-    ],
-    "municipality": [
-      {
-        "value": "Adazu nov",
-        "text": "Adazu nov"
-      },
-      {
-        "value": "Aizkraukles nov",
-        "text": "Aizkraukles nov"
-      },
-      {
-        "value": "Aluksnes nov",
-        "text": "Aluksnes nov"
-      },
-      {
-        "value": "Augsdaugavas nov",
-        "text": "Augsdaugavas nov"
-      },
-      {
-        "value": "Balvu nov",
-        "text": "Balvu nov"
-      },
-      {
-        "value": "Bauskas nov",
-        "text": "Bauskas nov"
-      },
-      {
-        "value": "Cesu nov",
-        "text": "Cesu nov"
-      },
-      {
-        "value": "Dienvidkurzemes nov",
-        "text": "Dienvidkurzemes nov"
-      },
-      {
-        "value": "Dobeles nov",
-        "text": "Dobeles nov"
-      },
-      {
-        "value": "Gulbenes nov",
-        "text": "Gulbenes nov"
-      },
-      {
-        "value": "Jekabpils nov",
-        "text": "Jekabpils nov"
-      },
-      {
-        "value": "Jelgavas nov",
-        "text": "Jelgavas nov"
-      },
-      {
-        "value": "Kekavas nov",
-        "text": "Kekavas nov"
-      },
-      {
-        "value": "Kraslavas nov",
-        "text": "Kraslavas nov"
-      },
-      {
-        "value": "Kuldigas nov",
-        "text": "Kuldigas nov"
-      },
-      {
-        "value": "Limbazu novads",
-        "text": "Limbazu novads"
-      },
-      {
-        "value": "Livanu nov",
-        "text": "Livanu nov"
-      },
-      {
-        "value": "Ludzas nov",
-        "text": "Ludzas nov"
-      },
-      {
-        "value": "Madonas nov",
-        "text": "Madonas nov"
-      },
-      {
-        "value": "Marupes nov",
-        "text": "Marupes nov"
-      },
-      {
-        "value": "Ogres nov",
-        "text": "Ogres nov"
-      },
-      {
-        "value": "Olaines nov",
-        "text": "Olaines nov"
-      },
-      {
-        "value": "Preilu nov",
-        "text": "Preilu nov"
-      },
-      {
-        "value": "Rezeknes nov",
-        "text": "Rezeknes nov"
-      },
-      {
-        "value": "Ropazu nov",
-        "text": "Ropazu nov"
-      },
-      {
-        "value": "Salaspils nov",
-        "text": "Salaspils nov"
-      },
-      {
-        "value": "Saldus nov",
-        "text": "Saldus nov"
-      },
-      {
-        "value": "Saulkrastu nov",
-        "text": "Saulkrastu nov"
-      },
-      {
-        "value": "Siguldas nov",
-        "text": "Siguldas nov"
-      },
-      {
-        "value": "Smiltenes nov",
-        "text": "Smiltenes nov"
-      },
-      {
-        "value": "Talsu nov",
-        "text": "Talsu nov"
-      },
-      {
-        "value": "Tukuma nov",
-        "text": "Tukuma nov"
-      },
-      {
-        "value": "Valkas nov",
-        "text": "Valkas nov"
-      },
-      {
-        "value": "Valmieras nov",
-        "text": "Valmieras nov"
-      },
-      {
-        "value": "Varaklanu nov",
-        "text": "Varaklanu nov"
-      },
-      {
-        "value": "Ventspils nov",
-        "text": "Ventspils nov"
-      }
-    ]
-  },
-  "breeds": {
-    "all": [{ "value": "", "text": "" }],
-    "catOptiongroupLabel": [{ "value": "Cat Breed", "text": "Kaķu šķirne" }],
-    "dogOptiongroupLabel": [{ "value": "Dog Breed", "text": "Suņu Šķirne" }],
-    "cats": [
-      { "value": "Abyssinian", "text": "Abyssinian" },
-      { "value": "American Bobtail", "text": "American Bobtail" },
-      { "value": "American Shorthair", "text": "American Shorthair" },
-      { "value": "Australian Mist", "text": "Australian Mist" },
-      { "value": "Balinese", "text": "Balinese" },
-      { "value": "Bengal", "text": "Bengal" },
-      { "value": "Birman", "text": "Birman" },
-      { "value": "Bombay", "text": "Bombay" },
-      { "value": "British Shorthair", "text": "British Shorthair" },
-      { "value": "Burmese", "text": "Burmese" },
-      { "value": "Burmilla", "text": "Burmilla" },
-      { "value": "Chartreux", "text": "Chartreux" },
-      { "value": "Chausie", "text": "Chausie" },
-      { "value": "Cornish Rex", "text": "Cornish Rex" },
-      { "value": "Cymric", "text": "Cymric" },
-      { "value": "Devon Rex", "text": "Devon Rex" },
-      { "value": "Egyptian Mau", "text": "Egyptian Mau" },
-      { "value": "Exotic Shorthair", "text": "Exotic Shorthair" },
-      { "value": "Himalayan", "text": "Himalayan" },
-      { "value": "Highlander", "text": "Highlander" },
-      { "value": "Japanese Bobtail", "text": "Japanese Bobtail" },
-      { "value": "Korat", "text": "Korat" },
-      { "value": "LaPerm", "text": "LaPerm" },
-      { "value": "Maine Coon", "text": "Maine Coon" },
-      { "value": "Manx", "text": "Manx" },
-      { "value": "Munchkin", "text": "Munchkin" },
-      { "value": "Nebelung", "text": "Nebelung" },
-      { "value": "Norwegian Forest Cat", "text": "Norwegian Forest Cat" },
-      { "value": "Oriental Shorthair", "text": "Oriental Shorthair" },
-      { "value": "Peterbald", "text": "Peterbald" },
-      { "value": "Persian", "text": "Persian" },
-      { "value": "Pixiebob", "text": "Pixiebob" },
-      { "value": "Ragdoll", "text": "Ragdoll" },
-      { "value": "Russian Blue", "text": "Russian Blue" },
-      { "value": "Scottish Fold", "text": "Scottish Fold" },
-      { "value": "Selkirk Rex", "text": "Selkirk Rex" },
-      { "value": "Serengeti", "text": "Serengeti" },
-      { "value": "Siberian", "text": "Siberian" },
-      { "value": "Siamese", "text": "Siamese" },
-      { "value": "Singapura", "text": "Singapura" },
-      { "value": "Snowshoe", "text": "Snowshoe" },
-      { "value": "Sokoke", "text": "Sokoke" },
-      { "value": "Sphynx", "text": "Sphynx" },
-      { "value": "Tonkinese", "text": "Tonkinese" },
-      { "value": "Toyger", "text": "Toyger" },
-      { "value": "Turkish Angora", "text": "Turkish Angora" },
-      { "value": "Turkish Van", "text": "Turkish Van" }
-    ],
-    "dogs": [
-      { "value": "Afghan Hound", "text": "Afghan Hound" },
-      { "value": "Akita", "text": "Akita" },
-      { "value": "Akita Inu", "text": "Akita Inu" },
-      { "value": "Alaskan Malamute", "text": "Alaskan Malamute" },
-      { "value": "American Bulldog", "text": "American Bulldog" },
-      { "value": "Australian Cattle Dog", "text": "Australian Cattle Dog" },
-      { "value": "Basset Hound", "text": "Basset Hound" },
-      { "value": "Basenji", "text": "Basenji" },
-      { "value": "Bernese Mountain Dog", "text": "Bernese Mountain Dog" },
-      { "value": "Bloodhound", "text": "Bloodhound" },
-      { "value": "Boston Terrier", "text": "Boston Terrier" },
-      { "value": "Bullmastiff", "text": "Bullmastiff" },
-      { "value": "Cairn Terrier", "text": "Cairn Terrier" },
-      { "value": "Cane Corso", "text": "Cane Corso" },
-      { "value": "Cavalier King Charles Spaniel", "text": "Cavalier King Charles Spaniel" },
-      { "value": "Chesapeake Bay Retriever", "text": "Chesapeake Bay Retriever" },
-      { "value": "Chinese Crested", "text": "Chinese Crested" },
-      { "value": "Chinese Shar-Pei", "text": "Chinese Shar-Pei" },
-      { "value": "Collie", "text": "Collie" },
-      { "value": "Corgi", "text": "Corgi" },
-      { "value": "Dandie Dinmont Terrier", "text": "Dandie Dinmont Terrier" },
-      { "value": "Dogo Argentino", "text": "Dogo Argentino" },
-      { "value": "Dogo Canario", "text": "Dogo Canario" },
-      { "value": "English Bulldog", "text": "English Bulldog" },
-      { "value": "English Setter", "text": "English Setter" },
-      { "value": "English Springer Spaniel", "text": "English Springer Spaniel" },
-      { "value": "French Bulldog", "text": "French Bulldog" },
-      { "value": "German Shepherd", "text": "German Shepherd" },
-      { "value": "Golden Retriever", "text": "Golden Retriever" },
-      { "value": "Great Dane", "text": "Great Dane" },
-      { "value": "Great Pyrenees", "text": "Great Pyrenees" },
-      { "value": "Havanese", "text": "Havanese" },
-      { "value": "Irish Terrier", "text": "Irish Terrier" },
-      { "value": "Irish Wolfhound", "text": "Irish Wolfhound" },
-      { "value": "Italian Greyhound", "text": "Italian Greyhound" },
-      { "value": "Jack Russell Terrier", "text": "Jack Russell Terrier" },
-      { "value": "Japanese Chin", "text": "Japanese Chin" },
-      { "value": "Keeshond", "text": "Keeshond" },
-      { "value": "Labrador Retriever", "text": "Labrador Retriever" },
-      { "value": "Leonberger", "text": "Leonberger" },
-      { "value": "Lhasa Apso", "text": "Lhasa Apso" },
-      { "value": "Maltese", "text": "Maltese" },
-      { "value": "Mastiff", "text": "Mastiff" },
-      { "value": "Miniature Bull Terrier", "text": "Miniature Bull Terrier" },
-      { "value": "Newfoundland", "text": "Newfoundland" },
-      { "value": "Norfolk Terrier", "text": "Norfolk Terrier" },
-      { "value": "Norwegian Buhund", "text": "Norwegian Buhund" },
-      { "value": "Norwegian Elkhound", "text": "Norwegian Elkhound" },
-      { "value": "Norwich Terrier", "text": "Norwich Terrier" },
-      { "value": "Pekingese", "text": "Pekingese" },
-      { "value": "Petit Basset Griffon Vendeen", "text": "Petit Basset Griffon Vendeen" },
-      { "value": "Pit Bull Terrier", "text": "Pit Bull Terrier" },
-      { "value": "Pomeranian", "text": "Pomeranian" },
-      { "value": "Poodle", "text": "Poodle" },
-      { "value": "Pug", "text": "Pug" },
-      { "value": "Rottweiler", "text": "Rottweiler" },
-      { "value": "Saint Bernard", "text": "Saint Bernard" },
-      { "value": "Samoyed", "text": "Samoyed" },
-      { "value": "Scottish Terrier", "text": "Scottish Terrier" },
-      { "value": "Shetland Sheepdog", "text": "Shetland Sheepdog" },
-      { "value": "Shiba Inu", "text": "Shiba Inu" },
-      { "value": "Shih Tzu", "text": "Shih Tzu" },
-      { "value": "Siberian Husky", "text": "Siberian Husky" },
-      { "value": "Staffordshire Bull Terrier", "text": "Staffordshire Bull Terrier" },
-      { "value": "Tibetan Mastiff", "text": "Tibetan Mastiff" },
-      { "value": "Tibetan Spaniel", "text": "Tibetan Spaniel" },
-      { "value": "Tibetan Terrier", "text": "Tibetan Terrier" },
-      { "value": "Toy Fox Terrier", "text": "Toy Fox Terrier" },
-      { "value": "Weimaraner", "text": "Weimaraner" },
-      { "value": "West Highland White Terrier", "text": "West Highland White Terrier" },
-      { "value": "Whippet", "text": "Whippet" },
-      { "value": "Yorkshire Terrier", "text": "Yorkshire Terrier" }
-    ]
-  },
-  "services": {
-    "serviceTitle": "Services",
-    "addServiceBtn": "Add Service",
-    "service1": "Dzīvnieku patversmes",
-    "service2": "Mājdzīvnieku kopšana",
-    "service3": "Mājdzīvnieku apdrošināšana un juridiskie pakalpojumi",
-    "service4": "Kaķu kafejnīca",
-    "service5": "Mājdzīvnieku meklēšanas un glābšanas pakalpojumi",
-    "service6": "Mājdzīvnieku apmācība",
-    "service7": "Mājdzīvnieku māksla un amatniecība",
-    "service8": "Mājdzīvnieku bārdziņš",
-    "service9": "Mājdzīvnieku uzraudzība",
-    "service10": "Mājdzīvnieku transportēšana",
-    "service11": "Citi pakalpojumi",
-    "service12": "Mājdzīvnieku apbedīšanas pakalpojumi",
-    "service13": "Mājdzīvnieku fotogrāfija",
-    "service14": "Draudzīgas mājdzīvniekiem paredzētas naktsmītnes",
-    "service15": "Mājdzīvnieku audzētāji",
-    "service16": "Suņu pastaiga",
-    "service17": "Mājdzīvnieku preces un piederumi",
-    "service18": "Mājdzīvnieku izstāde",
-    "service19": "Veterinārie pakalpojumi"
-  }
+	"navbar": {
+		"home": "Sākums",
+		"about": "Par mums",
+		"pets": "Mājdzīvnieki",
+		"services": "Pakalpojumi",
+		"login": "Pierakstīties",
+		"signup": "Reģistrēties",
+		"greeting": "Sveiki"
+	},
+	"home": {
+		"appName": "PawPrint",
+		"welcomeTitle": "Laipni lūdzam ",
+		"welcomeText": "Atrodi savu pūkaino draugu ar PawPrint. Pamēģini to šodien, neatkarīgi no tā, kur tu atrodies.",
+		"welcomeBtn": "Atrast mājdzīvnieku",
+		"loginBtn": "Pierakstīties",
+		"signupBtn": "Reģistrēties"
+	},
+	"about": {
+		"ourGoalTitle": "Mūsu mērķis",
+		"ourGoalText1": "Mūsu lietotne izmanto augstas tehnoloģijas, lai atvieglotu pazudušo mājdzīvnieku atgriešanos pie saviem īpašniekiem. Mēs nodrošinām platformu zaudēto mājdzīvnieku sludinājumu publicēšanai un aktīvi strādājam, lai savienotu īpašniekus ar personām, kuras tos ir atradušas.",
+		"ourGoalText2": "Papildus tam mūsu lietotne jums nodrošina piekļuvi plašam mājdzīvnieku saistītu pakalpojumu klāstam, tostarp veterinārām klīnikām, frizētavām, apmācītājiem un citiem. Mēs nodrošinām, ka jums ir pieejami pareizie resursi jūsu mājdzīvnieka specifiskajām vajadzībām.",
+		"featureTitle": "Funkcijas",
+		"featureSubtitle1": "Mobilajai ierīcei optimizēta un droša platforma",
+		"featureText1": "Mūsu mobilā lietotne izmanto jaunākās tehnoloģijas, lai nodrošinātu drošu un drošu platformu, kas palīdz atgriezt pazudušos mājdzīvniekus pie viņu īpašniekiem.",
+		"featureSubtitle2": "Mājdzīvnieku veselības un aprūpes informācija",
+		"featureText2": "Mūsu lietotne sniedz vērtīgu informāciju par mājdzīvnieku veselību un neatliekamo aprūpi, ieskaitot vakcinācijas nozīmi un regulāras pārbaudes, lai nodrošinātu, ka jūsu mājdzīvnieks ir vesels un laimīgs.",
+		"featureSubtitle3": "Kopienas resursi",
+		"featureText3": "Sadaļa, kas sniedz informāciju par vietējiem dzīvnieku patversmēm, veterināriem un citiem resursiem mājdzīvnieku īpašniekiem.",
+		"featureSubtitle4": "Padomi un resursi",
+		"featureText4": "Sadaļa, kas sniedz padomus un resursus mājdzīvnieku īpašniekiem par to, kā novērst mājdzīvnieku pazaudēšanu, kā arī ko darīt, ja mājdzīvnieks pazūd.",
+		"featureSubtitle5": "Mājdzīvnieku profila izveide",
+		"featureText5": "Funkcija, kas ļauj lietotājiem izveidot profila lapu savam pazudušajam mājdzīvniekam, iekļaujot fotogrāfiju, aprakstu un kontaktinformāciju.",
+		"featureSubtitle6": "Sociālo tīklu integrācija",
+		"featureText6": "Integrācija ar sociālo tīklu platformām, lai palīdzētu izplatīt informāciju par pazudušiem mājdzīvniekiem un veicinātu saziņu starp lietotājiem.",
+		"featureSubtitle7": "Meklējamā datu bāze",
+		"featureText7": "Meklējama datu bāze par pazudušiem un atrastiem mājdzīvniekiem, kas ļauj lietotājiem meklēt mājdzīvniekus pēc atrašanās vietas, šķirnes, krāsas un citiem raksturlielumiem.",
+		"featureSubtitle8": "Pazudušo un atrasto mājdzīvnieku karte",
+		"featureText8": "Funkcija, kas attēlo karti ar pazudušajiem un atrastajiem mājdzīvniekiem apgabalā, ļaujot lietotājiem viegli atrast un identificēt pazudušos mājdzīvniekus.",
+		"featureSubtitle9": "Pazudušo mājdzīvnieku plakāti",
+		"featureText9": "Funkcija, kas ļauj lietotājiem viegli izveidot un izdrukāt pazudušo mājdzīvnieku plakātus, lai tos izplatītu savā vietējā kopienā.",
+		"supportOurProjectTitle": "Atbalsti mūsu projektu",
+		"supportOurProjectText": "Tavs ieguldījums var palīdzēt mums turpināt mūsu misiju atgriezt pazudušos mājdzīvniekus pie viņu ģimenēm un nodrošināt viņiem nepieciešamo aprūpi. Katrs mazs ieguldījums ir nozīmīgs, un mēs novērtējam tavu atbalstu!",
+		"supportBtn": "Atbalsti",
+		"shareYourThoughtsTitle": "Dalies ar savām domām",
+		"shareYourThoughtsText": "Tava atsauksme ir ļoti vērtīga mums, jo mēs cenšamies uzlabot mūsu lietotni un sniegt vislabāko iespējamo servisu mājdzīvnieku īpašniekiem. Mēs novērtējam jebkādas komentārus, ieteikumus vai kritiku, ko tev varētu būt, un izmantosim tos, lai padarītu mūsu lietotni vēl labāku. Lūdzu, ņem vērā brīdi un dalies ar savām domām ar mums.",
+		"leaveFeedbackBtn": "Sniedz atsauksmi",
+		"sponsorsTitle": "Sponsori",
+		"sponsorsText": "Mūsu sponsoriem ir būtiska loma, palīdzot mums turpināt mūsu misiju atgriezt pazudušos mājdzīvniekus pie viņu ģimenēm un nodrošināt viņiem nepieciešamo aprūpi. Viņu dāsnuma atbalsts ne tikai palīdz mums uzturēt darbību, bet arī veido reālu atšķirību pazudušo un atstumto dzīvnieku dzīvēs."
+	},
+	"pets": {
+		"filterBtn": "Filtri",
+		"compareBtn": "Salīdzināt",
+		"reportPetBtn": "Ziņot par dzīvnieku",
+		"searchBtn": "Meklēt",
+		"clearBtn": "Notīrīt",
+		"prevPageBtn": "Nākamā",
+		"nextPageBtn": "Iepriekšējā",
+		"filterPetStatus": "Dzīvnieka statuss:",
+		"filterSpecies": "Suga:",
+		"filterPetGender": "Dzīvnieka dzimums:",
+		"filterBreed": "Šķirne:",
+		"filterPetColor": "Dzīvnieka krāsa:",
+		"filterDistance": "Attālums (km):",
+		"filterPetAge": "Dzīvnieka vecums:",
+		"filterCoatType": "Kažoka tips:",
+		"filterPetSize": "Dzīvnieka izmērs:",
+		"filterIdentifier": "Identifikators:",
+		"filterLocation": "Atrašanās vieta:",
+		"filterLostDate": "Zaudēšanas datums:"
+	},
+	"statusOptions": [
+		{
+			"value": "",
+			"text": ""
+		},
+		{
+			"value": "Missing",
+			"text": "Pazudis"
+		},
+		{
+			"value": "Found",
+			"text": "Atrasts"
+		},
+		{
+			"value": "Reunited",
+			"text": "Savienots"
+		},
+		{
+			"value": "Adopted",
+			"text": "Adoptēts"
+		},
+		{
+			"value": "Fostered",
+			"text": "Audžuģimenē"
+		},
+		{
+			"value": "Deceased",
+			"text": "Miris"
+		}
+	],
+	"speciesOptions": [
+		{
+			"value": "",
+			"text": ""
+		},
+		{
+			"value": "Dog",
+			"text": "Suns"
+		},
+		{
+			"value": "Cat",
+			"text": "Kaķis"
+		},
+		{
+			"value": "Other",
+			"text": "Cits"
+		}
+	],
+	"genderOptions": [
+		{
+			"value": "",
+			"text": ""
+		},
+		{
+			"value": "She",
+			"text": "Viņa"
+		},
+		{
+			"value": "He",
+			"text": "Viņš"
+		}
+	],
+	"colorOptions": [
+		{
+			"value": "",
+			"text": ""
+		},
+		{
+			"value": "Black",
+			"text": "Melns"
+		},
+		{
+			"value": "Brown",
+			"text": "Brūns"
+		},
+		{
+			"value": "White",
+			"text": "Balts"
+		},
+		{
+			"value": "Red",
+			"text": "Sarkans"
+		},
+		{
+			"value": "Gold",
+			"text": "Zeltains"
+		},
+		{
+			"value": "Blue",
+			"text": "Zils"
+		},
+		{
+			"value": "Gray",
+			"text": "Pelēks"
+		},
+		{
+			"value": "Cream",
+			"text": "Krēmkrāsains"
+		},
+		{
+			"value": "Yellow",
+			"text": "Dzeltens"
+		}
+	],
+	"ageOptions": [
+		{
+			"value": "",
+			"text": ""
+		},
+		{
+			"value": "Kitten",
+			"text": "Kaķēns"
+		},
+		{
+			"value": "Puppy",
+			"text": "Kucēns"
+		},
+		{
+			"value": "Adolescent",
+			"text": "Pusaudzis"
+		},
+		{
+			"value": "Adult",
+			"text": "Pieaugušais"
+		},
+		{
+			"value": "Senior",
+			"text": "Gados vecs"
+		}
+	],
+	"coatOptions": [
+		{
+			"value": "",
+			"text": ""
+		},
+		{
+			"value": "Hairless",
+			"text": "Bez matiem"
+		},
+		{
+			"value": "Short",
+			"text": "Īsi"
+		},
+		{
+			"value": "Medium",
+			"text": "Vidēji"
+		},
+		{
+			"value": "Long",
+			"text": "Gari"
+		},
+		{
+			"value": "Wire",
+			"text": "Dzīslaini"
+		},
+		{
+			"value": "Curly",
+			"text": "Lokaini"
+		},
+		{
+			"value": "Smooth",
+			"text": "Gludi"
+		},
+		{
+			"value": "Double",
+			"text": "Dubulti"
+		},
+		{
+			"value": "Silky",
+			"text": "Sārti"
+		},
+		{
+			"value": "Wavy",
+			"text": "Briestaini"
+		},
+		{
+			"value": "Corded",
+			"text": "Vītāti"
+		}
+	],
+	"sizeOptions": [
+		{
+			"value": "",
+			"text": ""
+		},
+		{
+			"value": "Small",
+			"text": "Mazs"
+		},
+		{
+			"value": "Medium",
+			"text": "Vidējs"
+		},
+		{
+			"value": "Large",
+			"text": "Liels"
+		}
+	],
+	"regionOptions": {
+		"all": [
+			{
+				"value": "",
+				"text": ""
+			}
+		],
+		"city": [
+			{
+				"value": "Riga",
+				"text": "Riga"
+			},
+			{
+				"value": "Daugavpils",
+				"text": "Daugavpils"
+			},
+			{
+				"value": "Jelgava",
+				"text": "Jelgava"
+			},
+			{
+				"value": "Jurmala",
+				"text": "Jurmala"
+			},
+			{
+				"value": "Liepaja",
+				"text": "Liepaja"
+			},
+			{
+				"value": "Rezekne",
+				"text": "Rezekne"
+			},
+			{
+				"value": "Valmiera",
+				"text": "Valmiera"
+			},
+			{
+				"value": "Ventspils",
+				"text": "Ventspils"
+			}
+		],
+		"municipality": [
+			{
+				"value": "Adazu nov",
+				"text": "Adazu nov"
+			},
+			{
+				"value": "Aizkraukles nov",
+				"text": "Aizkraukles nov"
+			},
+			{
+				"value": "Aluksnes nov",
+				"text": "Aluksnes nov"
+			},
+			{
+				"value": "Augsdaugavas nov",
+				"text": "Augsdaugavas nov"
+			},
+			{
+				"value": "Balvu nov",
+				"text": "Balvu nov"
+			},
+			{
+				"value": "Bauskas nov",
+				"text": "Bauskas nov"
+			},
+			{
+				"value": "Cesu nov",
+				"text": "Cesu nov"
+			},
+			{
+				"value": "Dienvidkurzemes nov",
+				"text": "Dienvidkurzemes nov"
+			},
+			{
+				"value": "Dobeles nov",
+				"text": "Dobeles nov"
+			},
+			{
+				"value": "Gulbenes nov",
+				"text": "Gulbenes nov"
+			},
+			{
+				"value": "Jekabpils nov",
+				"text": "Jekabpils nov"
+			},
+			{
+				"value": "Jelgavas nov",
+				"text": "Jelgavas nov"
+			},
+			{
+				"value": "Kekavas nov",
+				"text": "Kekavas nov"
+			},
+			{
+				"value": "Kraslavas nov",
+				"text": "Kraslavas nov"
+			},
+			{
+				"value": "Kuldigas nov",
+				"text": "Kuldigas nov"
+			},
+			{
+				"value": "Limbazu novads",
+				"text": "Limbazu novads"
+			},
+			{
+				"value": "Livanu nov",
+				"text": "Livanu nov"
+			},
+			{
+				"value": "Ludzas nov",
+				"text": "Ludzas nov"
+			},
+			{
+				"value": "Madonas nov",
+				"text": "Madonas nov"
+			},
+			{
+				"value": "Marupes nov",
+				"text": "Marupes nov"
+			},
+			{
+				"value": "Ogres nov",
+				"text": "Ogres nov"
+			},
+			{
+				"value": "Olaines nov",
+				"text": "Olaines nov"
+			},
+			{
+				"value": "Preilu nov",
+				"text": "Preilu nov"
+			},
+			{
+				"value": "Rezeknes nov",
+				"text": "Rezeknes nov"
+			},
+			{
+				"value": "Ropazu nov",
+				"text": "Ropazu nov"
+			},
+			{
+				"value": "Salaspils nov",
+				"text": "Salaspils nov"
+			},
+			{
+				"value": "Saldus nov",
+				"text": "Saldus nov"
+			},
+			{
+				"value": "Saulkrastu nov",
+				"text": "Saulkrastu nov"
+			},
+			{
+				"value": "Siguldas nov",
+				"text": "Siguldas nov"
+			},
+			{
+				"value": "Smiltenes nov",
+				"text": "Smiltenes nov"
+			},
+			{
+				"value": "Talsu nov",
+				"text": "Talsu nov"
+			},
+			{
+				"value": "Tukuma nov",
+				"text": "Tukuma nov"
+			},
+			{
+				"value": "Valkas nov",
+				"text": "Valkas nov"
+			},
+			{
+				"value": "Valmieras nov",
+				"text": "Valmieras nov"
+			},
+			{
+				"value": "Varaklanu nov",
+				"text": "Varaklanu nov"
+			},
+			{
+				"value": "Ventspils nov",
+				"text": "Ventspils nov"
+			}
+		]
+	},
+	"breedsOptions": {
+		"all": [
+			{
+				"value": "",
+				"text": ""
+			}
+		],
+		"catOptiongroupLabel": [
+			{
+				"value": "Cat Breed",
+				"text": "Kaķu šķirne"
+			}
+		],
+		"dogOptiongroupLabel": [
+			{
+				"value": "Dog Breed",
+				"text": "Suņu Šķirne"
+			}
+		],
+		"cats": [
+			{
+				"value": "Abyssinian",
+				"text": "Abyssinian"
+			},
+			{
+				"value": "American Bobtail",
+				"text": "American Bobtail"
+			},
+			{
+				"value": "American Shorthair",
+				"text": "American Shorthair"
+			},
+			{
+				"value": "Australian Mist",
+				"text": "Australian Mist"
+			},
+			{
+				"value": "Balinese",
+				"text": "Balinese"
+			},
+			{
+				"value": "Bengal",
+				"text": "Bengal"
+			},
+			{
+				"value": "Birman",
+				"text": "Birman"
+			},
+			{
+				"value": "Bombay",
+				"text": "Bombay"
+			},
+			{
+				"value": "British Shorthair",
+				"text": "British Shorthair"
+			},
+			{
+				"value": "Burmese",
+				"text": "Burmese"
+			},
+			{
+				"value": "Burmilla",
+				"text": "Burmilla"
+			},
+			{
+				"value": "Chartreux",
+				"text": "Chartreux"
+			},
+			{
+				"value": "Chausie",
+				"text": "Chausie"
+			},
+			{
+				"value": "Cornish Rex",
+				"text": "Cornish Rex"
+			},
+			{
+				"value": "Cymric",
+				"text": "Cymric"
+			},
+			{
+				"value": "Devon Rex",
+				"text": "Devon Rex"
+			},
+			{
+				"value": "Egyptian Mau",
+				"text": "Egyptian Mau"
+			},
+			{
+				"value": "Exotic Shorthair",
+				"text": "Exotic Shorthair"
+			},
+			{
+				"value": "Himalayan",
+				"text": "Himalayan"
+			},
+			{
+				"value": "Highlander",
+				"text": "Highlander"
+			},
+			{
+				"value": "Japanese Bobtail",
+				"text": "Japanese Bobtail"
+			},
+			{
+				"value": "Korat",
+				"text": "Korat"
+			},
+			{
+				"value": "LaPerm",
+				"text": "LaPerm"
+			},
+			{
+				"value": "Maine Coon",
+				"text": "Maine Coon"
+			},
+			{
+				"value": "Manx",
+				"text": "Manx"
+			},
+			{
+				"value": "Munchkin",
+				"text": "Munchkin"
+			},
+			{
+				"value": "Nebelung",
+				"text": "Nebelung"
+			},
+			{
+				"value": "Norwegian Forest Cat",
+				"text": "Norwegian Forest Cat"
+			},
+			{
+				"value": "Oriental Shorthair",
+				"text": "Oriental Shorthair"
+			},
+			{
+				"value": "Peterbald",
+				"text": "Peterbald"
+			},
+			{
+				"value": "Persian",
+				"text": "Persian"
+			},
+			{
+				"value": "Pixiebob",
+				"text": "Pixiebob"
+			},
+			{
+				"value": "Ragdoll",
+				"text": "Ragdoll"
+			},
+			{
+				"value": "Russian Blue",
+				"text": "Russian Blue"
+			},
+			{
+				"value": "Scottish Fold",
+				"text": "Scottish Fold"
+			},
+			{
+				"value": "Selkirk Rex",
+				"text": "Selkirk Rex"
+			},
+			{
+				"value": "Serengeti",
+				"text": "Serengeti"
+			},
+			{
+				"value": "Siberian",
+				"text": "Siberian"
+			},
+			{
+				"value": "Siamese",
+				"text": "Siamese"
+			},
+			{
+				"value": "Singapura",
+				"text": "Singapura"
+			},
+			{
+				"value": "Snowshoe",
+				"text": "Snowshoe"
+			},
+			{
+				"value": "Sokoke",
+				"text": "Sokoke"
+			},
+			{
+				"value": "Sphynx",
+				"text": "Sphynx"
+			},
+			{
+				"value": "Tonkinese",
+				"text": "Tonkinese"
+			},
+			{
+				"value": "Toyger",
+				"text": "Toyger"
+			},
+			{
+				"value": "Turkish Angora",
+				"text": "Turkish Angora"
+			},
+			{
+				"value": "Turkish Van",
+				"text": "Turkish Van"
+			}
+		],
+		"dogs": [
+			{
+				"value": "Afghan Hound",
+				"text": "Afghan Hound"
+			},
+			{
+				"value": "Akita",
+				"text": "Akita"
+			},
+			{
+				"value": "Akita Inu",
+				"text": "Akita Inu"
+			},
+			{
+				"value": "Alaskan Malamute",
+				"text": "Alaskan Malamute"
+			},
+			{
+				"value": "American Bulldog",
+				"text": "American Bulldog"
+			},
+			{
+				"value": "Australian Cattle Dog",
+				"text": "Australian Cattle Dog"
+			},
+			{
+				"value": "Basset Hound",
+				"text": "Basset Hound"
+			},
+			{
+				"value": "Basenji",
+				"text": "Basenji"
+			},
+			{
+				"value": "Bernese Mountain Dog",
+				"text": "Bernese Mountain Dog"
+			},
+			{
+				"value": "Bloodhound",
+				"text": "Bloodhound"
+			},
+			{
+				"value": "Boston Terrier",
+				"text": "Boston Terrier"
+			},
+			{
+				"value": "Bullmastiff",
+				"text": "Bullmastiff"
+			},
+			{
+				"value": "Cairn Terrier",
+				"text": "Cairn Terrier"
+			},
+			{
+				"value": "Cane Corso",
+				"text": "Cane Corso"
+			},
+			{
+				"value": "Cavalier King Charles Spaniel",
+				"text": "Cavalier King Charles Spaniel"
+			},
+			{
+				"value": "Chesapeake Bay Retriever",
+				"text": "Chesapeake Bay Retriever"
+			},
+			{
+				"value": "Chinese Crested",
+				"text": "Chinese Crested"
+			},
+			{
+				"value": "Chinese Shar-Pei",
+				"text": "Chinese Shar-Pei"
+			},
+			{
+				"value": "Collie",
+				"text": "Collie"
+			},
+			{
+				"value": "Corgi",
+				"text": "Corgi"
+			},
+			{
+				"value": "Dandie Dinmont Terrier",
+				"text": "Dandie Dinmont Terrier"
+			},
+			{
+				"value": "Dogo Argentino",
+				"text": "Dogo Argentino"
+			},
+			{
+				"value": "Dogo Canario",
+				"text": "Dogo Canario"
+			},
+			{
+				"value": "English Bulldog",
+				"text": "English Bulldog"
+			},
+			{
+				"value": "English Setter",
+				"text": "English Setter"
+			},
+			{
+				"value": "English Springer Spaniel",
+				"text": "English Springer Spaniel"
+			},
+			{
+				"value": "French Bulldog",
+				"text": "French Bulldog"
+			},
+			{
+				"value": "German Shepherd",
+				"text": "German Shepherd"
+			},
+			{
+				"value": "Golden Retriever",
+				"text": "Golden Retriever"
+			},
+			{
+				"value": "Great Dane",
+				"text": "Great Dane"
+			},
+			{
+				"value": "Great Pyrenees",
+				"text": "Great Pyrenees"
+			},
+			{
+				"value": "Havanese",
+				"text": "Havanese"
+			},
+			{
+				"value": "Irish Terrier",
+				"text": "Irish Terrier"
+			},
+			{
+				"value": "Irish Wolfhound",
+				"text": "Irish Wolfhound"
+			},
+			{
+				"value": "Italian Greyhound",
+				"text": "Italian Greyhound"
+			},
+			{
+				"value": "Jack Russell Terrier",
+				"text": "Jack Russell Terrier"
+			},
+			{
+				"value": "Japanese Chin",
+				"text": "Japanese Chin"
+			},
+			{
+				"value": "Keeshond",
+				"text": "Keeshond"
+			},
+			{
+				"value": "Labrador Retriever",
+				"text": "Labrador Retriever"
+			},
+			{
+				"value": "Leonberger",
+				"text": "Leonberger"
+			},
+			{
+				"value": "Lhasa Apso",
+				"text": "Lhasa Apso"
+			},
+			{
+				"value": "Maltese",
+				"text": "Maltese"
+			},
+			{
+				"value": "Mastiff",
+				"text": "Mastiff"
+			},
+			{
+				"value": "Miniature Bull Terrier",
+				"text": "Miniature Bull Terrier"
+			},
+			{
+				"value": "Newfoundland",
+				"text": "Newfoundland"
+			},
+			{
+				"value": "Norfolk Terrier",
+				"text": "Norfolk Terrier"
+			},
+			{
+				"value": "Norwegian Buhund",
+				"text": "Norwegian Buhund"
+			},
+			{
+				"value": "Norwegian Elkhound",
+				"text": "Norwegian Elkhound"
+			},
+			{
+				"value": "Norwich Terrier",
+				"text": "Norwich Terrier"
+			},
+			{
+				"value": "Pekingese",
+				"text": "Pekingese"
+			},
+			{
+				"value": "Petit Basset Griffon Vendeen",
+				"text": "Petit Basset Griffon Vendeen"
+			},
+			{
+				"value": "Pit Bull Terrier",
+				"text": "Pit Bull Terrier"
+			},
+			{
+				"value": "Pomeranian",
+				"text": "Pomeranian"
+			},
+			{
+				"value": "Poodle",
+				"text": "Poodle"
+			},
+			{
+				"value": "Pug",
+				"text": "Pug"
+			},
+			{
+				"value": "Rottweiler",
+				"text": "Rottweiler"
+			},
+			{
+				"value": "Saint Bernard",
+				"text": "Saint Bernard"
+			},
+			{
+				"value": "Samoyed",
+				"text": "Samoyed"
+			},
+			{
+				"value": "Scottish Terrier",
+				"text": "Scottish Terrier"
+			},
+			{
+				"value": "Shetland Sheepdog",
+				"text": "Shetland Sheepdog"
+			},
+			{
+				"value": "Shiba Inu",
+				"text": "Shiba Inu"
+			},
+			{
+				"value": "Shih Tzu",
+				"text": "Shih Tzu"
+			},
+			{
+				"value": "Siberian Husky",
+				"text": "Siberian Husky"
+			},
+			{
+				"value": "Staffordshire Bull Terrier",
+				"text": "Staffordshire Bull Terrier"
+			},
+			{
+				"value": "Tibetan Mastiff",
+				"text": "Tibetan Mastiff"
+			},
+			{
+				"value": "Tibetan Spaniel",
+				"text": "Tibetan Spaniel"
+			},
+			{
+				"value": "Tibetan Terrier",
+				"text": "Tibetan Terrier"
+			},
+			{
+				"value": "Toy Fox Terrier",
+				"text": "Toy Fox Terrier"
+			},
+			{
+				"value": "Weimaraner",
+				"text": "Weimaraner"
+			},
+			{
+				"value": "West Highland White Terrier",
+				"text": "West Highland White Terrier"
+			},
+			{
+				"value": "Whippet",
+				"text": "Whippet"
+			},
+			{
+				"value": "Yorkshire Terrier",
+				"text": "Yorkshire Terrier"
+			}
+		]
+	},
+	"services": {
+		"serviceTitle": "Services",
+		"addServiceBtn": "Add Service",
+		"service1": "Dzīvnieku patversmes",
+		"service2": "Mājdzīvnieku kopšana",
+		"service3": "Mājdzīvnieku apdrošināšana un juridiskie pakalpojumi",
+		"service4": "Kaķu kafejnīca",
+		"service5": "Mājdzīvnieku meklēšanas un glābšanas pakalpojumi",
+		"service6": "Mājdzīvnieku apmācība",
+		"service7": "Mājdzīvnieku māksla un amatniecība",
+		"service8": "Mājdzīvnieku bārdziņš",
+		"service9": "Mājdzīvnieku uzraudzība",
+		"service10": "Mājdzīvnieku transportēšana",
+		"service11": "Citi pakalpojumi",
+		"service12": "Mājdzīvnieku apbedīšanas pakalpojumi",
+		"service13": "Mājdzīvnieku fotogrāfija",
+		"service14": "Draudzīgas mājdzīvniekiem paredzētas naktsmītnes",
+		"service15": "Mājdzīvnieku audzētāji",
+		"service16": "Suņu pastaiga",
+		"service17": "Mājdzīvnieku preces un piederumi",
+		"service18": "Mājdzīvnieku izstāde",
+		"service19": "Veterinārie pakalpojumi"
+	},
+	"Sakums": "Sakums",
+	"Sākums": "Sākums"
 }

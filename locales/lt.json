@@ -314,7 +314,7 @@
     ]
   },
 
-  "breeds": {
+  "breedsOptions": {
     "all": [{ "value": "", "text": "" }],
     "catOptiongroupLabel": [{ "value": "Cat Breed", "text": "Cat Breed" }],
     "dogOptiongroupLabel": [{ "value": "Dog Breed", "text": "Dog Breed" }],

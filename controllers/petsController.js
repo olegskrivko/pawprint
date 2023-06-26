@@ -16,8 +16,16 @@ module.exports.index = async (req, res) => {
   const ITEMS_PER_PAGE = 10; // Number of items to display per page
   const { page, limit, age, gender, breed, species, pattern, coat, size, petStatus, identifier, name, location, color, lostdate, maxDistance, userlongitude, userlatitude, selectedRegion } = req.query;
 
-  // Retrieve the language preference and data from the response locals
-  const data = req.data; // Language data is available from the middleware
+  const petsLocale = req.__('pets'); // Translate the 'home' key based on the user's selected language
+  const statusOptions = req.__('statusOptions');
+  const speciesOptions = req.__('speciesOptions');
+  const genderOptions = req.__('genderOptions');
+  const colorOptions = req.__('colorOptions');
+  const ageOptions = req.__('ageOptions');
+  const coatOptions = req.__('coatOptions');
+  const sizeOptions = req.__('sizeOptions');
+  const regionOptions = req.__('regionOptions');
+  const breedsOptions = req.__('breedsOptions');
 
   const selectedLocation = await Location.findOne({ region: selectedRegion });
 
@@ -132,7 +140,16 @@ module.exports.index = async (req, res) => {
     lostdate,
     selectedPolygonCoordinates,
     // select options (better to have them in one place on the server)
-    data, // Pass the language data to the view
+    petsLocale, // Pass the language data to the view
+    statusOptions,
+    speciesOptions,
+    genderOptions,
+    colorOptions,
+    ageOptions,
+    coatOptions,
+    sizeOptions,
+    regionOptions,
+    breedsOptions,
   });
 };
 
@@ -213,8 +230,7 @@ module.exports.createPet = async (req, res, next) => {
 };
 
 module.exports.showPet = async (req, res) => {
-  // Retrieve the language preference and data from the response locals
-  const data = req.data; // Language data is available from the middleware
+  const petsLocale = req.__('pets'); // Translate the 'home' key based on the user's selected language
   // Find the pet with the provided ID and populate its comments and author
   const pet = await Pet.findById(req.params.id)
     .populate({
@@ -248,7 +264,7 @@ module.exports.showPet = async (req, res) => {
     createDateInWords,
     updateDateInWords,
     lostDateInWords,
-    data,
+    petsLocale, // Pass the language data to the view,
   });
 };
 

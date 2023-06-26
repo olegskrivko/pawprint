@@ -3,6 +3,7 @@ const ExpressError = require('../utils/ExpressError.js');
 const User = require('../models/user.js'); // Assuming your user model is defined in '../models/user.js'
 const Pet = require('../models/pet.js');
 const Comment = require('../models/comment.js');
+const i18n = require('i18n');
 
 // Middleware function to check if user is authenticated
 module.exports.isLoggedIn = (req, res, next) => {
@@ -90,44 +91,86 @@ const ltData = require('../locales/lt.json');
 const etData = require('../locales/et.json');
 
 // Language middleware function
-module.exports.languageMiddleware = async (req, res, next) => {
-  try {
-    let userLanguage;
+// module.exports.languageMiddleware = async (req, res, next) => {
+//   try {
+//     let userLanguage;
 
-    if (req.isAuthenticated()) {
-      // User is logged in, retrieve language preference from user profile
-      const user = await User.findById(req.user.id);
-      userLanguage = user.language;
-    } else {
-      // User is not logged in, retrieve language preference from request headers
-      userLanguage = req.headers['accept-language'];
-      console.log(userLanguage);
+//     if (req.isAuthenticated()) {
+//       // User is logged in, retrieve language preference from user profile
+//       const user = await User.findById(req.user.id);
+//       userLanguage = user.language;
+//     } else {
+//       // User is not logged in, retrieve language preference from request headers
+//       userLanguage = req.headers['accept-language'];
+//       console.log(userLanguage);
+//     }
+
+//     let data;
+
+//     if (userLanguage && userLanguage.startsWith('lv')) {
+//       data = lvData;
+//     } else if (userLanguage && userLanguage.startsWith('ru')) {
+//       data = ruData;
+//     } else if (userLanguage && userLanguage.startsWith('lt')) {
+//       data = ltData;
+//     } else if (userLanguage && userLanguage.startsWith('et')) {
+//       data = etData;
+//     } else {
+//       data = enData;
+//     }
+
+//     // Retrieve the corresponding data based on the user's language preference
+//     //const data = userLanguage && userLanguage.startsWith('lv') ? lvData : enData;
+//     // console.log('data', data);
+//     // Attach the language data to the request object for access in subsequent middleware or routes
+//     req.data = data;
+
+//     next(); // Call next to proceed to the next middleware or route
+//   } catch (err) {
+//     console.error(err.message);
+//     // Handle the error or redirect to an appropriate error page
+//     res.redirect('/error');
+//   }
+// };
+
+// const languageMiddleware = (req, res, next) => {
+//   i18n.init(req, res, () => {
+//     const currentLocale = req.getLocale(); // Get the current selected locale from the request
+//     req.setLocale(currentLocale); // Set the locale for i18n module
+
+//     // Continue to the next middleware
+//     next();
+//   });
+// };
+
+// module.exports = { languageMiddleware };
+
+module.exports.languageMiddleware = (req, res, next) => {
+  i18n.init(req, res, async () => {
+    // console.log('req', req);
+    try {
+      let userLanguage;
+
+      if (req.isAuthenticated()) {
+        // User is logged in, retrieve language preference from user profile
+        const user = await User.findById(req.user.id);
+        userLanguage = user.language;
+        console.log('User language from DB: ', userLanguage);
+      } else {
+        // User is not logged in, retrieve language preference from request headers
+        userLanguage = req.headers['accept-language'];
+        console.log('User language from headers: ', userLanguage);
+      }
+
+      // Set the locale for i18n module based on user's language preference
+      req.setLocale(userLanguage);
+
+      // Continue to the next middleware
+      next();
+    } catch (err) {
+      console.error(err.message);
+      // Handle the error or redirect to an appropriate error page
+      res.redirect('/error');
     }
-
-    let data;
-
-    if (userLanguage && userLanguage.startsWith('lv')) {
-      data = lvData;
-    } else if (userLanguage && userLanguage.startsWith('ru')) {
-      data = ruData;
-    } else if (userLanguage && userLanguage.startsWith('lt')) {
-      data = ltData;
-    } else if (userLanguage && userLanguage.startsWith('et')) {
-      data = etData;
-    } else {
-      data = enData;
-    }
-
-    // Retrieve the corresponding data based on the user's language preference
-    //const data = userLanguage && userLanguage.startsWith('lv') ? lvData : enData;
-    // console.log('data', data);
-    // Attach the language data to the request object for access in subsequent middleware or routes
-    req.data = data;
-
-    next(); // Call next to proceed to the next middleware or route
-  } catch (err) {
-    console.error(err.message);
-    // Handle the error or redirect to an appropriate error page
-    res.redirect('/error');
-  }
+  });
 };
