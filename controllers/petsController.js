@@ -154,22 +154,42 @@ module.exports.index = async (req, res) => {
 };
 
 module.exports.renderNewForm = (req, res) => {
-  // Retrieve the language preference and data from the response locals
-  const data = req.data; // Language data is available from the middleware
-  res.render('pets/new', { data });
+  const petsLocale = req.__('pets'); // Translate the 'home' key based on the user's selected language
+  const statusOptions = req.__('statusOptions');
+  const speciesOptions = req.__('speciesOptions');
+  const genderOptions = req.__('genderOptions');
+  const colorOptions = req.__('colorOptions');
+  const ageOptions = req.__('ageOptions');
+  const coatOptions = req.__('coatOptions');
+  const sizeOptions = req.__('sizeOptions');
+  const regionOptions = req.__('regionOptions');
+  const breedsOptions = req.__('breedsOptions');
+  res.render('pets/new', {
+    // select options (better to have them in one place on the server)
+    petsLocale, // Pass the language data to the view
+    statusOptions,
+    speciesOptions,
+    genderOptions,
+    colorOptions,
+    ageOptions,
+    coatOptions,
+    sizeOptions,
+    regionOptions,
+    breedsOptions,
+  });
 };
 
-module.exports.renderMissingForm = (req, res) => {
-  // Retrieve the language preference and data from the response locals
-  const data = req.data; // Language data is available from the middleware
-  res.render('pets/missing', { data });
-};
+// module.exports.renderMissingForm = (req, res) => {
+//   // Retrieve the language preference and data from the response locals
+//   const data = req.data; // Language data is available from the middleware
+//   res.render('pets/missing', { data });
+// };
 
-module.exports.renderFoundForm = (req, res) => {
-  // Retrieve the language preference and data from the response locals
-  const data = req.data; // Language data is available from the middleware
-  res.render('pets/found', { data });
-};
+// module.exports.renderFoundForm = (req, res) => {
+//   // Retrieve the language preference and data from the response locals
+//   const data = req.data; // Language data is available from the middleware
+//   res.render('pets/found', { data });
+// };
 
 module.exports.createPet = async (req, res, next) => {
   let colorsFormated = [];

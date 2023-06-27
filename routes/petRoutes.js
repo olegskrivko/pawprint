@@ -19,9 +19,9 @@ router
   .post(isLoggedIn, upload.array('image'), validatePet, catchAsync(petsController.createPet)); // Create a new pet
 
 // Routes for report forms
-router.get('/report', isLoggedIn, petsController.renderNewForm); // Render new pet report form
-router.get('/report/missing', isLoggedIn, petsController.renderMissingForm); // Render missing pet report form
-router.get('/report/found', isLoggedIn, petsController.renderFoundForm); // Render found pet report form
+router.get('/new', isLoggedIn, petsController.renderNewForm); // Render new pet report form
+//router.get('/report/missing', isLoggedIn, petsController.renderMissingForm); // Render missing pet report form
+//router.get('/report/found', isLoggedIn, petsController.renderFoundForm); // Render found pet report form
 
 // Routes for individual pets
 router

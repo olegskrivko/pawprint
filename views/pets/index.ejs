@@ -66,7 +66,7 @@
   </div>
 
   <div>
-    <a class="btn btn-primary  ms-1" href="/pets/report"><%=  petsLocale.reportPetBtn %></a>
+    <a class="btn btn-primary  ms-1" href="/pets/new"><%=  petsLocale.reportPetBtn %></a>
     <!-- <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
       Button with data-bs-target
     </button> -->
@@ -249,20 +249,12 @@
           </span>
         
           <select class="form-select" id="size" name="size">
-            <!-- <option hidden disabled selected value>-- Select an option --</option> -->
             <% sizeOptions.forEach(option => { %>
               <option value="<%= option.value %>">
                 <%= option.text %>
               </option>
             <% }); %>
           </select>
-        <!-- <select class="form-control" id="mealType" name="mealTypes">
-          < mealTypesOptions.forEach(option => { %>
-            <option value="<= option %>" <= mealTypeValue === option ? 'selected' : '' %>>
-              <= option %>
-            </option>
-          < }) %>
-        </select> -->
       </div>
     </div>
 
