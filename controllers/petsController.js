@@ -230,7 +230,7 @@ module.exports.createPet = async (req, res, next) => {
 };
 
 module.exports.showPet = async (req, res) => {
-  const petsLocale = req.__('pets'); // Translate the 'home' key based on the user's selected language
+  const petsshow = req.__('petsshow'); // Translate the 'home' key based on the user's selected language
   // Find the pet with the provided ID and populate its comments and author
   const pet = await Pet.findById(req.params.id)
     .populate({
@@ -264,7 +264,7 @@ module.exports.showPet = async (req, res) => {
     createDateInWords,
     updateDateInWords,
     lostDateInWords,
-    petsLocale, // Pass the language data to the view,
+    petsshow, // Pass the language data to the view,
   });
 };
 

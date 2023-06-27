@@ -129,7 +129,9 @@
       </div> -->
 
       <small class="d-block text-end mt-3">
-        <a href="#">Remove All</a>
+        <button id="deleteAllWatchlistBtn" class="btn btn-danger">Remove All</button>
+
+        <!-- <a href="#">Remove All</a> -->
       </small>
     </div>
   </div>
@@ -190,6 +192,7 @@
 
       if (response.ok) {
         // Watchlist updated successfully
+
         console.log('Pet removed from watchlist successfully');
         location.reload(); // Refresh the page (to see the result of deleted item)
       } else {
@@ -214,5 +217,34 @@
 
       await updateWatchlist(watchlistData);
     });
+  });
+</script>
+<script>
+  const deleteAllWatchlist = async () => {
+    try {
+      const response = await fetch('/auth/account/watchlist/all', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        // Watchlist deleted successfully
+        console.log(response);
+        console.log('All watchlist items deleted');
+        location.reload(); // Refresh the page to reflect the changes
+      } else {
+        throw new Error('Failed to delete watchlist items');
+      }
+    } catch (error) {
+      console.error(error);
+      // Handle error and display appropriate message
+    }
+  };
+
+  const deleteAllWatchlistBtn = document.getElementById('deleteAllWatchlistBtn');
+  deleteAllWatchlistBtn.addEventListener('click', async () => {
+    await deleteAllWatchlist();
   });
 </script>

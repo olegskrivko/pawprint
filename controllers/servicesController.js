@@ -10,10 +10,11 @@ module.exports.renderAddServiceForm = (req, res) => {
 
 module.exports.index = async (req, res) => {
   try {
+    const servicesLocale = req.__('services'); // Translate the 'home' key based on the user's selected language
     const services = await Service.find();
     // Retrieve the language preference and data from the response locals
-    const data = req.data; // Language data is available from the middleware
-    res.render('services/index', { services, data });
+
+    res.render('services/index', { services, servicesLocale });
   } catch (error) {
     console.error('Error retrieving services:', error);
     req.flash('error', 'Failed to retrieve services.');

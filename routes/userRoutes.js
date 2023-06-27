@@ -43,6 +43,8 @@ router.route('/account/watchlist').get(isLoggedIn, usersController.renderAccount
 // post or put? catchasync need
 router.route('/account/profile/avatar').put(isLoggedIn, upload.single('avatar'), usersController.updateProfileAvatar);
 
+router.route('/account/watchlist/all').delete(isLoggedIn, usersController.deleteAllAccountWatchlist);
 router.route('/account/watchlist/:petId').delete(isLoggedIn, usersController.deleteAccountWatchlist);
+// Route to delete all watchlist items
 
 module.exports = router;

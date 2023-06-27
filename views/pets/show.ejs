@@ -79,10 +79,10 @@
             <!-- <li class="list-group-item" style="text-transform: capitalize">
               <b>Pet's Name:</b> <= pet.title %>
             </li> -->
-            <li class="list-group-item"><i class="bi bi-diamond-half"></i> <b><%= petsLocale.filterSpecies %></b><span id="pet-species"> <%= pet.species %></span></li>
-            <li class="list-group-item"><i class="bi bi-x-diamond-fill"></i> <b>Breed:</b> <%= pet.breed %></li>
-            <li class="list-group-item"><i class="bi bi-grid-3x3-gap"></i> <b>Coat Pattern:</b> <%= pet.pattern %></li>
-            <li class="list-group-item"><i class="bi bi-gender-ambiguous"></i> <b>Pet's Gender: </b><%= pet.gender %></li>
+            <li class="list-group-item"><i class="bi bi-diamond-half"></i> <b><%= petsshow.showpetspecies %></b><span id="pet-species"> <%= pet.species %></span></li>
+            <li class="list-group-item"><i class="bi bi-x-diamond-fill"></i> <b><%= petsshow.showpetbreed %></b> <%= pet.breed %></li>
+            <li class="list-group-item"><i class="bi bi-grid-3x3-gap"></i> <b><%= petsshow.showpetcoatpattern %></b> <%= pet.pattern %></li>
+            <li class="list-group-item"><i class="bi bi-gender-ambiguous"></i> <b><%= petsshow.showpetgender %></b> <%= pet.gender %></li>
             <li class="list-group-item"><i class="bi bi-palette"></i> <b>First Color:</b> <%= pet.color[0] %></li>
             <% if (pet.color.length > 1) {%>
             <li class="list-group-item">
@@ -93,16 +93,16 @@
             <li class="list-group-item"><i class="bi bi-palette"></i> <b>Third Color:</b> <%= pet.color[2] %></li>
             <% } %>
 
-            <li class="list-group-item"><i class="bi bi-calendar3"></i> <b>Last Seen:</b> <%= lostDateInWords %></li>
-            <li class="list-group-item"><i class="bi bi-calendar2-heart"></i> <b>Age:</b> <%= pet.age %></li>
-            <li class="list-group-item"><i class="bi bi-wind"></i> <b>Coat Type:</b> <%= pet.coat %></li>
-            <li class="list-group-item"><i class="bi bi-arrows-angle-expand"></i> <b>Pet's Size:</b> <%= pet.size %></li>
-            <li class="list-group-item"><i class="bi bi-question-diamond"></i> <b>Status:</b> <span id="pet-status"> <%= pet.petStatus %></span></li>
+            <li class="list-group-item"><i class="bi bi-calendar3"></i> <b><%= petsshow.showpetlastseen %></b> <%= lostDateInWords %></li>
+            <li class="list-group-item"><i class="bi bi-calendar2-heart"></i> <b><%= petsshow.showpetage %></b> <%= pet.age %></li>
+            <li class="list-group-item"><i class="bi bi-wind"></i> <b><%= petsshow.showpetcoat %></b> <%= pet.coat %></li>
+            <li class="list-group-item"><i class="bi bi-arrows-angle-expand"></i> <b><%= petsshow.showpetsize %></b> <%= pet.size %></li>
+            <li class="list-group-item"><i class="bi bi-question-diamond"></i> <b><%= petsshow.showpetstatus %></b> <span id="pet-status"> <%= pet.petStatus %></span></li>
             <li class="list-group-item d-none"><b>Lat: </b><span class="pet-latitude"><%=pet.latitude%></span><b>Lng: </b><span class="pet-longitude"><%=pet.longitude%></span></li>
-            <li class="list-group-item"><i class="bi bi-fingerprint"></i> <b>Identifier:</b> <%= pet.identifier %></li>
+            <li class="list-group-item"><i class="bi bi-fingerprint"></i> <b><%= petsshow.showpetidentifier %></b> <%= pet.identifier %></li>
             <li class="list-group-item">
               <p class="card-text">
-                <i class="bi bi-chat-square-text"></i> <b>Description:</b>
+                <i class="bi bi-chat-square-text"></i> <b><%= petsshow.showpetdescription %></b>
                 <span id="pet-description"> <%= pet.description %></span>
               </p>
             </li>
@@ -191,7 +191,7 @@
             <label for="body" class="small">Add comment...</label>
             <div class="valid-feedback">Looks good!</div>
             <div class="mt-1">
-              <a href="#" class="text-secondary" onclick="event.preventDefault(); this.closest('form').submit();" style="text-decoration: none"><i class="bi bi-send-fill"></i> <small>Send</small></a>
+              <a href="#" class="text-secondary" onclick="event.preventDefault(); this.closest('form').submit();" style="text-decoration: none"><i class="bi bi-send-fill"></i> <small><%= petsshow.sendBtn %></small></a>
               <a href="#" class="text-secondary" style="text-decoration: none"><i class="bi bi-geo-alt-fill"></i><small>+</small></a>
             </div>
           </div>
@@ -229,7 +229,7 @@
               <% if (comment.author && currentUser && comment.author.equals(currentUser._id)) { %>
               <form action="/pets/<%= pet._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
                 <a href="#" class="text-danger" style="text-decoration: none" onclick="deleteComment(event)"
-                  ><small><i class="bi-trash3"></i> Delete</small></a
+                  ><small><i class="bi-trash3"></i> <%= petsshow.deleteBtn %></small></a
                 >
               </form>
               <% } %>

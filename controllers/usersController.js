@@ -646,3 +646,25 @@ module.exports.deleteAccountWatchlist = async (req, res) => {
     res.status(500).json({ error: 'Failed to remove pet from watchlist' });
   }
 };
+
+// Controller for deleting all user account watchlist items
+module.exports.deleteAllAccountWatchlist = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    console.log('userId to delete wathclist', userId);
+
+    // Find the user by ID
+    const user = await User.findById(userId);
+
+    // Clear the watchlist array
+    user.watchlist = [];
+
+    // Save the updated user data
+    await user.save();
+
+    res.status(200).json({ message: 'All watchlist items removed successfully' });
+  } catch (error) {
+    console.error('Error removing all watchlist items:', error);
+    res.status(500).json({ error: 'Failed to remove all watchlist items' });
+  }
+};
