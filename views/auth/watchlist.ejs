@@ -1,19 +1,4 @@
-<% layout('layouts/boilerplate')%>
-<div class="row row-cols-1 row-cols-md-1 g-3 justify-content-center">
-  <div class="col-md-8">
-    <ul class="nav nav-pills nav-justified">
-      <li class="nav-item">
-        <a class="nav-link" href="/auth/account/profile">Profile</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/auth/account/settings">Settings</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="/auth/account/watchlist">Watchlist</a>
-      </li>
-    </ul>
-  </div>
-</div>
+<% layout('layouts/boilerplate')%> <%- include('../partials/profileTabs') %>
 <h5 class="text-center mt-5 mb-3">Manage Your watchlist</h5>
 
 <div class="row row-cols-1 row-cols-md-1 g-3 justify-content-center">

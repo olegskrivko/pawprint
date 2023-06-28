@@ -8,10 +8,14 @@
     "signup": "Sign up",
     "greeting": "Hello"
   },
+  "footer": {
+    "allRightsReserved": "All rights reserved",
+    "contentByAI": "Generated text content by AI model - ChatGPT"
+  },
   "home": {
     "appName": "PawPrint",
     "welcomeTitle": "Welcome to ",
-    "welcomeText": "Find your furry friend with PawPrint. Try it today, no matter where you are.",
+    "welcomeText": "Find your furry friend with PawPrint.",
     "welcomeBtn": "Find a Pet",
     "loginBtn": "Log in",
     "signupBtn": "Sign up"
@@ -85,7 +89,7 @@
     "showpetcolor3": "Third Color:",
     "showpetlastseen": "Last Seen:",
     "showpetage": "Age:",
-    "showpetcoat ": "Coat Type:",
+    "showpetcoat": "Coat Type:",
     "showpetsize": "Pet's Size:",
     "showpetstatus": "Pet Status:",
     "showpetidentifier": "Identifier:",

@@ -8,10 +8,14 @@
     "signup": "Reģistrēties",
     "greeting": "Sveiki"
   },
+  "footer": {
+    "allRightsReserved": "Visas tiesības aizsargātas",
+    "contentByAI": "Ģenerēts teksta saturs ar mākslīgā intelekta modeli - ChatGPT"
+  },
   "home": {
     "appName": "PawPrint",
     "welcomeTitle": "Laipni lūdzam ",
-    "welcomeText": "Atrodi savu pūkaino draugu ar PawPrint. Pamēģini to šodien, neatkarīgi no tā, kur tu atrodies.",
+    "welcomeText": "Atrodi savu pūkaino draugu ar PawPrint",
     "welcomeBtn": "Atrast mājdzīvnieku",
     "loginBtn": "Pierakstīties",
     "signupBtn": "Reģistrēties"

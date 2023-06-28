@@ -8,10 +8,14 @@
     "signup": "Registruotis",
     "greeting": "Sveiki"
   },
+  "footer": {
+    "allRightsReserved": "Visos teisės saugomos",
+    "contentByAI": "Generuota tekstinė informacija naudojant dirbtinio intelekto modelį - ChatGPT"
+  },
   "home": {
     "appName": "PawPrint",
     "welcomeTitle": "Sveiki atvykę į ",
-    "welcomeText": "Raskite savo plaukiojantį draugą su PawPrint. Išbandykite jį šiandien, nepriklausomai nuo to, kur esate.",
+    "welcomeText": "Raskite savo kailinį draugą su PawPrint.",
     "welcomeBtn": "Rasti gyvūną",
     "loginBtn": "Prisijungti",
     "signupBtn": "Registruotis"

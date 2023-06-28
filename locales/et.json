@@ -8,10 +8,14 @@
     "signup": "Registreeru",
     "greeting": "Tere"
   },
+  "footer": {
+    "allRightsReserved": "Kõik õigused kaitstud",
+    "contentByAI": "Teksti sisu genereeritud tehisintellekti mudeli abil - ChatGPT"
+  },
   "home": {
     "appName": "PawPrint",
     "welcomeTitle": "Tere tulemast ",
-    "welcomeText": "Leia oma karvane sõber PawPrintiga. Proovi seda täna, olenemata sellest, kus sa parasjagu oled.",
+    "welcomeText": "Leidke oma karvane sõber PawPrint'iga.",
     "welcomeBtn": "Leia lemmikloom",
     "loginBtn": "Logi sisse",
     "signupBtn": "Registreeru"

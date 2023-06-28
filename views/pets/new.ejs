@@ -8,7 +8,7 @@
       <span class="input-group-text">
         <i class="bi bi-question-diamond"></i>
       </span>
-      <select class="form-select" id="petStatus" name="pet[petStatus]">
+      <select class="form-select" id="petStatus" required name="pet[petStatus]">
         <% statusOptions.forEach(option => { %>
         <option value="<%= option.value %>"><%= option.text %></option>
         <% }); %>
