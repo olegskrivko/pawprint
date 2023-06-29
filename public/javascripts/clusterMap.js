@@ -1,6 +1,6 @@
 var map = tt.map({
   key: TOMTOMTOKEN,
-  container: "map",
+  container: 'map',
   center: [24.105078, 56.946285],
   zoom: 6,
   // dragPan: !isMobileOrTablet()
@@ -11,7 +11,7 @@ var southwest = new tt.LngLat(18.059, 52.129);
 var northeast = new tt.LngLat(30.425, 61.259);
 var bounds = new tt.LngLatBounds(southwest, northeast);
 
-map.on("load", function () {
+map.on('load', function () {
   map.setMaxBounds(bounds);
 });
 
@@ -23,25 +23,25 @@ var eventListenersAdded = false;
 
 //console.log(pets);
 //console.log(selectedPolygonCoordinates.features);
-map.on("load", function () {
+map.on('load', function () {
   map.addLayer({
-    id: "overlay",
-    type: "fill",
+    id: 'overlay',
+    type: 'fill',
     source: {
-      type: "geojson",
+      type: 'geojson',
       data: {
-        type: "Feature",
+        type: 'Feature',
         geometry: {
-          type: "Polygon",
+          type: 'Polygon',
           coordinates: [selectedPolygonCoordinates.features],
         },
       },
     },
     layout: {},
     paint: {
-      "fill-color": "#8A2BE2",
-      "fill-opacity": 0.5,
-      "fill-outline-color": "#4B0082",
+      'fill-color': '#8A2BE2',
+      'fill-opacity': 0.5,
+      'fill-outline-color': '#4B0082',
     },
   });
 });
@@ -63,12 +63,12 @@ var points = pets.features.map(function (point, index) {
 });
 
 var geoJson = {
-  type: "FeatureCollection",
+  type: 'FeatureCollection',
   features: points.map(function (point) {
     return {
-      type: "Feature",
+      type: 'Feature',
       geometry: {
-        type: "Point",
+        type: 'Point',
         coordinates: point.coordinates,
       },
       properties: point.properties,
@@ -76,11 +76,11 @@ var geoJson = {
   }),
 };
 
-let petButtonZoomAll = document.querySelectorAll(".petButtonZoom");
+let petButtonZoomAll = document.querySelectorAll('.petButtonZoom');
 petButtonZoomAll.forEach((item) => {
-  item.addEventListener("click", (e) => {
+  item.addEventListener('click', (e) => {
     // Get a reference to the target div
-    const targetDiv = document.getElementById("map");
+    const targetDiv = document.getElementById('map');
 
     // Scroll to the target div
     // targetDiv.scrollIntoView({
@@ -89,15 +89,15 @@ petButtonZoomAll.forEach((item) => {
 
     window.scrollTo({
       top: 0,
-      behavior: "smooth", // Add smooth scrolling animation
+      behavior: 'smooth', // Add smooth scrolling animation
     });
 
     //console.log(e);
     //var attributeValue = element.getAttribute("data-myattribute");
 
     let coords = e.target.dataset.petcoords;
-    console.log("coords", coords);
-    let coordsArray = coords.split(",");
+    console.log('coords', coords);
+    let coordsArray = coords.split(',');
 
     map.easeTo({
       center: coordsArray,
@@ -112,7 +112,7 @@ function refreshMarkers() {
     delete markersOnTheMap[id];
   });
   //https://api.tomtom.com/maps-sdk-for-web/cdn/static/accident.colors-white.png
-  map.querySourceFeatures("point-source").forEach(function (feature) {
+  map.querySourceFeatures('point-source').forEach(function (feature) {
     if (feature.properties && !feature.properties.cluster) {
       var id = parseInt(feature.properties.id, 10);
       if (!markersOnTheMap[id]) {
@@ -123,22 +123,22 @@ function refreshMarkers() {
         //   iconAnchor: [25, 50], // position of the icon relative to its anchor point
         // });
         // function createMarker(icon, position, color, popupText) {
-        var markerElement = document.createElement("div");
-        markerElement.className = "marker";
+        var markerElement = document.createElement('div');
+        markerElement.className = 'marker';
 
-        var markerContentElement = document.createElement("div");
-        markerContentElement.className = "marker-content";
-        markerContentElement.style.backgroundColor = "#FF0000";
+        var markerContentElement = document.createElement('div');
+        markerContentElement.className = 'marker-content';
+        markerContentElement.style.backgroundColor = '#FF0000';
         markerElement.appendChild(markerContentElement);
 
-        var iconElement = document.createElement("div");
-        if (feature.properties.species === "Dog") {
-          iconElement.className = "marker-icon";
-          iconElement.style.backgroundImage = "url(images/icons/dog.png)";
+        var iconElement = document.createElement('div');
+        if (feature.properties.species === 'Dog') {
+          iconElement.className = 'marker-icon';
+          iconElement.style.backgroundImage = 'url(images/icons/dog.png)';
           markerContentElement.appendChild(iconElement);
-        } else if (feature.properties.species === "Cat") {
-          iconElement.className = "marker-icon";
-          iconElement.style.backgroundImage = "url(images/icons/cat.png)";
+        } else if (feature.properties.species === 'Cat') {
+          iconElement.className = 'marker-icon';
+          iconElement.style.backgroundImage = 'url(images/icons/cat.png)';
           markerContentElement.appendChild(iconElement);
         }
         // add others species in the future.
@@ -154,9 +154,9 @@ function refreshMarkers() {
 
         var newMarker = new tt.Marker({
           element: markerElement, // pass the custom icon to the marker
-          anchor: "bottom", // set the anchor point for the marker
+          anchor: 'bottom', // set the anchor point for the marker
           draggable: false, // enable dragging of the marker
-          color: "#FF0000", // set the color of the marker
+          color: '#FF0000', // set the color of the marker
         }).setLngLat(feature.geometry.coordinates);
 
         //console.log(feature.geometry.coordinates);
@@ -172,8 +172,8 @@ function refreshMarkers() {
                 background-position: center;">
                 </div>
               </a>
-            </div>`
-          )
+            </div>`,
+          ),
         );
 
         markersOnTheMap[id] = newMarker;
@@ -183,9 +183,9 @@ function refreshMarkers() {
   });
 }
 
-map.on("load", function () {
-  map.addSource("point-source", {
-    type: "geojson",
+map.on('load', function () {
+  map.addSource('point-source', {
+    type: 'geojson',
     data: geoJson,
     cluster: true,
     clusterMaxZoom: 14,
@@ -193,38 +193,30 @@ map.on("load", function () {
   });
 
   map.addLayer({
-    id: "clusters",
-    type: "circle",
-    source: "point-source",
-    filter: ["has", "point_count"],
+    id: 'clusters',
+    type: 'circle',
+    source: 'point-source',
+    filter: ['has', 'point_count'],
     paint: {
-      "circle-color": [
-        "step",
-        ["get", "point_count"],
-        "#EC619F",
-        4,
-        "#008D8D",
-        7,
-        "#004B7F",
-      ],
-      "circle-radius": ["step", ["get", "point_count"], 15, 4, 20, 7, 25],
-      "circle-stroke-width": 1,
-      "circle-stroke-color": "white",
-      "circle-stroke-opacity": 1,
+      'circle-color': ['step', ['get', 'point_count'], '#EC619F', 4, '#008D8D', 7, '#004B7F'],
+      'circle-radius': ['step', ['get', 'point_count'], 15, 4, 20, 7, 25],
+      'circle-stroke-width': 1,
+      'circle-stroke-color': 'white',
+      'circle-stroke-opacity': 1,
     },
   });
 
   map.addLayer({
-    id: "cluster-count",
-    type: "symbol",
-    source: "point-source",
-    filter: ["has", "point_count"],
+    id: 'cluster-count',
+    type: 'symbol',
+    source: 'point-source',
+    filter: ['has', 'point_count'],
     layout: {
-      "text-field": "{point_count_abbreviated}",
-      "text-size": 16,
+      'text-field': '{point_count_abbreviated}',
+      'text-size': 16,
     },
     paint: {
-      "text-color": "white",
+      'text-color': 'white',
     },
   });
   //my added
@@ -241,46 +233,41 @@ map.on("load", function () {
   //   },
   // });
 
-  map.on("data", function (e) {
-    if (
-      e.sourceId !== "point-source" ||
-      !map.getSource("point-source").loaded()
-    ) {
+  map.on('data', function (e) {
+    if (e.sourceId !== 'point-source' || !map.getSource('point-source').loaded()) {
       return;
     }
 
     refreshMarkers();
 
     if (!eventListenersAdded) {
-      map.on("move", refreshMarkers);
-      map.on("moveend", refreshMarkers);
+      map.on('move', refreshMarkers);
+      map.on('moveend', refreshMarkers);
       eventListenersAdded = true;
     }
   });
 
-  map.on("click", "clusters", function (e) {
-    var features = map.queryRenderedFeatures(e.point, { layers: ["clusters"] });
+  map.on('click', 'clusters', function (e) {
+    var features = map.queryRenderedFeatures(e.point, { layers: ['clusters'] });
     var clusterId = features[0].properties.cluster_id;
-    map
-      .getSource("point-source")
-      .getClusterExpansionZoom(clusterId, function (err, zoom) {
-        if (err) {
-          return;
-        }
+    map.getSource('point-source').getClusterExpansionZoom(clusterId, function (err, zoom) {
+      if (err) {
+        return;
+      }
 
-        map.easeTo({
-          center: features[0].geometry.coordinates,
-          zoom: zoom + 0.5,
-        });
+      map.easeTo({
+        center: features[0].geometry.coordinates,
+        zoom: zoom + 0.5,
       });
+    });
   });
 
-  map.on("mouseenter", "clusters", function () {
-    map.getCanvas().style.cursor = "pointer";
+  map.on('mouseenter', 'clusters', function () {
+    map.getCanvas().style.cursor = 'pointer';
   });
 
-  map.on("mouseleave", "clusters", function () {
-    map.getCanvas().style.cursor = "";
+  map.on('mouseleave', 'clusters', function () {
+    map.getCanvas().style.cursor = '';
   });
 });
 

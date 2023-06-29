@@ -20,7 +20,7 @@ router.use(languageMiddleware);
 router.post(
   '/',
   isLoggedIn, // Middleware to check if user is logged in
-  validateComment, // Middleware to validate comment
+  //validateComment, // Middleware to validate comment
   catchAsync(comments.createComment), // Async route handler for creating a comment
 );
 

@@ -1,11 +1,11 @@
-const BaseJoi = require("joi");
-const sanitizeHtml = require("sanitize-html");
+const BaseJoi = require('joi');
+const sanitizeHtml = require('sanitize-html');
 
 const extension = (joi) => ({
-  type: "string",
+  type: 'string',
   base: joi.string(),
   messages: {
-    "string.escapeHTML": "{{#label}} must not include HTML!",
+    'string.escapeHTML': '{{#label}} must not include HTML!',
   },
   rules: {
     escapeHTML: {
@@ -14,8 +14,7 @@ const extension = (joi) => ({
           allowedTags: [],
           allowedAttributes: {},
         });
-        if (clean !== value)
-          return helpers.error("string.escapeHTML", { value });
+        if (clean !== value) return helpers.error('string.escapeHTML', { value });
         return clean;
       },
     },
@@ -43,19 +42,19 @@ module.exports.petSchema = Joi.object({
     // location: Joi.string().required().escapeHTML(),
     latitude: Joi.number(),
     longitude: Joi.number(),
-    lostdate: Joi.date().greater("01-01-2023").required(),
+    lostdate: Joi.date().greater('01-01-2023').required(),
     description: Joi.string().required().escapeHTML(),
   }),
   deleteImages: Joi.array(),
 });
 
-module.exports.commentSchema = Joi.object({
-  comment: Joi.object({
-    // rating: Joi.number().required().min(0).max(5),
-    // latitude: Joi.number(),
-    // longitude: Joi.number(),
-    body: Joi.string().required().escapeHTML(),
-  }).required(),
-});
+// module.exports.commentSchema = Joi.object({
+//   comment: Joi.object({
+//     // rating: Joi.number().required().min(0).max(5),
+//     // latitude: Joi.number(),
+//     // longitude: Joi.number(),
+//     body: Joi.string().required().escapeHTML(),
+//   }).required(),
+// });
 
 //  "@tomtom-international/web-sdk-services": "^6.23.0",

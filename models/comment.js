@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const commentSchema = new mongoose.Schema(
   {
@@ -6,24 +6,24 @@ const commentSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    // location: {
-    //   type: {
-    //     type: String,
-    //     enum: ["Point"],
-    //     default: "Point",
-    //   },
-    //   coordinates: {
-    //     type: [Number],
-    //     index: "2dsphere", // Create a geospatial index
-    //   },
-    // },
+    location: {
+      type: {
+        type: String,
+        enum: ['Point'],
+        default: 'Point',
+      },
+      coordinates: {
+        type: [Number],
+        index: '2dsphere', // Create a geospatial index
+      },
+    },
     author: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: 'User',
       required: true,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
-module.exports = mongoose.model("Comment", commentSchema);
+module.exports = mongoose.model('Comment', commentSchema);

@@ -187,13 +187,17 @@
             <% } %>
           </div>
           <div class="form-floating flex-grow-1">
+            <div>
+              <input class="d-none" type="text" name="comment[lng]" id="commentlng" value="" />
+              <input class="d-none" type="text" name="comment[lat]" id="commentlat" value="" />
+            </div>
             <textarea class="form-control" name="comment[body]" required placeholder="Add a comment..." id="body" style="height: 80px; border-radius: 3px; resize: none; width: 100%"></textarea>
             <label for="body" class="small">Add comment...</label>
             <div class="valid-feedback">Looks good!</div>
 
             <div class="mt-1">
               <a href="#" class="text-secondary" onclick="event.preventDefault(); this.closest('form').submit();" style="text-decoration: none"><i class="bi bi-send-fill"></i> <small><%= petsshow.sendBtn %></small></a>
-              <a href="#" class="text-secondary" style="text-decoration: none"><i class="bi bi-geo-alt-fill"></i><small>+</small></a>
+              <a href="#" class="text-secondary ms-2" id="togglePointBtn" style="text-decoration: none"><i class="bi bi-geo-alt-fill" style="pointer-events: none"></i><small class="geo-btn-sign" style="pointer-events: none">+</small></a>
             </div>
           </div>
         </form>
@@ -271,13 +275,20 @@
             </div>
             <div>
               <p class="card-text" style="text-align: justify"><small><%= comment.body %></small></p>
-              <% if (comment.author && currentUser && comment.author.equals(currentUser._id)) { %>
-              <form action="/pets/<%= pet._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                <a href="#" class="text-danger" style="text-decoration: none" onclick="deleteComment(event)"
-                  ><small><i class="bi-trash3"></i> <%= petsshow.deleteBtn %></small></a
-                >
-              </form>
-              <% } %>
+              <div class="d-flex">
+                <div class="">
+                  <% if (comment.location.coordinates) { %>
+                  <a class="m-0 p-0 me-3 petButtonZoom" id="<%=comment.location.coordinates %>" data-petcommentcoords="<%=comment.location.coordinates %>" href="" style="text-decoration: none"><i class="bi bi-geo-alt-fill small" style="text-decoration: none; pointer-events: none"></i> <span class="small" style="text-decoration: none; pointer-events: none">Show</span></a>
+                  <!-- <p class="m-0 p-0 me-3 petButtonZoom" style="pointer-events: none"><i class="bi bi-geo-alt-fill small" style="pointer-events: none"></i> <span class="small" style="pointer-events: none">Show</span></p> -->
+                  <% } %>
+                </div>
+
+                <% if (comment.author && currentUser && comment.author.equals(currentUser._id)) { %>
+                <form class="m-0 p-0" action="/pets/<%= pet._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                  <a href="#" class="text-danger m-0 p-0" style="text-decoration: none" onclick="deleteComment(event)"><i class="bi-trash3 small"></i> <span class="small"><%= petsshow.deleteBtn %></span></a>
+                </form>
+                <% } %>
+              </div>
             </div>
           </div>
         </div>
@@ -356,7 +367,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script>
   const TOMTOMTOKEN = "<%-process.env.TOMTOM_API_KEY%>";
+
   const pet = {features: <%-JSON.stringify(pet)%>}
+  const petcomments = {features: <%-JSON.stringify(pet.comments)%>}
 </script>
 <script src="/javascripts/showPetShareButtons.js"></script>
 <script src="/javascripts/showPageMap.js"></script>

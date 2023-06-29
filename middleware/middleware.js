@@ -49,15 +49,15 @@ module.exports.isCommentAuthor = async (req, res, next) => {
 };
 
 // Middleware function to validate comment data
-module.exports.validateComment = (req, res, next) => {
-  const { error } = commentSchema.validate(req.body);
-  if (error) {
-    const msg = error.details.map((el) => el.message).join(',');
-    throw new ExpressError(msg, 400);
-  } else {
-    next();
-  }
-};
+// module.exports.validateComment = (req, res, next) => {
+//   const { error } = commentSchema.validate(req.body);
+//   if (error) {
+//     const msg = error.details.map((el) => el.message).join(',');
+//     throw new ExpressError(msg, 400);
+//   } else {
+//     next();
+//   }
+// };
 
 // module.exports.languageMiddleware = async (req, res, next) => {
 //   try {
@@ -84,11 +84,11 @@ module.exports.validateComment = (req, res, next) => {
 // languageMiddleware.js
 
 // Assuming your user model is defined in '../models/user.js'
-const enData = require('../locales/en.json');
-const lvData = require('../locales/lv.json');
-const ruData = require('../locales/ru.json');
-const ltData = require('../locales/lt.json');
-const etData = require('../locales/et.json');
+// const enData = require('../locales/en.json');
+// const lvData = require('../locales/lv.json');
+// const ruData = require('../locales/ru.json');
+// const ltData = require('../locales/lt.json');
+// const etData = require('../locales/et.json');
 
 // Language middleware function
 // module.exports.languageMiddleware = async (req, res, next) => {
