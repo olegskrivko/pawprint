@@ -12,8 +12,8 @@ const nodemailer = require('nodemailer');
 
 module.exports.register = async (req, res, next) => {
   try {
-    const { email, username, password } = req.body;
-    const user = new User({ email, username });
+    const { firstName, lastName, email, username, password } = req.body;
+    const user = new User({ firstName, lastName, email, username });
 
     // Generate a verification token
     const verificationToken = await generateVerificationToken();

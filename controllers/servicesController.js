@@ -1,6 +1,7 @@
 const ServiceProvider = require('../models/serviceProvider');
 const Service = require('../models/service');
 const { cloudinary } = require('../cloudinary');
+const i18n = require('i18n');
 
 module.exports.renderAddServiceForm = (req, res) => {
   // Retrieve the language preference and data from the response locals
@@ -14,7 +15,14 @@ module.exports.index = async (req, res) => {
     const services = await Service.find();
     // Retrieve the language preference and data from the response locals
 
-    res.render('services/index', { services, servicesLocale });
+    const translatedServices = services.map((service) => {
+      const translatedName = i18n.__({ phrase: service.name, locale: req.getLocale() });
+      const translatedDescription = i18n.__({ phrase: service.description, locale: req.getLocale() });
+
+      return { ...service._doc, translatedName, translatedDescription };
+    });
+    console.log(translatedServices);
+    res.render('services/index', { services: translatedServices, servicesLocale });
   } catch (error) {
     console.error('Error retrieving services:', error);
     req.flash('error', 'Failed to retrieve services.');

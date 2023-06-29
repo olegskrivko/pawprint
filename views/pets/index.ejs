@@ -411,9 +411,10 @@
               <p class="card-text pet-longitude d-none"><%=pet.longitude%></p>
 
               <!-- <div class="d-flex"> -->
-                <div data-petcoords="<%=pet.location.coordinates %>" class="petButtonZoom" style="cursor: pointer;">
-                  <div class="text-body-secondary"><i class="bi bi-geo-alt-fill" style="pointer-events: none;"></i><span class="distance-text ms-2">Calculating...</span></div>
-                </div>
+                <small class="text-body-secondary d-flex"
+                ><div data-petcoords="<%=pet.location.coordinates %>" class="petButtonZoom" style="cursor: pointer;"><i class="bi bi-geo-alt-fill" style="pointer-events: none;"></i></div>
+                <div class="distance-text mx-2">Calculating...</div></small
+              >
                 
               <!-- </div> -->
             </div>
@@ -701,6 +702,7 @@
       
       let coords = e.target.dataset.petcoords;
       let coordsArray = coords.split(",");
+      console.log('coordsArray', coordsArray)
   
       map.easeTo({
         center: coordsArray,

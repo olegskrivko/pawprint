@@ -20,16 +20,6 @@
     <div class="col">
       <a href="/services/<%=service._id%>" style="text-decoration: none">
         <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg">
-          <!-- remove style if dont want background (from div I removed h-100)-->
-          <!-- <div
-            class="d-flex flex-column p-3 pb-3 text-white text-shadow-1"
-            style="
-              background-image: url(../images/paw.png);
-              background-size: cover;
-              background-position: center;
-              min-height: 200px;
-            "
-          > -->
           <div class="d-flex flex-row flex-md-column-reverse p-3 pb-3 text-white text-shadow-1">
             <div class="d-flex justify-content-center align-items-center">
               <svg class="bi" width="50" height="50" fill="#fff">
@@ -37,8 +27,8 @@
               </svg>
             </div>
             <div class="d-flex w-100 flex-md-column justify-content-between align-items-center ps-3 no-padding-md">
-              <p class="fw-bold text-center m-0"><%= service.name %></p>
-              <p class="fw-bold text-center m-0"><%=service.serviceProviders.length %></p>
+              <p class="fw-bold text-center m-0"><%= service.translatedName %></p>
+              <p class="fw-bold text-center m-0"><%= service.serviceProviders.length %></p>
             </div>
             <!-- <div class="d-flex justify-content-end align-items-center"><=service.serviceProviders.length %> <i class="bi bi-send-fill"></i></div> -->
           </div>

@@ -181,15 +181,16 @@
         <form action="/pets/<%=pet._id%>/comments" method="POST" class="validated-form d-flex" novalidate>
           <div>
             <% if (currentUser.avatar && currentUser.avatar.length > 0) { %>
-            <img src="<%= currentUser.avatar[0].url %>" alt="mdo" width="32" height="32" class="rounded-circle me-2" style="box-shadow: 0 0 0 2px #cccccc; margin: -2px" />
+            <img src="<%= currentUser.avatar[0].url %>" alt="mdo" width="32" height="32" class="rounded-circle me-2" style="box-shadow: 0 0 0 1px #cccccc" />
             <% } else { %>
-            <img src="/images/icons/user.png" alt="mdo" width="32" height="32" class="rounded-circle me-2" style="box-shadow: 0 0 0 2px #cccccc; margin: -2px" />
+            <img src="/images/icons/user.png" alt="mdo" width="32" height="32" class="rounded-circle me-2" style="box-shadow: 0 0 0 1px #cccccc" />
             <% } %>
           </div>
           <div class="form-floating flex-grow-1">
             <textarea class="form-control" name="comment[body]" required placeholder="Add a comment..." id="body" style="height: 80px; border-radius: 3px; resize: none; width: 100%"></textarea>
             <label for="body" class="small">Add comment...</label>
             <div class="valid-feedback">Looks good!</div>
+
             <div class="mt-1">
               <a href="#" class="text-secondary" onclick="event.preventDefault(); this.closest('form').submit();" style="text-decoration: none"><i class="bi bi-send-fill"></i> <small><%= petsshow.sendBtn %></small></a>
               <a href="#" class="text-secondary" style="text-decoration: none"><i class="bi bi-geo-alt-fill"></i><small>+</small></a>
@@ -197,6 +198,24 @@
           </div>
         </form>
       </div>
+      <% } %> <% if (!currentUser) {%>
+      <div class="card p-3">
+        <form action="/pets/<%=pet._id%>/comments" method="POST" class="validated-form d-flex" novalidate>
+          <div>
+            <img src="/images/icons/user.png" alt="mdo" width="32" height="32" class="rounded-circle me-2" style="box-shadow: 0 0 0 1px #cccccc" />
+          </div>
+          <div class="form-floating flex-grow-1">
+            <textarea class="form-control" name="comment[body]" required placeholder="Add a comment..." id="body" style="height: 80px; border-radius: 3px; resize: none; width: 100%"></textarea>
+            <label for="body" class="small">Add comment...</label>
+            <div class="valid-feedback">Looks good!</div>
+            <div class="mt-1">
+              <a href="#" class="text-secondary" onClick="location.href='/auth/login'" style="text-decoration: none"><i class="bi bi-send-fill"></i> <small><%= petsshow.sendBtn %></small></a>
+              <a href="#" class="text-secondary" onClick="location.href='/auth/login'" style="text-decoration: none"><i class="bi bi-geo-alt-fill"></i><small>+</small></a>
+            </div>
+          </div>
+        </form>
+      </div>
+
       <% } %>
 
       <div class="mt-5">
@@ -205,24 +224,50 @@
           <div class="card-body d-flex flex-column">
             <div class="d-flex me-2 mb-2">
               <% if (comment.author && comment.author.avatar && comment.author.avatar.length > 0) { %>
-              <img src="<%= comment.author.avatar[0].url %>" alt="mdo" width="32" height="32" class="rounded-circle me-2" style="box-shadow: 0 0 0 2px #cccccc; margin: -2px" />
+              <img src="<%= comment.author.avatar[0].url %>" alt="mdo" width="32" height="32" class="rounded-circle me-2" style="box-shadow: 0 0 0 1px #cccccc" />
               <% } else { %>
-              <img src="/images/icons/user.png" alt="mdo" width="32" height="32" class="rounded-circle me-2" style="box-shadow: 0 0 0 2px #cccccc; margin: -2px" />
+              <img src="/images/icons/user.png" alt="mdo" width="32" height="32" class="rounded-circle me-2" style="box-shadow: 0 0 0 1px #cccccc" />
               <% } %>
               <div class="d-flex flex-column">
-                <h5 class="card-title small">
-                  <% if (comment.author && comment.author.username) { %> @<%= comment.author.username %> <% if (comment.author.isVerified) { %>
-                  <span class="text-success"><i class="bi bi-shield-fill-check"></i></span>
+                <div class="d-flex">
+                  <% if (comment.author && comment.author.firstName && comment.author.lastName) { %>
+                  <h5 class="card-title small p-0 m-0">
+                    <%=comment.author.firstName%> <%=comment.author.lastName%> <% if (comment.author && comment.author.username) { %> <% if (comment.author.isVerified) { %>
+                    <span class="text-primary"><i class="bi bi-patch-check-fill"></i></span>
+
+                    <% } %> <% } %>
+                  </h5>
+
                   <% } else { %>
-                  <span class="text-danger"><i class="bi bi-shield-fill-x"></i></span>
+                  <span class="text-danger">Unknown</span>
+                  <% } %>
+                  <!-- test-->
+                  <% if (pet.author && comment.author && pet.author.email && comment.author.email && pet.author.email.toLowerCase() === comment.author.email.toLowerCase()) { %>
+                  <h6 class="card-text text-muted small ms-1"><i>Author</i></h6>
+                  <% } %>
+                  <!-- test-->
+                </div>
+
+                <p class="text-muted small">
+                  <% if (comment.author && comment.author.username) { %> @<%= comment.author.username %> <% if (comment.author.isVerified) { %>
+                  <!-- <span class="text-primary"><i class="bi bi-patch-check-fill"></i></span> -->
+                  <% } else { %>
+                  <!-- <span class="text-danger"><i class="bi bi-patch-question-fill"></i></span> -->
                   <% } %> <% } else { %>
                   <span class="text-danger">Unknown User</span>
                   <% } %>
-                </h5>
-                <% if (pet.author && comment.author && pet.author.email && comment.author.email && pet.author.email.toLowerCase() === comment.author.email.toLowerCase()) { %>
+                </p>
+                <!-- < if (pet.author && comment.author && pet.author.email && comment.author.email && pet.author.email.toLowerCase() === comment.author.email.toLowerCase()) { %>
                 <h6 class="card-text text-muted small">Author</h6>
-                <% } %>
+                < } %> -->
               </div>
+              <!-- <div class="align-items-center mb-0 ms-2">
+                <h5 class="card-title small">
+                  < if (comment.author && comment.author.username) { %> < if (comment.author.isVerified) { %>
+                  <span class="text-primary" style="font-size: 1.3rem"><i class="bi bi-patch-check-fill"></i></span>
+                  < } %> < } %>
+                </h5>
+              </div> -->
             </div>
             <div>
               <p class="card-text" style="text-align: justify"><small><%= comment.body %></small></p>
