@@ -1,126 +1,3 @@
-// // tt.setProductInfo("Pet finder", "1.0");
-// // let size = 50;
-// // var map = tt.map({
-// //   key: TOMTOMTOKEN,
-// //   container: "map",
-// //   center: pet.geometry.coordinates,
-// //   zoom: 15,
-// // });
-// // map.addControl(new tt.FullscreenControl());
-// // map.addControl(new tt.NavigationControl());
-
-// // map.on("load", () => {
-// //   let div = document.createElement("div");
-// //   div.innerHTML = `<h3>${pet.title}</h3><p>${pet.location}</p>`;
-// //   let popup = new tt.Popup({
-// //     closeButton: false,
-// //     offset: 50,
-// //     anchor: "bottom",
-// //   }).setDOMContent(div);
-
-// //   let border = document.createElement("div");
-// //   border.className = "marker-border";
-
-// //   let marker = new tt.Marker({
-// //     element: border,
-// //   })
-// //     .setLngLat(pet.geometry.coordinates)
-// //     .setPopup(popup);
-// //   marker.addTo(map);
-// // });
-// let userLat = 56.946285;
-// let userLng = 24.105078;
-
-// if ("geolocation" in navigator) {
-//   // geolocation is available
-//   navigator.geolocation.getCurrentPosition((position) => {
-//     // Get user position
-//     userLat = position.coords.latitude;
-//     userLng = position.coords.longitude;
-
-//     let map = tt.map({
-//       key: TOMTOMTOKEN,
-//       container: "map",
-//       center: [userLng, userLat],
-//       zoom: 13,
-//       scrollZoom: false, // disable scroll zoom initially
-//     });
-
-//     // Add the Fullscreen and Navigation controls
-//     map.addControl(new tt.FullscreenControl());
-//     map.addControl(new tt.NavigationControl());
-
-//     // TO DO: Create control btn to go current location and/or to marker
-
-//     // Create custom marker icon
-//     const iconElement = document.createElement("i");
-//     iconElement.className = "bi bi-geo-alt-fill";
-//     iconElement.style.fontSize = "2rem";
-//     iconElement.style.color = "#9b59b6";
-
-//     // function setCoordinates() {
-//     //   let lngLat = marker.getLngLat();
-//     //   document.querySelector("#longitude").value = lngLat.lng.toFixed(6);
-//     //   document.querySelector("#latitude").value = lngLat.lat.toFixed(6);
-//     // }
-
-//     // Create a marker
-//     // let marker = new tt.Marker({ element: iconElement, draggable: true })
-//     //   .setLngLat([userLng, userLat])
-//     //   .addTo(map);
-//     // // Get initial coords
-//     // setCoordinates();
-
-//     // Add marker on click
-//     // map.on("click", function (event) {
-//     //   marker.setLngLat(event.lngLat);
-//     //   // Get coords on click
-//     //   setCoordinates();
-//     // });
-
-//     // Get coords on dragend
-//     // marker.on("dragend", function (event) {
-//     //   setCoordinates();
-//     // });
-
-//     // // Enable scroll zoom when Ctrl key is pressed
-//     // document.addEventListener("keydown", function (event) {
-//     //   if (event.ctrlKey) {
-//     //     map.scrollZoom.enable();
-//     //   }
-//     // });
-
-//     // // Disable scroll zoom when Ctrl key is released
-//     // document.addEventListener("keyup", function (event) {
-//     //   if (!event.ctrlKey) {
-//     //     map.scrollZoom.disable();
-//     //   }
-//     // });
-//   }, handleLocationError);
-// } else {
-//   /* geolocation IS NOT available */
-//   alert("Geolocation IS NOT available!");
-// }
-
-// function handleLocationError(error) {
-//   // Handle geolocation error
-//   switch (error.code) {
-//     case error.PERMISSION_DENIED:
-//       alert("User denied the request for Geolocation.");
-//       break;
-//     case error.POSITION_UNAVAILABLE:
-//       alert("Location information is unavailable.");
-//       break;
-//     case error.TIMEOUT:
-//       alert("The request to get user location timed out.");
-//       break;
-//     case error.UNKNOWN_ERROR:
-//       alert("An unknown error occurred.");
-//       break;
-//   }
-// }
-// console.log("my pet", pet);
-// console.log(pet.features.location.coordinates);
 let userLat = 56.946285;
 let userLng = 24.105078;
 
@@ -179,6 +56,7 @@ if ('geolocation' in navigator) {
 
     // Event listener for the button click
     togglePointBtn.addEventListener('click', () => {
+      event.preventDefault(); // Prevent the default form submission behavior
       console.log('you clicked the button');
       if (pointMarker) {
         // Remove the point marker from the map
@@ -198,6 +76,13 @@ if ('geolocation' in navigator) {
         // Add a new point marker to the map
         pointMarker = new tt.Marker({ element: iconElement2, draggable: true }).setLngLat([userLng, userLat]).addTo(map);
       }
+
+      // Event listener for dragend event on the point marker
+      pointMarker.on('dragend', (e) => {
+        const lngLat = pointMarker.getLngLat();
+        commentlng.value = lngLat.lng;
+        commentlat.value = lngLat.lat;
+      });
     });
 
     // ADD USER POINT END
@@ -209,14 +94,14 @@ if ('geolocation' in navigator) {
         const targetDiv = document.getElementById('map');
 
         // Scroll to the target div
-        // targetDiv.scrollIntoView({
-        //   behavior: "smooth", // Add smooth scrolling animation
-        // });
-
-        window.scrollTo({
-          top: 0,
+        targetDiv.scrollIntoView({
           behavior: 'smooth', // Add smooth scrolling animation
         });
+
+        // window.scrollTo({
+        //   top: 0,
+        //   behavior: 'smooth', // Add smooth scrolling animation
+        // });
 
         //console.log(e);
         //var attributeValue = element.getAttribute("data-myattribute");
@@ -249,7 +134,7 @@ if ('geolocation' in navigator) {
     }
 
     // Create a marker
-    let marker = new tt.Marker({ element: iconElement, draggable: true })
+    let marker = new tt.Marker({ element: iconElement, draggable: false })
       //.setLngLat([userLng, userLat])
       .setLngLat(pet.features.location.coordinates)
       .addTo(map);
