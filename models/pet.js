@@ -1,13 +1,13 @@
-const mongoose = require("mongoose");
-const Comment = require("./comment");
+const mongoose = require('mongoose');
+const Comment = require('./comment');
 
 const imageSchema = new mongoose.Schema({
   url: String,
   filename: String,
 });
 // set thumbnail img size
-imageSchema.virtual("thumbnail").get(function () {
-  return this.url.replace("upload", "/upload/w_200");
+imageSchema.virtual('thumbnail').get(function () {
+  return this.url.replace('upload', '/upload/w_200');
 });
 
 const petSchema = new mongoose.Schema(
@@ -17,12 +17,12 @@ const petSchema = new mongoose.Schema(
     location: {
       type: {
         type: String,
-        enum: ["Point"],
-        default: "Point",
+        enum: ['Point'],
+        default: 'Point',
       },
       coordinates: {
         type: [Number],
-        index: "2dsphere", // Create a geospatial index
+        index: '2dsphere', // Create a geospatial index
       },
     },
 
@@ -48,21 +48,22 @@ const petSchema = new mongoose.Schema(
     //location: String,
     latitude: Number,
     longitude: Number,
+    views: { type: Number, default: 0 }, // View count field
     author: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: 'User',
     },
     comments: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Comment",
+        ref: 'Comment',
       },
     ],
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
-petSchema.post("findOneAndDelete", async function (doc) {
+petSchema.post('findOneAndDelete', async function (doc) {
   if (doc) {
     await Comment.deleteMany({
       _id: {
@@ -72,4 +73,4 @@ petSchema.post("findOneAndDelete", async function (doc) {
   }
 });
 
-module.exports = mongoose.model("Pet", petSchema);
+module.exports = mongoose.model('Pet', petSchema);

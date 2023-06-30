@@ -249,43 +249,117 @@ module.exports.createPet = async (req, res, next) => {
   res.redirect(`/pets/${pet._id}`);
 };
 
+// module.exports.showPet = async (req, res) => {
+//   try {
+//     // Retrieve the pet from the database
+//     const petsshow = req.__('petsshow'); // Translate the 'home' key based on the user's selected language
+//     // Find the pet with the provided ID and populate its comments and author
+
+//     const pet = await Pet.findById(req.params.id)
+//       .populate({
+//         path: 'comments',
+//         populate: {
+//           path: 'author',
+//         },
+//       })
+//       .populate('author');
+
+//     // Check if the pet is found
+//     if (!pet) {
+//       req.flash('error', 'Cannot find that pet!');
+//       return res.redirect('/pets');
+//     }
+
+//     // Increment the view count for the pet
+//     pet.views += 1;
+//     await pet.save();
+
+//     // Format the creation, update, and lost dates in words
+//     const createDateInWords = fns.formatDistanceToNow(new Date(pet.createdAt), {
+//       addSuffix: true,
+//     });
+//     const updateDateInWords = fns.formatDistanceToNow(new Date(pet.updatedAt), {
+//       addSuffix: true,
+//     });
+//     const lostDateInWords = fns.formatDistanceToNow(new Date(pet.lostdate), {
+//       addSuffix: true,
+//     });
+
+//     // Render the pet post page with the updated view count
+//     res.render('pets/show', { pet: pet, createDateInWords, updateDateInWords, lostDateInWords, petsshow });
+//   } catch (error) {
+//     // Handle any errors that occur
+//     console.error('Error retrieving pet:', error);
+//     res.status(500).json({ message: 'Internal Server Error' });
+//   }
+
+//   // Render the pet show page and pass the pet object and date information
+//   // res.render('pets/show', {
+//   //   pet: pet,
+//   //   createDateInWords,
+//   //   updateDateInWords,
+//   //   lostDateInWords,
+//   //   petsshow, // Pass the language data to the view,
+//   // });
+// };
+
 module.exports.showPet = async (req, res) => {
-  const petsshow = req.__('petsshow'); // Translate the 'home' key based on the user's selected language
-  // Find the pet with the provided ID and populate its comments and author
-  const pet = await Pet.findById(req.params.id)
-    .populate({
-      path: 'comments',
-      populate: {
-        path: 'author',
-      },
-    })
-    .populate('author');
+  try {
+    // Retrieve the pet from the database
+    const petsshow = req.__('petsshow');
+    const petId = req.params.id;
 
-  // Check if the pet is found
-  if (!pet) {
-    req.flash('error', 'Cannot find that pet!');
-    return res.redirect('/pets');
+    // Check if the user has already visited this pet's page
+    const viewedPets = req.session.viewedPets || [];
+    if (!viewedPets.includes(petId)) {
+      // If the pet has not been viewed by the user, increment the view count
+      viewedPets.push(petId);
+      req.session.viewedPets = viewedPets;
+
+      // Update the view count for the pet in the database
+      await Pet.findByIdAndUpdate(petId, { $inc: { views: 1 } });
+    }
+
+    // Find the pet with the provided ID and populate its comments and author
+    const pet = await Pet.findById(petId)
+      .populate({
+        path: 'comments',
+        populate: {
+          path: 'author',
+        },
+      })
+      .populate('author');
+
+    // Check if the pet is found
+    if (!pet) {
+      req.flash('error', 'Cannot find that pet!');
+      return res.redirect('/pets');
+    }
+
+    // Format the creation, update, and lost dates in words
+    const createDateInWords = fns.formatDistanceToNow(new Date(pet.createdAt), {
+      addSuffix: true,
+    });
+    const updateDateInWords = fns.formatDistanceToNow(new Date(pet.updatedAt), {
+      addSuffix: true,
+    });
+    const lostDateInWords = fns.formatDistanceToNow(new Date(pet.lostdate), {
+      addSuffix: true,
+    });
+
+    // Render the pet post page with the updated view count
+    res.render('pets/show', {
+      pet: pet,
+      createDateInWords,
+      updateDateInWords,
+      lostDateInWords,
+      petsshow,
+    });
+  } catch (error) {
+    // Handle any errors that occur
+    console.error('Error retrieving pet:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
   }
-
-  // Format the creation, update, and lost dates in words
-  const createDateInWords = fns.formatDistanceToNow(new Date(pet.createdAt), {
-    addSuffix: true,
-  });
-  const updateDateInWords = fns.formatDistanceToNow(new Date(pet.updatedAt), {
-    addSuffix: true,
-  });
-  const lostDateInWords = fns.formatDistanceToNow(new Date(pet.lostdate), {
-    addSuffix: true,
-  });
-
-  // Render the pet show page and pass the pet object and date information
-  res.render('pets/show', {
-    pet: pet,
-    createDateInWords,
-    updateDateInWords,
-    lostDateInWords,
-    petsshow, // Pass the language data to the view,
-  });
 };
 
 module.exports.renderEditForm = async (req, res) => {

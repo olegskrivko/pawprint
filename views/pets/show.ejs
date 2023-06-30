@@ -52,7 +52,7 @@
             <a class="dropdown-item dropdown-item-danger d-flex gap-2 align-items-center" href="#"><i class="bi bi-file-earmark-arrow-down"></i> Download </a>
           </li>
           <li>
-            <a class="dropdown-item dropdown-item-danger d-flex gap-2 align-items-center" href="#"><i class="bi bi-files"></i> Copy link </a>
+            <a id="copyBtn" class="dropdown-item dropdown-item-danger d-flex gap-2 align-items-center" href="#"><i class="bi bi-files"></i> Copy link </a>
           </li>
           <li>
             <a class="dropdown-item dropdown-item-danger d-flex gap-2 align-items-center" href="#"><i class="bi bi-exclamation-square"></i> Report post </a>
@@ -120,34 +120,40 @@
       </div> -->
       <div class="d-flex">
         <div class="me-4">
-          <a class="text-secondary" style="text-decoration: none; cursor: default">148 views</a>
+          <a class="text-secondary" style="text-decoration: none; cursor: default"><%= pet.views %> views</a>
         </div>
         <div class="dropdown-center me-4">
           <a class="text-secondary" type="button" data-bs-toggle="dropdown"><i class="bi bi-share"></i></a>
           <ul class="dropdown-menu">
             <li>
-              <a class="dropdown-item" href="#"><i class="bi bi-facebook"></i> Facebook</a>
+              <a class="dropdown-item" onclick="shareOnFacebook()" href="#"><i class="bi bi-facebook"></i> Facebook</a>
             </li>
-            <li>
+            <!-- <li>
               <a class="dropdown-item" href="#"><i class="bi bi-instagram"></i> Instagram</a>
+            </li> -->
+            <li>
+              <a class="dropdown-item" onclick="shareOnLinkedIn()" href="#"><i class="bi bi-linkedin"></i> LinkedIn</a>
             </li>
             <li>
-              <a class="dropdown-item" href="#"><i class="bi bi-linkedin"></i> LinkedIn</a>
+              <a class="dropdown-item" onclick="shareOnWhatsApp()" href="#"><i class="bi bi-whatsapp"></i> WhatsApp</a>
             </li>
             <li>
-              <a class="dropdown-item" href="#"><i class="bi bi-whatsapp"></i> WhatsApp</a>
+              <a class="dropdown-item" onclick="shareOnTwitter()" href="#"><i class="bi bi-twitter"></i> Twitter</a>
             </li>
             <li>
-              <a class="dropdown-item" href="#"><i class="bi bi-twitter"></i> Twitter</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#"><i class="bi bi-messenger"></i> Messenger</a>
+              <a class="dropdown-item" onclick="shareOnMessenger()" href="#"><i class="bi bi-messenger"></i> Messenger</a>
             </li>
           </ul>
         </div>
       </div>
       <div class="d-flex justify-content-center">
-        <a class="text-secondary" id="saveWatchlistBtn" data-petid="<%= pet._id%>" style="cursor: pointer"><i class="bi bi-bookmark" style="pointer-events: none"></i></a>
+        <a class="text-secondary" id="saveWatchlistBtn" data-petid="<%= pet._id%>" style="cursor: pointer">
+          <% if (currentUser && pet._id && currentUser.watchlist.length > 0 && currentUser.watchlist.includes(pet._id)) { %>
+          <i class="bi bi-bookmark-fill" style="pointer-events: none"></i>
+          <% } else { %>
+          <i class="bi bi-bookmark" style="pointer-events: none"></i>
+          <% } %></a
+        >
       </div>
 
       <!-- <div>
@@ -172,7 +178,7 @@
     </div>
     <div class="col-md-12">
       <div class="card mb-3" style="border-radius: 0">
-        <div class="card-body">
+        <div class="card-body py-0">
           <!-- <h5 class="card-title"><b>Name:</b> <= pet.title %></h5> -->
 
           <ul class="list-group list-group-flush show-pet-list">
@@ -225,32 +231,6 @@
         </div>
       </div>
       <!-- Share Buttons -->
-      <div class="d-flex justify-content-center mb-4 mt-4">
-        <div class="share-btn-facebook" onclick="shareOnFacebook()">
-          <!-- Facebook Share Button -->
-          <a class="facebook" id="facebook-share-button" href="#"><i class="bi bi-facebook"></i></a>
-        </div>
-
-        <div class="share-btn-twitter" onclick="shareOnTwitter()">
-          <!-- Twitter Share Button -->
-          <a class="twitter" id="twitter-share-button" href="#"><i class="bi bi-twitter"></i></a>
-        </div>
-
-        <div class="share-btn-whatsapp" onclick="shareOnWhatsApp()">
-          <!-- WhatsApp Share Button -->
-          <a class="whatsapp" id="whatsapp-share-button" href="#"><i class="bi bi-whatsapp"></i></a>
-        </div>
-
-        <div class="share-btn-messenger" onclick="shareOnMessenger()">
-          <!-- Facebook Messenger Share Button -->
-          <a class="messenger" id="messenger-share-button" href="#"><i class="bi bi-messenger"></i></a>
-        </div>
-
-        <div class="share-btn-linkedin" onclick="shareOnLinkedIn()">
-          <!-- LinkedIn Share Button -->
-          <a class="linkedin" id="linkedin-share-button" href="#"><i class="bi bi-linkedin"></i></a>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -472,7 +452,35 @@
     };
 
     await updateWatchlist(watchlistData);
+    location.reload();
   });
+</script>
+
+<script>
+  // Function to copy the current URL to the clipboard
+  function copyURLToClipboard() {
+    const currentURL = window.location.href;
+
+    // Create a temporary textarea element to hold the URL
+    const textarea = document.createElement('textarea');
+    textarea.value = currentURL;
+
+    // Append the textarea to the document
+    document.body.appendChild(textarea);
+
+    // Select the URL in the textarea
+    textarea.select();
+
+    // Copy the selected URL to the clipboard
+    document.execCommand('copy');
+
+    // Remove the textarea from the document
+    document.body.removeChild(textarea);
+  }
+
+  // Event listener for the button click
+  const copyBtn = document.getElementById('copyBtn');
+  copyBtn.addEventListener('click', copyURLToClipboard);
 </script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
