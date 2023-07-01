@@ -19,8 +19,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
+
     <!-- Development version -->
     <link rel="manifest" href="/manifest.json" />
+
+    <!-- Web push (developing)-->
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" defer></script>
+    <script>
+      window.OneSignal = window.OneSignal || [];
+      OneSignal.push(function () {
+        OneSignal.init({
+          appId: '0d93db4d-5010-44b4-b86d-19619389ee11',
+        });
+      });
+    </script>
 
     <title>Animal Search</title>
   </head>
