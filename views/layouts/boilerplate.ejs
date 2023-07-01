@@ -142,6 +142,20 @@
     </script>
 
     <!-- from push webiste-->
-    <script src="/OneSignalSDKWorker.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker
+            .register('/OneSignalSDKWorker.js')
+            .then(function (registration) {
+              console.log('Service Worker registered with scope:', registration.scope);
+            })
+            .catch(function (error) {
+              console.log('Service Worker registration failed:', error);
+            });
+        });
+      }
+    </script>
+    <!-- <script src="/OneSignalSDKWorker.js"></script> -->
   </body>
 </html>
