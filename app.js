@@ -136,6 +136,11 @@ app.get('/service-worker.js', (req, res) => {
   res.sendFile(path.join(__dirname, 'service-worker.js'));
 });
 
+// Serve OneSignalSDKWorker.js
+app.get('/OneSignalSDKWorker.js', (req, res) => {
+  res.sendFile(path.join(__dirname, 'OneSignalSDKWorker.js'));
+});
+
 // app.get('/example', (req, res, next) => {
 //   // Throw a custom error
 //   const err = new ExpressError('Custom error message', 400);
