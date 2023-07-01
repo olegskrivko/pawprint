@@ -81,18 +81,41 @@
     <button id="addToHomeScreenBtn">Add to Home Screen</button>
 
     <script>
-      const addToHomeScreenBtn = document.getElementById('addToHomeScreenBtn');
+      let deferredPrompt;
 
-      addToHomeScreenBtn.addEventListener('click', () => {
-        if ('beforeinstallprompt' in window) {
-          window.addEventListener('beforeinstallprompt', (event) => {
-            // Prevent the default prompt from showing
-            event.preventDefault();
+      window.addEventListener('beforeinstallprompt', (event) => {
+        // Prevent the default prompt
+        event.preventDefault();
 
-            // Show your custom prompt or use the browser's prompt directly
-            event.prompt();
+        // Store the event for later use
+        deferredPrompt = event;
+
+        // Show the custom button or any other UI element to trigger the prompt
+        const addToHomeScreenBtn = document.getElementById('addToHomeScreenBtn');
+        addToHomeScreenBtn.style.display = 'block';
+
+        addToHomeScreenBtn.addEventListener('click', () => {
+          // Prompt the user to install the app
+          deferredPrompt.prompt();
+
+          // Wait for the user's choice
+          deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+              console.log('User accepted the install prompt');
+            } else {
+              console.log('User dismissed the install prompt');
+            }
+
+            // Reset the deferredPrompt variable
+            deferredPrompt = null;
           });
-        }
+        });
+      });
+
+      // Hide the custom button if the app is already installed
+      window.addEventListener('appinstalled', () => {
+        const addToHomeScreenBtn = document.getElementById('addToHomeScreenBtn');
+        addToHomeScreenBtn.style.display = 'none';
       });
     </script>
 
