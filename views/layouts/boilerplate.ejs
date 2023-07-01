@@ -27,22 +27,6 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <!-- Development version -->
 
-    <!-- FOR PWA -->
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker
-            .register('/service-worker.js')
-            .then((registration) => {
-              console.log('Service Worker registered');
-            })
-            .catch((error) => {
-              console.error('Service Worker registration failed:', error);
-            });
-        });
-      }
-    </script>
-
     <title>Animal Search</title>
   </head>
   <body class="d-flex flex-column vh-100">
@@ -92,6 +76,39 @@
 
       // Call checkThemePreference on page load
       checkThemePreference();
+    </script>
+    <!-- FOR PWA -->
+    <button id="addToHomeScreenBtn">Add to Home Screen</button>
+
+    <script>
+      const addToHomeScreenBtn = document.getElementById('addToHomeScreenBtn');
+
+      addToHomeScreenBtn.addEventListener('click', () => {
+        if ('beforeinstallprompt' in window) {
+          window.addEventListener('beforeinstallprompt', (event) => {
+            // Prevent the default prompt from showing
+            event.preventDefault();
+
+            // Show your custom prompt or use the browser's prompt directly
+            event.prompt();
+          });
+        }
+      });
+    </script>
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker
+            .register('/service-worker.js')
+            .then((registration) => {
+              console.log('Service Worker registered');
+            })
+            .catch((error) => {
+              console.error('Service Worker registration failed:', error);
+            });
+        });
+      }
     </script>
   </body>
 </html>

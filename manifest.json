@@ -1,6 +1,7 @@
 {
-  "name": "Find pet with PawPrint",
+  "name": "PawPrint PWA",
   "short_name": "PawPrint",
+  "description": "Find pet with PawPrint",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
