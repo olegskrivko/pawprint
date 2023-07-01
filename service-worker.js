@@ -16,7 +16,7 @@
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open('app-cache').then((cache) => {
-      return cache.addAll(['/', '/stylesheets/style.css', '/javascripts/addServiceMap.js', '/javascripts/clusterMap.js', '/javascripts/formMap.js', '/javascripts/mobile-or-tablet.js', '/javascripts/servicePageMap.js', '/javascripts/showPageMap.js', '/javascripts/showPetShareButtons.js', '/javascripts/validateForms.js', '/images/**/*']); // Cache all files within the "images" folder and its subfolders
+      return cache.addAll(['/', '/public/stylesheets/style.css', '/public/javascripts/addServiceMap.js', '/public/javascripts/clusterMap.js', '/public/javascripts/formMap.js', '/public/javascripts/mobile-or-tablet.js', '/public/javascripts/servicePageMap.js', '/public/javascripts/showPageMap.js', '/public/javascripts/showPetShareButtons.js', '/public/javascripts/validateForms.js', '/public/images/**/*']); // Cache all files within the "images" folder and its subfolders
     }),
   );
 });
