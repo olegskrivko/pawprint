@@ -140,7 +140,12 @@ function refreshMarkers() {
           iconElement.className = 'marker-icon';
           iconElement.style.backgroundImage = 'url(images/icons/cat.png)';
           markerContentElement.appendChild(iconElement);
+        } else {
+          iconElement.className = 'marker-icon';
+          iconElement.style.backgroundImage = 'url(images/icons/paw.png)';
+          markerContentElement.appendChild(iconElement);
         }
+
         // add others species in the future.
 
         //"url(images/paw.png";

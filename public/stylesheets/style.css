@@ -1,3 +1,41 @@
+/* from app.css*/
+.gdpr {
+  text-decoration: underline;
+}
+
+.gdpr:hover {
+  cursor: pointer;
+}
+
+.marker-border {
+  background: #c30b82;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+.txt-area {
+  resize: 'none';
+  height: 140px;
+}
+
+.show-pet-list > li {
+  padding-left: 0;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.example::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.example {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* from style.css*/
+
 .share-btn-twitter:hover {
   background-color: #1da0f24b;
   border-color: #1da1f2;

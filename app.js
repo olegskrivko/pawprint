@@ -126,6 +126,16 @@ app.use('/pets/:id/comments', commentRoutes);
 app.use('/services', serviceRoutes);
 app.use('/regions', locationRoutes);
 
+// Serve manifest.json
+app.get('/manifest.json', (req, res) => {
+  res.sendFile(path.join(__dirname, 'manifest.json'));
+});
+
+// Serve service-worker.js
+app.get('/service-worker.js', (req, res) => {
+  res.sendFile(path.join(__dirname, 'service-worker.js'));
+});
+
 // app.get('/example', (req, res, next) => {
 //   // Throw a custom error
 //   const err = new ExpressError('Custom error message', 400);
