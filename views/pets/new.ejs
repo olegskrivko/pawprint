@@ -3,7 +3,7 @@
 <form action="/pets" method="POST" novalidate class="row g-3 validated-form" enctype="multipart/form-data" id="pet-form">
   <!-- Pet Status -->
   <div class="col-md-4">
-    <label class="form-label"><%= petsLocale.filterPetStatus %></label>
+    <label class="form-label" for="petStatus"><%= petsLocale.filterPetStatus %></label>
     <div class="input-group">
       <span class="input-group-text">
         <i class="bi bi-question-diamond"></i>
@@ -18,7 +18,7 @@
 
   <!-- Pet Species -->
   <div class="col-md-4">
-    <label class="form-label"><%= petsLocale.filterSpecies %></label>
+    <label class="form-label" for="species"><%= petsLocale.filterSpecies %></label>
     <div class="input-group">
       <span class="input-group-text">
         <i class="bi bi-diamond-half"></i>
@@ -33,7 +33,7 @@
 
   <!-- Pet Gender -->
   <div class="col-md-4">
-    <label class="form-label"><%= petsLocale.filterPetGender %></label>
+    <label class="form-label" for="gender"><%= petsLocale.filterPetGender %></label>
     <div class="input-group">
       <span class="input-group-text">
         <i class="bi bi-gender-ambiguous"></i>
@@ -49,7 +49,7 @@
 
   <!-- Age -->
   <div class="col-md-4">
-    <label class="form-label"><%= petsLocale.filterPetAge %></label>
+    <label class="form-label" for="age"><%= petsLocale.filterPetAge %></label>
     <div class="input-group">
       <span class="input-group-text">
         <i class="bi bi-calendar2-heart"></i>
@@ -62,9 +62,42 @@
     </div>
   </div>
 
+  <!-- Pet identifier -->
+  <div class="col-md-4">
+    <label class="form-label" for="identifier"><%= petsLocale.filterIdentifier %></label>
+    <div class="input-group">
+      <span class="input-group-text"><i class="bi bi-fingerprint"></i></span>
+      <input type="number" class="form-control identifier" id="identifier" min="0" name="pet[identifier]" value="" autocomplete="off" />
+    </div>
+  </div>
+
+  <!-- Lost Date -->
+  <div class="col-md-4">
+    <label class="form-label" for="lostdate"><%= petsLocale.filterLostDate %></label>
+    <div class="input-group">
+      <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
+      <input type="date" class="form-control lostdate" id="lostdate" name="pet[lostdate]" min="2023-01-01" value="" required />
+    </div>
+  </div>
+
+  <!-- map -->
+  <div id="map" style="max-width: 100%; height: 300px; background-color: #808080"></div>
+
+  <div class="col-md-2 col-sm-3 col-6 mb-3 d-none">
+    <label class="form-label me-1" for="latitude">Latitude</label>
+    <input id="latitude" class="form-control text-muted" type="number" aria-label="latitude" aria-describedby="latitude-label" name="pet[latitude]" readonly />
+    <div class="valid-feedback">Looks good!</div>
+  </div>
+
+  <div class="col-md-2 col-sm-3 col-6 mb-3 d-none">
+    <label class="form-label me-1" for="longitude">Longitude</label>
+    <input id="longitude" class="form-control text-muted" type="number" aria-label="longitude" aria-describedby="longitude-label" name="pet[longitude]" readonly />
+    <div class="valid-feedback">Looks good!</div>
+  </div>
+
   <!-- Coat type -->
   <div class="col-md-4">
-    <label class="form-label"><%= petsLocale.filterCoatType %></label>
+    <label class="form-label" for="coat"><%= petsLocale.filterCoatType %></label>
     <div class="input-group">
       <span class="input-group-text">
         <i class="bi bi-wind"></i>
@@ -79,7 +112,7 @@
 
   <!-- Pet size -->
   <div class="col-md-4">
-    <label class="form-label"><%= petsLocale.filterPetSize %></label>
+    <label class="form-label" for="size"><%= petsLocale.filterPetSize %></label>
     <div class="input-group">
       <span class="input-group-text">
         <i class="bi bi-arrows-angle-expand"></i>
@@ -92,129 +125,99 @@
       </select>
     </div>
   </div>
-
-  <!-- Pet identifier -->
+  <!-- Pet coat pattern -->
   <div class="col-md-4">
-    <label class="form-label" for="identifier"><%= petsLocale.filterIdentifier %></label>
+    <label class="form-label" for="pattern"><%= petsLocale.filterPattern %></label>
     <div class="input-group">
-      <span class="input-group-text"><i class="bi bi-fingerprint"></i></span>
-      <input type="text" class="form-control identifier" id="identifier" min="0" name="pet[identifier]" value="" autocomplete="off" />
+      <span class="input-group-text">
+        <i class="bi bi-grid-3x3-gap"></i>
+      </span>
+
+      <select class="form-select" id="pattern" name="pet[pattern]">
+        <% coatPatternOptions.forEach(option => { %>
+        <option value="<%= option.value %>"><%= option.text %></option>
+        <% }); %>
+      </select>
     </div>
   </div>
 
-  <!-- Lost Date -->
+  <!-- Pet coat color1 -->
   <div class="col-md-4">
-    <label class="form-label" for="lostdate"><%= petsLocale.filterLostDate %></label>
+    <label class="form-label" for="firstcolor"><%= petsLocale.filterMainColor %></label>
     <div class="input-group">
-      <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
-      <input type="date" class="form-control lostdate" id="lostdate" name="pet[lostdate]" min="2023-01-01" value="" />
+      <span class="input-group-text">
+        <i class="bi bi-palette"></i>
+      </span>
+      <select class="form-select" id="firstcolor" form="pet-form" name="pet[firstcolor]">
+        <% colorOptions.forEach(option => { %>
+        <option value="<%= option.value %>"><%= option.text %></option>
+        <% }); %>
+      </select>
+      <!-- <div class="valid-feedback">Looks good!</div> -->
+    </div>
+  </div>
+  <!-- Pet coat color2 -->
+  <div class="col-md-4">
+    <label class="form-label" id="secondcolorLabel" for="secondcolor"><%= petsLocale.filterSecondColor %></label>
+    <div class="input-group">
+      <span class="input-group-text">
+        <i class="bi bi-palette"></i>
+      </span>
+      <select class="form-select" id="secondcolor" form="pet-form" name="pet[secondcolor]">
+        <% colorOptions.forEach(option => { %>
+        <option value="<%= option.value %>"><%= option.text %></option>
+        <% }); %>
+      </select>
     </div>
   </div>
 
-  <!-- <div class="col-md-6 mb-3">
-    <label for="species" class="form-label">Species</label>
-    <select name="pet[species]" id="species" class="form-select" required form="pet-form" autofocus>
-      <option value="Dog">Dog</option>
-      <option value="Cat">Cat</option>
-    </select>
-    <small class="form-text text-muted"></small>
-  </div> -->
+  <!-- Pet coat color3 -->
+  <div class="col-md-4">
+    <label class="form-label" for="thirdcolor"><%= petsLocale.filterThirdColor %></label>
+    <div class="input-group">
+      <span class="input-group-text">
+        <i class="bi bi-palette"></i>
+      </span>
+      <select class="form-select" id="thirdcolor" form="pet-form" name="pet[thirdcolor]">
+        <% colorOptions.forEach(option => { %>
+        <option value="<%= option.value %>"><%= option.text %></option>
+        <% }); %>
+      </select>
+    </div>
+  </div>
 
-  <!-- <div class="col-md-6 mb-3">
-    <label for="breed" class="form-label">Breed</label>
-    <select name="pet[breed]" id="breed" class="form-select" form="pet-form" disabled>
-      <option value="">--</option>
-    </select>
-    <small class="form-text text-muted"></small>
-  </div> -->
-
-  <div class="col-md-4 mb-3">
-    <label for="name" class="form-label">Pet’s name</label>
+  <div class="col-md-4">
+    <label class="form-label" for="name"><%= petsLocale.filterName %></label>
     <!-- change name attr to name later -->
-    <input name="pet[title]" type="text" class="form-control" id="name" autocomplete="off" />
-    <small class="form-text text-muted"></small>
-    <div class="valid-feedback">Looks good!</div>
+    <div class="input-group">
+      <span class="input-group-text"><i class="bi bi-chat-dots"></i></span>
+      <input name="pet[title]" type="text" class="form-control" id="name" autocomplete="off" />
+      <!-- <small class="form-text text-muted"></small> -->
+      <!-- <div class="valid-feedback">Looks good!</div> -->
+    </div>
   </div>
 
-  <!-- <div class="col-md-4 mb-3">
-    <label for="identifier" class="form-label">Identifier</label>
-    <input name="pet[identifier]" type="number" class="form-control" id="identifier" autocomplete="off" />
-    <small class="form-text text-muted"></small>
-    <div class="valid-feedback">Looks good!</div>
-  </div> -->
-  <!-- <div class="col-md-4 mb-3">
-    <label for="gender" class="form-label">Gender</label>
-    <select name="pet[gender]" id="gender" class="form-select" required form="pet-form" autofocus>
-      <option value=""></option>
-      <option value="He">He</option>
-      <option value="She">She</option>
-    </select>
-    <small class="form-text text-muted"></small>
-  </div> -->
-
-  <!-- map -->
-  <div id="map" style="max-width: 100%; height: 300px; background-color: #808080"></div>
-
-  <!-- <div class="col-md-8 col-sm-6 mb-3">
-    <label for="location" class="form-label">Location</label>
-    <input
-      placeholder="City, Street"
-      name="pet[location]"
-      type="text"
-      class="form-control"
-      id="location"
-      autocomplete="off"
-    />
-    <small class="form-text text-muted"></small>
-    <div class="valid-feedback">Looks good!</div>
-  </div> -->
-
-  <div class="col-md-2 col-sm-3 col-6 mb-3 d-none">
-    <label class="form-label me-1" for="latitude">Latitude</label>
-    <input id="latitude" class="form-control text-muted" type="number" aria-label="latitude" aria-describedby="latitude-label" name="pet[latitude]" readonly />
-    <div class="valid-feedback">Looks good!</div>
-  </div>
-
-  <div class="col-md-2 col-sm-3 col-6 mb-3 d-none">
-    <label class="form-label me-1" for="longitude">Longitude</label>
-    <input id="longitude" class="form-control text-muted" type="number" aria-label="longitude" aria-describedby="longitude-label" name="pet[longitude]" readonly />
-    <div class="valid-feedback">Looks good!</div>
-  </div>
-
-  <div class="col-md-3 mb-3">
-    <label class="form-label" for="pattern">Coat pattern</label>
-    <select class="form-select" id="pattern" form="pet-form" name="pet[pattern]">
-      <option value="--">--</option>
-      <option value="Monochrome">Monochrome</option>
-      <option value="Bicolor">Bicolor</option>
-      <option value="Tricolor">Tricolor</option>
-      <option value="Pointed">Pointed</option>
-      <option value="Spotted">Spotted</option>
-      <option value="Striped">Striped</option>
-    </select>
-  </div>
-  <div class="col-md-3 mb-3">
-    <label class="form-label" for="firstcolor">Main color</label>
-    <select class="form-select" id="firstcolor" form="pet-form" name="pet[firstcolor]" disabled>
-      <!-- <option hidden disabled selected value>-- Select an option --</option> -->
-      <option value="--">--</option>
-    </select>
-    <!-- <div class="valid-feedback">Looks good!</div> -->
-  </div>
-
-  <div class="col-md-3 mb-3">
-    <label class="form-label" id="secondcolorLabel" for="secondcolor">Second color</label>
-    <select class="form-select" id="secondcolor" form="pet-form" name="pet[secondcolor]" disabled>
-      <!-- <option hidden disabled selected value>-- Select an option --</option> -->
-      <option value="--">--</option>
-    </select>
-  </div>
-  <div class="col-md-3 mb-3">
-    <label class="form-label" for="thirdcolor">Third color</label>
-    <select class="form-select" id="thirdcolor" form="pet-form" name="pet[thirdcolor]" disabled>
-      <!-- <option hidden disabled selected value>-- Select an option --</option> -->
-      <option value="--">--</option>
-    </select>
+  <!-- Pet Breed -->
+  <div class="col-md-4">
+    <label class="form-label"><%= petsLocale.filterBreed %></label>
+    <div class="input-group">
+      <span class="input-group-text">
+        <i class="bi bi-x-diamond-fill"></i>
+      </span>
+      <select class="form-select" id="petBreed" name="breed">
+        <option value="<%= breedsOptions.all[0].value %>"><%= breedsOptions.all[0].text %></option>
+        <optgroup label="<%= breedsOptions.catOptiongroupLabel[0].text %>">
+          <% breedsOptions.cats.forEach(option => { %>
+          <option value="<%= option.value %>"><%= option.text %></option>
+          <% }); %>
+        </optgroup>
+        <optgroup label="<%= breedsOptions.dogOptiongroupLabel[0].text %>">
+          <% breedsOptions.dogs.forEach(option => { %>
+          <option value="<%= option.value %>"><%= option.text %></option>
+          <% }); %>
+        </optgroup>
+      </select>
+    </div>
   </div>
 
   <!-- <div class="col-md-6 mb-3">
@@ -266,13 +269,13 @@
   </div> -->
 
   <div class="col-md-12 mb-3">
-    <label class="form-label" for="description">Description*</label>
-    <textarea maxlength="400" style="resize: none; height: 140px" class="form-control txt-area" type="text" id="description" name="pet[description]" placeholder="Max 400 characters"></textarea>
+    <label class="form-label" for="description"><%= petsLocale.filterDescription %></label>
+    <textarea maxlength="400" style="resize: none; height: 140px" class="form-control txt-area" type="text" id="description" name="pet[description]" placeholder="Max 400 characters" required></textarea>
     <div class="valid-feedback">Looks good!</div>
   </div>
 
   <div class="col-md-12 mb-3">
-    <label for="image" class="form-label">Upload Images</label>
+    <label for="image" class="form-label"><%= petsLocale.filterUploadImages %></label>
     <input class="form-control" type="file" id="image" name="image" multiple accept="image/png, image/jpeg, image/jpg" />
   </div>
   <div class="mb-2"><a class="btn btn-secondary me-3" href="/pets">Go Back</a><button class="btn btn-success">Add Pet</button></div>
@@ -337,10 +340,10 @@
 </script> -->
 
 <!-- NOTE: this will be made public, please do not provide sensitive information that you would like kept private -->
-<script>
+<!-- <script>
   document.getElementById('species').selectedIndex = -1;
-</script>
-<script>
+</script> -->
+<!-- <script>
   let selectSpecies = document.querySelector('#species');
   let selectBreed = document.querySelector('#breed');
   let selectAge = document.querySelector('#age');
@@ -771,7 +774,7 @@
       selectThirdColor.setAttribute('disabled', true);
     }
   });
-</script>
+</script> -->
 
 <!-- <script src="/javascripts/draggableMarkerMap.js"></script> -->
 

@@ -1,7 +1,7 @@
 {
-  "name": "PawPrint PWA",
-  "short_name": "PawPrint",
-  "description": "Find pet with PawPrint",
+  "name": "PawClix",
+  "short_name": "PawClix",
+  "description": "PawClix - Reunite with your beloved pet and explore a variety of pet-related services all in one place.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

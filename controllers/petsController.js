@@ -161,6 +161,7 @@ module.exports.renderNewForm = (req, res) => {
   const colorOptions = req.__('colorOptions');
   const ageOptions = req.__('ageOptions');
   const coatOptions = req.__('coatOptions');
+  const coatPatternOptions = req.__('coatPatternOptions');
   const sizeOptions = req.__('sizeOptions');
   const regionOptions = req.__('regionOptions');
   const breedsOptions = req.__('breedsOptions');
@@ -173,6 +174,7 @@ module.exports.renderNewForm = (req, res) => {
     colorOptions,
     ageOptions,
     coatOptions,
+    coatPatternOptions,
     sizeOptions,
     regionOptions,
     breedsOptions,
@@ -364,14 +366,38 @@ module.exports.showPet = async (req, res) => {
 
 module.exports.renderEditForm = async (req, res) => {
   // Retrieve the language preference and data from the response locals
-  const data = req.data; // Language data is available from the middleware
+  const petsLocale = req.__('pets'); // Translate the 'home' key based on the user's selected language
+  const statusOptions = req.__('statusOptions');
+  const speciesOptions = req.__('speciesOptions');
+  const genderOptions = req.__('genderOptions');
+  const colorOptions = req.__('colorOptions');
+  const ageOptions = req.__('ageOptions');
+  const coatOptions = req.__('coatOptions');
+  const sizeOptions = req.__('sizeOptions');
+  const regionOptions = req.__('regionOptions');
+  const breedsOptions = req.__('breedsOptions');
+  const coatPatternOptions = req.__('coatPatternOptions');
+
   const { id } = req.params;
   const pet = await Pet.findById(id);
   if (!pet) {
     req.flash('error', 'Cannot find that pet!');
     return res.redirect('/pets');
   }
-  res.render('pets/edit', { pet, data });
+  res.render('pets/edit', {
+    pet,
+    petsLocale, // Pass the language data to the view
+    statusOptions,
+    speciesOptions,
+    genderOptions,
+    colorOptions,
+    ageOptions,
+    coatOptions,
+    sizeOptions,
+    regionOptions,
+    breedsOptions,
+    coatPatternOptions,
+  });
 };
 
 module.exports.updatePet = async (req, res) => {

@@ -13,9 +13,9 @@
     "contentByAI": "Ģenerēts teksta saturs ar mākslīgā intelekta modeli - ChatGPT"
   },
   "home": {
-    "appName": "PawPrint",
+    "appName": "PawClix",
     "welcomeTitle": "Laipni lūdzam ",
-    "welcomeText": "Atrodi savu pūkaino draugu ar PawPrint",
+    "welcomeText": "Atrodi savu pūkaino draugu ar PawClix",
     "welcomeBtn": "Atrast mājdzīvnieku",
     "loginBtn": "Pierakstīties",
     "signupBtn": "Reģistrēties"
@@ -53,25 +53,32 @@
     "sponsorsText": "Mūsu sponsoriem ir būtiska loma, palīdzot mums turpināt mūsu misiju atgriezt pazudušos mājdzīvniekus pie viņu ģimenēm un nodrošināt viņiem nepieciešamo aprūpi. Viņu dāsnuma atbalsts ne tikai palīdz mums uzturēt darbību, bet arī veido reālu atšķirību pazudušo un atstumto dzīvnieku dzīvēs."
   },
   "pets": {
-    "filterBtn": "Filtri",
-    "compareBtn": "Salīdzināt",
-    "reportPetBtn": "Ziņot par dzīvnieku",
-    "searchBtn": "Meklēt",
-    "clearBtn": "Notīrīt",
-    "prevPageBtn": "Nākamā",
-    "nextPageBtn": "Iepriekšējā",
-    "filterPetStatus": "Dzīvnieka statuss:",
-    "filterSpecies": "Suga:",
-    "filterPetGender": "Dzīvnieka dzimums:",
-    "filterBreed": "Šķirne:",
-    "filterPetColor": "Dzīvnieka krāsa:",
-    "filterDistance": "Attālums (km):",
-    "filterPetAge": "Dzīvnieka vecums:",
-    "filterCoatType": "Kažoka tips:",
-    "filterPetSize": "Dzīvnieka izmērs:",
-    "filterIdentifier": "Identifikators:",
-    "filterLocation": "Atrašanās vieta:",
-    "filterLostDate": "Zaudēšanas datums:"
+    "filterBtn": "Filters",
+    "compareBtn": "Compare",
+    "reportPetBtn": "Report pet",
+    "searchBtn": "Search",
+    "clearBtn": "Clear",
+    "prevPageBtn": "Prev Page",
+    "nextPageBtn": "Next Page",
+    "filterPetStatus": "Pet Status:",
+    "filterSpecies": "Species:",
+    "filterPetGender": "Pet Gender:",
+    "filterBreed": "Breed:",
+    "filterPetColor": "Pet color:",
+    "filterDistance": "Distance (km):",
+    "filterPetAge": "Pet Age:",
+    "filterCoatType": "Coat Type:",
+    "filterPattern": "Coat Pattern:",
+    "filterMainColor": "Main color:",
+    "filterSecondColor": "Second color:",
+    "filterThirdColor": "Third color:",
+    "filterPetSize": "Pet Size:",
+    "filterIdentifier": "Identifier:",
+    "filterLocation": "Location:",
+    "filterName": "Pet’s name:",
+    "filterDescription": "Description:",
+    "filterUploadImages": "Upload Images:",
+    "filterLostDate": "Lost or Found Date:"
   },
   "petsshow": {
     "deleteBtn": "Dzēst",
@@ -274,6 +281,32 @@
     {
       "value": "Corded",
       "text": "Vītāti"
+    }
+  ],
+  "coatPatternOptions": [
+    {
+      "value": "",
+      "text": ""
+    },
+    {
+      "value": "Monochrome",
+      "text": "Monochrome"
+    },
+    {
+      "value": "Bicolor",
+      "text": "Bicolor"
+    },
+    {
+      "value": "Tricolor",
+      "text": "Tricolor"
+    },
+    {
+      "value": "Spotted",
+      "text": "Spotted"
+    },
+    {
+      "value": "Striped",
+      "text": "Striped"
     }
   ],
   "sizeOptions": [
