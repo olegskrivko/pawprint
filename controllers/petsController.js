@@ -8,7 +8,7 @@ const fns = require('date-fns');
 const path = require('path');
 const axios = require('axios');
 const fs = require('fs');
-// const OneSignal = require('onesignal-node');
+const OneSignal = require('onesignal-node');
 // //console.log('OneSignal', OneSignal);
 // const client = new OneSignal.Client(process.env.oneSignal_YOUR_APP_ID, process.env.oneSignal_YOUR_APP_AUTH_KEY);
 // //console.log('client', client);
