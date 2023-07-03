@@ -209,7 +209,8 @@ module.exports.createPet = async (req, res, next) => {
     colorsFormated.push(req.body.pet.thirdcolor);
   }
 
-  console.log(colorsFormated);
+  console.log(req.body.pet.latitude);
+  console.log(req.body.pet.longitude);
 
   // Prepare the unprocessed body for creating a new pet
   const unprocessedBody = {
@@ -235,6 +236,7 @@ module.exports.createPet = async (req, res, next) => {
   };
 
   const pet = new Pet(unprocessedBody);
+  console.log(pet);
 
   // Assign images to the new pet
   pet.images = req.files.map((f) => ({
