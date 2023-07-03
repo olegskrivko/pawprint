@@ -8,7 +8,32 @@ const fns = require('date-fns');
 const path = require('path');
 const axios = require('axios');
 const fs = require('fs');
-const OneSignal = require('onesignal-node');
+// const OneSignal = require('onesignal-node');
+// //console.log('OneSignal', OneSignal);
+// const client = new OneSignal.Client(process.env.oneSignal_YOUR_APP_ID, process.env.oneSignal_YOUR_APP_AUTH_KEY);
+// //console.log('client', client);
+// const oneSignalClient = new OneSignal.Client({
+//   app: {
+//     appId: process.env.oneSignal_YOUR_APP_ID,
+//     appAuthKey: process.env.oneSignal_YOUR_APP_AUTH_KEY,
+//   },
+// });
+// console.log('oneSignalClient', oneSignalClient);
+// const notification = {
+//   contents: { en: 'New pet added! Check it out.' },
+//   included_segments: ['Subscribed Users'],
+// };
+// console.log('notification', notification);
+// client
+//   .createNotification(notification)
+//   .then((response) => {
+//     console.log('Push notification sent successfully:', response.body);
+//     // Additional code or actions after sending the notification
+//   })
+//   .catch((error) => {
+//     console.log('Error sending push notification:', error);
+//     // Handling the error, if any
+//   });
 
 // const { genderOptions } = require('../utils/userSelectOptions');
 // const pdf = require("html-pdf");
@@ -250,8 +275,8 @@ module.exports.createPet = async (req, res, next) => {
   await pet.save();
 
   //console.log(pet);
-  const client = new OneSignal.Client(process.env.oneSignal_YOUR_APP_ID, process.env.oneSignal_YOUR_APP_AUTH_KEY);
-  console.log(client);
+  // const client = new OneSignal.Client(process.env.oneSignal_YOUR_APP_ID, process.env.oneSignal_YOUR_APP_AUTH_KEY);
+  // console.log(client);
   // Send push notification to all subscribed users
   // const oneSignalClient = new OneSignal.Client({
   //   app: {
