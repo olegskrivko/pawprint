@@ -48,7 +48,7 @@ app.use(cookieParser());
 
 // Configure i18n middleware
 i18n.configure({
-  locales: ['en', 'lv', 'ru', 'lt', 'et'], // Add all supported locales here
+  locales: ['en', 'lv', 'ru'], // Add all supported locales here
   defaultLocale: 'en', // Set the default locale
   directory: path.join(__dirname, 'locales'), // Set the directory where translation files are located
   header: 'accept-language', // Set the header field to retrieve the language preference from the request headers

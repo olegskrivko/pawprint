@@ -1,56 +1,56 @@
 {
   "navbar": {
-    "home": "Sākums",
-    "about": "Par mums",
-    "pets": "Mājdzīvnieki",
-    "services": "Pakalpojumi",
-    "login": "Pierakstīties",
-    "signup": "Reģistrēties",
-    "greeting": "Sveiki"
+    "home": "Home",
+    "about": "About",
+    "pets": "Pets",
+    "services": "Services",
+    "login": "Log in",
+    "signup": "Sign up",
+    "greeting": "Hello"
   },
   "footer": {
-    "allRightsReserved": "Visas tiesības aizsargātas",
-    "contentByAI": "Ģenerēts teksta saturs ar mākslīgā intelekta modeli - ChatGPT"
+    "allRightsReserved": "All rights reserved",
+    "contentByAI": "Generated text content by AI model - ChatGPT"
   },
   "home": {
     "appName": "PawClix",
-    "welcomeTitle": "Laipni lūdzam ",
-    "welcomeText": "Atrodi savu pūkaino draugu ar PawClix",
-    "welcomeBtn": "Atrast mājdzīvnieku",
-    "loginBtn": "Pierakstīties",
-    "signupBtn": "Reģistrēties"
+    "welcomeTitle": "Welcome to ",
+    "welcomeText": "Find your furry friend with PawClix.",
+    "welcomeBtn": "Find a Pet",
+    "loginBtn": "Log in",
+    "signupBtn": "Sign up"
   },
   "about": {
-    "ourGoalTitle": "Mūsu mērķis",
-    "ourGoalText1": "Mūsu lietotne izmanto augstas tehnoloģijas, lai atvieglotu pazudušo mājdzīvnieku atgriešanos pie saviem īpašniekiem. Mēs nodrošinām platformu zaudēto mājdzīvnieku sludinājumu publicēšanai un aktīvi strādājam, lai savienotu īpašniekus ar personām, kuras tos ir atradušas.",
-    "ourGoalText2": "Papildus tam mūsu lietotne jums nodrošina piekļuvi plašam mājdzīvnieku saistītu pakalpojumu klāstam, tostarp veterinārām klīnikām, frizētavām, apmācītājiem un citiem. Mēs nodrošinām, ka jums ir pieejami pareizie resursi jūsu mājdzīvnieka specifiskajām vajadzībām.",
-    "featureTitle": "Funkcijas",
-    "featureSubtitle1": "Mobilajai ierīcei optimizēta un droša platforma",
-    "featureText1": "Mūsu mobilā lietotne izmanto jaunākās tehnoloģijas, lai nodrošinātu drošu un drošu platformu, kas palīdz atgriezt pazudušos mājdzīvniekus pie viņu īpašniekiem.",
-    "featureSubtitle2": "Mājdzīvnieku veselības un aprūpes informācija",
-    "featureText2": "Mūsu lietotne sniedz vērtīgu informāciju par mājdzīvnieku veselību un neatliekamo aprūpi, ieskaitot vakcinācijas nozīmi un regulāras pārbaudes, lai nodrošinātu, ka jūsu mājdzīvnieks ir vesels un laimīgs.",
-    "featureSubtitle3": "Kopienas resursi",
-    "featureText3": "Sadaļa, kas sniedz informāciju par vietējiem dzīvnieku patversmēm, veterināriem un citiem resursiem mājdzīvnieku īpašniekiem.",
-    "featureSubtitle4": "Padomi un resursi",
-    "featureText4": "Sadaļa, kas sniedz padomus un resursus mājdzīvnieku īpašniekiem par to, kā novērst mājdzīvnieku pazaudēšanu, kā arī ko darīt, ja mājdzīvnieks pazūd.",
-    "featureSubtitle5": "Mājdzīvnieku profila izveide",
-    "featureText5": "Funkcija, kas ļauj lietotājiem izveidot profila lapu savam pazudušajam mājdzīvniekam, iekļaujot fotogrāfiju, aprakstu un kontaktinformāciju.",
-    "featureSubtitle6": "Sociālo tīklu integrācija",
-    "featureText6": "Integrācija ar sociālo tīklu platformām, lai palīdzētu izplatīt informāciju par pazudušiem mājdzīvniekiem un veicinātu saziņu starp lietotājiem.",
-    "featureSubtitle7": "Meklējamā datu bāze",
-    "featureText7": "Meklējama datu bāze par pazudušiem un atrastiem mājdzīvniekiem, kas ļauj lietotājiem meklēt mājdzīvniekus pēc atrašanās vietas, šķirnes, krāsas un citiem raksturlielumiem.",
-    "featureSubtitle8": "Pazudušo un atrasto mājdzīvnieku karte",
-    "featureText8": "Funkcija, kas attēlo karti ar pazudušajiem un atrastajiem mājdzīvniekiem apgabalā, ļaujot lietotājiem viegli atrast un identificēt pazudušos mājdzīvniekus.",
-    "featureSubtitle9": "Pazudušo mājdzīvnieku plakāti",
-    "featureText9": "Funkcija, kas ļauj lietotājiem viegli izveidot un izdrukāt pazudušo mājdzīvnieku plakātus, lai tos izplatītu savā vietējā kopienā.",
-    "supportOurProjectTitle": "Atbalsti mūsu projektu",
-    "supportOurProjectText": "Tavs ieguldījums var palīdzēt mums turpināt mūsu misiju atgriezt pazudušos mājdzīvniekus pie viņu ģimenēm un nodrošināt viņiem nepieciešamo aprūpi. Katrs mazs ieguldījums ir nozīmīgs, un mēs novērtējam tavu atbalstu!",
-    "supportBtn": "Atbalsti",
-    "shareYourThoughtsTitle": "Dalies ar savām domām",
-    "shareYourThoughtsText": "Tava atsauksme ir ļoti vērtīga mums, jo mēs cenšamies uzlabot mūsu lietotni un sniegt vislabāko iespējamo servisu mājdzīvnieku īpašniekiem. Mēs novērtējam jebkādas komentārus, ieteikumus vai kritiku, ko tev varētu būt, un izmantosim tos, lai padarītu mūsu lietotni vēl labāku. Lūdzu, ņem vērā brīdi un dalies ar savām domām ar mums.",
-    "leaveFeedbackBtn": "Sniedz atsauksmi",
-    "sponsorsTitle": "Sponsori",
-    "sponsorsText": "Mūsu sponsoriem ir būtiska loma, palīdzot mums turpināt mūsu misiju atgriezt pazudušos mājdzīvniekus pie viņu ģimenēm un nodrošināt viņiem nepieciešamo aprūpi. Viņu dāsnuma atbalsts ne tikai palīdz mums uzturēt darbību, bet arī veido reālu atšķirību pazudušo un atstumto dzīvnieku dzīvēs."
+    "ourGoalTitle": "Our Goal",
+    "ourGoalText1": "Our app utilizes advanced technology to facilitate the reunification of lost pets with their owners. We provide a platform for posting lost pet listings and actively work to connect owners with individuals who have found them.",
+    "ourGoalText2": "Additionally, our app connects you with a wide range of pet-related services, including veterinary clinics, groomers, trainers, and more. We ensure that you have access to the right resources for your pet's specific needs.",
+    "featureTitle": "Features",
+    "featureSubtitle1": "Mobile-Optimized and Secure Platform",
+    "featureText1": "Our mobile-friendly app uses the latest technologies to provide a safe and secure platform for reuniting lost pets with their owners.",
+    "featureSubtitle2": "Pet Health and Care Information",
+    "featureText2": "Our app provides valuable information on pet health and emergency care, including the importance of vaccinations and regular check-ups to ensure your pet stays healthy and happy.",
+    "featureSubtitle3": "Community Resources",
+    "featureText3": "A section that provides information on local animal shelters, veterinarians, and other resources for pet owners.",
+    "featureSubtitle4": "Tips and Resources",
+    "featureText4": "A section that provides tips and resources for pet owners on how to prevent their pets from getting lost, as well as what to do if their pet goes missing.",
+    "featureSubtitle5": "Pet Profile Creation",
+    "featureText5": "A feature that allows users to create a profile for their lost pet, including a photo, description, and contact information.",
+    "featureSubtitle6": "Social Media Integration",
+    "featureText6": "Integration with social media platforms to help spread the word about lost pets and facilitate communication among users.",
+    "featureSubtitle7": "Searchable Database",
+    "featureText7": "A searchable database of lost and found pets, which allows users to search for pets based on location, breed, color, and other characteristics.",
+    "featureSubtitle8": "Lost and Found Pet Map",
+    "featureText8": "A feature that displays a map of lost and found pets in the area, allowing users to easily locate and identify lost pets.",
+    "featureSubtitle9": "Lost Pet Flyers",
+    "featureText9": "A feature that allows users to easily create and print lost pet flyers to distribute in their local community.",
+    "supportOurProjectTitle": "Support Our Project",
+    "supportOurProjectText": "Your contribution can help us continue our mission to reunite lost pets with their families and provide them with the care they need. Every little bit counts and we appreciate your support!",
+    "supportBtn": "Support",
+    "shareYourThoughtsTitle": "Share Your Thoughts",
+    "shareYourThoughtsText": "Your feedback is incredibly valuable to us as we strive to improve our app and provide the best possible service to pet owners. We appreciate any comments, suggestions, or criticisms you may have, and we will use them to make our app even better. Please take a moment to share your thoughts with us.",
+    "leaveFeedbackBtn": "Leave feedback",
+    "sponsorsTitle": "Sponsors",
+    "sponsorsText": "Our sponsors play a crucial role in helping us continue our mission to reunite lost pets with their families and provide them with the care they need. Their generous support not only helps us keep the lights on, but also makes a real difference in the lives of lost and abandoned animals."
   },
   "pets": {
     "filterBtn": "Filters",
@@ -81,27 +81,27 @@
     "filterLostDate": "Lost or Found Date:"
   },
   "petsshow": {
-    "deleteBtn": "Dzēst",
-    "saveBtn": "Saglabāt",
-    "editBtn": "Labot",
-    "sendBtn": "Nosūtīt",
-    "petViews": "Skatījumi",
-    "downloadBtn": "Lejupielādēt",
-    "showpetspecies": "Suga:",
-    "showpetbreed": "Šķirne:",
-    "showpetcoatpattern": "Ādas raksts:",
-    "showpetgender": "Dzīvnieka dzimums:",
-    "showpetcolor1": "Pirmais krāsa:",
-    "showpetcolor2": "Otrais krāsa:",
-    "showpetcolor3": "Trešais krāsa:",
-    "showpetlastseen": "Pēdējo reizi redzēts:",
-    "showpetage": "Dzīvnieka vecums:",
-    "showpetcoat": "Ādas tips:",
-    "showpetsize": "Dzīvnieka izmērs:",
-    "showpetstatus": "Dzīvnieka statuss:",
-    "showpetidentifier": "Identifikators:",
-    "showpetdescription": "Apraksts",
-    "showpetdistance": "Attālums (km):"
+    "deleteBtn": "Delete",
+    "saveBtn": "Save",
+    "editBtn": "Edit",
+    "sendBtn": "Send",
+    "petViews": "Views",
+    "downloadBtn": "Download",
+    "showpetspecies": "Species:",
+    "showpetbreed": "Breed:",
+    "showpetcoatpattern": "Coat Pattern:",
+    "showpetgender": "Pet's Gender:",
+    "showpetcolor1": "First Color:",
+    "showpetcolor2": "Second Color:",
+    "showpetcolor3": "Third Color:",
+    "showpetlastseen": "Last Seen:",
+    "showpetage": "Age:",
+    "showpetcoat": "Coat Type:",
+    "showpetsize": "Pet's Size:",
+    "showpetstatus": "Pet Status:",
+    "showpetidentifier": "Identifier:",
+    "showpetdescription": "Description",
+    "showpetdistance": "Distance (km):"
   },
   "statusOptions": [
     {
@@ -110,27 +110,27 @@
     },
     {
       "value": "Missing",
-      "text": "Pazudis"
+      "text": "Missing"
     },
     {
       "value": "Found",
-      "text": "Atrasts"
+      "text": "Found"
     },
     {
       "value": "Reunited",
-      "text": "Savienots"
+      "text": "Reunited"
     },
     {
       "value": "Adopted",
-      "text": "Adoptēts"
+      "text": "Adopted"
     },
     {
       "value": "Fostered",
-      "text": "Audžuģimenē"
+      "text": "Fostered"
     },
     {
       "value": "Deceased",
-      "text": "Miris"
+      "text": "Deceased"
     }
   ],
   "speciesOptions": [
@@ -140,15 +140,15 @@
     },
     {
       "value": "Dog",
-      "text": "Suns"
+      "text": "Dog"
     },
     {
       "value": "Cat",
-      "text": "Kaķis"
+      "text": "Cat"
     },
     {
       "value": "Other",
-      "text": "Cits"
+      "text": "Other"
     }
   ],
   "genderOptions": [
@@ -158,11 +158,11 @@
     },
     {
       "value": "She",
-      "text": "Viņa"
+      "text": "She"
     },
     {
       "value": "He",
-      "text": "Viņš"
+      "text": "He"
     }
   ],
   "colorOptions": [
@@ -172,39 +172,39 @@
     },
     {
       "value": "Black",
-      "text": "Melns"
+      "text": "Black"
     },
     {
       "value": "Brown",
-      "text": "Brūns"
+      "text": "Brown"
     },
     {
       "value": "White",
-      "text": "Balts"
+      "text": "White"
     },
     {
       "value": "Red",
-      "text": "Sarkans"
+      "text": "Red"
     },
     {
       "value": "Gold",
-      "text": "Zeltains"
+      "text": "Gold"
     },
     {
       "value": "Blue",
-      "text": "Zils"
+      "text": "Blue"
     },
     {
       "value": "Gray",
-      "text": "Pelēks"
+      "text": "Gray"
     },
     {
       "value": "Cream",
-      "text": "Krēmkrāsains"
+      "text": "Cream"
     },
     {
       "value": "Yellow",
-      "text": "Dzeltens"
+      "text": "Yellow"
     }
   ],
   "ageOptions": [
@@ -214,23 +214,23 @@
     },
     {
       "value": "Kitten",
-      "text": "Kaķēns"
+      "text": "Kitten"
     },
     {
       "value": "Puppy",
-      "text": "Kucēns"
+      "text": "Puppy"
     },
     {
       "value": "Adolescent",
-      "text": "Pusaudzis"
+      "text": "Adolescent"
     },
     {
       "value": "Adult",
-      "text": "Pieaugušais"
+      "text": "Adult"
     },
     {
       "value": "Senior",
-      "text": "Gados vecs"
+      "text": "Senior"
     }
   ],
   "coatOptions": [
@@ -240,47 +240,47 @@
     },
     {
       "value": "Hairless",
-      "text": "Bez matiem"
+      "text": "Hairless"
     },
     {
       "value": "Short",
-      "text": "Īsi"
+      "text": "Short"
     },
     {
       "value": "Medium",
-      "text": "Vidēji"
+      "text": "Medium"
     },
     {
       "value": "Long",
-      "text": "Gari"
+      "text": "Long"
     },
     {
       "value": "Wire",
-      "text": "Dzīslaini"
+      "text": "Wire"
     },
     {
       "value": "Curly",
-      "text": "Lokaini"
+      "text": "Curly"
     },
     {
       "value": "Smooth",
-      "text": "Gludi"
+      "text": "Smooth"
     },
     {
       "value": "Double",
-      "text": "Dubulti"
+      "text": "Double"
     },
     {
       "value": "Silky",
-      "text": "Sārti"
+      "text": "Silky"
     },
     {
       "value": "Wavy",
-      "text": "Briestaini"
+      "text": "Wavy"
     },
     {
       "value": "Corded",
-      "text": "Vītāti"
+      "text": "Corded"
     }
   ],
   "coatPatternOptions": [
@@ -316,15 +316,15 @@
     },
     {
       "value": "Small",
-      "text": "Mazs"
+      "text": "Small"
     },
     {
       "value": "Medium",
-      "text": "Vidējs"
+      "text": "Medium"
     },
     {
       "value": "Large",
-      "text": "Liels"
+      "text": "Large"
     }
   ],
   "regionOptions": {
@@ -525,13 +525,13 @@
     "catOptiongroupLabel": [
       {
         "value": "Cat Breed",
-        "text": "Kaķu šķirne"
+        "text": "Cat Breed"
       }
     ],
     "dogOptiongroupLabel": [
       {
         "value": "Dog Breed",
-        "text": "Suņu Šķirne"
+        "text": "Dog Breed"
       }
     ],
     "cats": [
@@ -1016,28 +1016,66 @@
     ]
   },
   "services": {
-    "serviceTitle": "Pakalpojumi",
-    "addServiceBtn": "Pievienot pakalpojumu",
-    "service1": "Dzīvnieku patversmes",
-    "service2": "Mājdzīvnieku frizēšana",
-    "service3": "Mājdzīvnieku apdrošināšana un juridiskie pakalpojumi",
-    "service4": "Kaķu kafejnīcas",
-    "service5": "Mājdzīvnieku meklēšanas un glābšanas pakalpojumi",
-    "service6": "Mājdzīvnieku apmācība",
-    "service7": "Mājdzīvnieku māksla un amatniecība",
-    "service8": "Mājdzīvnieku bārdas",
-    "service9": "Mājdzīvnieku sēdēšana",
-    "service10": "Mājdzīvnieku transportēšana",
-    "service11": "Citi pakalpojumi",
-    "service12": "Mājdzīvnieku apbedīšanas pakalpojumi",
-    "service13": "Mājdzīvnieku fotogrāfija",
-    "service14": "Dzīvnieku draudzīgas naktsmītnes",
-    "service15": "Dzīvnieku audzētāji",
-    "service16": "Suņu pastaigas",
-    "service17": "Mājdzīvnieku piederumu un aksesuāru veikali",
-    "service18": "Dzīvnieku izstādes",
-    "service19": "Veterinārās pakalpojumi"
+    "serviceTitle": "Services",
+    "addServiceBtn": "Add Service",
+    "service1": "Animal Shelters",
+    "service2": "Pet Grooming",
+    "service3": "Pet Insurance and Legal Services",
+    "service4": "Cat Cafe",
+    "service5": "Pet Search and Rescue Services",
+    "service6": "Pet Training",
+    "service7": "Pet Art and Crafts",
+    "service8": "Pet Boarding",
+    "service9": "Pet Sitting",
+    "service10": "Pet Transportation",
+    "service11": "Other Services",
+    "service12": "Pet Burial Services",
+    "service13": "Pet Photography",
+    "service14": "Pet Friendly Accommodation",
+    "service15": "Pet Breeders",
+    "service16": "Dog Walking",
+    "service17": "Pet Supplies and Accessories",
+    "service18": "Pet Expo",
+    "service19": "Veterinary Services"
   },
-  "Sakums": "Sakums",
-  "Sākums": "Sākums"
+  "": "",
+  "Home": "Home",
+  "Animal Shelters": "Animal Shelters",
+  "Dedicated shelters that provide temporary homes and care for abandoned or stray animals until they can be adopted.": "Dedicated shelters that provide temporary homes and care for abandoned or stray animals until they can be adopted.",
+  "Pet Grooming": "Pet Grooming",
+  "Services that offer grooming, bathing, and styling for pets to keep them clean and well-groomed.": "Services that offer grooming, bathing, and styling for pets to keep them clean and well-groomed.",
+  "Pet Insurance and Legal Services": "Pet Insurance and Legal Services",
+  "Services that provide insurance coverage for pets and legal assistance related to pet ownership and welfare.": "Services that provide insurance coverage for pets and legal assistance related to pet ownership and welfare.",
+  "Cat Cafe": "Cat Cafe",
+  "Cafes or establishments where customers can enjoy a beverage and interact with resident cats in a relaxed environment.": "Cafes or establishments where customers can enjoy a beverage and interact with resident cats in a relaxed environment.",
+  "Pet Search and Rescue Services": "Pet Search and Rescue Services",
+  "Organizations or services dedicated to locating and rescuing lost or missing pets.": "Organizations or services dedicated to locating and rescuing lost or missing pets.",
+  "Pet Training": "Pet Training",
+  "Training programs and services to help pets develop good behavior, obedience, and social skills.": "Training programs and services to help pets develop good behavior, obedience, and social skills.",
+  "Pet Art and Crafts": "Pet Art and Crafts",
+  "Artists or businesses that create artwork and crafts inspired by pets, such as portraits, sculptures, or customized pet accessories.": "Artists or businesses that create artwork and crafts inspired by pets, such as portraits, sculptures, or customized pet accessories.",
+  "Pet Boarding": "Pet Boarding",
+  "Facilities or services that offer temporary boarding and care for pets when their owners are away.": "Facilities or services that offer temporary boarding and care for pets when their owners are away.",
+  "Pet Sitting": "Pet Sitting",
+  "Professional pet sitters who offer in-home care and companionship for pets when their owners are away.": "Professional pet sitters who offer in-home care and companionship for pets when their owners are away.",
+  "Pet Transportation": "Pet Transportation",
+  "Specialized transportation services for pets, including pet taxi, relocation, and safe travel arrangements.": "Specialized transportation services for pets, including pet taxi, relocation, and safe travel arrangements.",
+  "Other Services": "Other Services",
+  "A category that includes services not specifically mentioned, covering a range of additional pet-related offerings.": "A category that includes services not specifically mentioned, covering a range of additional pet-related offerings.",
+  "Pet Burial Services": "Pet Burial Services",
+  "Services that offer respectful and compassionate handling of pet burials and cremations.": "Services that offer respectful and compassionate handling of pet burials and cremations.",
+  "Pet Photography": "Pet Photography",
+  "Professional photographers specializing in capturing beautiful and memorable images of pets.": "Professional photographers specializing in capturing beautiful and memorable images of pets.",
+  "Pet Friendly Accommodation": "Pet Friendly Accommodation",
+  "Hotels, vacation rentals, or accommodations that welcome pets and provide suitable amenities and services for them.": "Hotels, vacation rentals, or accommodations that welcome pets and provide suitable amenities and services for them.",
+  "Pet Breeders": "Pet Breeders",
+  "Professional breeders who selectively breed and raise specific breeds or types of pets.": "Professional breeders who selectively breed and raise specific breeds or types of pets.",
+  "Dog Walking": "Dog Walking",
+  "Professional dog walkers who provide exercise and companionship for dogs during regular walks.": "Professional dog walkers who provide exercise and companionship for dogs during regular walks.",
+  "Pet Supplies and Accessories": "Pet Supplies and Accessories",
+  "Stores or services that provide a wide range of pet supplies, including food, toys, and accessories.": "Stores or services that provide a wide range of pet supplies, including food, toys, and accessories.",
+  "Pet Expo": "Pet Expo",
+  "Exhibitions and events dedicated to showcasing various pet-related products, services, and activities.": "Exhibitions and events dedicated to showcasing various pet-related products, services, and activities.",
+  "Veterinary Services": "Veterinary Services",
+  "Medical care, health services, and treatments provided by licensed veterinarians for pets.": "Medical care, health services, and treatments provided by licensed veterinarians for pets."
 }

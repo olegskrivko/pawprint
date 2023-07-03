@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const petsController = require('../controllers/petsController');
 const catchAsync = require('../utils/catchAsync');
-const { isLoggedIn, isAuthor, validatePet, languageMiddleware } = require('../middleware/middleware');
+// const { isLoggedIn, isAuthor, validatePet, languageMiddleware } = require('../middleware/middleware');
+const { isLoggedIn, isAuthor, languageMiddleware } = require('../middleware/middleware');
 const multer = require('multer');
 const { storage } = require('../cloudinary');
 const upload = multer({ storage });
@@ -13,10 +14,21 @@ const upload = multer({ storage });
 router.use(languageMiddleware);
 
 // Routes for pets
+// Routes for pets
+// router
+//   .route('/')
+//   .get(catchAsync(petsController.index)) // Get all pets
+//   .post(isLoggedIn, upload.array('image'), (req, res, next) => {
+//     // Add console.log statement to check if the route is hit
+//     console.log('POST route for creating a pet is hit');
+//     petsController.createPet(req, res, next);
+//   });
+
 router
   .route('/')
   .get(catchAsync(petsController.index)) // Get all pets
-  .post(isLoggedIn, upload.array('image'), validatePet, catchAsync(petsController.createPet)); // Create a new pet
+  .post(isLoggedIn, upload.array('image'), catchAsync(petsController.createPet));
+// .post(isLoggedIn, upload.array('image'), validatePet, catchAsync(petsController.createPet)); // Create a new pet
 
 // Routes for report forms
 router.get('/new', isLoggedIn, petsController.renderNewForm); // Render new pet report form
@@ -27,8 +39,13 @@ router.get('/new', isLoggedIn, petsController.renderNewForm); // Render new pet 
 router
   .route('/:id')
   .get(catchAsync(petsController.showPet)) // Get a specific pet
-  .put(isLoggedIn, isAuthor, upload.array('image'), validatePet, catchAsync(petsController.updatePet)) // Update a pet
+  .put(isLoggedIn, isAuthor, upload.array('image'), catchAsync(petsController.updatePet)) // Update a pet
   .delete(isLoggedIn, isAuthor, catchAsync(petsController.deletePet)); // Delete a pet
+// router
+//   .route('/:id')
+//   .get(catchAsync(petsController.showPet)) // Get a specific pet
+//   .put(isLoggedIn, isAuthor, upload.array('image'), validatePet, catchAsync(petsController.updatePet)) // Update a pet
+//   .delete(isLoggedIn, isAuthor, catchAsync(petsController.deletePet)); // Delete a pet
 
 router.get('/:id/edit', isLoggedIn, isAuthor, catchAsync(petsController.renderEditForm)); // Render edit pet form
 

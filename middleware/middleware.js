@@ -16,15 +16,15 @@ module.exports.isLoggedIn = (req, res, next) => {
 };
 
 // Middleware function to validate pet data
-module.exports.validatePet = (req, res, next) => {
-  const { error } = petSchema.validate(req.body);
-  if (error) {
-    const msg = error.details.map((el) => el.message).join(',');
-    throw new ExpressError(msg, 400);
-  } else {
-    next();
-  }
-};
+// module.exports.validatePet = (req, res, next) => {
+//   const { error } = petSchema.validate(req.body);
+//   if (error) {
+//     const msg = error.details.map((el) => el.message).join(',');
+//     throw new ExpressError(msg, 400);
+//   } else {
+//     next();
+//   }
+// };
 
 // Middleware function to check if the user is the author of the pet
 module.exports.isAuthor = async (req, res, next) => {

@@ -40,6 +40,7 @@ const fs = require('fs');
 // const puppeteer = require("puppeteer");
 
 module.exports.index = async (req, res) => {
+  console.log('INDEX pet');
   const ITEMS_PER_PAGE = 10; // Number of items to display per page
   const { page, limit, age, gender, breed, species, pattern, coat, size, petStatus, identifier, name, location, color, lostdate, maxDistance, userlongitude, userlatitude, selectedRegion } = req.query;
 
@@ -181,6 +182,7 @@ module.exports.index = async (req, res) => {
 };
 
 module.exports.renderNewForm = (req, res) => {
+  console.log('new form pet');
   const petsLocale = req.__('pets'); // Translate the 'home' key based on the user's selected language
   const statusOptions = req.__('statusOptions');
   const speciesOptions = req.__('speciesOptions');
@@ -221,6 +223,7 @@ module.exports.renderNewForm = (req, res) => {
 // };
 
 module.exports.createPet = async (req, res, next) => {
+  console.log('create pete');
   let colorsFormated = [];
 
   // Check and format the colors from the request body
@@ -275,31 +278,31 @@ module.exports.createPet = async (req, res, next) => {
   await pet.save();
 
   //console.log(pet);
-  // const client = new OneSignal.Client(process.env.oneSignal_YOUR_APP_ID, process.env.oneSignal_YOUR_APP_AUTH_KEY);
-  // console.log(client);
-  // Send push notification to all subscribed users
-  // const oneSignalClient = new OneSignal.Client({
-  //   app: {
-  //     appId: process.env.oneSignal_YOUR_APP_ID,
-  //     appAuthKey: process.env.oneSignal_YOUR_APP_AUTH_KEY,
-  //   },
-  // });
-
-  // const notification = {
-  //   contents: { en: 'New pet added! Check it out.' },
-  //   included_segments: ['Subscribed Users'],
-  // };
-
-  // client
-  //   .createNotification(notification)
-  //   .then((response) => {
-  //     console.log('Push notification sent successfully:', response.body);
-  //     // Additional code or actions after sending the notification
-  //   })
-  //   .catch((error) => {
-  //     console.log('Error sending push notification:', error);
-  //     // Handling the error, if any
-  //   });
+  const client = new OneSignal.Client(process.env.oneSignal_YOUR_APP_ID, process.env.oneSignal_YOUR_APP_AUTH_KEY);
+  console.log(client);
+  //Send push notification to all subscribed users
+  const oneSignalClient = new OneSignal.Client({
+    app: {
+      appId: process.env.oneSignal_YOUR_APP_ID,
+      appAuthKey: process.env.oneSignal_YOUR_APP_AUTH_KEY,
+    },
+  });
+  console.log(oneSignalClient);
+  const notification = {
+    contents: { en: 'New pet added! Check it out.' },
+    included_segments: ['Subscribed Users'],
+  };
+  console.log(notification);
+  client
+    .createNotification(notification)
+    .then((response) => {
+      console.log('Push notification sent successfully:', response.body);
+      // Additional code or actions after sending the notification
+    })
+    .catch((error) => {
+      console.log('Error sending push notification:', error);
+      // Handling the error, if any
+    });
 
   req.flash('success', 'Successfully created a new pet');
   res.redirect(`/pets/${pet._id}`);
@@ -360,6 +363,7 @@ module.exports.createPet = async (req, res, next) => {
 // };
 
 module.exports.showPet = async (req, res) => {
+  console.log('show pete');
   try {
     // Retrieve the pet from the database
     const petsshow = req.__('petsshow');

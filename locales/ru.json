@@ -1,56 +1,56 @@
 {
   "navbar": {
-    "home": "Главная",
-    "about": "О нас",
-    "pets": "Животные",
-    "services": "Услуги",
-    "login": "Войти",
-    "signup": "Зарегистрироваться",
-    "greeting": "Привет"
+    "home": "Home",
+    "about": "About",
+    "pets": "Pets",
+    "services": "Services",
+    "login": "Log in",
+    "signup": "Sign up",
+    "greeting": "Hello"
   },
   "footer": {
-    "allRightsReserved": "Все права защищены",
-    "contentByAI": "Сгенерированное текстовое содержимое с помощью модели искусственного интеллекта - ChatGPT"
+    "allRightsReserved": "All rights reserved",
+    "contentByAI": "Generated text content by AI model - ChatGPT"
   },
   "home": {
     "appName": "PawClix",
-    "welcomeTitle": "Добро пожаловать в",
-    "welcomeText": "Найдите своего пушистого друга с помощью PawClix",
-    "welcomeBtn": "Найти питомца",
-    "loginBtn": "Войти",
-    "signupBtn": "Зарегистрироваться"
+    "welcomeTitle": "Welcome to ",
+    "welcomeText": "Find your furry friend with PawClix.",
+    "welcomeBtn": "Find a Pet",
+    "loginBtn": "Log in",
+    "signupBtn": "Sign up"
   },
   "about": {
-    "ourGoalTitle": "Наша цель",
-    "ourGoalText1": "Наше приложение использует передовые технологии для облегчения воссоединения потерянных животных с их владельцами. Мы предоставляем платформу для размещения объявлений о потерянных питомцах и активно работаем над связью владельцев с людьми, которые их нашли.",
-    "ourGoalText2": "Кроме того, наше приложение соединяет вас с широким спектром услуг, связанных с животными, включая ветеринарные клиники, грумеры, тренеров и многое другое. Мы обеспечиваем доступ к правильным ресурсам для конкретных потребностей вашего питомца.",
-    "featureTitle": "Особенности",
-    "featureSubtitle1": "Оптимизированная для мобильных устройств и безопасная платформа",
-    "featureText1": "Наше мобильное приложение, оптимизированное для работы на мобильных устройствах, использует последние технологии для обеспечения безопасной платформы для воссоединения потерянных животных с их владельцами.",
-    "featureSubtitle2": "Информация о здоровье и уходе за питомцами",
-    "featureText2": "Наше приложение предоставляет ценную информацию о здоровье питомцев и экстренном уходе, включая важность вакцинации и регулярных проверок, чтобы ваш питомец оставался здоровым и счастливым.",
-    "featureSubtitle3": "Ресурсы сообщества",
-    "featureText3": "Раздел, предоставляющий информацию о местных приютах для животных, ветеринарных клиниках и других ресурсах для владельцев питомцев.",
-    "featureSubtitle4": "Советы и ресурсы",
-    "featureText4": "Раздел, предоставляющий советы и ресурсы владельцам питомцев о том, как предотвратить их пропажу, а также о действиях в случае пропажи питомца.",
-    "featureSubtitle5": "Создание профиля питомца",
-    "featureText5": "Функция, позволяющая пользователям создать профиль для своего потерянного питомца, включая фотографию, описание и контактную информацию.",
-    "featureSubtitle6": "Интеграция с социальными сетями",
-    "featureText6": "Интеграция с платформами социальных сетей, чтобы помочь распространить информацию о потерянных животных и облегчить коммуникацию между пользователями.",
-    "featureSubtitle7": "Поиск в базе данных",
-    "featureText7": "Поиск в базе данных потерянных и найденных животных, позволяющий пользователям искать питомцев по местоположению, породе, цвету и другим характеристикам.",
-    "featureSubtitle8": "Карта потерянных и найденных питомцев",
-    "featureText8": "Функция, отображающая на карте потерянных и найденных питомцев в вашем районе, позволяющая пользователям легко находить и идентифицировать потерянных питомцев.",
-    "featureSubtitle9": "Листовки о потерянных питомцах",
-    "featureText9": "Функция, позволяющая пользователям легко создавать и печатать листовки о потерянных питомцах для распространения в их местном сообществе.",
-    "supportOurProjectTitle": "Поддержите наш проект",
-    "supportOurProjectText": "Ваш вклад может помочь нам продолжать нашу миссию воссоединения потерянных животных с их семьями и предоставления им необходимой помощи. Каждый вклад имеет значение, и мы ценим вашу поддержку!",
-    "supportBtn": "Поддержать",
-    "shareYourThoughtsTitle": "Поделитесь своими мыслями",
-    "shareYourThoughtsText": "Ваши отзывы очень важны для нас, поскольку мы стремимся улучшить наше приложение и предоставить наилучший сервис владельцам питомцев. Мы ценим любые комментарии, предложения или замечания, и мы будем использовать их для улучшения нашего приложения. Пожалуйста, найдите минуту, чтобы поделиться своими мыслями с нами.",
-    "leaveFeedbackBtn": "Оставить отзыв",
-    "sponsorsTitle": "Спонсоры",
-    "sponsorsText": "Наши спонсоры играют важную роль в помощи нам продолжать нашу миссию воссоединения потерянных животных с их семьями и предоставления им необходимой помощи. Их щедрая поддержка не только помогает нам продолжать свою работу, но и делает реальную разницу в жизни потерянных и бездомных животных."
+    "ourGoalTitle": "Our Goal",
+    "ourGoalText1": "Our app utilizes advanced technology to facilitate the reunification of lost pets with their owners. We provide a platform for posting lost pet listings and actively work to connect owners with individuals who have found them.",
+    "ourGoalText2": "Additionally, our app connects you with a wide range of pet-related services, including veterinary clinics, groomers, trainers, and more. We ensure that you have access to the right resources for your pet's specific needs.",
+    "featureTitle": "Features",
+    "featureSubtitle1": "Mobile-Optimized and Secure Platform",
+    "featureText1": "Our mobile-friendly app uses the latest technologies to provide a safe and secure platform for reuniting lost pets with their owners.",
+    "featureSubtitle2": "Pet Health and Care Information",
+    "featureText2": "Our app provides valuable information on pet health and emergency care, including the importance of vaccinations and regular check-ups to ensure your pet stays healthy and happy.",
+    "featureSubtitle3": "Community Resources",
+    "featureText3": "A section that provides information on local animal shelters, veterinarians, and other resources for pet owners.",
+    "featureSubtitle4": "Tips and Resources",
+    "featureText4": "A section that provides tips and resources for pet owners on how to prevent their pets from getting lost, as well as what to do if their pet goes missing.",
+    "featureSubtitle5": "Pet Profile Creation",
+    "featureText5": "A feature that allows users to create a profile for their lost pet, including a photo, description, and contact information.",
+    "featureSubtitle6": "Social Media Integration",
+    "featureText6": "Integration with social media platforms to help spread the word about lost pets and facilitate communication among users.",
+    "featureSubtitle7": "Searchable Database",
+    "featureText7": "A searchable database of lost and found pets, which allows users to search for pets based on location, breed, color, and other characteristics.",
+    "featureSubtitle8": "Lost and Found Pet Map",
+    "featureText8": "A feature that displays a map of lost and found pets in the area, allowing users to easily locate and identify lost pets.",
+    "featureSubtitle9": "Lost Pet Flyers",
+    "featureText9": "A feature that allows users to easily create and print lost pet flyers to distribute in their local community.",
+    "supportOurProjectTitle": "Support Our Project",
+    "supportOurProjectText": "Your contribution can help us continue our mission to reunite lost pets with their families and provide them with the care they need. Every little bit counts and we appreciate your support!",
+    "supportBtn": "Support",
+    "shareYourThoughtsTitle": "Share Your Thoughts",
+    "shareYourThoughtsText": "Your feedback is incredibly valuable to us as we strive to improve our app and provide the best possible service to pet owners. We appreciate any comments, suggestions, or criticisms you may have, and we will use them to make our app even better. Please take a moment to share your thoughts with us.",
+    "leaveFeedbackBtn": "Leave feedback",
+    "sponsorsTitle": "Sponsors",
+    "sponsorsText": "Our sponsors play a crucial role in helping us continue our mission to reunite lost pets with their families and provide them with the care they need. Their generous support not only helps us keep the lights on, but also makes a real difference in the lives of lost and abandoned animals."
   },
   "pets": {
     "filterBtn": "Filters",
@@ -81,27 +81,27 @@
     "filterLostDate": "Lost or Found Date:"
   },
   "petsshow": {
-    "deleteBtn": "Удалить",
-    "saveBtn": "Сохранить",
-    "editBtn": "Редактировать",
-    "sendBtn": "Отправить",
-    "petViews": "Просмотры",
-    "downloadBtn": "Скачать",
-    "showpetspecies": "Вид:",
-    "showpetbreed": "Порода:",
-    "showpetcoatpattern": "Рисунок шерсти:",
-    "showpetgender": "Пол животного:",
-    "showpetcolor1": "Первый цвет:",
-    "showpetcolor2": "Второй цвет:",
-    "showpetcolor3": "Третий цвет:",
-    "showpetlastseen": "Последний раз видели:",
-    "showpetage": "Возраст:",
-    "showpetcoat": "Тип шерсти:",
-    "showpetsize": "Размер животного:",
-    "showpetstatus": "Статус животного:",
-    "showpetidentifier": "Идентификатор:",
-    "showpetdescription": "Описание",
-    "showpetdistance": "Расстояние (км):"
+    "deleteBtn": "Delete",
+    "saveBtn": "Save",
+    "editBtn": "Edit",
+    "sendBtn": "Send",
+    "petViews": "Views",
+    "downloadBtn": "Download",
+    "showpetspecies": "Species:",
+    "showpetbreed": "Breed:",
+    "showpetcoatpattern": "Coat Pattern:",
+    "showpetgender": "Pet's Gender:",
+    "showpetcolor1": "First Color:",
+    "showpetcolor2": "Second Color:",
+    "showpetcolor3": "Third Color:",
+    "showpetlastseen": "Last Seen:",
+    "showpetage": "Age:",
+    "showpetcoat": "Coat Type:",
+    "showpetsize": "Pet's Size:",
+    "showpetstatus": "Pet Status:",
+    "showpetidentifier": "Identifier:",
+    "showpetdescription": "Description",
+    "showpetdistance": "Distance (km):"
   },
   "statusOptions": [
     {
@@ -110,27 +110,27 @@
     },
     {
       "value": "Missing",
-      "text": "Пропавшее"
+      "text": "Missing"
     },
     {
       "value": "Found",
-      "text": "Найденное"
+      "text": "Found"
     },
     {
       "value": "Reunited",
-      "text": "Воссоединенное"
+      "text": "Reunited"
     },
     {
       "value": "Adopted",
-      "text": "Усыновленное"
+      "text": "Adopted"
     },
     {
       "value": "Fostered",
-      "text": "Приютское"
+      "text": "Fostered"
     },
     {
       "value": "Deceased",
-      "text": "Умершее"
+      "text": "Deceased"
     }
   ],
   "speciesOptions": [
@@ -140,15 +140,15 @@
     },
     {
       "value": "Dog",
-      "text": "Собака"
+      "text": "Dog"
     },
     {
       "value": "Cat",
-      "text": "Кот"
+      "text": "Cat"
     },
     {
       "value": "Other",
-      "text": "Другое"
+      "text": "Other"
     }
   ],
   "genderOptions": [
@@ -158,11 +158,11 @@
     },
     {
       "value": "She",
-      "text": "Она"
+      "text": "She"
     },
     {
       "value": "He",
-      "text": "Он"
+      "text": "He"
     }
   ],
   "colorOptions": [
@@ -172,39 +172,39 @@
     },
     {
       "value": "Black",
-      "text": "Черный"
+      "text": "Black"
     },
     {
       "value": "Brown",
-      "text": "Коричневый"
+      "text": "Brown"
     },
     {
       "value": "White",
-      "text": "Белый"
+      "text": "White"
     },
     {
       "value": "Red",
-      "text": "Красный"
+      "text": "Red"
     },
     {
       "value": "Gold",
-      "text": "Золотой"
+      "text": "Gold"
     },
     {
       "value": "Blue",
-      "text": "Синий"
+      "text": "Blue"
     },
     {
       "value": "Gray",
-      "text": "Серый"
+      "text": "Gray"
     },
     {
       "value": "Cream",
-      "text": "Кремовый"
+      "text": "Cream"
     },
     {
       "value": "Yellow",
-      "text": "Желтый"
+      "text": "Yellow"
     }
   ],
   "ageOptions": [
@@ -214,23 +214,23 @@
     },
     {
       "value": "Kitten",
-      "text": "Котенок"
+      "text": "Kitten"
     },
     {
       "value": "Puppy",
-      "text": "Щенок"
+      "text": "Puppy"
     },
     {
       "value": "Adolescent",
-      "text": "Подросток"
+      "text": "Adolescent"
     },
     {
       "value": "Adult",
-      "text": "Взрослое"
+      "text": "Adult"
     },
     {
       "value": "Senior",
-      "text": "Пожилое"
+      "text": "Senior"
     }
   ],
   "coatOptions": [
@@ -240,65 +240,47 @@
     },
     {
       "value": "Hairless",
-      "text": "Безшерстное"
+      "text": "Hairless"
     },
     {
       "value": "Short",
-      "text": "Короткошерстное"
+      "text": "Short"
     },
     {
       "value": "Medium",
-      "text": "Средней длины шерсть"
+      "text": "Medium"
     },
     {
       "value": "Long",
-      "text": "Длинношерстное"
+      "text": "Long"
     },
     {
       "value": "Wire",
-      "text": "Жесткая шерсть"
+      "text": "Wire"
     },
     {
       "value": "Curly",
-      "text": "Кудрявая шерсть"
+      "text": "Curly"
     },
     {
       "value": "Smooth",
-      "text": "Гладкая шерсть"
+      "text": "Smooth"
     },
     {
       "value": "Double",
-      "text": "Двойная шерсть"
+      "text": "Double"
     },
     {
       "value": "Silky",
-      "text": "Шелковистая шерсть"
+      "text": "Silky"
     },
     {
       "value": "Wavy",
-      "text": "Волнистая шерсть"
+      "text": "Wavy"
     },
     {
       "value": "Corded",
-      "text": "Шерсть в косичках"
-    }
-  ],
-  "sizeOptions": [
-    {
-      "value": "",
-      "text": ""
-    },
-    {
-      "value": "Small",
-      "text": "Маленький"
-    },
-    {
-      "value": "Medium",
-      "text": "Средний"
-    },
-    {
-      "value": "Large",
-      "text": "Большой"
+      "text": "Corded"
     }
   ],
   "coatPatternOptions": [
@@ -325,6 +307,24 @@
     {
       "value": "Striped",
       "text": "Striped"
+    }
+  ],
+  "sizeOptions": [
+    {
+      "value": "",
+      "text": ""
+    },
+    {
+      "value": "Small",
+      "text": "Small"
+    },
+    {
+      "value": "Medium",
+      "text": "Medium"
+    },
+    {
+      "value": "Large",
+      "text": "Large"
     }
   ],
   "regionOptions": {
@@ -1016,64 +1016,66 @@
     ]
   },
   "services": {
-    "serviceTitle": "Услуги",
-    "addServiceBtn": "Добавить услугу",
-    "service1": "Приюты для животных",
-    "service2": "Уход за питомцами",
-    "service3": "Страхование питомцев и юридические услуги",
-    "service4": "Кошачий кафе",
-    "service5": "Службы поиска и спасения животных",
-    "service6": "Обучение питомцев",
-    "service7": "Искусство и ремесла для питомцев",
-    "service8": "Присмотр за питомцами",
-    "service9": "Уход за питомцами в отсутствие владельца",
-    "service10": "Транспортировка питомцев",
-    "service11": "Другие услуги",
-    "service12": "Похоронные услуги для питомцев",
-    "service13": "Фотография питомцев",
-    "service14": "Жилье, где допускаются питомцы",
-    "service15": "Питомцеводы",
-    "service16": "Выгул собак",
-    "service17": "Товары и аксессуары для питомцев",
-    "service18": "Выставка питомцев",
-    "service19": "Ветеринарные услуги"
+    "serviceTitle": "Services",
+    "addServiceBtn": "Add Service",
+    "service1": "Animal Shelters",
+    "service2": "Pet Grooming",
+    "service3": "Pet Insurance and Legal Services",
+    "service4": "Cat Cafe",
+    "service5": "Pet Search and Rescue Services",
+    "service6": "Pet Training",
+    "service7": "Pet Art and Crafts",
+    "service8": "Pet Boarding",
+    "service9": "Pet Sitting",
+    "service10": "Pet Transportation",
+    "service11": "Other Services",
+    "service12": "Pet Burial Services",
+    "service13": "Pet Photography",
+    "service14": "Pet Friendly Accommodation",
+    "service15": "Pet Breeders",
+    "service16": "Dog Walking",
+    "service17": "Pet Supplies and Accessories",
+    "service18": "Pet Expo",
+    "service19": "Veterinary Services"
   },
-  "Animal Shelters": "Приюты для животных",
-  "Pet Grooming": "Уход за питомцами",
-  "Pet Insurance and Legal Services": "Страхование и юридические услуги для животных",
-  "Cat Cafe": "Кошачий кафе",
-  "Pet Search and Rescue Services": "Поиск и спасение животных",
-  "Pet Training": "Обучение питомцев",
-  "Pet Art and Crafts": "Искусство и ремесла для животных",
-  "Pet Boarding": "Будка для животных",
-  "Pet Sitting": "Уход за животными",
-  "Pet Transportation": "Перевозка животных",
-  "Other Services": "Другие услуги",
-  "Pet Burial Services": "Услуги по захоронению животных",
-  "Pet Photography": "Фотосессии с питомцами",
-  "Pet Friendly Accommodation": "Жилье, дружественное к животным",
-  "Pet Breeders": "Разведение животных",
-  "Dog Walking": "Выгул собак",
-  "Pet Supplies and Accessories": "Товары для животных и аксессуары",
-  "Pet Expo": "Выставка животных",
-  "Veterinary Services": "Ветеринарные услуги",
+  "": "",
+  "Home": "Home",
+  "Animal Shelters": "Animal Shelters",
   "Dedicated shelters that provide temporary homes and care for abandoned or stray animals until they can be adopted.": "Dedicated shelters that provide temporary homes and care for abandoned or stray animals until they can be adopted.",
+  "Pet Grooming": "Pet Grooming",
   "Services that offer grooming, bathing, and styling for pets to keep them clean and well-groomed.": "Services that offer grooming, bathing, and styling for pets to keep them clean and well-groomed.",
+  "Pet Insurance and Legal Services": "Pet Insurance and Legal Services",
   "Services that provide insurance coverage for pets and legal assistance related to pet ownership and welfare.": "Services that provide insurance coverage for pets and legal assistance related to pet ownership and welfare.",
+  "Cat Cafe": "Cat Cafe",
   "Cafes or establishments where customers can enjoy a beverage and interact with resident cats in a relaxed environment.": "Cafes or establishments where customers can enjoy a beverage and interact with resident cats in a relaxed environment.",
+  "Pet Search and Rescue Services": "Pet Search and Rescue Services",
   "Organizations or services dedicated to locating and rescuing lost or missing pets.": "Organizations or services dedicated to locating and rescuing lost or missing pets.",
+  "Pet Training": "Pet Training",
   "Training programs and services to help pets develop good behavior, obedience, and social skills.": "Training programs and services to help pets develop good behavior, obedience, and social skills.",
+  "Pet Art and Crafts": "Pet Art and Crafts",
   "Artists or businesses that create artwork and crafts inspired by pets, such as portraits, sculptures, or customized pet accessories.": "Artists or businesses that create artwork and crafts inspired by pets, such as portraits, sculptures, or customized pet accessories.",
+  "Pet Boarding": "Pet Boarding",
   "Facilities or services that offer temporary boarding and care for pets when their owners are away.": "Facilities or services that offer temporary boarding and care for pets when their owners are away.",
+  "Pet Sitting": "Pet Sitting",
   "Professional pet sitters who offer in-home care and companionship for pets when their owners are away.": "Professional pet sitters who offer in-home care and companionship for pets when their owners are away.",
+  "Pet Transportation": "Pet Transportation",
   "Specialized transportation services for pets, including pet taxi, relocation, and safe travel arrangements.": "Specialized transportation services for pets, including pet taxi, relocation, and safe travel arrangements.",
+  "Other Services": "Other Services",
   "A category that includes services not specifically mentioned, covering a range of additional pet-related offerings.": "A category that includes services not specifically mentioned, covering a range of additional pet-related offerings.",
+  "Pet Burial Services": "Pet Burial Services",
   "Services that offer respectful and compassionate handling of pet burials and cremations.": "Services that offer respectful and compassionate handling of pet burials and cremations.",
+  "Pet Photography": "Pet Photography",
   "Professional photographers specializing in capturing beautiful and memorable images of pets.": "Professional photographers specializing in capturing beautiful and memorable images of pets.",
+  "Pet Friendly Accommodation": "Pet Friendly Accommodation",
   "Hotels, vacation rentals, or accommodations that welcome pets and provide suitable amenities and services for them.": "Hotels, vacation rentals, or accommodations that welcome pets and provide suitable amenities and services for them.",
+  "Pet Breeders": "Pet Breeders",
   "Professional breeders who selectively breed and raise specific breeds or types of pets.": "Professional breeders who selectively breed and raise specific breeds or types of pets.",
+  "Dog Walking": "Dog Walking",
   "Professional dog walkers who provide exercise and companionship for dogs during regular walks.": "Professional dog walkers who provide exercise and companionship for dogs during regular walks.",
+  "Pet Supplies and Accessories": "Pet Supplies and Accessories",
   "Stores or services that provide a wide range of pet supplies, including food, toys, and accessories.": "Stores or services that provide a wide range of pet supplies, including food, toys, and accessories.",
+  "Pet Expo": "Pet Expo",
   "Exhibitions and events dedicated to showcasing various pet-related products, services, and activities.": "Exhibitions and events dedicated to showcasing various pet-related products, services, and activities.",
+  "Veterinary Services": "Veterinary Services",
   "Medical care, health services, and treatments provided by licensed veterinarians for pets.": "Medical care, health services, and treatments provided by licensed veterinarians for pets."
 }
