@@ -269,12 +269,16 @@ module.exports.createPet = async (req, res, next) => {
     included_segments: ['Subscribed Users'], // Send to all subscribed users
   };
 
-  oneSignalClient.createNotification(notification, function (err, response) {
-    if (err) {
-      console.log('Error sending push notification:', err);
-    } else {
-      console.log('Push notification sent successfully:', response);
-    }
+  await new Promise((resolve, reject) => {
+    oneSignalClient.createNotification(notification, function (err, response) {
+      if (err) {
+        console.log('Error sending push notification:', err);
+        reject(err);
+      } else {
+        console.log('Push notification sent successfully:', response);
+        resolve();
+      }
+    });
   });
 
   req.flash('success', 'Successfully created a new pet');
