@@ -250,36 +250,31 @@ module.exports.createPet = async (req, res, next) => {
   await pet.save();
 
   //console.log(pet);
+  const client = new OneSignal.Client(process.env.oneSignal_YOUR_APP_ID, process.env.oneSignal_YOUR_APP_AUTH_KEY);
 
   // Send push notification to all subscribed users
-  const oneSignalClient = new OneSignal.Client({
-    app: {
-      appId: process.env.oneSignal_YOUR_APP_ID,
-      appAuthKey: process.env.oneSignal_YOUR_APP_AUTH_KEY,
-    },
-  });
+  // const oneSignalClient = new OneSignal.Client({
+  //   app: {
+  //     appId: process.env.oneSignal_YOUR_APP_ID,
+  //     appAuthKey: process.env.oneSignal_YOUR_APP_AUTH_KEY,
+  //   },
+  // });
 
   const notification = {
-    contents: {
-      en: 'New pet added! Check it out.',
-    },
-    headings: {
-      en: 'New Pet Alert',
-    },
-    included_segments: ['Subscribed Users'], // Send to all subscribed users
+    contents: { en: 'New pet added! Check it out.' },
+    included_segments: ['Subscribed Users'],
   };
 
-  await new Promise((resolve, reject) => {
-    oneSignalClient.createNotification(notification, function (err, response) {
-      if (err) {
-        console.log('Error sending push notification:', err);
-        reject(err);
-      } else {
-        console.log('Push notification sent successfully:', response);
-        resolve();
-      }
+  client
+    .createNotification(notification)
+    .then((response) => {
+      console.log('Push notification sent successfully:', response.body);
+      // Additional code or actions after sending the notification
+    })
+    .catch((error) => {
+      console.log('Error sending push notification:', error);
+      // Handling the error, if any
     });
-  });
 
   req.flash('success', 'Successfully created a new pet');
   res.redirect(`/pets/${pet._id}`);
