@@ -8,6 +8,8 @@ const fns = require('date-fns');
 const path = require('path');
 const axios = require('axios');
 const fs = require('fs');
+const OneSignal = require('onesignal-node');
+
 // const { genderOptions } = require('../utils/userSelectOptions');
 // const pdf = require("html-pdf");
 // const puppeteer = require("puppeteer");
@@ -245,7 +247,33 @@ module.exports.createPet = async (req, res, next) => {
   // Save the pet to the database
   await pet.save();
 
-  console.log(pet);
+  //console.log(pet);
+
+  // Send push notification to all subscribed users
+  const oneSignalClient = new OneSignal.Client({
+    app: {
+      appId: process.env.oneSignal_YOUR_APP_ID,
+      appAuthKey: process.env.oneSignal_YOUR_APP_AUTH_KEY,
+    },
+  });
+
+  const notification = {
+    contents: {
+      en: 'New pet added! Check it out.',
+    },
+    headings: {
+      en: 'New Pet Alert',
+    },
+    included_segments: ['Subscribed Users'], // Send to all subscribed users
+  };
+
+  oneSignalClient.createNotification(notification, function (err, response) {
+    if (err) {
+      console.log('Error sending push notification:', err);
+    } else {
+      console.log('Push notification sent successfully:', response);
+    }
+  });
 
   req.flash('success', 'Successfully created a new pet');
   res.redirect(`/pets/${pet._id}`);
