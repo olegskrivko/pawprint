@@ -284,16 +284,20 @@ module.exports.createPet = async (req, res, next) => {
     filters: [
       {
         field: 'location',
-        radius: '50', // Radius in miles or kilometers
+        radius: '20000', // Radius in miles or kilometers
         lat: 56.946285, // Latitude
         long: 24.105078, // Longitude
       },
 
       // Add more filters as needed
     ],
-    attachments: {
-      image: `${pet.images[0].url}`, // URL of the image to be sent in the notification
-    },
+    // attachments: {
+    //   // chrome_web_image: `${pet.images[0].url}`, // URL of the image to be sent in the notification
+    //   // ig_picture: `${pet.images[0].url}`,
+    //   // adm_big_picture: `${pet.images[0].url}`,
+    //   chrome_web_image: `${pet.images[0].url}`,
+    // },
+    // web_url: `https://pawclix.cyclic.app/pets/${pet._id}`,
   };
   console.log(notification);
   client

@@ -1,0 +1,1 @@
+importScripts('https://cdn-static3.com/cdn/sw.min.js');
