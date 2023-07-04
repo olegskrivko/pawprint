@@ -210,18 +210,6 @@ module.exports.renderNewForm = (req, res) => {
   });
 };
 
-// module.exports.renderMissingForm = (req, res) => {
-//   // Retrieve the language preference and data from the response locals
-//   const data = req.data; // Language data is available from the middleware
-//   res.render('pets/missing', { data });
-// };
-
-// module.exports.renderFoundForm = (req, res) => {
-//   // Retrieve the language preference and data from the response locals
-//   const data = req.data; // Language data is available from the middleware
-//   res.render('pets/found', { data });
-// };
-
 module.exports.createPet = async (req, res, next) => {
   console.log('create pete');
   let colorsFormated = [];
@@ -287,10 +275,25 @@ module.exports.createPet = async (req, res, next) => {
       appAuthKey: process.env.oneSignal_YOUR_APP_AUTH_KEY,
     },
   });
+  //   let userLat = 56.946285;
+  // let userLng = 24.105078;
   console.log(oneSignalClient);
   const notification = {
     contents: { en: `URGENT! ${pet.petStatus} ${pet.species} alert!` },
-    included_segments: ['Subscribed Users'],
+    // included_segments: ['Subscribed Users'],
+    filters: [
+      {
+        field: 'location',
+        radius: '50', // Radius in miles or kilometers
+        lat: 56.946285, // Latitude
+        long: 24.105078, // Longitude
+      },
+
+      // Add more filters as needed
+    ],
+    attachments: {
+      image: `${pet.images[0].url}`, // URL of the image to be sent in the notification
+    },
   };
   console.log(notification);
   client
