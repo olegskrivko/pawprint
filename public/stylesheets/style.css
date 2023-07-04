@@ -158,3 +158,24 @@ body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+/*** ABOUT ***/
+/* about/feedback.ejs */
+.custom-feedback-container {
+  max-width: 600px;
+}
+
+/* about/support.ejs */
+/* about/index.ejs */
+.custom-about-text {
+  text-align: justify;
+}
+
+/* MEDIA */
+/* services/index.ejs */
+
+@media (min-width: 768px) {
+  .no-padding-md {
+    padding-left: 0 !important;
+  }
+}

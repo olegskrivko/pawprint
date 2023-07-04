@@ -1,0 +1,1166 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "pets": "Pets",
+    "services": "Services",
+    "login": "Log in",
+    "signup": "Sign up",
+    "greeting": "Hello"
+  },
+  "footer": {
+    "allRightsReserved": "All rights reserved",
+    "contentByAI": "Generated text content by AI model - ChatGPT"
+  },
+  "home": {
+    "appName": "PawClix",
+    "welcomeTitle": "Welcome to ",
+    "welcomeText": "Find your furry friend with PawClix.",
+    "welcomeBtn": "Find a Pet",
+    "loginBtn": "Log in",
+    "signupBtn": "Sign up"
+  },
+  "aboutPage": {
+    "titles": {
+      "section1": "About Us",
+      "section2": "Our Story",
+      "section3": "Our Team",
+      "section4": "Mission Statement"
+    },
+    "descriptions": {
+      "section1": "Learn more about our company and mission.",
+      "section2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "section3": "Meet our talented team members who are passionate about our work.",
+      "section4": "We are committed to providing high-quality products and services that exceed customer expectations."
+    },
+    "labels": {
+      "name": "Name",
+      "email": "Email",
+      "submitButton": "Submit",
+      "cancelButton": "Cancel",
+      "supportButton": "Support",
+      "leaveFeedbackButton": "Leave Feedback"
+    },
+    "buttons": {
+      "submit": "Submit",
+      "cancel": "Cancel",
+      "save": "Save",
+      "support": "Support",
+      "leaveFeedback": "Leave Feedback",
+      "send": "Send",
+      "findaPet": "Find a Pet",
+      "donate": "Donate",
+      "filters": "Filters",
+      "reportaPet": "Report a Pet",
+      "search": "Search",
+      "clear": "Clear",
+      "compare": "Compare",
+      "goBack": "Go Back",
+      "addPet": "Add Pet",
+      "addService": "Add Service"
+    },
+    "links": {
+      "home": "Home",
+      "contact": "Contact Us",
+      "privacyPolicy": "Privacy Policy"
+    },
+    "errorMessages": {
+      "requiredField": "This field is required.",
+      "invalidEmail": "Invalid email address.",
+      "passwordMismatch": "Passwords do not match."
+    },
+    "successMessages": {
+      "savedSuccessfully": "Data saved successfully.",
+      "submittedSuccessfully": "Form submitted successfully."
+    },
+    "notifications": {
+      "error": "An error occurred. Please try again later.",
+      "notification": "You have a new message.",
+      "alert": "Warning: Unauthorized access."
+    },
+    "placeholders": {
+      "name": "Enter your name",
+      "email": "Enter your email",
+      "password": "Enter your password"
+    },
+    "tooltips": {
+      "hoverText": "Hover over me for more information."
+    },
+    "menuItems": {
+      "home": "Home",
+      "about": "About Us",
+      "services": "Our Services",
+      "contact": "Contact Us"
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page",
+      "of": "of"
+    },
+    "confirmationMessages": {
+      "delete": "Are you sure you want to delete this item?"
+    },
+    "termsAndConditions": "By using this website, you agree to our Terms and Conditions.",
+    "privacyPolicy": "Our privacy policy outlines how we handle your personal information."
+  },
+
+  "about": {
+    "ourGoalTitle": "Our Goal",
+    "ourGoalText1": "Our app utilizes advanced technology to facilitate the reunification of lost pets with their owners. We provide a platform for posting lost pet listings and actively work to connect owners with individuals who have found them.",
+    "ourGoalText2": "Additionally, our app connects you with a wide range of pet-related services, including veterinary clinics, groomers, trainers, and more. We ensure that you have access to the right resources for your pet's specific needs.",
+    "featureTitle": "Features",
+    "featureSubtitle1": "Mobile-Optimized and Secure Platform",
+    "featureText1": "Our mobile-friendly app uses the latest technologies to provide a safe and secure platform for reuniting lost pets with their owners.",
+    "featureSubtitle2": "Pet Health and Care Information",
+    "featureText2": "Our app provides valuable information on pet health and emergency care, including the importance of vaccinations and regular check-ups to ensure your pet stays healthy and happy.",
+    "featureSubtitle3": "Community Resources",
+    "featureText3": "A section that provides information on local animal shelters, veterinarians, and other resources for pet owners.",
+    "featureSubtitle4": "Tips and Resources",
+    "featureText4": "A section that provides tips and resources for pet owners on how to prevent their pets from getting lost, as well as what to do if their pet goes missing.",
+    "featureSubtitle5": "Pet Profile Creation",
+    "featureText5": "A feature that allows users to create a profile for their lost pet, including a photo, description, and contact information.",
+    "featureSubtitle6": "Social Media Integration",
+    "featureText6": "Integration with social media platforms to help spread the word about lost pets and facilitate communication among users.",
+    "featureSubtitle7": "Searchable Database",
+    "featureText7": "A searchable database of lost and found pets, which allows users to search for pets based on location, breed, color, and other characteristics.",
+    "featureSubtitle8": "Lost and Found Pet Map",
+    "featureText8": "A feature that displays a map of lost and found pets in the area, allowing users to easily locate and identify lost pets.",
+    "featureSubtitle9": "Lost Pet Flyers",
+    "featureText9": "A feature that allows users to easily create and print lost pet flyers to distribute in their local community.",
+    "supportOurProjectTitle": "Support Our Project",
+    "supportOurProjectText": "Your contribution can help us continue our mission to reunite lost pets with their families and provide them with the care they need. Every little bit counts and we appreciate your support!",
+    "supportBtn": "Support",
+    "shareYourThoughtsTitle": "Share Your Thoughts",
+    "shareYourThoughtsText": "Your feedback is incredibly valuable to us as we strive to improve our app and provide the best possible service to pet owners. We appreciate any comments, suggestions, or criticisms you may have, and we will use them to make our app even better. Please take a moment to share your thoughts with us.",
+    "leaveFeedbackBtn": "Leave feedback",
+    "sponsorsTitle": "Sponsors",
+    "sponsorsText": "Our sponsors play a crucial role in helping us continue our mission to reunite lost pets with their families and provide them with the care they need. Their generous support not only helps us keep the lights on, but also makes a real difference in the lives of lost and abandoned animals."
+  },
+  "pets": {
+    "filterBtn": "Filters",
+    "compareBtn": "Compare",
+    "reportPetBtn": "Report pet",
+    "searchBtn": "Search",
+    "clearBtn": "Clear",
+    "prevPageBtn": "Prev Page",
+    "nextPageBtn": "Next Page",
+    "filterPetStatus": "Pet Status:",
+    "filterSpecies": "Species:",
+    "filterPetGender": "Pet Gender:",
+    "filterBreed": "Breed:",
+    "filterPetColor": "Pet color:",
+    "filterDistance": "Distance (km):",
+    "filterPetAge": "Pet Age:",
+    "filterCoatType": "Coat Type:",
+    "filterPattern": "Coat Pattern:",
+    "filterMainColor": "Main color:",
+    "filterSecondColor": "Second color:",
+    "filterThirdColor": "Third color:",
+    "filterPetSize": "Pet Size:",
+    "filterIdentifier": "Identifier:",
+    "filterLocation": "Location:",
+    "filterName": "Pet’s name:",
+    "filterDescription": "Description:",
+    "filterUploadImages": "Upload Images:",
+    "filterLostDate": "Lost or Found Date:"
+  },
+  "petsshow": {
+    "deleteBtn": "Delete",
+    "saveBtn": "Save",
+    "editBtn": "Edit",
+    "sendBtn": "Send",
+    "petViews": "Views",
+    "downloadBtn": "Download",
+    "showpetspecies": "Species:",
+    "showpetbreed": "Breed:",
+    "showpetcoatpattern": "Coat Pattern:",
+    "showpetgender": "Pet's Gender:",
+    "showpetcolor1": "First Color:",
+    "showpetcolor2": "Second Color:",
+    "showpetcolor3": "Third Color:",
+    "showpetlastseen": "Last Seen:",
+    "showpetage": "Age:",
+    "showpetcoat": "Coat Type:",
+    "showpetsize": "Pet's Size:",
+    "showpetstatus": "Pet Status:",
+    "showpetidentifier": "Identifier:",
+    "showpetdescription": "Description",
+    "showpetdistance": "Distance (km):"
+  },
+  "statusOptions": [
+    {
+      "value": "",
+      "text": ""
+    },
+    {
+      "value": "Missing",
+      "text": "Missing"
+    },
+    {
+      "value": "Found",
+      "text": "Found"
+    },
+    {
+      "value": "Reunited",
+      "text": "Reunited"
+    },
+    {
+      "value": "Adopted",
+      "text": "Adopted"
+    },
+    {
+      "value": "Fostered",
+      "text": "Fostered"
+    },
+    {
+      "value": "Deceased",
+      "text": "Deceased"
+    }
+  ],
+  "speciesOptions": [
+    {
+      "value": "",
+      "text": ""
+    },
+    {
+      "value": "Dog",
+      "text": "Dog"
+    },
+    {
+      "value": "Cat",
+      "text": "Cat"
+    },
+    {
+      "value": "Other",
+      "text": "Other"
+    }
+  ],
+  "genderOptions": [
+    {
+      "value": "",
+      "text": ""
+    },
+    {
+      "value": "She",
+      "text": "She"
+    },
+    {
+      "value": "He",
+      "text": "He"
+    }
+  ],
+  "colorOptions": [
+    {
+      "value": "",
+      "text": ""
+    },
+    {
+      "value": "Black",
+      "text": "Black"
+    },
+    {
+      "value": "Brown",
+      "text": "Brown"
+    },
+    {
+      "value": "White",
+      "text": "White"
+    },
+    {
+      "value": "Red",
+      "text": "Red"
+    },
+    {
+      "value": "Gold",
+      "text": "Gold"
+    },
+    {
+      "value": "Blue",
+      "text": "Blue"
+    },
+    {
+      "value": "Gray",
+      "text": "Gray"
+    },
+    {
+      "value": "Cream",
+      "text": "Cream"
+    },
+    {
+      "value": "Yellow",
+      "text": "Yellow"
+    }
+  ],
+  "ageOptions": [
+    {
+      "value": "",
+      "text": ""
+    },
+    {
+      "value": "Kitten",
+      "text": "Kitten"
+    },
+    {
+      "value": "Puppy",
+      "text": "Puppy"
+    },
+    {
+      "value": "Adolescent",
+      "text": "Adolescent"
+    },
+    {
+      "value": "Adult",
+      "text": "Adult"
+    },
+    {
+      "value": "Senior",
+      "text": "Senior"
+    }
+  ],
+  "coatOptions": [
+    {
+      "value": "",
+      "text": ""
+    },
+    {
+      "value": "Hairless",
+      "text": "Hairless"
+    },
+    {
+      "value": "Short",
+      "text": "Short"
+    },
+    {
+      "value": "Medium",
+      "text": "Medium"
+    },
+    {
+      "value": "Long",
+      "text": "Long"
+    },
+    {
+      "value": "Wire",
+      "text": "Wire"
+    },
+    {
+      "value": "Curly",
+      "text": "Curly"
+    },
+    {
+      "value": "Smooth",
+      "text": "Smooth"
+    },
+    {
+      "value": "Double",
+      "text": "Double"
+    },
+    {
+      "value": "Silky",
+      "text": "Silky"
+    },
+    {
+      "value": "Wavy",
+      "text": "Wavy"
+    },
+    {
+      "value": "Corded",
+      "text": "Corded"
+    }
+  ],
+  "coatPatternOptions": [
+    {
+      "value": "",
+      "text": ""
+    },
+    {
+      "value": "Monochrome",
+      "text": "Monochrome"
+    },
+    {
+      "value": "Bicolor",
+      "text": "Bicolor"
+    },
+    {
+      "value": "Tricolor",
+      "text": "Tricolor"
+    },
+    {
+      "value": "Spotted",
+      "text": "Spotted"
+    },
+    {
+      "value": "Striped",
+      "text": "Striped"
+    }
+  ],
+  "sizeOptions": [
+    {
+      "value": "",
+      "text": ""
+    },
+    {
+      "value": "Small",
+      "text": "Small"
+    },
+    {
+      "value": "Medium",
+      "text": "Medium"
+    },
+    {
+      "value": "Large",
+      "text": "Large"
+    }
+  ],
+  "regionOptions": {
+    "all": [
+      {
+        "value": "",
+        "text": ""
+      }
+    ],
+    "city": [
+      {
+        "value": "Riga",
+        "text": "Riga"
+      },
+      {
+        "value": "Daugavpils",
+        "text": "Daugavpils"
+      },
+      {
+        "value": "Jelgava",
+        "text": "Jelgava"
+      },
+      {
+        "value": "Jurmala",
+        "text": "Jurmala"
+      },
+      {
+        "value": "Liepaja",
+        "text": "Liepaja"
+      },
+      {
+        "value": "Rezekne",
+        "text": "Rezekne"
+      },
+      {
+        "value": "Valmiera",
+        "text": "Valmiera"
+      },
+      {
+        "value": "Ventspils",
+        "text": "Ventspils"
+      }
+    ],
+    "municipality": [
+      {
+        "value": "Adazu nov",
+        "text": "Adazu nov"
+      },
+      {
+        "value": "Aizkraukles nov",
+        "text": "Aizkraukles nov"
+      },
+      {
+        "value": "Aluksnes nov",
+        "text": "Aluksnes nov"
+      },
+      {
+        "value": "Augsdaugavas nov",
+        "text": "Augsdaugavas nov"
+      },
+      {
+        "value": "Balvu nov",
+        "text": "Balvu nov"
+      },
+      {
+        "value": "Bauskas nov",
+        "text": "Bauskas nov"
+      },
+      {
+        "value": "Cesu nov",
+        "text": "Cesu nov"
+      },
+      {
+        "value": "Dienvidkurzemes nov",
+        "text": "Dienvidkurzemes nov"
+      },
+      {
+        "value": "Dobeles nov",
+        "text": "Dobeles nov"
+      },
+      {
+        "value": "Gulbenes nov",
+        "text": "Gulbenes nov"
+      },
+      {
+        "value": "Jekabpils nov",
+        "text": "Jekabpils nov"
+      },
+      {
+        "value": "Jelgavas nov",
+        "text": "Jelgavas nov"
+      },
+      {
+        "value": "Kekavas nov",
+        "text": "Kekavas nov"
+      },
+      {
+        "value": "Kraslavas nov",
+        "text": "Kraslavas nov"
+      },
+      {
+        "value": "Kuldigas nov",
+        "text": "Kuldigas nov"
+      },
+      {
+        "value": "Limbazu novads",
+        "text": "Limbazu novads"
+      },
+      {
+        "value": "Livanu nov",
+        "text": "Livanu nov"
+      },
+      {
+        "value": "Ludzas nov",
+        "text": "Ludzas nov"
+      },
+      {
+        "value": "Madonas nov",
+        "text": "Madonas nov"
+      },
+      {
+        "value": "Marupes nov",
+        "text": "Marupes nov"
+      },
+      {
+        "value": "Ogres nov",
+        "text": "Ogres nov"
+      },
+      {
+        "value": "Olaines nov",
+        "text": "Olaines nov"
+      },
+      {
+        "value": "Preilu nov",
+        "text": "Preilu nov"
+      },
+      {
+        "value": "Rezeknes nov",
+        "text": "Rezeknes nov"
+      },
+      {
+        "value": "Ropazu nov",
+        "text": "Ropazu nov"
+      },
+      {
+        "value": "Salaspils nov",
+        "text": "Salaspils nov"
+      },
+      {
+        "value": "Saldus nov",
+        "text": "Saldus nov"
+      },
+      {
+        "value": "Saulkrastu nov",
+        "text": "Saulkrastu nov"
+      },
+      {
+        "value": "Siguldas nov",
+        "text": "Siguldas nov"
+      },
+      {
+        "value": "Smiltenes nov",
+        "text": "Smiltenes nov"
+      },
+      {
+        "value": "Talsu nov",
+        "text": "Talsu nov"
+      },
+      {
+        "value": "Tukuma nov",
+        "text": "Tukuma nov"
+      },
+      {
+        "value": "Valkas nov",
+        "text": "Valkas nov"
+      },
+      {
+        "value": "Valmieras nov",
+        "text": "Valmieras nov"
+      },
+      {
+        "value": "Varaklanu nov",
+        "text": "Varaklanu nov"
+      },
+      {
+        "value": "Ventspils nov",
+        "text": "Ventspils nov"
+      }
+    ]
+  },
+  "breedsOptions": {
+    "all": [
+      {
+        "value": "",
+        "text": ""
+      }
+    ],
+    "catOptiongroupLabel": [
+      {
+        "value": "Cat Breed",
+        "text": "Cat Breed"
+      }
+    ],
+    "dogOptiongroupLabel": [
+      {
+        "value": "Dog Breed",
+        "text": "Dog Breed"
+      }
+    ],
+    "cats": [
+      {
+        "value": "Abyssinian",
+        "text": "Abyssinian"
+      },
+      {
+        "value": "American Bobtail",
+        "text": "American Bobtail"
+      },
+      {
+        "value": "American Shorthair",
+        "text": "American Shorthair"
+      },
+      {
+        "value": "Australian Mist",
+        "text": "Australian Mist"
+      },
+      {
+        "value": "Balinese",
+        "text": "Balinese"
+      },
+      {
+        "value": "Bengal",
+        "text": "Bengal"
+      },
+      {
+        "value": "Birman",
+        "text": "Birman"
+      },
+      {
+        "value": "Bombay",
+        "text": "Bombay"
+      },
+      {
+        "value": "British Shorthair",
+        "text": "British Shorthair"
+      },
+      {
+        "value": "Burmese",
+        "text": "Burmese"
+      },
+      {
+        "value": "Burmilla",
+        "text": "Burmilla"
+      },
+      {
+        "value": "Chartreux",
+        "text": "Chartreux"
+      },
+      {
+        "value": "Chausie",
+        "text": "Chausie"
+      },
+      {
+        "value": "Cornish Rex",
+        "text": "Cornish Rex"
+      },
+      {
+        "value": "Cymric",
+        "text": "Cymric"
+      },
+      {
+        "value": "Devon Rex",
+        "text": "Devon Rex"
+      },
+      {
+        "value": "Egyptian Mau",
+        "text": "Egyptian Mau"
+      },
+      {
+        "value": "Exotic Shorthair",
+        "text": "Exotic Shorthair"
+      },
+      {
+        "value": "Himalayan",
+        "text": "Himalayan"
+      },
+      {
+        "value": "Highlander",
+        "text": "Highlander"
+      },
+      {
+        "value": "Japanese Bobtail",
+        "text": "Japanese Bobtail"
+      },
+      {
+        "value": "Korat",
+        "text": "Korat"
+      },
+      {
+        "value": "LaPerm",
+        "text": "LaPerm"
+      },
+      {
+        "value": "Maine Coon",
+        "text": "Maine Coon"
+      },
+      {
+        "value": "Manx",
+        "text": "Manx"
+      },
+      {
+        "value": "Munchkin",
+        "text": "Munchkin"
+      },
+      {
+        "value": "Nebelung",
+        "text": "Nebelung"
+      },
+      {
+        "value": "Norwegian Forest Cat",
+        "text": "Norwegian Forest Cat"
+      },
+      {
+        "value": "Oriental Shorthair",
+        "text": "Oriental Shorthair"
+      },
+      {
+        "value": "Peterbald",
+        "text": "Peterbald"
+      },
+      {
+        "value": "Persian",
+        "text": "Persian"
+      },
+      {
+        "value": "Pixiebob",
+        "text": "Pixiebob"
+      },
+      {
+        "value": "Ragdoll",
+        "text": "Ragdoll"
+      },
+      {
+        "value": "Russian Blue",
+        "text": "Russian Blue"
+      },
+      {
+        "value": "Scottish Fold",
+        "text": "Scottish Fold"
+      },
+      {
+        "value": "Selkirk Rex",
+        "text": "Selkirk Rex"
+      },
+      {
+        "value": "Serengeti",
+        "text": "Serengeti"
+      },
+      {
+        "value": "Siberian",
+        "text": "Siberian"
+      },
+      {
+        "value": "Siamese",
+        "text": "Siamese"
+      },
+      {
+        "value": "Singapura",
+        "text": "Singapura"
+      },
+      {
+        "value": "Snowshoe",
+        "text": "Snowshoe"
+      },
+      {
+        "value": "Sokoke",
+        "text": "Sokoke"
+      },
+      {
+        "value": "Sphynx",
+        "text": "Sphynx"
+      },
+      {
+        "value": "Tonkinese",
+        "text": "Tonkinese"
+      },
+      {
+        "value": "Toyger",
+        "text": "Toyger"
+      },
+      {
+        "value": "Turkish Angora",
+        "text": "Turkish Angora"
+      },
+      {
+        "value": "Turkish Van",
+        "text": "Turkish Van"
+      }
+    ],
+    "dogs": [
+      {
+        "value": "Afghan Hound",
+        "text": "Afghan Hound"
+      },
+      {
+        "value": "Akita",
+        "text": "Akita"
+      },
+      {
+        "value": "Akita Inu",
+        "text": "Akita Inu"
+      },
+      {
+        "value": "Alaskan Malamute",
+        "text": "Alaskan Malamute"
+      },
+      {
+        "value": "American Bulldog",
+        "text": "American Bulldog"
+      },
+      {
+        "value": "Australian Cattle Dog",
+        "text": "Australian Cattle Dog"
+      },
+      {
+        "value": "Basset Hound",
+        "text": "Basset Hound"
+      },
+      {
+        "value": "Basenji",
+        "text": "Basenji"
+      },
+      {
+        "value": "Bernese Mountain Dog",
+        "text": "Bernese Mountain Dog"
+      },
+      {
+        "value": "Bloodhound",
+        "text": "Bloodhound"
+      },
+      {
+        "value": "Boston Terrier",
+        "text": "Boston Terrier"
+      },
+      {
+        "value": "Bullmastiff",
+        "text": "Bullmastiff"
+      },
+      {
+        "value": "Cairn Terrier",
+        "text": "Cairn Terrier"
+      },
+      {
+        "value": "Cane Corso",
+        "text": "Cane Corso"
+      },
+      {
+        "value": "Cavalier King Charles Spaniel",
+        "text": "Cavalier King Charles Spaniel"
+      },
+      {
+        "value": "Chesapeake Bay Retriever",
+        "text": "Chesapeake Bay Retriever"
+      },
+      {
+        "value": "Chinese Crested",
+        "text": "Chinese Crested"
+      },
+      {
+        "value": "Chinese Shar-Pei",
+        "text": "Chinese Shar-Pei"
+      },
+      {
+        "value": "Collie",
+        "text": "Collie"
+      },
+      {
+        "value": "Corgi",
+        "text": "Corgi"
+      },
+      {
+        "value": "Dandie Dinmont Terrier",
+        "text": "Dandie Dinmont Terrier"
+      },
+      {
+        "value": "Dogo Argentino",
+        "text": "Dogo Argentino"
+      },
+      {
+        "value": "Dogo Canario",
+        "text": "Dogo Canario"
+      },
+      {
+        "value": "English Bulldog",
+        "text": "English Bulldog"
+      },
+      {
+        "value": "English Setter",
+        "text": "English Setter"
+      },
+      {
+        "value": "English Springer Spaniel",
+        "text": "English Springer Spaniel"
+      },
+      {
+        "value": "French Bulldog",
+        "text": "French Bulldog"
+      },
+      {
+        "value": "German Shepherd",
+        "text": "German Shepherd"
+      },
+      {
+        "value": "Golden Retriever",
+        "text": "Golden Retriever"
+      },
+      {
+        "value": "Great Dane",
+        "text": "Great Dane"
+      },
+      {
+        "value": "Great Pyrenees",
+        "text": "Great Pyrenees"
+      },
+      {
+        "value": "Havanese",
+        "text": "Havanese"
+      },
+      {
+        "value": "Irish Terrier",
+        "text": "Irish Terrier"
+      },
+      {
+        "value": "Irish Wolfhound",
+        "text": "Irish Wolfhound"
+      },
+      {
+        "value": "Italian Greyhound",
+        "text": "Italian Greyhound"
+      },
+      {
+        "value": "Jack Russell Terrier",
+        "text": "Jack Russell Terrier"
+      },
+      {
+        "value": "Japanese Chin",
+        "text": "Japanese Chin"
+      },
+      {
+        "value": "Keeshond",
+        "text": "Keeshond"
+      },
+      {
+        "value": "Labrador Retriever",
+        "text": "Labrador Retriever"
+      },
+      {
+        "value": "Leonberger",
+        "text": "Leonberger"
+      },
+      {
+        "value": "Lhasa Apso",
+        "text": "Lhasa Apso"
+      },
+      {
+        "value": "Maltese",
+        "text": "Maltese"
+      },
+      {
+        "value": "Mastiff",
+        "text": "Mastiff"
+      },
+      {
+        "value": "Miniature Bull Terrier",
+        "text": "Miniature Bull Terrier"
+      },
+      {
+        "value": "Newfoundland",
+        "text": "Newfoundland"
+      },
+      {
+        "value": "Norfolk Terrier",
+        "text": "Norfolk Terrier"
+      },
+      {
+        "value": "Norwegian Buhund",
+        "text": "Norwegian Buhund"
+      },
+      {
+        "value": "Norwegian Elkhound",
+        "text": "Norwegian Elkhound"
+      },
+      {
+        "value": "Norwich Terrier",
+        "text": "Norwich Terrier"
+      },
+      {
+        "value": "Pekingese",
+        "text": "Pekingese"
+      },
+      {
+        "value": "Petit Basset Griffon Vendeen",
+        "text": "Petit Basset Griffon Vendeen"
+      },
+      {
+        "value": "Pit Bull Terrier",
+        "text": "Pit Bull Terrier"
+      },
+      {
+        "value": "Pomeranian",
+        "text": "Pomeranian"
+      },
+      {
+        "value": "Poodle",
+        "text": "Poodle"
+      },
+      {
+        "value": "Pug",
+        "text": "Pug"
+      },
+      {
+        "value": "Rottweiler",
+        "text": "Rottweiler"
+      },
+      {
+        "value": "Saint Bernard",
+        "text": "Saint Bernard"
+      },
+      {
+        "value": "Samoyed",
+        "text": "Samoyed"
+      },
+      {
+        "value": "Scottish Terrier",
+        "text": "Scottish Terrier"
+      },
+      {
+        "value": "Shetland Sheepdog",
+        "text": "Shetland Sheepdog"
+      },
+      {
+        "value": "Shiba Inu",
+        "text": "Shiba Inu"
+      },
+      {
+        "value": "Shih Tzu",
+        "text": "Shih Tzu"
+      },
+      {
+        "value": "Siberian Husky",
+        "text": "Siberian Husky"
+      },
+      {
+        "value": "Staffordshire Bull Terrier",
+        "text": "Staffordshire Bull Terrier"
+      },
+      {
+        "value": "Tibetan Mastiff",
+        "text": "Tibetan Mastiff"
+      },
+      {
+        "value": "Tibetan Spaniel",
+        "text": "Tibetan Spaniel"
+      },
+      {
+        "value": "Tibetan Terrier",
+        "text": "Tibetan Terrier"
+      },
+      {
+        "value": "Toy Fox Terrier",
+        "text": "Toy Fox Terrier"
+      },
+      {
+        "value": "Weimaraner",
+        "text": "Weimaraner"
+      },
+      {
+        "value": "West Highland White Terrier",
+        "text": "West Highland White Terrier"
+      },
+      {
+        "value": "Whippet",
+        "text": "Whippet"
+      },
+      {
+        "value": "Yorkshire Terrier",
+        "text": "Yorkshire Terrier"
+      }
+    ]
+  },
+  "services": {
+    "serviceTitle": "Services",
+    "addServiceBtn": "Add Service",
+    "service1": "Animal Shelters",
+    "service2": "Pet Grooming",
+    "service3": "Pet Insurance and Legal Services",
+    "service4": "Cat Cafe",
+    "service5": "Pet Search and Rescue Services",
+    "service6": "Pet Training",
+    "service7": "Pet Art and Crafts",
+    "service8": "Pet Boarding",
+    "service9": "Pet Sitting",
+    "service10": "Pet Transportation",
+    "service11": "Other Services",
+    "service12": "Pet Burial Services",
+    "service13": "Pet Photography",
+    "service14": "Pet Friendly Accommodation",
+    "service15": "Pet Breeders",
+    "service16": "Dog Walking",
+    "service17": "Pet Supplies and Accessories",
+    "service18": "Pet Expo",
+    "service19": "Veterinary Services"
+  },
+  "": "",
+  "Home": "Home",
+  "Animal Shelters": "Animal Shelters",
+  "Dedicated shelters that provide temporary homes and care for abandoned or stray animals until they can be adopted.": "Dedicated shelters that provide temporary homes and care for abandoned or stray animals until they can be adopted.",
+  "Pet Grooming": "Pet Grooming",
+  "Services that offer grooming, bathing, and styling for pets to keep them clean and well-groomed.": "Services that offer grooming, bathing, and styling for pets to keep them clean and well-groomed.",
+  "Pet Insurance and Legal Services": "Pet Insurance and Legal Services",
+  "Services that provide insurance coverage for pets and legal assistance related to pet ownership and welfare.": "Services that provide insurance coverage for pets and legal assistance related to pet ownership and welfare.",
+  "Cat Cafe": "Cat Cafe",
+  "Cafes or establishments where customers can enjoy a beverage and interact with resident cats in a relaxed environment.": "Cafes or establishments where customers can enjoy a beverage and interact with resident cats in a relaxed environment.",
+  "Pet Search and Rescue Services": "Pet Search and Rescue Services",
+  "Organizations or services dedicated to locating and rescuing lost or missing pets.": "Organizations or services dedicated to locating and rescuing lost or missing pets.",
+  "Pet Training": "Pet Training",
+  "Training programs and services to help pets develop good behavior, obedience, and social skills.": "Training programs and services to help pets develop good behavior, obedience, and social skills.",
+  "Pet Art and Crafts": "Pet Art and Crafts",
+  "Artists or businesses that create artwork and crafts inspired by pets, such as portraits, sculptures, or customized pet accessories.": "Artists or businesses that create artwork and crafts inspired by pets, such as portraits, sculptures, or customized pet accessories.",
+  "Pet Boarding": "Pet Boarding",
+  "Facilities or services that offer temporary boarding and care for pets when their owners are away.": "Facilities or services that offer temporary boarding and care for pets when their owners are away.",
+  "Pet Sitting": "Pet Sitting",
+  "Professional pet sitters who offer in-home care and companionship for pets when their owners are away.": "Professional pet sitters who offer in-home care and companionship for pets when their owners are away.",
+  "Pet Transportation": "Pet Transportation",
+  "Specialized transportation services for pets, including pet taxi, relocation, and safe travel arrangements.": "Specialized transportation services for pets, including pet taxi, relocation, and safe travel arrangements.",
+  "Other Services": "Other Services",
+  "A category that includes services not specifically mentioned, covering a range of additional pet-related offerings.": "A category that includes services not specifically mentioned, covering a range of additional pet-related offerings.",
+  "Pet Burial Services": "Pet Burial Services",
+  "Services that offer respectful and compassionate handling of pet burials and cremations.": "Services that offer respectful and compassionate handling of pet burials and cremations.",
+  "Pet Photography": "Pet Photography",
+  "Professional photographers specializing in capturing beautiful and memorable images of pets.": "Professional photographers specializing in capturing beautiful and memorable images of pets.",
+  "Pet Friendly Accommodation": "Pet Friendly Accommodation",
+  "Hotels, vacation rentals, or accommodations that welcome pets and provide suitable amenities and services for them.": "Hotels, vacation rentals, or accommodations that welcome pets and provide suitable amenities and services for them.",
+  "Pet Breeders": "Pet Breeders",
+  "Professional breeders who selectively breed and raise specific breeds or types of pets.": "Professional breeders who selectively breed and raise specific breeds or types of pets.",
+  "Dog Walking": "Dog Walking",
+  "Professional dog walkers who provide exercise and companionship for dogs during regular walks.": "Professional dog walkers who provide exercise and companionship for dogs during regular walks.",
+  "Pet Supplies and Accessories": "Pet Supplies and Accessories",
+  "Stores or services that provide a wide range of pet supplies, including food, toys, and accessories.": "Stores or services that provide a wide range of pet supplies, including food, toys, and accessories.",
+  "Pet Expo": "Pet Expo",
+  "Exhibitions and events dedicated to showcasing various pet-related products, services, and activities.": "Exhibitions and events dedicated to showcasing various pet-related products, services, and activities.",
+  "Veterinary Services": "Veterinary Services",
+  "Medical care, health services, and treatments provided by licensed veterinarians for pets.": "Medical care, health services, and treatments provided by licensed veterinarians for pets."
+}

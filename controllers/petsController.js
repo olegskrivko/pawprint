@@ -289,7 +289,7 @@ module.exports.createPet = async (req, res, next) => {
   });
   console.log(oneSignalClient);
   const notification = {
-    contents: { en: 'New pet added! Check it out.' },
+    contents: { en: `URGENT! ${pet.petStatus} ${pet.species} alert!` },
     included_segments: ['Subscribed Users'],
   };
   console.log(notification);

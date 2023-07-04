@@ -1,11 +1,5 @@
 <% layout('layouts/boilerplate')%>
-<style>
-  @media (min-width: 768px) {
-    .no-padding-md {
-      padding-left: 0 !important;
-    }
-  }
-</style>
+
 <div class="container px-4" id="custom-cards">
   <div class="d-flex justify-content-between">
     <h2 class="pb-2"><%= servicesLocale.serviceTitle %></h2>
@@ -18,7 +12,7 @@
     <% for (let service of services) {%>
 
     <div class="col">
-      <a href="/services/<%=service._id%>" style="text-decoration: none">
+      <a class="text-decoration-none" href="/services/<%=service._id%>">
         <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg">
           <div class="d-flex flex-row flex-md-column-reverse p-3 pb-3 text-white text-shadow-1">
             <div class="d-flex justify-content-center align-items-center">

@@ -1,30 +1,36 @@
 <% layout('layouts/boilerplate')%>
 
-<main class="w-100 m-auto" style="max-width: 600px">
-  <div class="icon d-flex justify-content-center">
-    <span class="">
-      <svg class="bi" width="180" height="144" fill="#6F7174">
-        <use xlink:href="#catlogo"></use>
-      </svg>
-    </span>
+<!-- Main content -->
+<main class="w-100 m-auto" aria-label="Main content">
+  <!-- Icon container -->
+  <div class="icon d-flex justify-content-center" aria-label="Icon container">
+    <!-- SVG Icon -->
+    <svg class="bi" width="180" height="144" fill="#6F7174">
+      <use xlink:href="#catlogo"></use>
+    </svg>
   </div>
-  <div class="py-3 my-2 text-center">
-    <h1 class="display-5 fw-bold"><%= home.welcomeTitle %> <span class="text-warning"><%= home.appName %></span></h1>
+
+  <!-- Title container -->
+  <div class="py-3 my-2 text-center" aria-label="Title container">
+    <!-- Welcome title -->
+    <h1 class="display-5 fw-bold" aria-label="Welcome title"><%= home.welcomeTitle %> <span class="text-warning"><%= home.appName %></span></h1>
   </div>
-  <!-- web push -->
-  <!-- <div class="d-flex justify-content-center align-items-center" style="height: 200px">
-    <div class="onesignal-customlink-container"></div>
-  </div> -->
-  <div class="d-grid text-center gap-2 px-4 d-sm-flex justify-content-sm-center mb-5" style="text-align: justify"><%= home.welcomeText %></div>
+
+  <!-- Welcome text -->
+  <div class="d-grid text-center gap-2 px-4 d-sm-flex justify-content-sm-center mb-5" aria-label="Welcome text"><%= home.welcomeText %></div>
 
   <% if(!currentUser) { %>
-  <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-    <button type="button" onClick="location.href='/auth/login'" class="btn btn-primary btn-lg px-4 gap-3"><%= home.loginBtn %></button>
-    <button type="button" onClick="location.href='/auth/register'" class="btn btn-outline-secondary btn-lg px-4"><%= home.signupBtn %></button>
+  <!-- Login and signup buttons -->
+  <div class="d-grid gap-2 d-sm-flex justify-content-sm-center" aria-label="Login and signup buttons">
+    <!-- Login button -->
+    <button type="button" onClick="location.href='/auth/login'" class="btn btn-primary btn-lg px-4 gap-3" aria-label="Login button"><%= home.loginBtn %></button>
+    <!-- Signup button -->
+    <button type="button" onClick="location.href='/auth/register'" class="btn btn-outline-secondary btn-lg px-4" aria-label="Signup button"><%= home.signupBtn %></button>
   </div>
   <% } else if (currentUser) {%>
-  <div class="d-flex justify-content-center">
-    <button type="button" onClick="location.href='/pets'" class="btn btn-warning btn-lg px-4"><%= home.welcomeBtn %></button>
+  <!-- Welcome button -->
+  <div class="d-flex justify-content-center" aria-label="Welcome button">
+    <button type="button" onClick="location.href='/pets'" class="btn btn-warning btn-lg px-4" aria-label="Welcome button"><%= home.welcomeBtn %></button>
   </div>
   <% } %>
 </main>

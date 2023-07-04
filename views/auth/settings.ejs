@@ -92,7 +92,7 @@
     <label class="form-label" for="language"
       >Select your preferred language</label
     >
-    <select class="form-select" id="language" style="text-transform:uppercase">
+    <select class="form-select text-uppercase" id="language" >
       <% languageOptions.forEach(option => { %>
         <option value="<%= option %>" <% if (option === currentUser.language) { %>selected<% } %>><%=option%></option>
         <%}) %>
