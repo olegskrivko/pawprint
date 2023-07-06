@@ -280,24 +280,33 @@ module.exports.createPet = async (req, res, next) => {
   console.log(oneSignalClient);
   const notification = {
     contents: { en: `URGENT! ${pet.petStatus} ${pet.species} alert!` },
-    // included_segments: ['Subscribed Users'],
-    filters: [
-      {
-        field: 'location',
-        radius: '20000', // Radius in miles or kilometers
-        lat: 56.946285, // Latitude
-        long: 24.105078, // Longitude
-      },
-
-      // Add more filters as needed
-    ],
-    // attachments: {
-    //   // chrome_web_image: `${pet.images[0].url}`, // URL of the image to be sent in the notification
-    //   // ig_picture: `${pet.images[0].url}`,
-    //   // adm_big_picture: `${pet.images[0].url}`,
-    //   chrome_web_image: `${pet.images[0].url}`,
+    included_segments: ['Subscribed Users'],
+    // filters: [
+    //   {
+    //     field: 'location',
+    //     radius: '20000', // Radius in meters
+    //     lat: 56.946285, // Latitude
+    //     long: 24.105078, // Longitude
+    //   },
+    //   // Add more filters as needed
+    // ],
+    chrome_web_icon: {
+      url: pet.images[0].url,
+    },
+    icon: pet.images[0].url,
+    // chrome_web_image: {
+    //   url: pet.images[0].url,
     // },
-    // web_url: `https://pawclix.cyclic.app/pets/${pet._id}`,
+    // chrome_web_badge: {
+    //   url: pet.images[0].url,
+    // },
+    attachments: {
+      // chrome_web_image: `${pet.images[0].url}`, // URL of the image to be sent in the notification
+      // ig_picture: `${pet.images[0].url}`,
+      // adm_big_picture: `${pet.images[0].url}`,
+      // chrome_web_image: `https://news.artnet.com/app/news-upload/2018/02/image-256x256.jpg`,
+    },
+    web_url: `https://pawclix.cyclic.app/pets/${pet._id}`,
   };
   console.log(notification);
   client

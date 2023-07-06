@@ -33,7 +33,7 @@ module.exports.register = async (req, res, next) => {
       if (err) return next(err);
 
       // Compose the email message
-      const verificationLink = `https://pawprint.cyclic.app/auth/verify/${verificationToken}`;
+      const verificationLink = `https://pawclix.cyclic.app/auth/verify/${verificationToken}`;
 
       // Create a transporter using SMTP
       const transporter = nodemailer.createTransport({
@@ -262,9 +262,27 @@ module.exports.verifyEmail = async (req, res, next) => {
 
 // Controller for rendering the login page
 module.exports.renderLogin = (req, res) => {
-  const data = req.data; // Language data is available from the middleware
-  res.render('auth/login', { data }); // Render the login view
+  //const data = req.data; // Language data is available from the middleware
+  res.render('auth/login'); // Render the login view
 };
+
+// // Controller for user login
+// module.exports.login = (req, res) => {
+//   // Retrieve the user's name
+//   const { username } = req.user;
+
+//   // Display a flash message with a welcome greeting and the user's name
+//   req.flash('success', `Welcome, ${username}!`);
+
+//   // Retrieve the redirect URL from the session or set a default value
+//   const redirectUrl = req.session.returnTo || '/pets';
+
+//   // Delete the returnTo property from the session to prevent future redirections
+//   delete req.session.returnTo;
+
+//   // Redirect the user to the determined URL
+//   res.redirect(redirectUrl);
+// };
 
 // Controller for user login
 module.exports.login = (req, res) => {
@@ -280,8 +298,16 @@ module.exports.login = (req, res) => {
   // Delete the returnTo property from the session to prevent future redirections
   delete req.session.returnTo;
 
-  // Redirect the user to the determined URL
-  res.redirect(redirectUrl);
+  // Check if the user is found
+  if (!req.user) {
+    // User not found, display an error message
+    req.flash('error', 'Invalid username or password.');
+    // Redirect back to the login page
+    return res.redirect('/auth/login');
+  }
+
+  // User found, render the pets view
+  res.render('pets');
 };
 
 // Controller for user logout
