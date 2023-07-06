@@ -59,14 +59,14 @@
   <div class="d-flex justify-content-between mb-3">
     <div>
     <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-      <i class="bi bi-sliders"></i> <%=  petsLocale.filterBtn %></a>
+      <i class="bi bi-sliders"></i> <%= petsLocale.filterBtn %></a>
     
-    <!-- <a class="btn btn-warning d-none compare-btn" href="" role="button">
-      <i class="bi bi-intersect"></i> <=  petsLocale.compareBtn %></a> -->
+    <a class="btn btn-warning d-none compare-btn" href="" role="button">
+      <i class="bi bi-intersect"></i> <%= petsLocale.compareBtn %></a>
   </div>
-
+ 
   <div>
-    <a class="btn btn-primary  ms-1" href="/pets/new"><%=  petsLocale.reportPetBtn %></a>
+    <a class="btn btn-primary  ms-1" href="/pets/new"><%= petsLocale.reportPetBtn %></a>
     <!-- <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
       Button with data-bs-target
     </button> -->
@@ -84,7 +84,7 @@
 
             <!-- Pet Status -->
             <div class="col-md-3">
-              <label class="form-label"><%=  petsLocale.filterPetStatus %></label>
+              <label class="form-label"><%= petsLocale.filterPetStatus %></label>
               <div class="input-group">
                 <span class="input-group-text">
                   <i class="bi bi-question-diamond"></i>
@@ -101,7 +101,7 @@
 
            <!-- Pet Species -->
        <div class="col-md-3">
-        <label class="form-label"><%=  petsLocale.filterSpecies %></label>
+        <label class="form-label"><%= petsLocale.filterSpecies %></label>
         <div class="input-group">
           <span class="input-group-text">
             <i class="bi bi-diamond-half"></i>
@@ -119,7 +119,7 @@
 
        <!-- Pet Gender -->
        <div class="col-md-3">
-        <label class="form-label"><%=  petsLocale.filterPetGender %></label>
+        <label class="form-label"><%= petsLocale.filterPetGender %></label>
         <div class="input-group">
           <span class="input-group-text">
             <i class="bi bi-gender-ambiguous"></i>
@@ -137,7 +137,7 @@
     </div>
  <!-- Pet Breed -->
      <div class="col-md-3">
-      <label class="form-label"><%=  petsLocale.filterBreed %></label>
+      <label class="form-label"><%= petsLocale.filterBreed %></label>
       <div class="input-group">
         <span class="input-group-text">
           <i class="bi bi-x-diamond-fill"></i>
@@ -166,7 +166,7 @@
 
  
       <div class="col-md-3">
-        <label class="form-label"><%=  petsLocale.filterPetColor %></label>
+        <label class="form-label"><%= petsLocale.filterPetColor %></label>
         <div class="input-group">
           <span class="input-group-text">
             <i class="bi bi-palette"></i>
@@ -188,7 +188,7 @@
 
 
       <div class="col-md-3">
-        <label class="form-label" for="distance"><%=  petsLocale.filterDistance %></label>
+        <label class="form-label" for="distance"><%= petsLocale.filterDistance %></label>
         <div class="input-group">
           <span class="input-group-text"><i class="bi bi-rulers"></i></span>
           <input
@@ -204,7 +204,7 @@
 
       <!-- Age -->
       <div class="col-md-3">
-        <label class="form-label"><%=  petsLocale.filterPetAge %></label>
+        <label class="form-label"><%= petsLocale.filterPetAge %></label>
         <div class="input-group">
           <span class="input-group-text">
             <i class="bi bi-calendar2-heart"></i>
@@ -223,7 +223,7 @@
 
       <!-- Coat type -->
       <div class="col-md-3">
-        <label class="form-label"><%=  petsLocale.filterCoatType %></label>
+        <label class="form-label"><%= petsLocale.filterCoatType %></label>
         <div class="input-group">
           <span class="input-group-text">
             <i class="bi bi-wind"></i>
@@ -242,7 +242,7 @@
 
 
        <div class="col-md-3">
-        <label class="form-label"><%=  petsLocale.filterPetSize %></label>
+        <label class="form-label"><%= petsLocale.filterPetSize %></label>
         <div class="input-group">
           <span class="input-group-text">
             <i class="bi bi-arrows-angle-expand"></i>
@@ -260,7 +260,7 @@
 
 
       <div class="col-md-3">
-        <label class="form-label" for="identifier"><%=  petsLocale.filterIdentifier %></label>
+        <label class="form-label" for="identifier"><%= petsLocale.filterIdentifier %></label>
         <div class="input-group">
           <span class="input-group-text"><i class="bi bi-fingerprint"></i></span>
           <input
@@ -275,7 +275,7 @@
       </div>
 
       <div class="col-md-3">
-        <label class="form-label"><%=  petsLocale.filterLocation %></label>
+        <label class="form-label"><%= petsLocale.filterLocation %></label>
         <div class="input-group">
           <span class="input-group-text">
             <i class="bi bi-geo-alt-fill"></i>
@@ -302,7 +302,7 @@
 
       <!-- Lost Date -->
       <div class="col-md-3">
-        <label class="form-label" for="lostdate"><%=  petsLocale.filterLostDate %></label>
+        <label class="form-label" for="lostdate"><%= petsLocale.filterLostDate %></label>
         <div class="input-group">
           <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
           <input
@@ -352,8 +352,8 @@
       </div> -->
 
       <div class="col-md-12 my-3 d-flex ">
-        <button class="btn btn-warning search-form-btn  me-2 " type="submit"><i class="bi bi-search"></i> <%=  petsLocale.searchBtn %></button>
-        <button class="btn btn-secondary reset-form-btn"><i class="bi bi-eraser-fill"></i> <%=  petsLocale.clearBtn %></button>
+        <button class="btn btn-warning search-form-btn  me-2 " type="submit"><i class="bi bi-search"></i> <%= petsLocale.searchBtn %></button>
+        <button class="btn btn-secondary reset-form-btn"><i class="bi bi-eraser-fill"></i> <%= petsLocale.clearBtn %></button>
       </div>
     </div>
  
@@ -515,7 +515,7 @@
   <div class="d-flex justify-content-center" >
  
     <a class="btn mb-2 btn-sm btn-warning d-none compare-btn" href="" role="button">
-      <i class="bi bi-intersect"></i> <%=  petsLocale.compareBtn %></a>
+      <i class="bi bi-intersect"></i> <%= petsLocale.compareBtn %></a>
   
   </div>
   

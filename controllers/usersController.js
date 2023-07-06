@@ -7,7 +7,7 @@ const { cloudinary } = require('../cloudinary');
 const crypto = require('crypto');
 // const sgMail = require("@sendgrid/mail");
 // sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
+const passport = require('passport');
 const nodemailer = require('nodemailer');
 
 module.exports.register = async (req, res, next) => {
@@ -284,30 +284,27 @@ module.exports.renderLogin = (req, res) => {
 //   res.redirect(redirectUrl);
 // };
 
-// Controller for user login
-module.exports.login = (req, res) => {
-  // Retrieve the user's name
-  const { username } = req.user;
+module.exports.login = (req, res, next) => {
+  passport.authenticate('local', (err, user, info) => {
+    if (err) {
+      // Handle the error (e.g., log it, display an error message)
+      return next(err);
+    }
+    if (!user) {
+      // Authentication failed, display an error message
+      req.flash('error', 'Invalid username or password.');
+      return res.redirect('/auth/login');
+    }
 
-  // Display a flash message with a welcome greeting and the user's name
-  req.flash('success', `Welcome, ${username}!`);
-
-  // Retrieve the redirect URL from the session or set a default value
-  const redirectUrl = req.session.returnTo || '/pets';
-
-  // Delete the returnTo property from the session to prevent future redirections
-  delete req.session.returnTo;
-
-  // Check if the user is found
-  if (!req.user) {
-    // User not found, display an error message
-    req.flash('error', 'Invalid username or password.');
-    // Redirect back to the login page
-    return res.redirect('/auth/login');
-  }
-
-  // User found, render the pets view
-  res.render('pets');
+    // Authentication succeeded, log in the user
+    req.logIn(user, (err) => {
+      if (err) {
+        return next(err);
+      }
+      // Redirect the user to the desired page
+      return res.redirect('/pets');
+    });
+  })(req, res, next);
 };
 
 // Controller for user logout
