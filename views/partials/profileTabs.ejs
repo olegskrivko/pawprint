@@ -40,39 +40,36 @@
   </div>
 </div> -->
 
-<div class="d-flex flex-column flex-shrink-0 bg-body-tertiary" style="width: 4.5rem">
-  <!-- <a href="/" class="d-block p-3 link-body-emphasis text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
-    <svg class="bi pe-none" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-    <span class="visually-hidden">Icon-only</span>
-  </a> -->
+<!-- <div class="d-flex flex-column flex-shrink-0 bg-body-tertiary" style="width: 4.5rem">
+
   <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
     <li class="nav-item">
-      <a href="/user/profile" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Profile" data-bs-original-title="Profile">
+      <a href="/user/profile" class="nav-link p-0 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Profile" data-bs-original-title="Profile">
         <i class="bi bi-person-fill" style="font-size: 1.5rem"></i>
       </a>
     </li>
     <li>
-      <a href="/user/settings" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Dashboard" data-bs-original-title="Dashboard">
+      <a href="/user/settings" class="nav-link p-0 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Dashboard" data-bs-original-title="Dashboard">
         <i class="bi bi-sliders" style="font-size: 1.5rem"></i>
       </a>
     </li>
     <li>
-      <a href="/user/watchlist" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Orders" data-bs-original-title="Orders">
+      <a href="/user/watchlist" class="nav-link p-0 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Orders" data-bs-original-title="Orders">
         <i class="bi bi-bookmarks-fill" style="font-size: 1.5rem"></i>
       </a>
     </li>
     <li>
-      <a href="/user/favorites" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Products" data-bs-original-title="Products">
+      <a href="/user/favorites" class="nav-link p-0 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Products" data-bs-original-title="Products">
         <i class="bi bi-star-fill" style="font-size: 1.5rem"></i>
       </a>
     </li>
     <li>
-      <a href="/user/pets" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Customers" data-bs-original-title="Customers">
+      <a href="/user/pets" class="nav-link p-0 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Customers" data-bs-original-title="Customers">
         <i class="bi bi-heart-fill" style="font-size: 1.5rem"></i>
       </a>
     </li>
     <li>
-      <a href="/user/services" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Customers" data-bs-original-title="Customers">
+      <a href="/user/services" class="nav-link p-0 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Customers" data-bs-original-title="Customers">
         <i class="bi bi-briefcase-fill" style="font-size: 1.5rem"></i>
       </a>
     </li>
@@ -82,31 +79,55 @@
       <i class="bi bi-arrow-left-right"></i>
     </a>
   </div>
-</div>
+</div> -->
 
-<!-- <ul class="nav nav-pills d-flex flex-column">
+<ul class="nav nav-pills d-flex flex-column align-content-center p-0">
   <li class="nav-item">
-    <a class="nav-link d-flex align-items-center gap-1" href="/user/profile"> <i class="bi bi-person-fill"></i> Profile</a>
+    <a class="nav-link d-flex align-items-center text-secondary gap-1" href="/user/profile"> <i class="bi bi-person-fill"></i> <span class="d-none d-md-inline">Profile</span></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link d-flex align-items-center gap-1" href="/user/settings"> <i class="bi bi-sliders"></i> Settings </a>
+    <a class="nav-link d-flex align-items-center text-secondary gap-1" href="/user/settings"> <i class="bi bi-sliders"></i> <span class="d-none d-md-inline">Settings</span></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link d-flex align-items-center gap-1" href="/user/watchlist"> <i class="bi bi-list-ul"></i> Watchlist </a>
+    <a class="nav-link d-flex align-items-center text-secondary gap-1" href="/user/watchlist"> <i class="bi bi-bookmark-heart-fill"></i> <span class="d-none d-md-inline">Followed pets</span></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link d-flex align-items-center gap-1" href="/user/favorites"><i class="bi bi-star-fill"></i> Favorites</a>
+    <a class="nav-link d-flex align-items-center text-secondary gap-1" href="/user/favorites"> <i class="bi bi-bookmark-star-fill"></i> <span class="d-none d-md-inline">Followed services</span></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link d-flex align-items-center gap-1" href="/user/pets"><i class="bi bi-heart-fill"></i> Your pets</a>
+    <a class="nav-link d-flex align-items-center text-secondary gap-1" href="/user/pets"><i class="bi bi-heart-fill"></i> <span class="d-none d-md-inline">My pets</span></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link d-flex align-items-center gap-1" href="/user/services"><i class="bi bi-briefcase-fill"></i> Your services</a>
+    <a class="nav-link d-flex align-items-center text-secondary gap-1" href="/user/services"><i class="bi bi-briefcase-fill"></i> <span class="d-none d-md-inline">My services</span></a>
   </li>
-</ul> -->
+  <!-- <div class="border-top">
+    <a href="#" class="d-flex align-items-center text-secondary justify-content-end p-3 link-body-emphasis text-decoration-none">
+      <i class="bi bi-arrow-bar-left"></i>
+    </a>
+  </div> -->
+</ul>
+
 <!-- < if (typeof pets !== 'undefined' && pets.length > 0) { %>
 <p><= pets.length %></p>
-< } %> -->
+< } %>-->
+<style>
+  .active {
+    background-color: #6c757d !important;
+    color: #f8f9fa !important;
+  }
+  .nav-link.active {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: fit-content; /* Adjust the value to fit your desired width */
+  }
+
+  @media (max-width: 767px) {
+    .nav-link .bi {
+      font-size: 24px; /* Adjust the font size as needed */
+    }
+  }
+</style>
 
 <script>
   // Get the current URL path

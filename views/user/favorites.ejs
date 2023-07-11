@@ -1,27 +1,27 @@
 <% layout('layouts/boilerplate')%>
-<div class="container">
+<div class="container ps-0">
   <div class="row">
-    <div class="col-2"><%- include('../partials/profileTabs') %></div>
-    <div class="col-10">
+    <div class="col-3 p-0"><%- include('../partials/profileTabs') %></div>
+    <div class="col-9">
       <div class="row row-cols-1 row-cols-md-1 g-3 justify-content-center">
-        <div class="col-md-8">
-          <div class="p-3 bg-body rounded shadow-sm">
-            <h6 class="border-bottom pb-2 mb-0">Saved services</h6>
+        <!-- <div class="col-md-8"> -->
+        <div class="p-3 bg-body rounded shadow-sm">
+          <h6 class="border-bottom pb-2 mb-0">Saved services</h6>
 
-            <% if ( typeof favorites !== 'undefined' && favorites.length > 0) {%> <% for (let favorite of favorites) { %>
+          <% if ( typeof favorites !== 'undefined' && favorites.length > 0) {%> <% for (let favorite of favorites) { %>
 
-            <div class="d-flex text-body-secondary pt-3 border-bottom"></div>
+          <div class="d-flex text-body-secondary pt-3 border-bottom"></div>
 
-            <% } %> <% } else { %>
-            <p>List is empty</p>
-            <% } %>
+          <% } %> <% } else { %>
+          <p>List is empty</p>
+          <% } %>
 
-            <div class="d-block small text-end mt-3">
-              <a href="#" id="deleteAllFavoritesBtn" class="text-danger m-0 p-0" style="text-decoration: none" onclick="deleteAllFavoritesServices(event)"><i class="bi bi-trash3"></i> Remove All</a>
-            </div>
+          <div class="d-block small text-end mt-3">
+            <a href="#" id="deleteAllFavoritesBtn" class="text-danger m-0 p-0" style="text-decoration: none" onclick="deleteAllFavoritesServices(event)"><i class="bi bi-trash3"></i> Remove All</a>
           </div>
         </div>
       </div>
     </div>
+    <!-- </div> -->
   </div>
 </div>

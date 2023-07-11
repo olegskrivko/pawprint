@@ -157,24 +157,52 @@
         }
 
         .carousel-indicator.active {
+          width: 12px !important;
+          height: 12px !important;
           opacity: 0.8 !important;
+          background-color: #212529 !important;
         }
       </style>
       <div class="d-flex flex-column align-items-center justify-content-center" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%)">
         <% if (pet.images.length > 1) { %>
-        <div class="carousel-indicators d-flex justify-content-center" style="position: relative; top: 0; bottom: 0; margin-top: 0; margin-bottom: 0">
+        <div class="carousel-indicators d-flex align-items-center justify-content-center" style="position: relative; top: 0; bottom: 0; margin-top: 0; margin-bottom: 0">
           <% pet.images.forEach((img, i) => { %>
-          <a data-bs-target="#petCarousel" data-bs-slide-to="<%= i %>" class="bg-dark carousel-indicator"></a>
+          <a data-bs-target="#petCarousel" data-bs-slide-to="<%= i %>" class="bg-dark carousel-indicator <%= i === 0 ? 'active' : '' %>" onclick="updateActiveIndicator(this)"></a>
           <% }) %>
         </div>
+        <script>
+          const indicators = document.querySelectorAll('.carousel-indicator');
+          const carousel = document.querySelector('#petCarousel');
+
+          carousel.addEventListener('slid.bs.carousel', function () {
+            const activeSlide = carousel.querySelector('.active.carousel-item');
+            const activeIndex = Array.from(activeSlide.parentNode.children).indexOf(activeSlide);
+
+            indicators.forEach((ind) => {
+              ind.classList.remove('active');
+            });
+            indicators[activeIndex].classList.add('active');
+          });
+        </script>
+
+        <!-- <script>
+            function updateActiveIndicator(indicator) {
+              const indicators = document.querySelectorAll('.carousel-indicator');
+              indicators.forEach((ind) => {
+                ind.classList.remove('active');
+              });
+              indicator.classList.add('active');
+            }
+          </script> -->
+
         <% } %>
       </div>
       <div class="d-flex justify-content-center">
         <a class="text-secondary" id="saveWatchlistBtn" data-petid="<%= pet._id%>" style="cursor: pointer">
           <% if (currentUser && pet._id && currentUser.watchlist.length > 0 && currentUser.watchlist.includes(pet._id)) { %>
-          <i class="bi bi-bookmark-fill" style="pointer-events: none"></i>
+          <i class="bi bi-bookmark-heart-fill" style="pointer-events: none"></i>
           <% } else { %>
-          <i class="bi bi-bookmark" style="pointer-events: none"></i>
+          <i class="bi bi-bookmark-heart" style="pointer-events: none"></i>
           <% } %></a
         >
       </div>
