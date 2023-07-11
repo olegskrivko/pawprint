@@ -52,10 +52,28 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
+  userPets: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Pet',
+    },
+  ],
+  userServices: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'ServiceProvider',
+    },
+  ],
   watchlist: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Pet',
+    },
+  ],
+  favorites: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'ServiceProvider',
     },
   ],
   location: {

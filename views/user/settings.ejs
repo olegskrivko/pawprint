@@ -1,24 +1,15 @@
 <% layout('layouts/boilerplate')%>
-<div class="row row-cols-1 row-cols-md-1 g-3 justify-content-center">
-  <div class="col-md-8">
-    <ul class="nav nav-pills nav-justified">
-      <li class="nav-item">
-        <a class="nav-link" href="/auth/account/profile">Profile</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="/auth/account/settings"
-          >Settings</a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/auth/account/watchlist">Watchlist</a>
-      </li>
-    </ul>
-  </div>
-</div>
-<h5 class="text-center mt-5 mb-3">Change Your Account Settings</h5>
+<div class="container">
+ 
+  <div class="row">
+    <div class="col-2">
+  <%- include('../partials/profileTabs') %>
+    </div>
+    <div class="col-10">
 
+      <h5 class="text-center mb-3">Change Your Account Settings</h5>
 <div class="row row-cols-1 row-cols-md-1 g-3 justify-content-center">
+  
   <!-- <div class="col-md-8">
     <label for="notificationDistance" class="form-label"
       >Maximum distance</label
@@ -104,11 +95,13 @@
     </button>
   </div>
 </div>
-
+</div>
+</div>
+</div>
 <script>
   const updateAccountSettings = async (updatedData) => {
     try {
-      const response = await fetch("/auth/account/settings", {
+      const response = await fetch("/user/settings", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -117,14 +110,14 @@
       });
 
       if (response.ok) {
-        const responseData = await response.json();
-        if (responseData.success) {
+       // const responseData = await response.json();
+      //  if (responseData.success) {
           // Account updated successfully
           // Redirect or perform desired actions here
-          window.location.href = "/auth/account/settings";
-        } else {
-          throw new Error("Failed to update account settings");
-        }
+          window.location.href = "/user/settings";
+      //  } else {
+      //    throw new Error("Failed to update account settings");
+      //  }
       } else {
         throw new Error("Failed to update account settings");
       }

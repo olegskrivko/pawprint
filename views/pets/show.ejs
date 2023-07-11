@@ -72,7 +72,7 @@
           <% if (currentUser && pet.author && currentUser._id && pet.author.equals(currentUser._id)) { %>
           <li>
             <form class="d-inline" action="/pets/<%=pet.id%>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure you want to delete this pet?');">
-              <button class="dropdown-item text-danger dropdown-item-danger d-flex gap-2 align-items-center"><i class="bi-trash3"></i> Delete</button>
+              <button class="dropdown-item text-danger dropdown-item-danger d-flex gap-2 align-items-center"><i class="bi bi-trash3"></i> Delete</button>
             </form>
           </li>
           <% } %>
@@ -364,6 +364,7 @@
                   <h6 class="card-text text-muted small ms-1"><i>Author</i></h6>
                   <% } %>
                   <!-- test-->
+                  <h6 class="card-text text-muted small ms-1"><i class="bi bi-dot"></i> <%= comment.formattedCreatedAt %></h6>
                 </div>
 
                 <p class="text-muted small">
@@ -379,6 +380,7 @@
                 <h6 class="card-text text-muted small">Author</h6>
                 < } %> -->
               </div>
+
               <!-- <div class="align-items-center mb-0 ms-2">
                 <h5 class="card-title small">
                   < if (comment.author && comment.author.username) { %> < if (comment.author.isVerified) { %>
@@ -399,7 +401,7 @@
 
                 <% if (comment.author && currentUser && comment.author.equals(currentUser._id)) { %>
                 <form class="m-0 p-0" action="/pets/<%= pet._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                  <a href="#" class="text-danger m-0 p-0" style="text-decoration: none" onclick="deleteComment(event)"><i class="bi-trash3 small"></i> <span class="small"><%= petsshow.deleteBtn %></span></a>
+                  <a href="#" class="text-danger m-0 p-0" style="text-decoration: none" onclick="deleteComment(event)"><i class="bi bi-trash3 small"></i> <span class="small"><%= petsshow.deleteBtn %></span></a>
                 </form>
                 <% } %>
               </div>
@@ -442,7 +444,7 @@
 <script>
   const saveWatchlist = async (watchlistData) => {
     try {
-      const response = await fetch('/auth/account/watchlist', {
+      const response = await fetch('/user/watchlist', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

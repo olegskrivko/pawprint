@@ -32,19 +32,15 @@ router.get('/logout', usersController.logout);
 
 // Define the user routes
 router.get('/verify/:token', usersController.verifyEmail);
+router.get('/verificationlink', usersController.emailVerificationLink);
 
 // Account Routes
-router.route('/account/profile').get(isLoggedIn, usersController.renderAccountProfile).put(isLoggedIn, usersController.updateAccount).delete(isLoggedIn, usersController.deleteAccount);
+// router.route('/account/profile').get(isLoggedIn, usersController.renderAccountProfile).put(isLoggedIn, usersController.updateAccount).delete(isLoggedIn, usersController.deleteAccount);
 
-router.route('/account/settings').get(isLoggedIn, usersController.renderAccountSettings).put(isLoggedIn, usersController.updateAccountSettings);
-
-router.route('/account/watchlist').get(isLoggedIn, usersController.renderAccountWatchlist).put(isLoggedIn, usersController.updateAccountWatchlist);
+// router.route('/account/settings').get(isLoggedIn, usersController.renderAccountSettings).put(isLoggedIn, usersController.updateAccountSettings);
 
 // post or put? catchasync need
-router.route('/account/profile/avatar').put(isLoggedIn, upload.single('avatar'), usersController.updateProfileAvatar);
-
-router.route('/account/watchlist/all').delete(isLoggedIn, usersController.deleteAllAccountWatchlist);
-router.route('/account/watchlist/:petId').delete(isLoggedIn, usersController.deleteAccountWatchlist);
+// router.route('/account/profile/avatar').put(isLoggedIn, upload.single('avatar'), usersController.updateProfileAvatar);
 // Route to delete all watchlist items
 
 module.exports = router;

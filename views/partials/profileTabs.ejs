@@ -1,18 +1,113 @@
-<div class="row row-cols-1 row-cols-md-1 g-3 justify-content-center">
-  <div class="col-md-8">
-    <ul class="nav nav-pills nav-justified">
-      <li class="nav-item">
-        <a class="nav-link" href="/auth/account/profile">Profile</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/auth/account/settings">Settings</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/auth/account/watchlist">Watchlist</a>
-      </li>
+<!-- <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px">
+  <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+    <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+    <span class="fs-4">Sidebar</span>
+  </a>
+  <hr />
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li class="nav-item">
+      <a href="/auth/account/profile" class="nav-link active" aria-current="page"> <i class="bi bi-person-fill"></i> Profile </a>
+    </li>
+    <li>
+      <a href="/user/settings" class="nav-link link-body-emphasis"> <i class="bi bi-sliders"></i> Settings </a>
+    </li>
+    <li>
+      <a href="/user/watchlist" class="nav-link link-body-emphasis"> <i class="bi bi-list-ul"></i> Watchlist </a>
+    </li>
+    <li>
+      <a href="/user/favorites" class="nav-link link-body-emphasis"> <i class="bi bi-star-fill"></i> Favorites </a>
+    </li>
+    <li>
+      <a href="/user/pets" class="nav-link link-body-emphasis"> <i class="bi bi-heart-fill"></i> Your pets </a>
+    </li>
+    <li>
+      <a href="/user/services" class="nav-link link-body-emphasis"> <i class="bi bi-briefcase-fill"></i> Your services</a>
+    </li>
+  </ul>
+  <hr />
+  <div class="dropdown">
+    <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2" />
+      <strong>mdo</strong>
+    </a>
+    <ul class="dropdown-menu text-small shadow" style="">
+      <li><a class="dropdown-item" href="#">New project...</a></li>
+      <li><a class="dropdown-item" href="#">Settings</a></li>
+      <li><a class="dropdown-item" href="#">Profile</a></li>
+      <li><hr class="dropdown-divider" /></li>
+      <li><a class="dropdown-item" href="#">Sign out</a></li>
     </ul>
   </div>
+</div> -->
+
+<div class="d-flex flex-column flex-shrink-0 bg-body-tertiary" style="width: 4.5rem">
+  <!-- <a href="/" class="d-block p-3 link-body-emphasis text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
+    <svg class="bi pe-none" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+    <span class="visually-hidden">Icon-only</span>
+  </a> -->
+  <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+    <li class="nav-item">
+      <a href="/user/profile" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Profile" data-bs-original-title="Profile">
+        <i class="bi bi-person-fill" style="font-size: 1.5rem"></i>
+      </a>
+    </li>
+    <li>
+      <a href="/user/settings" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Dashboard" data-bs-original-title="Dashboard">
+        <i class="bi bi-sliders" style="font-size: 1.5rem"></i>
+      </a>
+    </li>
+    <li>
+      <a href="/user/watchlist" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Orders" data-bs-original-title="Orders">
+        <i class="bi bi-bookmarks-fill" style="font-size: 1.5rem"></i>
+      </a>
+    </li>
+    <li>
+      <a href="/user/favorites" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Products" data-bs-original-title="Products">
+        <i class="bi bi-star-fill" style="font-size: 1.5rem"></i>
+      </a>
+    </li>
+    <li>
+      <a href="/user/pets" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Customers" data-bs-original-title="Customers">
+        <i class="bi bi-heart-fill" style="font-size: 1.5rem"></i>
+      </a>
+    </li>
+    <li>
+      <a href="/user/services" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Customers" data-bs-original-title="Customers">
+        <i class="bi bi-briefcase-fill" style="font-size: 1.5rem"></i>
+      </a>
+    </li>
+  </ul>
+  <div class="border-top">
+    <a href="#" class="d-flex align-items-center justify-content-center p-3 link-body-emphasis text-decoration-none">
+      <i class="bi bi-arrow-left-right"></i>
+    </a>
+  </div>
 </div>
+
+<!-- <ul class="nav nav-pills d-flex flex-column">
+  <li class="nav-item">
+    <a class="nav-link d-flex align-items-center gap-1" href="/user/profile"> <i class="bi bi-person-fill"></i> Profile</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link d-flex align-items-center gap-1" href="/user/settings"> <i class="bi bi-sliders"></i> Settings </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link d-flex align-items-center gap-1" href="/user/watchlist"> <i class="bi bi-list-ul"></i> Watchlist </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link d-flex align-items-center gap-1" href="/user/favorites"><i class="bi bi-star-fill"></i> Favorites</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link d-flex align-items-center gap-1" href="/user/pets"><i class="bi bi-heart-fill"></i> Your pets</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link d-flex align-items-center gap-1" href="/user/services"><i class="bi bi-briefcase-fill"></i> Your services</a>
+  </li>
+</ul> -->
+<!-- < if (typeof pets !== 'undefined' && pets.length > 0) { %>
+<p><= pets.length %></p>
+< } %> -->
+
 <script>
   // Get the current URL path
   var path = window.location.pathname;

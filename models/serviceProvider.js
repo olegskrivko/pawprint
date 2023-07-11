@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const serviceLogoSchema = new mongoose.Schema({
   url: String,
@@ -16,7 +16,7 @@ const ServiceProviderSchema = new mongoose.Schema({
   },
   author: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    ref: 'User',
     required: true,
   },
   logo: [serviceLogoSchema],
@@ -48,7 +48,7 @@ const ServiceProviderSchema = new mongoose.Schema({
   location: {
     type: {
       type: String,
-      enum: ["Point"],
+      enum: ['Point'],
       required: true,
     },
     coordinates: {
@@ -65,9 +65,6 @@ const ServiceProviderSchema = new mongoose.Schema({
   // },
 });
 
-const ServiceProvider = mongoose.model(
-  "ServiceProvider",
-  ServiceProviderSchema
-);
+const ServiceProvider = mongoose.model('ServiceProvider', ServiceProviderSchema);
 
 module.exports = ServiceProvider;

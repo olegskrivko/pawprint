@@ -179,3 +179,24 @@ body {
     padding-left: 0 !important;
   }
 }
+
+/*vertical menu*/
+/* @media (max-width: 991.98px) {
+
+  .navbar-nav .nav-link i {
+    display: inline-block;
+  }
+  .navbar-nav .nav-link span {
+    display: none;
+  }
+} */
+
+/* @media (min-width: 992px) {
+  
+  .navbar-nav .nav-link i {
+    display: none;
+  }
+  .navbar-nav .nav-link span {
+    display: inline-block;
+  }
+} */

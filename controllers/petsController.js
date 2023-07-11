@@ -1,4 +1,5 @@
 const Pet = require('../models/pet');
+const User = require('../models/user');
 const Location = require('../models/location');
 const { ObjectId } = require('mongoose').Types;
 const { cloudinary } = require('../cloudinary');
@@ -264,7 +265,9 @@ module.exports.createPet = async (req, res, next) => {
 
   // Save the pet to the database
   await pet.save();
-
+  const user = req.user;
+  user.userPets.push(pet._id);
+  await user.save();
   //console.log(pet);
   const client = new OneSignal.Client(process.env.oneSignal_YOUR_APP_ID, process.env.oneSignal_YOUR_APP_AUTH_KEY);
   console.log(client);
@@ -499,6 +502,10 @@ module.exports.updatePet = async (req, res) => {
 
 module.exports.deletePet = async (req, res) => {
   const { id } = req.params;
+  const user = req.user;
+  // remove from userPets as well
+  user.userPets = user.userPets.filter((item) => item !== id);
+  await user.save();
   await Pet.findByIdAndDelete(id);
   req.flash('success', 'Successfully deleted pet');
   res.redirect('/pets');

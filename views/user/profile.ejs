@@ -1,11 +1,15 @@
 <% layout('layouts/boilerplate')%>
+<div class="container">
+  <div class="row">
+ <div class="col-2"><%- include('../partials/profileTabs') %></div>
 
-<%- include('../partials/profileTabs') %>
+ <div class="col-10 d-flex flex-column align-content-center justify-content-center">
+      <h5 class="text-center mb-3">Change Your Profile Information</h5>
+      <div class="row row-cols-1 row-cols-md-1 g-3 justify-content-center">
 
-<h5 class="text-center mt-5 mb-3">Change Your Profile Information</h5>
 
 
-<main class="form-signin w-100 m-auto mb-3" style="max-width: 500px">
+<!-- <main class="form-signin w-100 m-auto mb-3" style="max-width: 500px"> -->
   <!-- <h1 class="text-center">Account settings</h1> -->
 
   <!-- <label for="customRange3" class="form-label">Maximum distance</label>
@@ -81,7 +85,7 @@
     <option value="ee">Estonian</option>
     <option value="lt">Lithuanian</option>
   </select> -->
-</main>
+<!-- </main> -->
 <!-- <main class="form-signin w-100 m-auto mb-3" style="max-width: 500px">
   <h5>Change your contact information:</h5> -->
 <!-- <form
@@ -169,11 +173,6 @@
   });
 </script> -->
 
-
- 
-
-
-
   <div class="row row-cols-1 row-cols-md-2 g-3 justify-content-center">
   <div class="col-md-4">
       <label class="form-label" for="firstName">First name</label>
@@ -238,7 +237,7 @@ id="phoneCode"
       <p><span class="text-success"><i class="bi bi-shield-fill-check"></i></span> Email is verified</p>
     <% } else { %>
       <p><span class="text-danger"><i class="bi bi-shield-fill-x"></i></span> Email is not verified</p>
-      <p>Click <a href="#">here</a> to verify your email</p>
+      <p>Click <a id="verify-email" class="verify-email" href="#">here</a> to verify your email</p>
     <% } %>
   </div>
   
@@ -285,6 +284,10 @@ id="phoneCode"
     </button>
   </div>
 </div>
+</div>
+</div>
+</div>
+</div>
 
 <script>
   const updateAccountAvatar = async (updatedData) => {
@@ -292,14 +295,14 @@ id="phoneCode"
       const formData = new FormData();
       formData.append("avatar", updatedData.avatar);
   
-      const response = await fetch("/auth/account/profile/avatar", {
+      const response = await fetch("/user/profile/avatar", {
         method: "PUT",
         body: formData,
       });
   
       if (response.ok) {
         // Account updated successfully
-        window.location.href = "/auth/account/profile";
+        window.location.href = "/user/profile";
       } else {
         throw new Error("Failed to update account");
       }
@@ -327,7 +330,7 @@ id="phoneCode"
 <script>
   const updateAccount = async (updatedData) => {
     try {
-      const response = await fetch("/auth/account/profile", {
+      const response = await fetch("/user/profile", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -340,7 +343,7 @@ id="phoneCode"
         if (responseData.success) {
           // Account updated successfully
           // Redirect or perform desired actions here
-          window.location.href = "/auth/account/profile";
+          window.location.href = "/user/profile";
         } else {
           throw new Error("Failed to update account");
         }
@@ -374,7 +377,7 @@ id="phoneCode"
       const confirmed = confirm("Are you sure you want to delete your account?");
 
       if (confirmed) {
-        const response = await fetch("/auth/account/profile", {
+        const response = await fetch("/user/profile", {
           method: "DELETE",
         });
 
@@ -402,7 +405,7 @@ id="phoneCode"
   });
 </script>
 
-</div>
+
 
 <!-- <script>
    
@@ -436,3 +439,42 @@ id="phoneCode"
     await updateAccount(updatedData);
   });
 </script> -->
+
+
+<script>
+const emailVerificationLink = async () => {
+  try {
+
+    const url = `/auth/verificationlink`;
+    console.log(url)
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (response.ok) {
+      console.log('Email verification link sent successfully');
+      console.log(response);
+      // Handle the response from the server if needed
+      // The compare page will be rendered in the response handler of the compare controller
+      window.location.href = url;
+    } else {
+      throw new Error('Failed to send email verification');
+    }
+  } catch (error) {
+    console.error(error);
+    // Handle error and display appropriate message
+  }
+};
+
+const verifyEmail = document.querySelector('#verify-email')
+verifyEmail.addEventListener('click', async (e)=> {
+  e.preventDefault()
+  await emailVerificationLink()
+  console.log(verifyEmail)
+})
+
+
+</script>

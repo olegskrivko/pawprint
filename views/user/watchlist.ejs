@@ -1,21 +1,31 @@
-<% layout('layouts/boilerplate')%> <%- include('../partials/profileTabs') %>
-<h5 class="text-center mt-5 mb-3">Manage Your watchlist</h5>
+<% layout('layouts/boilerplate')%>
+<div class="container">
+ 
+  <div class="row">
+    <div class="col-2">
+  <%- include('../partials/profileTabs') %>
+    </div>
+   
+    <div class="col-10">
+      <!-- <h5 class="text-center mb-3">Manage Your watchlist</h5> -->
+      
+  <div class="row row-cols-1 row-cols-md-1 g-3 justify-content-center">
+   
+    
+    <div class="col-md-8">
+      <div class="p-3 bg-body rounded shadow-sm">
+        <h6 class="border-bottom pb-2 mb-0">Saved pets</h6>
 
-<div class="row row-cols-1 row-cols-md-1 g-3 justify-content-center">
-  <div class="col-md-8">
-    <div class="my-3 p-3 bg-body rounded shadow-sm">
-      <h6 class="border-bottom pb-2 mb-0">Saved pets</h6>
+        <% if ( typeof pets !== 'undefined' && pets.length > 0) {%> <% for (let pet of pets) { %>
 
-      <% if (pets.length > 0) {%> <% for (let pet of pets) { %>
+        <div class="d-flex text-body-secondary pt-3">
+          <div class="mb-3 me-2">
+            <img src="<%= pet.images[0].thumbnail%>" class="img-thumbnail" alt="" width="98px" height="98px" />
+            <!-- <div class="form-check-inline">azaz</div> -->
+            <!-- <label for="image-<=i%>">Delete?</label> -->
+          </div>
 
-      <div class="d-flex text-body-secondary pt-3">
-        <div class="mb-3 me-2">
-          <img src="<%= pet.images[0].thumbnail%>" class="img-thumbnail" alt="" width="98px" height="98px" />
-          <!-- <div class="form-check-inline">azaz</div> -->
-          <!-- <label for="image-<=i%>">Delete?</label> -->
-        </div>
-
-        <!-- <svg
+          <!-- <svg
           class="bd-placeholder-img flex-shrink-0 me-2 rounded"
           width="32"
           height="32"
@@ -30,20 +40,27 @@
           <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
         </svg> -->
 
-        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-          <div class="d-flex justify-content-between">
-            <strong class="text-gray-dark"><p><%=pet.petStatus%></p></strong>
-            <button class="btn btn-danger removeWatchlistBtn" data-petid="<%= pet._id%>">Remove</button>
+          <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+            <div class="d-flex justify-content-between">
+              <strong class="text-gray-dark"><p><%=pet.petStatus%></p></strong>
+              <button class="btn btn-danger removeWatchlistBtn" data-petid="<%= pet._id%>">Remove</button>
+          
+          
+                  <!-- <form class="d-inline" action="/pets/<%=pet.id%>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure you want to delete this pet?');">
+                    <button class="dropdown-item text-danger dropdown-item-danger d-flex gap-2 align-items-center"><i class="bi bi-trash3"></i> Delete</button>
+                  </form> -->
+           
+            
+            </div>
+            <span class="d-block"><a class="text-decoration-none" href="/pets/<%=pet._id%>">@<%=pet.species%></a></span>
           </div>
-          <span class="d-block"><a href="/pets/<%=pet._id%>">@<%=pet.species%></a></span>
         </div>
-      </div>
 
-      <% } %> <% } else { %>
-      <p>List is empty</p>
-      <% } %>
+        <% } %> <% } else { %>
+        <p>List is empty</p>
+        <% } %>
 
-      <!-- <div class="d-flex text-body-secondary pt-3">
+        <!-- <div class="d-flex text-body-secondary pt-3">
         <svg
           class="bd-placeholder-img flex-shrink-0 me-2 rounded"
           width="32"
@@ -113,62 +130,29 @@
         </div>
       </div> -->
 
-      <small class="d-block text-end mt-3">
-        <button id="deleteAllWatchlistBtn" class="btn btn-danger">Remove All</button>
+        <!-- <small class="d-block text-end mt-3"> -->
+          <!-- <button id="deleteAllWatchlistBtn" class="btn btn-danger">Remove All</button> -->
 
-        <!-- <a href="#">Remove All</a> -->
-      </small>
+          <div class="d-block small text-end mt-3">
+            <a href="#" id="deleteAllWatchlistBtn" class="text-danger m-0 p-0" style="text-decoration: none"><i class="bi bi-trash3"></i> Remove All</a>
+          </div>
+
+          <!-- <a href="#">Remove All</a> -->
+        <!-- </small> -->
+      </div>
     </div>
+ 
+  </div>
+  
   </div>
 </div>
+</div>
 
-<!-- <script>
-  const updateWatchlist = async (watchlistData) => {
-    try {
-      const response = await fetch("/auth/account/watchlist", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(watchlistData),
-      });
-
-      if (response.ok) {
-        // Watchlist updated successfully
-        console.log("Watchlist updated successfully");
-      } else {
-        throw new Error("Failed to update watchlist");
-      }
-    } catch (error) {
-      console.error(error);
-      // Handle error and display appropriate message
-    }
-  };
-
-  const removeWatchlistBtnAll = document.querySelectorAll(
-    ".removeWatchlistBtn"
-  );
-  removeWatchlistBtnAll.forEach((btn) => {
-    btn.addEventListener("click", async (e) => {
-      const petId = e.currentTarget.getAttribute("data-petid");
-      console.log(petId);
-
-      const selectedPets =
-        petId; /* Code to retrieve the selected pets from the UI */
-
-      // Prepare the watchlist data to send in the request body
-      const watchlistData = {
-        pets: selectedPets,
-      };
-
-      await updateWatchlist(watchlistData);
-    });
-  });
-</script> -->
+</div>
 <script>
   const updateWatchlist = async (watchlistData) => {
     try {
-      const response = await fetch(`/auth/account/watchlist/${watchlistData.petId}`, {
+      const response = await fetch(`/user/watchlist/${watchlistData.petId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -207,7 +191,7 @@
 <script>
   const deleteAllWatchlist = async () => {
     try {
-      const response = await fetch('/auth/account/watchlist/all', {
+      const response = await fetch('/user/watchlist/all', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

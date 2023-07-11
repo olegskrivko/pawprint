@@ -324,37 +324,93 @@ module.exports.logout = (req, res) => {
   });
 };
 
-// Controller for rendering the account page
-module.exports.renderAccountProfile = (req, res) => {
+// Controller to send email verification link for registered user
+module.exports.emailVerificationLink = async (req, res) => {
   try {
-    const data = req.data; // Language data is available from the middleware
-    // Render the account page template
-    res.render('auth/profile', { phoneCodeOptions, countryOptions, data });
-  } catch (error) {
-    // Log the error for debugging purposes
-    console.error('Error rendering account page:', error);
+    const user = req.user;
+    // Generate a verification token
+    const verificationToken = await generateVerificationToken();
+    console.log(verificationToken);
 
-    // Handle the error appropriately, such as displaying an error message or redirecting to an error page
-    req.flash('error', 'Failed to render account page.');
-    res.redirect('/pets'); // Redirect to an appropriate error page or fallback route
+    // Set the verification token and its expiration time for the user
+    user.verificationToken = verificationToken;
+    user.verificationTokenExpires = Date.now() + 3600000; // Token expires in 1 hour
+
+    // Save the registered user
+    await user.save();
+
+    // Log in the registered user
+
+    // Compose the email message
+    const verificationLink = `https://pawclix.cyclic.app/auth/verify/${verificationToken}`;
+
+    // Create a transporter using SMTP
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      port: 587,
+      secure: false, // upgrade later with STARTTLS
+      auth: {
+        user: process.env.EMAIL_USERNAME, // Replace with your Gmail address
+        pass: process.env.EMAIL_PASSWORD, // Replace with your Gmail password
+      },
+    });
+
+    // Define the email options
+    const mailOptions = {
+      from: process.env.EMAIL_USERNAME, // Replace with your Gmail address
+      to: user.email, // Replace with the recipient's email address
+      subject: 'Test Email',
+      text: `Hello from Nodemailer! ${verificationLink}`,
+    };
+
+    // Send the email
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error('Error sending email:', error);
+      } else {
+        console.log('Email sent:', info.response);
+      }
+    });
+
+    req.flash('success', 'Verifcation link has been sent to yout email.');
+    res.redirect('/user/profile');
+  } catch (error) {
+    req.flash('error', 'An error occurred while verifying your email. Please try again.');
+    res.redirect('/user/profile');
   }
 };
+
+// Controller for rendering the account page
+// module.exports.renderAccountProfile = (req, res) => {
+//   try {
+//     const data = req.data; // Language data is available from the middleware
+//     // Render the account page template
+//     res.render('auth/profile', { phoneCodeOptions, countryOptions, data });
+//   } catch (error) {
+//     // Log the error for debugging purposes
+//     console.error('Error rendering account page:', error);
+
+//     // Handle the error appropriately, such as displaying an error message or redirecting to an error page
+//     req.flash('error', 'Failed to render account page.');
+//     res.redirect('/pets'); // Redirect to an appropriate error page or fallback route
+//   }
+// };
 
 // Controller for rendering the account settings page
-module.exports.renderAccountSettings = (req, res) => {
-  try {
-    const data = req.data; // Language data is available from the middleware
-    // Render the account settings page template
-    res.render('auth/settings', { languageOptions, data });
-  } catch (error) {
-    // Log the error for debugging purposes
-    console.error('Error rendering account page:', error);
+// module.exports.renderAccountSettings = (req, res) => {
+//   try {
+//     const data = req.data; // Language data is available from the middleware
+//     // Render the account settings page template
+//     res.render('auth/settings', { languageOptions, data });
+//   } catch (error) {
+//     // Log the error for debugging purposes
+//     console.error('Error rendering account page:', error);
 
-    // Handle the error appropriately, such as displaying an error message or redirecting to an error page
-    req.flash('error', 'Failed to render account page.');
-    res.redirect('/pets'); // Redirect to an appropriate error page or fallback route
-  }
-};
+//     // Handle the error appropriately, such as displaying an error message or redirecting to an error page
+//     req.flash('error', 'Failed to render account page.');
+//     res.redirect('/pets'); // Redirect to an appropriate error page or fallback route
+//   }
+// };
 
 // Controller for updating user account information
 // module.exports.updateAccount = async (req, res) => {
@@ -446,248 +502,146 @@ module.exports.renderAccountSettings = (req, res) => {
 //   }
 // };
 
-module.exports.updateProfileAvatar = async (req, res, next) => {
-  const avatar = req.file;
-  // console.log(avatar);
-  const userId = req.user._id;
+// module.exports.updateProfileAvatar = async (req, res, next) => {
+//   const avatar = req.file;
+//   // console.log(avatar);
+//   const userId = req.user._id;
 
-  try {
-    if (avatar) {
-      const cloudinaryRes = await cloudinary.uploader.upload(avatar.path);
-      const updatedUser = await User.findByIdAndUpdate(
-        userId,
-        {
-          $set: {
-            avatar: {
-              url: cloudinaryRes.url,
-              filename: cloudinaryRes.public_id,
-            },
-          },
-        },
-        { new: true },
-      );
+//   try {
+//     if (avatar) {
+//       const cloudinaryRes = await cloudinary.uploader.upload(avatar.path);
+//       const updatedUser = await User.findByIdAndUpdate(
+//         userId,
+//         {
+//           $set: {
+//             avatar: {
+//               url: cloudinaryRes.url,
+//               filename: cloudinaryRes.public_id,
+//             },
+//           },
+//         },
+//         { new: true },
+//       );
 
-      req.flash('success', 'Successfully uploaded avatar!');
-      // return res.redirect(`/auth/account/profile`);
-    }
-  } catch (err) {
-    console.log(err);
-  }
+//       req.flash('success', 'Successfully uploaded avatar!');
+//       // return res.redirect(`/auth/account/profile`);
+//     }
+//   } catch (err) {
+//     console.log(err);
+//   }
 
-  // mimetype: 'image/jpeg',
-  // path: 'https://res.cloudinary.com/dymne7cde/image/upload/v1687102050/useravatar/yskycd2eidbnevvijvy0.jpg',
-  // size: 8949,
-  // filename: 'useravatar/yskycd2eidbnevvijvy0'
-};
+//   // mimetype: 'image/jpeg',
+//   // path: 'https://res.cloudinary.com/dymne7cde/image/upload/v1687102050/useravatar/yskycd2eidbnevvijvy0.jpg',
+//   // size: 8949,
+//   // filename: 'useravatar/yskycd2eidbnevvijvy0'
+// };
 
-module.exports.updateAccount = async (req, res, next) => {
-  const { firstName, lastName, phoneCode, phoneNumber, country } = req.body;
-  console.log(country);
-  const userId = req.user._id;
+// module.exports.updateAccount = async (req, res, next) => {
+//   const { firstName, lastName, phoneCode, phoneNumber, country } = req.body;
+//   console.log(country);
+//   const userId = req.user._id;
 
-  try {
-    const updatedUser = await User.findByIdAndUpdate(
-      userId,
-      {
-        $set: {
-          firstName,
-          lastName,
-          phoneCode,
-          phoneNumber,
-          'address.country': country,
-        },
-      },
-      { new: true },
-    );
+//   try {
+//     const updatedUser = await User.findByIdAndUpdate(
+//       userId,
+//       {
+//         $set: {
+//           firstName,
+//           lastName,
+//           phoneCode,
+//           phoneNumber,
+//           'address.country': country,
+//         },
+//       },
+//       { new: true },
+//     );
 
-    // Update the session with the new user information
-    req.login(updatedUser, (err) => {
-      if (err) {
-        console.error('Error updating session:', err);
-        // Handle the error appropriately
-      }
+//     // Update the session with the new user information
+//     req.login(updatedUser, (err) => {
+//       if (err) {
+//         console.error('Error updating session:', err);
+//         // Handle the error appropriately
+//       }
 
-      // Send a success response to the client
-      res.json({ success: true });
-    });
-  } catch (error) {
-    console.error('Error updating account:', error);
-    // Handle the error appropriately
-    res.status(500).json({ success: false, message: 'Failed to update account' });
-  }
-};
+//       // Send a success response to the client
+//       res.json({ success: true });
+//     });
+//   } catch (error) {
+//     console.error('Error updating account:', error);
+//     // Handle the error appropriately
+//     res.status(500).json({ success: false, message: 'Failed to update account' });
+//   }
+// };
 
-module.exports.updateAccountSettings = async (req, res, next) => {
-  const { language } = req.body;
-  console.log(language);
-  const userId = req.user._id;
+// module.exports.updateAccountSettings = async (req, res, next) => {
+//   const { language } = req.body;
+//   console.log(language);
+//   const userId = req.user._id;
 
-  try {
-    const updatedUser = await User.findByIdAndUpdate(
-      userId,
-      {
-        $set: {
-          language,
-        },
-      },
-      { new: true },
-    );
+//   try {
+//     const updatedUser = await User.findByIdAndUpdate(
+//       userId,
+//       {
+//         $set: {
+//           language,
+//         },
+//       },
+//       { new: true },
+//     );
 
-    // Update the session with the new user information
-    req.login(updatedUser, (err) => {
-      if (err) {
-        console.error('Error updating session:', err);
-        // Handle the error appropriately
-      }
+//     // Update the session with the new user information
+//     req.login(updatedUser, (err) => {
+//       if (err) {
+//         console.error('Error updating session:', err);
+//         // Handle the error appropriately
+//       }
 
-      // Send a success response to the client
-      res.json({ success: true });
-    });
-  } catch (error) {
-    console.error('Error updating account:', error);
-    // Handle the error appropriately
-    res.status(500).json({ success: false, message: 'Failed to update account settings' });
-  }
-};
+//       // Send a success response to the client
+//       res.json({ success: true });
+//     });
+//   } catch (error) {
+//     console.error('Error updating account:', error);
+//     // Handle the error appropriately
+//     res.status(500).json({ success: false, message: 'Failed to update account settings' });
+//   }
+// };
 
 // Controller for deleting the account
-module.exports.deleteAccount = async (req, res) => {
-  try {
-    const user = req.user;
+// module.exports.deleteAccount = async (req, res) => {
+//   try {
+//     const user = req.user;
 
-    // Delete the user's pets
-    await Pet.deleteMany({ author: user._id });
+//     // Delete the user's pets
+//     await Pet.deleteMany({ author: user._id });
 
-    // Delete the user's comments
-    await Comment.deleteMany({ author: user._id });
+//     // Delete the user's comments
+//     await Comment.deleteMany({ author: user._id });
 
-    // Delete the user account
-    await user.remove();
+//     // Delete the user account
+//     await user.remove();
 
-    // Logout the user session with a callback function
-    req.logout((err) => {
-      if (err) {
-        console.error('Error logging out:', err);
-        req.flash('error', 'Failed to delete account. Please try again.');
-        res.redirect('/');
-        return;
-      }
+//     // Logout the user session with a callback function
+//     req.logout((err) => {
+//       if (err) {
+//         console.error('Error logging out:', err);
+//         req.flash('error', 'Failed to delete account. Please try again.');
+//         res.redirect('/');
+//         return;
+//       }
 
-      // Flash a success message
-      req.flash('success', 'Account deleted successfully!');
+//       // Flash a success message
+//       req.flash('success', 'Account deleted successfully!');
 
-      // Redirect to the homepage or any other appropriate page
-      res.redirect('/auth/register');
-    });
-  } catch (error) {
-    console.error('Error deleting account:', error);
+//       // Redirect to the homepage or any other appropriate page
+//       res.redirect('/auth/register');
+//     });
+//   } catch (error) {
+//     console.error('Error deleting account:', error);
 
-    // Flash an error message
-    req.flash('error', 'Failed to delete account. Please try again.');
+//     // Flash an error message
+//     req.flash('error', 'Failed to delete account. Please try again.');
 
-    // Redirect to the account page or any other appropriate page
-    res.redirect('/');
-  }
-};
-
-// Controller for rendering the account watchlist page
-module.exports.renderAccountWatchlist = async (req, res) => {
-  try {
-    // Retrieve the user's watchlist from the database
-    const watchlist = req.user.watchlist;
-    const data = req.data; // Language data is available from the middleware
-    // Fetch the pets from the database based on the pet IDs in the watchlist
-    const pets = await Pet.find({ _id: { $in: watchlist } });
-
-    // Render the watchlist page with the watchlist data
-    res.render('auth/watchlist', { pets, data });
-  } catch (error) {
-    // Log the error for debugging purposes
-    console.error('Error rendering account watchlist:', error);
-
-    // Handle the error appropriately, such as displaying an error message or redirecting to an error page
-    //req.flash("error", "Failed to render account watchlist.");
-    //res.redirect("/pets"); // Redirect to an appropriate error page or fallback route
-  }
-};
-
-// Controller for updating the account watchlist page
-module.exports.updateAccountWatchlist = async (req, res) => {
-  try {
-    const userId = req.user._id;
-    let { pets } = req.body;
-
-    // Find the user by ID
-    const user = await User.findById(userId);
-
-    // Convert the watchlist array to a set
-    const watchlistSet = new Set(user.watchlist);
-
-    // Ensure pets is an array
-    pets = Array.isArray(pets) ? pets : [pets];
-
-    // Add the selected pets' IDs to the watchlist set
-    pets.forEach((petId) => watchlistSet.add(petId));
-
-    // Convert the watchlist set back to an array
-    user.watchlist = Array.from(watchlistSet);
-
-    // Save the updated user data
-    await user.save();
-
-    res.status(200).json({ message: 'Watchlist updated successfully' });
-  } catch (error) {
-    console.error('Error updating watchlist:', error);
-    res.status(500).json({ error: 'Failed to update watchlist' });
-  }
-};
-// Controller for deleting user account watchlist item
-module.exports.deleteAccountWatchlist = async (req, res) => {
-  try {
-    const userId = req.user._id;
-    const petId = req.params.petId;
-    console.log('petId', petId);
-
-    // Find the user by ID
-    const user = await User.findById(userId);
-
-    // Check if the pet exists in the user's watchlist
-    const petIndex = user.watchlist.indexOf(petId);
-    if (petIndex !== -1) {
-      // Remove the pet from the watchlist array
-      user.watchlist.splice(petIndex, 1);
-
-      // Save the updated user data
-      await user.save();
-
-      res.status(200).json({ message: 'Pet removed from watchlist successfully' });
-    } else {
-      res.status(404).json({ error: 'Pet not found in watchlist' });
-    }
-  } catch (error) {
-    console.error('Error removing pet from watchlist:', error);
-    res.status(500).json({ error: 'Failed to remove pet from watchlist' });
-  }
-};
-
-// Controller for deleting all user account watchlist items
-module.exports.deleteAllAccountWatchlist = async (req, res) => {
-  try {
-    const userId = req.user._id;
-    console.log('userId to delete wathclist', userId);
-
-    // Find the user by ID
-    const user = await User.findById(userId);
-
-    // Clear the watchlist array
-    user.watchlist = [];
-
-    // Save the updated user data
-    await user.save();
-
-    res.status(200).json({ message: 'All watchlist items removed successfully' });
-  } catch (error) {
-    console.error('Error removing all watchlist items:', error);
-    res.status(500).json({ error: 'Failed to remove all watchlist items' });
-  }
-};
+//     // Redirect to the account page or any other appropriate page
+//     res.redirect('/');
+//   }
+// };

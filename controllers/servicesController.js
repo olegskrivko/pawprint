@@ -85,8 +85,12 @@ module.exports.addNewService = async (req, res) => {
 
       service.serviceProviders.push(serviceProvider);
 
+      const user = req.user;
+
       await serviceProvider.save();
       await service.save();
+      user.userServices.push(serviceProvider._id);
+      await user.save();
 
       req.flash('success', 'Successfully added new service!');
       return res.redirect(`/services`);
