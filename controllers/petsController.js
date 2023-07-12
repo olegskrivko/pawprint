@@ -2,14 +2,15 @@ const Pet = require('../models/pet');
 const User = require('../models/user');
 const Location = require('../models/location');
 const { ObjectId } = require('mongoose').Types;
+//const { ObjectId } = require('mongoose');
 const { cloudinary } = require('../cloudinary');
 // const tt = require("@tomtom-international/web-sdk-services/dist/services-node.min.js");
 const fns = require('date-fns');
-// const PDFDocument = require("pdfkit");
 const path = require('path');
-const axios = require('axios');
 const fs = require('fs');
 const OneSignal = require('onesignal-node');
+const { PDFDocument, StandardFonts } = require('pdf-lib');
+const axios = require('axios');
 // //console.log('OneSignal', OneSignal);
 // const client = new OneSignal.Client(process.env.oneSignal_YOUR_APP_ID, process.env.oneSignal_YOUR_APP_AUTH_KEY);
 // //console.log('client', client);
@@ -604,6 +605,256 @@ module.exports.deletePet = async (req, res) => {
 //     response.data.on("error", (error) => reject(error));
 //   });
 // };
+// function generatePDF() {
+//   const doc = new PDFDocument();
+
+//   // Add content to the PDF
+//   doc.text('Hello, World!', 100, 100);
+
+//   // Add an image from URL to the PDF
+//   doc.image('https://res.cloudinary.com/dymne7cde/image/upload/v1684082424/PetFinder/azltxnekf0v2he30woz4.jpg', {
+//     fit: [250, 250],
+//     align: 'center',
+//     valign: 'center',
+//   });
+
+//   // Finalize the PDF and return it as a buffer
+//   return doc.buffer();
+// }
+
+// module.exports.renderPdf = async (req, res) => {
+//   async function createPDFWithImage() {
+//     // Create a new PDF document
+//     const doc = await PDFDocument.create();
+
+//     // Fetch the image from the URL
+//     const imageUrl = 'https://res.cloudinary.com/dymne7cde/image/upload/v1684082424/PetFinder/azltxnekf0v2he30woz4.jpg';
+//     const imageBuffer = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+
+//     // Load the image data as a PDF image
+//     const pdfImage = await doc.embedJpg(imageBuffer.data);
+
+//     // Add a new page to the PDF
+//     const page = doc.addPage();
+
+//     // Draw the image on the page
+//     const { width, height } = pdfImage.scale(0.5);
+//     page.drawImage(pdfImage, {
+//       x: 100,
+//       y: 100,
+//       width,
+//       height,
+//     });
+
+//     // Add text to the page
+//     const font = await doc.embedFont(StandardFonts.Helvetica);
+//     page.drawText('Hello, World!', {
+//       x: 100,
+//       y: 50,
+//       font,
+//       size: 24,
+//     });
+
+//     // Serialize the PDF
+//     const pdfBytes = await doc.save();
+
+//     return pdfBytes;
+//   }
+
+//   // Usage example
+//   createPDFWithImage()
+//     .then((pdfBytes) => {
+//       // console.log(pdfBytes);
+//       // Use the PDF bytes as needed (e.g., save to a file, send as a response)
+//       // Send the PDF bytes as the response
+//       res.send(pdfBytes);
+//     })
+//     .catch((error) => {
+//       console.error('Error creating PDF:', error);
+//     });
+// };
+
+// wooooooooooooorks
+// module.exports.renderPdf = async (req, res) => {
+//   try {
+//     // Create a new PDF document
+//     const pdfDoc = await PDFDocument.create();
+
+//     // Fetch the image data from the URL
+//     const imageResponse = await axios.get('https://res.cloudinary.com/dymne7cde/image/upload/v1684082424/PetFinder/azltxnekf0v2he30woz4.jpg', {
+//       responseType: 'arraybuffer',
+//     });
+
+//     // Embed the image in the PDF
+//     const jpgImage = await pdfDoc.embedJpg(imageResponse.data);
+
+//     // Create a new page
+//     const page = pdfDoc.addPage();
+
+//     // Draw the image on the page
+//     page.drawImage(jpgImage, {
+//       x: 100,
+//       y: 100,
+//       width: 250,
+//       height: 250,
+//     });
+
+//     // Serialize the PDF document to a Uint8Array
+//     const pdfBytes = await pdfDoc.save();
+
+//     // Set response headers for PDF download
+//     res.setHeader('Content-Disposition', 'attachment; filename="example.pdf"');
+//     res.setHeader('Content-Type', 'application/pdf');
+
+//     // Send the PDF bytes as the response
+//     res.send(Buffer.from(pdfBytes));
+//   } catch (error) {
+//     console.error('Error generating PDF:', error);
+//     res.status(500).send('Error generating PDF');
+//   }
+// };
+// module.exports.renderPdf = async (req, res) => {
+//   try {
+//     // Create a new PDF document
+//     const pdfDoc = await PDFDocument.create();
+
+//     // Add a new page
+//     const page = pdfDoc.addPage();
+
+//     // Set the font and font size
+//     const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+//     const fontSize = 20;
+
+//     // Add text to the page
+//     page.drawText('Hello, World!', {
+//       x: 50,
+//       y: page.getSize().height - 50,
+//       font,
+//       fontSize,
+//     });
+
+//     // Fetch the image data from the URL
+//     const imageUrl = 'https://res.cloudinary.com/dymne7cde/image/upload/v1684082424/PetFinder/azltxnekf0v2he30woz4.jpg';
+//     const imageResponse = await axios.get(imageUrl, {
+//       responseType: 'arraybuffer',
+//     });
+
+//     // Embed the image in the PDF
+//     const image = await pdfDoc.embedJpg(imageResponse.data);
+
+//     // Calculate the desired dimensions of the image
+//     const maxWidth = 200;
+//     const maxHeight = 200;
+//     const imageWidth = image.width > maxWidth ? maxWidth : image.width;
+//     const imageHeight = (imageWidth / image.width) * image.height;
+
+//     // Draw the image on the page
+//     page.drawImage(image, {
+//       x: 100,
+//       y: 300,
+//       width: imageWidth,
+//       height: imageHeight,
+//     });
+
+//     // Serialize the PDF document to a Uint8Array
+//     const pdfBytes = await pdfDoc.save();
+
+//     // Set response headers for PDF download
+//     res.setHeader('Content-Disposition', 'attachment; filename="example.pdf"');
+//     res.setHeader('Content-Type', 'application/pdf');
+
+//     // Send the PDF bytes as the response
+//     res.send(Buffer.from(pdfBytes));
+//   } catch (error) {
+//     console.error('Error generating PDF:', error);
+//     res.status(500).send('Error generating PDF');
+//   }
+// };
+
+module.exports.renderPdf = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Convert petId to ObjectId
+    // const objectId = ObjectId(petId);
+    const pet = await Pet.findById(id);
+
+    // Create a new PDF document
+    const pdfDoc = await PDFDocument.create();
+
+    // Add a new page
+    const page = pdfDoc.addPage();
+
+    // Set the font and font size
+    const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+    const fontSize = 12;
+
+    // Fetch the image data from the URL
+    const imageUrl = `${pet.images[0].url}`;
+    const imageResponse = await axios.get(imageUrl, {
+      responseType: 'arraybuffer',
+    });
+
+    // Embed the image in the PDF
+    const image = await pdfDoc.embedJpg(imageResponse.data);
+
+    // Calculate the desired dimensions of the image
+    const maxWidth = 200;
+    const maxHeight = 200;
+    const imageWidth = image.width > maxWidth ? maxWidth : image.width;
+    const imageHeight = (imageWidth / image.width) * image.height;
+
+    // Draw the image on the page
+    page.drawImage(image, {
+      x: 50,
+      y: page.getSize().height - imageHeight - 50,
+      width: imageWidth,
+      height: imageHeight,
+    });
+
+    // Define the positions of the text fields
+
+    const positions = [
+      { x: 50, y: 500, text: `Species: ${pet.species}` },
+      { x: 50, y: 475, text: `Breed: ${pet.breed}` },
+      { x: 50, y: 450, text: `Coat Pattern: ${pet.pattern}` },
+      { x: 50, y: 425, text: `Pet's Gender: {}` },
+      { x: 50, y: 400, text: `First Color: {}` },
+      { x: 50, y: 375, text: `Second Color: {}` },
+      { x: 50, y: 350, text: `Third Color: {}` },
+      { x: 50, y: 325, text: `Last Seen: {}` },
+      { x: 50, y: 300, text: `Age: ${pet.age}` },
+      { x: 50, y: 275, text: `Coat Type: ${pet.coat}` },
+      { x: 50, y: 250, text: `Pet's Size: ${pet.size}` },
+      { x: 50, y: 225, text: `Pet Status: ${pet.petStatus}` },
+      { x: 50, y: 200, text: `Identifier: ${pet.identifier}` },
+      { x: 50, y: 175, text: `Description: ${pet.description}` },
+    ];
+
+    // Add text fields to the page
+    positions.forEach(({ x, y, text }) => {
+      page.drawText(text, {
+        x,
+        y,
+        font,
+        fontSize,
+      });
+    });
+
+    // Serialize the PDF document to a Uint8Array
+    const pdfBytes = await pdfDoc.save();
+
+    // Set response headers for PDF download
+    res.setHeader('Content-Disposition', 'attachment; filename="example.pdf"');
+    res.setHeader('Content-Type', 'application/pdf');
+
+    // Send the PDF bytes as the response
+    res.send(Buffer.from(pdfBytes));
+  } catch (error) {
+    console.error('Error generating PDF:', error);
+    res.status(500).send('Error generating PDF');
+  }
+};
 
 // module.exports.renderPdf = async (req, res) => {
 //   try {

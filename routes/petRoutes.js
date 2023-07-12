@@ -48,12 +48,7 @@ router
 //   .delete(isLoggedIn, isAuthor, catchAsync(petsController.deletePet)); // Delete a pet
 
 router.get('/:id/edit', isLoggedIn, isAuthor, catchAsync(petsController.renderEditForm)); // Render edit pet form
-
 // Not working yet, need to get rights to save file on server
-// router.get(
-//   "/:id/download-pdf",
-//   isLoggedIn,
-//   catchAsync(petsController.renderPdf)
-// ); // Render pet PDF download
+router.get('/:id/download-pdf', isLoggedIn, catchAsync(petsController.renderPdf)); // Render pet PDF download
 
 module.exports = router;

@@ -445,6 +445,68 @@
 
   <!--- row --->
 </div>
+<button onclick="downloadPDF()">Download PDF client</button>
+<button id="downloadBtn">Download PDF server</button>
+
+<script>
+  const { jsPDF } = window.jspdf;
+  function downloadPDF() {
+    const doc = new jsPDF();
+    //const imgData = 'https://res.cloudinary.com/dymne7cde/image/upload/v1684082424/PetFinder/azltxnekf0v2he30woz4.jpg';
+
+    //doc.addImage(imgData, 'JPEG', 10, 10, 50, 50);
+    //doc.save('example.pdf');
+
+    // Define your HTML template
+    const template = `
+<html>
+<head>
+  <style>
+    /* Add your CSS styles here */
+    .header {
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+    .image {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .text-field {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    PDF Template Example
+  </div>
+  <div class="image">
+    <img src="https://res.cloudinary.com/dymne7cde/image/upload/v1684082424/PetFinder/azltxnekf0v2he30woz4.jpg" width="200" height="200" alt="Image">
+  </div>
+  <div class="text-field">
+    <label for="name">Name:</label>
+    <span id="name">John Doe</span>
+  </div>
+  <div class="text-field">
+    <label for="email">Email:</label>
+    <span id="email">johndoe@example.com</span>
+  </div>
+  <div class="text-field">
+    <label for="phone">Phone:</label>
+    <span id="phone">123-456-7890</span>
+  </div>
+</body>
+</html>`;
+
+    // Convert HTML template to PDF
+    doc.html(template, {
+      callback: function (pdf) {
+        pdf.save('template.pdf');
+      },
+    });
+  }
+</script>
 
 <!-- <script>
   const saveWatchlistBtn = document.querySelector("#saveWatchlistBtn");
@@ -535,7 +597,35 @@
   const copyBtn = document.getElementById('copyBtn');
   copyBtn.addEventListener('click', copyURLToClipboard);
 </script>
+<script>
+  const url = window.location.href;
+  const parts = url.split('/');
+  const petId = parts[parts.length - 1];
+  //let testpetid = '64a49110d4494b93b4a96d8e';
 
+  const downloadBtn = document.getElementById('downloadBtn');
+
+  downloadBtn.addEventListener('click', () => {
+    fetch(`/pets/${petId}/download-pdf`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/pdf',
+      },
+    })
+      .then((response) => response.blob())
+      .then((blob) => {
+        console.log(blob);
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'example.pdf';
+        a.click();
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  });
+</script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script>
   const TOMTOMTOKEN = "<%-process.env.TOMTOM_API_KEY%>";

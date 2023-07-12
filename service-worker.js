@@ -1,18 +1,3 @@
-// self.addEventListener('install', (event) => {
-//   event.waitUntil(
-//     caches.open('app-cache').then((cache) => {
-//       return cache.addAll(['/', '/stylesheets/style.css', '/path/to/your/script.js', '/path/to/other/assets']);
-//     }),
-//   );
-// });
-
-// self.addEventListener('fetch', (event) => {
-//   event.respondWith(
-//     caches.match(event.request).then((response) => {
-//       return response || fetch(event.request);
-//     }),
-//   );
-// });
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open('app-cache').then((cache) => {
