@@ -49,7 +49,7 @@
         </ul> -->
         <ul class="dropdown-menu dropdown-menu-end mx-0 shadow w-220px" data-bs-theme="light">
           <li>
-            <a class="dropdown-item dropdown-item-danger d-flex gap-2 align-items-center" href="#"><i class="bi bi-file-earmark-arrow-down"></i> Download </a>
+            <a id="downloadBtn" class="dropdown-item dropdown-item-danger d-flex gap-2 align-items-center" href="#"><i class="bi bi-file-earmark-arrow-down"></i> Download </a>
           </li>
           <li>
             <a id="copyBtn" class="dropdown-item dropdown-item-danger d-flex gap-2 align-items-center" href="#"><i class="bi bi-files"></i> Copy link </a>
@@ -445,10 +445,10 @@
 
   <!--- row --->
 </div>
-<button onclick="downloadPDF()">Download PDF client</button>
+<!-- <button onclick="downloadPDF()">Download PDF client</button> -->
 <button id="downloadBtn">Download PDF server</button>
 
-<script>
+<!-- <script>
   const { jsPDF } = window.jspdf;
   function downloadPDF() {
     const doc = new jsPDF();
@@ -465,7 +465,7 @@
     /* Add your CSS styles here */
     .header {
       text-align: center;
-      font-size: 18px;
+      font-size: 10px;
       margin-bottom: 20px;
     }
     .image {
@@ -478,11 +478,11 @@
   </style>
 </head>
 <body>
-  <div class="header">
+  <div class="header" style="color: red;">
     PDF Template Example
   </div>
   <div class="image">
-    <img src="https://res.cloudinary.com/dymne7cde/image/upload/v1684082424/PetFinder/azltxnekf0v2he30woz4.jpg" width="200" height="200" alt="Image">
+    <img src="https://res.cloudinary.com/dymne7cde/image/upload/v1684082424/PetFinder/azltxnekf0v2he30woz4.jpg" style="width: 200px;height:200px;" alt="Image">
   </div>
   <div class="text-field">
     <label for="name">Name:</label>
@@ -506,7 +506,7 @@
       },
     });
   }
-</script>
+</script> -->
 
 <!-- <script>
   const saveWatchlistBtn = document.querySelector("#saveWatchlistBtn");
