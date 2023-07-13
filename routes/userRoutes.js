@@ -1,13 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const catchAsync = require('../utils/catchAsync');
+
 const passport = require('passport');
 const usersController = require('../controllers/usersController');
 const { isLoggedIn, languageMiddleware } = require('../middleware/middleware');
-
-const multer = require('multer');
-const { userAvatarStorage } = require('../cloudinary');
-const upload = multer({ storage: userAvatarStorage });
 
 // Apply the languageMiddleware to all routes in the router
 router.use(languageMiddleware);
@@ -32,15 +29,7 @@ router.get('/logout', usersController.logout);
 
 // Define the user routes
 router.get('/verify/:token', usersController.verifyEmail);
-router.get('/verificationlink', usersController.emailVerificationLink);
-
-// Account Routes
-// router.route('/account/profile').get(isLoggedIn, usersController.renderAccountProfile).put(isLoggedIn, usersController.updateAccount).delete(isLoggedIn, usersController.deleteAccount);
-
-// router.route('/account/settings').get(isLoggedIn, usersController.renderAccountSettings).put(isLoggedIn, usersController.updateAccountSettings);
-
-// post or put? catchasync need
-// router.route('/account/profile/avatar').put(isLoggedIn, upload.single('avatar'), usersController.updateProfileAvatar);
-// Route to delete all watchlist items
+// added isLoggedIn
+router.get('/verificationlink', isLoggedIn, usersController.emailVerificationLink);
 
 module.exports = router;

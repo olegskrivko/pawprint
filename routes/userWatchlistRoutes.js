@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router({ mergeParams: true });
-// Import your controller files
+const catchAsync = require('../utils/catchAsync');
 const userWatchlistController = require('../controllers/userWatchlistController');
 
-const catchAsync = require('../utils/catchAsync');
-const { isLoggedIn, isAuthor, languageMiddleware } = require('../middleware/middleware');
+const { isLoggedIn, /*isAuthor,*/ languageMiddleware } = require('../middleware/middleware');
 
 // Apply the languageMiddleware to all routes in the router
 router.use(languageMiddleware);

@@ -29,11 +29,7 @@
           </div>
 
           <p class="text-muted small pb-0 mb-0">
-            <% if (pet.author && pet.author.username) { %> @<%= pet.author.username %> <% if (pet.author.isVerified) { %>
-            <!-- <span class="text-primary"><i class="bi bi-patch-check-fill"></i></span> -->
-            <% } else { %>
-            <!-- <span class="text-danger"><i class="bi bi-patch-question-fill"></i></span> -->
-            <% } %> <% } else { %>
+            <% if (pet.author && pet.author.username) { %> @<%= pet.author.username %> <% if (pet.author.isVerified) { %> <% } else { %> <% } %> <% } else { %>
             <span class="text-danger">Unknown User</span>
             <% } %>
           </p>
@@ -42,11 +38,7 @@
 
       <div class="d-flex flex-column justify-content-center">
         <a type="" style="cursor: pointer" class="text-secondary" data-bs-toggle="dropdown"><i class="bi bi-three-dots-vertical"></i></a>
-        <!-- <ul class="dropdown-menu dropdown-menu-end">
-          <li><a class="dropdown-item" href="#">Menu item</a></li>
-          <li><a class="dropdown-item" href="#">Menu item</a></li>
-          <li><a class="dropdown-item" href="#">Menu item</a></li>
-        </ul> -->
+
         <ul class="dropdown-menu dropdown-menu-end mx-0 shadow w-220px" data-bs-theme="light">
           <li>
             <a id="downloadBtn" class="dropdown-item dropdown-item-danger d-flex gap-2 align-items-center" href="#"><i class="bi bi-file-earmark-arrow-down"></i> Download </a>
@@ -76,16 +68,8 @@
             </form>
           </li>
           <% } %>
-
-          <!-- <li>
-            <a class="dropdown-item text-danger dropdown-item-danger d-flex gap-2 align-items-center" href="#"><i class="bi-trash3"></i> Trash </a>
-          </li> -->
         </ul>
       </div>
-      <!-- 
-      <div>
-        <button class="btn btn-sm btn-outline-danger my-2 mx-2" id="saveWatchlistBtn" data-petid="<%= pet._id%>"><i class="bi bi-heart"></i> <span>Save</span></button>
-      </div> -->
     </div>
     <!-- END UPPER CARD HEADER -->
     <div id="petCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -115,9 +99,6 @@
 
     <% } %>
     <div class="card p-3 d-flex flex-row justify-content-between" style="border-radius: 0">
-      <!-- <div>
-        <button class="btn btn-sm btn-outline-danger" id="saveWatchlistBtn" data-petid="<%= pet._id%>"><i class="bi bi-heart"></i> <span>Save</span></button>
-      </div> -->
       <div class="d-flex">
         <div class="me-4">
           <a class="text-secondary" style="text-decoration: none; cursor: default"><%= pet.views %> views</a>
@@ -128,9 +109,6 @@
             <li>
               <a class="dropdown-item" onclick="shareOnFacebook()" href="#"><i class="bi bi-facebook"></i> Facebook</a>
             </li>
-            <!-- <li>
-              <a class="dropdown-item" href="#"><i class="bi bi-instagram"></i> Instagram</a>
-            </li> -->
             <li>
               <a class="dropdown-item" onclick="shareOnLinkedIn()" href="#"><i class="bi bi-linkedin"></i> LinkedIn</a>
             </li>
@@ -170,30 +148,6 @@
           <a data-bs-target="#petCarousel" data-bs-slide-to="<%= i %>" class="bg-dark carousel-indicator <%= i === 0 ? 'active' : '' %>" onclick="updateActiveIndicator(this)"></a>
           <% }) %>
         </div>
-        <script>
-          const indicators = document.querySelectorAll('.carousel-indicator');
-          const carousel = document.querySelector('#petCarousel');
-
-          carousel.addEventListener('slid.bs.carousel', function () {
-            const activeSlide = carousel.querySelector('.active.carousel-item');
-            const activeIndex = Array.from(activeSlide.parentNode.children).indexOf(activeSlide);
-
-            indicators.forEach((ind) => {
-              ind.classList.remove('active');
-            });
-            indicators[activeIndex].classList.add('active');
-          });
-        </script>
-
-        <!-- <script>
-            function updateActiveIndicator(indicator) {
-              const indicators = document.querySelectorAll('.carousel-indicator');
-              indicators.forEach((ind) => {
-                ind.classList.remove('active');
-              });
-              indicator.classList.add('active');
-            }
-          </script> -->
 
         <% } %>
       </div>
@@ -230,8 +184,6 @@
     <div class="col-md-12">
       <div class="card mb-3" style="border-radius: 0">
         <div class="card-body py-0">
-          <!-- <h5 class="card-title"><b>Name:</b> <= pet.title %></h5> -->
-
           <ul class="list-group list-group-flush show-pet-list">
             <!-- <li class="list-group-item">
           <b>Last seen in:</b> <span id="pet-location"> <= pet.location %></span>
@@ -281,39 +233,8 @@
           <div class="card-footer small text-muted">Updated <%=updateDateInWords%></div>
         </div>
       </div>
-      <!-- Share Buttons -->
     </div>
   </section>
-
-  <!-- <section class="col-md-6 order-3 order-sm-3 order-md-2">
-    <div style="width: 100wh; height: 100%; min-height: 300px">
-      <div
-        id="map"
-        class="img d-block w-100"
-        style="height: 100%; min-height: 300px"
-      ></div> -->
-  <!-- <div class="card d-flex flex-row bg-dark" style="border-radius: 0">
-        <b style="color: antiquewhite">Add location</b>
-        < if(currentUser && pet.author.equals(currentUser._id)) {%>
-        <div>
-          <button id="add-marker" class="btn btn-sm btn-outline-info my-2 mx-2">
-            <i class="bi bi-geo-alt"></i>+
-          </button>
-        </div>
-        <div>
-          <button
-            id="remove-marker"
-            class="btn btn-sm btn-outline-danger my-2 me-2"
-          >
-            <i class="bi bi-geo-alt"></i>-
-          </button>
-        </div>
-        < } %>
-      </div> -->
-  <!-- </div>
-  </section> -->
-
-  <!-- <div><p id="distance" class="text-muted"></p></div> -->
 
   <!-- comment section -->
   <section class="col-md-6 order-4 order-md-4" id="comment-section">
@@ -396,26 +317,11 @@
                 </div>
 
                 <p class="text-muted small">
-                  <% if (comment.author && comment.author.username) { %> @<%= comment.author.username %> <% if (comment.author.isVerified) { %>
-                  <!-- <span class="text-primary"><i class="bi bi-patch-check-fill"></i></span> -->
-                  <% } else { %>
-                  <!-- <span class="text-danger"><i class="bi bi-patch-question-fill"></i></span> -->
-                  <% } %> <% } else { %>
+                  <% if (comment.author && comment.author.username) { %> @<%= comment.author.username %> <% if (comment.author.isVerified) { %> <% } else { %> <% } %> <% } else { %>
                   <span class="text-danger">Unknown User</span>
                   <% } %>
                 </p>
-                <!-- < if (pet.author && comment.author && pet.author.email && comment.author.email && pet.author.email.toLowerCase() === comment.author.email.toLowerCase()) { %>
-                <h6 class="card-text text-muted small">Author</h6>
-                < } %> -->
               </div>
-
-              <!-- <div class="align-items-center mb-0 ms-2">
-                <h5 class="card-title small">
-                  < if (comment.author && comment.author.username) { %> < if (comment.author.isVerified) { %>
-                  <span class="text-primary" style="font-size: 1.3rem"><i class="bi bi-patch-check-fill"></i></span>
-                  < } %> < } %>
-                </h5>
-              </div> -->
             </div>
             <div>
               <p class="card-text" style="text-align: justify"><small><%= comment.body %></small></p>
@@ -520,6 +426,21 @@
 </script> -->
 
 <script>
+  const indicators = document.querySelectorAll('.carousel-indicator');
+  const carousel = document.querySelector('#petCarousel');
+
+  carousel.addEventListener('slid.bs.carousel', function () {
+    const activeSlide = carousel.querySelector('.active.carousel-item');
+    const activeIndex = Array.from(activeSlide.parentNode.children).indexOf(activeSlide);
+
+    indicators.forEach((ind) => {
+      ind.classList.remove('active');
+    });
+    indicators[activeIndex].classList.add('active');
+  });
+</script>
+
+<script>
   function deleteComment(event) {
     event.preventDefault(); // Prevent the default anchor tag behavior
 
@@ -606,7 +527,7 @@
   const downloadBtn = document.getElementById('downloadBtn');
 
   downloadBtn.addEventListener('click', () => {
-    fetch(`/pets/${petId}/download-pdf`, {
+    fetch(`/pets/${petId}/downloadpdf`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/pdf',

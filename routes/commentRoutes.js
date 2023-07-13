@@ -1,16 +1,10 @@
 const express = require('express');
-
-// Import internal modules or utilities
+const router = express.Router({ mergeParams: true });
 const catchAsync = require('../utils/catchAsync');
 
+const comments = require('../controllers/commentsController');
 // Import middleware functions
 const { validateComment, isLoggedIn, isCommentAuthor } = require('../middleware/middleware');
-
-// Import commentsController
-const comments = require('../controllers/commentsController');
-
-const router = express.Router({ mergeParams: true });
-
 const { languageMiddleware } = require('../middleware/middleware');
 
 // Apply the languageMiddleware to all routes in the router
@@ -21,14 +15,14 @@ router.post(
   '/',
   isLoggedIn, // Middleware to check if user is logged in
   //validateComment, // Middleware to validate comment
-  catchAsync(comments.createComment), // Async route handler for creating a comment
+  catchAsync(comments.createComment),
 );
 
 router.delete(
   '/:commentId',
   isLoggedIn, // Middleware to check if user is logged in
   isCommentAuthor, // Middleware to check if user is the author of the comment
-  catchAsync(comments.deleteComment), // Async route handler for deleting a comment
+  catchAsync(comments.deleteComment),
 );
 
 module.exports = router;

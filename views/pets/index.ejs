@@ -46,8 +46,6 @@
 </style>
 
 <!-- <div class="ad-container" style="height: 100px; width: 100%; background-color:lightgrey">
-
-  <p>Advertisement text</p>
 </div> -->
 
 <div id="map" class="map" style="width: 100%; height: 400px"></div>
@@ -67,9 +65,7 @@
  
   <div>
     <a class="btn btn-primary  ms-1" href="/pets/new"><%= petsLocale.reportPetBtn %></a>
-    <!-- <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      Button with data-bs-target
-    </button> -->
+   
   </div>
   </div>
 
@@ -82,7 +78,7 @@
         
       </div>
 
-            <!-- Pet Status -->
+    <!-- Pet Status -->
             <div class="col-md-3">
               <label class="form-label"><%= petsLocale.filterPetStatus %></label>
               <div class="input-group">
@@ -99,7 +95,7 @@
             </div>
           </div>
 
-           <!-- Pet Species -->
+  <!-- Pet Species -->
        <div class="col-md-3">
         <label class="form-label"><%= petsLocale.filterSpecies %></label>
         <div class="input-group">
@@ -115,7 +111,6 @@
           </select>
       </div>
     </div>
-<!-- <p><= genderOptions %></p> -->
 
        <!-- Pet Gender -->
        <div class="col-md-3">
@@ -135,6 +130,7 @@
 
       </div>
     </div>
+
  <!-- Pet Breed -->
      <div class="col-md-3">
       <label class="form-label"><%= petsLocale.filterBreed %></label>
@@ -164,7 +160,7 @@
     </div>
   </div>
 
- 
+ <!-- pet color -->
       <div class="col-md-3">
         <label class="form-label"><%= petsLocale.filterPetColor %></label>
         <div class="input-group">
@@ -181,12 +177,7 @@
       </div>
     </div>
 
- 
-      
-
-
-
-
+<!-- Distance -->
       <div class="col-md-3">
         <label class="form-label" for="distance"><%= petsLocale.filterDistance %></label>
         <div class="input-group">
@@ -219,8 +210,6 @@
       </div>
     </div>
 
-   
-
       <!-- Coat type -->
       <div class="col-md-3">
         <label class="form-label"><%= petsLocale.filterCoatType %></label>
@@ -238,9 +227,7 @@
       </div>
     </div>
 
-
-
-
+ <!-- pet size -->
        <div class="col-md-3">
         <label class="form-label"><%= petsLocale.filterPetSize %></label>
         <div class="input-group">
@@ -258,7 +245,7 @@
       </div>
     </div>
 
-
+ <!-- pet identifier -->
       <div class="col-md-3">
         <label class="form-label" for="identifier"><%= petsLocale.filterIdentifier %></label>
         <div class="input-group">
@@ -274,6 +261,7 @@
         </div>
       </div>
 
+<!-- pet location -->
       <div class="col-md-3">
         <label class="form-label"><%= petsLocale.filterLocation %></label>
         <div class="input-group">
@@ -300,7 +288,7 @@
       </div>
     </div>
 
-      <!-- Lost Date -->
+<!-- Lost Date -->
       <div class="col-md-3">
         <label class="form-label" for="lostdate"><%= petsLocale.filterLostDate %></label>
         <div class="input-group">
@@ -317,40 +305,6 @@
       </div>
 
 
-
-      <!-- <div class="col-md-12">
-        <div class="d-flex my-2">
-          <div class="form-check form-switch me-3">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              role="switch"
-              id="flexSwitchCheckDefault"
-              name="petStatus"
-              value="missing"
-              checked
-            />
-            <label class="form-check-label" for="flexSwitchCheckDefault"
-              >Show missing pets</label
-            >
-          </div>
-          <div class="form-check form-switch me-3">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              role="switch"
-              id="flexSwitchCheckDefault2"
-              name="petStatus"
-              value="found"
-              
-            />
-            <label class="form-check-label" for="flexSwitchCheckDefault2"
-              >Show found pets</label
-            >
-          </div>
-        </div>
-      </div> -->
-
       <div class="col-md-12 my-3 d-flex ">
         <button class="btn btn-warning search-form-btn  me-2 " type="submit"><i class="bi bi-search"></i> <%= petsLocale.searchBtn %></button>
         <button class="btn btn-secondary reset-form-btn"><i class="bi bi-eraser-fill"></i> <%= petsLocale.clearBtn %></button>
@@ -362,8 +316,7 @@
   </form>
 </div>
 
-<!-- <h1>All Pets</h1> -->
-
+<!-- <h1>Pets in <country></h1> -->
 
 <div class="row ">
   <% if (pets.length > 0) {%>
@@ -372,9 +325,6 @@
       <% for (let pet of pets) { %>
       <div class="col">
       
-
-
-
           <div class="card shadow-sm pet-card" >
             <a
             href="/pets/<%=pet._id%>"
@@ -384,7 +334,6 @@
 
             <% if(pet.images.length) {%>
 
-            <!-- <img src="<=pet.image.url%>" alt="<=pet.title%>" /> -->
             <img
               src="<%=pet.images[0].url%>"
               class="bd-placeholder-img card-img-top"
@@ -427,16 +376,9 @@
                 </label>
               </div>
             </div>
-            <!-- row -->
           </div>
         </div>
-        
-
-
-          </div>
-
-
-
+        </div>
        
       </div>
       <% } %>
@@ -647,24 +589,6 @@
   </nav>
 </div> -->
 
-<!-- <script>
-  let checkboxMissing = document.querySelector("#flexSwitchCheckDefault");
-  let checkboxFound = document.querySelector("#flexSwitchCheckDefault2");
-  checkboxMissing.addEventListener("change", () => {
-    if (checkboxMissing.checked == true) {
-      console.log("nothing hapens");
-      checkboxFound.checked = false;
-    } 
-  });
-
-  checkboxFound.addEventListener("change", () => {
-    if (checkboxFound.checked == true) {
-      console.log("nothing hapens");
-      checkboxMissing.checked = false;
-    } 
-  });
-</script> -->
-
 
 <script>
   if ("geolocation" in navigator) {
@@ -777,17 +701,6 @@
     let userLat;
     let userLng;
 
-    //card.addEventListener("click", (e)=> {
-    //  let coords = e.target.dataset.servicecoords;
-    //  let coordsArray = coords.split(",");
-   // })
-
-
-
-
-
-
-
     if ("geolocation" in navigator) {
       // geolocation is available
       navigator.geolocation.getCurrentPosition((position) => {
@@ -829,7 +742,6 @@
         let result = CalculateDistance();
 
         newDist.innerHTML = `${result} km`;
-        //newDist.innerHTML = `${result} km from you`;
       });
     }
   });
@@ -908,15 +820,15 @@ function retrieveFilterValues() {
 }
 
  
-    //let searchFormBtn = document.querySelector(".search-form-btn");
-    let resetFormBtn = document.querySelector(".reset-form-btn")
+//let searchFormBtn = document.querySelector(".search-form-btn");
+let resetFormBtn = document.querySelector(".reset-form-btn")
 
 
-    // Function to clear the form filter values
-    function clearFormFilterValues() {
-      document.querySelector('#petStatus').value = '';
-      document.querySelector('#species').value = '';
-      document.querySelector('#gender').value = '';
+// Function to clear the form filter values
+function clearFormFilterValues() {
+    document.querySelector('#petStatus').value = '';
+    document.querySelector('#species').value = '';
+    document.querySelector('#gender').value = '';
       document.querySelector('#petBreed').value = '';
       document.querySelector('#color').value = '';
       document.querySelector('#distance').value = '';
@@ -926,10 +838,7 @@ function retrieveFilterValues() {
       document.querySelector('#identifier').value = '';
       document.querySelector('#region').value = '';
       document.querySelector('#lostdate').value = '';
-    }
-
-
-
+}
 
 
 // Event listener for the reset button
@@ -978,67 +887,7 @@ function navigateToPage(pageNumber) {
  // On page load, retrieve filter values
  window.addEventListener("load", retrieveFilterValues);
 
-
-
-
-
-    //let paginationBtn = document.querySelector(".pagination-btn");
-  
-    //let filterPetStatus = document.querySelector("#petStatus");
-    //let filterSpecies = document.querySelector("#species");
-    //let filterGender = document.querySelector("#gender");
-    //let filterBreed = document.querySelector("#petBreed");
-    //let filterColor = document.querySelector("#color");
-    //let filterDistance = document.querySelector("#distance");
-    //let filterAge = document.querySelector("#age");
-    //let filterCoat = document.querySelector("#coat");
-    //let filterSize = document.querySelector("#size");
-    //let filterIdentifier = document.querySelector("#identifier");
-    //let filterRegion = document.querySelector("#region");
-    //let filterLostDate = document.querySelector("#lostdate");
-  
-
- 
-    //function clearFormFilterValues() {
-    //  filterPetStatus.selectedIndex = -1;
-     // filterSpecies.selectedIndex = -1;
-     // filterGender.selectedIndex = -1;
-     // filterBreed.selectedIndex = -1;
-    //  filterColor.selectedIndex = -1;
-    //  filterDistance.value = "";
-    //  filterAge.selectedIndex = -1;
-    //  filterCoat.selectedIndex = -1;
-     // filterSize.selectedIndex = -1;
-     // filterIdentifier.value = "";
-     // filterRegion.selectedIndex = -1;
-     // filterLostDate.value = "";
-   // }
-
-   //function clearFormFilterValues() {
-   // filterPetStatus.selectedIndex = 0;
-   // filterSpecies.selectedIndex = 0;
-   // filterGender.selectedIndex = 0;
-   // filterBreed.selectedIndex = 0;
-   // filterColor.selectedIndex = 0;
-   // filterDistance.value = "";
-   // filterAge.selectedIndex = 0;
-   // filterCoat.selectedIndex = 0;
-   // filterSize.selectedIndex = 0;
-   // filterIdentifier.value = "";
-   // filterRegion.selectedIndex = 0;
-   // filterLostDate.value = "";
- // }
-
-
-   // resetFormBtn.addEventListener("click", (e) => {
-   //   e.preventDefault()
-   //   clearFormFilterValues()
-    
-   // })
-
-    //searchFormBtn.addEventListener("submit", (e) => {
-    //  e.preventDefault()
-   // })
+//let paginationBtn = document.querySelector(".pagination-btn");
 
 //const inputPageNumber = document.querySelector('#inputPageNumber');
 //inputPageNumber.addEventListener('keyup', function(event) {

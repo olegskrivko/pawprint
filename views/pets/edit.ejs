@@ -2,7 +2,6 @@
 
 <div class="row">
   <h1 class="text-center">Edit Pet</h1>
-  <!-- <div class="col-md-6 offset-md-3"> -->
   <form action="/pets/<%=pet._id %>?_method=PUT" method="POST" novalidate class="row g-3 validated-form" enctype="multipart/form-data">
    
     <!-- Pet Status -->
@@ -206,15 +205,6 @@
           </div>
         </div>
 
-    
-
-  <!-- <div class="col-md-4">
-      <label class="form-label" for="breed">Breed</label>
-      <input class="form-control" type="text" id="breed" name="pet[breed]" />
-      <div class="valid-feedback">Looks good!</div>
-    </div> -->
-
-      <!-- Pet Breed -->
  <!-- Pet Breed -->
  <div class="col-md-4">
   <label class="form-label"><%=  petsLocale.filterBreed %></label>
@@ -244,46 +234,11 @@
 </div>
 </div>
 
-    <!-- <div class="mb-3">
-      <label class="form-label" for="title">Name</label>
-      <input class="form-control" type="text" id="title" name="pet[title]" value="<%= pet.title %>" multiple />
-      <div class="valid-feedback">Looks good!</div>
-    </div> -->
-
-    <!-- <div class="mb-3">
-        <label class="form-label" for="location">Location</label>
-        <input
-          class="form-control"
-          type="text"
-          id="location"
-          name="pet[location]"
-          value="<= pet.location %>"
-          required
-        />
-        <div class="valid-feedback">Looks good!</div>
-      </div> -->
-  
-  
-
-    <!-- <div class="mb-3">
-      <label class="form-label" for="age">Age</label>
-      <input class="form-control" type="text" aria-label="age" aria-describedby="age-label" name="pet[age]" />
-      <div class="valid-feedback">Looks good!</div>
-    </div> -->
-    
-    <!-- <div class="mb-3">
-      <label class="form-label" for="lostdate">Date</label>
-      <input class="form-control" type="date" aria-label="lostdate" aria-describedby="lostdate-label" name="pet[lostdate]" min="2023-01-01" />
-      <div class="valid-feedback">Looks good!</div>
-    </div> -->
-
     <div class="col-md-12 mb-3">
       <label class="form-label" for="description"><%= petsLocale.filterDescription %></label>
       <textarea maxlength="400" style="resize: none; height: 140px" class="form-control txt-area" type="text" id="description" name="pet[description]" required><%= pet.description %></textarea>
       <div class="valid-feedback">Looks good!</div>
     </div>
-
-
 
     <div class="mb-3">
       <label for="formFileMultiple" class="form-label">Upload Images</label>
@@ -303,7 +258,7 @@
     </div>
   </form>
   <a href="/pets/<%= pet._id %> ">Back To Pet</a>
-  <!-- </div> -->
+
 </div>
 
 <script>
