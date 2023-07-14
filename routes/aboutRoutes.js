@@ -10,6 +10,6 @@ router.use(languageMiddleware);
 
 router.route('/').get(catchAsync(aboutController.index));
 router.route('/support').get(catchAsync(aboutController.support));
-router.route('/feedback').get(catchAsync(aboutController.feedback));
+router.route('/feedback').get(catchAsync(aboutController.feedback)).post(catchAsync(aboutController.sendFeedback));
 
 module.exports = router;
