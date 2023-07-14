@@ -3,205 +3,34 @@
   <div class="row">
  <div class="col-3 p-0"><%- include('../partials/profileTabs') %></div>
 
- <div class="col-9 d-flex flex-column align-content-center justify-content-center">
-      <h5 class="text-center mb-3">Change Your Profile Information</h5>
+ <div class="col-9 ">
+      <h6 class="text-center mb-3">Change Your Profile Information</h6>
       <div class="row row-cols-1 row-cols-md-1 g-3 justify-content-center">
 
-
-
-<!-- <main class="form-signin w-100 m-auto mb-3" style="max-width: 500px"> -->
-  <!-- <h1 class="text-center">Account settings</h1> -->
-
-  <!-- <label for="customRange3" class="form-label">Maximum distance</label>
-  <input
-    type="range"
-    class="form-range mb-3"
-    min="0"
-    max="5"
-    step="0.5"
-    id="customRange3"
-  /> -->
-
-  <!-- <div class="form-check mb-3">
-    <input
-      class="form-check-input"
-      type="checkbox"
-      value=""
-      id="flexCheckChecked"
-      checked
-    />
-    <label class="form-check-label" for="flexCheckChecked">
-      Receive notifications
-    </label>
-  </div> -->
-  <!-- <div class="d-flex mb-3">
-    <div class="form-check me-3">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="flexRadioDefault"
-        id="flexRadioDefault1"
-      />
-      <label class="form-check-label" for="flexRadioDefault1">
-        Dark theme
-      </label>
-    </div>
-    <div class="form-check me-3">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="flexRadioDefault"
-        id="flexRadioDefault2"
-        checked
-      />
-      <label class="form-check-label" for="flexRadioDefault2">
-        Light theme
-      </label>
-    </div>
-  </div> -->
-  <!-- <label class="form-label" for="country">Select your country:</label>
-  <select
-    class="form-select mb-3"
-    aria-label="Default select example"
-    id="country"
-    name="address[country]"
-  >
-    <option selected value=""></option>
-    <option value="lv">Latvia</option>
-    <option value="ee">Estonia</option>
-    <option value="lt">Lithuania</option>
-  </select>
-
-  <label class="form-label" for="floatingLanguage">Select your language:</label>
-  <select
-    class="form-select mb-3"
-    aria-label="Default select example"
-    id="floatingLanguage"
-  >
-    <option selected value=""></option>
-    <option value="lv">Latvian</option>
-    <option value="ru">Russian</option>
-    <option value="en">English</option>
-    <option value="ee">Estonian</option>
-    <option value="lt">Lithuanian</option>
-  </select> -->
-<!-- </main> -->
-<!-- <main class="form-signin w-100 m-auto mb-3" style="max-width: 500px">
-  <h5>Change your contact information:</h5> -->
-<!-- <form
-    action="/auth/account/<=currentUser._id %>?_method=PUT"
-    method="POST"
-    novalidate
-    class="validated-form"
-    enctype="multipart/form-data"
-  > -->
-<!-- <div class="mb-3">
-    <label class="form-label" for="username">Username</label>
-    <input
-      class="form-control"
-      type="text"
-      id="username"
-      name="username"
-      value="<=currentUser.username%>"
-      required
-    />
-  </div>
-  <div class="mb-3">
-    <label class="form-label" for="email">Email address</label>
-    <input
-      type="email"
-      class="form-control"
-      id="email"
-      name="email"
-      placeholder="name@example.com"
-      value="<=currentUser.email%>"
-      required
-    />
-  </div> -->
-<!-- <div class="mb-3">
-      <label for="floatingPassword">Password</label>
-      <input
-        type="password"
-        class="form-control"
-        id="floatingPassword"
-        name="password"
-        placeholder="Password"
-        required
-      />
-    </div> -->
-<!-- </form> -->
-<!-- <button id="updateUserBtn" type="button" class="btn btn-warning">
-    Save Changes
-  </button>
-  <button type="button" class="btn btn-danger" disabled>Delete Account</button>
-</main> -->
-<!-- <script>
-  const updateUsername = async (newUsername) => {
-    try {
-      const response = await fetch("/account", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username: newUsername }),
-      });
-      if (response.ok) {
-        // Username updated successfully
-        window.location.href = "/account";
-      } else {
-        throw new Error("Failed to update username");
-      }
-    } catch (err) {
-      console.error(err);
-      // Handle error and display appropriate message
-    }
-  };
-
-  // Usage: Call the updateUsername function with the new username value
-  //updateUsername("newUsername");
-
-  // Get the button element
-  const updateUserBtn = document.querySelector("#updateUserBtn");
-
-  // Add event listener to the button click event
-  updateUserBtn.addEventListener("click", async () => {
-    // Get the updated username value from the input field
-    const username = document.querySelector("#username").value;
-    console.log("new username value", username);
-    // Call the updateUsername function with the new username value
-    await updateUsername(username);
-  });
-</script> -->
-
-  <div class="row row-cols-1 row-cols-md-2 g-3 justify-content-center">
-  <div class="col-md-4">
+ 
+  <div class="col-md-6">
       <label class="form-label" for="firstName">First name</label>
       <input class="form-control" type="text" id="firstName" name="firstName" value="<%=currentUser.firstName%>" />
   </div>
-  <div class="col-md-4">
+  <div class="col-md-6">
       <label class="form-label" for="lastName">Last name</label>
       <input class="form-control" type="text" id="lastName" name="lastName" value="<%=currentUser.lastName%>" />
   </div>
-</div>
 
-
-<div class="row row-cols-1 row-cols-md-2 g-3 justify-content-center">
   <div class="col-md-2">
     <label class="form-label" for="phoneCode">Phone code</label>
-    <select
-class="form-select"
-id="phoneCode"
+    <select class="form-select" id="phoneCode"
 >
 <% phoneCodeOptions.forEach(option => { %>
 <option value="<%= option %>" <% if (option === currentUser.phoneCode) { %>selected<% } %>><%=option%></option>
 <%}) %>
 </select>
 </div>
-  <div class="col-md-3">
+  <div class="col-md-5">
       <label class="form-label" for="phoneNumber">Phone number</label>
       <input class="form-control" type="text" id="phoneNumber" name="phoneNumber" value="<%=currentUser.phoneNumber%>" />
   </div>
-  <div class="col-md-3">
+  <div class="col-md-5">
     <label class="form-label" for="country">Select your country</label>
     <select
       class="form-select"
@@ -213,26 +42,16 @@ id="phoneCode"
       <%}) %>
     </select>
 </div>
-  <!-- <div class="col-md-3">
-  
-      <label class="form-label" for="dateOfBirth">Date of birth</label>
-      <input class="form-control" type="date" id="dateOfBirth" name="dateOfBirth" value="" />
-  </div> -->
-</div>
 
-
-<div class="row row-cols-1 row-cols-md-2 g-3 justify-content-center">
-  <div class="col-md-4">
+  <div class="col-md-6">
       <label class="form-label" for="username">Username</label>
       <input class="form-control" type="text" readonly disabled id="username" name="username" value="<%=currentUser.username%>" required />
   </div>
-  <div class="col-md-4">
+  <div class="col-md-6">
       <label class="form-label" for="email">Email address</label>
       <input class="form-control" type="email" readonly disabled id="email" name="email" value="<%=currentUser.email%>" required />
   </div>
-</div>
-<div class="row row-cols-1 row-cols-md-2 g-3 justify-content-center mt-2">
-  <div class="col-md-8">
+  <div class="col-md-12">
     <% if (currentUser.isVerified) { %>
       <p><span class="text-success"><i class="bi bi-shield-fill-check"></i></span> Email is verified</p>
     <% } else { %>
@@ -241,7 +60,6 @@ id="phoneCode"
     <% } %>
   </div>
   
-</div>
 
 
 <!-- <div class="row row-cols-1 row-cols-md-2 g-3 justify-content-center">
@@ -256,34 +74,30 @@ id="phoneCode"
 </div> -->
 
 
-
-
-  <div class="row row-cols-1 row-cols-md-2 g-3 justify-content-center">
     
- <div class="col-md-8 my-5">
- 
-
-    <button id="updateUserBtn" type="button" class="btn btn-warning">
-      Save changes
-    </button>
-    <button id="deleteUserBtn" type="button" class="btn btn-danger">
-      Delete account
-    </button>
+  <div class="col-md-12 d-flex justify-content-between my-3">
+      <button id="updateUserBtn" type="button" class="btn btn-warning">
+        Save changes
+      </button>
+      <button id="deleteUserBtn" type="button" class="btn btn-danger">
+        Delete account
+      </button>
   </div>
 </div>
 
 <div class="row row-cols-1 row-cols-md-2 g-3 justify-content-center">
-  <div class="col-md-8">
+  <div class="col-md-12">
       <label class="form-label" for="avatar">Upload avatar</label>
       <input class="form-control" type="file" id="avatar" name="avatar" accept="image/png, image/jpeg, image/jpg" />
       
   </div>
-  <div class="col-md-8">
+  <div class="col-md-12 my-3">
     <button id="updateUserAvatarBtn" type="button" class="btn btn-warning">
       Save avatar
     </button>
   </div>
 </div>
+
 </div>
 </div>
 </div>
@@ -324,8 +138,6 @@ id="phoneCode"
   });
   
 </script>
-
-
 
 <script>
   const updateAccount = async (updatedData) => {
@@ -405,42 +217,6 @@ id="phoneCode"
   });
 </script>
 
-
-
-<!-- <script>
-   
-  const updateAccount = async (updatedData) => {
-    try {
-      const response = await fetch("/auth/account/profile", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedData),
-      });
-      if (response.ok) {
-        // Account updated successfully
-        window.location.href = "/auth/account/profile";
-      } else {
-        throw new Error("Failed to update account");
-      }
-    } catch (err) {
-      console.error(err);
-      // Handle error and display appropriate message
-    }
-  };
-
-  const updateUserBtn = document.querySelector("#updateUserBtn");
-  updateUserBtn.addEventListener("click", async () => {
-    const username = document.querySelector("#username").value;
-    const email = document.querySelector("#email").value;
-
-    const updatedData = { username, email };
-    await updateAccount(updatedData);
-  });
-</script> -->
-
-
 <script>
 const emailVerificationLink = async () => {
   try {
@@ -475,6 +251,5 @@ verifyEmail.addEventListener('click', async (e)=> {
   await emailVerificationLink()
   console.log(verifyEmail)
 })
-
 
 </script>

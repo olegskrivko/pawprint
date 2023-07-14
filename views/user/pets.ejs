@@ -6,38 +6,38 @@
       <!-- <h5 class="text-center mb-3">Your Pets</h5>
       <div class="row row-cols-1 row-cols-md-1 g-3 justify-content-center"></div> -->
       <div class="row row-cols-1 row-cols-md-1 g-3 justify-content-center">
-        <!-- <div class="col-md-8"> -->
-        <div class="p-3 bg-body rounded shadow-sm">
-          <h6 class="border-bottom pb-2 mb-0">Your pets</h6>
+        <div class="col-md-12">
+          <div class="p-3 bg-body rounded shadow-sm">
+            <h6 class="border-bottom pb-2 mb-0">Your pets</h6>
 
-          <% if ( typeof userPets !== 'undefined' && userPets.length > 0) {%> <% for (let pet of userPets) { %>
+            <% if ( typeof userPets !== 'undefined' && userPets.length > 0) {%> <% for (let pet of userPets) { %>
 
-          <div class="d-flex text-body-secondary pt-3">
-            <div class="mb-3 me-2">
-              <img src="<%= pet.images[0].thumbnail%>" class="img-thumbnail" alt="" width="98px" height="98px" />
-              <!-- <div class="form-check-inline">azaz</div> -->
-              <!-- <label for="image-<=i%>">Delete?</label> -->
-            </div>
-
-            <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-              <div class="d-flex justify-content-between">
-                <strong class="text-gray-dark"><p><%=pet.petStatus%></p></strong>
-                <button class="btn btn-danger removeWatchlistBtn" data-petid="<%= pet._id%>">Remove</button>
+            <div class="d-flex text-body-secondary pt-3">
+              <div class="mb-3 me-2">
+                <img src="<%= pet.images[0].thumbnail%>" class="img-thumbnail" alt="" width="98px" height="98px" />
+                <!-- <div class="form-check-inline">azaz</div> -->
+                <!-- <label for="image-<=i%>">Delete?</label> -->
               </div>
-              <span class="d-block"><a class="text-decoration-none" href="/pets/<%=pet._id%>">@<%=pet.species%></a></span>
+
+              <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                <div class="d-flex justify-content-between">
+                  <strong class="text-gray-dark"><p><%=pet.petStatus%></p></strong>
+                  <button class="btn btn-danger removeWatchlistBtn" data-petid="<%= pet._id%>">Remove</button>
+                </div>
+                <span class="d-block"><a class="text-decoration-none" href="/pets/<%=pet._id%>">@<%=pet.species%></a></span>
+              </div>
             </div>
-          </div>
 
-          <% } %> <% } else { %>
-          <p>List is empty</p>
-          <% } %>
+            <% } %> <% } else { %>
+            <p>List is empty</p>
+            <% } %>
 
-          <div class="d-block small text-end mt-3">
-            <a href="#" id="deleteAllUserPetsBtn" class="text-danger m-0 p-0" style="text-decoration: none" onclick="deleteAllUserServices(event)"><i class="bi bi-trash3"></i> Remove All</a>
+            <div class="d-block small text-end mt-3">
+              <a href="#" id="deleteAllUserPetsBtn" class="text-danger m-0 p-0" style="text-decoration: none" onclick="deleteAllUserServices(event)"><i class="bi bi-trash3"></i> Remove All</a>
+            </div>
           </div>
         </div>
       </div>
-      <!-- </div> -->
     </div>
   </div>
 </div>

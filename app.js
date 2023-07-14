@@ -28,7 +28,6 @@ const petRoutes = require('./routes/petRoutes');
 const compareRoutes = require('./routes/compareRoutes');
 const commentRoutes = require('./routes/commentRoutes');
 const locationRoutes = require('./routes/locationRoutes');
-// new routes
 const userProfileRoutes = require('./routes/userProfileRoutes');
 const userSettingsRoutes = require('./routes/userSettingsRoutes');
 const userWatchlistRoutes = require('./routes/userWatchlistRoutes');
@@ -132,13 +131,14 @@ app.use('/about', aboutRoutes);
 app.use('/pets/:id/comments', commentRoutes);
 app.use('/services', serviceRoutes);
 app.use('/regions', locationRoutes);
-// new routes
 app.use('/user/profile', userProfileRoutes);
 app.use('/user/settings', userSettingsRoutes);
 app.use('/user/watchlist', userWatchlistRoutes);
 app.use('/user/favorites', userFavouritesRoutes);
 app.use('/user/services', userServicesRoutes);
 app.use('/user/pets', userPetsRoutes);
+// new route
+// app.use('/services/:id/serviceproviders', commentRoutes);
 
 // Serve manifest.json
 app.get('/manifest.json', (req, res) => {

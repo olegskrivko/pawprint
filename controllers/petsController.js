@@ -2,60 +2,21 @@ const Pet = require('../models/pet');
 const User = require('../models/user');
 const Location = require('../models/location');
 const { ObjectId } = require('mongoose').Types;
-//const { ObjectId } = require('mongoose');
 const { cloudinary } = require('../cloudinary');
 // const tt = require("@tomtom-international/web-sdk-services/dist/services-node.min.js");
 const fns = require('date-fns');
 const path = require('path');
-const fs = require('fs');
 const OneSignal = require('onesignal-node');
 const { PDFDocument, StandardFonts } = require('pdf-lib');
 const axios = require('axios');
-// //console.log('OneSignal', OneSignal);
-// const client = new OneSignal.Client(process.env.oneSignal_YOUR_APP_ID, process.env.oneSignal_YOUR_APP_AUTH_KEY);
-// //console.log('client', client);
-// const oneSignalClient = new OneSignal.Client({
-//   app: {
-//     appId: process.env.oneSignal_YOUR_APP_ID,
-//     appAuthKey: process.env.oneSignal_YOUR_APP_AUTH_KEY,
-//   },
-// });
-// console.log('oneSignalClient', oneSignalClient);
-// const notification = {
-//   contents: { en: 'New pet added! Check it out.' },
-//   included_segments: ['Subscribed Users'],
-// };
-// console.log('notification', notification);
-// client
-//   .createNotification(notification)
-//   .then((response) => {
-//     console.log('Push notification sent successfully:', response.body);
-//     // Additional code or actions after sending the notification
-//   })
-//   .catch((error) => {
-//     console.log('Error sending push notification:', error);
-//     // Handling the error, if any
-//   });
-
-// const { genderOptions } = require('../utils/userSelectOptions');
-// const pdf = require("html-pdf");
-// const puppeteer = require("puppeteer");
 
 module.exports.index = async (req, res) => {
-  console.log('INDEX pet');
   const ITEMS_PER_PAGE = 10; // Number of items to display per page
   const { page, limit, age, gender, breed, species, pattern, coat, size, petStatus, identifier, name, location, color, lostdate, maxDistance, userlongitude, userlatitude, selectedRegion } = req.query;
 
-  const petsLocale = req.__('pets'); // Translate the 'home' key based on the user's selected language
-  const statusOptions = req.__('statusOptions');
-  const speciesOptions = req.__('speciesOptions');
-  const genderOptions = req.__('genderOptions');
-  const colorOptions = req.__('colorOptions');
-  const ageOptions = req.__('ageOptions');
-  const coatOptions = req.__('coatOptions');
-  const sizeOptions = req.__('sizeOptions');
-  const regionOptions = req.__('regionOptions');
-  const breedsOptions = req.__('breedsOptions');
+  // Translate the 'petsPage' key based on the user's selected language
+  const selectOptions = req.__('selectOptions');
+  const petsPage = req.__('petsPage');
 
   const selectedLocation = await Location.findOne({ region: selectedRegion });
 
@@ -170,16 +131,8 @@ module.exports.index = async (req, res) => {
     lostdate,
     selectedPolygonCoordinates,
     // select options (better to have them in one place on the server)
-    petsLocale, // Pass the language data to the view
-    statusOptions,
-    speciesOptions,
-    genderOptions,
-    colorOptions,
-    ageOptions,
-    coatOptions,
-    sizeOptions,
-    regionOptions,
-    breedsOptions,
+    selectOptions,
+    petsPage,
   });
 };
 
@@ -298,18 +251,8 @@ module.exports.createPet = async (req, res, next) => {
       url: pet.images[0].url,
     },
     icon: pet.images[0].url,
-    // chrome_web_image: {
-    //   url: pet.images[0].url,
-    // },
-    // chrome_web_badge: {
-    //   url: pet.images[0].url,
-    // },
-    attachments: {
-      // chrome_web_image: `${pet.images[0].url}`, // URL of the image to be sent in the notification
-      // ig_picture: `${pet.images[0].url}`,
-      // adm_big_picture: `${pet.images[0].url}`,
-      // chrome_web_image: `https://news.artnet.com/app/news-upload/2018/02/image-256x256.jpg`,
-    },
+
+    attachments: {},
     web_url: `https://pawclix.cyclic.app/pets/${pet._id}`,
   };
   console.log(notification);
@@ -327,60 +270,6 @@ module.exports.createPet = async (req, res, next) => {
   req.flash('success', 'Successfully created a new pet');
   res.redirect(`/pets/${pet._id}`);
 };
-
-// module.exports.showPet = async (req, res) => {
-//   try {
-//     // Retrieve the pet from the database
-//     const petsshow = req.__('petsshow'); // Translate the 'home' key based on the user's selected language
-//     // Find the pet with the provided ID and populate its comments and author
-
-//     const pet = await Pet.findById(req.params.id)
-//       .populate({
-//         path: 'comments',
-//         populate: {
-//           path: 'author',
-//         },
-//       })
-//       .populate('author');
-
-//     // Check if the pet is found
-//     if (!pet) {
-//       req.flash('error', 'Cannot find that pet!');
-//       return res.redirect('/pets');
-//     }
-
-//     // Increment the view count for the pet
-//     pet.views += 1;
-//     await pet.save();
-
-//     // Format the creation, update, and lost dates in words
-//     const createDateInWords = fns.formatDistanceToNow(new Date(pet.createdAt), {
-//       addSuffix: true,
-//     });
-//     const updateDateInWords = fns.formatDistanceToNow(new Date(pet.updatedAt), {
-//       addSuffix: true,
-//     });
-//     const lostDateInWords = fns.formatDistanceToNow(new Date(pet.lostdate), {
-//       addSuffix: true,
-//     });
-
-//     // Render the pet post page with the updated view count
-//     res.render('pets/show', { pet: pet, createDateInWords, updateDateInWords, lostDateInWords, petsshow });
-//   } catch (error) {
-//     // Handle any errors that occur
-//     console.error('Error retrieving pet:', error);
-//     res.status(500).json({ message: 'Internal Server Error' });
-//   }
-
-//   // Render the pet show page and pass the pet object and date information
-//   // res.render('pets/show', {
-//   //   pet: pet,
-//   //   createDateInWords,
-//   //   updateDateInWords,
-//   //   lostDateInWords,
-//   //   petsshow, // Pass the language data to the view,
-//   // });
-// };
 
 module.exports.showPet = async (req, res) => {
   console.log('show pete');
@@ -512,265 +401,6 @@ module.exports.deletePet = async (req, res) => {
   res.redirect('/pets');
 };
 
-// Function to download the image from Cloudinary
-// async function downloadImage(url, imagePath) {
-//   const writer = fs.createWriteStream(imagePath);
-
-//   const response = await axios({
-//     url,
-//     method: "GET",
-//     responseType: "stream",
-//   });
-
-//   response.data.pipe(writer);
-
-//   return new Promise((resolve, reject) => {
-//     writer.on("finish", resolve);
-//     writer.on("error", reject);
-//   });
-// }
-
-// function buildPDF(content, imagePath) {
-//   const doc = new PDFDocument();
-//   doc.text(content);
-
-//   // Add image to the PDF
-//   doc.image(imagePath, {
-//     fit: [350, 350], // Set the width and height of the image
-//     align: "center", // Align the image to the center
-//   });
-
-//   return doc;
-// }
-
-// Route for generating and downloading the PDF
-// module.exports.renderPdf = async (req, res) => {
-//   try {
-//     const { id } = req.params;
-//     const pet = await Pet.findById(id);
-
-//     if (!pet) {
-//       req.flash("error", "Cannot find that pet!");
-//       return res.redirect("/pets");
-//     }
-
-//     const myTemplate = `
-//       Name: ${pet.title}
-//       Owner: ${pet.owner}
-//       Species: ${pet.species}
-//       Breed: ${pet.breed}
-//       Pattern: ${pet.pattern}
-//       Age: ${pet.age}
-//       Coat: ${pet.coat}
-//       Size: ${pet.size}
-//       Status: ${pet.petStatus}
-
-//       Description: ${pet.description}
-//     `;
-
-//     // Modify the Cloudinary image URL to the correct location
-//     const imageUrl = pet.images[0].url;
-//     const imagePath = path.join(__dirname, "../public/images/pet-image.jpg");
-
-//     await downloadImage(imageUrl, imagePath); // Download the image from Cloudinary
-
-//     const pdfDoc = buildPDF(myTemplate, imagePath); // Generate the PDF document
-
-//     res.set({
-//       "Content-Type": "application/pdf",
-//       "Content-Disposition": "attachment;filename=petinfo.pdf",
-//     });
-
-//     pdfDoc.pipe(res); // Pipe the PDF document to the response
-//     pdfDoc.end();
-//   } catch (error) {
-//     console.error(error);
-//     req.flash("error", "Failed to generate PDF");
-//     res.redirect("/pets");
-//   }
-// };
-
-// Function to download an image from a URL and save it to the specified path
-// const downloadImage = async (imageUrl, imagePath) => {
-//   const response = await axios({
-//     method: "GET",
-//     url: imageUrl,
-//     responseType: "stream",
-//   });
-
-//   response.data.pipe(fs.createWriteStream(imagePath));
-
-//   return new Promise((resolve, reject) => {
-//     response.data.on("end", () => resolve());
-//     response.data.on("error", (error) => reject(error));
-//   });
-// };
-// function generatePDF() {
-//   const doc = new PDFDocument();
-
-//   // Add content to the PDF
-//   doc.text('Hello, World!', 100, 100);
-
-//   // Add an image from URL to the PDF
-//   doc.image('https://res.cloudinary.com/dymne7cde/image/upload/v1684082424/PetFinder/azltxnekf0v2he30woz4.jpg', {
-//     fit: [250, 250],
-//     align: 'center',
-//     valign: 'center',
-//   });
-
-//   // Finalize the PDF and return it as a buffer
-//   return doc.buffer();
-// }
-
-// module.exports.renderPdf = async (req, res) => {
-//   async function createPDFWithImage() {
-//     // Create a new PDF document
-//     const doc = await PDFDocument.create();
-
-//     // Fetch the image from the URL
-//     const imageUrl = 'https://res.cloudinary.com/dymne7cde/image/upload/v1684082424/PetFinder/azltxnekf0v2he30woz4.jpg';
-//     const imageBuffer = await axios.get(imageUrl, { responseType: 'arraybuffer' });
-
-//     // Load the image data as a PDF image
-//     const pdfImage = await doc.embedJpg(imageBuffer.data);
-
-//     // Add a new page to the PDF
-//     const page = doc.addPage();
-
-//     // Draw the image on the page
-//     const { width, height } = pdfImage.scale(0.5);
-//     page.drawImage(pdfImage, {
-//       x: 100,
-//       y: 100,
-//       width,
-//       height,
-//     });
-
-//     // Add text to the page
-//     const font = await doc.embedFont(StandardFonts.Helvetica);
-//     page.drawText('Hello, World!', {
-//       x: 100,
-//       y: 50,
-//       font,
-//       size: 24,
-//     });
-
-//     // Serialize the PDF
-//     const pdfBytes = await doc.save();
-
-//     return pdfBytes;
-//   }
-
-//   // Usage example
-//   createPDFWithImage()
-//     .then((pdfBytes) => {
-//       // console.log(pdfBytes);
-//       // Use the PDF bytes as needed (e.g., save to a file, send as a response)
-//       // Send the PDF bytes as the response
-//       res.send(pdfBytes);
-//     })
-//     .catch((error) => {
-//       console.error('Error creating PDF:', error);
-//     });
-// };
-
-// wooooooooooooorks
-// module.exports.renderPdf = async (req, res) => {
-//   try {
-//     // Create a new PDF document
-//     const pdfDoc = await PDFDocument.create();
-
-//     // Fetch the image data from the URL
-//     const imageResponse = await axios.get('https://res.cloudinary.com/dymne7cde/image/upload/v1684082424/PetFinder/azltxnekf0v2he30woz4.jpg', {
-//       responseType: 'arraybuffer',
-//     });
-
-//     // Embed the image in the PDF
-//     const jpgImage = await pdfDoc.embedJpg(imageResponse.data);
-
-//     // Create a new page
-//     const page = pdfDoc.addPage();
-
-//     // Draw the image on the page
-//     page.drawImage(jpgImage, {
-//       x: 100,
-//       y: 100,
-//       width: 250,
-//       height: 250,
-//     });
-
-//     // Serialize the PDF document to a Uint8Array
-//     const pdfBytes = await pdfDoc.save();
-
-//     // Set response headers for PDF download
-//     res.setHeader('Content-Disposition', 'attachment; filename="example.pdf"');
-//     res.setHeader('Content-Type', 'application/pdf');
-
-//     // Send the PDF bytes as the response
-//     res.send(Buffer.from(pdfBytes));
-//   } catch (error) {
-//     console.error('Error generating PDF:', error);
-//     res.status(500).send('Error generating PDF');
-//   }
-// };
-// module.exports.renderPdf = async (req, res) => {
-//   try {
-//     // Create a new PDF document
-//     const pdfDoc = await PDFDocument.create();
-
-//     // Add a new page
-//     const page = pdfDoc.addPage();
-
-//     // Set the font and font size
-//     const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
-//     const fontSize = 20;
-
-//     // Add text to the page
-//     page.drawText('Hello, World!', {
-//       x: 50,
-//       y: page.getSize().height - 50,
-//       font,
-//       fontSize,
-//     });
-
-//     // Fetch the image data from the URL
-//     const imageUrl = 'https://res.cloudinary.com/dymne7cde/image/upload/v1684082424/PetFinder/azltxnekf0v2he30woz4.jpg';
-//     const imageResponse = await axios.get(imageUrl, {
-//       responseType: 'arraybuffer',
-//     });
-
-//     // Embed the image in the PDF
-//     const image = await pdfDoc.embedJpg(imageResponse.data);
-
-//     // Calculate the desired dimensions of the image
-//     const maxWidth = 200;
-//     const maxHeight = 200;
-//     const imageWidth = image.width > maxWidth ? maxWidth : image.width;
-//     const imageHeight = (imageWidth / image.width) * image.height;
-
-//     // Draw the image on the page
-//     page.drawImage(image, {
-//       x: 100,
-//       y: 300,
-//       width: imageWidth,
-//       height: imageHeight,
-//     });
-
-//     // Serialize the PDF document to a Uint8Array
-//     const pdfBytes = await pdfDoc.save();
-
-//     // Set response headers for PDF download
-//     res.setHeader('Content-Disposition', 'attachment; filename="example.pdf"');
-//     res.setHeader('Content-Type', 'application/pdf');
-
-//     // Send the PDF bytes as the response
-//     res.send(Buffer.from(pdfBytes));
-//   } catch (error) {
-//     console.error('Error generating PDF:', error);
-//     res.status(500).send('Error generating PDF');
-//   }
-// };
-
 module.exports.renderPdf = async (req, res) => {
   try {
     const { id } = req.params;
@@ -815,20 +445,19 @@ module.exports.renderPdf = async (req, res) => {
     // Define the positions of the text fields
 
     const positions = [
-      { x: 50, y: 500, text: `Species: ${pet.species}` },
+      { x: 50, y: 500, text: `${pet.petStatus} ${pet.species}` },
       { x: 50, y: 475, text: `Breed: ${pet.breed}` },
       { x: 50, y: 450, text: `Coat Pattern: ${pet.pattern}` },
-      { x: 50, y: 425, text: `Pet's Gender: {}` },
-      { x: 50, y: 400, text: `First Color: {}` },
-      { x: 50, y: 375, text: `Second Color: {}` },
-      { x: 50, y: 350, text: `Third Color: {}` },
-      { x: 50, y: 325, text: `Last Seen: {}` },
+      { x: 50, y: 425, text: `Pet's Gender: ${pet.gender}` },
+      { x: 50, y: 400, text: `First Color: ${pet.firstcolor}` },
+      { x: 50, y: 375, text: `Second Color: ${pet.secondcolor}` },
+      { x: 50, y: 350, text: `Third Color: ${pet.thirdcolor}` },
+      // { x: 50, y: 325, text: `Last Seen: ${pet.lostdate}` },
       { x: 50, y: 300, text: `Age: ${pet.age}` },
       { x: 50, y: 275, text: `Coat Type: ${pet.coat}` },
       { x: 50, y: 250, text: `Pet's Size: ${pet.size}` },
-      { x: 50, y: 225, text: `Pet Status: ${pet.petStatus}` },
-      { x: 50, y: 200, text: `Identifier: ${pet.identifier}` },
-      { x: 50, y: 175, text: `Description: ${pet.description}` },
+      { x: 50, y: 225, text: `Identifier: ${pet.identifier}` },
+      // { x: 50, y: 200, text: `Description: ${pet.description}` },
     ];
 
     // Add text fields to the page
@@ -855,86 +484,3 @@ module.exports.renderPdf = async (req, res) => {
     res.status(500).send('Error generating PDF');
   }
 };
-
-// module.exports.renderPdf = async (req, res) => {
-//   try {
-//     const { id } = req.params;
-//     const pet = await Pet.findById(id);
-
-//     if (!pet) {
-//       req.flash("error", "Cannot find that pet!");
-//       return res.redirect("/pets");
-//     }
-
-//     const imageUrl = pet.images[0].url; // Cloudinary image URL
-//     const imagePath = path.join(__dirname, "../public/images/pet-image.jpg");
-
-//     await downloadImage(imageUrl, imagePath); // Download the image from Cloudinary
-
-//     const myTemplate = `
-//       <!DOCTYPE html>
-//       <html>
-//         <head>
-//           <meta charset="utf-8" />
-//           <title>Pet Information</title>
-//           <style>
-//             body {
-//               font-family: Arial, sans-serif;
-//               margin: 0;
-//               padding: 20px;
-//             }
-//             h1 {
-//               font-size: 24px;
-//               margin-bottom: 20px;
-//               text-align: center;
-//             }
-//             p {
-//               margin: 5px 0;
-//             }
-//           </style>
-//         </head>
-//         <body>
-//           <h1>Pet Information</h1>
-//           <p><strong>Name:</strong> ${pet.title}</p>
-//           <p><strong>Species:</strong> ${pet.species}</p>
-//           <p><strong>Breed:</strong> ${pet.breed}</p>
-//           <p><strong>Pattern:</strong> ${pet.pattern}</p>
-//           <p><strong>Age:</strong> ${pet.age}</p>
-//           <p><strong>Coat:</strong> ${pet.coat}</p>
-//           <p><strong>Size:</strong> ${pet.size}</p>
-//           <p><strong>Status:</strong> ${pet.petStatus}</p>
-//           <p><strong>Description:</strong> ${pet.description}</p>
-//           <img src="${imageUrl}" alt="Pet Image" style="width: 800px; height: 700px; object-fit: cover;" />
-//         </body>
-//       </html>
-//     `;
-
-//     // Create the Puppeteer browser instance
-//     const browser = await puppeteer.launch();
-
-//     // Generate PDF using html-pdf package with Puppeteer options
-//     pdf
-//       .create(myTemplate, { puppeteer: browser })
-//       .toBuffer(async (err, buffer) => {
-//         if (err) {
-//           console.error(err);
-//           req.flash("error", "Failed to generate PDF");
-//           return res.redirect("/pets");
-//         }
-
-//         res.set({
-//           "Content-Type": "application/pdf",
-//           "Content-Disposition": "attachment;filename=petinfo.pdf",
-//         });
-
-//         res.send(buffer); // Send the PDF buffer as the response
-
-//         // Close the Puppeteer browser instance
-//         await browser.close();
-//       });
-//   } catch (error) {
-//     console.error(error);
-//     req.flash("error", "Failed to generate PDF");
-//     res.redirect("/pets");
-//   }
-// };

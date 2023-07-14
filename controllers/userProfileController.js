@@ -3,12 +3,6 @@ const Comment = require('../models/comment');
 const Pet = require('../models/pet');
 const { phoneCodeOptions, countryOptions, languageOptions } = require('../utils/userSelectOptions');
 const { cloudinary } = require('../cloudinary');
-// Import the nodemailer module
-const crypto = require('crypto');
-// const sgMail = require("@sendgrid/mail");
-// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-const passport = require('passport');
-const nodemailer = require('nodemailer');
 
 module.exports.renderUserProfile = (req, res) => {
   try {

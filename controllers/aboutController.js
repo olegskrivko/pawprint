@@ -1,12 +1,12 @@
 module.exports.index = async (req, res) => {
   try {
     //const data = req.data; // Language data is available from the middleware
-    const about = req.__('about'); // Translate the 'about' key based on the user's selected language
+    const aboutPage = req.__('aboutPage'); // Translate the 'about' key based on the user's selected language
     const navbar = req.__('navbar');
     // const myloc = req.locale;
     // console.log('req.locale', myloc);
 
-    res.render('about/index', { about, navbar });
+    res.render('about/index', { aboutPage, navbar });
   } catch (err) {
     console.error(err.message);
     res.redirect('/error');
@@ -18,9 +18,9 @@ module.exports.index = async (req, res) => {
 module.exports.support = async (req, res) => {
   try {
     //const data = req.data; // Language data is available from the middleware
-    const about = req.__('about'); // Translate the 'about' key based on the user's selected language
+    const supportPage = req.__('supportPage'); // Translate the 'about' key based on the user's selected language
     const navbar = req.__('navbar');
-    res.render('about/support', { about, navbar });
+    res.render('about/support', { supportPage, navbar });
   } catch (err) {
     console.error(err.message);
   }

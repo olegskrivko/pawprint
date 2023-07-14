@@ -1,4 +1,1022 @@
 {
+  "homePage": {
+    "titles": {
+      "section1": "Добро пожаловать в ",
+      "section2": "PawClix",
+      "section3": "Найдите своего пушистого друга с помощью PawClix."
+    },
+    "buttons": {
+      "findaPet": "Найти питомца",
+      "login": "Войти",
+      "signup": "Зарегистрироваться"
+    }
+  },
+  "aboutPage": {
+    "titles": {
+      "section1": "Наша цель",
+      "section2": "Особенности",
+      "section3": "Мобильная платформа с защитой данных",
+      "section4": "Информация о здоровье и уходе за питомцем",
+      "section5": "Сообщество и ресурсы",
+      "section6": "Советы и ресурсы",
+      "section7": "Создание профиля питомца",
+      "section8": "Интеграция соцсетей",
+      "section9": "Поиск по базе данных",
+      "section10": "Карта потерянных и найденных питомцев",
+      "section11": "Листовки о потерянных питомцах",
+      "section12": "Поддержите наш проект",
+      "section13": "Поделитесь своими мыслями",
+      "section14": "Спонсоры"
+    },
+    "descriptions": {
+      "section1": "Наше приложение использует передовые технологии для упрощения воссоединения потерянных питомцев с их владельцами. Мы предоставляем платформу для публикации объявлений о потерянных питомцах и активно работаем над связью владельцев с людьми, которые нашли этих питомцев.",
+      "section2": "Кроме того, наше приложение связывает вас с широким спектром услуг, связанных с уходом за питомцами, включая ветеринарные клиники, грумеры, тренеров и многое другое. Мы гарантируем, что у вас будет доступ к правильным ресурсам для удовлетворения потребностей вашего питомца.",
+      "section3": "Наше приложение, оптимизированное для мобильных устройств, использует новейшие технологии для обеспечения безопасной платформы для воссоединения потерянных питомцев с их владельцами.",
+      "section4": "Наше приложение предоставляет ценную информацию о здоровье питомцев и неотложной ветеринарной помощи, включая важность вакцинации и регулярных осмотров для поддержания здоровья и счастья вашего питомца.",
+      "section5": "Раздел, предоставляющий информацию о местных приютах для животных, ветеринарных клиниках и других ресурсах для владельцев питомцев.",
+      "section6": "Раздел, предоставляющий советы и ресурсы владельцам питомцев о том, как предотвратить их пропажу, а также что делать, если питомец пропал.",
+      "section7": "Функция, позволяющая пользователям создавать профиль для своего потерянного питомца, включая фотографию, описание и контактную информацию.",
+      "section8": "Интеграция социальных сетей, помогающая распространять информацию о потерянных питомцах и облегчать коммуникацию между пользователями.",
+      "section9": "Поиск по базе данных потерянных и найденных питомцев, позволяющий пользователям искать питомцев по местоположению, породе, окрасу и другим характеристикам.",
+      "section10": "Функция, отображающая на карте потерянных и найденных питомцев в районе, позволяя пользователям легко найти и опознать потерянных питомцев.",
+      "section11": "Функция, позволяющая пользователям легко создавать и печатать листовки о потерянных питомцах для распространения в их местном сообществе.",
+      "section12": "Ваш вклад может помочь нам продолжать нашу миссию воссоединения потерянных питомцев с их семьями и обеспечения им необходимой помощи. Каждая маленькая помощь имеет значение, и мы ценим вашу поддержку!",
+      "section13": "Ваш отзыв для нас невероятно важен, поскольку мы стремимся улучшить наше приложение и предоставить владельцам питомцев лучший сервис. Мы ценим любые комментарии, предложения или критику, которые у вас может быть, и мы используем их для улучшения нашего приложения. Пожалуйста, найдите время, чтобы поделиться своими мыслями с нами.",
+      "section14": "Наши спонсоры играют ключевую роль в помощи нам продолжать нашу миссию воссоединения потерянных питомцев с их семьями и обеспечения им необходимой помощи. Их щедрая поддержка помогает нам не только поддерживать работу нашего проекта, но и вносит реальные изменения в жизни потерянных и брошенных животных."
+    },
+    "buttons": {
+      "support": "Поддержать",
+      "leaveFeedback": "Оставить отзыв"
+    }
+  },
+  "supportPage": {
+    "titles": {
+      "section1": "Поддержка",
+      "section2": "Наш стек технологий"
+    },
+    "descriptions": {
+      "section1": "Мы благодарны за любую поддержку или спонсорство, которые могут помочь нам раскрыть полный потенциал нашего веб-приложения. Если вы разделяете наше видение и хотите внести вклад в покрытие затрат на использование премиальных уровней и услуг, пожалуйста, свяжитесь с нами. Ваша поддержка позволит нам улучшить наше приложение и предоставить ещё лучший опыт для наших пользователей.",
+      "section2": "Мы ценим любую помощь или сотрудничество от разработчиков, разделяющих нашу страсть к созданию удивительных веб-приложений. Если вас интересует возможность внести свой вклад, пожалуйста, не стесняйтесь обратиться к нам. Вместе мы можем создать нечто невероятное!",
+      "section3": "Express.js - популярный веб-фреймворк для Node.js, который предлагает быстрый и минималистичный подход к созданию веб-приложений. Он упрощает разработку серверных приложений и API благодаря своим мощным возможностям и модульной архитектуре.",
+      "section4": "TomTom Maps предлагает мощные геолокационные и картографические сервисы, которые позволяют интегрировать интерактивные карты, геокодирование, маршрутизацию и геопространственный анализ в ваши веб-приложения. Он предоставляет точные и актуальные картографические данные и полный набор API для местоположенных сервисов.",
+      "section5": "Node.js - это среда выполнения JavaScript на стороне сервера, которая позволяет создавать масштабируемые и эффективные веб-приложения. Он использует событийно-управляемую модель с неблокирующим вводом/выводом, что делает его идеальным для разработки приложений в реальном времени, микросервисов и API.",
+      "section6": "MongoDB - это гибкая и масштабируемая NoSQL база данных, которая обеспечивает высокую производительность, доступность и горизонтальную масштабируемость. Она предлагает документоориентированную модель данных, позволяя легко хранить, извлекать и манипулировать данными, что делает ее идеальной для современных веб-приложений.",
+      "section7": "Cloudinary - это комплексная платформа управления и доставки мультимедийных файлов, которая упрощает процесс хранения, оптимизации и доставки изображений и видео для веб-приложений. Он предоставляет мощные API и инструменты для манипуляции, преобразования и оптимизации изображений и видео.",
+      "section8": "EJS - популярный шаблонизатор, который позволяет генерировать динамические HTML-страницы путем вставки кода JavaScript в ваши шаблоны. Он предоставляет простый и интуитивно понятный синтаксис для интерполяции данных, условий, циклов и частичных представлений, что делает его простым в использовании для создания повторно используемых и поддерживаемых представлений ваших веб-приложений.",
+      "section9": "Bootstrap - это широко используемый отзывчивый CSS-фреймворк, который предлагает набор предварительно созданных компонентов и стилей, чтобы помочь вам быстро и эффективно создавать современные, мобильно-дружественные веб-интерфейсы. С помощью Bootstrap вы легко можете настроить и организовать компоненты, чтобы создавать визуально привлекательные и согласованные макеты для ваших веб-проектов.",
+      "section10": "Cyclic - это безсерверная платформа облачного хостинга, разработанная для упрощения процесса развертывания вашего приложения. Наслаждайтесь мгновенной доступностью приложения, эффективным распределением ресурсов и плавной масштабируемостью. Используйте облачные базы данных и хранилище масштаба облака, глобальное развертывание приложений для снижения задержки и гибкость настройки и интеграции ваших приложений. Упрощайте рабочий процесс развертывания с встроенной интеграцией CI/CD и поддержкой GitHub."
+    },
+    "buttons": {
+      "donate": "Пожертвовать"
+    },
+    "links": {
+      "section1": "Express.js - Быстрый и минималистичный веб-фреймворк",
+      "section2": "TomTom Maps - Мощные геолокационные и картографические сервисы",
+      "section3": "Node.js - Масштабируемая и эффективная среда выполнения JavaScript",
+      "section4": "MongoDB - Гибкая и масштабируемая NoSQL база данных",
+      "section5": "Cloudinary - Платформа управления и доставки мультимедийных файлов",
+      "section6": "EJS - Встроенный шаблонизатор JavaScript",
+      "section7": "Bootstrap - Отзывчивый CSS-фреймворк",
+      "section8": "Cyclic - Безсерверная платформа облачного хостинга"
+    }
+  },
+  "petsPage": {
+    "buttons": {
+      "filters": "Фильтры",
+      "reportPet": "Сообщить о животном",
+      "search": "Поиск",
+      "clear": "Очистить",
+      "compare": "Сравнить"
+    },
+    "labels": {
+      "petStatus": "Статус животного",
+      "petSpecies": "Вид",
+      "petGender": "Пол животного",
+      "petBreed": "Порода",
+      "petColor": "Цвет животного",
+      "petDistance": "Расстояние (км)",
+      "petAge": "Возраст животного",
+      "petCoatType": "Тип шерсти",
+      "petSize": "Размер животного",
+      "petIdentifier": "Идентификатор",
+      "petLocation": "Местоположение",
+      "petLostOrFoundDate": "Дата пропажи или находки"
+    }
+  },
+  "selectOptions": {
+    "status": [
+      {
+        "value": "",
+        "text": ""
+      },
+      {
+        "value": "Missing",
+        "text": "Пропал"
+      },
+      {
+        "value": "Found",
+        "text": "Найден"
+      },
+      {
+        "value": "Reunited",
+        "text": "Воссоединен"
+      },
+      {
+        "value": "Adopted",
+        "text": "Усыновлен"
+      },
+      {
+        "value": "Fostered",
+        "text": "Приют"
+      },
+      {
+        "value": "Deceased",
+        "text": "Умер"
+      }
+    ],
+    "species": [
+      {
+        "value": "",
+        "text": ""
+      },
+      {
+        "value": "Dog",
+        "text": "Собака"
+      },
+      {
+        "value": "Cat",
+        "text": "Кошка"
+      },
+      {
+        "value": "Other",
+        "text": "Другое"
+      }
+    ],
+    "gender": [
+      {
+        "value": "",
+        "text": ""
+      },
+      {
+        "value": "She",
+        "text": "Она"
+      },
+      {
+        "value": "He",
+        "text": "Он"
+      }
+    ],
+    "color": [
+      {
+        "value": "",
+        "text": ""
+      },
+      {
+        "value": "Black",
+        "text": "Черный"
+      },
+      {
+        "value": "Brown",
+        "text": "Коричневый"
+      },
+      {
+        "value": "White",
+        "text": "Белый"
+      },
+      {
+        "value": "Red",
+        "text": "Рыжий"
+      },
+      {
+        "value": "Gold",
+        "text": "Золотой"
+      },
+      {
+        "value": "Blue",
+        "text": "Синий"
+      },
+      {
+        "value": "Gray",
+        "text": "Серый"
+      },
+      {
+        "value": "Cream",
+        "text": "Кремовый"
+      },
+      {
+        "value": "Yellow",
+        "text": "Желтый"
+      }
+    ],
+    "age": [
+      {
+        "value": "",
+        "text": ""
+      },
+      {
+        "value": "Kitten",
+        "text": "Котенок"
+      },
+      {
+        "value": "Puppy",
+        "text": "Щенок"
+      },
+      {
+        "value": "Adolescent",
+        "text": "Подросток"
+      },
+      {
+        "value": "Adult",
+        "text": "Взрослый"
+      },
+      {
+        "value": "Senior",
+        "text": "Пожилой"
+      }
+    ],
+    "coat": [
+      {
+        "value": "",
+        "text": ""
+      },
+      {
+        "value": "Hairless",
+        "text": "Безшерстный"
+      },
+      {
+        "value": "Short",
+        "text": "Короткая"
+      },
+      {
+        "value": "Medium",
+        "text": "Средняя"
+      },
+      {
+        "value": "Long",
+        "text": "Длинная"
+      },
+      {
+        "value": "Wire",
+        "text": "Жесткая"
+      },
+      {
+        "value": "Curly",
+        "text": "Кудрявая"
+      },
+      {
+        "value": "Smooth",
+        "text": "Гладкая"
+      },
+      {
+        "value": "Double",
+        "text": "Двойная"
+      },
+      {
+        "value": "Silky",
+        "text": "Шелковистая"
+      },
+      {
+        "value": "Wavy",
+        "text": "Волнистая"
+      },
+      {
+        "value": "Corded",
+        "text": "Волнисто-жесткая"
+      }
+    ],
+    "pattern": [
+      {
+        "value": "",
+        "text": ""
+      },
+      {
+        "value": "Monochrome",
+        "text": "Монотонный"
+      },
+      {
+        "value": "Bicolor",
+        "text": "Двухцветный"
+      },
+      {
+        "value": "Tricolor",
+        "text": "Трехцветный"
+      },
+      {
+        "value": "Spotted",
+        "text": "Пятнистый"
+      },
+      {
+        "value": "Striped",
+        "text": "Полосатый"
+      }
+    ],
+    "size": [
+      {
+        "value": "",
+        "text": ""
+      },
+      {
+        "value": "Small",
+        "text": "Маленький"
+      },
+      {
+        "value": "Medium",
+        "text": "Средний"
+      },
+      {
+        "value": "Large",
+        "text": "Большой"
+      }
+    ],
+    "region": {
+      "all": [
+        {
+          "value": "",
+          "text": ""
+        }
+      ],
+      "city": [
+        {
+          "value": "Riga",
+          "text": "Riga"
+        },
+        {
+          "value": "Daugavpils",
+          "text": "Daugavpils"
+        },
+        {
+          "value": "Jelgava",
+          "text": "Jelgava"
+        },
+        {
+          "value": "Jurmala",
+          "text": "Jurmala"
+        },
+        {
+          "value": "Liepaja",
+          "text": "Liepaja"
+        },
+        {
+          "value": "Rezekne",
+          "text": "Rezekne"
+        },
+        {
+          "value": "Valmiera",
+          "text": "Valmiera"
+        },
+        {
+          "value": "Ventspils",
+          "text": "Ventspils"
+        }
+      ],
+      "municipality": [
+        {
+          "value": "Adazu nov",
+          "text": "Adazu nov"
+        },
+        {
+          "value": "Aizkraukles nov",
+          "text": "Aizkraukles nov"
+        },
+        {
+          "value": "Aluksnes nov",
+          "text": "Aluksnes nov"
+        },
+        {
+          "value": "Augsdaugavas nov",
+          "text": "Augsdaugavas nov"
+        },
+        {
+          "value": "Balvu nov",
+          "text": "Balvu nov"
+        },
+        {
+          "value": "Bauskas nov",
+          "text": "Bauskas nov"
+        },
+        {
+          "value": "Cesu nov",
+          "text": "Cesu nov"
+        },
+        {
+          "value": "Dienvidkurzemes nov",
+          "text": "Dienvidkurzemes nov"
+        },
+        {
+          "value": "Dobeles nov",
+          "text": "Dobeles nov"
+        },
+        {
+          "value": "Gulbenes nov",
+          "text": "Gulbenes nov"
+        },
+        {
+          "value": "Jekabpils nov",
+          "text": "Jekabpils nov"
+        },
+        {
+          "value": "Jelgavas nov",
+          "text": "Jelgavas nov"
+        },
+        {
+          "value": "Kekavas nov",
+          "text": "Kekavas nov"
+        },
+        {
+          "value": "Kraslavas nov",
+          "text": "Kraslavas nov"
+        },
+        {
+          "value": "Kuldigas nov",
+          "text": "Kuldigas nov"
+        },
+        {
+          "value": "Limbazu novads",
+          "text": "Limbazu novads"
+        },
+        {
+          "value": "Livanu nov",
+          "text": "Livanu nov"
+        },
+        {
+          "value": "Ludzas nov",
+          "text": "Ludzas nov"
+        },
+        {
+          "value": "Madonas nov",
+          "text": "Madonas nov"
+        },
+        {
+          "value": "Marupes nov",
+          "text": "Marupes nov"
+        },
+        {
+          "value": "Ogres nov",
+          "text": "Ogres nov"
+        },
+        {
+          "value": "Olaines nov",
+          "text": "Olaines nov"
+        },
+        {
+          "value": "Preilu nov",
+          "text": "Preilu nov"
+        },
+        {
+          "value": "Rezeknes nov",
+          "text": "Rezeknes nov"
+        },
+        {
+          "value": "Ropazu nov",
+          "text": "Ropazu nov"
+        },
+        {
+          "value": "Salaspils nov",
+          "text": "Salaspils nov"
+        },
+        {
+          "value": "Saldus nov",
+          "text": "Saldus nov"
+        },
+        {
+          "value": "Saulkrastu nov",
+          "text": "Saulkrastu nov"
+        },
+        {
+          "value": "Siguldas nov",
+          "text": "Siguldas nov"
+        },
+        {
+          "value": "Smiltenes nov",
+          "text": "Smiltenes nov"
+        },
+        {
+          "value": "Talsu nov",
+          "text": "Talsu nov"
+        },
+        {
+          "value": "Tukuma nov",
+          "text": "Tukuma nov"
+        },
+        {
+          "value": "Valkas nov",
+          "text": "Valkas nov"
+        },
+        {
+          "value": "Valmieras nov",
+          "text": "Valmieras nov"
+        },
+        {
+          "value": "Varaklanu nov",
+          "text": "Varaklanu nov"
+        },
+        {
+          "value": "Ventspils nov",
+          "text": "Ventspils nov"
+        }
+      ]
+    },
+    "breed": {
+      "all": [
+        {
+          "value": "",
+          "text": ""
+        }
+      ],
+      "catOptiongroupLabel": [
+        {
+          "value": "Cat Breed",
+          "text": "Cat Breed"
+        }
+      ],
+      "dogOptiongroupLabel": [
+        {
+          "value": "Dog Breed",
+          "text": "Dog Breed"
+        }
+      ],
+      "cats": [
+        {
+          "value": "Abyssinian",
+          "text": "Abyssinian"
+        },
+        {
+          "value": "American Bobtail",
+          "text": "American Bobtail"
+        },
+        {
+          "value": "American Shorthair",
+          "text": "American Shorthair"
+        },
+        {
+          "value": "Australian Mist",
+          "text": "Australian Mist"
+        },
+        {
+          "value": "Balinese",
+          "text": "Balinese"
+        },
+        {
+          "value": "Bengal",
+          "text": "Bengal"
+        },
+        {
+          "value": "Birman",
+          "text": "Birman"
+        },
+        {
+          "value": "Bombay",
+          "text": "Bombay"
+        },
+        {
+          "value": "British Shorthair",
+          "text": "British Shorthair"
+        },
+        {
+          "value": "Burmese",
+          "text": "Burmese"
+        },
+        {
+          "value": "Burmilla",
+          "text": "Burmilla"
+        },
+        {
+          "value": "Chartreux",
+          "text": "Chartreux"
+        },
+        {
+          "value": "Chausie",
+          "text": "Chausie"
+        },
+        {
+          "value": "Cornish Rex",
+          "text": "Cornish Rex"
+        },
+        {
+          "value": "Cymric",
+          "text": "Cymric"
+        },
+        {
+          "value": "Devon Rex",
+          "text": "Devon Rex"
+        },
+        {
+          "value": "Egyptian Mau",
+          "text": "Egyptian Mau"
+        },
+        {
+          "value": "Exotic Shorthair",
+          "text": "Exotic Shorthair"
+        },
+        {
+          "value": "Himalayan",
+          "text": "Himalayan"
+        },
+        {
+          "value": "Highlander",
+          "text": "Highlander"
+        },
+        {
+          "value": "Japanese Bobtail",
+          "text": "Japanese Bobtail"
+        },
+        {
+          "value": "Korat",
+          "text": "Korat"
+        },
+        {
+          "value": "LaPerm",
+          "text": "LaPerm"
+        },
+        {
+          "value": "Maine Coon",
+          "text": "Maine Coon"
+        },
+        {
+          "value": "Manx",
+          "text": "Manx"
+        },
+        {
+          "value": "Munchkin",
+          "text": "Munchkin"
+        },
+        {
+          "value": "Nebelung",
+          "text": "Nebelung"
+        },
+        {
+          "value": "Norwegian Forest Cat",
+          "text": "Norwegian Forest Cat"
+        },
+        {
+          "value": "Oriental Shorthair",
+          "text": "Oriental Shorthair"
+        },
+        {
+          "value": "Peterbald",
+          "text": "Peterbald"
+        },
+        {
+          "value": "Persian",
+          "text": "Persian"
+        },
+        {
+          "value": "Pixiebob",
+          "text": "Pixiebob"
+        },
+        {
+          "value": "Ragdoll",
+          "text": "Ragdoll"
+        },
+        {
+          "value": "Russian Blue",
+          "text": "Russian Blue"
+        },
+        {
+          "value": "Scottish Fold",
+          "text": "Scottish Fold"
+        },
+        {
+          "value": "Selkirk Rex",
+          "text": "Selkirk Rex"
+        },
+        {
+          "value": "Serengeti",
+          "text": "Serengeti"
+        },
+        {
+          "value": "Siberian",
+          "text": "Siberian"
+        },
+        {
+          "value": "Siamese",
+          "text": "Siamese"
+        },
+        {
+          "value": "Singapura",
+          "text": "Singapura"
+        },
+        {
+          "value": "Snowshoe",
+          "text": "Snowshoe"
+        },
+        {
+          "value": "Sokoke",
+          "text": "Sokoke"
+        },
+        {
+          "value": "Sphynx",
+          "text": "Sphynx"
+        },
+        {
+          "value": "Tonkinese",
+          "text": "Tonkinese"
+        },
+        {
+          "value": "Toyger",
+          "text": "Toyger"
+        },
+        {
+          "value": "Turkish Angora",
+          "text": "Turkish Angora"
+        },
+        {
+          "value": "Turkish Van",
+          "text": "Turkish Van"
+        }
+      ],
+      "dogs": [
+        {
+          "value": "Afghan Hound",
+          "text": "Afghan Hound"
+        },
+        {
+          "value": "Akita",
+          "text": "Akita"
+        },
+        {
+          "value": "Akita Inu",
+          "text": "Akita Inu"
+        },
+        {
+          "value": "Alaskan Malamute",
+          "text": "Alaskan Malamute"
+        },
+        {
+          "value": "American Bulldog",
+          "text": "American Bulldog"
+        },
+        {
+          "value": "Australian Cattle Dog",
+          "text": "Australian Cattle Dog"
+        },
+        {
+          "value": "Basset Hound",
+          "text": "Basset Hound"
+        },
+        {
+          "value": "Basenji",
+          "text": "Basenji"
+        },
+        {
+          "value": "Bernese Mountain Dog",
+          "text": "Bernese Mountain Dog"
+        },
+        {
+          "value": "Bloodhound",
+          "text": "Bloodhound"
+        },
+        {
+          "value": "Boston Terrier",
+          "text": "Boston Terrier"
+        },
+        {
+          "value": "Bullmastiff",
+          "text": "Bullmastiff"
+        },
+        {
+          "value": "Cairn Terrier",
+          "text": "Cairn Terrier"
+        },
+        {
+          "value": "Cane Corso",
+          "text": "Cane Corso"
+        },
+        {
+          "value": "Cavalier King Charles Spaniel",
+          "text": "Cavalier King Charles Spaniel"
+        },
+        {
+          "value": "Chesapeake Bay Retriever",
+          "text": "Chesapeake Bay Retriever"
+        },
+        {
+          "value": "Chinese Crested",
+          "text": "Chinese Crested"
+        },
+        {
+          "value": "Chinese Shar-Pei",
+          "text": "Chinese Shar-Pei"
+        },
+        {
+          "value": "Collie",
+          "text": "Collie"
+        },
+        {
+          "value": "Corgi",
+          "text": "Corgi"
+        },
+        {
+          "value": "Dandie Dinmont Terrier",
+          "text": "Dandie Dinmont Terrier"
+        },
+        {
+          "value": "Dogo Argentino",
+          "text": "Dogo Argentino"
+        },
+        {
+          "value": "Dogo Canario",
+          "text": "Dogo Canario"
+        },
+        {
+          "value": "English Bulldog",
+          "text": "English Bulldog"
+        },
+        {
+          "value": "English Setter",
+          "text": "English Setter"
+        },
+        {
+          "value": "English Springer Spaniel",
+          "text": "English Springer Spaniel"
+        },
+        {
+          "value": "French Bulldog",
+          "text": "French Bulldog"
+        },
+        {
+          "value": "German Shepherd",
+          "text": "German Shepherd"
+        },
+        {
+          "value": "Golden Retriever",
+          "text": "Golden Retriever"
+        },
+        {
+          "value": "Great Dane",
+          "text": "Great Dane"
+        },
+        {
+          "value": "Great Pyrenees",
+          "text": "Great Pyrenees"
+        },
+        {
+          "value": "Havanese",
+          "text": "Havanese"
+        },
+        {
+          "value": "Irish Terrier",
+          "text": "Irish Terrier"
+        },
+        {
+          "value": "Irish Wolfhound",
+          "text": "Irish Wolfhound"
+        },
+        {
+          "value": "Italian Greyhound",
+          "text": "Italian Greyhound"
+        },
+        {
+          "value": "Jack Russell Terrier",
+          "text": "Jack Russell Terrier"
+        },
+        {
+          "value": "Japanese Chin",
+          "text": "Japanese Chin"
+        },
+        {
+          "value": "Keeshond",
+          "text": "Keeshond"
+        },
+        {
+          "value": "Labrador Retriever",
+          "text": "Labrador Retriever"
+        },
+        {
+          "value": "Leonberger",
+          "text": "Leonberger"
+        },
+        {
+          "value": "Lhasa Apso",
+          "text": "Lhasa Apso"
+        },
+        {
+          "value": "Maltese",
+          "text": "Maltese"
+        },
+        {
+          "value": "Mastiff",
+          "text": "Mastiff"
+        },
+        {
+          "value": "Miniature Bull Terrier",
+          "text": "Miniature Bull Terrier"
+        },
+        {
+          "value": "Newfoundland",
+          "text": "Newfoundland"
+        },
+        {
+          "value": "Norfolk Terrier",
+          "text": "Norfolk Terrier"
+        },
+        {
+          "value": "Norwegian Buhund",
+          "text": "Norwegian Buhund"
+        },
+        {
+          "value": "Norwegian Elkhound",
+          "text": "Norwegian Elkhound"
+        },
+        {
+          "value": "Norwich Terrier",
+          "text": "Norwich Terrier"
+        },
+        {
+          "value": "Pekingese",
+          "text": "Pekingese"
+        },
+        {
+          "value": "Petit Basset Griffon Vendeen",
+          "text": "Petit Basset Griffon Vendeen"
+        },
+        {
+          "value": "Pit Bull Terrier",
+          "text": "Pit Bull Terrier"
+        },
+        {
+          "value": "Pomeranian",
+          "text": "Pomeranian"
+        },
+        {
+          "value": "Poodle",
+          "text": "Poodle"
+        },
+        {
+          "value": "Pug",
+          "text": "Pug"
+        },
+        {
+          "value": "Rottweiler",
+          "text": "Rottweiler"
+        },
+        {
+          "value": "Saint Bernard",
+          "text": "Saint Bernard"
+        },
+        {
+          "value": "Samoyed",
+          "text": "Samoyed"
+        },
+        {
+          "value": "Scottish Terrier",
+          "text": "Scottish Terrier"
+        },
+        {
+          "value": "Shetland Sheepdog",
+          "text": "Shetland Sheepdog"
+        },
+        {
+          "value": "Shiba Inu",
+          "text": "Shiba Inu"
+        },
+        {
+          "value": "Shih Tzu",
+          "text": "Shih Tzu"
+        },
+        {
+          "value": "Siberian Husky",
+          "text": "Siberian Husky"
+        },
+        {
+          "value": "Staffordshire Bull Terrier",
+          "text": "Staffordshire Bull Terrier"
+        },
+        {
+          "value": "Tibetan Mastiff",
+          "text": "Tibetan Mastiff"
+        },
+        {
+          "value": "Tibetan Spaniel",
+          "text": "Tibetan Spaniel"
+        },
+        {
+          "value": "Tibetan Terrier",
+          "text": "Tibetan Terrier"
+        },
+        {
+          "value": "Toy Fox Terrier",
+          "text": "Toy Fox Terrier"
+        },
+        {
+          "value": "Weimaraner",
+          "text": "Weimaraner"
+        },
+        {
+          "value": "West Highland White Terrier",
+          "text": "West Highland White Terrier"
+        },
+        {
+          "value": "Whippet",
+          "text": "Whippet"
+        },
+        {
+          "value": "Yorkshire Terrier",
+          "text": "Yorkshire Terrier"
+        }
+      ]
+    }
+  },
   "navbar": {
     "home": "Home",
     "about": "About",
@@ -1038,8 +2056,6 @@
     "service18": "Pet Expo",
     "service19": "Veterinary Services"
   },
-  "": "",
-  "Home": "Home",
   "Animal Shelters": "Animal Shelters",
   "Dedicated shelters that provide temporary homes and care for abandoned or stray animals until they can be adopted.": "Dedicated shelters that provide temporary homes and care for abandoned or stray animals until they can be adopted.",
   "Pet Grooming": "Pet Grooming",

@@ -1,79 +1,79 @@
 <% layout('layouts/boilerplate')%>
-<h1 class="text-center mb-4">Support</h1>
+<h1 class="text-center mb-4"><%= supportPage.titles.section1 %></h1>
 <div class="container my-5">
   <div class="text-center">
-    <p class="col-lg-12 mx-auto fs-5 text-muted custom-about-text">We are grateful for any support or sponsorship that can help us unlock the full potential of our web application. If you share our vision and would like to contribute towards the cost of utilizing premium tiers and services, please reach out to us. Your support will enable us to enhance our app and provide an even better experience for our users.</p>
+    <p class="col-lg-12 mx-auto fs-5 text-muted custom-about-text"><%= supportPage.descriptions.section1 %></p>
 
-    <a class="btn btn-warning btn-lg fw-bold" href="https://www.paypal.com/donate/?hosted_button_id=7WJJTEM6TM84N">Donate</a>
+    <a class="btn btn-warning btn-lg fw-bold" href="https://www.paypal.com/donate/?hosted_button_id=7WJJTEM6TM84N"><%= supportPage.buttons.donate %></a>
   </div>
 </div>
 <div class="container px-4 py-5">
-  <h2 class="text-center pb-2">Our Technology Stack</h2>
-  <p class="col-lg-12 mx-auto fs-5 text-muted custom-about-text">We appreciate any help or collaboration from developers who share our passion for building amazing web applications. If you're interested in contributing, please don't hesitate to reach out. Together, we can create something incredible!</p>
+  <h2 class="text-center pb-2"><%= supportPage.titles.section2 %></h2>
+  <p class="col-lg-12 mx-auto fs-5 text-muted custom-about-text"><%= supportPage.descriptions.section2 %></p>
   <div class="row row-cols-1 row-cols-md- align-items-md-center g-5 py-5">
     <div class="row row-cols-1 row-cols-sm-2 g-4">
       <div class="col d-flex flex-column gap-2">
         <div class="feature-icon-small d-inline-flex align-items-center justify-content-center">
           <img class="bi" src="/images/techologystack/expressjslogo.png" width="auto" height="50px" />
         </div>
-        <a href="https://expressjs.com/" target="_blank"><h4 class="fw-semibold mb-0 text-body-emphasis">Express.js - Fast and Minimalist Web Application Framework</h4></a>
-        <p class="text-body-secondary custom-about-text">Express.js is a popular Node.js web application framework that provides a fast and minimalist approach to building web applications. It simplifies the development of server-side applications and APIs with its robust features and modular architecture.</p>
+        <a href="https://expressjs.com/" target="_blank"><h4 class="fw-semibold mb-0 text-body-emphasis"><%= supportPage.links.section1 %></h4></a>
+        <p class="text-body-secondary custom-about-text"><%= supportPage.descriptions.section3 %></p>
       </div>
 
       <div class="col d-flex flex-column gap-2">
         <div class="feature-icon-small d-inline-flex align-items-center justify-content-center">
           <img class="bi" src="/images/techologystack/tomtomlogo.png" width="auto" height="50px" />
         </div>
-        <a href="https://expressjs.com/" target="_blank"><h4 class="fw-semibold mb-0 text-body-emphasis">TomTom Maps - Powerful Geolocation and Mapping Services</h4></a>
-        <p class="text-body-secondary custom-about-text">TomTom Maps offers powerful geolocation and mapping services that enable you to integrate interactive maps, geocoding, routing, and geospatial analysis into your web applications. It provides accurate and up-to-date map data and a comprehensive set of APIs for location-based services.</p>
+        <a href="https://expressjs.com/" target="_blank"><h4 class="fw-semibold mb-0 text-body-emphasis"><%= supportPage.links.section2 %></h4></a>
+        <p class="text-body-secondary custom-about-text"><%= supportPage.descriptions.section4 %></p>
       </div>
 
       <div class="col d-flex flex-column gap-2">
         <div class="feature-icon-small d-inline-flex align-items-center justify-content-center">
           <img class="bi" src="/images/techologystack/nodejslogo.png" width="auto" height="50px" />
         </div>
-        <a href="https://nodejs.org/en" target="_blank"><h4 class="fw-semibold mb-0 text-body-emphasis">Node.js - Scalable and Efficient JavaScript Runtime</h4></a>
-        <p class="text-body-secondary custom-about-text">Node.js is a server-side JavaScript runtime environment that allows you to build scalable and efficient web applications. It uses an event-driven, non-blocking I/O model, making it ideal for developing real-time applications, microservices, and APIs.</p>
+        <a href="https://nodejs.org/en" target="_blank"><h4 class="fw-semibold mb-0 text-body-emphasis"><%= supportPage.links.section3 %></h4></a>
+        <p class="text-body-secondary custom-about-text"><%= supportPage.descriptions.section5 %></p>
       </div>
 
       <div class="col d-flex flex-column gap-2">
         <div class="feature-icon-small d-inline-flex align-items-center justify-content-center">
           <img class="bi" src="/images/techologystack/monggodblogo.png" width="auto" height="50px" />
         </div>
-        <a href="https://www.mongodb.com/" target="_blank"><h4 class="fw-semibold mb-0 text-body-emphasis">MongoDB - Flexible and Scalable NoSQL Database</h4></a>
-        <p class="text-body-secondary custom-about-text">MongoDB is a flexible and scalable NoSQL database that provides high performance, high availability, and horizontal scalability. It offers a document-oriented data model, allowing you to store, retrieve, and manipulate data easily, making it well-suited for modern web applications.</p>
+        <a href="https://www.mongodb.com/" target="_blank"><h4 class="fw-semibold mb-0 text-body-emphasis"><%= supportPage.links.section4 %></h4></a>
+        <p class="text-body-secondary custom-about-text"><%= supportPage.descriptions.section6 %></p>
       </div>
 
       <div class="col d-flex flex-column gap-2">
         <div class="feature-icon-small d-inline-flex align-items-center justify-content-center">
           <img class="bi" src="/images/techologystack/cloudinarylogo.png" width="auto" height="50px" />
         </div>
-        <a href="https://cloudinary.com/" target="_blank"><h4 class="fw-semibold mb-0 text-body-emphasis">Cloudinary - Media Management and Delivery Platform</h4></a>
-        <p class="text-body-secondary custom-about-text">Cloudinary is a comprehensive media management and delivery platform that simplifies the process of storing, optimizing, and delivering images and videos for web applications. It provides powerful APIs and tools for image and video manipulation, transformation, and optimization.</p>
+        <a href="https://cloudinary.com/" target="_blank"><h4 class="fw-semibold mb-0 text-body-emphasis"><%= supportPage.links.section5 %></h4></a>
+        <p class="text-body-secondary custom-about-text"><%= supportPage.descriptions.section7 %></p>
       </div>
 
       <div class="col d-flex flex-column gap-2">
         <div class="feature-icon-small d-inline-flex align-items-center justify-content-center">
           <img class="bi" src="/images/techologystack/ejslogo.png" width="auto" height="50px" />
         </div>
-        <a href="https://ejs.co/" target="_blank"><h4 class="fw-semibold mb-0 text-body-emphasis">EJS - Embedded JavaScript Templating Engine</h4></a>
-        <p class="text-body-secondary custom-about-text">EJS is a popular templating engine that allows you to generate dynamic HTML pages by embedding JavaScript code within your templates. It provides a simple and intuitive syntax for data interpolation, conditionals, loops, and partials, making it easy to create reusable and maintainable views for your web applications.</p>
+        <a href="https://ejs.co/" target="_blank"><h4 class="fw-semibold mb-0 text-body-emphasis"><%= supportPage.links.section6 %></h4></a>
+        <p class="text-body-secondary custom-about-text"><%= supportPage.descriptions.section8 %></p>
       </div>
 
       <div class="col d-flex flex-column gap-2">
         <div class="feature-icon-small d-inline-flex align-items-center justify-content-center">
           <img class="bi" src="/images/techologystack/bootstraplogo.png" width="auto" height="50px" />
         </div>
-        <a href="https://getbootstrap.com/" target="_blank"><h4 class="fw-semibold mb-0 text-body-emphasis">Bootstrap - Responsive CSS Framework</h4></a>
-        <p class="text-body-secondary custom-about-text">Bootstrap is a widely-used responsive CSS framework that provides a collection of pre-built components and styles to help you quickly and efficiently create modern, mobile-friendly web interfaces. With Bootstrap, you can easily customize and arrange components to create visually appealing and consistent layouts for your web projects.</p>
+        <a href="https://getbootstrap.com/" target="_blank"><h4 class="fw-semibold mb-0 text-body-emphasis"><%= supportPage.links.section7 %></h4></a>
+        <p class="text-body-secondary custom-about-text"><%= supportPage.descriptions.section9 %></p>
       </div>
 
       <div class="col d-flex flex-column gap-2">
         <div class="feature-icon-small d-inline-flex align-items-center justify-content-center">
           <img class="bi" src="/images/techologystack/cycliclogo.png" width="auto" height="50px" />
         </div>
-        <a href="https://www.cyclic.sh/" target="_blank"><h4 class="fw-semibold mb-0 text-body-emphasis">Cyclic - Serverless Cloud Hosting</h4></a>
-        <p class="text-body-secondary custom-about-text">Cyclic is a serverless cloud hosting platform designed to streamline your app deployment process. Enjoy instant app availability, efficient resource allocation, and seamless scalability. Benefit from cloud-scale database and storage options, global app deployment for reduced latency, and the flexibility to customize and integrate your apps. Simplify your deployment workflow with built-in CI/CD integration and GitHub support.</p>
+        <a href="https://www.cyclic.sh/" target="_blank"><h4 class="fw-semibold mb-0 text-body-emphasis"><%= supportPage.links.section8 %></h4></a>
+        <p class="text-body-secondary custom-about-text"><%= supportPage.descriptions.section10 %></p>
       </div>
 
       <!-- curently sendgrid is not used, but its more powerfull then nodemailer -->

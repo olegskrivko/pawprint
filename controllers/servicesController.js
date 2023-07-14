@@ -70,8 +70,8 @@ module.exports.addNewService = async (req, res) => {
       },
       description: req.body.description,
       socialMedia: {
-        facebook: req.body.facebook || '-', // Provide a default value if not provided
-        instagram: req.body.instagram || '-', // Provide a default value if not provided
+        facebook: req.body.facebook || '', // Provide a default value if not provided
+        instagram: req.body.instagram || '', // Provide a default value if not provided
       },
     };
 
