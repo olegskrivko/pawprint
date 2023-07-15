@@ -30,4 +30,6 @@ router
 router.get('/:id/edit', isLoggedIn, isAuthor, catchAsync(petsController.renderEditForm)); // Render edit pet form
 router.get('/:id/downloadpdf', isLoggedIn, catchAsync(petsController.renderPdf)); // Render pet PDF download
 
+router.post('/:id/reportpost', isLoggedIn, catchAsync(petsController.reportpost));
+
 module.exports = router;

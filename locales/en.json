@@ -80,7 +80,21 @@
       "section8": "Cyclic - Serverless Cloud Hosting"
     }
   },
-  "feedbackPage": {},
+  "feedbackPage": {
+    "titles": {
+      "section1": "Feedback"
+    },
+    "labels": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "subject": "Subject",
+      "email": "Email",
+      "message": "Message"
+    },
+    "buttons": {
+      "send": "Send"
+    }
+  },
   "petsPage": {
     "buttons": {
       "filters": "Filters",
@@ -1016,9 +1030,94 @@
           "text": "Yorkshire Terrier"
         }
       ]
+    },
+    "subject": [
+      {
+        "value": "",
+        "text": ""
+      },
+      {
+        "value": "General Inquiry",
+        "text": "General Inquiry"
+      },
+      {
+        "value": "Technical Support",
+        "text": "Technical Support"
+      },
+      {
+        "value": "Report a Bug",
+        "text": "Report a Bug"
+      },
+      {
+        "value": "Feature Request",
+        "text": "Feature Request"
+      },
+      {
+        "value": "Account Assistance",
+        "text": "Account Assistance"
+      },
+      {
+        "value": "Pet Reunification Assistance",
+        "text": "Pet Reunification Assistance"
+      },
+      {
+        "value": "Website/App Navigation",
+        "text": "Website/App Navigation"
+      },
+      {
+        "value": "Data Privacy Concerns",
+        "text": "Data Privacy Concerns"
+      },
+      {
+        "value": "Partnership Opportunities",
+        "text": "Partnership Opportunities"
+      },
+      {
+        "value": "Media Inquiry",
+        "text": "Media Inquiry"
+      },
+      {
+        "value": "Advertising and Sponsorship",
+        "text": "Advertising and Sponsorship"
+      },
+      {
+        "value": "Other",
+        "text": "Other"
+      }
+    ]
+  },
+  "reportPetPage": {
+    "titles": {
+      "section1": "Report Pet"
+    },
+    "buttons": {
+      "goBack": "Go Back",
+      "addPet": "Add Pet"
+    },
+    "labels": {
+      "petStatus": "Pet Status",
+      "petSpecies": "Species",
+      "petGender": "Pet Gender",
+      "petAge": "Pet Age",
+      "petIdentifier": "Identifier",
+      "petLostOrFoundDate": "Lost or Found Date",
+      "petCoatType": "Coat Type",
+      "petSize": "Pet Size",
+      "petCoatPattern": "Coat Pattern",
+      "petColor1": "Main Color",
+      "petColor2": "Second Color",
+      "petColor3": "Third Color",
+      "petName": "Pet’s name",
+      "petBreed": "Breed",
+      "petDescription": "Description",
+      "petImages": "Upload Images (max 3)",
+      "petMap": "Please set a marker on the map to indicate the location where the pet was lost or found."
+    },
+    "notifications": {
+      "note": "NOTE:",
+      "notification": "this will be made public, please do not provide sensitive information that you would like kept private"
     }
   },
-  "servicesPage": {},
   "navbar": {
     "home": "Home",
     "about": "About",

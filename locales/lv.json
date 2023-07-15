@@ -80,6 +80,21 @@
       "section8": "Cyclic - Bezserveru mākoņa izvietošana"
     }
   },
+  "feedbackPage": {
+    "titles": {
+      "section1": "Atsauksmes"
+    },
+    "labels": {
+      "firstName": "Vārds",
+      "lastName": "Uzvārds",
+      "subject": "Tēma",
+      "email": "E-pasts",
+      "message": "Ziņojums"
+    },
+    "buttons": {
+      "send": "Sūtīt"
+    }
+  },
   "petsPage": {
     "buttons": {
       "filters": "Filtrs",
@@ -1015,6 +1030,92 @@
           "text": "Yorkshire Terrier"
         }
       ]
+    },
+    "subject": [
+      {
+        "value": "",
+        "text": ""
+      },
+      {
+        "value": "General Inquiry",
+        "text": "Vispārējais jautājums"
+      },
+      {
+        "value": "Technical Support",
+        "text": "Tehniskā atbalsta"
+      },
+      {
+        "value": "Report a Bug",
+        "text": "Ziņot par kļūdu"
+      },
+      {
+        "value": "Feature Request",
+        "text": "Iespēju pieprasījums"
+      },
+      {
+        "value": "Account Assistance",
+        "text": "Konta palīdzība"
+      },
+      {
+        "value": "Pet Reunification Assistance",
+        "text": "Palīdzība dzīvnieku atgriešanās procesā"
+      },
+      {
+        "value": "Website/App Navigation",
+        "text": "Mājaslapas/lietotnes navigācija"
+      },
+      {
+        "value": "Data Privacy Concerns",
+        "text": "Datu privātuma jautājumi"
+      },
+      {
+        "value": "Partnership Opportunities",
+        "text": "Partnerattiecību iespējas"
+      },
+      {
+        "value": "Media Inquiry",
+        "text": "Mediju pētījums"
+      },
+      {
+        "value": "Advertising and Sponsorship",
+        "text": "Reklāma un sponsorēšana"
+      },
+      {
+        "value": "Other",
+        "text": "Cits"
+      }
+    ]
+  },
+  "reportPetPage": {
+    "titles": {
+      "section1": "Ziņot par mājdzīvnieku"
+    },
+    "buttons": {
+      "goBack": "Atpakaļ",
+      "addPet": "Pievienot mājdzīvnieku"
+    },
+    "labels": {
+      "petStatus": "Mājdzīvnieka statuss",
+      "petSpecies": "Suga",
+      "petGender": "Dzimums",
+      "petAge": "Vecums",
+      "petIdentifier": "Identifikators",
+      "petLostOrFoundDate": "Zaudēšanas vai atradšanas datums",
+      "petCoatType": "Apsējs",
+      "petSize": "Mājdzīvnieka izmērs",
+      "petCoatPattern": "Apsēja raksts",
+      "petColor1": "Galvenā krāsa",
+      "petColor2": "Otrā krāsa",
+      "petColor3": "Trešā krāsa",
+      "petName": "Mājdzīvnieka vārds",
+      "petBreed": "Šķirne",
+      "petDescription": "Apraksts",
+      "petImages": "Ielādēt attēlus (max 3)",
+      "petMap": "Lūdzu, ievietojiet marķieri uz kartes, lai norādītu vietu, kur mājdzīvnieks tika zaudēts vai atrasts."
+    },
+    "notifications": {
+      "note": "PIEZĪME:",
+      "notification": "šī informācija tiks padarīta publiska, lūdzu, neparedzētu jutīgu informāciju, ko vēlaties saglabāt privātu."
     }
   },
   "navbar": {

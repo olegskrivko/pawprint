@@ -47,7 +47,7 @@
             <a id="copyBtn" class="dropdown-item dropdown-item-danger d-flex gap-2 align-items-center" href="#"><i class="bi bi-files"></i> Copy link </a>
           </li>
           <li>
-            <a class="dropdown-item dropdown-item-danger d-flex gap-2 align-items-center" href="#"><i class="bi bi-exclamation-square"></i> Report post </a>
+            <a class="dropdown-item dropdown-item-danger d-flex gap-2 align-items-center" id="reportpetidBtn" data-reportpetid="<%= pet._id%>" href=""><i class="bi bi-exclamation-square"></i> Report post </a>
           </li>
 
           <% if (currentUser && pet.author && currentUser._id && pet.author.equals(currentUser._id)) { %>
@@ -491,6 +491,40 @@
     location.reload();
   });
 </script>
+<script>
+  //const reportPetId = e.currentTarget.getAttribute('data-reportpetid');
+  const reporturl = window.location.href;
+  const reportparts = reporturl.split('/');
+
+  const reportpetId = reportparts[reportparts.length - 1];
+  const selectedReportpetId = reportpetId; /* Code to retrieve the selected pets from the UI */
+  console.log(selectedReportpetId);
+
+  reportpetidBtn.addEventListener('click', async (e) => {
+    e.preventDefault();
+
+    fetch(`/pets/${selectedReportpetId}/reportpost`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ selectedReportpetId }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log('Report sent successfully');
+          // Handle success, such as showing a success message
+        } else {
+          console.error('Failed to send report');
+          // Handle error, such as showing an error message
+        }
+      })
+      .catch((error) => {
+        console.error('Error occurred while sending report:', error);
+        // Handle error, such as showing an error message
+      });
+  });
+</script>
 
 <script>
   // Function to copy the current URL to the clipboard
@@ -539,7 +573,7 @@
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'example.pdf';
+        a.download = 'Document.pdf';
         a.click();
       })
       .catch((error) => {

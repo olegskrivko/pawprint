@@ -32,9 +32,10 @@ module.exports.support = async (req, res) => {
 module.exports.feedback = async (req, res) => {
   try {
     //const data = req.data; // Language data is available from the middleware
-    const about = req.__('about'); // Translate the 'about' key based on the user's selected language
+    const feedbackPage = req.__('feedbackPage');
+    const selectOptions = req.__('selectOptions'); // Translate the 'about' key based on the user's selected language
     const navbar = req.__('navbar');
-    res.render('about/feedback', { about, navbar });
+    res.render('about/feedback', { feedbackPage, selectOptions, navbar });
   } catch (err) {
     console.error(err.message);
   }

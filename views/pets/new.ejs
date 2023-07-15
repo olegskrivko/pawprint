@@ -1,15 +1,15 @@
 <% layout('layouts/boilerplate')%>
-<h1 class="text-center mb-4">Report Pet</h1>
+<h1 class="text-center mb-4"><%= reportPetPage.titles.section1 %></h1>
 <form action="/pets" method="POST" novalidate class="row g-3" enctype="multipart/form-data" id="pet-form">
   <!-- Pet Status -->
   <div class="col-md-4">
-    <label class="form-label" for="petStatus"><%= petsLocale.filterPetStatus %></label>
+    <label class="form-label" for="petStatus"><%= reportPetPage.labels.petStatus %></label>
     <div class="input-group">
       <span class="input-group-text">
         <i class="bi bi-question-diamond"></i>
       </span>
       <select class="form-select" id="petStatus" required name="pet[petStatus]">
-        <% statusOptions.forEach(option => { %>
+        <% selectOptions.status.forEach(option => { %>
         <option value="<%= option.value %>"><%= option.text %></option>
         <% }); %>
       </select>
@@ -18,13 +18,13 @@
 
   <!-- Pet Species -->
   <div class="col-md-4">
-    <label class="form-label" for="species"><%= petsLocale.filterSpecies %></label>
+    <label class="form-label" for="species"><%= reportPetPage.labels.petSpecies %></label>
     <div class="input-group">
       <span class="input-group-text">
         <i class="bi bi-diamond-half"></i>
       </span>
       <select class="form-select" id="species" name="pet[species]" required form="pet-form">
-        <% speciesOptions.forEach(option => { %>
+        <% selectOptions.species.forEach(option => { %>
         <option value="<%= option.value %>"><%= option.text %></option>
         <% }); %>
       </select>
@@ -33,14 +33,14 @@
 
   <!-- Pet Gender -->
   <div class="col-md-4">
-    <label class="form-label" for="gender"><%= petsLocale.filterPetGender %></label>
+    <label class="form-label" for="gender"><%= reportPetPage.labels.petGender %></label>
     <div class="input-group">
       <span class="input-group-text">
         <i class="bi bi-gender-ambiguous"></i>
       </span>
 
       <select class="form-select" id="gender" name="pet[gender]">
-        <% genderOptions.forEach(option => { %>
+        <% selectOptions.gender.forEach(option => { %>
         <option value="<%= option.value %>"><%= option.text %></option>
         <% }); %>
       </select>
@@ -49,13 +49,13 @@
 
   <!-- Age -->
   <div class="col-md-4">
-    <label class="form-label" for="age"><%= petsLocale.filterPetAge %></label>
+    <label class="form-label" for="age"><%= reportPetPage.labels.petAge %></label>
     <div class="input-group">
       <span class="input-group-text">
         <i class="bi bi-calendar2-heart"></i>
       </span>
       <select class="form-select" id="age" name="pet[age]">
-        <% ageOptions.forEach(option => { %>
+        <% selectOptions.age.forEach(option => { %>
         <option value="<%= option.value %>"><%= option.text %></option>
         <% }); %>
       </select>
@@ -64,7 +64,7 @@
 
   <!-- Pet identifier -->
   <div class="col-md-4">
-    <label class="form-label" for="identifier"><%= petsLocale.filterIdentifier %></label>
+    <label class="form-label" for="identifier"><%= reportPetPage.labels.petIdentifier %></label>
     <div class="input-group">
       <span class="input-group-text"><i class="bi bi-fingerprint"></i></span>
       <input type="number" class="form-control identifier" id="identifier" min="0" name="pet[identifier]" value="" autocomplete="off" />
@@ -73,7 +73,7 @@
 
   <!-- Lost Date -->
   <div class="col-md-4">
-    <label class="form-label" for="lostdate"><%= petsLocale.filterLostDate %></label>
+    <label class="form-label" for="lostdate"><%= reportPetPage.labels.petLostOrFoundDate %></label>
     <div class="input-group">
       <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
       <input type="date" class="form-control lostdate" id="lostdate" name="pet[lostdate]" min="2023-01-01" value="" required />
@@ -81,8 +81,10 @@
   </div>
 
   <!-- map -->
-  <div id="map" style="max-width: 100%; height: 300px; background-color: #808080"></div>
-
+  <div class="col-md-12">
+    <label class="form-label" for="map"><%= reportPetPage.labels.petMap %></label>
+    <div id="map" style="max-width: 100%; height: 300px; background-color: #808080"></div>
+  </div>
   <div class="col-md-2 col-sm-3 col-6 mb-3 d-none">
     <label class="form-label me-1" for="latitude">Latitude</label>
     <input id="latitude" class="form-control text-muted" type="number" aria-label="latitude" aria-describedby="latitude-label" name="pet[latitude]" />
@@ -97,13 +99,13 @@
 
   <!-- Coat type -->
   <div class="col-md-4">
-    <label class="form-label" for="coat"><%= petsLocale.filterCoatType %></label>
+    <label class="form-label" for="coat"><%= reportPetPage.labels.petCoatType %></label>
     <div class="input-group">
       <span class="input-group-text">
         <i class="bi bi-wind"></i>
       </span>
       <select class="form-select" id="coat" name="pet[coat]">
-        <% coatOptions.forEach(option => { %>
+        <% selectOptions.coat.forEach(option => { %>
         <option value="<%= option.value %>"><%= option.text %></option>
         <% }); %>
       </select>
@@ -112,14 +114,14 @@
 
   <!-- Pet size -->
   <div class="col-md-4">
-    <label class="form-label" for="size"><%= petsLocale.filterPetSize %></label>
+    <label class="form-label" for="size"><%= reportPetPage.labels.petSize %></label>
     <div class="input-group">
       <span class="input-group-text">
         <i class="bi bi-arrows-angle-expand"></i>
       </span>
 
       <select class="form-select" id="size" name="pet[size]">
-        <% sizeOptions.forEach(option => { %>
+        <% selectOptions.size.forEach(option => { %>
         <option value="<%= option.value %>"><%= option.text %></option>
         <% }); %>
       </select>
@@ -127,14 +129,14 @@
   </div>
   <!-- Pet coat pattern -->
   <div class="col-md-4">
-    <label class="form-label" for="pattern"><%= petsLocale.filterPattern %></label>
+    <label class="form-label" for="pattern"><%= reportPetPage.labels.petCoatPattern %></label>
     <div class="input-group">
       <span class="input-group-text">
         <i class="bi bi-grid-3x3-gap"></i>
       </span>
 
       <select class="form-select" id="pattern" name="pet[pattern]">
-        <% coatPatternOptions.forEach(option => { %>
+        <% selectOptions.pattern.forEach(option => { %>
         <option value="<%= option.value %>"><%= option.text %></option>
         <% }); %>
       </select>
@@ -143,13 +145,13 @@
 
   <!-- Pet coat color1 -->
   <div class="col-md-4">
-    <label class="form-label" for="firstcolor"><%= petsLocale.filterMainColor %></label>
+    <label class="form-label" for="firstcolor"><%= reportPetPage.labels.petColor1 %></label>
     <div class="input-group">
       <span class="input-group-text">
         <i class="bi bi-palette"></i>
       </span>
       <select class="form-select" id="firstcolor" form="pet-form" name="pet[firstcolor]">
-        <% colorOptions.forEach(option => { %>
+        <% selectOptions.color.forEach(option => { %>
         <option value="<%= option.value %>"><%= option.text %></option>
         <% }); %>
       </select>
@@ -158,13 +160,13 @@
   </div>
   <!-- Pet coat color2 -->
   <div class="col-md-4">
-    <label class="form-label" id="secondcolorLabel" for="secondcolor"><%= petsLocale.filterSecondColor %></label>
+    <label class="form-label" id="secondcolorLabel" for="secondcolor"><%= reportPetPage.labels.petColor2 %></label>
     <div class="input-group">
       <span class="input-group-text">
         <i class="bi bi-palette"></i>
       </span>
       <select class="form-select" id="secondcolor" form="pet-form" name="pet[secondcolor]">
-        <% colorOptions.forEach(option => { %>
+        <% selectOptions.color.forEach(option => { %>
         <option value="<%= option.value %>"><%= option.text %></option>
         <% }); %>
       </select>
@@ -173,13 +175,13 @@
 
   <!-- Pet coat color3 -->
   <div class="col-md-4">
-    <label class="form-label" for="thirdcolor"><%= petsLocale.filterThirdColor %></label>
+    <label class="form-label" for="thirdcolor"><%= reportPetPage.labels.petColor3 %></label>
     <div class="input-group">
       <span class="input-group-text">
         <i class="bi bi-palette"></i>
       </span>
       <select class="form-select" id="thirdcolor" form="pet-form" name="pet[thirdcolor]">
-        <% colorOptions.forEach(option => { %>
+        <% selectOptions.color.forEach(option => { %>
         <option value="<%= option.value %>"><%= option.text %></option>
         <% }); %>
       </select>
@@ -187,7 +189,7 @@
   </div>
 
   <div class="col-md-4">
-    <label class="form-label" for="name"><%= petsLocale.filterName %></label>
+    <label class="form-label" for="name"><%= reportPetPage.labels.petName %></label>
     <!-- change name attr to name later -->
     <div class="input-group">
       <span class="input-group-text"><i class="bi bi-chat-dots"></i></span>
@@ -199,20 +201,20 @@
 
   <!-- Pet Breed -->
   <div class="col-md-4">
-    <label class="form-label"><%= petsLocale.filterBreed %></label>
+    <label class="form-label"><%= reportPetPage.labels.petBreed %></label>
     <div class="input-group">
       <span class="input-group-text">
         <i class="bi bi-x-diamond-fill"></i>
       </span>
       <select class="form-select" id="petBreed" name="breed">
-        <option value="<%= breedsOptions.all[0].value %>"><%= breedsOptions.all[0].text %></option>
-        <optgroup label="<%= breedsOptions.catOptiongroupLabel[0].text %>">
-          <% breedsOptions.cats.forEach(option => { %>
+        <option value="<%= selectOptions.breed.all[0].value %>"><%= selectOptions.breed.all[0].text %></option>
+        <optgroup label="<%= selectOptions.breed.catOptiongroupLabel[0].text %>">
+          <% selectOptions.breed.cats.forEach(option => { %>
           <option value="<%= option.value %>"><%= option.text %></option>
           <% }); %>
         </optgroup>
-        <optgroup label="<%= breedsOptions.dogOptiongroupLabel[0].text %>">
-          <% breedsOptions.dogs.forEach(option => { %>
+        <optgroup label="<%= selectOptions.breed.dogOptiongroupLabel[0].text %>">
+          <% selectOptions.breed.dogs.forEach(option => { %>
           <option value="<%= option.value %>"><%= option.text %></option>
           <% }); %>
         </optgroup>
@@ -221,23 +223,23 @@
   </div>
 
   <div class="col-md-12 mb-3">
-    <label class="form-label" for="description"><%= petsLocale.filterDescription %></label>
+    <label class="form-label" for="description"><%= reportPetPage.labels.petDescription %></label>
     <textarea maxlength="400" style="resize: none; height: 140px" class="form-control txt-area" type="text" id="description" name="pet[description]" placeholder="Max 400 characters" required></textarea>
     <div class="valid-feedback">Looks good!</div>
   </div>
 
   <div class="col-md-12 mb-3">
-    <label for="image" class="form-label"><%= petsLocale.filterUploadImages %></label>
+    <label for="image" class="form-label"><%= reportPetPage.labels.petImages %></label>
     <input class="form-control" type="file" id="image" name="image" multiple accept="image/png, image/jpeg, image/jpg" />
   </div>
-  <div class="mb-2"><a class="btn btn-secondary me-3" href="/pets">Go Back</a><button class="btn btn-success">Add Pet</button></div>
+  <div class="mb-2"><a class="btn btn-secondary me-3" href="/pets"><%= reportPetPage.buttons.goBack %></a><button class="btn btn-success"><%= reportPetPage.buttons.addPet %></button></div>
 </form>
 
 <div class="alert alert-success d-flex align-items-center" role="alert">
   <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:" style="height: 1.5rem; width: 1.5rem" fill="#198754">
     <use xlink:href="#info-fill" />
   </svg>
-  <div>NOTE: this will be made public, please do not provide sensitive information that you would like kept private</div>
+  <div><%= reportPetPage.notifications.note %> <%= reportPetPage.notifications.notification %></div>
 </div>
 
 <script>

@@ -9,6 +9,7 @@ const path = require('path');
 const OneSignal = require('onesignal-node');
 const { PDFDocument, StandardFonts } = require('pdf-lib');
 const axios = require('axios');
+const nodemailer = require('nodemailer');
 
 module.exports.index = async (req, res) => {
   const ITEMS_PER_PAGE = 10; // Number of items to display per page
@@ -137,31 +138,12 @@ module.exports.index = async (req, res) => {
 };
 
 module.exports.renderNewForm = (req, res) => {
-  console.log('new form pet');
-  const petsLocale = req.__('pets'); // Translate the 'home' key based on the user's selected language
-  const statusOptions = req.__('statusOptions');
-  const speciesOptions = req.__('speciesOptions');
-  const genderOptions = req.__('genderOptions');
-  const colorOptions = req.__('colorOptions');
-  const ageOptions = req.__('ageOptions');
-  const coatOptions = req.__('coatOptions');
-  const coatPatternOptions = req.__('coatPatternOptions');
-  const sizeOptions = req.__('sizeOptions');
-  const regionOptions = req.__('regionOptions');
-  const breedsOptions = req.__('breedsOptions');
+  const reportPetPage = req.__('reportPetPage');
+  const selectOptions = req.__('selectOptions');
+
   res.render('pets/new', {
-    // select options (better to have them in one place on the server)
-    petsLocale, // Pass the language data to the view
-    statusOptions,
-    speciesOptions,
-    genderOptions,
-    colorOptions,
-    ageOptions,
-    coatOptions,
-    coatPatternOptions,
-    sizeOptions,
-    regionOptions,
-    breedsOptions,
+    reportPetPage, // Pass the language data to the view
+    selectOptions,
   });
 };
 
@@ -474,7 +456,7 @@ module.exports.renderPdf = async (req, res) => {
     const pdfBytes = await pdfDoc.save();
 
     // Set response headers for PDF download
-    res.setHeader('Content-Disposition', 'attachment; filename="example.pdf"');
+    res.setHeader('Content-Disposition', 'attachment; filename="Document.pdf"');
     res.setHeader('Content-Type', 'application/pdf');
 
     // Send the PDF bytes as the response
@@ -482,5 +464,56 @@ module.exports.renderPdf = async (req, res) => {
   } catch (error) {
     console.error('Error generating PDF:', error);
     res.status(500).send('Error generating PDF');
+  }
+};
+
+module.exports.reportpost = async (req, res) => {
+  try {
+    const user = req.user;
+    const email = user.email;
+    const firstname = user.firstname;
+    const lastname = user.lastname;
+    const username = user.username;
+    console.log(email, firstname, lastname, username, email);
+
+    const { selectedReportpetId } = req.body;
+    console.log(req.body);
+
+    // Create a transporter using SMTP
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      port: 587,
+      secure: false, // upgrade later with STARTTLS
+      auth: {
+        user: process.env.EMAIL_USERNAME, // Replace with your Gmail address
+        pass: process.env.EMAIL_PASSWORD, // Replace with your Gmail password
+      },
+    });
+
+    // Define the email options
+    const mailOptions = {
+      from: process.env.EMAIL_USERNAME,
+      to: process.env.EMAIL_APP,
+      subject: 'Reported post!',
+      text: `From:\nFirst name: ${firstname}\nLast name: ${lastname}\nEmail: ${email}\nUsername: ${username}\nReported post ID: https://pawclix.cyclic.app/pets/${selectedReportpetId}`,
+    };
+    console.log(mailOptions);
+
+    // Send the email
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error('Error sending email:', error);
+        req.flash('error', 'An error occurred while reporting post.');
+      } else {
+        console.log('Email sent:', info.response);
+        req.flash('success', 'Thank you! Your report has been sent successfully.');
+      }
+      res.redirect('back');
+    });
+    console.log(transporter.sendMail);
+  } catch (err) {
+    console.error('Error sending feedback:', err);
+    req.flash('error', 'An error occurred while reporting post.');
+    res.redirect('back');
   }
 };

@@ -80,6 +80,21 @@
       "section8": "Cyclic - Безсерверная платформа облачного хостинга"
     }
   },
+  "feedbackPage": {
+    "titles": {
+      "section1": "Обратная связь"
+    },
+    "labels": {
+      "firstName": "Имя",
+      "lastName": "Фамилия",
+      "subject": "Тема",
+      "email": "Email",
+      "message": "Сообщение"
+    },
+    "buttons": {
+      "send": "Отправить"
+    }
+  },
   "petsPage": {
     "buttons": {
       "filters": "Фильтры",
@@ -1015,6 +1030,92 @@
           "text": "Yorkshire Terrier"
         }
       ]
+    },
+    "subject": [
+      {
+        "value": "",
+        "text": ""
+      },
+      {
+        "value": "General Inquiry",
+        "text": "Общий запрос"
+      },
+      {
+        "value": "Technical Support",
+        "text": "Техническая поддержка"
+      },
+      {
+        "value": "Report a Bug",
+        "text": "Сообщить об ошибке"
+      },
+      {
+        "value": "Feature Request",
+        "text": "Запрос функционала"
+      },
+      {
+        "value": "Account Assistance",
+        "text": "Помощь с аккаунтом"
+      },
+      {
+        "value": "Pet Reunification Assistance",
+        "text": "Помощь в пересечении животных и владельцев"
+      },
+      {
+        "value": "Website/App Navigation",
+        "text": "Навигация по веб-сайту/приложению"
+      },
+      {
+        "value": "Data Privacy Concerns",
+        "text": "Вопросы конфиденциальности данных"
+      },
+      {
+        "value": "Partnership Opportunities",
+        "text": "Возможности партнерства"
+      },
+      {
+        "value": "Media Inquiry",
+        "text": "Запрос СМИ"
+      },
+      {
+        "value": "Advertising and Sponsorship",
+        "text": "Реклама и спонсорство"
+      },
+      {
+        "value": "Other",
+        "text": "Другое"
+      }
+    ]
+  },
+  "reportPetPage": {
+    "titles": {
+      "section1": "Сообщить о питомцe"
+    },
+    "buttons": {
+      "goBack": "Назад",
+      "addPet": "Добавить питомца"
+    },
+    "labels": {
+      "petStatus": "Статус питомца",
+      "petSpecies": "Вид",
+      "petGender": "Пол",
+      "petAge": "Возраст",
+      "petIdentifier": "Идентификатор",
+      "petLostOrFoundDate": "Дата потери или находки",
+      "petCoatType": "Тип шерсти",
+      "petSize": "Размер питомца",
+      "petCoatPattern": "Узор шерсти",
+      "petColor1": "Основной цвет",
+      "petColor2": "Вторичный цвет",
+      "petColor3": "Третичный цвет",
+      "petName": "Имя питомца",
+      "petBreed": "Порода",
+      "petDescription": "Описание",
+      "petImages": "Загрузить изображения (max 3)",
+      "petMap": "Пожалуйста, установите маркер на карте, чтобы указать место, где питомец был потерян или найден."
+    },
+    "notifications": {
+      "note": "ПРИМЕЧАНИЕ:",
+      "notification": "эта информация будет общедоступной, пожалуйста, не предоставляйте личную информацию, которую вы хотели бы оставить в тайне."
     }
   },
   "navbar": {

@@ -1,47 +1,39 @@
 <% layout('layouts/boilerplate')%>
-<h1 class="text-center mb-4">Feedback</h1>
+<h1 class="text-center mb-4"><%= feedbackPage.titles.section1 %></h1>
 <main class="m-auto custom-feedback-container">
   <form action="/about/feedback" method="POST" novalidate class="row g-3" enctype="application/x-www-form-urlencoded">
     <div class="row g-3 mb-3">
       <div class="col-6">
-        <label for="firstName" class="form-label">First name</label>
+        <label for="firstName" class="form-label"><%= feedbackPage.labels.firstName %></label>
         <input type="text" class="form-control" id="firstName" placeholder="" value="" required name="firstname" />
         <div class="invalid-feedback">Valid first name is required.</div>
       </div>
 
       <div class="col-6">
-        <label for="lastName" class="form-label">Last name</label>
+        <label for="lastName" class="form-label"><%= feedbackPage.labels.lastName %></label>
         <input type="text" class="form-control" id="lastName" placeholder="" value="" required name="lastname" />
         <div class="invalid-feedback">Valid last name is required.</div>
       </div>
 
-      <div class="col-4">
-        <label for="country" class="form-label">Subject</label>
+      <div class="col-6">
+        <label for="country" class="form-label"><%= feedbackPage.labels.subject %></label>
         <select class="form-select" id="country" required name="subject">
-          <option value="General Inquiry">General Inquiry</option>
-          <option value="Technical Support">Technical Support</option>
-          <option value="Report a Bug">Report a Bug</option>
-          <option value="Feature Request">Feature Request</option>
-          <option value="Account Assistance">Account Assistance</option>
-          <option value="Pet Reunification Assistance">Pet Reunification Assistance</option>
-          <option value="Website/App Navigation">Website/App Navigation</option>
-          <option value="Data Privacy Concerns">Data Privacy Concerns</option>
-          <option value="Partnership Opportunities">Partnership Opportunities</option>
-          <option value="Media Inquiry">Media Inquiry</option>
-          <option value="Advertising and Sponsorship">Advertising and Sponsorship</option>
-          <option value="Other">Other</option>
+          <% selectOptions.subject.forEach(option => { %>
+          <option value="<%= option.value %>"><%= option.text %></option>
+          <% }); %>
         </select>
         <div class="invalid-feedback">Please select a subject.</div>
       </div>
 
-      <div class="col-8">
-        <label for="email" class="form-label">Email</label>
+      <div class="col-6">
+        <label for="email" class="form-label"><%= feedbackPage.labels.email %></label>
         <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" />
         <div class="invalid-feedback">Please enter a valid email address.</div>
       </div>
 
       <div class="col-12">
-        <textarea class="form-control" aria-label="With textarea" name="description"></textarea>
+        <label for="description" class="form-label"><%= feedbackPage.labels.message %></label>
+        <textarea class="form-control" id="description" aria-label="With textarea" name="description"></textarea>
       </div>
     </div>
     <div class="col-12 justify-content-center align-items-center">
@@ -50,6 +42,6 @@
       </div>
     </div>
 
-    <button class="w-100 btn btn-primary btn-lg" type="submit">Send</button>
+    <button class="w-100 btn btn-primary btn-lg" type="submit"><%= feedbackPage.buttons.send %></button>
   </form>
 </main>
