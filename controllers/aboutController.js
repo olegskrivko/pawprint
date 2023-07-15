@@ -64,6 +64,7 @@ module.exports.sendFeedback = async (req, res) => {
     console.log('req body', req.body);
     // Verify reCAPTCHA response
     const isCaptchaValid = await verifyCaptcha(recaptchaResponse);
+    console.log('isCaptchaValid', isCaptchaValid);
 
     if (!isCaptchaValid) {
       req.flash('error', 'Please complete the reCAPTCHA to submit the form.');
