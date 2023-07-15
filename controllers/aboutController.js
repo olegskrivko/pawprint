@@ -122,9 +122,10 @@ module.exports.sendFeedback = async (req, res) => {
     });
 
     // Define the email options
+    console.log(process.env.EMAIL_APP);
     const mailOptions = {
       from: email,
-      to: process.env.EMAIL_APP,
+      to: 'info@pawclix.com',
       subject: subject,
       text: `From ${firstname} ${lastname}\n${email}\n${description}`,
     };
