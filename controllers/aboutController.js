@@ -82,7 +82,6 @@ module.exports.sendFeedback = async (req, res) => {
       },
     });
 
-    console.log('user', process.env.EMAIL_USERNAME);
     // Define the email options
     const mailOptions = {
       from: 'bugfreecode.paradox@gmail.com',
