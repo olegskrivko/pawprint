@@ -51,6 +51,8 @@ const verifyCaptcha = async (response) => {
 
   try {
     const { data } = await axios.post(url, params);
+    console.log('params', params);
+    console.log('data', data);
     return data.success;
   } catch (error) {
     console.error('Error verifying reCAPTCHA:', error);
