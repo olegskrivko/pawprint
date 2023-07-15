@@ -43,7 +43,7 @@ module.exports.feedback = async (req, res) => {
 
 // Verify reCAPTCHA response
 const verifyCaptcha = async (response) => {
-  const secretKey = '6LdTZicnAAAAAL7ZoUerxN251LZ0Fe-RH5_pppoQ'; // Replace with your secret key obtained from reCAPTCHA
+  const secretKey = process.env.GOOGLE_RECAPTCHA_SECRET_KEY; // Replace with your secret key obtained from reCAPTCHA
   const url = 'https://www.google.com/recaptcha/api/siteverify';
   const params = new URLSearchParams();
   params.append('secret', secretKey);
@@ -86,8 +86,8 @@ module.exports.sendFeedback = async (req, res) => {
 
     // Define the email options
     const mailOptions = {
-      from: 'bugfreecode.paradox@gmail.com',
-      to: 'info@pawclix.com',
+      from: process.env.EMAIL_USERNAME,
+      to: process.env.EMAIL_APP,
       subject: subject,
       text: `From ${firstname} ${lastname}\n${description}`,
     };
