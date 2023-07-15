@@ -1,7 +1,7 @@
 <% layout('layouts/boilerplate')%>
 <h1 class="text-center mb-4"><%= feedbackPage.titles.section1 %></h1>
 <main class="m-auto custom-feedback-container">
-  <form action="/about/feedback" method="POST" novalidate class="row g-3" enctype="application/x-www-form-urlencoded">
+  <form action="/about/feedback" method="POST" class="row g-3">
     <div class="row g-3 mb-3">
       <div class="col-6">
         <label for="firstName" class="form-label"><%= feedbackPage.labels.firstName %></label>
@@ -36,12 +36,19 @@
         <textarea class="form-control" id="description" aria-label="With textarea" name="description"></textarea>
       </div>
     </div>
-    <!-- <div class="col-12 justify-content-center align-items-center">
-      <div class="d-flex justify-content-center">
-        <div class="g-recaptcha" data-sitekey="6LfiqiQnAAAAAIFgBGuyxS0s4cOIQpZjjnWmI5Ss"></div>
-      </div>
-    </div> -->
 
-    <button class="w-100 btn btn-primary btn-lg" type="submit"><%= feedbackPage.buttons.send %></button>
+    <div class="col-12 justify-content-center align-items-center">
+      <div class="d-flex justify-content-center">
+        <div class="g-recaptcha" data-sitekey="6LfNIicnAAAAAAaOAsBBGOsuFobuG-F5GQ-j_Nsf"></div>
+      </div>
+    </div>
+
+    <button class="w-100 btn btn-primary btn-lg" value="Submit" type="submit"><%= feedbackPage.buttons.send %></button>
   </form>
 </main>
+<!-- <script type="text/javascript">
+  var onloadCallback = function () {
+    alert('grecaptcha is ready!');
+  };
+</script>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script> -->
