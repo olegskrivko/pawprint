@@ -29,9 +29,15 @@
         });
       });
     </script>
-    <link rel="preconnect" href="https://www.google.com" />
-    <link rel="preconnect" href="https://www.gstatic.com" crossorigin />
-    <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+      function onSubmit(token) {
+        console.log('token', token);
+        document.getElementById('feedback-form').submit();
+      }
+    </script>
+
     <title>PawClix</title>
   </head>
 
