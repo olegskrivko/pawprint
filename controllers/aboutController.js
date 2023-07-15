@@ -108,9 +108,7 @@ module.exports.feedback = async (req, res) => {
 // };
 module.exports.sendFeedback = async (req, res) => {
   try {
-    console.log('hit sendFeedback');
     const { firstname, lastname, subject, email, description } = req.body;
-    console.log(req.body);
     // Create a transporter using SMTP
     const transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -125,7 +123,7 @@ module.exports.sendFeedback = async (req, res) => {
     // Define the email options
     const mailOptions = {
       from: email,
-      to: process.env.EMAIL_APP,
+      to: process.env.EMAIL_USERNAME,
       subject: subject,
       text: `From ${firstname} ${lastname}\n${description}`,
     };
