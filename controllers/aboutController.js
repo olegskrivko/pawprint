@@ -43,7 +43,7 @@ module.exports.feedback = async (req, res) => {
 
 // Verify reCAPTCHA response
 const verifyCaptcha = async (response) => {
-  const secretKey = process.env.GOOGLE_RECAPTCHA_SECRET_KEY; // Replace with your secret key obtained from reCAPTCHA
+  const secretKey = process.env['GOOGLE_RECAPTCHA_SECRET_KEY']; // Replace with your secret key obtained from reCAPTCHA
   const url = 'https://www.google.com/recaptcha/api/siteverify';
   const params = new URLSearchParams();
   params.append('secret', secretKey);
