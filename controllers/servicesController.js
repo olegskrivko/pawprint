@@ -11,18 +11,23 @@ module.exports.renderAddServiceForm = (req, res) => {
 
 module.exports.index = async (req, res) => {
   try {
-    const servicesLocale = req.__('services'); // Translate the 'home' key based on the user's selected language
+    const servicesPage = req.__('servicesPage'); // Translate the 'servicesPage' key based on the user's selected language
     const services = await Service.find();
-    // Retrieve the language preference and data from the response locals
+    // // Retrieve the language preference and data from the response locals
+    // const translatedServices = services.map((service) => {
+    //   const translatedName = i18n.__({ key: service._doc.serviceId, locale: req.getLocale() });
+    //   console.log(service._doc.serviceId);
+    // });
+    // console.log(translatedServices);
+    // const translatedServices = services.map((service) => {
+    //   // Convert the 'serviceId' to a string before using it for translation
+    //   //const translatedName = i18n.__({ key: service.serviceId, locale: req.getLocale() });
+    //   console.log('service', service.name);
+    //   console.log('serviceId', service.serviceId);
+    //   return { ...service._doc, translatedName };
+    // });
 
-    const translatedServices = services.map((service) => {
-      const translatedName = i18n.__({ phrase: service.name, locale: req.getLocale() });
-      const translatedDescription = i18n.__({ phrase: service.description, locale: req.getLocale() });
-
-      return { ...service._doc, translatedName, translatedDescription };
-    });
-    console.log(translatedServices);
-    res.render('services/index', { services: translatedServices, servicesLocale });
+    res.render('services/index', { /*services: translatedServices,*/ services, servicesPage });
   } catch (error) {
     console.error('Error retrieving services:', error);
     req.flash('error', 'Failed to retrieve services.');
@@ -51,8 +56,9 @@ module.exports.showService = async (req, res) => {
 
 module.exports.addNewService = async (req, res) => {
   try {
-    const service = await Service.findOne({ name: req.body.serviceType });
-
+    const service = await Service.findOne({ serviceId: Number(req.body.serviceType) });
+    console.log(typeof req.body.serviceType);
+    console.log(service);
     const userCoords = req.body.user;
 
     const image = req.file;
@@ -103,6 +109,19 @@ module.exports.addNewService = async (req, res) => {
     req.flash('error', 'Failed to add new service.');
     res.redirect('/services/new'); // Redirect to an appropriate error page or fallback route
   }
+};
+
+module.exports.renderEditForm = async (req, res) => {
+  const { id } = req.params;
+  console.log(id);
+  const meid = '64be38477207febe098ce887';
+  const serviceProvider = await ServiceProvider.findById(id);
+  console.log(serviceProvider);
+  if (!serviceProvider) {
+    req.flash('error', 'Cannot find that service!');
+    return res.redirect('/services');
+  }
+  res.render('services/edit', { serviceProvider });
 };
 
 module.exports.updateService = async (req, res) => {

@@ -1164,3 +1164,17 @@
   "Veterinary Services": "Veterinary Services",
   "Medical care, health services, and treatments provided by licensed veterinarians for pets.": "Medical care, health services, and treatments provided by licensed veterinarians for pets."
 }
+
+
+
+		"addServiceBtn": "Add Service",
+    {
+			"value": "1",
+			"name": "Animal Shelters",
+      "description": "Dedicated shelters that provide temporary homes and care for abandoned or stray animals until they can be adopted."
+		},
+		{
+			"value": "2",
+			"name": "Cat Cafe",
+      "description": "name"
+		},

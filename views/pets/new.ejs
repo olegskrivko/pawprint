@@ -206,7 +206,7 @@
       <span class="input-group-text">
         <i class="bi bi-x-diamond-fill"></i>
       </span>
-      <select class="form-select" id="petBreed" name="breed">
+      <select class="form-select" id="petBreed" name="pet[breed]">
         <option value="<%= selectOptions.breed.all[0].value %>"><%= selectOptions.breed.all[0].text %></option>
         <optgroup label="<%= selectOptions.breed.catOptiongroupLabel[0].text %>">
           <% selectOptions.breed.cats.forEach(option => { %>

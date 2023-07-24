@@ -118,6 +118,14 @@
       "petLostOrFoundDate": "Lost or Found Date"
     }
   },
+  "servicesPage": {
+    "buttons": {
+      "addService": "Add Service"
+    },
+    "titles": {
+      "section1": "Services"
+    }
+  },
   "selectOptions": {
     "status": [
       {
@@ -174,11 +182,11 @@
       },
       {
         "value": "She",
-        "text": "Она"
+        "text": "She"
       },
       {
         "value": "He",
-        "text": "Он"
+        "text": "He"
       }
     ],
     "color": [
@@ -2135,27 +2143,25 @@
     ]
   },
   "services": {
-    "serviceTitle": "Services",
-    "addServiceBtn": "Add Service",
-    "service1": "Animal Shelters",
-    "service2": "Cat Cafe",
-    "service3": "Dog Walking",
-    "service4": "Pet Art",
-    "service5": "Pet Boarding",
-    "service6": "Pet Burial Services",
-    "service7": "Pet Expo",
-    "service8": "Pet Friendly Accommodation",
-    "service9": "Pet Friendly Restaurants",
-    "service10": "Pet Grooming",
-    "service11": "Pet Photography",
-    "service12": "Pet Rescue",
-    "service13": "Pet Search",
-    "service14": "Pet Sitting",
-    "service15": "Pet Supplies",
-    "service16": "Pet Training",
-    "service17": "Pet Transportation",
-    "service18": "Veterinary Services",
-    "service19": "Pet Insurance",
-    "service20": "Legal Services"
+    "1": "Animal Shelters",
+    "2": "Cat Cafe",
+    "3": "Dog Walking",
+    "4": "Pet Art",
+    "5": "Pet Boarding",
+    "6": "Pet Burial Services",
+    "7": "Pet Expo",
+    "8": "Pet Friendly Accommodation",
+    "9": "Pet Friendly Restaurants",
+    "10": "Pet Grooming",
+    "11": "Pet Photography",
+    "12": "Pet Breeders",
+    "13": "Pet Search",
+    "14": "Pet Sitting",
+    "15": "Pet Supplies",
+    "16": "Pet Training",
+    "17": "Pet Transportation",
+    "18": "Veterinary Services",
+    "19": "Pet Insurance",
+    "20": "Legal Services"
   }
 }

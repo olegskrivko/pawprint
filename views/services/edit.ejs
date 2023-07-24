@@ -1,6 +1,6 @@
 <% layout('layouts/boilerplate')%>
 
-<form class="needs-validation" novalidate="" action="/services/<%=service._id%>?_method=PUT" method="POST"  enctype="multipart/form-data">
+<form class="needs-validation" novalidate="" action="/services/<%=serviceProvider._id%>?_method=PUT" method="POST"  enctype="multipart/form-data">
   <div class="row g-3">
     <div class="col-sm-12 col-md-6">
       
@@ -19,7 +19,7 @@
         class="form-control"
         id="firstName"
         placeholder=""
-        value=""
+        value="<%=serviceProvider.name %>"
         required=""
         name="name"
       />
@@ -64,7 +64,7 @@
         class="form-control"
         id="website"
         placeholder="www.example.com"
-        value=""
+        value="<%=serviceProvider.website%>"
         required=""
         name="website"
       />
@@ -84,6 +84,7 @@
           placeholder="username"
           required=""
           name="facebook"
+          value="<%=serviceProvider.socialMedia.facebook %>"
         />
         <div class="invalid-feedback">Your username is required.</div>
       </div>
@@ -99,6 +100,7 @@
           placeholder="username"
           required=""
           name="instagram"
+          value="<%=serviceProvider.socialMedia.instagram %>"
         />
         <div class="invalid-feedback">Your username is required.</div>
       </div>
@@ -118,6 +120,7 @@
         id="email"
         placeholder="you@example.com"
         name="email"
+        value="<%=serviceProvider.email %>"
       />
       <div class="invalid-feedback">
         Please enter a valid email address for shipping updates.
@@ -143,6 +146,7 @@
       placeholder="+371"
       name="phonecode"
       style="max-width: 30%;"
+      value="<%=serviceProvider.phonecode %>"
     />
       
       <input
@@ -152,6 +156,7 @@
         id="phone"
         placeholder="28877889"
         name="phone"
+        value="<%=serviceProvider.phone %>"
       />
       <div class="invalid-feedback">
         Please enter a valid phone number.
@@ -192,7 +197,6 @@
 ></div>
 </div>
    
-
   </div>
 
  
@@ -227,7 +231,7 @@
 
 
   <button class="w-100 btn btn-primary btn-lg mt-5" type="submit">
-    Add Service
+    Update Service
   </button>
 </form>
 <div class="alert alert-success d-flex align-items-center mt-3" role="alert">
