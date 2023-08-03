@@ -24,7 +24,7 @@
                   <div>
                     <!-- <strong class="text-gray-dark"><p><%=service.serviceType%></p></strong> -->
                     <!-- <button class="btn btn-danger removeWatchlistBtn" data-serviceid="<%= service._id%>">Remove</button> -->
-                    <span class="d-block"><a class="text-decoration-none" href="/services/<=service._id%>">@<%=service.name%></a></span>
+                    <span class="d-block"><a class="text-decoration-none" href="/services/<=service.serviceId%>/serviceprovider/<=serviceProvider._id%>">@<%=service.name%></a></span>
                   </div>
                   <div class="d-flex justify-content-end">
                     <a href="#" data-serviceid="<%= service._id%>" class="d-block text-secondary me-2 p-0 editUserServiceBtn" style="text-decoration: none" onclick="editService(event)"><i class="bi bi-pencil"></i> Edit</a>

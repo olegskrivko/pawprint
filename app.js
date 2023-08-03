@@ -24,6 +24,7 @@ const homeRoutes = require('./routes/homeRoutes');
 const userRoutes = require('./routes/userRoutes');
 const aboutRoutes = require('./routes/aboutRoutes');
 const serviceRoutes = require('./routes/serviceRoutes');
+const serviceProvidersRoutes = require('./routes/serviceProvidersRoutes');
 const petRoutes = require('./routes/petRoutes');
 const compareRoutes = require('./routes/compareRoutes');
 const commentRoutes = require('./routes/commentRoutes');
@@ -130,6 +131,9 @@ app.use('/pets', petRoutes);
 app.use('/about', aboutRoutes);
 app.use('/pets/:id/comments', commentRoutes);
 app.use('/services', serviceRoutes);
+// new
+app.use('/services/:id/serviceprovider', serviceProvidersRoutes);
+
 app.use('/regions', locationRoutes);
 app.use('/user/profile', userProfileRoutes);
 app.use('/user/settings', userSettingsRoutes);

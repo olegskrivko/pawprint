@@ -73,7 +73,7 @@
 </style>
 <div class="col-md-12 mb-3">
   <h1 class="text-center"><%= service.name %></h1>
-  <h3 class="text-center"><%= service.description %></h3>
+  <h6 class="text-center"><%= service.description %></h6>
 </div>
 <div id="map" class="map" style="width: 100%; height: 400px"></div>
 
@@ -81,10 +81,10 @@
   <% if (service.serviceProviders.length> 0) {%>
 
   <div class="col-md-12 mb-3">
-    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-3 g-3">
+    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 ">
       <% for (let serviceProvider of service.serviceProviders) { %>
       <div class="col">
-      <div class="card mb-3 small">
+      <div class="card mb-1 small">
         <div class="card-header d-flex justify-content-between">
           <div class="flex-shrink-0 dropdown">
 
@@ -98,21 +98,32 @@
 
           </div>
           <div class="d-flex jusity-content-center align-items-center">
-            <a class="" data-bs-toggle="collapse" data-bs-target="#collapseExample_<%= serviceProvider._id %>" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <!-- <a class="" data-bs-toggle="collapse" data-bs-target="#collapseExample_<%= serviceProvider._id %>" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
               <i class="bi bi-three-dots"></i>
-            </a>
+            </a> -->
+                  <!-- <p>
+                <a href="/services/<=serviceProvider._id%>">visit</a>
+                <a onclick="location.href='/services/<= serviceProvider._id%>/edit'">Edit</a>
+              </p>
+           -->
+           <div class="d-flex jusity-content-center align-items-center ms-4" style="cursor: pointer">
+            <a id="" href="/services/<%=service._id%>/serviceprovider/<%=serviceProvider._id%>" data-serviceid="<%=serviceProvider._id%>" style="font-size: 1.2rem; cursor: pointer"><i class="bi bi-person-vcard-fill"></i></a>
           </div>
-          <div class="d-flex jusity-content-center align-items-center" style="cursor: pointer">
-            <a id="saveWatchlistServicesBtn" href="#"  data-serviceid="<%= serviceProvider._id%>" style="cursor: pointer">
+          
+          <!-- <div class="d-flex jusity-content-center align-items-center ms-4" style="cursor: pointer">
+            <a id="saveWatchlistServicesBtn" href="#"  data-serviceid="<%= serviceProvider._id%>" style="font-size: 1.2rem; cursor: pointer">
               <i class="bi bi-bookmark-star-fill"></i>
             </a>
-          </div>
+          </div> -->
        
-          <div data-servicecoords="<%=serviceProvider.location.coordinates %>" class="d-flex jusity-content-center align-items-center geoButtonZoom" style="cursor: pointer">
+          <div data-servicecoords="<%=serviceProvider.location.coordinates %>" class="d-flex jusity-content-center align-items-center geoButtonZoom ms-4" style="cursor: pointer">
             <a href="#" style="font-size: 1.2rem; pointer-events: none"><i style="pointer-events: none" class="bi bi-geo-alt-fill"></i></a>
           </div>
         </div>
-        <div class="card-body">
+        </div>
+
+        
+        <!-- <div class="card-body">
           <ul class="list-group list-group-flush show-pet-list">
             <div class="row">
               <div class="col-12 col-md-12 col-lg-12 mb-1">
@@ -126,7 +137,7 @@
               </div>
             
 
-            <!-- row -->
+     
          
               <div class="col-12 col-md-12 col-lg-12 mb-1">
                 <b><i class="bi bi-facebook"></i> Facebook: </b>
@@ -137,12 +148,7 @@
                 <b><i class="bi bi-instagram"></i> Instagram: </b>
                 <a target="_blank" href="https://www.instagram.com/<%=serviceProvider.socialMedia.instagram%>"><%= serviceProvider.socialMedia.instagram %></a>
               </div>
-              <!-- <p>
-                <a href="/services/<=serviceProvider._id%>">visit</a>
-                <a onclick="location.href='/services/<= serviceProvider._id%>/edit'">Edit</a>
-              </p>
-           -->
-
+        
           
               <div class="col-12 col-md-12 col-lg-12 mb-1">
                 <b><i class="bi bi-globe2"></i> Website: </b>
@@ -158,7 +164,9 @@
               <p class="card-text"><%= serviceProvider.description %></p>
             </div>
           </div>
-        </div>
+        </div> -->
+
+
       </div>
     </div>
 

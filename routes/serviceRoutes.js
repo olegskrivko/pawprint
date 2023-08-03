@@ -18,5 +18,6 @@ router.route('/new').get(isLoggedIn, servicesController.renderAddServiceForm);
 // Show, update, and delete routes for a specific service - GET /services/:id, PUT /services/:id, DELETE /services/:id
 router.route('/:id').get(catchAsync(servicesController.showService)).put(isLoggedIn, isAuthor, upload.single('logo'), catchAsync(servicesController.updateService)).delete(isLoggedIn, isAuthor, catchAsync(servicesController.deleteService));
 // add later middleware to check if its author or not!!!
-router.get('/:id/edit', isLoggedIn, /*isAuthor,*/ catchAsync(servicesController.renderEditForm)); // Render edit service form
+//router.get('/:id/edit', isLoggedIn, /*isAuthor,*/ catchAsync(servicesController.renderEditForm)); // Render edit service form
+
 module.exports = router;
