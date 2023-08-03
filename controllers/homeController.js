@@ -4,6 +4,6 @@ module.exports.renderHome = async (req, res) => {
     res.render('home', { homePage });
   } catch (err) {
     console.error(err.message);
-    res.redirect('/error');
+    res.redirect('/');
   }
 };

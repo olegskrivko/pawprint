@@ -32,12 +32,40 @@
             <p>List is empty</p>
             <% } %>
 
-            <div class="d-block small text-end mt-3">
+            <!-- <div class="d-block small text-end mt-3">
               <a href="#" id="deleteAllUserPetsBtn" class="text-danger m-0 p-0" style="text-decoration: none" onclick="deleteAllUserServices(event)"><i class="bi bi-trash3"></i> Remove All</a>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  const button = document.querySelector('.removeWatchlistBtn');
+  const petId = button.dataset.petid;
+
+  // Define the endpoint URL
+  const endpointUrl = `/pets/${petId}`; // Replace '/pets' with the appropriate API endpoint for your backend
+
+  // Create a fetch request with the DELETE method
+  fetch(endpointUrl, {
+    method: 'DELETE',
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json(); // If you expect JSON data in the response, use response.json()
+    })
+    .then((data) => {
+      // Handle the successful response data here
+      console.log('Pet deleted successfully:', data);
+      // You can perform any additional actions after the pet is deleted, like updating the UI, etc.
+    })
+    .catch((error) => {
+      // Handle errors here
+      console.error('Error deleting the pet:', error.message);
+    });
+</script>

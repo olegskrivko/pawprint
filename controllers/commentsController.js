@@ -7,17 +7,6 @@ module.exports.createComment = async (req, res) => {
 
   try {
     const pet = await Pet.findById(id); // Find the pet by its ID
-
-    // Create a new comment with the provided body and location
-    // console.log(req.body.comment);
-    // const newComment = new Comment({
-    //   body: req.body.comment.body,
-    //   location: {
-    //     type: 'Point',
-    //     coordinates: [req.body.comment.lng, req.body.comment.lat],
-    //   },
-    // });
-    // Check if latitude and longitude are provided in req.body.comment
     const { body, lat, lng } = req.body.comment;
     const newComment = new Comment({
       body: body,
@@ -32,7 +21,6 @@ module.exports.createComment = async (req, res) => {
     }
 
     newComment.author = req.user._id; // Set the author of the comment as the current user
-
     pet.comments.push(newComment); // Add the new comment to the pet's comments array
 
     await newComment.save(); // Save the new comment
@@ -50,7 +38,6 @@ module.exports.createComment = async (req, res) => {
 // Delete a comment
 module.exports.deleteComment = async (req, res) => {
   const { id, commentId } = req.params;
-
   try {
     await Pet.findByIdAndUpdate(id, { $pull: { comments: commentId } });
     await Comment.findByIdAndDelete(commentId);

@@ -28,17 +28,20 @@ module.exports.updateUserWatchlist = async (req, res) => {
     // Find the user by ID
     const user = await User.findById(userId);
 
-    // Convert the watchlist array to a set
-    const watchlistSet = new Set(user.watchlist);
-
     // Ensure pets is an array
     pets = Array.isArray(pets) ? pets : [pets];
 
-    // Add the selected pets' IDs to the watchlist set
-    pets.forEach((petId) => watchlistSet.add(petId));
-
-    // Convert the watchlist set back to an array
-    user.watchlist = Array.from(watchlistSet);
+    // Loop through the selected pets' IDs
+    pets.forEach((petId) => {
+      const index = user.watchlist.indexOf(petId);
+      if (index !== -1) {
+        // If the petId is already in the watchlist, remove it from the array
+        user.watchlist.splice(index, 1);
+      } else {
+        // If the petId is not in the watchlist, add it to the array
+        user.watchlist.push(petId);
+      }
+    });
 
     // Save the updated user data
     await user.save();

@@ -39,10 +39,8 @@ commentSchema.post('find', function (docs) {
         addSuffix: true,
       });
       // Convert createdAt timestamp to a different data format
-      //const formattedCreatedAt = doc.createdAt.toISOString(); // Example: Convert to ISO string
       doc.formattedCreatedAt = formattedCreatedAt; // Add formatted timestamp to the document
     }
-
     // Add more conversion logic for other timestamp fields if needed
   }
 });

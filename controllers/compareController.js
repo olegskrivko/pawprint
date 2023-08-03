@@ -9,7 +9,6 @@ module.exports.compare = async (req, res) => {
       return res.redirect('/pets');
     }
 
-    console.log('pets', pets);
     res.render('compare/compare', { pets });
   } catch (err) {
     console.log(err);

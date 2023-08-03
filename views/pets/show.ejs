@@ -486,6 +486,7 @@
     const watchlistData = {
       pets: selectedPets,
     };
+    console.log('watchlistData: ', watchlistData);
 
     await saveWatchlist(watchlistData);
     location.reload();
