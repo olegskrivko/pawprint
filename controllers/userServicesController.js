@@ -8,6 +8,8 @@ module.exports.renderUserServices = async (req, res) => {
     // Fetch the pets from the database based on the pet IDs
     const userServices = await ServiceProvider.find({ _id: { $in: userServicesList } });
 
+    console.log('userServices', userServices);
+
     res.render('user/services', { userServices });
   } catch (error) {
     console.log(error);

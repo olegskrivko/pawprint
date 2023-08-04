@@ -3,10 +3,10 @@ const ServiceProvider = require('../models/serviceProvider');
 
 // Create a new comment
 module.exports.renderServiceProvider = async (req, res) => {
-  const { id, serviceProviderId } = req.params;
+  const { slug, serviceProviderId } = req.params;
 
   try {
-    const service = await Service.findById(id);
+    const service = await Service.findOne({ slug });
     const serviceProvider = await ServiceProvider.findById(serviceProviderId);
 
     // const { body, lat, lng } = req.body.comment;

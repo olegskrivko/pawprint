@@ -1,6 +1,6 @@
 <% layout('layouts/boilerplate')%>
 
-<div class="container px-4" id="custom-cards">
+<div class="container" id="custom-cards">
   <div class="d-flex justify-content-between">
     <h2 class="pb-2"><%= servicesPage.titles.section1 %></h2>
     <div>
@@ -11,7 +11,7 @@
   <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 align-items-stretch g-4 py-5">
     <% for (let service of services) {%>
     <div class="col">
-      <a class="text-decoration-none" href="/services/<%=service._id%>">
+      <a class="text-decoration-none" href="/services/<%=service.slug%>">
         <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg">
           <div class="d-flex flex-row flex-md-column-reverse p-3 pb-3 text-white text-shadow-1">
             <div class="d-flex justify-content-center align-items-center">
@@ -20,8 +20,8 @@
               </svg>
             </div>
             <div class="d-flex w-100 flex-md-column justify-content-between align-items-center ps-3 no-padding-md">
-              <!-- <p class="small text-center m-0"><= service.translatedName %></p> -->
-              <p class="small text-center m-0"><%= service.name %></p>
+              <p class="small text-center m-0"><%= service.translatedName %></p>
+              <!-- <p class="small text-center m-0"><= service.name %></p> -->
               <p class="small text-center m-0"><%= service.serviceProviders.length %></p>
             </div>
           </div>

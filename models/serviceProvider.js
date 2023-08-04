@@ -38,7 +38,7 @@ const ServiceProviderSchema = new mongoose.Schema({
     },
     // Other social media fields (e.g., twitter etc.) can be added here
   },
-  serviceType: {
+  serviceName: {
     type: String,
     required: true,
   },

@@ -12,22 +12,20 @@ module.exports.renderAddServiceForm = (req, res) => {
 module.exports.index = async (req, res) => {
   try {
     const servicesPage = req.__('servicesPage'); // Translate the 'servicesPage' key based on the user's selected language
+    const translationMap = req.__('services');
     const services = await Service.find();
-    // // Retrieve the language preference and data from the response locals
-    // const translatedServices = services.map((service) => {
-    //   const translatedName = i18n.__({ key: service._doc.serviceId, locale: req.getLocale() });
-    //   console.log(service._doc.serviceId);
-    // });
-    // console.log(translatedServices);
-    // const translatedServices = services.map((service) => {
-    //   // Convert the 'serviceId' to a string before using it for translation
-    //   //const translatedName = i18n.__({ key: service.serviceId, locale: req.getLocale() });
-    //   console.log('service', service.name);
-    //   console.log('serviceId', service.serviceId);
-    //   return { ...service._doc, translatedName };
-    // });
 
-    res.render('services/index', { /*services: translatedServices,*/ services, servicesPage });
+    const translatedServices = services.map((service) => {
+      const translatedName = translationMap[service.slug] || service.name;
+
+      // const translatedName = i18n.__({ key: service.slug, locale: req.getLocale() });
+      console.log('translatedName', translatedName);
+
+      return { ...service._doc, translatedName };
+    });
+
+    console.log(translatedServices);
+    res.render('services/index', { services: translatedServices, /*services, */ servicesPage });
   } catch (error) {
     console.error('Error retrieving services:', error);
     req.flash('error', 'Failed to retrieve services.');
@@ -39,7 +37,9 @@ module.exports.showService = async (req, res) => {
   try {
     // Retrieve the language preference and data from the response locals
     const data = req.data; // Language data is available from the middleware
-    const service = await Service.findById(req.params.id).populate('serviceProviders');
+    const slug = req.params.slug;
+
+    const service = await Service.findOne({ slug }).populate('serviceProviders');
 
     if (!service) {
       req.flash('error', 'Cannot find that service!');

@@ -1,8 +1,17 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const ServiceSchema = new mongoose.Schema({
   name: {
     type: String,
+    required: true,
+  },
+  slug: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  serviceId: {
+    type: Number,
     required: true,
   },
   description: {
@@ -15,16 +24,16 @@ const ServiceSchema = new mongoose.Schema({
   },
   author: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    ref: 'User',
   },
   serviceProviders: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "ServiceProvider",
+      ref: 'ServiceProvider',
     },
   ],
 });
 
-const Service = mongoose.model("Service", ServiceSchema);
+const Service = mongoose.model('Service', ServiceSchema);
 
 module.exports = Service;
