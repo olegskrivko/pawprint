@@ -1,7 +1,7 @@
 const Service = require('../models/service');
 const ServiceProvider = require('../models/serviceProvider');
+const User = require('../models/user');
 
-// Create a new comment
 module.exports.renderServiceProvider = async (req, res) => {
   const { slug, serviceProviderId } = req.params;
 

@@ -24,9 +24,9 @@
               </a>
             </div>
 
-            <div data-servicecoords="<%=serviceProvider.location.coordinates %>" class="d-flex jusity-content-center align-items-center geoButtonZoom" style="cursor: pointer">
+            <!-- <div data-servicecoords="<%=serviceProvider.location.coordinates %>" class="d-flex jusity-content-center align-items-center geoButtonZoom" style="cursor: pointer">
               <a href="#" style="font-size: 1.2rem; pointer-events: none"><i style="pointer-events: none" class="bi bi-geo-alt-fill"></i></a>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="card-body">
@@ -71,3 +71,44 @@
     </div>
   </div>
 </div>
+
+<script>
+  const saveFavorites = async (favoritesData) => {
+    try {
+      const response = await fetch('/user/favorites', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(favoritesData),
+      });
+
+      if (response.ok) {
+        // Watchlist updated successfully
+        console.log('Watchlist updated successfully');
+      } else {
+        throw new Error('Failed to update watchlist');
+      }
+    } catch (error) {
+      console.error(error);
+      // Handle error and display appropriate message
+    }
+  };
+
+  const saveWatchlistServicesBtn = document.querySelector('#saveWatchlistServicesBtn');
+
+  saveWatchlistServicesBtn.addEventListener('click', async (e) => {
+    // Retrieve the selected pets from the UI
+    const serviceId = e.currentTarget.getAttribute('data-serviceid');
+    const selectedService = serviceId; /* Code to retrieve the selected pets from the UI */
+    console.log('selectedService', selectedService);
+    // Prepare the watchlist data to send in the request body
+    const favoritesData = {
+      service: selectedService,
+    };
+    console.log('favoritesData: ', favoritesData);
+
+    await saveFavorites(favoritesData);
+    location.reload();
+  });
+</script>

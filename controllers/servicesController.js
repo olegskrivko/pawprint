@@ -19,12 +19,12 @@ module.exports.index = async (req, res) => {
       const translatedName = translationMap[service.slug] || service.name;
 
       // const translatedName = i18n.__({ key: service.slug, locale: req.getLocale() });
-      console.log('translatedName', translatedName);
+      // console.log('translatedName', translatedName);
 
       return { ...service._doc, translatedName };
     });
 
-    console.log(translatedServices);
+    // console.log(translatedServices);
     res.render('services/index', { services: translatedServices, /*services, */ servicesPage });
   } catch (error) {
     console.error('Error retrieving services:', error);

@@ -8,7 +8,7 @@ const { isLoggedIn, /*isAuthor,*/ languageMiddleware } = require('../middleware/
 router.use(languageMiddleware);
 
 // Routes
-router.route('/').get(isLoggedIn, catchAsync(userFavoritesController.renderUserFavorites));
+router.route('/').get(isLoggedIn, catchAsync(userFavoritesController.renderUserFavorites)).put(isLoggedIn, catchAsync(userFavoritesController.updateUserFavorites));
 router.route('/all').delete(isLoggedIn, catchAsync(userFavoritesController.deleteAllUserFavorites));
 
 module.exports = router;
