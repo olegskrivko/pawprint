@@ -3,7 +3,7 @@ const router = express.Router();
 const catchAsync = require('../utils/catchAsync');
 
 const petsController = require('../controllers/petsController');
-const { isLoggedIn, isAuthor, /*validatePet,*/ languageMiddleware } = require('../middleware/middleware');
+const { isLoggedIn, isAuthor, /* validatePet,*/ languageMiddleware } = require('../middleware/middleware');
 const multer = require('multer');
 const { storage } = require('../cloudinary');
 const upload = multer({ storage });

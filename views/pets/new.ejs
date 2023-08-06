@@ -76,7 +76,7 @@
     <label class="form-label" for="lostdate"><%= reportPetPage.labels.petLostOrFoundDate %></label>
     <div class="input-group">
       <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
-      <input type="date" class="form-control lostdate" id="lostdate" name="pet[lostdate]" min="2023-01-01" value="" required />
+      <input type="date" class="form-control lostdate" id="lostdate" name="pet[lostdate]" min="2023-01-01" value="<%= (new Date()).toISOString().split('T')[0] %>" required />
     </div>
   </div>
 

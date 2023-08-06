@@ -46,9 +46,9 @@
           <li>
             <a id="copyBtn" class="dropdown-item dropdown-item-danger d-flex gap-2 align-items-center" href="#"><i class="bi bi-files"></i> Copy link </a>
           </li>
-          <li>
+          <!-- <li>
             <a class="dropdown-item dropdown-item-danger d-flex gap-2 align-items-center" id="reportpetidBtn" data-reportpetid="<%= pet._id%>" href=""><i class="bi bi-exclamation-square"></i> Report post </a>
-          </li>
+          </li> -->
 
           <% if (currentUser && pet.author && currentUser._id && pet.author.equals(currentUser._id)) { %>
           <li><hr class="dropdown-divider" /></li>

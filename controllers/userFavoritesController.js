@@ -32,26 +32,26 @@ module.exports.renderUserFavorites = async (req, res) => {
 };
 
 // Controller for deleting all user account favorites items
-module.exports.deleteAllUserFavorites = async (req, res) => {
-  try {
-    const userId = req.user._id;
-    console.log('userId to delete wathclist', userId);
+// module.exports.deleteAllUserFavorites = async (req, res) => {
+//   try {
+//     const userId = req.user._id;
+//     console.log('userId to delete wathclist', userId);
 
-    // Find the user by ID
-    const user = await User.findById(userId);
+//     // Find the user by ID
+//     const user = await User.findById(userId);
 
-    // Clear the watchlist array
-    user.favorites = [];
+//     // Clear the watchlist array
+//     user.favorites = [];
 
-    // Save the updated user data
-    await user.save();
+//     // Save the updated user data
+//     await user.save();
 
-    res.status(200).json({ message: 'All favorites items removed successfully' });
-  } catch (error) {
-    console.error('Error removing all favorites items:', error);
-    res.status(500).json({ error: 'Failed to remove all favorites items' });
-  }
-};
+//     res.status(200).json({ message: 'All favorites items removed successfully' });
+//   } catch (error) {
+//     console.error('Error removing all favorites items:', error);
+//     res.status(500).json({ error: 'Failed to remove all favorites items' });
+//   }
+// };
 
 module.exports.updateUserFavorites = async (req, res) => {
   try {
@@ -61,7 +61,7 @@ module.exports.updateUserFavorites = async (req, res) => {
     console.log(service);
     // Find the user by ID
     const user = await User.findById(userId);
-
+    //updateUserFavorites
     // Ensure pets is an array
     service = Array.isArray(service) ? service : [service];
 
@@ -84,5 +84,33 @@ module.exports.updateUserFavorites = async (req, res) => {
   } catch (error) {
     console.error('Error updating watchlist:', error);
     res.status(500).json({ error: 'Failed to update watchlist' });
+  }
+};
+
+module.exports.deleteUserFavorites = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const favoriteId = req.params.favoriteId;
+    console.log('favoriteId', favoriteId);
+
+    // Find the user by ID
+    const user = await User.findById(userId);
+
+    // Check if the pet exists in the user's watchlist
+    const favoritesIndex = user.favorites.indexOf(favoriteId);
+    if (favoritesIndex !== -1) {
+      // Remove the pet from the watchlist array
+      user.favorites.splice(favoritesIndex, 1);
+
+      // Save the updated user data
+      await user.save();
+
+      res.status(200).json({ message: 'Service removed from favorites successfully' });
+    } else {
+      res.status(404).json({ error: 'Service not found in favorites' });
+    }
+  } catch (error) {
+    console.error('Error removing Service from favorites:', error);
+    res.status(500).json({ error: 'Failed to remove Service from favorites' });
   }
 };

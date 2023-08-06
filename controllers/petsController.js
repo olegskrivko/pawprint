@@ -131,7 +131,7 @@ module.exports.index = async (req, res) => {
     color,
     lostdate,
     selectedPolygonCoordinates,
-    // select options (better to have them in one place on the server)
+    // select options (better to have them in one place on the server or not?)
     selectOptions,
     petsPage,
   });
@@ -140,7 +140,6 @@ module.exports.index = async (req, res) => {
 module.exports.renderNewForm = (req, res) => {
   const reportPetPage = req.__('reportPetPage');
   const selectOptions = req.__('selectOptions');
-
   res.render('pets/new', {
     reportPetPage, // Pass the language data to the view
     selectOptions,
@@ -148,9 +147,21 @@ module.exports.renderNewForm = (req, res) => {
 };
 
 module.exports.createPet = async (req, res, next) => {
-  console.log('create pete');
-  let colorsFormated = [];
+  console.log('new pet: ', req.body.pet);
+  // Set default value for date if it's omitted
+  const currentDate = new Date().toISOString().split('T')[0];
+  const lostdate = req.body.pet.lostdate || currentDate;
 
+  if (req.body.pet.latitude === null || req.body.pet.longitude === null || req.body.pet.latitude === '' || req.body.pet.longitude === '' || isNaN(req.body.pet.latitude) || isNaN(req.body.pet.longitude)) {
+    req.flash('error', 'Please enable geolocation to provide accurate pet location.');
+    return res.redirect('/pets/new');
+  }
+
+  // if (req.body.pet.petStatus === null || req.body.pet.petStatus === '' || req.body.pet.species === null || req.body.pet.species === '') {
+  //   req.flash('error', 'Please fill all necessary fields.');
+  //   return res.redirect('/pets/new');
+  // }
+  let colorsFormated = [];
   // Check and format the colors from the request body
   if (req.body.pet.firstcolor) {
     colorsFormated.push(req.body.pet.firstcolor);
@@ -162,9 +173,6 @@ module.exports.createPet = async (req, res, next) => {
     colorsFormated.push(req.body.pet.thirdcolor);
   }
 
-  console.log(req.body.pet.latitude);
-  console.log(req.body.pet.longitude);
-
   // Prepare the unprocessed body for creating a new pet
   const unprocessedBody = {
     species: req.body.pet.species,
@@ -174,39 +182,40 @@ module.exports.createPet = async (req, res, next) => {
     gender: req.body.pet.gender,
     location: {
       type: 'Point',
-      coordinates: [parseFloat(req.body.pet.longitude), parseFloat(req.body.pet.latitude)],
+      coordinates: [req.body.pet.longitude, req.body.pet.latitude],
     },
-    latitude: parseFloat(req.body.pet.latitude),
-    longitude: parseFloat(req.body.pet.longitude),
     pattern: req.body.pet.pattern,
     color: colorsFormated,
     coat: req.body.pet.coat,
     size: req.body.pet.size,
     age: req.body.pet.age,
     petStatus: req.body.pet.petStatus,
-    lostdate: req.body.pet.lostdate,
+    lostdate: lostdate,
     description: req.body.pet.description,
   };
 
+  // create new pet in memory (its not saved yet)
   const pet = new Pet(unprocessedBody);
-  console.log(pet);
 
-  // Assign images to the new pet
+  // assign images to the new pet
   pet.images = req.files.map((f) => ({
     url: f.path,
     filename: f.filename,
   }));
 
+  // asign current user as author
   pet.author = req.user._id;
 
   // Save the pet to the database
   await pet.save();
+
   const user = req.user;
+  // add new pet in user profile page
   user.userPets.push(pet._id);
   await user.save();
-  //console.log(pet);
+
   const client = new OneSignal.Client(process.env.oneSignal_YOUR_APP_ID, process.env.oneSignal_YOUR_APP_AUTH_KEY);
-  console.log(client);
+  //console.log(client);
   //Send push notification to all subscribed users
   const oneSignalClient = new OneSignal.Client({
     app: {
@@ -216,7 +225,7 @@ module.exports.createPet = async (req, res, next) => {
   });
   //   let userLat = 56.946285;
   // let userLng = 24.105078;
-  console.log(oneSignalClient);
+  //console.log(oneSignalClient);
   const notification = {
     contents: { en: `URGENT! ${pet.petStatus} ${pet.species} alert!` },
     included_segments: ['Subscribed Users'],
@@ -229,12 +238,12 @@ module.exports.createPet = async (req, res, next) => {
     //   },
     //   // Add more filters as needed
     // ],
-    chrome_web_icon: {
-      url: pet.images[0].url,
-    },
-    icon: pet.images[0].url,
+    // chrome_web_icon: {
+    //   url: pet.images[0].url,
+    // },
+    // icon: pet.images[0].url,
 
-    attachments: {},
+    // attachments: {},
     web_url: `https://pawclix.cyclic.app/pets/${pet._id}`,
   };
   console.log(notification);
@@ -254,9 +263,9 @@ module.exports.createPet = async (req, res, next) => {
 };
 
 module.exports.showPet = async (req, res) => {
-  console.log('show pete');
   try {
     // Retrieve the pet from the database
+    // REPLACE petsshow to NEW petsShowPage
     const petsshow = req.__('petsshow');
     const petId = req.params.id;
 
@@ -268,6 +277,7 @@ module.exports.showPet = async (req, res) => {
       req.session.viewedPets = viewedPets;
 
       // Update the view count for the pet in the database
+      // this should be fixed, because it updates whole pets object, but I want to show that its updated only if some pet attribute was updated
       await Pet.findByIdAndUpdate(petId, { $inc: { views: 1 } });
     }
 
@@ -315,7 +325,8 @@ module.exports.showPet = async (req, res) => {
 
 module.exports.renderEditForm = async (req, res) => {
   // Retrieve the language preference and data from the response locals
-  const petsLocale = req.__('pets'); // Translate the 'home' key based on the user's selected language
+  const petsLocale = req.__('pets'); // Translate the 'pets' key based on the user's selected language
+  // options must be taken from another object selecOptions ...
   const statusOptions = req.__('statusOptions');
   const speciesOptions = req.__('speciesOptions');
   const genderOptions = req.__('genderOptions');
@@ -350,6 +361,7 @@ module.exports.renderEditForm = async (req, res) => {
 };
 
 module.exports.updatePet = async (req, res) => {
+  console.log('updatePet');
   const { id } = req.params;
   const pet = await Pet.findByIdAndUpdate(id, {
     ...req.body.pet,
@@ -373,9 +385,11 @@ module.exports.updatePet = async (req, res) => {
 };
 
 module.exports.deletePet = async (req, res) => {
+  console.log('deletePet');
   const { id } = req.params;
   const user = req.user;
   // remove from userPets as well
+  // it also should be removed from all users watchlist
   user.userPets = user.userPets.filter((item) => item !== id);
   await user.save();
   await Pet.findByIdAndDelete(id);

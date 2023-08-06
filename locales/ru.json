@@ -182,12 +182,12 @@
         "text": ""
       },
       {
-        "value": "She",
-        "text": "Она"
-      },
-      {
         "value": "He",
         "text": "Он"
+      },
+      {
+        "value": "She",
+        "text": "Она"
       }
     ],
     "color": [
@@ -278,34 +278,6 @@
       {
         "value": "Long",
         "text": "Длинная"
-      },
-      {
-        "value": "Wire",
-        "text": "Жесткая"
-      },
-      {
-        "value": "Curly",
-        "text": "Кудрявая"
-      },
-      {
-        "value": "Smooth",
-        "text": "Гладкая"
-      },
-      {
-        "value": "Double",
-        "text": "Двойная"
-      },
-      {
-        "value": "Silky",
-        "text": "Шелковистая"
-      },
-      {
-        "value": "Wavy",
-        "text": "Волнистая"
-      },
-      {
-        "value": "Corded",
-        "text": "Волнисто-жесткая"
       }
     ],
     "pattern": [

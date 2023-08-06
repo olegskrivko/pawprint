@@ -9,6 +9,7 @@ router.use(languageMiddleware);
 
 // Routes
 router.route('/').get(isLoggedIn, catchAsync(userFavoritesController.renderUserFavorites)).put(isLoggedIn, catchAsync(userFavoritesController.updateUserFavorites));
-router.route('/all').delete(isLoggedIn, catchAsync(userFavoritesController.deleteAllUserFavorites));
+// router.route('/all').delete(isLoggedIn, catchAsync(userFavoritesController.deleteAllUserFavorites));
+router.route('/:favoriteId').delete(isLoggedIn, catchAsync(userFavoritesController.deleteUserFavorites));
 
 module.exports = router;

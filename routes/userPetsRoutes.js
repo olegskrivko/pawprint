@@ -9,6 +9,6 @@ router.use(languageMiddleware);
 
 // Routes
 router.route('/').get(isLoggedIn, catchAsync(userPetsController.renderUserPets));
-router.route('/all').delete(isLoggedIn, catchAsync(userPetsController.deleteAllUserPets));
+// router.route('/all').delete(isLoggedIn, catchAsync(userPetsController.deleteAllUserPets));
 
 module.exports = router;

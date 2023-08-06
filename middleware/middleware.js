@@ -19,6 +19,7 @@ module.exports.isLoggedIn = (req, res, next) => {
 // module.exports.validatePet = (req, res, next) => {
 //   const { error } = petSchema.validate(req.body);
 //   if (error) {
+//     console.log('error from middleware', error);
 //     const msg = error.details.map((el) => el.message).join(',');
 //     throw new ExpressError(msg, 400);
 //   } else {

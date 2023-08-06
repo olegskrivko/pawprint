@@ -12,15 +12,14 @@
             <!-- <div class="d-flex text-body-secondary pt-3 border-bottom">
               <P><=favorite.website%></P>
             </div> -->
-            <div class="d-flex text-body-secondary pt-3">
+            <div class="d-flex text-body-secondary pt-3 border-bottom">
               <div class="mb-3 me-2">
                 <img src="<%= favorite.logo[0].url%>" class="img-thumbnail" alt="" width="98px" height="98px" />
               </div>
 
-              <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+              <div class="pb-3 mb-0 small lh-sm w-100">
                 <div class="d-flex justify-content-between">
                   <strong class="text-gray-dark"><p><%=favorite.name%></p></strong>
-
                   <a href="#" class="text-danger m-0 p-0 removeFavoritetBtn" data-favoriteid="<%= favorite._id%>" style="text-decoration: none"><i class="bi bi-trash3"></i> Remove</a>
                 </div>
                 <!-- <span class="d-block"><a class="text-decoration-none" href="/pets/<=pet._id%>">@<=favorite.species%></a></span> -->
@@ -31,12 +30,52 @@
             <p>List is empty</p>
             <% } %>
 
-            <div class="d-block small text-end mt-3">
+            <!-- <div class="d-block small text-end mt-3">
               <a href="#" id="deleteAllFavoritesBtn" class="text-danger m-0 p-0" style="text-decoration: none" onclick="deleteAllFavoritesServices(event)"><i class="bi bi-trash3"></i> Remove All</a>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  const updateFavorites = async (favoriteData) => {
+    try {
+      const response = await fetch(`/user/favorites/${favoriteData.favoriteId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        // Watchlist updated successfully
+
+        console.log('Service removed from favorites successfully');
+        location.reload(); // Refresh the page (to see the result of deleted item)
+      } else {
+        throw new Error('Failed to remove serivce from favorites');
+      }
+    } catch (error) {
+      console.error(error);
+      // Handle error and display appropriate message
+    }
+  };
+
+  const removeFavoritetBtnAll = document.querySelectorAll('.removeFavoritetBtn');
+  removeFavoritetBtnAll.forEach((btn) => {
+    btn.addEventListener('click', async (e) => {
+      const favoriteId = e.currentTarget.getAttribute('data-favoriteid');
+      console.log(favoriteId);
+
+      // Prepare the watchlist data to send in the request body
+      const favoriteData = {
+        favoriteId: favoriteId,
+      };
+
+      await updateFavorites(favoriteData);
+    });
+  });
+</script>

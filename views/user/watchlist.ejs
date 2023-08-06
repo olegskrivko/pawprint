@@ -18,13 +18,13 @@
 
         <% if ( typeof pets !== 'undefined' && pets.length > 0) {%> <% for (let pet of pets) { %>
 
-        <div class="d-flex text-body-secondary pt-3">
+        <div class="d-flex text-body-secondary pt-3 border-bottom">
           <div class="mb-3 me-2">
             <img src="<%= pet.images[0].thumbnail%>" class="img-thumbnail" alt="" width="98px" height="98px" />
           
           </div>
 
-          <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+          <div class="pb-3 mb-0 small lh-sm  w-100">
             <div class="d-flex justify-content-between">
               <strong class="text-gray-dark"><p><%=pet.petStatus%></p></strong>
             
@@ -38,9 +38,9 @@
         <% } %> <% } else { %>
         <p>List is empty</p>
         <% } %>
-          <div class="d-block small text-end mt-3">
+          <!-- <div class="d-block small text-end mt-3">
             <a href="#" id="deleteAllWatchlistBtn" class="text-danger m-0 p-0" style="text-decoration: none"><i class="bi bi-trash3"></i> Remove All</a>
-          </div>
+          </div> -->
 
     
     </div>
@@ -92,7 +92,7 @@
     });
   });
 </script>
-<script>
+<!-- <script>
   const deleteAllWatchlist = async () => {
     try {
       const response = await fetch('/user/watchlist/all', {
@@ -120,4 +120,4 @@
   deleteAllWatchlistBtn.addEventListener('click', async () => {
     await deleteAllWatchlist();
   });
-</script>
+</script> -->

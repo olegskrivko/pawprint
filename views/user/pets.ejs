@@ -12,17 +12,18 @@
 
             <% if ( typeof userPets !== 'undefined' && userPets.length > 0) {%> <% for (let pet of userPets) { %>
 
-            <div class="d-flex text-body-secondary pt-3">
+            <div class="d-flex text-body-secondary border-bottom pt-3">
               <div class="mb-3 me-2">
                 <img src="<%= pet.images[0].thumbnail%>" class="img-thumbnail" alt="" width="98px" height="98px" />
                 <!-- <div class="form-check-inline">azaz</div> -->
                 <!-- <label for="image-<=i%>">Delete?</label> -->
               </div>
 
-              <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+              <div class="pb-3 mb-0 small lh-sm w-100">
                 <div class="d-flex justify-content-between">
                   <strong class="text-gray-dark"><p><%=pet.petStatus%></p></strong>
-                  <button class="btn btn-danger removeWatchlistBtn" data-petid="<%= pet._id%>">Remove</button>
+                  <a href="#" class="text-danger m-0 p-0 removeWatchlistBtn" data-petid="<%= pet._id%>" style="text-decoration: none"><i class="bi bi-trash3"></i> Remove</a>
+                  <!-- <button class="btn btn-danger removeWatchlistBtn" data-petid="<= pet._id%>">Remove</button> -->
                 </div>
                 <span class="d-block"><a class="text-decoration-none" href="/pets/<%=pet._id%>">@<%=pet.species%></a></span>
               </div>
@@ -42,7 +43,7 @@
   </div>
 </div>
 
-<script>
+<!-- <script>
   const button = document.querySelector('.removeWatchlistBtn');
   const petId = button.dataset.petid;
 
@@ -68,4 +69,42 @@
       // Handle errors here
       console.error('Error deleting the pet:', error.message);
     });
+</script> -->
+<script>
+  const updateWatchlist = async (petData) => {
+    try {
+      const response = await fetch(`/pets/${petData.petId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        // Watchlist updated successfully
+        console.log('Pet removed from watchlist successfully');
+        location.reload(); // Refresh the page (to see the updated watchlist)
+      } else {
+        throw new Error('Failed to remove pet from watchlist');
+      }
+    } catch (error) {
+      console.error(error);
+      // Handle error and display appropriate message
+    }
+  };
+
+  const removeWatchlistBtnAll = document.querySelectorAll('.removeWatchlistBtn');
+  removeWatchlistBtnAll.forEach((btn) => {
+    btn.addEventListener('click', async (e) => {
+      const petId = e.currentTarget.getAttribute('data-petid');
+      console.log(petId);
+
+      // Prepare the pet data to send in the request body
+      const petData = {
+        petId: petId,
+      };
+
+      await updateWatchlist(petData);
+    });
+  });
 </script>

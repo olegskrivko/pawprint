@@ -181,12 +181,12 @@
         "text": ""
       },
       {
-        "value": "She",
-        "text": "She"
-      },
-      {
         "value": "He",
         "text": "He"
+      },
+      {
+        "value": "She",
+        "text": "She"
       }
     ],
     "color": [
@@ -277,34 +277,6 @@
       {
         "value": "Long",
         "text": "Long"
-      },
-      {
-        "value": "Wire",
-        "text": "Wire"
-      },
-      {
-        "value": "Curly",
-        "text": "Curly"
-      },
-      {
-        "value": "Smooth",
-        "text": "Smooth"
-      },
-      {
-        "value": "Double",
-        "text": "Double"
-      },
-      {
-        "value": "Silky",
-        "text": "Silky"
-      },
-      {
-        "value": "Wavy",
-        "text": "Wavy"
-      },
-      {
-        "value": "Corded",
-        "text": "Corded"
       }
     ],
     "pattern": [
@@ -1380,34 +1352,6 @@
     {
       "value": "Long",
       "text": "Long"
-    },
-    {
-      "value": "Wire",
-      "text": "Wire"
-    },
-    {
-      "value": "Curly",
-      "text": "Curly"
-    },
-    {
-      "value": "Smooth",
-      "text": "Smooth"
-    },
-    {
-      "value": "Double",
-      "text": "Double"
-    },
-    {
-      "value": "Silky",
-      "text": "Silky"
-    },
-    {
-      "value": "Wavy",
-      "text": "Wavy"
-    },
-    {
-      "value": "Corded",
-      "text": "Corded"
     }
   ],
   "coatPatternOptions": [

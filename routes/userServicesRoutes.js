@@ -9,7 +9,7 @@ router.use(languageMiddleware);
 
 // Routes
 router.route('/').get(isLoggedIn, catchAsync(userServicesController.renderUserServices)).put(isLoggedIn, catchAsync(userServicesController.updateUserServices));
-router.route('/all').delete(isLoggedIn, catchAsync(userServicesController.deleteAllUserServices));
-router.route('/:serviceId').delete(isLoggedIn, catchAsync(userServicesController.deleteUserServices));
+// router.route('/all').delete(isLoggedIn, catchAsync(userServicesController.deleteAllUserServices));
+router.route('/:favoriteId').delete(isLoggedIn, catchAsync(userServicesController.deleteUserServices));
 
 module.exports = router;

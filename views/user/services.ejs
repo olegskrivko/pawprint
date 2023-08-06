@@ -27,9 +27,9 @@
                     <span class="d-block"><a class="text-decoration-none" href="/services/<%=service.serviceName%>/serviceprovider/<%=service._id%>">@<%=service.name%></a></span>
                   </div>
                   <div class="d-flex justify-content-end">
-                    <a href="#" data-serviceid="<%= service._id%>" class="d-block text-secondary me-2 p-0 editUserServiceBtn" style="text-decoration: none" onclick="editService(event)"><i class="bi bi-pencil"></i> Edit</a>
-                    <!-- <a onclick="location.href='/services/<= serviceProvider._id%>/edit'">Edit</a> -->
-                    <a href="#" data-serviceid="<%= service._id%>" class="d-block text-danger m-0 p-0 removeUserServiceBtn" style="text-decoration: none" onclick="deleteService(event)"><i class="bi bi-trash3"></i> Remove</a>
+                    <!-- <a href="#" data-serviceid="<= service._id%>" class="d-block text-secondary me-2 p-0 editUserServiceBtn" style="text-decoration: none" onclick="editService(event)"><i class="bi bi-pencil"></i> Edit</a> -->
+
+                    <a href="#" data-serviceid="<%= service._id%>" class="d-block text-danger m-0 p-0 removeUserServiceBtn" style="text-decoration: none" onclick="deleteUserService(event)"><i class="bi bi-trash3"></i> Remove</a>
                   </div>
                 </div>
               </div>
@@ -38,13 +38,6 @@
             <% } %> <% } else { %>
             <p>List is empty</p>
             <% } %>
-
-            <!-- <small class="d-block text-end mt-3">
-              <button id="deleteAllUserServicesBtn" class="btn btn-danger">Remove All</button>
-            </small> -->
-            <div class="d-block small text-end mt-3">
-              <a href="#" id="deleteAllUserServicesBtn" class="text-danger m-0 p-0" style="text-decoration: none" onclick="deleteAllUserServices(event)"><i class="bi bi-trash3"></i> Remove All</a>
-            </div>
           </div>
         </div>
       </div>
@@ -64,7 +57,7 @@
 </script> -->
 
 <script>
-  const updateServices = async (servicesData) => {
+  const deleteUserService = async (servicesData) => {
     try {
       const response = await fetch(`/user/services/${servicesData.serviceId}`, {
         method: 'DELETE',
@@ -76,10 +69,10 @@
       if (response.ok) {
         // Watchlist updated successfully
 
-        console.log('Service removed from service list successfully');
+        console.log('Service removed from user service list successfully');
         location.reload(); // Refresh the page (to see the result of deleted item)
       } else {
-        throw new Error('Failed to remove service from service list');
+        throw new Error('Failed to remove service from user service list');
       }
     } catch (error) {
       console.error(error);
@@ -98,37 +91,7 @@
         serviceId: serviceId,
       };
 
-      await updateServices(servicesData);
+      await deleteUserService(servicesData);
     });
-  });
-</script>
-
-<script>
-  const deleteAllServices = async () => {
-    try {
-      const response = await fetch('/user/services/all', {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (response.ok) {
-        // Watchlist deleted successfully
-        console.log(response);
-        console.log('All watchlist items deleted');
-        location.reload(); // Refresh the page to reflect the changes
-      } else {
-        throw new Error('Failed to delete watchlist items');
-      }
-    } catch (error) {
-      console.error(error);
-      // Handle error and display appropriate message
-    }
-  };
-
-  const deleteAllUserServicesBtnx = document.getElementById('deleteAllUserServicesBtn');
-  deleteAllUserServicesBtn.addEventListener('click', async () => {
-    await deleteAllServices();
   });
 </script>

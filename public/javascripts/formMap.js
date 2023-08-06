@@ -166,7 +166,7 @@ function handleLocationError(error) {
   // Handle geolocation error
   switch (error.code) {
     case error.PERMISSION_DENIED:
-      alert('User denied the request for Geolocation.');
+      alert('User denied the request for Geolocation. To provide accurate pet location information, please enable geolocation in your device or browser settings.');
       break;
     case error.POSITION_UNAVAILABLE:
       alert('Location information is unavailable.');

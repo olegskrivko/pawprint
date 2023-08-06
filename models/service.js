@@ -10,10 +10,10 @@ const ServiceSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  serviceId: {
-    type: Number,
-    required: true,
-  },
+  // serviceId: {
+  //   type: Number,
+  //   required: true,
+  // },
   description: {
     type: String,
     required: true,

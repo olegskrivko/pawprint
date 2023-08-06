@@ -1,12 +1,13 @@
 const User = require('../models/user');
 const Comment = require('../models/comment');
+const ServiceProvider = require('../models/serviceProvider');
+const Service = require('../models/service');
 const Pet = require('../models/pet');
 const { phoneCodeOptions, countryOptions, languageOptions } = require('../utils/userSelectOptions');
 const { cloudinary } = require('../cloudinary');
 
 module.exports.renderUserProfile = (req, res) => {
   try {
-    //const data = req.data; // Language data is available from the middleware
     // Render the account page template
     res.render('user/profile', { phoneCodeOptions, countryOptions });
   } catch (error) {
@@ -21,7 +22,6 @@ module.exports.renderUserProfile = (req, res) => {
 
 module.exports.updateUserProfile = async (req, res) => {
   const { firstName, lastName, phoneCode, phoneNumber, country } = req.body;
-  console.log(country);
   const userId = req.user._id;
 
   try {
@@ -59,28 +59,44 @@ module.exports.updateUserProfile = async (req, res) => {
 module.exports.deleteUserProfile = async (req, res) => {
   try {
     const user = req.user;
+    // delete user`s created pets and all coments, deletes also favorited pets, his pets, favorited services
+    // Get the IDs of the user's service providers
+    const userServiceProviderIds = await ServiceProvider.find({ author: user._id }).distinct('_id');
+    // Update documents referencing the deleted service providers to remove the references
+    // $in: This is a query operator that checks if the specified field contains any of the values in the array that follows.
+    await Service.updateMany(
+      { serviceProviders: { $in: userServiceProviderIds } }, // Update documents with references to the deleted service providers
+      { $pull: { serviceProviders: { $in: userServiceProviderIds } } }, // Remove the references from the array
+    );
+    // Delete the user's pets, comments, and service providers
+    console.log('DELETED ALL ITEMS');
+    await Promise.all([Pet.deleteMany({ author: user._id }), Comment.deleteMany({ author: user._id }), ServiceProvider.deleteMany({ author: user._id })]);
 
+    // this logis is recreated above
     // Delete the user's pets
-    await Pet.deleteMany({ author: user._id });
-
-    // Delete the user's comments
-    await Comment.deleteMany({ author: user._id });
+    // await Pet.deleteMany({ author: user._id });
+    // // Delete the user's comments
+    // await Comment.deleteMany({ author: user._id });
+    // // Delete the user's services
+    // await ServiceProvider.deleteMany({ author: user._id });
 
     // Delete the user account
-    await user.remove();
+    //await user.remove(); // It does not trigger Mongoose middleware hooks.
+    await User.findByIdAndDelete(req.user._id); //It also triggers Mongoose middleware hooks (e.g., pre and post hooks) if they are set up.
 
     // Logout the user session with a callback function
     req.logout((err) => {
       if (err) {
         console.error('Error logging out:', err);
         req.flash('error', 'Failed to delete account. Please try again.');
-        res.redirect('/');
+        // this doesnt work...
+        res.redirect('/user/profile');
         return;
       }
 
       // Flash a success message
       req.flash('success', 'Account deleted successfully!');
-
+      console.log('Flash message set. Redirecting...');
       // Redirect to the homepage or any other appropriate page
       res.redirect('/auth/register');
     });
@@ -89,9 +105,8 @@ module.exports.deleteUserProfile = async (req, res) => {
 
     // Flash an error message
     req.flash('error', 'Failed to delete account. Please try again.');
-
     // Redirect to the account page or any other appropriate page
-    res.redirect('/');
+    res.redirect('/user/profile');
   }
 };
 
@@ -122,9 +137,4 @@ module.exports.updateUserProfileAvatar = async (req, res) => {
   } catch (err) {
     console.log(err);
   }
-
-  // mimetype: 'image/jpeg',
-  // path: 'https://res.cloudinary.com/dymne7cde/image/upload/v1687102050/useravatar/yskycd2eidbnevvijvy0.jpg',
-  // size: 8949,
-  // filename: 'useravatar/yskycd2eidbnevvijvy0'
 };

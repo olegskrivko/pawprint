@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 // Define the location schema
 const locationSchema = new mongoose.Schema({
@@ -13,8 +13,8 @@ const locationSchema = new mongoose.Schema({
   geometry: {
     type: {
       type: String,
-      enum: ["Polygon"],
-      default: "Polygon",
+      enum: ['Polygon'],
+      default: 'Polygon',
     },
     coordinates: {
       type: [[[Number]]],
@@ -24,7 +24,6 @@ const locationSchema = new mongoose.Schema({
 });
 
 // Create the Location model using the location schema
-const Location = mongoose.model("Location", locationSchema);
+const Location = mongoose.model('Location', locationSchema);
 
-// Export the Location model
 module.exports = Location;

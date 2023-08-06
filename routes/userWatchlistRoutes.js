@@ -10,7 +10,7 @@ router.use(languageMiddleware);
 
 // Routes
 router.route('/').get(isLoggedIn, catchAsync(userWatchlistController.renderUserWatchlist)).put(isLoggedIn, catchAsync(userWatchlistController.updateUserWatchlist));
-router.route('/all').delete(isLoggedIn, catchAsync(userWatchlistController.deleteAllUserWatchlist));
+// router.route('/all').delete(isLoggedIn, catchAsync(userWatchlistController.deleteAllUserWatchlist));
 router.route('/:petId').delete(isLoggedIn, catchAsync(userWatchlistController.deleteUserWatchlist));
 
 module.exports = router;

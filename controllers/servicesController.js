@@ -5,8 +5,7 @@ const i18n = require('i18n');
 
 module.exports.renderAddServiceForm = (req, res) => {
   // Retrieve the language preference and data from the response locals
-  const data = req.data; // Language data is available from the middleware
-  res.render('services/new', { data });
+  res.render('services/new');
 };
 
 module.exports.index = async (req, res) => {
@@ -17,14 +16,8 @@ module.exports.index = async (req, res) => {
 
     const translatedServices = services.map((service) => {
       const translatedName = translationMap[service.slug] || service.name;
-
-      // const translatedName = i18n.__({ key: service.slug, locale: req.getLocale() });
-      // console.log('translatedName', translatedName);
-
       return { ...service._doc, translatedName };
     });
-
-    // console.log(translatedServices);
     res.render('services/index', { services: translatedServices, /*services, */ servicesPage });
   } catch (error) {
     console.error('Error retrieving services:', error);
@@ -35,10 +28,7 @@ module.exports.index = async (req, res) => {
 
 module.exports.showService = async (req, res) => {
   try {
-    // Retrieve the language preference and data from the response locals
-    const data = req.data; // Language data is available from the middleware
     const slug = req.params.slug;
-
     const service = await Service.findOne({ slug }).populate('serviceProviders');
 
     if (!service) {
@@ -46,7 +36,7 @@ module.exports.showService = async (req, res) => {
       return res.redirect('/services');
     }
 
-    res.render('services/show', { service, data });
+    res.render('services/show', { service });
   } catch (error) {
     console.error('Error retrieving service:', error);
     req.flash('error', 'Failed to retrieve service.');
@@ -56,16 +46,17 @@ module.exports.showService = async (req, res) => {
 
 module.exports.addNewService = async (req, res) => {
   try {
-    const service = await Service.findOne({ serviceId: Number(req.body.serviceType) });
-    console.log(typeof req.body.serviceType);
-    console.log(service);
+    const service = await Service.findOne({ slug: req.body.serviceName });
+    console.log('service', service);
+    //console.log(typeof req.body.serviceType);
+    console.log(req.body);
     const userCoords = req.body.user;
 
     const image = req.file;
     const unprocessedBody = {
       name: req.body.name,
       serviceProviderType: req.body.serviceProviderType,
-      serviceType: req.body.serviceType,
+      serviceName: req.body.serviceName,
       website: req.body.website,
       phonecode: req.body.phonecode,
       phone: req.body.phone,

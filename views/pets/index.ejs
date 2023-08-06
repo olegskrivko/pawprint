@@ -356,12 +356,12 @@
         <div class="card-body">
           <div class="row">
             <div class="col-10  d-flex justify-content-between align-items-center">
-              <p class="card-text pet-latitude d-none"><%=pet.latitude%></p>
-              <p class="card-text pet-longitude d-none"><%=pet.longitude%></p>
+              <!-- <p class="card-text pet-latitude d-none"><=pet.latitude%></p>
+              <p class="card-text pet-longitude d-none"><=pet.longitude%></p> -->
 
               <!-- <div class="d-flex"> -->
                 <small class="text-body-secondary d-flex"
-                ><div data-petcoords="<%=pet.location.coordinates %>" class="petButtonZoom" style="cursor: pointer;"><i class="bi bi-geo-alt-fill" style="pointer-events: none;"></i></div>
+                ><div data-petCoordinates="<%=pet.location.coordinates %>" class="pet-coordinates" style="cursor: pointer;"><i class="bi bi-geo-alt-fill" style="pointer-events: none;"></i></div>
                 <div class="distance-text mx-2">Calculating...</div></small
               >
                 
@@ -597,7 +597,6 @@
     // geolocation is available
     navigator.geolocation.getCurrentPosition((position) => {
       userLatitude.value = position.coords.latitude;
-    
       userLongitude.value = position.coords.longitude;
       console.log('lat, lng', userLatitude, userLongitude)
     })}
@@ -670,32 +669,15 @@
 
 
 
-
-<!-- <script>
-  let petButtonZoomAll = document.querySelectorAll(".petButtonZoom");
-  petButtonZoomAll.forEach((item) => {
-    
-    item.addEventListener("click", (e) => {
-      //var attributeValue = element.getAttribute("data-myattribute");
-      
-      let coords = e.target.dataset.petcoords;
-      let coordsArray = coords.split(",");
-      console.log('coordsArray', coordsArray)
-  
-      map.easeTo({
-        center: coordsArray,
-        zoom: 12,
-      });
-    });
-  });
-</script> -->
-
 <script>
-  let allPetCards = document.querySelectorAll(".pet-card");
+  const allPetCards = document.querySelectorAll(".pet-card");
   allPetCards.forEach((card) => {
-
-    let petLat = card.querySelector(".pet-latitude").innerHTML;
-    let petLng = card.querySelector(".pet-longitude").innerHTML;
+    const petCoordinatesContainer = card.querySelector('.pet-coordinates');
+    const petCoordinates = petCoordinatesContainer.getAttribute('data-petCoordinates');
+    const coordinatesArrayLngLat = petCoordinates.split(",");
+    let petLng = coordinatesArrayLngLat[0]
+    let petLat = coordinatesArrayLngLat[1]
+    console.log('lat, lng', petLat, petLng)
     let newDist = card.querySelector(".distance-text");
     // add button on map to zoom to current location
     let userLat;

@@ -45,16 +45,17 @@ map.on('load', function () {
     },
   });
 });
-console.log(pets);
+//console.log(pets);
 var points = pets.features.map(function (point, index) {
+  //console.log(point.location.coordinates);
   return {
-    coordinates: [point.longitude, point.latitude],
+    coordinates: [point.location.coordinates[0], point.location.coordinates[1]],
 
     // properties: { id: index, name: `Point ${index}` },
     properties: {
       id: index,
       name: point.title,
-      img: point.images[0].url,
+      img: point.images.length > 0 ? point.images[0].url : 'images/placeholder.jpg',
       petId: point._id,
       lostDate: point.lostdate,
       species: point.species,
@@ -76,31 +77,27 @@ var geoJson = {
   }),
 };
 
-let petButtonZoomAll = document.querySelectorAll('.petButtonZoom');
-petButtonZoomAll.forEach((item) => {
+let petCoordinatesAll = document.querySelectorAll('.pet-coordinates');
+petCoordinatesAll.forEach((item) => {
   item.addEventListener('click', (e) => {
     // Get a reference to the target div
     const targetDiv = document.getElementById('map');
 
     // Scroll to the target div
-    // targetDiv.scrollIntoView({
-    //   behavior: "smooth", // Add smooth scrolling animation
-    // });
-
-    window.scrollTo({
-      top: 0,
+    targetDiv.scrollIntoView({
       behavior: 'smooth', // Add smooth scrolling animation
     });
 
-    //console.log(e);
-    //var attributeValue = element.getAttribute("data-myattribute");
+    // window.scrollTo({
+    //   top: 0,
+    //   behavior: 'smooth', // Add smooth scrolling animation
+    // });
 
-    let coords = e.target.dataset.petcoords;
-    console.log('coords', coords);
-    let coordsArray = coords.split(',');
+    const petCoordinates = e.target.getAttribute('data-petCoordinates');
+    const coordinatesArrayLngLat = petCoordinates.split(',');
 
     map.easeTo({
-      center: coordsArray,
+      center: coordinatesArrayLngLat,
       zoom: 12,
     });
   });
@@ -156,7 +153,7 @@ function refreshMarkers() {
         //     .setPopup(popup)
         //     .addTo(map);
         // }
-
+        //console.log('feature.geometry.coordinates', feature.geometry.coordinates);
         var newMarker = new tt.Marker({
           element: markerElement, // pass the custom icon to the marker
           anchor: 'bottom', // set the anchor point for the marker

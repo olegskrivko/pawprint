@@ -181,12 +181,12 @@
         "text": ""
       },
       {
-        "value": "She",
-        "text": "Viņa"
-      },
-      {
         "value": "He",
         "text": "Viņš"
+      },
+      {
+        "value": "She",
+        "text": "Viņa"
       }
     ],
     "color": [
@@ -277,34 +277,6 @@
       {
         "value": "Long",
         "text": "Garš"
-      },
-      {
-        "value": "Wire",
-        "text": "Cieta"
-      },
-      {
-        "value": "Curly",
-        "text": "Lokaini"
-      },
-      {
-        "value": "Smooth",
-        "text": "Gluda"
-      },
-      {
-        "value": "Double",
-        "text": "Dubultā"
-      },
-      {
-        "value": "Silky",
-        "text": "Zīdaina"
-      },
-      {
-        "value": "Wavy",
-        "text": "Vārīga"
-      },
-      {
-        "value": "Corded",
-        "text": "Pārvilktā"
       }
     ],
     "pattern": [
