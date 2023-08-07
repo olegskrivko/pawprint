@@ -22,7 +22,7 @@
               <div class="pb-3 mb-0 small lh-sm w-100">
                 <div class="d-flex justify-content-between">
                   <strong class="text-gray-dark"><p><%=pet.petStatus%></p></strong>
-                  <a href="#" class="text-danger m-0 p-0 removeWatchlistBtn" data-petid="<%= pet._id%>" style="text-decoration: none"><i class="bi bi-trash3"></i> Remove</a>
+                  <a href="#" class="text-danger m-0 p-0 removeUserPetBtn" data-petid="<%= pet._id%>" style="text-decoration: none"><i class="bi bi-trash3"></i> Remove</a>
                   <!-- <button class="btn btn-danger removeWatchlistBtn" data-petid="<= pet._id%>">Remove</button> -->
                 </div>
                 <span class="d-block"><a class="text-decoration-none" href="/pets/<%=pet._id%>">@<%=pet.species%></a></span>
@@ -43,35 +43,8 @@
   </div>
 </div>
 
-<!-- <script>
-  const button = document.querySelector('.removeWatchlistBtn');
-  const petId = button.dataset.petid;
-
-  // Define the endpoint URL
-  const endpointUrl = `/pets/${petId}`; // Replace '/pets' with the appropriate API endpoint for your backend
-
-  // Create a fetch request with the DELETE method
-  fetch(endpointUrl, {
-    method: 'DELETE',
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json(); // If you expect JSON data in the response, use response.json()
-    })
-    .then((data) => {
-      // Handle the successful response data here
-      console.log('Pet deleted successfully:', data);
-      // You can perform any additional actions after the pet is deleted, like updating the UI, etc.
-    })
-    .catch((error) => {
-      // Handle errors here
-      console.error('Error deleting the pet:', error.message);
-    });
-</script> -->
 <script>
-  const updateWatchlist = async (petData) => {
+  const deleteUserPet = async (petData) => {
     try {
       const response = await fetch(`/pets/${petData.petId}`, {
         method: 'DELETE',
@@ -82,10 +55,10 @@
 
       if (response.ok) {
         // Watchlist updated successfully
-        console.log('Pet removed from watchlist successfully');
+        console.log('Pet removed successfully');
         location.reload(); // Refresh the page (to see the updated watchlist)
       } else {
-        throw new Error('Failed to remove pet from watchlist');
+        throw new Error('Failed to remove pet');
       }
     } catch (error) {
       console.error(error);
@@ -93,8 +66,8 @@
     }
   };
 
-  const removeWatchlistBtnAll = document.querySelectorAll('.removeWatchlistBtn');
-  removeWatchlistBtnAll.forEach((btn) => {
+  const removeUserPetBtnAll = document.querySelectorAll('.removeUserPetBtn');
+  removeUserPetBtnAll.forEach((btn) => {
     btn.addEventListener('click', async (e) => {
       const petId = e.currentTarget.getAttribute('data-petid');
       console.log(petId);
@@ -104,7 +77,7 @@
         petId: petId,
       };
 
-      await updateWatchlist(petData);
+      await deleteUserPet(petData);
     });
   });
 </script>

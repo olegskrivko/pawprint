@@ -394,7 +394,7 @@ module.exports.deletePet = async (req, res) => {
   await user.save();
   await Pet.findByIdAndDelete(id);
   req.flash('success', 'Successfully deleted pet');
-  res.redirect('/pets');
+  res.status(200).redirect('/user/pets');
 };
 
 module.exports.renderPdf = async (req, res) => {

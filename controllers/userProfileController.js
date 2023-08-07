@@ -71,6 +71,15 @@ module.exports.deleteUserProfile = async (req, res) => {
     // Delete the user's pets, comments, and service providers
     console.log('DELETED ALL ITEMS');
     await Promise.all([Pet.deleteMany({ author: user._id }), Comment.deleteMany({ author: user._id }), ServiceProvider.deleteMany({ author: user._id })]);
+    // find all service prividers, need to find asociated service categories
+    // should be continued.
+    // 1) find all users services
+    // 2) get their serviceName
+    // 3) find asociated service categories in Slug field.
+    // 4) delete necesary services from Service.serviceProviders
+    // 5) delete from service providers as well
+    //const serviceProviders = await ServiceProvider.find({ author: user._id });
+    //console.log('Service providers:', serviceProviders);
 
     // this logis is recreated above
     // Delete the user's pets
