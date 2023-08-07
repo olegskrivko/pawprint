@@ -1,11 +1,11 @@
 <% layout('layouts/boilerplate')%>
-<div class="container  ps-0">
+<div class="container">
   <div class="row">
-    <div class="col-3 p-0">
+    <div class="col-12">
       <%- include('../partials/profileTabs') %>
     </div>
 
-    <div class="col-9">
+    <div class="col-12">
       <h6 class="text-center mb-3">Change Your Account Settings</h6>
       <div class="row row-cols-1 row-cols-md-1 g-3 justify-content-center">
   
@@ -100,6 +100,8 @@
 
 </div>
 </div>
+</div>
+
 <script>
   const updateAccountSettings = async (updatedData) => {
     try {

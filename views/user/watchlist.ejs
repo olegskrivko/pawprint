@@ -1,58 +1,46 @@
 <% layout('layouts/boilerplate')%>
-<div class="container ps-0">
- 
+<div class="container">
   <div class="row">
-    <div class="col-3 p-0">
-  <%- include('../partials/profileTabs') %>
-    </div>
-   
-    <div class="col-9">
+    <div class="col-12"><%- include('../partials/profileTabs') %></div>
+
+    <div class="col-12">
       <!-- <h5 class="text-center mb-3">Manage Your watchlist</h5> -->
-      
-  <div class="row row-cols-1 row-cols-md-1 g-3 justify-content-center">
-   
-    
-    <div class="col-md-12">
-      <div class="p-3 bg-body rounded shadow-sm">
-        <h6 class="border-bottom pb-2 mb-0">Saved pets</h6>
 
-        <% if ( typeof pets !== 'undefined' && pets.length > 0) {%> <% for (let pet of pets) { %>
+      <div class="row row-cols-1 row-cols-md-1 g-3 justify-content-center">
+        <div class="col-md-12">
+          <div class="p-3 bg-body rounded shadow-sm">
+            <h6 class="border-bottom pb-2 mb-0">Saved pets</h6>
 
-        <div class="d-flex text-body-secondary pt-3 border-bottom">
-          <div class="mb-3 me-2">
-            <img src="<%= pet.images[0].thumbnail%>" class="img-thumbnail" alt="" width="98px" height="98px" />
-          
-          </div>
+            <% if ( typeof pets !== 'undefined' && pets.length > 0) {%> <% for (let pet of pets) { %>
 
-          <div class="pb-3 mb-0 small lh-sm  w-100">
-            <div class="d-flex justify-content-between">
-              <strong class="text-gray-dark"><p><%=pet.petStatus%></p></strong>
-            
-                <a href="#" class="text-danger m-0 p-0 removeWatchlistBtn" data-petid="<%= pet._id%>" style="text-decoration: none"><i class="bi bi-trash3"></i> Remove</a>           
-            
+            <div class="d-flex text-body-secondary pt-3 border-bottom">
+              <div class="mb-3 me-2">
+                <img src="<%= pet.images[0].thumbnail%>" class="img-thumbnail" alt="" width="98px" height="98px" />
+              </div>
+
+              <div class="pb-3 mb-0 small lh-sm w-100">
+                <div class="d-flex justify-content-between">
+                  <strong class="text-gray-dark"><p><%=pet.petStatus%></p></strong>
+
+                  <a href="#" class="text-danger m-0 p-0 removeWatchlistBtn" data-petid="<%= pet._id%>" style="text-decoration: none"><i class="bi bi-trash3"></i> Remove</a>
+                </div>
+                <span class="d-block"><a class="text-decoration-none" href="/pets/<%=pet._id%>">@<%=pet.species%></a></span>
+              </div>
             </div>
-            <span class="d-block"><a class="text-decoration-none" href="/pets/<%=pet._id%>">@<%=pet.species%></a></span>
-          </div>
-        </div>
 
-        <% } %> <% } else { %>
-        <p>List is empty</p>
-        <% } %>
-          <!-- <div class="d-block small text-end mt-3">
+            <% } %> <% } else { %>
+            <p>List is empty</p>
+            <% } %>
+            <!-- <div class="d-block small text-end mt-3">
             <a href="#" id="deleteAllWatchlistBtn" class="text-danger m-0 p-0" style="text-decoration: none"><i class="bi bi-trash3"></i> Remove All</a>
           </div> -->
-
-    
+          </div>
+        </div>
+      </div>
     </div>
-    </div>
- 
-  </div>
-  
   </div>
 </div>
-</div>
 
-</div>
 <script>
   const updateWatchlist = async (watchlistData) => {
     try {
