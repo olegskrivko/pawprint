@@ -1,11 +1,68 @@
 <% layout('layouts/boilerplate')%>
-<div class="container">
-  <div class="row">
- <div class="col-12"><%- include('../partials/profileTabs') %>
+<div class="container" >
+  <div class="row" >
+ <div class="col-lg-12 order-2 order-lg-1 mb-0 mb-lg-3 "><%- include('../partials/profileTabs') %>
 </div>
 
- <div class="col-12">
+<style>
+  .avatar-container {
+    position: sticky;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+  .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #adb5bd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* bord
+    er: 2px solid #343a40;  */
+  }
+  
+  .avatar img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 50%;
+  }
+
+</style>
+
+ <div class="col-lg-12 order-1 order-lg-2">
       <h6 class="text-center mb-3"><%=profilePage.titles.section1%></h6>
+
+      <div class="col-md-12 d-flex flex-column avatar-container">
+          <div class="avatar"> 
+            <!-- <img src="https://via.placeholder.com/150" alt="Avatar" /> -->
+          
+            <% if (currentUser.avatar.length > 0) { %>
+              <img src="<%= currentUser.avatar[0].url %>" id="avatarPreview" alt="Avatar" />
+              <% } else { %>
+              <img src="/images/icons/user.png" id="avatarPreview" alt="Avatar Placeholder" />
+              <% } %>
+          </div>
+
+          <div class="row row-cols-2 row-cols-md-2 justify-content-center my-3">
+            <div class="col-md-6">
+                <label class="form-label btn btn-warning btn-sm" for="avatarInput" style="white-space: nowrap;"><i class="bi bi-upload"></i> <%=profilePage.labels.uploadAvatar%></label>
+                <input class="form-control d-none" type="file"id="avatarInput" name="avatar" accept="image/png, image/jpeg, image/jpg" />
+                
+            </div>
+            <div class="col-md-6 ">
+              <button id="updateUserAvatarBtn" type="button" class="btn btn-warning btn-sm">
+                <%=profilePage.buttons.saveAvatar%>
+              </button>
+            </div>
+          </div>
+      </div>
+
+
+
       <div class="row row-cols-1 row-cols-md-1 g-3 justify-content-center">
 
  
@@ -86,25 +143,163 @@
   </div>
 </div>
 
+
+
+
 <div class="row row-cols-1 row-cols-md-2 g-3 justify-content-center">
-  <div class="col-md-12">
-      <label class="form-label" for="avatar"><%=profilePage.labels.uploadAvatar%></label>
-      <input class="form-control" type="file" id="avatar" name="avatar" accept="image/png, image/jpeg, image/jpg" />
-      
-  </div>
-  <div class="col-md-12 my-3">
-    <button id="updateUserAvatarBtn" type="button" class="btn btn-warning">
-      <%=profilePage.buttons.saveAvatar%>
-    </button>
-  </div>
+<div class="col-md-12">
+  <h6 class="text-center mb-3">Change Your Account Settings</h6>
+  <div class="row row-cols-1 row-cols-md-1 g-3 justify-content-center">
+
+<div class="col-md-12">
+      <label class="form-label" for="language">Select your preferred language</label>
+      <select class="form-select text-uppercase" id="language" >
+        <% languageOptions.forEach(option => { %>
+          <option value="<%= option %>" <% if (option === currentUser.language) { %>selected<% } %>><%=option%></option>
+          <%}) %>
+      </select>
+    </div>
+
+<!-- <div class="col-md-12">
+<label for="notificationDistance" class="form-label"
+  >Maximum distance</label
+>
+<input
+  type="range"
+  class="form-range"
+  min="0"
+  max="5"
+  step="0.5"
+  id="notificationDistance"
+  disabled
+/>
+</div> -->
+
+<!-- <div class="col-md-8">
+<input
+  class="form-check-input"
+  type="checkbox"
+  id="receiveNotifications"
+  name="receiveNotifications"
+  value=""
+/>
+<label class="form-check-label" for="receiveNotifications"
+  >Receive push notifications</label
+>
+</div> -->
+
+
+<div class="col-md-12 mb-3">
+<!-- web push -->
+<div class="onesignal-customlink-container"></div>
 </div>
+
+<!-- <div class="col-md-12 mb-3">
+<input
+  class="form-check-input"
+  type="checkbox"
+  id="receiveUpdates"
+  name="receiveUpdates"
+  value=""
+  disabled
+/>
+<label class="form-check-label" for="receiveUpdates"
+  >Receive updates and newsletters</label
+>
+</div> -->
+
+<div class="col-md-12 d-flex mb-3">
+<div class="form-check me-3">
+  <input
+    class="form-check-input"
+    type="radio"
+    name="theme"
+    id="darkTheme"
+    value="dark"
+  />
+  <label class="form-check-label" for="darkTheme"> Dark theme </label>
+</div>
+<div class="form-check me-3">
+  <input
+    class="form-check-input"
+    type="radio"
+    name="theme"
+    id="lightTheme"
+    value="light"
+    checked
+  />
+  <label class="form-check-label" for="lightTheme"> Light theme </label>
+</div>
+</div>
+
+
+<div class="col-md-12 my-5">
+<button id="updateUserSettingsBtn" type="button" class="btn btn-warning">
+  Save Changes
+</button>
+</div>
+</div>
+
+</div>
+
+</div>
+
+
+
+
 
 </div>
 </div>
 </div>
-
 
 <script>
+  const updateAccountAvatar = async (updatedData) => {
+    try {
+      const formData = new FormData();
+      formData.append("avatar", updatedData.avatar);
+
+      const response = await fetch("/user/profile/avatar", {
+        method: "PUT",
+        body: formData,
+      });
+
+      if (response.ok) {
+        // Account updated successfully
+        window.location.href = "/user/profile";
+      } else {
+        throw new Error("Failed to update account");
+      }
+    } catch (err) {
+      console.error(err);
+      // Handle error and display appropriate message
+    }
+  };
+
+  const avatarInput = document.querySelector("#avatarInput");
+  const avatarPreview = document.querySelector("#avatarPreview");
+
+  avatarInput.addEventListener("change", () => {
+    if (avatarInput.files && avatarInput.files[0]) {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        avatarPreview.src = e.target.result;
+      };
+
+      reader.readAsDataURL(avatarInput.files[0]);
+    }
+  });
+
+  const updateUserAvatarBtn = document.querySelector("#updateUserAvatarBtn");
+  updateUserAvatarBtn.addEventListener("click", async () => {
+    const updatedData = {
+      avatar: avatarInput.files[0],
+    };
+
+    await updateAccountAvatar(updatedData);
+  });
+</script>
+<!-- <script>
   const updateAccountAvatar = async (updatedData) => {
     try {
       const formData = new FormData();
@@ -138,7 +333,7 @@
     await updateAccountAvatar(updatedData);
   });
   
-</script>
+</script> -->
 
 <script>
   const updateAccount = async (updatedData) => {
@@ -253,4 +448,50 @@ verifyEmail.addEventListener('click', async (e)=> {
   console.log(verifyEmail)
 })
 
+</script>
+
+<!-- new script -->
+<script>
+  const updateAccountSettings = async (updatedData) => {
+    try {
+      const response = await fetch("/user/profile/settings", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedData),
+      });
+
+      if (response.ok) {
+       // const responseData = await response.json();
+      //  if (responseData.success) {
+          // Account updated successfully
+          // Redirect or perform desired actions here
+          window.location.href = "/user/profile";
+      //  } else {
+      //    throw new Error("Failed to update account settings");
+      //  }
+      } else {
+        throw new Error("Failed to update account settings");
+      }
+    } catch (err) {
+      console.error(err);
+      // Handle error and display appropriate message
+    }
+  };
+
+  const updateUserSettingsBtn = document.querySelector(
+    "#updateUserSettingsBtn"
+  );
+  updateUserSettingsBtn.addEventListener("click", async () => {
+    //const firstName = document.querySelector("#firstName").value;
+    //const lastName = document.querySelector("#lastName").value;
+    //const phoneCode = document.querySelector("#phoneCode").value;
+    //const phoneNumber = document.querySelector("#phoneNumber").value;
+    const language = document.querySelector("#language").value;
+    console.log(language);
+
+    const updatedData = { language };
+    await updateAccountSettings(updatedData);
+  });
 </script>

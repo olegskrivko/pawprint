@@ -1125,6 +1125,33 @@
       "toVerify": " to verify your email"
     }
   },
+  "settingsPage": {
+    "titles": {
+      "section1": "Change Your Profile Information"
+    },
+    "buttons": {
+      "saveChanges": "Save Changes",
+      "saveAvatar": "Save Avatar",
+      "deleteAccount": "Delete Account"
+    },
+    "labels": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "phoneCode": "Phone Code",
+      "phoneNumber": "Phone Number",
+      "selectYourCountry": "Select Your Country",
+      "username": "Username",
+      "emailAddress": "Email address",
+      "uploadAvatar": "Upload avatar"
+    },
+    "descriptions": {
+      "emailIsNotVerified": "Email is not verified",
+      "emailIsVerified": "Email is verified",
+      "click": "Click ",
+      "here": "here",
+      "toVerify": " to verify your email"
+    }
+  },
   "navbar": {
     "home": "Home",
     "about": "About",

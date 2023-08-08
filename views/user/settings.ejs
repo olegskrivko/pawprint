@@ -105,7 +105,7 @@
 <script>
   const updateAccountSettings = async (updatedData) => {
     try {
-      const response = await fetch("/user/settings", {
+      const response = await fetch("/user/profile/settings", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -118,7 +118,7 @@
       //  if (responseData.success) {
           // Account updated successfully
           // Redirect or perform desired actions here
-          window.location.href = "/user/settings";
+          window.location.href = "/user/profile";
       //  } else {
       //    throw new Error("Failed to update account settings");
       //  }

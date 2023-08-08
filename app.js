@@ -30,7 +30,7 @@ const compareRoutes = require('./routes/compareRoutes');
 const commentRoutes = require('./routes/commentRoutes');
 const locationRoutes = require('./routes/locationRoutes');
 const userProfileRoutes = require('./routes/userProfileRoutes');
-const userSettingsRoutes = require('./routes/userSettingsRoutes');
+// const userSettingsRoutes = require('./routes/userSettingsRoutes');
 const userWatchlistRoutes = require('./routes/userWatchlistRoutes');
 const userFavouritesRoutes = require('./routes/userFavouritesRoutes');
 const userServicesRoutes = require('./routes/userServicesRoutes');
@@ -136,7 +136,7 @@ app.use('/services/:id/serviceprovider', serviceProvidersRoutes);
 
 app.use('/regions', locationRoutes);
 app.use('/user/profile', userProfileRoutes);
-app.use('/user/settings', userSettingsRoutes);
+// app.use('/user/settings', userSettingsRoutes);
 app.use('/user/watchlist', userWatchlistRoutes);
 app.use('/user/favorites', userFavouritesRoutes);
 app.use('/user/services', userServicesRoutes);
