@@ -1,7 +1,7 @@
 <% layout('layouts/boilerplate')%>
 <div class="container" >
   <div class="row" >
- <div class="col-lg-12 order-2 order-lg-1 mb-0 mb-lg-3 "><%- include('../partials/profileTabs') %>
+ <div class="col-lg-12"><%- include('../partials/profileTabs') %>
 </div>
 
 <style>
@@ -33,7 +33,7 @@
 
 </style>
 
- <div class="col-lg-12 order-1 order-lg-2">
+ <div class="col-lg-12 ">
       <h6 class="text-center mb-3"><%=profilePage.titles.section1%></h6>
 
       <div class="col-md-12 d-flex flex-column avatar-container">
@@ -50,12 +50,12 @@
           <div class="row row-cols-2 row-cols-md-2 justify-content-center my-3">
             <div class="col-md-6">
                 <label class="form-label btn btn-warning btn-sm" for="avatarInput" style="white-space: nowrap;"><i class="bi bi-upload"></i> <%=profilePage.labels.uploadAvatar%></label>
-                <input class="form-control d-none" type="file"id="avatarInput" name="avatar" accept="image/png, image/jpeg, image/jpg" />
+                <input class="form-control d-none" type="file"id="avatarInput"  name="avatar" accept="image/png, image/jpeg, image/jpg" />
                 
             </div>
             <div class="col-md-6 ">
-              <button id="updateUserAvatarBtn" type="button" class="btn btn-warning btn-sm">
-                <%=profilePage.buttons.saveAvatar%>
+              <button id="updateUserAvatarBtn" type="button" class="btn btn-warning btn-sm" style="white-space: nowrap;">
+                <i class="bi bi-sd-card"></i> <%=profilePage.buttons.saveAvatar%>
               </button>
             </div>
           </div>
@@ -133,26 +133,27 @@
 
 
     
-  <div class="col-md-12 d-flex justify-content-between my-3">
+  <div class="col-lg-12">
       <button id="updateUserBtn" type="button" class="btn btn-warning">
         <%=profilePage.buttons.saveChanges%>
       </button>
-      <button id="deleteUserBtn" type="button" class="btn btn-danger">
-        <%=profilePage.buttons.deleteAccount%>
-      </button>
+     
   </div>
+
+
+
 </div>
 
 
 
 
-<div class="row row-cols-1 row-cols-md-2 g-3 justify-content-center">
+<div class="row row-cols-1 row-cols-md-2 g-3 justify-content-center mt-3">
 <div class="col-md-12">
-  <h6 class="text-center mb-3">Change Your Account Settings</h6>
+  <h6 class="text-center mb-3"><%=profilePage.titles.section2%></h6>
   <div class="row row-cols-1 row-cols-md-1 g-3 justify-content-center">
 
 <div class="col-md-12">
-      <label class="form-label" for="language">Select your preferred language</label>
+      <label class="form-label" for="language"><%=profilePage.labels.preferredLanguage%></label>
       <select class="form-select text-uppercase" id="language" >
         <% languageOptions.forEach(option => { %>
           <option value="<%= option %>" <% if (option === currentUser.language) { %>selected<% } %>><%=option%></option>
@@ -189,26 +190,9 @@
 </div> -->
 
 
-<div class="col-md-12 mb-3">
-<!-- web push -->
-<div class="onesignal-customlink-container"></div>
-</div>
 
-<!-- <div class="col-md-12 mb-3">
-<input
-  class="form-check-input"
-  type="checkbox"
-  id="receiveUpdates"
-  name="receiveUpdates"
-  value=""
-  disabled
-/>
-<label class="form-check-label" for="receiveUpdates"
-  >Receive updates and newsletters</label
->
-</div> -->
 
-<div class="col-md-12 d-flex mb-3">
+<div class="col-md-12 d-flex">
 <div class="form-check me-3">
   <input
     class="form-check-input"
@@ -217,7 +201,7 @@
     id="darkTheme"
     value="dark"
   />
-  <label class="form-check-label" for="darkTheme"> Dark theme </label>
+  <label class="form-check-label" for="darkTheme"> <%=profilePage.labels.darkTheme%> </label>
 </div>
 <div class="form-check me-3">
   <input
@@ -228,14 +212,32 @@
     value="light"
     checked
   />
-  <label class="form-check-label" for="lightTheme"> Light theme </label>
+  <label class="form-check-label" for="lightTheme"> <%=profilePage.labels.lightTheme%> </label>
 </div>
 </div>
+<div class="col-md-12">
+  <!-- web push -->
+  <div class="onesignal-customlink-container"></div>
+  </div>
+  
+  <!-- <div class="col-md-12 mb-3">
+  <input
+    class="form-check-input"
+    type="checkbox"
+    id="receiveUpdates"
+    name="receiveUpdates"
+    value=""
+    disabled
+  />
+  <label class="form-check-label" for="receiveUpdates"
+    >Receive updates and newsletters</label
+  >
+  </div> -->
 
 
 <div class="col-md-12 my-5">
 <button id="updateUserSettingsBtn" type="button" class="btn btn-warning">
-  Save Changes
+  <%=profilePage.buttons.saveChanges%>
 </button>
 </div>
 </div>
@@ -249,6 +251,17 @@
 
 
 </div>
+
+
+<div class="col-lg-12 alert alert-danger" role="alert">
+  <div><p style="text-align: justify;"><%=profilePage.descriptions.byClicking%> <span class="fw-bold">'<%=profilePage.buttons.deleteAccount%>'</span>, <%=profilePage.descriptions.permanentlyRemove%></p>  </div>
+  <button id="deleteUserBtn" type="button" class="btn btn-danger">
+    <%=profilePage.buttons.deleteAccount%>
+  </button>
+</div>
+
+
+
 </div>
 </div>
 

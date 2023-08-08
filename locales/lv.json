@@ -1100,7 +1100,8 @@
   },
   "profilePage": {
     "titles": {
-      "section1": "Mainiet savu profila informāciju"
+      "section1": "Mainiet savu profila informāciju",
+      "section2": "Mainiet konta iestatījumus"
     },
     "buttons": {
       "saveChanges": "Saglabāt izmaiņas",
@@ -1110,19 +1111,60 @@
     "labels": {
       "firstName": "Vārds",
       "lastName": "Uzvārds",
-      "phoneCode": "Tālruņa kods",
-      "phoneNumber": "Tālruņa numurs",
+      "phoneCode": "Telefona kods",
+      "phoneNumber": "Telefona numurs",
       "selectYourCountry": "Izvēlieties savu valsti",
       "username": "Lietotājvārds",
       "emailAddress": "E-pasta adrese",
-      "uploadAvatar": "Augšupielādēt avatāru"
+      "uploadAvatar": "Augšupielādēt avatāru",
+      "preferredLanguage": "Izvēlieties vēlamo valodu",
+      "darkTheme": "Tumša tēma",
+      "lightTheme": "Gaiša tēma"
     },
     "descriptions": {
       "emailIsNotVerified": "E-pasts nav verificēts",
       "emailIsVerified": "E-pasts ir verificēts",
       "click": "Noklikšķiniet ",
       "here": "šeit",
-      "toVerify": ", lai verificētu savu e-pastu"
+      "toVerify": " , lai verificētu savu e-pastu",
+      "byClicking": "Nospiežot pogu",
+      "permanentlyRemove": "jūs neatgriezeniski izdzēsīsiet savu kontu kopā ar visiem saistītajiem dzīvnieku ziņojumiem, komentāriem un pakalpojumiem. Šo darbību nevar atcelt, tāpēc, lūdzu, rīkojieties piesardzīgi."
+    }
+  },
+  "watchlistPage": {
+    "titles": {
+      "section1": "Saglabātie mājdzīvnieki",
+      "section2": "Saraksts ir tukšs"
+    },
+    "buttons": {
+      "remove": "Noņemt"
+    }
+  },
+  "favoritesPage": {
+    "titles": {
+      "section1": "Saglabātās pakalpojumi",
+      "section2": "Saraksts ir tukšs"
+    },
+    "buttons": {
+      "remove": "Noņemt"
+    }
+  },
+  "userPetsPage": {
+    "titles": {
+      "section1": "Jūsu mājdzīvnieki",
+      "section2": "Saraksts ir tukšs"
+    },
+    "buttons": {
+      "remove": "Noņemt"
+    }
+  },
+  "userServicesPage": {
+    "titles": {
+      "section1": "Jūsu pakalpojumi",
+      "section2": "Saraksts ir tukšs"
+    },
+    "buttons": {
+      "remove": "Noņemt"
     }
   },
   "navbar": {

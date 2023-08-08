@@ -1100,7 +1100,8 @@
   },
   "profilePage": {
     "titles": {
-      "section1": "Change Your Profile Information"
+      "section1": "Change Your Profile Information",
+      "section2": "Change Your Account Settings"
     },
     "buttons": {
       "saveChanges": "Save Changes",
@@ -1115,41 +1116,55 @@
       "selectYourCountry": "Select Your Country",
       "username": "Username",
       "emailAddress": "Email address",
-      "uploadAvatar": "Upload avatar"
+      "uploadAvatar": "Upload avatar",
+      "preferredLanguage": "Select your preferred language",
+      "darkTheme": "Dark Theme",
+      "lightTheme": "Light Theme"
     },
     "descriptions": {
       "emailIsNotVerified": "Email is not verified",
       "emailIsVerified": "Email is verified",
       "click": "Click ",
       "here": "here",
-      "toVerify": " to verify your email"
+      "toVerify": " to verify your email",
+      "byClicking": "By clicking the",
+      "permanentlyRemove": "button, you will permanently remove your account along with all associated pet posts, comments, and services. This action cannot be undone, so please proceed with caution."
     }
   },
-  "settingsPage": {
+  "watchlistPage": {
     "titles": {
-      "section1": "Change Your Profile Information"
+      "section1": "Saved pets",
+      "section2": "List is empty"
     },
     "buttons": {
-      "saveChanges": "Save Changes",
-      "saveAvatar": "Save Avatar",
-      "deleteAccount": "Delete Account"
+      "remove": "Remove"
+    }
+  },
+  "favoritesPage": {
+    "titles": {
+      "section1": "Saved services",
+      "section2": "List is empty"
     },
-    "labels": {
-      "firstName": "First Name",
-      "lastName": "Last Name",
-      "phoneCode": "Phone Code",
-      "phoneNumber": "Phone Number",
-      "selectYourCountry": "Select Your Country",
-      "username": "Username",
-      "emailAddress": "Email address",
-      "uploadAvatar": "Upload avatar"
+    "buttons": {
+      "remove": "Remove"
+    }
+  },
+  "userPetsPage": {
+    "titles": {
+      "section1": "Your pets",
+      "section2": "List is empty"
     },
-    "descriptions": {
-      "emailIsNotVerified": "Email is not verified",
-      "emailIsVerified": "Email is verified",
-      "click": "Click ",
-      "here": "here",
-      "toVerify": " to verify your email"
+    "buttons": {
+      "remove": "Remove"
+    }
+  },
+  "userServicesPage": {
+    "titles": {
+      "section1": "Your services",
+      "section2": "List is empty"
+    },
+    "buttons": {
+      "remove": "Remove"
     }
   },
   "navbar": {

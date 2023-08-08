@@ -1101,7 +1101,8 @@
   },
   "profilePage": {
     "titles": {
-      "section1": "Измените информацию в своем профиле"
+      "section1": "Изменить информацию профиля",
+      "section2": "Изменить настройки аккаунта"
     },
     "buttons": {
       "saveChanges": "Сохранить изменения",
@@ -1111,19 +1112,60 @@
     "labels": {
       "firstName": "Имя",
       "lastName": "Фамилия",
-      "phoneCode": "Код страны",
+      "phoneCode": "Код телефона",
       "phoneNumber": "Номер телефона",
       "selectYourCountry": "Выберите вашу страну",
       "username": "Имя пользователя",
       "emailAddress": "Адрес электронной почты",
-      "uploadAvatar": "Загрузить аватар"
+      "uploadAvatar": "Загрузить аватар",
+      "preferredLanguage": "Выберите предпочитаемый язык",
+      "darkTheme": "Темная тема",
+      "lightTheme": "Светлая тема"
     },
     "descriptions": {
       "emailIsNotVerified": "Электронная почта не подтверждена",
       "emailIsVerified": "Электронная почта подтверждена",
       "click": "Нажмите ",
       "here": "здесь",
-      "toVerify": ", чтобы подтвердить вашу электронную почту"
+      "toVerify": " для подтверждения вашей электронной почты",
+      "byClicking": "Нажимая на кнопку",
+      "permanentlyRemove": "вы навсегда удалите свою учетную запись вместе со всеми связанными публикациями о животных, комментариями и услугами. Это действие нельзя отменить, поэтому, пожалуйста, действуйте осторожно."
+    }
+  },
+  "watchlistPage": {
+    "titles": {
+      "section1": "Сохраненные питомцы",
+      "section2": "Список пуст"
+    },
+    "buttons": {
+      "remove": "Удалить"
+    }
+  },
+  "favoritesPage": {
+    "titles": {
+      "section1": "Сохраненные услуги",
+      "section2": "Список пуст"
+    },
+    "buttons": {
+      "remove": "Удалить"
+    }
+  },
+  "userPetsPage": {
+    "titles": {
+      "section1": "Ваши питомцы",
+      "section2": "Список пуст"
+    },
+    "buttons": {
+      "remove": "Удалить"
+    }
+  },
+  "userServicesPage": {
+    "titles": {
+      "section1": "Ваши услуги",
+      "section2": "Список пуст"
+    },
+    "buttons": {
+      "remove": "Удалить"
     }
   },
   "navbar": {

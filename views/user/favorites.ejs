@@ -1,12 +1,14 @@
 <% layout('layouts/boilerplate')%>
 <div class="container">
   <div class="row">
-    <div class="col-lg-12 order-2 order-lg-1 mb-0 mb-lg-3"><%- include('../partials/profileTabs') %></div>
-    <div class="col-lg-12 order-1 order-lg-2">
+    <!--order-2 order-lg-1-->
+    <!--order-1 order-lg-2-->
+    <div class="col-lg-12"><%- include('../partials/profileTabs') %></div>
+    <div class="col-lg-12">
       <div class="row row-cols-1 row-cols-md-1 g-3 justify-content-center">
         <div class="col-md-12">
           <div class="p-3 bg-body rounded shadow-sm">
-            <h6 class="border-bottom pb-2 mb-0">Saved services</h6>
+            <h6 class="border-bottom pb-2 mb-0"><%=favoritesPage.titles.section1%></h6>
             <% if ( typeof favorites !== 'undefined' && favorites.length > 0) {%> <% for (let favorite of favorites) { %>
 
             <!-- <div class="d-flex text-body-secondary pt-3 border-bottom">
@@ -20,14 +22,14 @@
               <div class="pb-3 mb-0 small lh-sm w-100">
                 <div class="d-flex justify-content-between">
                   <strong class="text-gray-dark"><p><%=favorite.name%></p></strong>
-                  <a href="#" class="text-danger m-0 p-0 removeFavoritetBtn" data-favoriteid="<%= favorite._id%>" style="text-decoration: none"><i class="bi bi-trash3"></i> Remove</a>
+                  <a href="#" class="text-danger m-0 p-0 removeFavoritetBtn" data-favoriteid="<%= favorite._id%>" style="text-decoration: none"><i class="bi bi-trash3"></i> <%=favoritesPage.buttons.remove%></a>
                 </div>
                 <!-- <span class="d-block"><a class="text-decoration-none" href="/pets/<=pet._id%>">@<=favorite.species%></a></span> -->
               </div>
             </div>
 
             <% } %> <% } else { %>
-            <p>List is empty</p>
+            <p><%=favoritesPage.titles.section2%></p>
             <% } %>
 
             <!-- <div class="d-block small text-end mt-3">
