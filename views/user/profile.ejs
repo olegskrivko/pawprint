@@ -5,21 +5,21 @@
 </div>
 
  <div class="col-12">
-      <h6 class="text-center mb-3">Change Your Profile Information</h6>
+      <h6 class="text-center mb-3"><%=profilePage.titles.section1%></h6>
       <div class="row row-cols-1 row-cols-md-1 g-3 justify-content-center">
 
  
   <div class="col-md-6">
-      <label class="form-label" for="firstName">First name</label>
+      <label class="form-label" for="firstName"><%=profilePage.labels.firstName%></label>
       <input class="form-control" type="text" id="firstName" name="firstName" value="<%=currentUser.firstName%>" />
   </div>
   <div class="col-md-6">
-      <label class="form-label" for="lastName">Last name</label>
+      <label class="form-label" for="lastName"><%=profilePage.labels.lastName%></label>
       <input class="form-control" type="text" id="lastName" name="lastName" value="<%=currentUser.lastName%>" />
   </div>
 
   <div class="col-md-2">
-    <label class="form-label" for="phoneCode">Phone code</label>
+    <label class="form-label" for="phoneCode"><%=profilePage.labels.phoneCode%></label>
     <select class="form-select" id="phoneCode"
 >
 <% phoneCodeOptions.forEach(option => { %>
@@ -28,11 +28,11 @@
 </select>
 </div>
   <div class="col-md-5">
-      <label class="form-label" for="phoneNumber">Phone number</label>
+      <label class="form-label" for="phoneNumber"><%=profilePage.labels.phoneNumber%></label>
       <input class="form-control" type="text" id="phoneNumber" name="phoneNumber" value="<%=currentUser.phoneNumber%>" />
   </div>
   <div class="col-md-5">
-    <label class="form-label" for="country">Select your country</label>
+    <label class="form-label" for="country"><%=profilePage.labels.selectYourCountry%></label>
     <select
       class="form-select"
       id="country"
@@ -45,19 +45,19 @@
 </div>
 
   <div class="col-md-6">
-      <label class="form-label" for="username">Username</label>
+      <label class="form-label" for="username"><%=profilePage.labels.username%></label>
       <input class="form-control" type="text" readonly disabled id="username" name="username" value="<%=currentUser.username%>" required />
   </div>
   <div class="col-md-6">
-      <label class="form-label" for="email">Email address</label>
+      <label class="form-label" for="email"><%=profilePage.labels.emailAddress%></label>
       <input class="form-control" type="email" readonly disabled id="email" name="email" value="<%=currentUser.email%>" required />
   </div>
   <div class="col-md-12">
     <% if (currentUser.isVerified) { %>
-      <p><span class="text-success"><i class="bi bi-shield-fill-check"></i></span> Email is verified</p>
+      <p><span class="text-success"><i class="bi bi-shield-fill-check"></i></span> <%=profilePage.descriptions.emailIsVerified%></p>
     <% } else { %>
-      <p><span class="text-danger"><i class="bi bi-shield-fill-x"></i></span> Email is not verified</p>
-      <p>Click <a id="verify-email" class="verify-email" href="#">here</a> to verify your email</p>
+      <p><span class="text-danger"><i class="bi bi-shield-fill-x"></i></span> <%=profilePage.descriptions.emailIsNotVerified%></p>
+      <p><%=profilePage.descriptions.click%> <a id="verify-email" class="verify-email" href="#"><%=profilePage.descriptions.here%></a><%=profilePage.descriptions.toVerify%></p>
     <% } %>
   </div>
   
@@ -78,23 +78,23 @@
     
   <div class="col-md-12 d-flex justify-content-between my-3">
       <button id="updateUserBtn" type="button" class="btn btn-warning">
-        Save changes
+        <%=profilePage.buttons.saveChanges%>
       </button>
       <button id="deleteUserBtn" type="button" class="btn btn-danger">
-        Delete account
+        <%=profilePage.buttons.deleteAccount%>
       </button>
   </div>
 </div>
 
 <div class="row row-cols-1 row-cols-md-2 g-3 justify-content-center">
   <div class="col-md-12">
-      <label class="form-label" for="avatar">Upload avatar</label>
+      <label class="form-label" for="avatar"><%=profilePage.labels.uploadAvatar%></label>
       <input class="form-control" type="file" id="avatar" name="avatar" accept="image/png, image/jpeg, image/jpg" />
       
   </div>
   <div class="col-md-12 my-3">
     <button id="updateUserAvatarBtn" type="button" class="btn btn-warning">
-      Save avatar
+      <%=profilePage.buttons.saveAvatar%>
     </button>
   </div>
 </div>

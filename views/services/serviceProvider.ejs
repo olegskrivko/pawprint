@@ -19,9 +19,16 @@
             </a> -->
 
             <div class="d-flex jusity-content-center align-items-center" style="cursor: pointer">
-              <a id="saveWatchlistServicesBtn" href="#" data-serviceid="<%= serviceProvider._id%>" style="font-size: 1.2rem; cursor: pointer">
-                <i class="bi bi-bookmark-star-fill"></i>
-              </a>
+              <!-- <a id="saveWatchlistServicesBtn" href="#" data-serviceid="<%= serviceProvider._id%>" style="font-size: 1.2rem; cursor: pointer">
+                <i class="bi bi-bookmark-star"></i>
+              </a> -->
+              <a class="text-secondary" id="saveWatchlistServicesBtn" data-serviceid="<%= serviceProvider._id%>" style="font-size: 1.2rem; cursor: pointer">
+                <% if (currentUser && serviceProvider._id && currentUser.favorites.length > 0 && currentUser.favorites.includes(serviceProvider._id)) { %>
+                <i class="bi bi-bookmark-heart-fill" style="pointer-events: none"></i>
+                <% } else { %>
+                <i class="bi bi-bookmark-heart" style="pointer-events: none"></i>
+                <% } %></a
+              >
             </div>
 
             <!-- <div data-servicecoords="<%=serviceProvider.location.coordinates %>" class="d-flex jusity-content-center align-items-center geoButtonZoom" style="cursor: pointer">

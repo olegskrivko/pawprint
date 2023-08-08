@@ -1098,6 +1098,33 @@
       "notification": "šī informācija tiks padarīta publiska, lūdzu, neparedzētu jutīgu informāciju, ko vēlaties saglabāt privātu."
     }
   },
+  "profilePage": {
+    "titles": {
+      "section1": "Mainiet savu profila informāciju"
+    },
+    "buttons": {
+      "saveChanges": "Saglabāt izmaiņas",
+      "saveAvatar": "Saglabāt avatāru",
+      "deleteAccount": "Dzēst kontu"
+    },
+    "labels": {
+      "firstName": "Vārds",
+      "lastName": "Uzvārds",
+      "phoneCode": "Tālruņa kods",
+      "phoneNumber": "Tālruņa numurs",
+      "selectYourCountry": "Izvēlieties savu valsti",
+      "username": "Lietotājvārds",
+      "emailAddress": "E-pasta adrese",
+      "uploadAvatar": "Augšupielādēt avatāru"
+    },
+    "descriptions": {
+      "emailIsNotVerified": "E-pasts nav verificēts",
+      "emailIsVerified": "E-pasts ir verificēts",
+      "click": "Noklikšķiniet ",
+      "here": "šeit",
+      "toVerify": ", lai verificētu savu e-pastu"
+    }
+  },
   "navbar": {
     "home": "Home",
     "about": "About",

@@ -1099,6 +1099,33 @@
       "notification": "эта информация будет общедоступной, пожалуйста, не предоставляйте личную информацию, которую вы хотели бы оставить в тайне."
     }
   },
+  "profilePage": {
+    "titles": {
+      "section1": "Измените информацию в своем профиле"
+    },
+    "buttons": {
+      "saveChanges": "Сохранить изменения",
+      "saveAvatar": "Сохранить аватар",
+      "deleteAccount": "Удалить аккаунт"
+    },
+    "labels": {
+      "firstName": "Имя",
+      "lastName": "Фамилия",
+      "phoneCode": "Код страны",
+      "phoneNumber": "Номер телефона",
+      "selectYourCountry": "Выберите вашу страну",
+      "username": "Имя пользователя",
+      "emailAddress": "Адрес электронной почты",
+      "uploadAvatar": "Загрузить аватар"
+    },
+    "descriptions": {
+      "emailIsNotVerified": "Электронная почта не подтверждена",
+      "emailIsVerified": "Электронная почта подтверждена",
+      "click": "Нажмите ",
+      "here": "здесь",
+      "toVerify": ", чтобы подтвердить вашу электронную почту"
+    }
+  },
   "navbar": {
     "home": "Home",
     "about": "About",
