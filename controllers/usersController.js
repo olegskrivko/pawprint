@@ -48,16 +48,10 @@ module.exports.register = async (req, res, next) => {
       const transporter = nodemailer.createTransport({
         service: 'smtpout.secureserver.net',
         port: 465,
-        debug: true,
         secure: true, // upgrade later with STARTTLS
-        secureConnection: false,
-        tls: {
-          ciphers: 'SSLv3',
-        },
-        requireTLS: true,
         auth: {
-          user: process.env.EMAIL_USERNAME_INFO, // Replace with your Gmail address
-          pass: process.env.EMAIL_PASSWORD_INFO, // Replace with your Gmail password
+          user: process.env.APP_EMAIL_USERNAME, // Replace with your Gmail address
+          pass: process.env.APP_EMAIL_PASSWORD, // Replace with your Gmail password
         },
       });
       console.log('transporter', transporter);
@@ -373,29 +367,22 @@ module.exports.emailVerificationLink = async (req, res) => {
 
     const transporter = nodemailer.createTransport({
       service: 'smtpout.secureserver.net',
-      port: 465,
-      debug: true,
-      secure: true, // upgrade later with STARTTLS
-      secureConnection: false,
-      tls: {
-        ciphers: 'SSLv3',
-      },
-      requireTLS: true,
+      port: 465, // Port for secure SMTP (e.g., 465 for SSL)
+      secure: true, // Use SSL // upgrade later with STARTTLS ???
       auth: {
-        user: process.env.EMAIL_USERNAME_INFO, // Replace with your Gmail address
-        pass: process.env.EMAIL_PASSWORD_INFO, // Replace with your Gmail password
+        user: process.env.APP_EMAIL_USERNAME, // Replace with your Gmail address
+        pass: process.env.APP_EMAIL_PASSWORD, // Replace with your Gmail password
       },
     });
-    console.log('transporter', transporter);
 
     // Define the email options
     const mailOptions = {
-      from: process.env.EMAIL_USERNAME_INFO, // Replace with your Gmail address
+      from: process.env.APP_EMAIL_USERNAME, // Replace with your Gmail address
       to: user.email, // Replace with the recipient's email address
       subject: 'Test Email',
-      text: `Hello from Nodemailer! ${verificationLink}`,
+      text: `Hello from PawClix! ${verificationLink}`,
     };
-    console.log('mailOptions', mailOptions);
+    //console.log('mailOptions', mailOptions);
 
     // Send the email
     transporter.sendMail(mailOptions, (error, info) => {
