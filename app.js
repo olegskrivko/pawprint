@@ -165,35 +165,6 @@ app.get('/example', (req, res, next) => {
   next(err);
 });
 
-// const transporter = nodemailer.createTransport({
-//   host: 'smtpout.secureserver.net',
-//   port: 587, // Port for secure SMTP (e.g., 465 for SSL)
-//   secure: false, // Use SSL
-//   auth: {
-//     user: process.env.EMAIL_APP,
-//     pass: process.env.EMAIL_APP_PASS,
-//   },
-// });
-// console.log('transporter---:', transporter);
-// // Define the email options
-// const mailOptions = {
-//   from: process.env.EMAIL_APP, // Replace with your Gmail address
-//   to: 'olegs.krivko@gmail.com', // Replace with the recipient's email address
-//   subject: 'Test Email',
-//   text: `Hello from Nodemailer!`,
-// };
-
-// // console.log('mailOptions', mailOptions);
-
-// // Send the email
-// transporter.sendMail(mailOptions, (error, info) => {
-//   if (error) {
-//     console.error('Error sending email:', error);
-//   } else {
-//     console.log('Email sent:', info.response);
-//   }
-// });
-
 // Error handling middleware
 app.use((err, req, res, next) => {
   let statusCode = err.statusCode || 500;
