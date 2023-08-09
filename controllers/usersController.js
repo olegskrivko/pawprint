@@ -36,15 +36,6 @@ module.exports.register = async (req, res, next) => {
       const verificationLink = `https://pawclix.cyclic.app/auth/verify/${verificationToken}`;
 
       // Create a transporter using SMTP
-      // const transporter = nodemailer.createTransport({
-      //   service: 'gmail',
-      //   port: 587,
-      //   secure: false, // upgrade later with STARTTLS
-      //   auth: {
-      //     user: process.env.EMAIL_USERNAME, // Replace with your Gmail address
-      //     pass: process.env.EMAIL_PASSWORD, // Replace with your Gmail password
-      //   },
-      // });
       const transporter = nodemailer.createTransport({
         service: 'gmail',
         port: 587,
@@ -60,8 +51,8 @@ module.exports.register = async (req, res, next) => {
       const mailOptions = {
         from: process.env.APP_EMAIL_USERNAME, // Replace with your Gmail address
         to: email, // Replace with the recipient's email address
-        subject: 'Test Email',
-        text: `Hello from Nodemailer! ${verificationLink}`,
+        subject: 'Verify Your Email Address for Pawclix',
+        text: `Welcome to Pawclix!\nThank you for registering on Pawclix!\nPlease verify your email by clicking the link below!\n${verificationLink}`,
       };
 
       // Send the email
@@ -379,8 +370,8 @@ module.exports.emailVerificationLink = async (req, res) => {
     const mailOptions = {
       from: process.env.APP_EMAIL_USERNAME, // Replace with your Gmail address
       to: user.email, // Replace with the recipient's email address
-      subject: 'Test Email',
-      text: `Hello from PawClix! ${verificationLink}`,
+      subject: 'Verify Your Email Address for Pawclix',
+      text: `We're excited to have you join PawClix!\nPlease verify your email by clicking the link below!\n${verificationLink}`,
     };
     console.log('mailOptions', mailOptions);
 
