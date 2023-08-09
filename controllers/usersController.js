@@ -46,7 +46,7 @@ module.exports.register = async (req, res, next) => {
       //   },
       // });
       const transporter = nodemailer.createTransport({
-        service: process.env.APP_EMAIL_HOST,
+        service: 'smtp.gmail.com',
         //service: 'smtpout.secureserver.net', probably for localhost
         port: 587,
         secure: false, // upgrade later with STARTTLS
@@ -54,7 +54,6 @@ module.exports.register = async (req, res, next) => {
           user: process.env.APP_EMAIL_USERNAME, // Replace with your Gmail address
           pass: process.env.APP_EMAIL_PASSWORD, // Replace with your Gmail password
         },
-        debug: true, // Add this line to enable debugging
       });
       console.log('transporter', transporter);
 
@@ -368,14 +367,13 @@ module.exports.emailVerificationLink = async (req, res) => {
     // });
 
     const transporter = nodemailer.createTransport({
-      service: process.env.APP_EMAIL_HOST,
+      service: 'smtp.gmail.com',
       port: 587, // Port for secure SMTP (e.g., 465 for SSL)
       secure: false, // Use SSL // upgrade later with STARTTLS ???
       auth: {
         user: process.env.APP_EMAIL_USERNAME, // Replace with your Gmail address
         pass: process.env.APP_EMAIL_PASSWORD, // Replace with your Gmail password
       },
-      debug: true, // Add this line to enable debugging
     });
 
     // Define the email options
