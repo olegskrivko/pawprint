@@ -383,7 +383,7 @@ module.exports.emailVerificationLink = async (req, res) => {
       subject: 'Test Email',
       text: `Hello from PawClix! ${verificationLink}`,
     };
-    //console.log('mailOptions', mailOptions);
+    console.log('mailOptions', mailOptions);
 
     // Send the email
     transporter.sendMail(mailOptions, (error, info) => {

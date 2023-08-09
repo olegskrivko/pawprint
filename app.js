@@ -18,7 +18,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const i18n = require('i18n');
 const cookieParser = require('cookie-parser');
 const ExpressError = require('./utils/ExpressError');
-
+const nodemailer = require('nodemailer');
 // Import routes
 const homeRoutes = require('./routes/homeRoutes');
 const userRoutes = require('./routes/userRoutes');
@@ -163,6 +163,35 @@ app.get('/OneSignalSDKWorker.js', (req, res) => {
 //   // Throw a custom error
 //   const err = new ExpressError('Custom error message', 400);
 //   next(err);
+// });
+
+// const transporter = nodemailer.createTransport({
+//   host: process.env.APP_EMAIL_HOST,
+//   port: 465, // Port for secure SMTP (e.g., 465 for SSL)
+//   secure: true, // Use SSL
+//   auth: {
+//     user: process.env.APP_EMAIL_USERNAME,
+//     pass: process.env.APP_EMAIL_PASSWORD,
+//   },
+// });
+// console.log('transporter---:', transporter);
+// // Define the email options
+// const mailOptions = {
+//   from: process.env.APP_EMAIL_USERNAME, // Replace with your Gmail address
+//   to: 'olegs.krivko@gmail.com', // Replace with the recipient's email address
+//   subject: 'Test Email',
+//   text: `Hello from Nodemailer!`,
+// };
+
+// console.log('mailOptions', mailOptions);
+
+// // Send the email
+// transporter.sendMail(mailOptions, (error, info) => {
+//   if (error) {
+//     console.error('Error sending email:', error);
+//   } else {
+//     console.log('Email sent:', info.response);
+//   }
 // });
 
 // Error handling middleware
