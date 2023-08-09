@@ -56,41 +56,41 @@ module.exports.sendFeedback = async (req, res) => {
     // Verify reCAPTCHA response
     const isCaptchaValid = await verifyCaptcha(recaptchaResponse);
 
-    if (!isCaptchaValid) {
-      req.flash('error', 'Please complete the reCAPTCHA to submit the form.');
-      return res.redirect('back');
-    }
+    // if (!isCaptchaValid) {
+    //   req.flash('error', 'Please complete the reCAPTCHA to submit the form.');
+    //   return res.redirect('back');
+    // }
 
-    // Create a transporter using SMTP
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      port: 587,
-      secure: false, // upgrade later with STARTTLS
-      auth: {
-        user: process.env.EMAIL_USERNAME,
-        pass: process.env.EMAIL_PASSWORD,
-      },
-    });
+    // // Create a transporter using SMTP
+    // const transporter = nodemailer.createTransport({
+    //   service: 'gmail',
+    //   port: 587,
+    //   secure: false, // upgrade later with STARTTLS
+    //   auth: {
+    //     user: process.env.EMAIL_USERNAME,
+    //     pass: process.env.EMAIL_PASSWORD,
+    //   },
+    // });
 
-    // Define the email options
-    const mailOptions = {
-      from: process.env.EMAIL_USERNAME,
-      to: process.env.EMAIL_APP,
-      subject: subject,
-      text: `From ${firstname} ${lastname}\n${description}`,
-    };
+    // // Define the email options
+    // const mailOptions = {
+    //   from: process.env.EMAIL_USERNAME,
+    //   to: process.env.EMAIL_APP,
+    //   subject: subject,
+    //   text: `From ${firstname} ${lastname}\n${description}`,
+    // };
 
-    // Send the email
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.error('Error sending email:', error);
-        req.flash('error', 'An error occurred while sending the email.');
-      } else {
-        console.log('Email sent:', info.response);
-        req.flash('success', 'Thank you! Your message has been sent successfully.');
-      }
-      res.redirect('back');
-    });
+    // // Send the email
+    // transporter.sendMail(mailOptions, (error, info) => {
+    //   if (error) {
+    //     console.error('Error sending email:', error);
+    //     req.flash('error', 'An error occurred while sending the email.');
+    //   } else {
+    //     console.log('Email sent:', info.response);
+    //     req.flash('success', 'Thank you! Your message has been sent successfully.');
+    //   }
+    //   res.redirect('back');
+    // });
   } catch (err) {
     console.error('Error sending feedback:', err);
     req.flash('error', 'An error occurred while sending the feedback.');
