@@ -36,15 +36,31 @@ module.exports.register = async (req, res, next) => {
       const verificationLink = `https://pawclix.cyclic.app/auth/verify/${verificationToken}`;
 
       // Create a transporter using SMTP
+      // const transporter = nodemailer.createTransport({
+      //   service: 'gmail',
+      //   port: 587,
+      //   secure: false, // upgrade later with STARTTLS
+      //   auth: {
+      //     user: process.env.EMAIL_USERNAME, // Replace with your Gmail address
+      //     pass: process.env.EMAIL_PASSWORD, // Replace with your Gmail password
+      //   },
+      // });
       const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        port: 587,
-        secure: false, // upgrade later with STARTTLS
+        service: 'smtp.secureserver.net',
+        port: 465,
+        debug: true,
+        secure: true, // upgrade later with STARTTLS
+        secureConnection: false,
+        tls: {
+          ciphers: 'SSLv3',
+        },
+        requireTLS: true,
         auth: {
-          user: process.env.EMAIL_USERNAME, // Replace with your Gmail address
-          pass: process.env.EMAIL_PASSWORD, // Replace with your Gmail password
+          user: process.env.EMAIL_USERNAME_INFO, // Replace with your Gmail address
+          pass: process.env.EMAIL_PASSWORD_INFO, // Replace with your Gmail password
         },
       });
+      console.log('transporter', transporter);
 
       // Define the email options
       const mailOptions = {
@@ -345,23 +361,41 @@ module.exports.emailVerificationLink = async (req, res) => {
     const verificationLink = `https://pawclix.cyclic.app/auth/verify/${verificationToken}`;
 
     // Create a transporter using SMTP
+    // const transporter = nodemailer.createTransport({
+    //   service: 'gmail',
+    //   port: 587,
+    //   secure: false, // upgrade later with STARTTLS
+    //   auth: {
+    //     user: process.env.EMAIL_USERNAME, // Replace with your Gmail address
+    //     pass: process.env.EMAIL_PASSWORD, // Replace with your Gmail password
+    //   },
+    // });
+
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      port: 587,
-      secure: false, // upgrade later with STARTTLS
+      service: 'smtp.secureserver.net',
+      port: 465,
+      debug: true,
+      secure: true, // upgrade later with STARTTLS
+      secureConnection: false,
+      tls: {
+        ciphers: 'SSLv3',
+      },
+      requireTLS: true,
       auth: {
-        user: process.env.EMAIL_USERNAME, // Replace with your Gmail address
-        pass: process.env.EMAIL_PASSWORD, // Replace with your Gmail password
+        user: process.env.EMAIL_USERNAME_INFO, // Replace with your Gmail address
+        pass: process.env.EMAIL_PASSWORD_INFO, // Replace with your Gmail password
       },
     });
+    console.log('transporter', transporter);
 
     // Define the email options
     const mailOptions = {
-      from: process.env.EMAIL_USERNAME, // Replace with your Gmail address
+      from: process.env.EMAIL_USERNAME_INFO, // Replace with your Gmail address
       to: user.email, // Replace with the recipient's email address
       subject: 'Test Email',
       text: `Hello from Nodemailer! ${verificationLink}`,
     };
+    console.log('mailOptions', mailOptions);
 
     // Send the email
     transporter.sendMail(mailOptions, (error, info) => {
