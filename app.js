@@ -165,34 +165,34 @@ app.get('/example', (req, res, next) => {
   next(err);
 });
 
-const transporter = nodemailer.createTransport({
-  service: 'smtp.office365.com',
-  port: 587, // Port for secure SMTP (e.g., 465 for SSL)
-  secure: true, // Use SSL
-  auth: {
-    user: process.env.APP_EMAIL_USERNAME_PROD,
-    pass: process.env.APP_EMAIL_PASSWORD_PROD,
-  },
-});
-console.log('transporter---:', transporter);
-// Define the email options
-const mailOptions = {
-  from: process.env.APP_EMAIL_USERNAME_PROD, // Replace with your Gmail address
-  to: 'olegs.krivko@gmail.com', // Replace with the recipient's email address
-  subject: 'Test Email',
-  text: `Hello from Nodemailer!`,
-};
+// const transporter = nodemailer.createTransport({
+//   service: 'gmail',
+//   port: 587, // Port for secure SMTP (e.g., 465 for SSL)
+//   secure: true, // Use SSL
+//   auth: {
+//     user: process.env.APP_EMAIL_USERNAME,
+//     pass: process.env.APP_EMAIL_PASSWORD,
+//   },
+// });
+// console.log('transporter---:', transporter);
+// // Define the email options
+// const mailOptions = {
+//   from: process.env.APP_EMAIL_USERNAME, // Replace with your Gmail address
+//   to: 'olegs.krivko@gmail.com', // Replace with the recipient's email address
+//   subject: 'Test Email',
+//   text: `Hello from Nodemailer!`,
+// };
 
-// console.log('mailOptions', mailOptions);
+// // console.log('mailOptions', mailOptions);
 
-// Send the email
-transporter.sendMail(mailOptions, (error, info) => {
-  if (error) {
-    console.error('Error sending email:', error);
-  } else {
-    console.log('Email sent:', info.response);
-  }
-});
+// // Send the email
+// transporter.sendMail(mailOptions, (error, info) => {
+//   if (error) {
+//     console.error('Error sending email:', error);
+//   } else {
+//     console.log('Email sent:', info.response);
+//   }
+// });
 
 // Error handling middleware
 app.use((err, req, res, next) => {

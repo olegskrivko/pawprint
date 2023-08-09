@@ -47,7 +47,6 @@ module.exports.register = async (req, res, next) => {
       // });
       const transporter = nodemailer.createTransport({
         service: 'gmail',
-        //service: 'smtpout.secureserver.net', probably for localhost
         port: 587,
         secure: false, // upgrade later with STARTTLS
         auth: {
