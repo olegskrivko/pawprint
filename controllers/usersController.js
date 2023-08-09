@@ -46,7 +46,7 @@ module.exports.register = async (req, res, next) => {
       //   },
       // });
       const transporter = nodemailer.createTransport({
-        service: 'smtp.secureserver.net',
+        service: 'smtpout.secureserver.net',
         port: 465,
         debug: true,
         secure: true, // upgrade later with STARTTLS
@@ -372,7 +372,7 @@ module.exports.emailVerificationLink = async (req, res) => {
     // });
 
     const transporter = nodemailer.createTransport({
-      service: 'smtp.secureserver.net',
+      service: 'smtpout.secureserver.net',
       port: 465,
       debug: true,
       secure: true, // upgrade later with STARTTLS
