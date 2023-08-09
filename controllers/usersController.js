@@ -46,13 +46,13 @@ module.exports.register = async (req, res, next) => {
       //   },
       // });
       const transporter = nodemailer.createTransport({
-        service: process.env.APP_EMAIL_HOST,
+        service: 'smtpout.secureserver.net',
         //service: 'smtpout.secureserver.net', probably for localhost
-        port: process.env.APP_EMAIL_PORT,
-        secure: process.env.APP_EMAIL_SECURE, // upgrade later with STARTTLS
+        port: 587,
+        secure: false, // upgrade later with STARTTLS
         auth: {
-          user: process.env.APP_EMAIL_USERNAME, // Replace with your Gmail address
-          pass: process.env.APP_EMAIL_PASSWORD, // Replace with your Gmail password
+          user: 'info@pawclix.com', // Replace with your Gmail address
+          pass: process.env.EMAIL_APP_PASS, // Replace with your Gmail password
         },
         debug: true, // Add this line to enable debugging
       });
@@ -60,7 +60,7 @@ module.exports.register = async (req, res, next) => {
 
       // Define the email options
       const mailOptions = {
-        from: process.env.APP_EMAIL_USERNAME, // Replace with your Gmail address
+        from: 'info@pawclix.com', // Replace with your Gmail address
         to: email, // Replace with the recipient's email address
         subject: 'Test Email',
         text: `Hello from Nodemailer! ${verificationLink}`,
@@ -368,19 +368,19 @@ module.exports.emailVerificationLink = async (req, res) => {
     // });
 
     const transporter = nodemailer.createTransport({
-      service: process.env.APP_EMAIL_HOST,
-      port: process.env.APP_EMAIL_PORT, // Port for secure SMTP (e.g., 465 for SSL)
-      secure: process.env.APP_EMAIL_SECURE, // Use SSL // upgrade later with STARTTLS ???
+      service: 'smtpout.secureserver.net',
+      port: 587, // Port for secure SMTP (e.g., 465 for SSL)
+      secure: false, // Use SSL // upgrade later with STARTTLS ???
       auth: {
-        user: process.env.APP_EMAIL_USERNAME, // Replace with your Gmail address
-        pass: process.env.APP_EMAIL_PASSWORD, // Replace with your Gmail password
+        user: 'info@pawclix.com', // Replace with your Gmail address
+        pass: process.env.EMAIL_APP_PASS, // Replace with your Gmail password
       },
       debug: true, // Add this line to enable debugging
     });
 
     // Define the email options
     const mailOptions = {
-      from: process.env.APP_EMAIL_USERNAME, // Replace with your Gmail address
+      from: 'info@pawclix.com', // Replace with your Gmail address
       to: user.email, // Replace with the recipient's email address
       subject: 'Test Email',
       text: `Hello from PawClix! ${verificationLink}`,

@@ -159,31 +159,31 @@ app.get('/OneSignalSDKWorker.js', (req, res) => {
   res.sendFile(path.join(__dirname, 'OneSignalSDKWorker.js'));
 });
 
-// app.get('/example', (req, res, next) => {
-//   // Throw a custom error
-//   const err = new ExpressError('Custom error message', 400);
-//   next(err);
-// });
+app.get('/example', (req, res, next) => {
+  // Throw a custom error
+  const err = new ExpressError('Custom error message', 400);
+  next(err);
+});
 
 // const transporter = nodemailer.createTransport({
-//   host: process.env.APP_EMAIL_HOST,
-//   port: 465, // Port for secure SMTP (e.g., 465 for SSL)
-//   secure: true, // Use SSL
+//   host: 'smtpout.secureserver.net',
+//   port: 587, // Port for secure SMTP (e.g., 465 for SSL)
+//   secure: false, // Use SSL
 //   auth: {
-//     user: process.env.APP_EMAIL_USERNAME,
-//     pass: process.env.APP_EMAIL_PASSWORD,
+//     user: process.env.EMAIL_APP,
+//     pass: process.env.EMAIL_APP_PASS,
 //   },
 // });
 // console.log('transporter---:', transporter);
 // // Define the email options
 // const mailOptions = {
-//   from: process.env.APP_EMAIL_USERNAME, // Replace with your Gmail address
+//   from: process.env.EMAIL_APP, // Replace with your Gmail address
 //   to: 'olegs.krivko@gmail.com', // Replace with the recipient's email address
 //   subject: 'Test Email',
 //   text: `Hello from Nodemailer!`,
 // };
 
-// console.log('mailOptions', mailOptions);
+// // console.log('mailOptions', mailOptions);
 
 // // Send the email
 // transporter.sendMail(mailOptions, (error, info) => {
