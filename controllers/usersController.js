@@ -46,7 +46,7 @@ module.exports.register = async (req, res, next) => {
       //   },
       // });
       const transporter = nodemailer.createTransport({
-        service: 'smtp.pawclix.com',
+        service: process.env.APP_EMAIL_HOST,
         //service: 'smtpout.secureserver.net', probably for localhost
         port: 465,
         secure: true, // upgrade later with STARTTLS
@@ -367,7 +367,7 @@ module.exports.emailVerificationLink = async (req, res) => {
     // });
 
     const transporter = nodemailer.createTransport({
-      service: 'smtp.smtpout.pawclix.com',
+      service: process.env.APP_EMAIL_HOST,
       port: 465, // Port for secure SMTP (e.g., 465 for SSL)
       secure: true, // Use SSL // upgrade later with STARTTLS ???
       auth: {
