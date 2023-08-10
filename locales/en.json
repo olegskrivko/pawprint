@@ -1167,6 +1167,41 @@
       "remove": "Remove"
     }
   },
+  "petsShowPage": {
+    "buttons": {
+      "send": "Send",
+      "show": "Show",
+      "location": "Location",
+      "share": "Share",
+      "download": "Download",
+      "copyLink": "Copy Link",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "placeholder": {
+      "addComment": "Add comment..."
+    },
+    "titles": {
+      "petStatus": "Pet Status:",
+      "petSpecies": "Species:",
+      "petLastSeen": "Last Seen:",
+      "petBreed": "Breed:",
+      "petGender": "Pet's Gender:",
+      "petSize": "Pet's Size:",
+      "petAge": "Age:",
+      "petCoatPattern": "Coat Pattern:",
+      "spotColor": "Spot Color:",
+      "stripeColor": "Stripe Color:",
+      "petColor1": "First Color:",
+      "petColor2": "Second Color:",
+      "petColor3": "Third Color:",
+      "petCoatType": "Coat Type:",
+      "petIdentifier": "Identifier:",
+      "petDescription": "Description:",
+      "petDistance": "Distance (km):",
+      "petViews": "views"
+    }
+  },
   "navbar": {
     "home": "Home",
     "about": "About",

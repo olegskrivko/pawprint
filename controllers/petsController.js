@@ -266,6 +266,8 @@ module.exports.showPet = async (req, res) => {
   try {
     // Retrieve the pet from the database
     // REPLACE petsshow to NEW petsShowPage
+
+    const petsShowPage = req.__('petsShowPage');
     const petsshow = req.__('petsshow');
     const petId = req.params.id;
 
@@ -314,6 +316,8 @@ module.exports.showPet = async (req, res) => {
       createDateInWords,
       updateDateInWords,
       lostDateInWords,
+      petsShowPage,
+      // delete this
       petsshow,
     });
   } catch (error) {

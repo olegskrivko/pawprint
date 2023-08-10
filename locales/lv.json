@@ -1167,6 +1167,42 @@
       "remove": "Noņemt"
     }
   },
+
+  "petsShowPage": {
+    "buttons": {
+      "send": "Sūtīt",
+      "show": "Rādīt",
+      "location": "Atrašanās vieta",
+      "share": "Dalīties",
+      "download": "Lejupielādēt",
+      "copyLink": "Kopēt saiti",
+      "edit": "Rediģēt",
+      "delete": "Dzēst"
+    },
+    "placeholder": {
+      "addComment": "Pievienot komentāru..."
+    },
+    "titles": {
+      "petStatus": "Dzīvnieka stāvoklis:",
+      "petSpecies": "Suga:",
+      "petLastSeen": "Pēdējo reizi redzēts:",
+      "petBreed": "Šķirne:",
+      "petGender": "Dzīvnieka dzimums:",
+      "petSize": "Dzīvnieka izmērs:",
+      "petAge": "Vecums:",
+      "petCoatPattern": "Mētelīša raksts:",
+      "spotColor": "Plankumu krāsa:",
+      "stripeColor": "Strīpu krāsa:",
+      "petColor1": "Pirmais krāsa:",
+      "petColor2": "Otrais krāsa:",
+      "petColor3": "Trešā krāsa:",
+      "petCoatType": "Mētelīša tips:",
+      "petIdentifier": "Identifikators:",
+      "petDescription": "Apraksts:",
+      "petDistance": "Attālums (km):",
+      "petViews": "skatījumi"
+    }
+  },
   "navbar": {
     "home": "Home",
     "about": "About",

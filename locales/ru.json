@@ -1168,6 +1168,42 @@
       "remove": "Удалить"
     }
   },
+
+  "petsShowPage": {
+    "buttons": {
+      "send": "Отправить",
+      "show": "Показать",
+      "location": "Местоположение",
+      "share": "Поделиться",
+      "download": "Скачать",
+      "copyLink": "Копировать ссылку",
+      "edit": "Редактировать",
+      "delete": "Удалить"
+    },
+    "placeholder": {
+      "addComment": "Добавить комментарий..."
+    },
+    "titles": {
+      "petStatus": "Статус питомца:",
+      "petSpecies": "Вид:",
+      "petLastSeen": "Последний раз видели:",
+      "petBreed": "Порода:",
+      "petGender": "Пол питомца:",
+      "petSize": "Размер питомца:",
+      "petAge": "Возраст:",
+      "petCoatPattern": "Рисунок шерсти:",
+      "spotColor": "Цвет пятен:",
+      "stripeColor": "Цвет полос:",
+      "petColor1": "Первый цвет:",
+      "petColor2": "Второй цвет:",
+      "petColor3": "Третий цвет:",
+      "petCoatType": "Тип шерсти:",
+      "petIdentifier": "Идентификатор:",
+      "petDescription": "Описание:",
+      "petDistance": "Расстояние (км):",
+      "petViews": "просмотров"
+    }
+  },
   "navbar": {
     "home": "Home",
     "about": "About",
