@@ -269,6 +269,16 @@
             <i class="bi bi-geo-alt-fill"></i>
           </span>       
           <select class="form-select" id="region" name="selectedRegion">
+
+            
+
+            <!-- < locationByRegion.county.forEach(option => { %>
+              <option value="<= option.value %>">
+                <= option.text %>
+              </option>
+            < }); %> -->
+
+            
             <option value="<%= selectOptions.region.all[0].value %>"><%= selectOptions.region.all[0].text %></option>
             <optgroup label="City">
             <% selectOptions.region.city.forEach(option => { %>
@@ -284,10 +294,13 @@
               </option>
             <% }); %>
           </optgroup>
+
+
+
           </select>
       </div>
     </div>
-
+ 
 <!-- Lost Date -->
       <div class="col-md-3">
         <label class="form-label" for="lostdate"><%= petsPage.labels.petLostOrFoundDate %></label>

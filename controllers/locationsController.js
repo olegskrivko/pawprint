@@ -1,20 +1,22 @@
-const Location = require("../models/location");
+const Location = require('../models/location');
 
 // Get a specific region
 module.exports.getRegion = async (req, res) => {
   const regionName = req.params.regionName;
+  console.log('bbbbbbbbb', req.params);
+  console.log('aaaaaaaaaaaaaaa', regionName);
 
   try {
     const region = await Location.findOne({ region: regionName });
-
+    console.log('region', region.geometry);
     if (!region) {
-      return res.status(404).json({ message: "Region not found" });
+      return res.status(404).json({ message: 'Region not found' });
     }
 
     res.json(region.geometry);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Internal server error" });
+    res.status(500).json({ message: 'Internal server error' });
   }
 };
 
@@ -34,6 +36,6 @@ module.exports.createRegion = async (req, res) => {
     res.status(201).json(savedLocation);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Failed to create region" });
+    res.status(500).json({ message: 'Failed to create region' });
   }
 };

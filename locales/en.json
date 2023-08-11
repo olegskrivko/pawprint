@@ -1697,6 +1697,148 @@
       }
     ]
   },
+  "countryRegionOptions": {
+    "Latvia": {
+      "county": [
+        {
+          "value": "Riga",
+          "text": "Riga"
+        },
+        {
+          "value": "Daugavpils",
+          "text": "Daugavpils"
+        },
+        {
+          "value": "Jelgava",
+          "text": "Jelgava"
+        },
+        {
+          "value": "Jurmala",
+          "text": "Jurmala"
+        },
+        {
+          "value": "Liepaja",
+          "text": "Liepaja"
+        },
+        {
+          "value": "Rezekne",
+          "text": "Rezekne"
+        },
+        {
+          "value": "Valmiera",
+          "text": "Valmiera"
+        },
+        {
+          "value": "Ventspils",
+          "text": "Ventspils"
+        }
+      ]
+    },
+    "Lithuania": {
+      "county": [
+        {
+          "value": "Alytus County",
+          "text": "Alytus County"
+        },
+        {
+          "value": "Kaunas County",
+          "text": "Kaunas County"
+        },
+        {
+          "value": "Klaipėda County",
+          "text": "Klaipėda County"
+        },
+        {
+          "value": "Marijampolė County",
+          "text": "Marijampolė County"
+        },
+        {
+          "value": "Panevėžys County",
+          "text": "Panevėžys County"
+        },
+        {
+          "value": "Šiauliai County",
+          "text": "Šiauliai County"
+        },
+        {
+          "value": "Tauragė County",
+          "text": "Tauragė County"
+        },
+        {
+          "value": "Telšiai County",
+          "text": "Telšiai County"
+        },
+        {
+          "value": "Utena County",
+          "text": "Utena County"
+        }
+      ]
+    },
+    "Estonia": {
+      "county": [
+        {
+          "value": "Harju County",
+          "text": "Harju County"
+        },
+        {
+          "value": "Hiiu County",
+          "text": "Hiiu County"
+        },
+        {
+          "value": "Ida-Viru County",
+          "text": "Ida-Viru County"
+        },
+        {
+          "value": "Jõgeva County",
+          "text": "Jõgeva County"
+        },
+        {
+          "value": "Järva County",
+          "text": "Järva County"
+        },
+        {
+          "value": "Lääne County",
+          "text": "Lääne County"
+        },
+        {
+          "value": "Lääne-Viru County",
+          "text": "Lääne-Viru County"
+        },
+        {
+          "value": "Põlva County",
+          "text": "Põlva County"
+        },
+        {
+          "value": "Pärnu County",
+          "text": "Pärnu County"
+        },
+        {
+          "value": "Rapla County",
+          "text": "Rapla County"
+        },
+        {
+          "value": "Saare County",
+          "text": "Saare County"
+        },
+        {
+          "value": "Tartu County",
+          "text": "Tartu County"
+        },
+        {
+          "value": "Valga County",
+          "text": "Valga County"
+        },
+        {
+          "value": "Viljandi County",
+          "text": "Viljandi County"
+        },
+        {
+          "value": "Võru County",
+          "text": "Võru County"
+        }
+      ]
+    }
+  },
   "breedsOptions": {
     "all": [
       {
