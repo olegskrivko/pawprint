@@ -3,6 +3,7 @@ const Pet = require('../models/pet');
 
 module.exports.renderUserWatchlist = async (req, res) => {
   try {
+    const profileTabs = req.__('profileTabs');
     const watchlistPage = req.__('watchlistPage');
     // Retrieve the user's watchlist from the database
     const watchlist = req.user.watchlist;
@@ -10,7 +11,7 @@ module.exports.renderUserWatchlist = async (req, res) => {
     const pets = await Pet.find({ _id: { $in: watchlist } });
 
     // Render the watchlist page with the watchlist data
-    res.render('user/watchlist', { pets, watchlistPage });
+    res.render('user/watchlist', { pets, watchlistPage, profileTabs });
   } catch (error) {
     // Log the error for debugging purposes
     console.error('Error rendering account watchlist:', error);

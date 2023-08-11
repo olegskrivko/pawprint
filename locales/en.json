@@ -98,7 +98,6 @@
   "petsPage": {
     "buttons": {
       "filters": "Filters",
-      "reportPet": "Report Pet",
       "search": "Search",
       "clear": "Clear",
       "compare": "Compare"
@@ -119,9 +118,6 @@
     }
   },
   "servicesPage": {
-    "buttons": {
-      "addService": "Add Service"
-    },
     "titles": {
       "section1": "Services"
     }
@@ -1155,7 +1151,8 @@
       "section2": "List is empty"
     },
     "buttons": {
-      "remove": "Remove"
+      "remove": "Remove",
+      "reportPet": "Report Pet"
     }
   },
   "userServicesPage": {
@@ -1164,7 +1161,8 @@
       "section2": "List is empty"
     },
     "buttons": {
-      "remove": "Remove"
+      "remove": "Remove",
+      "addService": "Add Service"
     }
   },
   "petsShowPage": {
@@ -1200,6 +1198,15 @@
       "petDescription": "Description:",
       "petDistance": "Distance (km):",
       "petViews": "views"
+    }
+  },
+  "profileTabs": {
+    "buttons": {
+      "profile": "Profile",
+      "followedPets": "Followed Pets",
+      "followedServices": "Followed Services",
+      "myPets": "My Pets",
+      "myServices": "My Services"
     }
   },
   "navbar": {
@@ -2211,5 +2218,27 @@
     "veterinary-services": "Veterinary Services",
     "pet-insurance": "Pet Insurance",
     "legal-services": "Legal Services"
+  },
+  "servicesDescription": {
+    "animal-shelters": { "title": "Animal Shelters", "description": "Dedicated shelters that provide temporary homes and care for abandoned or stray animals until they can be adopted." },
+    "cat-cafe": { "title": "Cat Cafe", "description": "Cafes or establishments where customers can enjoy a beverage and interact with resident cats in a relaxed environment." },
+    "dog-walking": { "title": "Dog Walking", "description": "Professional dog walkers who provide exercise and companionship for dogs during regular walks." },
+    "pet-art": { "title": "Pet Art", "description": "Artists or businesses that create customized portraits and crafts inspired by pets." },
+    "pet-boarding": { "title": "Pet Boarding", "description": "Facilities or services that offer temporary boarding and care for pets when their owners are away." },
+    "pet-burial-services": { "title": "Pet Burial Services", "description": "Services that offer respectful and compassionate handling of pet burials and cremations." },
+    "pet-expo": { "title": "Pet Expo", "description": "Exhibitions and events dedicated to showcasing various pet-related products, services, and activities." },
+    "pet-friendly-accommodation": { "title": "Pet Friendly Accommodation", "description": "Hotels, vacation rentals, or accommodations that welcome pets and provide suitable amenities and services for them." },
+    "pet-friendly-restaurants": { "title": "Pet Friendly Restaurants", "description": "Enjoy dining with your pets at these welcoming establishments." },
+    "pet-grooming": { "title": "Pet Grooming", "description": "Services that offer grooming, bathing, and styling for pets to keep them clean and well-groomed." },
+    "pet-photography": { "title": "Pet Photography", "description": "Professional photographers specializing in capturing beautiful and memorable images of pets." },
+    "pet-breeders": { "title": "Pet Breeders", "description": "Professional breeders who selectively breed and raise specific breeds or types of pets." },
+    "pet-search": { "title": "Pet Search", "description": "Organizations or services dedicated to locating lost or missing pets." },
+    "pet-sitting": { "title": "Pet Sitting", "description": "Professional pet sitters who offer in-home care and companionship for pets when their owners are away." },
+    "pet-supplies": { "title": "Pet Supplies", "description": "Stores or services that provide a wide range of pet supplies, including food, toys, and accessories." },
+    "pet-training": { "title": "Pet Training", "description": "Training programs and services to help pets develop good behavior, obedience, and social skills." },
+    "pet-transportation": { "title": "Pet Transportation", "description": "Specialized transportation services for pets, including pet taxi, relocation, and safe travel arrangements." },
+    "veterinary-services": { "title": "Veterinary Services", "description": "Medical care, health services, and treatments provided by licensed veterinarians for pets." },
+    "pet-insurance": { "title": "Pet Insurance", "description": "Insurance coverage for pets to help with medical expenses and emergencies." },
+    "legal-services": { "title": "Legal Services", "description": "Legal assistance related to pet ownership, contracts, and disputes." }
   }
 }

@@ -28,15 +28,27 @@ module.exports.index = async (req, res) => {
 
 module.exports.showService = async (req, res) => {
   try {
+    const translationMap = req.__('servicesDescription');
+    console.log('translationMap', translationMap);
     const slug = req.params.slug;
     const service = await Service.findOne({ slug }).populate('serviceProviders');
-
+    console.log('service slug', service.slug);
+    console.log('result', translationMap[service.slug]);
+    const serviceTitle = translationMap[service.slug];
     if (!service) {
       req.flash('error', 'Cannot find that service!');
       return res.redirect('/services');
     }
 
-    res.render('services/show', { service });
+    ///
+    // const translatedServices = service.map((service_item) => {
+    //   const translatedName = translationMap[service_item.slug] || service_item.name;
+    //   return { ...service_item._doc, translatedName };
+    // });
+    // console.log('translatedServices', translatedServices);
+    ////
+
+    res.render('services/show', { service, serviceTitle });
   } catch (error) {
     console.error('Error retrieving service:', error);
     req.flash('error', 'Failed to retrieve service.');

@@ -98,7 +98,6 @@
   "petsPage": {
     "buttons": {
       "filters": "Filtrs",
-      "reportPet": "Ziņot par dzīvnieku",
       "search": "Meklēt",
       "clear": "Notīrīt",
       "compare": "Salīdzināt"
@@ -119,9 +118,6 @@
     }
   },
   "servicesPage": {
-    "buttons": {
-      "addService": "Pievienot Pakalpojumu"
-    },
     "titles": {
       "section1": "Pakalpojumi"
     }
@@ -1155,7 +1151,8 @@
       "section2": "Saraksts ir tukšs"
     },
     "buttons": {
-      "remove": "Noņemt"
+      "remove": "Noņemt",
+      "reportPet": "Ziņot par dzīvnieku"
     }
   },
   "userServicesPage": {
@@ -1164,7 +1161,8 @@
       "section2": "Saraksts ir tukšs"
     },
     "buttons": {
-      "remove": "Noņemt"
+      "remove": "Noņemt",
+      "addService": "Pievienot Pakalpojumu"
     }
   },
 
@@ -1201,6 +1199,15 @@
       "petDescription": "Apraksts:",
       "petDistance": "Attālums (km):",
       "petViews": "skatījumi"
+    }
+  },
+  "profileTabs": {
+    "buttons": {
+      "profile": "Profils",
+      "followedPets": "Saglabātie Mājdzīvnieki",
+      "followedServices": "Saglabātie Pakalpojumi",
+      "myPets": "Mani Mājdzīvnieki",
+      "myServices": "Mani Pakalpojumi"
     }
   },
   "navbar": {
@@ -2240,5 +2247,25 @@
     "veterinary-services": "Veterinārās pakalpojumi",
     "pet-insurance": "Dzīvnieku apdrošināšana",
     "legal-services": "Juridiskie pakalpojumi"
-  }
+  },
+  "animal-shelters": { "title": "Dzīvnieku patversmes", "description": "Veltītas patversmes, kas nodrošina pagaidu mājas un aprūpi pamestiem vai bezpajumtniekiem dzīvniekiem, kamēr tiem netiek atrasta jauna mājas." },
+  "cat-cafe": { "title": "Kaķu kafejnīca", "description": "Kafejnīcas vai iestādes, kur klienti var baudīt dzērienu un mijiedarboties ar pastāvīgi dzīvojošiem kaķiem relaksējošā vidē." },
+  "dog-walking": { "title": "Suņu pastaigas", "description": "Profesionālie suņu pastaigu gājēji, kuri nodrošina vingrinājumu un sabiedrību suņiem regulārās pastaigās." },
+  "pet-art": { "title": "Mājas māksla", "description": "Mākslinieki vai uzņēmumi, kas veido pielāgotus portretus un amatniecību, iedvesmojoties no mājas dzīvniekiem." },
+  "pet-boarding": { "title": "Mājas dzīvnieku internāts", "description": "Iestādes vai pakalpojumi, kas piedāvā pagaidu dzīvnieku internātu un aprūpi, kad to īpašnieki ir prom." },
+  "pet-burial-services": { "title": "Dzīvnieku apbedīšanas pakalpojumi", "description": "Pakalpojumi, kas piedāvā cienīgu un līdzjūtīgu rīcību, apglabājot un krēmējot dzīvniekus." },
+  "pet-expo": { "title": "Mājas dzīvnieku izstāde", "description": "Izstādes un pasākumi, kas veltīti dažādu mājas dzīvnieku saistīto produktu, pakalpojumu un aktivitāšu demonstrēšanai." },
+  "pet-friendly-accommodation": { "title": "Dzīvnieku draudzīgs izmitināšanas", "description": "Viesnīcas, brīvdienu nomas vai izmitināšanas vietas, kas sagaida dzīvniekus un nodrošina piemērotus ērtumus un pakalpojumus tiem." },
+  "pet-friendly-restaurants": { "title": "Dzīvnieku draudzīgas restorānas", "description": "Izbaudiet ēdienreizes kopā ar savām mājdzīvniekiem šajās viesmīlīgajās iestādēs." },
+  "pet-grooming": { "title": "Mājas dzīvnieku kopšana", "description": "Pakalpojumi, kas piedāvā kopšanu, vannas un stilizāciju dzīvniekiem, lai tos noturētu tīrus un labi sakoptus." },
+  "pet-photography": { "title": "Mājas dzīvnieku fotogrāfija", "description": "Profesionāli fotogrāfi, kas specializējas skaistu un neaizmirstamu dzīvnieku attēlu uzņemšanā." },
+  "pet-breeders": { "title": "Dzīvnieku audzētāji", "description": "Profesionāli audzētāji, kas selektīvi audzē un audzina konkrētas šķirnes vai veidu dzīvniekus." },
+  "pet-search": { "title": "Dzīvnieku meklēšana", "description": "Organizācijas vai pakalpojumi, kas veltīti pazudušu vai pazušu dzīvnieku atrašanai." },
+  "pet-sitting": { "title": "Dzīvnieku sēdeklis", "description": "Profesionālie dzīvnieku sēdētāji, kas piedāvā mājas aprūpi un sabiedrību dzīvniekiem, kad to īpašnieki ir prom." },
+  "pet-supplies": { "title": "Dzīvnieku preces", "description": "Veikali vai pakalpojumi, kas piedāvā plašu klāstu no dzīvnieku barībām līdz rotaļlietām un aksesuāriem." },
+  "pet-training": { "title": "Dzīvnieku apmācība", "description": "Apmācības programmas un pakalpojumi, kas palīdz dzīvniekiem attīstīt labu uzvedību, paklausību un sociālās prasmes." },
+  "pet-transportation": { "title": "Dzīvnieku transportēšana", "description": "Speciālizētie transporta pakalpojumi dzīvniekiem, tostarp dzīvnieku taksometrs, pārvietošana un drošas ceļošanas organizēšana." },
+  "veterinary-services": { "title": "Veterinārās pakalpojumi", "description": "Medicīniskā aprūpe, veselības pakalpojumi un ārstēšana, ko nodrošina licencēti veterināri dzīvniekiem." },
+  "pet-insurance": { "title": "Dzīvnieku apdrošināšana", "description": "Apdrošināšanas segums dzīvniekiem, lai palīdzētu ar medicīniskajiem izdevumiem un ārkārtas situācijām." },
+  "legal-services": { "title": "Juridiskie pakalpojumi", "description": "Juridiskā palīdzība, saistīta ar dzīvnieku īpašumu, līgumiem un strīdiem." }
 }

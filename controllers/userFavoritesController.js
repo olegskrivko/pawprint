@@ -22,6 +22,7 @@ const Service = require('../models/service');
 // };
 
 module.exports.renderUserFavorites = async (req, res) => {
+  const profileTabs = req.__('profileTabs');
   const favoritesPage = req.__('favoritesPage');
   // Retrieve the user's favorites from the database
   const favoritesList = req.user.favorites;
@@ -29,7 +30,7 @@ module.exports.renderUserFavorites = async (req, res) => {
   const favorites = await ServiceProvider.find({ _id: { $in: favoritesList } });
 
   // Render the favorites page with the service data
-  res.render('user/favorites', { favorites, favoritesPage });
+  res.render('user/favorites', { favorites, favoritesPage, profileTabs });
 };
 
 // Controller for deleting all user account favorites items
