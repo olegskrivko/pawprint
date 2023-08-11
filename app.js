@@ -18,7 +18,6 @@ const mongoSanitize = require('express-mongo-sanitize');
 const i18n = require('i18n');
 const cookieParser = require('cookie-parser');
 const ExpressError = require('./utils/ExpressError');
-const nodemailer = require('nodemailer');
 // Import routes
 const homeRoutes = require('./routes/homeRoutes');
 const userRoutes = require('./routes/userRoutes');
@@ -30,7 +29,6 @@ const compareRoutes = require('./routes/compareRoutes');
 const commentRoutes = require('./routes/commentRoutes');
 const locationRoutes = require('./routes/locationRoutes');
 const userProfileRoutes = require('./routes/userProfileRoutes');
-// const userSettingsRoutes = require('./routes/userSettingsRoutes');
 const userWatchlistRoutes = require('./routes/userWatchlistRoutes');
 const userFavouritesRoutes = require('./routes/userFavouritesRoutes');
 const userServicesRoutes = require('./routes/userServicesRoutes');
@@ -136,13 +134,10 @@ app.use('/services/:id/serviceprovider', serviceProvidersRoutes);
 
 app.use('/regions', locationRoutes);
 app.use('/user/profile', userProfileRoutes);
-// app.use('/user/settings', userSettingsRoutes);
 app.use('/user/watchlist', userWatchlistRoutes);
 app.use('/user/favorites', userFavouritesRoutes);
 app.use('/user/services', userServicesRoutes);
 app.use('/user/pets', userPetsRoutes);
-// new route
-// app.use('/services/:id/serviceproviders', commentRoutes);
 
 // Serve manifest.json
 app.get('/manifest.json', (req, res) => {
