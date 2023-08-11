@@ -1,7 +1,7 @@
 const Pet = require('../models/pet');
 const User = require('../models/user');
 const Location = require('../models/location');
-const geoip = require('geoip-lite');
+// const geoip = require('geoip-lite');
 const { ObjectId } = require('mongoose').Types;
 const { cloudinary } = require('../cloudinary');
 // const tt = require("@tomtom-international/web-sdk-services/dist/services-node.min.js");
@@ -25,24 +25,24 @@ module.exports.index = async (req, res) => {
 
   // new added loc logic
   const userCountry = (await req.user.address.country) || 'Latvia';
-  console.log('userCountry', userCountry);
-  //const countryOpt = 'lithuania';
-  const userCountry1 = req.headers['user-country']; // If included in headers
-  console.log('userCountry1', userCountry1);
-  // or
-  const userCountry2 = req.query.country; // If included in query parameters
-  console.log('userCountry2', userCountry2);
+  // console.log('userCountry', userCountry);
+  // //const countryOpt = 'lithuania';
+  // const userCountry1 = req.headers['user-country']; // If included in headers
+  // console.log('userCountry1', userCountry1);
+  // // or
+  // const userCountry2 = req.query.country; // If included in query parameters
+  // console.log('userCountry2', userCountry2);
 
-  const ip = req.ip; // Express automatically provides the user's IP address
-  console.log('ip', ip);
-  console.log('req', req);
-  const geo = geoip.lookup(ip);
-  console.log('geo', geo);
+  // const ip = req.ip; // Express automatically provides the user's IP address
+  // console.log('ip', ip);
+  // console.log('req', req);
+  // const geo = geoip.lookup(ip);
+  // console.log('geo', geo);
 
-  if (geo && geo.country) {
-    const userCountry = geo.country;
-    console.log('aaaaaaaaaaaa user is from:', userCountry);
-  }
+  // if (geo && geo.country) {
+  //   const userCountry = geo.country;
+  //   console.log('aaaaaaaaaaaa user is from:', userCountry);
+  // }
 
   const locationByRegion = countryRegionOptions[userCountry];
   console.log('locationByRegion', locationByRegion);
