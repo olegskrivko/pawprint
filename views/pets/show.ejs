@@ -50,17 +50,14 @@
             <a class="dropdown-item dropdown-item-danger d-flex gap-2 align-items-center" id="reportpetidBtn" data-reportpetid="<%= pet._id%>" href=""><i class="bi bi-exclamation-square"></i> Report post </a>
           </li> -->
 
-          <% if (currentUser && pet.author && currentUser._id && pet.author.equals(currentUser._id)) { %>
+          <!-- < if (currentUser && pet.author && currentUser._id && pet.author.equals(currentUser._id)) { %>
           <li><hr class="dropdown-divider" /></li>
           <li>
             <a href="#" class="dropdown-item dropdown-item-danger d-flex gap-2 align-items-center" onclick="location.href='/pets/<%= pet._id%>/edit'"><i class="bi bi-pencil"></i> <%= petsShowPage.buttons.edit %></a>
           </li>
 
-          <% } %>
+          < } %> -->
 
-          <!-- <li>
-            <a class="dropdown-item dropdown-item-danger d-flex gap-2 align-items-center" href="#"><i class="bi bi-files"></i> Edit </a>
-          </li> -->
           <% if (currentUser && pet.author && currentUser._id && pet.author.equals(currentUser._id)) { %>
           <li>
             <form class="d-inline" action="/pets/<%=pet.id%>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure you want to delete this pet?');">
@@ -199,10 +196,12 @@
             <!-- <li class="list-group-item" style="text-transform: capitalize">
               <b>Pet's Name:</b> <= pet.title %>
             </li> -->
+            <li class="list-group-item"><i class="bi bi-question-diamond"></i> <b><%= petsShowPage.titles.petStatus %></b> <span id="pet-status"> <%= pet.petStatus %></span></li>
             <li class="list-group-item"><i class="bi bi-diamond-half"></i> <b><%= petsShowPage.titles.petSpecies %></b><span id="pet-species"> <%= pet.species %></span></li>
             <li class="list-group-item"><i class="bi bi-x-diamond-fill"></i> <b><%= petsShowPage.titles.petBreed %></b> <%= pet.breed %></li>
             <li class="list-group-item"><i class="bi bi-grid-3x3-gap"></i> <b><%= petsShowPage.titles.petCoatPattern %></b> <%= pet.pattern %></li>
             <li class="list-group-item"><i class="bi bi-gender-ambiguous"></i> <b><%= petsShowPage.titles.petGender %></b> <%= pet.gender %></li>
+
             <li class="list-group-item"><i class="bi bi-palette"></i> <b><%= petsShowPage.titles.petColor1 %></b> <%= pet.color[0] %></li>
             <% if (pet.color.length > 1) {%>
             <li class="list-group-item">
@@ -217,7 +216,7 @@
             <li class="list-group-item"><i class="bi bi-calendar2-heart"></i> <b><%= petsShowPage.titles.petAge %></b> <%= pet.age %></li>
             <li class="list-group-item"><i class="bi bi-wind"></i> <b><%= petsShowPage.titles.petCoatType %></b> <%= pet.coat %></li>
             <li class="list-group-item"><i class="bi bi-arrows-angle-expand"></i> <b><%= petsShowPage.titles.petSize %></b> <%= pet.size %></li>
-            <li class="list-group-item"><i class="bi bi-question-diamond"></i> <b><%= petsShowPage.titles.petStatus %></b> <span id="pet-status"> <%= pet.petStatus %></span></li>
+
             <li class="list-group-item d-none"><b>Lat: </b><span class="pet-latitude"><%=pet.latitude%></span><b>Lng: </b><span class="pet-longitude"><%=pet.longitude%></span></li>
             <li class="list-group-item"><i class="bi bi-fingerprint"></i> <b><%= petsShowPage.titles.petIdentifier %></b> <%= pet.identifier %></li>
             <li class="list-group-item">

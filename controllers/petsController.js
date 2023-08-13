@@ -186,10 +186,11 @@ module.exports.createPet = async (req, res, next) => {
     return res.redirect('/pets/new');
   }
 
-  // if (req.body.pet.petStatus === null || req.body.pet.petStatus === '' || req.body.pet.species === null || req.body.pet.species === '') {
-  //   req.flash('error', 'Please fill all necessary fields.');
-  //   return res.redirect('/pets/new');
-  // }
+  if (req.body.pet.petStatus === null || req.body.pet.petStatus === '' || req.body.pet.species === null || req.body.pet.species === '') {
+    req.flash('error', 'Please fill all necessary fields.');
+    return res.redirect('/pets/new');
+  }
+
   let colorsFormated = [];
   // Check and format the colors from the request body
   if (req.body.pet.firstcolor) {
@@ -295,7 +296,7 @@ module.exports.showPet = async (req, res) => {
   try {
     // Retrieve the pet from the database
     // REPLACE petsshow to NEW petsShowPage
-
+    const selectOptions = req.__('selectOptions');
     const petsShowPage = req.__('petsShowPage');
     const petsshow = req.__('petsshow');
     const petId = req.params.id;
@@ -338,6 +339,32 @@ module.exports.showPet = async (req, res) => {
     const lostDateInWords = fns.formatDistanceToNow(new Date(pet.lostdate), {
       addSuffix: true,
     });
+
+    // TRANSLATION FOR PET ATTRIBUTES
+
+    // Iterate through selectedPetStatus to add translated statuses
+    // selectedPetStatus.forEach((status) => {
+    //   console.log(status);
+    //   if (pet.petStatus === status.value) {
+    //     console.log(pet.petStatus);
+    //     newpets.newstatus = status.text;
+    //   }
+    // });
+
+    // const translatedPet = {};
+    pet.petStatus = selectOptions.status.find((item) => item.value === pet.petStatus)?.text || '';
+    pet.species = selectOptions.species.find((item) => item.value === pet.species)?.text || '';
+    pet.gender = selectOptions.gender.find((item) => item.value === pet.gender)?.text || '';
+    pet.color[0] = selectOptions.color.find((item) => item.value === pet.color[0])?.text || '';
+    pet.color[1] = selectOptions.color.find((item) => item.value === pet.color[1])?.text || '';
+    pet.color[2] = selectOptions.color.find((item) => item.value === pet.color[2])?.text || '';
+    pet.age = selectOptions.age.find((item) => item.value === pet.age)?.text || '';
+    pet.coat = selectOptions.coat.find((item) => item.value === pet.coat)?.text || '';
+    pet.pattern = selectOptions.pattern.find((item) => item.value === pet.pattern)?.text || '';
+    pet.size = selectOptions.size.find((item) => item.value === pet.size)?.text || '';
+    console.log('cooooloooor', pet);
+    // breeed need more logic or redo its translations .cats .dogs
+    //pet.breed = selectOptions.breed.find((item) => item.value === pet.breed)?.text || '';
 
     // Render the pet post page with the updated view count
     res.render('pets/show', {

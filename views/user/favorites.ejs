@@ -15,9 +15,20 @@
               <P><=favorite.website%></P>
             </div> -->
             <div class="d-flex text-body-secondary pt-3 border-bottom">
+              <% if (favorite.logo.length > 0) {%>
               <div class="mb-3 me-2">
                 <img src="<%= favorite.logo[0].url%>" class="img-thumbnail" alt="" width="98px" height="98px" />
               </div>
+
+              <% } else { %>
+              <div class="carousel-item active">
+                <img src="/images/icons/default-user-image.png" class="d-block w-100" alt="default user icon" />
+              </div>
+              <% } %>
+
+              <!-- <div class="mb-3 me-2">
+                <img src="<= favorite.logo[0].url%>" class="img-thumbnail" alt="" width="98px" height="98px" />
+              </div> -->
 
               <div class="pb-3 mb-0 small lh-sm w-100">
                 <div class="d-flex justify-content-between">

@@ -16,11 +16,19 @@
             <% if ( typeof userPets !== 'undefined' && userPets.length > 0) {%> <% for (let pet of userPets) { %>
 
             <div class="d-flex text-body-secondary border-bottom pt-3">
+              <% if (pet.images && pet.images[0] && pet.images[0].thumbnail && pet.images[0].thumbnail.length > 0) { %>
               <div class="mb-3 me-2">
-                <img src="<%= pet.images[0].thumbnail%>" class="img-thumbnail" alt="" width="98px" height="98px" />
-                <!-- <div class="form-check-inline">azaz</div> -->
-                <!-- <label for="image-<=i%>">Delete?</label> -->
+                <img src="<%= pet.images[0].thumbnail %>" class="img-thumbnail" alt="" width="98px" height="98px" />
               </div>
+              <% } else { %>
+              <div class="mb-3 me-2">
+                <img src="/images/icons/default-user-image.png" class="img-thumbnail" alt="" width="98px" height="98px" />
+              </div>
+              <% } %>
+
+              <!-- <div class="mb-3 me-2">
+                <img src="<= pet.images[0].thumbnail%>" class="img-thumbnail" alt="" width="98px" height="98px" />
+              </div> -->
 
               <div class="pb-3 mb-0 small lh-sm w-100">
                 <div class="d-flex justify-content-between">
