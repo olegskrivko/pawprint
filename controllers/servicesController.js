@@ -62,6 +62,11 @@ module.exports.addNewService = async (req, res) => {
     console.log('service', service);
     //console.log(typeof req.body.serviceType);
     console.log(req.body);
+    if (req.body.user.latitude === null || req.body.user.longitude === null || req.body.user.latitude === '' || req.body.user.longitude === '' || isNaN(req.body.user.latitude) || isNaN(req.body.user.longitude)) {
+      req.flash('error', 'Please enable geolocation to provide service location.');
+      return res.redirect('/pets/new');
+    }
+
     const userCoords = req.body.user;
 
     const image = req.file;
