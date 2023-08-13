@@ -3,8 +3,6 @@ const Location = require('../models/location');
 // Get a specific region
 module.exports.getRegion = async (req, res) => {
   const regionName = req.params.regionName;
-  console.log('bbbbbbbbb', req.params);
-  console.log('aaaaaaaaaaaaaaa', regionName);
 
   try {
     const region = await Location.findOne({ region: regionName });

@@ -1,22 +1,23 @@
 const Pet = require('../models/pet');
-const User = require('../models/user');
 const Location = require('../models/location');
-// const geoip = require('geoip-lite');
-const { ObjectId } = require('mongoose').Types;
 const { cloudinary } = require('../cloudinary');
-// const tt = require("@tomtom-international/web-sdk-services/dist/services-node.min.js");
 const fns = require('date-fns');
-const path = require('path');
 const OneSignal = require('onesignal-node');
 const { PDFDocument, StandardFonts } = require('pdf-lib');
 const axios = require('axios');
 const nodemailer = require('nodemailer');
 
+const User = require('../models/user');
+const { ObjectId } = require('mongoose').Types;
+const path = require('path');
+// const geoip = require('geoip-lite');
+// const tt = require("@tomtom-international/web-sdk-services/dist/services-node.min.js");
+
 module.exports.index = async (req, res) => {
   const ITEMS_PER_PAGE = 10; // Number of items to display per page
   const { page, limit, age, gender, breed, species, pattern, coat, size, petStatus, identifier, name, location, color, lostdate, maxDistance, userlongitude, userlatitude, selectedRegion } = req.query;
 
-  // Translate the 'petsPage' key based on the user's selected language
+  // Translate the 'selectOptions' key based on the user's selected language
   const selectOptions = req.__('selectOptions');
   const countryRegionOptions = req.__('countryRegionOptions');
   const petsPage = req.__('petsPage');
@@ -32,22 +33,15 @@ module.exports.index = async (req, res) => {
   } else {
     userCountry = 'Latvia'; // Fallback value
   }
-  //const userCountry = await req.user.address.country;
 
+  // const userCountry = await req.user.address.country;
   // const ip = req.ip; // Express automatically provides the user's IP address
-  // console.log('ip', ip);
-  // console.log('req', req);
   // const geo = geoip.lookup(ip);
-  // console.log('geo', geo);
-
   // if (geo && geo.country) {
   //   const userCountry = geo.country;
-  //   console.log('aaaaaaaaaaaa user is from:', userCountry);
   // }
 
   const locationByRegion = countryRegionOptions[userCountry];
-  console.log('locationByRegion', locationByRegion);
-  //console.log('selectedLocation', selectedLocation);
 
   let selectedPolygonCoordinates = [];
 
@@ -176,7 +170,6 @@ module.exports.renderNewForm = (req, res) => {
 };
 
 module.exports.createPet = async (req, res, next) => {
-  console.log('new pet: ', req.body.pet);
   // Set default value for date if it's omitted
   const currentDate = new Date().toISOString().split('T')[0];
   const lostdate = req.body.pet.lostdate || currentDate;
@@ -245,7 +238,7 @@ module.exports.createPet = async (req, res, next) => {
   await user.save();
 
   const client = new OneSignal.Client(process.env.oneSignal_YOUR_APP_ID, process.env.oneSignal_YOUR_APP_AUTH_KEY);
-  //console.log(client);
+
   //Send push notification to all subscribed users
   const oneSignalClient = new OneSignal.Client({
     app: {
@@ -253,9 +246,10 @@ module.exports.createPet = async (req, res, next) => {
       appAuthKey: process.env.oneSignal_YOUR_APP_AUTH_KEY,
     },
   });
-  //   let userLat = 56.946285;
+
+  // let userLat = 56.946285;
   // let userLng = 24.105078;
-  //console.log(oneSignalClient);
+  // console.log(oneSignalClient);
   const notification = {
     contents: { en: `URGENT! ${pet.petStatus} ${pet.species} alert!` },
     included_segments: ['Subscribed Users'],
@@ -276,7 +270,7 @@ module.exports.createPet = async (req, res, next) => {
     // attachments: {},
     web_url: `https://pawclix.cyclic.app/pets/${pet._id}`,
   };
-  console.log(notification);
+  // console.log(notification);
   client
     .createNotification(notification)
     .then((response) => {
@@ -295,10 +289,8 @@ module.exports.createPet = async (req, res, next) => {
 module.exports.showPet = async (req, res) => {
   try {
     // Retrieve the pet from the database
-    // REPLACE petsshow to NEW petsShowPage
     const selectOptions = req.__('selectOptions');
     const petsShowPage = req.__('petsShowPage');
-    const petsshow = req.__('petsshow');
     const petId = req.params.id;
 
     // Check if the user has already visited this pet's page
@@ -362,9 +354,8 @@ module.exports.showPet = async (req, res) => {
     pet.coat = selectOptions.coat.find((item) => item.value === pet.coat)?.text || '';
     pet.pattern = selectOptions.pattern.find((item) => item.value === pet.pattern)?.text || '';
     pet.size = selectOptions.size.find((item) => item.value === pet.size)?.text || '';
-    console.log('cooooloooor', pet);
     // breeed need more logic or redo its translations .cats .dogs
-    //pet.breed = selectOptions.breed.find((item) => item.value === pet.breed)?.text || '';
+    // pet.breed = selectOptions.breed.find((item) => item.value === pet.breed)?.text || '';
 
     // Render the pet post page with the updated view count
     res.render('pets/show', {
@@ -373,8 +364,6 @@ module.exports.showPet = async (req, res) => {
       updateDateInWords,
       lostDateInWords,
       petsShowPage,
-      // delete this
-      petsshow,
     });
   } catch (error) {
     // Handle any errors that occur
@@ -548,10 +537,10 @@ module.exports.reportpost = async (req, res) => {
     const firstname = user.firstname;
     const lastname = user.lastname;
     const username = user.username;
-    console.log(email, firstname, lastname, username, email);
+    //console.log(email, firstname, lastname, username, email);
 
     const { selectedReportpetId } = req.body;
-    console.log(req.body);
+    //console.log(req.body);
 
     // Create a transporter using SMTP
     const transporter = nodemailer.createTransport({
@@ -559,19 +548,19 @@ module.exports.reportpost = async (req, res) => {
       port: 587,
       secure: false, // upgrade later with STARTTLS
       auth: {
-        user: process.env.EMAIL_USERNAME, // Replace with your Gmail address
-        pass: process.env.EMAIL_PASSWORD, // Replace with your Gmail password
+        user: process.env.APP_EMAIL_USERNAME, // Replace with your Gmail address
+        pass: process.env.APP_EMAIL_PASSWORD, // Replace with your Gmail password
       },
     });
 
     // Define the email options
     const mailOptions = {
-      from: process.env.EMAIL_USERNAME,
-      to: process.env.EMAIL_APP,
+      from: process.env.APP_EMAIL_USERNAME,
+      to: process.env.APP_EMAIL_USERNAME_PROD,
       subject: 'Reported post!',
       text: `From:\nFirst name: ${firstname}\nLast name: ${lastname}\nEmail: ${email}\nUsername: ${username}\nReported post ID: https://pawclix.cyclic.app/pets/${selectedReportpetId}`,
     };
-    console.log(mailOptions);
+    //console.log(mailOptions);
 
     // Send the email
     transporter.sendMail(mailOptions, (error, info) => {

@@ -10,8 +10,6 @@ module.exports.renderUserServices = async (req, res) => {
     // Fetch the pets from the database based on the pet IDs
     const userServices = await ServiceProvider.find({ _id: { $in: userServicesList } });
 
-    //console.log('userServices', userServices);
-
     res.render('user/services', { userServices, userServicesPage, profileTabs });
   } catch (error) {
     console.log(error);
@@ -40,28 +38,14 @@ module.exports.renderUserServices = async (req, res) => {
 //   }
 // };
 
-////////////////////////
 // Controller for updating the account watchlist page
 module.exports.updateUserServices = async (req, res) => {
   // try {
-  //   const userId = req.user._id;
-  //   let { pets } = req.body;
-  //   // Find the user by ID
-  //   const user = await User.findById(userId);
-  //   // Convert the watchlist array to a set
-  //   const watchlistSet = new Set(user.watchlist);
-  //   // Ensure pets is an array
-  //   pets = Array.isArray(pets) ? pets : [pets];
-  //   // Add the selected pets' IDs to the watchlist set
-  //   pets.forEach((petId) => watchlistSet.add(petId));
-  //   // Convert the watchlist set back to an array
-  //   user.watchlist = Array.from(watchlistSet);
-  //   // Save the updated user data
-  //   await user.save();
-  //   res.status(200).json({ message: 'Watchlist updated successfully' });
+  //
+  //   res.status(200).json({ message: 'Services updated successfully' });
   // } catch (error) {
-  //   console.error('Error updating watchlist:', error);
-  //   res.status(500).json({ error: 'Failed to update watchlist' });
+  //   console.error('Error updating Services:', error);
+  //   res.status(500).json({ error: 'Failed to update Services' });
   // }
 };
 
@@ -74,19 +58,19 @@ module.exports.deleteUserServices = async (req, res) => {
     const serviceProvider = await ServiceProvider.findOne({
       _id: serviceProviderId,
     });
-    console.log('serviceProvider', serviceProvider);
+    //console.log('serviceProvider', serviceProvider);
 
     // extract service category name
     const serviceCategoryName = serviceProvider.serviceName;
-    console.log('serviceCategoryName', serviceCategoryName);
+    // console.log('serviceCategoryName', serviceCategoryName);
 
     // find associated service category document
     const associatedService = await Service.findOne({ slug: serviceCategoryName });
-    console.log('associatedService', associatedService);
+    //console.log('associatedService', associatedService);
 
     // find associated service ID
     const associatedServiceId = associatedService._id;
-    console.log('associatedServiceId', associatedServiceId);
+    // console.log('associatedServiceId', associatedServiceId);
 
     // Delete the serviceProvider from ServiceProvider collection
     const deletedServiceProvider = await ServiceProvider.findByIdAndDelete(serviceProviderId);

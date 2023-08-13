@@ -148,14 +148,14 @@ module.exports.renderRegister = (req, res) => {
 module.exports.verifyEmail = async (req, res, next) => {
   try {
     const { token } = req.params;
-    console.log('token', token);
+    //console.log('token', token);
 
     // Find the user with the provided verification token
     const user = await User.findOne({
       verificationToken: token,
       verificationTokenExpires: { $gt: Date.now() },
     });
-    console.log('user', user);
+    //console.log('user', user);
     // If no user found or the token has expired
     if (!user) {
       req.flash('error', 'Invalid or expired verification token.');
@@ -178,112 +178,10 @@ module.exports.verifyEmail = async (req, res, next) => {
   }
 };
 
-// module.exports.register = async (req, res, next) => {
-//   try {
-//     const { email, username, password } = req.body;
-//     const user = new User({ email, username });
-
-//     // Register the user using the provided password
-//     const registeredUser = await User.register(user, password);
-
-//     // Save the registered user
-//     await registeredUser.save();
-
-//     // Log in the registered user
-//     req.login(registeredUser, async (err) => {
-//       if (err) return next(err);
-
-//       // Compose the email message
-//       const msg = {
-//         to: `${email}`,
-//         from: "olegs.krivko@gmail.com", // Replace with your SendGrid verified email address
-//         subject: "Welcome to PawPrint",
-//         text: `Dear ${username}, thank you for registering on PawPrint!`,
-//         html: `<p>Dear ${username},</p><p>Thank you for registering on PawPrint!</p>`,
-//       };
-
-//       // Send the email
-//       await sgMail.send(msg);
-
-//       req.flash(
-//         "success",
-//         "Registration successful! An email has been sent to your email address."
-//       );
-//       res.redirect("/pets");
-//     });
-//   } catch (error) {
-//     // Handle errors during registration
-//     req.flash("error", error.message);
-//     res.redirect("auth/register");
-//   }
-// };
-
-// const sgMail = require("@sendgrid/mail");
-// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-// const msg = {
-//   to: "olegs.krivko@inbox.lv", // Change to your recipient
-//   from: "olegs.krivko@gmail.com", // Change to your verified sender
-//   subject: "Sending with SendGrid is Fun",
-//   text: "and easy to do anywhere, even with Node.js",
-//   html: "<strong>and easy to do anywhere, even with Node.js</strong>",
-// };
-// sgMail
-//   .send(msg)
-//   .then(() => {
-//     console.log("Email sent");
-//   })
-//   .catch((error) => {
-//     console.error(error);
-//   });
-
-// Controller for user registration
-// module.exports.register = async (req, res, next) => {
-//   try {
-//     const { email, username, password } = req.body;
-//     const user = new User({ email, username });
-
-//     // Register the user using the provided password
-//     const registeredUser = await User.register(user, password);
-
-//     // Save the registered user
-//     await registeredUser.save();
-
-//     // Log in the registered user
-//     req.login(registeredUser, (err) => {
-//       if (err) return next(err);
-//       req.flash("success", "Registration successful!"); // Flash message for successful registration
-//       res.redirect("/pets");
-//     });
-//   } catch (error) {
-//     // Handle errors during registration
-//     req.flash("error", error.message);
-//     res.redirect("auth/register");
-//   }
-// };
-
-// Controller for rendering the login page
 module.exports.renderLogin = (req, res) => {
   //const data = req.data; // Language data is available from the middleware
   res.render('auth/login'); // Render the login view
 };
-
-// // Controller for user login
-// module.exports.login = (req, res) => {
-//   // Retrieve the user's name
-//   const { username } = req.user;
-
-//   // Display a flash message with a welcome greeting and the user's name
-//   req.flash('success', `Welcome, ${username}!`);
-
-//   // Retrieve the redirect URL from the session or set a default value
-//   const redirectUrl = req.session.returnTo || '/pets';
-
-//   // Delete the returnTo property from the session to prevent future redirections
-//   delete req.session.returnTo;
-
-//   // Redirect the user to the determined URL
-//   res.redirect(redirectUrl);
-// };
 
 module.exports.login = (req, res, next) => {
   passport.authenticate('local', (err, user, info) => {
@@ -331,7 +229,7 @@ module.exports.emailVerificationLink = async (req, res) => {
     const user = req.user;
     // Generate a verification token
     const verificationToken = await generateVerificationToken();
-    console.log(verificationToken);
+    // console.log(verificationToken);
 
     // Set the verification token and its expiration time for the user
     user.verificationToken = verificationToken;
@@ -344,17 +242,6 @@ module.exports.emailVerificationLink = async (req, res) => {
 
     // Compose the email message
     const verificationLink = `https://pawclix.cyclic.app/auth/verify/${verificationToken}`;
-
-    // Create a transporter using SMTP
-    // const transporter = nodemailer.createTransport({
-    //   service: 'gmail',
-    //   port: 587,
-    //   secure: false, // upgrade later with STARTTLS
-    //   auth: {
-    //     user: process.env.EMAIL_USERNAME, // Replace with your Gmail address
-    //     pass: process.env.EMAIL_PASSWORD, // Replace with your Gmail password
-    //   },
-    // });
 
     const transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -373,7 +260,7 @@ module.exports.emailVerificationLink = async (req, res) => {
       subject: 'Verify Your Email Address for Pawclix',
       text: `We're excited to have you join PawClix!\nPlease verify your email by clicking the link below!\n${verificationLink}`,
     };
-    console.log('mailOptions', mailOptions);
+    //console.log('mailOptions', mailOptions);
 
     // Send the email
     transporter.sendMail(mailOptions, (error, info) => {

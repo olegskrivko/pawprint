@@ -18,7 +18,7 @@ module.exports.index = async (req, res) => {
       const translatedName = translationMap[service.slug] || service.name;
       return { ...service._doc, translatedName };
     });
-    res.render('services/index', { services: translatedServices, /*services, */ servicesPage });
+    res.render('services/index', { services: translatedServices, servicesPage });
   } catch (error) {
     console.error('Error retrieving services:', error);
     req.flash('error', 'Failed to retrieve services.');
@@ -29,24 +29,15 @@ module.exports.index = async (req, res) => {
 module.exports.showService = async (req, res) => {
   try {
     const translationMap = req.__('servicesDescription');
-    console.log('translationMap', translationMap);
     const slug = req.params.slug;
     const service = await Service.findOne({ slug }).populate('serviceProviders');
-    console.log('service slug', service.slug);
-    console.log('result', translationMap[service.slug]);
+    // console.log('service slug', service.slug);
+    // console.log('result', translationMap[service.slug]);
     const serviceTitle = translationMap[service.slug];
     if (!service) {
       req.flash('error', 'Cannot find that service!');
       return res.redirect('/services');
     }
-
-    ///
-    // const translatedServices = service.map((service_item) => {
-    //   const translatedName = translationMap[service_item.slug] || service_item.name;
-    //   return { ...service_item._doc, translatedName };
-    // });
-    // console.log('translatedServices', translatedServices);
-    ////
 
     res.render('services/show', { service, serviceTitle });
   } catch (error) {
@@ -59,9 +50,7 @@ module.exports.showService = async (req, res) => {
 module.exports.addNewService = async (req, res) => {
   try {
     const service = await Service.findOne({ slug: req.body.serviceName });
-    console.log('service', service);
-    //console.log(typeof req.body.serviceType);
-    console.log(req.body);
+
     if (req.body.user.latitude === null || req.body.user.longitude === null || req.body.user.latitude === '' || req.body.user.longitude === '' || isNaN(req.body.user.latitude) || isNaN(req.body.user.longitude)) {
       req.flash('error', 'Please enable geolocation to provide service location.');
       return res.redirect('/pets/new');
@@ -121,10 +110,8 @@ module.exports.addNewService = async (req, res) => {
 
 module.exports.renderEditForm = async (req, res) => {
   const { id } = req.params;
-  console.log(id);
-  const meid = '64be38477207febe098ce887';
+  //const meid = '64be38477207febe098ce887';
   const serviceProvider = await ServiceProvider.findById(id);
-  console.log(serviceProvider);
   if (!serviceProvider) {
     req.flash('error', 'Cannot find that service!');
     return res.redirect('/services');

@@ -12,9 +12,6 @@ const { isLoggedIn, /*isAuthor,*/ languageMiddleware } = require('../middleware/
 // Apply the languageMiddleware to all routes in the router
 router.use(languageMiddleware);
 
-//renderUserSettings
-//updateUserSettings
-
 // Routes
 router.route('/').get(isLoggedIn, userProfileController.renderUserProfile).put(isLoggedIn, catchAsync(userProfileController.updateUserProfile)).delete(isLoggedIn, catchAsync(userProfileController.deleteUserProfile));
 router.route('/settings').put(isLoggedIn, catchAsync(userProfileController.updateUserSettings));

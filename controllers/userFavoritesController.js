@@ -1,25 +1,6 @@
 const User = require('../models/user');
 const ServiceProvider = require('../models/serviceProvider');
-const Service = require('../models/service');
-
-// module.exports.renderUserWatchlist = async (req, res) => {
-//   try {
-//     // Retrieve the user's watchlist from the database
-//     const favorites = req.user.favorites;
-//     // Fetch the pets from the database based on the pet IDs in the watchlist
-//     const pets = await ServiceProvider.find({ _id: { $in: watchlist } });
-
-//     // Render the watchlist page with the watchlist data
-//     res.render('user/watchlist', { pets });
-//   } catch (error) {
-//     // Log the error for debugging purposes
-//     console.error('Error rendering account watchlist:', error);
-
-//     // Handle the error appropriately, such as displaying an error message or redirecting to an error page
-//     //req.flash("error", "Failed to render account watchlist.");
-//     //res.redirect("/pets"); // Redirect to an appropriate error page or fallback route
-//   }
-// };
+//const Service = require('../models/service');
 
 module.exports.renderUserFavorites = async (req, res) => {
   const profileTabs = req.__('profileTabs');
@@ -59,8 +40,6 @@ module.exports.updateUserFavorites = async (req, res) => {
   try {
     const userId = req.user._id;
     let { service } = req.body;
-    console.log(userId);
-    console.log(service);
     // Find the user by ID
     const user = await User.findById(userId);
     //updateUserFavorites
@@ -93,7 +72,6 @@ module.exports.deleteUserFavorites = async (req, res) => {
   try {
     const userId = req.user._id;
     const favoriteId = req.params.favoriteId;
-    console.log('favoriteId', favoriteId);
 
     // Find the user by ID
     const user = await User.findById(userId);

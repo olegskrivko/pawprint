@@ -59,7 +59,6 @@ module.exports.deleteUserWatchlist = async (req, res) => {
   try {
     const userId = req.user._id;
     const petId = req.params.petId;
-    console.log('petId', petId);
 
     // Find the user by ID
     const user = await User.findById(userId);

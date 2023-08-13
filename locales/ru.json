@@ -1306,29 +1306,7 @@
     "filterUploadImages": "Upload Images:",
     "filterLostDate": "Lost or Found Date:"
   },
-  "petsshow": {
-    "deleteBtn": "Delete",
-    "saveBtn": "Save",
-    "editBtn": "Edit",
-    "sendBtn": "Send",
-    "petViews": "Views",
-    "downloadBtn": "Download",
-    "showpetspecies": "Species:",
-    "showpetbreed": "Breed:",
-    "showpetcoatpattern": "Coat Pattern:",
-    "showpetgender": "Pet's Gender:",
-    "showpetcolor1": "First Color:",
-    "showpetcolor2": "Second Color:",
-    "showpetcolor3": "Third Color:",
-    "showpetlastseen": "Last Seen:",
-    "showpetage": "Age:",
-    "showpetcoat": "Coat Type:",
-    "showpetsize": "Pet's Size:",
-    "showpetstatus": "Pet Status:",
-    "showpetidentifier": "Identifier:",
-    "showpetdescription": "Description",
-    "showpetdistance": "Distance (km):"
-  },
+
   "statusOptions": [
     {
       "value": "",

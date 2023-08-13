@@ -303,25 +303,7 @@
             </optgroup>
             <% } %>
             
-            <!-- <option value="<= selectOptions.region.all[0].value %>"><= selectOptions.region.all[0].text %></option>
-            <optgroup label="City">
-            < locationByRegion.city.forEach(option => { %>
-              <option value="<= option.value %>">
-                <= option.text %>
-              </option>
-            < }); %>
-          </optgroup>
-          <optgroup label="Municipality">
-            < selectOptions.region.municipality.forEach(option => { %>
-              <option value="<= option.value %>">
-                <= option.text %>
-              </option>
-            < }); %>
-          </optgroup> -->
-
-
-
-          </select>
+            </select>
       </div>
     </div>
  
@@ -515,116 +497,8 @@
 </div>
 <button class="btn btn-sm btn-secondary" style="position: absolute; border-radius: 50%; top: -1rem; right: -1rem;" id="cancelCompareBtn"><i class="bi bi-x"></i></button>
 </div>
-<!-- PAGINATION v2-->
-<!-- <div class="col-md-12 d-none">
-  <nav class="mt-5">
 
-    <ul class="d-flex justify-content-end">
 
-      <div class="d-flex align-items-center">
-      <div class="page-item">
-        <input
-          class="custom-pagination-value"
-          id="inputPageNumber"
-          type="text"
-          min="1"
-          max="<%=totalPages%>"
-          style="border: 1px solid #cfd9e0;
-          width: 50px;
-          height: 33px;
-          text-align: center;
-          padding: 0;
-          margin: 0 10px 0 0;"
-          value="<%=currentPage %>"
-        />
-      </div>
- 
-
-      <div class="">
-        <input class="custom-pagination total-pages" value="of <%=totalPages%>" readonly style="border: none; outline: none; max-width: 3rem">
-      </div>
-
-      <div class=" custom-page-link prev" style="margin-right: 2px;">
-        <a
-        
-          class="btn btn-secondary btn-sm custom-page-link <%= currentPage <= 1 ? 'disabled' : '' %>"
-          href="/pets?page=<%= currentPage - 1  %>&limit=<%= limitPerPage %>"
-          aria-label="Previous"
-        >
-          <span aria-hidden="true"><i class="bi bi-caret-left-fill"></i></span
-          ><span class="d-none d-sm-inline-block"></span>
-        </a>
-      </div>
-      <div class=" custom-page-link next"  style="margin-left: 2px;">
-        <a
-        
-          class="btn btn-secondary btn-sm custom-page-link <%= currentPage >= totalPages ? 'disabled' : '' %>"
-          href="/pets?page=<%= currentPage < totalPages ? currentPage + 1 : currentPage  %>&limit=<%= limitPerPage %>"
-          aria-label="Next"
-        >
-          <span class="d-none d-sm-inline-block"></span
-          ><span aria-hidden="true"
-            ><i class="bi bi-caret-right-fill"></i
-          ></span>
-        </a>
-      </div>
-    </div>
-    </ul>
-  </nav>
-</div> -->
-
-<!-- PAGINATION v3-->
-<!-- <div class="col-md-12">
-  <nav class="mt-5" aria-label="Page navigation">
-    <ul class="pagination justify-content-center">
-      <li class="page-item custom-page-link prev">
-        <a
-          style="border: none"
-          class="page-link custom-page-link <= currentPage <= 1 ? 'disabled' : '' %>"
-          href="/pets?page=<= currentPage - 1  %>&limit=<= limitPerPage %>"
-          aria-label="Previous"
-        >
-          <span aria-hidden="true"><i class="bi bi-caret-left-fill"></i></span
-          ><span class="d-none d-sm-inline-block">Prev</span>
-        </a>
-      </li>
-      <li class="page-item">
-        <p class="page-link custom-pagination disabled">Page</p>
-      </li>
-      <li class="page-item">
-        <input
-          class="page-link custom-pagination-value"
-          type="text"
-          min="1"
-          max="<=totalPages%>"
-          style="width: 3rem"
-          value="<=currentPage %>"
-        />
-      </li>
-      <li class="page-item">
-        <p class="page-link custom-pagination disabled">
-          of <span class="total-pages"><=totalPages%></span>
-        </p>
-      </li>
-      <li class="page-item">
-        <button class="btn btn-warning pagination-btn">Go</button>
-      </li>
-      <li class="page-item custom-page-link next">
-        <a
-          style="border: none"
-          class="page-link custom-page-link <= currentPage >= totalPages ? 'disabled' : '' %>"
-          href="/pets?page=<= currentPage < totalPages ? currentPage + 1 : currentPage  %>&limit=<= limitPerPage %>"
-          aria-label="Next"
-        >
-          <span class="d-none d-sm-inline-block">Next</span
-          ><span aria-hidden="true"
-            ><i class="bi bi-caret-right-fill"></i
-          ></span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-</div> -->
 
 
 <script>
@@ -635,7 +509,7 @@
     navigator.geolocation.getCurrentPosition((position) => {
       userLatitude.value = position.coords.latitude;
       userLongitude.value = position.coords.longitude;
-      console.log('lat, lng', userLatitude, userLongitude)
+      //console.log('lat, lng', userLatitude, userLongitude)
     })}
 </script>
 
@@ -672,7 +546,7 @@
     try {
       const selectedPets = petsToCompare.join(',');
       const url = `/compare/${selectedPets}`;
-      console.log(url)
+      //console.log(url)
       const response = await fetch(url, {
         method: 'GET',
         headers: {
@@ -681,8 +555,8 @@
       });
 
       if (response.ok) {
-        console.log('Comparison request sent successfully');
-        console.log(response);
+        //console.log('Comparison request sent successfully');
+        //console.log(response);
         // Handle the response from the server if needed
         // The compare page will be rendered in the response handler of the compare controller
         window.location.href = url;
@@ -714,7 +588,7 @@
     const coordinatesArrayLngLat = petCoordinates.split(",");
     let petLng = coordinatesArrayLngLat[0]
     let petLat = coordinatesArrayLngLat[1]
-    console.log('lat, lng', petLat, petLng)
+    //console.log('lat, lng', petLat, petLng)
     let newDist = card.querySelector(".distance-text");
     // add button on map to zoom to current location
     let userLat;
@@ -870,7 +744,7 @@ const nextBtn = document.querySelector('.next')
 const prevBtn = document.querySelector('.prev')
 let currentPage = document.querySelector('.current-page').innerText
 
-console.log('currentPage',currentPage)
+//console.log('currentPage',currentPage)
 // Function to handle pagination
 //function navigateToPage(pageNumber) {
   // Perform logic to navigate to the specified page
