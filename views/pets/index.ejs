@@ -260,7 +260,7 @@
           />
         </div>
       </div>
-
+     
 <!-- pet location -->
       <div class="col-md-3">
         <label class="form-label"><%= petsPage.labels.petLocation %></label>
@@ -271,29 +271,53 @@
           <select class="form-select" id="region" name="selectedRegion">
 
             
+            <option value="<%= locationByRegion.none[0].value %>"><%= locationByRegion.none[0].text %></option>
+            
+            <% if (locationByRegion.city[0].value.length > 0 && locationByRegion.city[1].text.length > 0) { %>
+              <optgroup label="<%= selectOptions.location[0].text %>">
+                <% locationByRegion.city.forEach(option => { %>
+                  <option value="<%= option.value %>">
+                    <%= option.text %>
+                  </option>
+                <% }); %>
+              </optgroup>
+            <% } %>
+            
+            <% if (locationByRegion.municipality[0].value.length > 0 && locationByRegion.municipality[1].text.length > 0) { %>
+          <optgroup label="<%= selectOptions.location[1].text %>">
+            <% locationByRegion.municipality.forEach(option => { %>
+              <option value="<%= option.value %>">
+                <%= option.text %>
+              </option>
+            <% }); %>
+          </optgroup>
+          <% } %>
 
-            <!-- < locationByRegion.county.forEach(option => { %>
+          <% if (locationByRegion.county[0].value.length > 0 && locationByRegion.county[1].text.length > 0) { %>
+            <optgroup label="<%= selectOptions.location[2].text %>">
+              <% locationByRegion.county.forEach(option => { %>
+                <option value="<%= option.value %>">
+                  <%= option.text %>
+                </option>
+              <% }); %>
+            </optgroup>
+            <% } %>
+            
+            <!-- <option value="<= selectOptions.region.all[0].value %>"><= selectOptions.region.all[0].text %></option>
+            <optgroup label="City">
+            < locationByRegion.city.forEach(option => { %>
               <option value="<= option.value %>">
                 <= option.text %>
               </option>
-            < }); %> -->
-
-            
-            <option value="<%= selectOptions.region.all[0].value %>"><%= selectOptions.region.all[0].text %></option>
-            <optgroup label="City">
-            <% selectOptions.region.city.forEach(option => { %>
-              <option value="<%= option.value %>">
-                <%= option.text %>
-              </option>
-            <% }); %>
+            < }); %>
           </optgroup>
           <optgroup label="Municipality">
-            <% selectOptions.region.municipality.forEach(option => { %>
-              <option value="<%= option.value %>">
-                <%= option.text %>
+            < selectOptions.region.municipality.forEach(option => { %>
+              <option value="<= option.value %>">
+                <= option.text %>
               </option>
-            <% }); %>
-          </optgroup>
+            < }); %>
+          </optgroup> -->
 
 
 

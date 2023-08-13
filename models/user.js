@@ -25,7 +25,10 @@ const userSchema = new mongoose.Schema({
   },
   address: {
     city: String,
-    country: String,
+    country: {
+      type: String,
+      default: 'Latvia', // Set the default value to 'Latvia'
+    },
     postalCode: String,
   },
   avatar: [userAvatarSchema],

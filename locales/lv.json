@@ -301,6 +301,20 @@
         "text": "Joslainis"
       }
     ],
+    "location": [
+      {
+        "value": "City",
+        "text": "Pilsēta"
+      },
+      {
+        "value": "Municipality",
+        "text": "Novads"
+      },
+      {
+        "value": "County",
+        "text": "Apriņķis"
+      }
+    ],
     "size": [
       {
         "value": "",
@@ -1728,10 +1742,16 @@
   },
   "countryRegionOptions": {
     "Latvia": {
-      "county": [
+      "none": [
+        {
+          "value": "",
+          "text": ""
+        }
+      ],
+      "city": [
         {
           "value": "Riga",
-          "text": "Riga"
+          "text": "Rīga"
         },
         {
           "value": "Daugavpils",
@@ -1743,27 +1763,425 @@
         },
         {
           "value": "Jurmala",
-          "text": "Jurmala"
+          "text": "Jūrmala"
         },
         {
           "value": "Liepaja",
-          "text": "Liepaja"
+          "text": "Liepāja"
         },
         {
           "value": "Rezekne",
-          "text": "Rezekne"
-        },
-        {
-          "value": "Valmiera",
-          "text": "Valmiera"
+          "text": "Rēzekne"
         },
         {
           "value": "Ventspils",
           "text": "Ventspils"
         }
+      ],
+      "municipality": [
+        {
+          "value": "Adazu nov",
+          "text": "Ādažu novads"
+        },
+        {
+          "value": "Aizkraukles nov",
+          "text": "Aizkraukles novads"
+        },
+        {
+          "value": "Aluksnes nov",
+          "text": "Alūksnes novads"
+        },
+        {
+          "value": "Augsdaugavas nov",
+          "text": "Augšdaugavas novads"
+        },
+        {
+          "value": "Balvu nov",
+          "text": "Balvu novads"
+        },
+        {
+          "value": "Bauskas nov",
+          "text": "Bauskas novads"
+        },
+        {
+          "value": "Cesu nov",
+          "text": "Cēsu novads"
+        },
+        {
+          "value": "Dienvidkurzemes nov",
+          "text": "Dienvidkurzemes novads"
+        },
+        {
+          "value": "Dobeles nov",
+          "text": "Dobeles novads"
+        },
+        {
+          "value": "Gulbenes nov",
+          "text": "Gulbenes novads"
+        },
+        {
+          "value": "Jekabpils nov",
+          "text": "Jēkabpils novads"
+        },
+        {
+          "value": "Jelgavas nov",
+          "text": "Jelgavas novads"
+        },
+        {
+          "value": "Kekavas nov",
+          "text": "Ķekavas novads"
+        },
+        {
+          "value": "Kraslavas nov",
+          "text": "Krāslavas novads"
+        },
+        {
+          "value": "Kuldigas nov",
+          "text": "Kuldīgas novads"
+        },
+        {
+          "value": "Limbazu novads",
+          "text": "Limbažu novads"
+        },
+        {
+          "value": "Livanu nov",
+          "text": "Līvānu novads"
+        },
+        {
+          "value": "Ludzas nov",
+          "text": "Ludzas novads"
+        },
+        {
+          "value": "Madonas nov",
+          "text": "Madonas novads"
+        },
+        {
+          "value": "Marupes nov",
+          "text": "Mārupes novads"
+        },
+        {
+          "value": "Ogres nov",
+          "text": "Ogres novads"
+        },
+        {
+          "value": "Olaines nov",
+          "text": "Olaines novads"
+        },
+        {
+          "value": "Preilu nov",
+          "text": "Preiļu novads"
+        },
+        {
+          "value": "Rezeknes nov",
+          "text": "Rēzeknes novads"
+        },
+        {
+          "value": "Ropazu nov",
+          "text": "Ropažu novads"
+        },
+        {
+          "value": "Salaspils nov",
+          "text": "Salaspils novads"
+        },
+        {
+          "value": "Saldus nov",
+          "text": "Saldus novads"
+        },
+        {
+          "value": "Saulkrastu nov",
+          "text": "Saulkrastu novads"
+        },
+        {
+          "value": "Siguldas nov",
+          "text": "Siguldas novads"
+        },
+        {
+          "value": "Smiltenes nov",
+          "text": "Smiltenes novads"
+        },
+        {
+          "value": "Talsu nov",
+          "text": "Talsu novads"
+        },
+        {
+          "value": "Tukuma nov",
+          "text": "Tukuma novads"
+        },
+        {
+          "value": "Valkas nov",
+          "text": "Valkas novads"
+        },
+        {
+          "value": "Valmieras nov",
+          "text": "Valmieras novads"
+        },
+        {
+          "value": "Varaklanu nov",
+          "text": "Varakļānu novads"
+        },
+        {
+          "value": "Ventspils nov",
+          "text": "Ventspils novads"
+        }
+      ],
+      "county": [
+        {
+          "value": "",
+          "text": ""
+        }
       ]
     },
     "Lithuania": {
+      "none": [
+        {
+          "value": "",
+          "text": ""
+        }
+      ],
+      "city": [
+        {
+          "value": "",
+          "text": ""
+        }
+      ],
+      "municipality": [
+        {
+          "value": "Akmenė District Municipality",
+          "text": "Akmenė District Municipality"
+        },
+        {
+          "value": "Alytus City Municipality",
+          "text": "Alytus City Municipality"
+        },
+        {
+          "value": "Alytus District Municipality",
+          "text": "Alytus District Municipality"
+        },
+        {
+          "value": "Anykščiai District Municipality",
+          "text": "Anykščiai District Municipality"
+        },
+        {
+          "value": "Birštonas Municipality",
+          "text": "Birštonas Municipality"
+        },
+        {
+          "value": "Biržai District Municipality",
+          "text": "Biržai District Municipality"
+        },
+        {
+          "value": "Druskininkai Municipality",
+          "text": "Druskininkai Municipality"
+        },
+        {
+          "value": "Elektrėnai Municipality",
+          "text": "Elektrėnai Municipality"
+        },
+        {
+          "value": "Ignalina District Municipality",
+          "text": "Ignalina District Municipality"
+        },
+        {
+          "value": "Jonava District Municipality",
+          "text": "Jonava District Municipality"
+        },
+        {
+          "value": "Joniškis District Municipality",
+          "text": "Joniškis District Municipality"
+        },
+        {
+          "value": "Jurbarkas District Municipality",
+          "text": "Jurbarkas District Municipality"
+        },
+        {
+          "value": "Kaišiadorys District Municipality",
+          "text": "Kaišiadorys District Municipality"
+        },
+        {
+          "value": "Kalvarija Municipality",
+          "text": "Kalvarija Municipality"
+        },
+        {
+          "value": "Kaunas City Municipality",
+          "text": "Kaunas City Municipality"
+        },
+        {
+          "value": "Kaunas District Municipality",
+          "text": "Kaunas District Municipality"
+        },
+        {
+          "value": "Kazlų Rūda Municipality",
+          "text": "Kazlų Rūda Municipality"
+        },
+        {
+          "value": "Kėdainiai District Municipality",
+          "text": "Kėdainiai District Municipality"
+        },
+        {
+          "value": "Kelmė District Municipality",
+          "text": "Kelmė District Municipality"
+        },
+        {
+          "value": "Klaipėda City Municipality",
+          "text": "Klaipėda City Municipality"
+        },
+        {
+          "value": "Kretinga District Municipality",
+          "text": "Kretinga District Municipality"
+        },
+        {
+          "value": "Kupiškis District Municipality",
+          "text": "Kupiškis District Municipality"
+        },
+        {
+          "value": "Lazdijai District Municipality",
+          "text": "Lazdijai District Municipality"
+        },
+        {
+          "value": "Marijampolė Municipality",
+          "text": "Marijampolė Municipality"
+        },
+        {
+          "value": "Mažeikiai District Municipality",
+          "text": "Mažeikiai District Municipality"
+        },
+        {
+          "value": "Molėtai District Municipality",
+          "text": "Molėtai District Municipality"
+        },
+        {
+          "value": "Neringa Municipality",
+          "text": "Neringa Municipality"
+        },
+        {
+          "value": "Pagėgiai Municipality",
+          "text": "Pagėgiai Municipality"
+        },
+        {
+          "value": "Pakruojis District Municipality",
+          "text": "Pakruojis District Municipality"
+        },
+        {
+          "value": "Palanga City Municipality",
+          "text": "Palanga City Municipality"
+        },
+        {
+          "value": "Panevėžys City Municipality",
+          "text": "Panevėžys City Municipality"
+        },
+        {
+          "value": "Panevėžys District Municipality",
+          "text": "Panevėžys District Municipality"
+        },
+        {
+          "value": "Pasvalys District Municipality",
+          "text": "Pasvalys District Municipality"
+        },
+        {
+          "value": "Plungė District Municipality",
+          "text": "Plungė District Municipality"
+        },
+        {
+          "value": "Prienai District Municipality",
+          "text": "Prienai District Municipality"
+        },
+        {
+          "value": "Radviliškis District Municipality",
+          "text": "Radviliškis District Municipality"
+        },
+        {
+          "value": "Raseiniai District Municipality",
+          "text": "Raseiniai District Municipality"
+        },
+        {
+          "value": "Rietavas Municipality",
+          "text": "Rietavas Municipality"
+        },
+        {
+          "value": "Rokiškis District Municipality",
+          "text": "Rokiškis District Municipality"
+        },
+        {
+          "value": "Skuodas District Municipality",
+          "text": "Skuodas District Municipality"
+        },
+        {
+          "value": "Šakiai District Municipality",
+          "text": "Šakiai District Municipality"
+        },
+        {
+          "value": "Šalčininkai District Municipality",
+          "text": "Šalčininkai District Municipality"
+        },
+        {
+          "value": "Šiauliai City Municipality",
+          "text": "Šiauliai City Municipality"
+        },
+        {
+          "value": "Šiauliai District Municipality",
+          "text": "Šiauliai District Municipality"
+        },
+        {
+          "value": "Šilalė District Municipality",
+          "text": "Šilalė District Municipality"
+        },
+        {
+          "value": "Šilutė District Municipality",
+          "text": "Šilutė District Municipality"
+        },
+        {
+          "value": "Širvintos District Municipality",
+          "text": "Širvintos District Municipality"
+        },
+        {
+          "value": "Švenčionys District Municipality",
+          "text": "Švenčionys District Municipality"
+        },
+        {
+          "value": "Tauragė District Municipality",
+          "text": "Tauragė District Municipality"
+        },
+        {
+          "value": "Telšiai District Municipality",
+          "text": "Telšiai District Municipality"
+        },
+        {
+          "value": "Trakai District Municipality",
+          "text": "Trakai District Municipality"
+        },
+        {
+          "value": "Ukmergė District Municipality",
+          "text": "Ukmergė District Municipality"
+        },
+        {
+          "value": "Utena District Municipality",
+          "text": "Utena District Municipality"
+        },
+        {
+          "value": "Varėna District Municipality",
+          "text": "Varėna District Municipality"
+        },
+        {
+          "value": "Vilkaviškis District Municipality",
+          "text": "Vilkaviškis District Municipality"
+        },
+        {
+          "value": "Vilnius City Municipality",
+          "text": "Vilnius City Municipality"
+        },
+        {
+          "value": "Vilnius District Municipality",
+          "text": "Vilnius District Municipality"
+        },
+        {
+          "value": "Visaginas Municipality",
+          "text": "Visaginas Municipality"
+        },
+        {
+          "value": "Zarasai District Municipality",
+          "text": "Zarasai District Municipality"
+        }
+      ],
       "county": [
         {
           "value": "Alytus County",
@@ -1786,10 +2204,6 @@
           "text": "Panevėžys County"
         },
         {
-          "value": "Šiauliai County",
-          "text": "Šiauliai County"
-        },
-        {
           "value": "Tauragė County",
           "text": "Tauragė County"
         },
@@ -1800,10 +2214,32 @@
         {
           "value": "Utena County",
           "text": "Utena County"
+        },
+        {
+          "value": "Vilnius County",
+          "text": "Vilnius County"
         }
       ]
     },
     "Estonia": {
+      "none": [
+        {
+          "value": "",
+          "text": ""
+        }
+      ],
+      "city": [
+        {
+          "value": "",
+          "text": ""
+        }
+      ],
+      "municipality": [
+        {
+          "value": "",
+          "text": ""
+        }
+      ],
       "county": [
         {
           "value": "Harju County",

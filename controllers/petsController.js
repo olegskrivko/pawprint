@@ -24,14 +24,15 @@ module.exports.index = async (req, res) => {
   const selectedLocation = await Location.findOne({ region: selectedRegion });
 
   // new added loc logic
-  const userCountry = (await req.user.address.country) || 'Latvia';
-  // console.log('userCountry', userCountry);
-  // //const countryOpt = 'lithuania';
-  // const userCountry1 = req.headers['user-country']; // If included in headers
-  // console.log('userCountry1', userCountry1);
-  // // or
-  // const userCountry2 = req.query.country; // If included in query parameters
-  // console.log('userCountry2', userCountry2);
+
+  let userCountry;
+
+  if (req.user && req.user.address && req.user.address.country) {
+    userCountry = req.user.address.country;
+  } else {
+    userCountry = 'Latvia'; // Fallback value
+  }
+  //const userCountry = await req.user.address.country;
 
   // const ip = req.ip; // Express automatically provides the user's IP address
   // console.log('ip', ip);
