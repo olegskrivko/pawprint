@@ -33,7 +33,8 @@ module.exports.register = async (req, res, next) => {
       if (err) return next(err);
 
       // Compose the email message
-      const verificationLink = `https://pawclix.cyclic.app/auth/verify/${verificationToken}`;
+      //const verificationLink = `https://pawclix.cyclic.app/auth/verify/${verificationToken}`;
+      const verificationLink = `https://www.pawclix.com/auth/verify/${verificationToken}`;
 
       // Create a transporter using SMTP
       const transporter = nodemailer.createTransport({
@@ -141,8 +142,9 @@ async function generateVerificationToken() {
 
 // Controller for rendering the registration form
 module.exports.renderRegister = (req, res) => {
-  const data = req.data; // Language data is available from the middleware
-  res.render('auth/register', { data });
+  const registerPage = req.__('registerPage');
+  console.log(registerPage);
+  res.render('auth/register', { registerPage });
 };
 
 module.exports.verifyEmail = async (req, res, next) => {
@@ -241,7 +243,8 @@ module.exports.emailVerificationLink = async (req, res) => {
     // Log in the registered user
 
     // Compose the email message
-    const verificationLink = `https://pawclix.cyclic.app/auth/verify/${verificationToken}`;
+    // const verificationLink = `https://pawclix.cyclic.app/auth/verify/${verificationToken}`;
+    const verificationLink = `https://www.pawclix.com/auth/verify/${verificationToken}`;
 
     const transporter = nodemailer.createTransport({
       service: 'gmail',

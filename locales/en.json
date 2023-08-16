@@ -117,6 +117,29 @@
       "petLostOrFoundDate": "Lost or Found Date"
     }
   },
+  "registerPage": {
+    "labels": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "username": "Username",
+      "emailAddress": "Email Address",
+      "password": "Password"
+    },
+    "buttons": {
+      "signUp": "Sign Up"
+    },
+    "titles": {
+      "pleaseSignUp": "Please Sign Up"
+    },
+    "descriptions": {
+      "text1": "By creating an account, you agree to our ",
+      "text2": "and"
+    },
+    "links": {
+      "link1": "Privacy Policy",
+      "link2": "Terms & Conditions"
+    }
+  },
   "servicesPage": {
     "titles": {
       "section1": "Services"

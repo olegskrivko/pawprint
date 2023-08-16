@@ -268,7 +268,8 @@ module.exports.createPet = async (req, res, next) => {
     // icon: pet.images[0].url,
 
     // attachments: {},
-    web_url: `https://pawclix.cyclic.app/pets/${pet._id}`,
+    // web_url: `https://pawclix.cyclic.app/pets/${pet._id}`,
+    web_url: `https://www.pawclix.com/pets/${pet._id}`,
   };
   // console.log(notification);
   client
@@ -558,7 +559,8 @@ module.exports.reportpost = async (req, res) => {
       from: process.env.APP_EMAIL_USERNAME,
       to: process.env.APP_EMAIL_USERNAME_PROD,
       subject: 'Reported post!',
-      text: `From:\nFirst name: ${firstname}\nLast name: ${lastname}\nEmail: ${email}\nUsername: ${username}\nReported post ID: https://pawclix.cyclic.app/pets/${selectedReportpetId}`,
+      // text: `From:\nFirst name: ${firstname}\nLast name: ${lastname}\nEmail: ${email}\nUsername: ${username}\nReported post ID: https://pawclix.cyclic.app/pets/${selectedReportpetId}`,
+      text: `From:\nFirst name: ${firstname}\nLast name: ${lastname}\nEmail: ${email}\nUsername: ${username}\nReported post ID: https://www.pawclix.com/pets/${selectedReportpetId}`,
     };
     //console.log(mailOptions);
 

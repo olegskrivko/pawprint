@@ -1,5 +1,4 @@
 {
-  "17": "17",
   "homePage": {
     "titles": {
       "section1": "Добро пожаловать в ",
@@ -116,6 +115,29 @@
       "petIdentifier": "Идентификатор",
       "petLocation": "Местоположение",
       "petLostOrFoundDate": "Дата пропажи или находки"
+    }
+  },
+  "registerPage": {
+    "labels": {
+      "firstName": "Имя",
+      "lastName": "Фамилия",
+      "username": "Имя пользователя",
+      "emailAddress": "Адрес электронной почты",
+      "password": "Пароль"
+    },
+    "buttons": {
+      "signUp": "Зарегистрироваться"
+    },
+    "titles": {
+      "pleaseSignUp": "Пожалуйста, зарегистрируйтесь"
+    },
+    "descriptions": {
+      "text1": "Создавая учетную запись, вы соглашаетесь с нашей ",
+      "text2": "и"
+    },
+    "links": {
+      "link1": "Политикой конфиденциальности",
+      "link2": "Условиями использования."
     }
   },
   "servicesPage": {

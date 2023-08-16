@@ -117,6 +117,29 @@
       "petLostOrFoundDate": "Zaudēšanas vai atraduma datums"
     }
   },
+  "registerPage": {
+    "labels": {
+      "firstName": "Vārds",
+      "lastName": "Uzvārds",
+      "username": "Lietotājvārds",
+      "emailAddress": "E-pasta adrese",
+      "password": "Parole"
+    },
+    "buttons": {
+      "signUp": "Reģistrēties"
+    },
+    "titles": {
+      "pleaseSignUp": "Lūdzu, reģistrējieties"
+    },
+    "descriptions": {
+      "text1": "Izveidojot kontu, jūs piekrītat mūsu ",
+      "text2": "un"
+    },
+    "links": {
+      "link1": "Privātuma politikai",
+      "link2": "Noteikumiem un nosacījumiem"
+    }
+  },
   "servicesPage": {
     "titles": {
       "section1": "Pakalpojumi"
