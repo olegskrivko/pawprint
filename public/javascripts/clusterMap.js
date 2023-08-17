@@ -276,102 +276,95 @@ map.on('load', function () {
 ////////////////
 // DISPLAY YOUR LOCATION ANIMATED POINT
 // THIS CODES REMOVE ITEMS COUNT FROM CLUSTER - ITS A BUG
-// if ("geolocation" in navigator) {
-//   // geolocation is available
-//   navigator.geolocation.getCurrentPosition((position) => {
-//     userLat = position.coords.latitude;
-//     userLng = position.coords.longitude;
+if ('geolocation' in navigator) {
+  // geolocation is available
+  navigator.geolocation.getCurrentPosition((position) => {
+    userLat = position.coords.latitude;
+    userLng = position.coords.longitude;
 
-//     var size = 200;
+    var size = 200;
 
-//     // implementation of CustomLayer to draw animated location icon on the map
-//     // see https://developer.tomtom.com/maps-sdk-web-js/documentation#ICustomLayer for more info
-//     var locationPoint = {
-//       width: size,
-//       height: size,
-//       data: new Uint8Array(size * size * 4),
+    // implementation of CustomLayer to draw animated location icon on the map
+    // see https://developer.tomtom.com/maps-sdk-web-js/documentation#ICustomLayer for more info
+    var locationPoint = {
+      width: size,
+      height: size,
+      data: new Uint8Array(size * size * 4),
 
-//       // get rendering context for the map canvas when layer is added to the map
-//       onAdd: function () {
-//         var canvas = document.createElement("canvas");
-//         canvas.width = this.width;
-//         canvas.height = this.height;
-//         this.context = canvas.getContext("2d");
-//       },
+      // get rendering context for the map canvas when layer is added to the map
+      onAdd: function () {
+        var canvas = document.createElement('canvas');
+        canvas.width = this.width;
+        canvas.height = this.height;
+        this.context = canvas.getContext('2d');
+      },
 
-//       // called once before every frame where the icon will be used
-//       render: function () {
-//         var duration = 1100;
-//         var t = (performance.now() % duration) / duration;
+      // called once before every frame where the icon will be used
+      render: function () {
+        var duration = 1100;
+        var t = (performance.now() % duration) / duration;
 
-//         var radius = 18 + 2 * this.easeInOutSine(t);
-//         var outerRadius = 80 * this.easeInOutSine(t) + radius;
-//         var context = this.context;
+        var radius = 18 + 2 * this.easeInOutSine(t);
+        var outerRadius = 80 * this.easeInOutSine(t) + radius;
+        var context = this.context;
 
-//         // draw outer circle
-//         context.clearRect(0, 0, this.width, this.height);
-//         context.beginPath();
-//         context.arc(
-//           this.width / 2,
-//           this.height / 2,
-//           outerRadius,
-//           0,
-//           Math.PI * 2
-//         );
-//         context.fillStyle =
-//           "rgba(0, 145, 255," + this.easeInOutSine(1 - t) + ")";
-//         context.fill();
+        // draw outer circle
+        context.clearRect(0, 0, this.width, this.height);
+        context.beginPath();
+        context.arc(this.width / 2, this.height / 2, outerRadius, 0, Math.PI * 2);
+        context.fillStyle = 'rgba(0, 145, 255,' + this.easeInOutSine(1 - t) + ')';
+        context.fill();
 
-//         // draw inner circle
-//         context.beginPath();
-//         context.arc(this.width / 2, this.height / 2, radius, 0, Math.PI * 2);
-//         context.fillStyle = "rgba(0, 145, 255, 1)";
-//         context.strokeStyle = "white";
-//         context.lineWidth = 3 + this.easeInOutSine(1 - t);
-//         context.fill();
-//         context.stroke();
+        // draw inner circle
+        context.beginPath();
+        context.arc(this.width / 2, this.height / 2, radius, 0, Math.PI * 2);
+        context.fillStyle = 'rgba(0, 145, 255, 1)';
+        context.strokeStyle = 'white';
+        context.lineWidth = 3 + this.easeInOutSine(1 - t);
+        context.fill();
+        context.stroke();
 
-//         // update this image's data with data from the canvas
-//         this.data = context.getImageData(0, 0, this.width, this.height).data;
+        // update this image's data with data from the canvas
+        this.data = context.getImageData(0, 0, this.width, this.height).data;
 
-//         // continuously repaint the map, resulting in the smooth animation of the dot
-//         map.triggerRepaint();
+        // continuously repaint the map, resulting in the smooth animation of the dot
+        map.triggerRepaint();
 
-//         // return `true` to let the map know that the image was updated
-//         return true;
-//       },
+        // return `true` to let the map know that the image was updated
+        return true;
+      },
 
-//       easeInOutSine: function (x) {
-//         return -(Math.cos(Math.PI * x) - 1) / 2;
-//       },
-//     };
+      easeInOutSine: function (x) {
+        return -(Math.cos(Math.PI * x) - 1) / 2;
+      },
+    };
 
-//     map.on("load", function () {
-//       map.addImage("pulsing-dot", locationPoint, { pixelRatio: 2 });
+    map.on('load', function () {
+      map.addImage('pulsing-dot', locationPoint, { pixelRatio: 2 });
 
-//       map.addSource("points", {
-//         type: "geojson",
-//         data: {
-//           type: "FeatureCollection",
-//           features: [
-//             {
-//               type: "Feature",
-//               geometry: {
-//                 type: "Point",
-//                 coordinates: [userLng, userLat],
-//               },
-//             },
-//           ],
-//         },
-//       });
-//       map.addLayer({
-//         id: "points",
-//         type: "symbol",
-//         source: "points",
-//         layout: {
-//           "icon-image": "pulsing-dot",
-//         },
-//       });
-//     });
-//   });
-// }
+      map.addSource('points', {
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: [
+            {
+              type: 'Feature',
+              geometry: {
+                type: 'Point',
+                coordinates: [userLng, userLat],
+              },
+            },
+          ],
+        },
+      });
+      map.addLayer({
+        id: 'points',
+        type: 'symbol',
+        source: 'points',
+        layout: {
+          'icon-image': 'pulsing-dot',
+        },
+      });
+    });
+  });
+}
