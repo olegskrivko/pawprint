@@ -1,0 +1,12 @@
+/* TEAM */
+Developer: Olegs Krivko
+Contact: olegs.krivko@gmail.com
+
+Designer: Olegs Krivko
+Contact: olegs.krivko@gmail.com
+
+/* THANKS */
+Special thanks to our supporters and contributors who help make this website possible.
+
+/* SITE */
+Last updated: August 2023
