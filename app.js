@@ -18,6 +18,8 @@ const mongoSanitize = require('express-mongo-sanitize');
 const i18n = require('i18n');
 const cookieParser = require('cookie-parser');
 const ExpressError = require('./utils/ExpressError');
+const sitemap = require('express-sitemap-xml');
+const { create, fragment, e } = require('xmlbuilder2');
 // Import routes
 const homeRoutes = require('./routes/homeRoutes');
 const userRoutes = require('./routes/userRoutes');
@@ -160,19 +162,64 @@ app.get('/example', (req, res, next) => {
   next(err);
 });
 
-// Error handling middleware
-app.use((err, req, res, next) => {
-  let statusCode = err.statusCode || 500;
-  let message = err.message || 'Something went wrong!';
+// Generate and serve sitemap
+app.get('/sitemap.xml', (req, res) => {
+  const xml = create()
+    .ele('urlset', { xmlns: 'http://www.sitemaps.org/schemas/sitemap/0.9' })
+    .ele('url')
+    .ele('loc')
+    .txt('https://www.pawclix.com/')
+    .up()
+    .ele('changefreq')
+    .txt('weekly')
+    .up()
+    .ele('priority')
+    .txt('1.0')
+    .up()
+    // Add more URLs here
+    .end();
 
-  if (!(err instanceof ExpressError)) {
-    // If the error is not an instance of ExpressError, create a new instance with default values
-    const defaultError = new ExpressError(message, statusCode);
-    err = defaultError;
-  }
-
-  res.status(err.statusCode).render('error', { err });
+  res.header('Content-Type', 'application/xml');
+  res.send(xml);
 });
+
+// Generate and serve sitemap
+// const sitemapOptions = {
+//   root: __dirname,
+//   headers: {
+//     'Content-Type': 'application/xml',
+//   },
+//   generate: generateUrls, // Specify the function to generate URLs
+// };
+
+// app.get('/sitemap.xml', sitemap(sitemapOptions));
+
+// // Define a function to generate URLs for the sitemap
+// function generateUrls() {
+//   return [
+//     { url: '/', changefreq: 'weekly', priority: 1.0 },
+//     { url: '/about', changefreq: 'monthly', priority: 0.8 },
+//     { url: '/contact', changefreq: 'monthly', priority: 0.8 },
+//     // Add more URLs here
+//   ];
+// }
+
+// // Generate and serve sitemap
+// app.get('/sitemap.xml', sitemap(sitemapOptions));
+
+// // Error handling middleware
+// app.use((err, req, res, next) => {
+//   let statusCode = err.statusCode || 500;
+//   let message = err.message || 'Something went wrong!';
+
+//   if (!(err instanceof ExpressError)) {
+//     // If the error is not an instance of ExpressError, create a new instance with default values
+//     const defaultError = new ExpressError(message, statusCode);
+//     err = defaultError;
+//   }
+
+//   res.status(err.statusCode).render('error', { err });
+// });
 
 // Error handling middleware
 // app.use((err, req, res, next) => {
