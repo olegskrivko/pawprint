@@ -71,10 +71,15 @@ module.exports.languageMiddleware = (req, res, next) => {
         const user = await User.findById(req.user.id);
         userLanguage = user.language;
         console.log('User language from DB: ', userLanguage);
+        res.locals.userLanguage = userLanguage;
       } else {
         // User is not logged in, retrieve language preference from request headers
         userLanguage = req.headers['accept-language'];
-        console.log('User language from headers: ', userLanguage);
+        // Determine user's preferred language
+        const primaryLanguage = userLanguage.split(',')[0].split('-')[0];
+        console.log('User language from headers: ', primaryLanguage);
+        // Set the determined language as a variable accessible in your routes
+        res.locals.userLanguage = primaryLanguage;
       }
 
       // Set the locale for i18n module based on user's language preference
@@ -89,3 +94,8 @@ module.exports.languageMiddleware = (req, res, next) => {
     }
   });
 };
+// const userLanguage = req.headers['accept-language'];
+// // Determine user's preferred language
+// const primaryLanguage = userLanguage.split(',')[0].split('-')[0];
+// // Set the determined language as a variable accessible in your routes
+// res.locals.userLanguage = primaryLanguage;

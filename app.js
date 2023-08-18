@@ -54,7 +54,7 @@ app.use(cookieParser());
 // Configure i18n middleware
 i18n.configure({
   locales: ['en', 'lv', 'ru'], // Add all supported locales here
-  defaultLocale: 'en', // Set the default locale
+  defaultLocale: 'lv', // Set the default locale
   directory: path.join(__dirname, 'locales'), // Set the directory where translation files are located
   header: 'accept-language', // Set the header field to retrieve the language preference from the request headers
   queryParameter: 'lang', // Set the query parameter to specify the language in the URL
@@ -64,10 +64,19 @@ i18n.configure({
 
 app.use(i18n.init); // Initialize the i18n module
 
+app.use((req, res, next) => {
+  const userLanguage = req.headers['accept-language'];
+  // Determine user's preferred language
+  const primaryLanguage = userLanguage.split(',')[0].split('-')[0];
+  // Set the determined language as a variable accessible in your routes
+  res.locals.userLanguage = primaryLanguage;
+  next();
+});
+
 // Middleware to set the language cookie
 app.use((req, res, next) => {
   console.log('req.cookies.lang', req.cookies.lang);
-  const selectedLanguage = req.cookies.lang || req.get('accept-language') || 'en';
+  const selectedLanguage = req.cookies.lang || req.get('accept-language') || 'lv';
   res.cookie('lang', selectedLanguage, { maxAge: 1000 * 60 * 60 * 24 * 7 }); // Set the language cookie with a maxAge of 7 days
   next();
 });

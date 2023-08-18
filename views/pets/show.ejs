@@ -218,7 +218,12 @@
             <li class="list-group-item"><i class="bi bi-arrows-angle-expand"></i> <b><%= petsShowPage.titles.petSize %></b> <%= pet.size %></li>
 
             <li class="list-group-item d-none"><b>Lat: </b><span class="pet-latitude"><%=pet.latitude%></span><b>Lng: </b><span class="pet-longitude"><%=pet.longitude%></span></li>
-            <li class="list-group-item"><i class="bi bi-fingerprint"></i> <b><%= petsShowPage.titles.petIdentifier %></b> <%= pet.identifier %></li>
+            <li class="list-group-item">
+              <i class="bi bi-fingerprint"></i> <b><%= petsShowPage.titles.petIdentifier %></b> <% if (pet.identifier !== undefined && pet.identifier !== '' && pet.identifier !== null ) { %> <% let identifierStr = pet.identifier.toString(); %> <%= identifierStr.substring(0, identifierStr.length - 4) + '****' %> <% } else { %>
+              <!-- Handle the case when pet.identifier is undefined or empty -->
+              <!-- You can display a placeholder or a message -->
+              N/A <% } %>
+            </li>
             <li class="list-group-item">
               <p class="card-text">
                 <i class="bi bi-chat-square-text"></i> <b><%= petsShowPage.titles.petDescription %></b>

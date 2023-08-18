@@ -1,7 +1,7 @@
 {
   "homePage": {
     "titles": {
-      "section1": "Laipni lūdzam ",
+      "section1": " - pazudušo mājdzīvnieku atrašana, tikai viena klikšķa attālumā",
       "section2": "PawClix",
       "section3": "Atrodi savu mīļo draugu ar PawClix palīdzību."
     },
@@ -138,6 +138,24 @@
     "links": {
       "link1": "Privātuma politikai",
       "link2": "Noteikumiem un nosacījumiem"
+    }
+  },
+  "loginPage": {
+    "labels": {
+      "username": "Lietotājvārds",
+      "password": "Parole"
+    },
+    "titles": {
+      "pleaseLogIn": "Lūdzu, pierakstieties"
+    },
+    "buttons": {
+      "logIn": "Pieteikties"
+    },
+    "descriptions": {
+      "dontHaveAccount": "Vēl nav konta?"
+    },
+    "links": {
+      "signUp": "Reģistrējies"
     }
   },
   "servicesPage": {

@@ -1,7 +1,7 @@
 {
   "homePage": {
     "titles": {
-      "section1": "Добро пожаловать в ",
+      "section1": " - Воссоединение с потерянным питомцем всего в один клик",
       "section2": "PawClix",
       "section3": "Найдите своего пушистого друга с помощью PawClix."
     },
@@ -138,6 +138,24 @@
     "links": {
       "link1": "Политикой конфиденциальности",
       "link2": "Условиями использования."
+    }
+  },
+  "loginPage": {
+    "labels": {
+      "username": "Username",
+      "password": "Password"
+    },
+    "titles": {
+      "pleaseLogIn": "Please Log In"
+    },
+    "buttons": {
+      "logIn": "Log In"
+    },
+    "descriptions": {
+      "dontHaveAccount": "Don't have an account yet?"
+    },
+    "links": {
+      "signUp": "Sign Up"
     }
   },
   "servicesPage": {
