@@ -29,9 +29,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
 
     <!-- DOMPurify + html2canvas + jsPDF = ClientSide code to render Pet PDF, currently is added Backend ver -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.2/purify.min.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.2/purify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- PawClix Web App main CSS stylesheet with custom styles -->
     <link rel="stylesheet" href="/stylesheets/style.css" />
@@ -161,7 +161,7 @@
           navigator.serviceWorker
             .register('/service-worker.js')
             .then((registration) => {
-              console.log('Service Worker registered');
+              //console.log('Service Worker registered');
             })
             .catch((error) => {
               console.error('Service Worker registration failed:', error);
@@ -177,7 +177,7 @@
           navigator.serviceWorker
             .register('/OneSignalSDKWorker.js')
             .then(function (registration) {
-              console.log('Service Worker registered with scope:', registration.scope);
+              //console.log('Service Worker registered with scope:', registration.scope);
             })
             .catch(function (error) {
               console.log('Service Worker registration failed:', error);

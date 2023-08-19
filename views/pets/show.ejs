@@ -358,10 +358,31 @@
 
   <!--- row --->
 </div>
-<!-- <button onclick="downloadPDF()">Download PDF client</button> -->
+<!-- DOWNLOAD PDF CLIENT SIDE -->
+
+<script>
+  // GET PET VALUES
+  let petStatusValue = document.querySelector('#pet-status').textContent;
+  console.log('petStatusValue', petStatusValue);
+  //let petSpeciesValue = document.querySelector('#pet-species').textContent
+  //let petBreedValue
+  //let petCoatPatternValue
+  //let petGenderValue
+  //let petFirstColorValue
+  //let petThirdColorValue
+  //let petLastSeenValue
+  //let petAgeValue
+  //let petCoatLengthValue
+  //let petSizeValue
+  //let petIDValue
+  //let petDescriptionValue
+</script>
+<!-- END -->
+
+<button onclick="downloadPDF()">Download PDF client</button>
 <!-- <button id="downloadBtn">Download PDF server</button> -->
 
-<!-- <script>
+<script>
   const { jsPDF } = window.jspdf;
   function downloadPDF() {
     const doc = new jsPDF();
@@ -419,7 +440,7 @@
       },
     });
   }
-</script> -->
+</script>
 
 <!-- <script>
   const saveWatchlistBtn = document.querySelector("#saveWatchlistBtn");
@@ -499,7 +520,7 @@
     location.reload();
   });
 </script>
-<script>
+<!-- <script>
   //const reportPetId = e.currentTarget.getAttribute('data-reportpetid');
   const reporturl = window.location.href;
   const reportparts = reporturl.split('/');
@@ -532,7 +553,7 @@
         // Handle error, such as showing an error message
       });
   });
-</script>
+</script> -->
 
 <script>
   // Function to copy the current URL to the clipboard

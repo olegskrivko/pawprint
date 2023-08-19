@@ -5,6 +5,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 // Import required libraries
 const express = require('express');
+const cors = require('cors');
 const path = require('path');
 const mongoose = require('mongoose');
 const engine = require('ejs-mate');
@@ -39,6 +40,9 @@ const User = require('./models/user');
 
 // Create Express app
 const app = express();
+
+// Use the cors middleware
+app.use(cors());
 
 // Set up Express app
 app.engine('ejs', engine);
