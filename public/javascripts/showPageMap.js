@@ -6,6 +6,7 @@ function initializeMap() {
     center: pet.features.location.coordinates,
     zoom: 12,
     scrollZoom: false,
+    preserveDrawingBuffer: true,
   });
 
   map.addControl(new tt.FullscreenControl());

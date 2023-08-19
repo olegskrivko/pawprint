@@ -73,7 +73,7 @@
       <div class="carousel-inner">
         <% if (pet.images.length > 0) {%> <% pet.images.forEach((img, i) => { %>
         <div class="carousel-item <%= i === 0 ? 'active' : ''%>">
-          <img src="<%=img.url%>" class="d-block w-100" alt="" />
+          <img src="<%=img.url%>" class="d-block w-100 petImgSrc" alt="" />
         </div>
 
         <% }) %> <% } else { %>
@@ -198,9 +198,9 @@
             </li> -->
             <li class="list-group-item"><i class="bi bi-question-diamond"></i> <b><%= petsShowPage.titles.petStatus %></b> <span id="pet-status"> <%= pet.petStatus %></span></li>
             <li class="list-group-item"><i class="bi bi-diamond-half"></i> <b><%= petsShowPage.titles.petSpecies %></b><span id="pet-species"> <%= pet.species %></span></li>
-            <li class="list-group-item"><i class="bi bi-x-diamond-fill"></i> <b><%= petsShowPage.titles.petBreed %></b> <%= pet.breed %></li>
-            <li class="list-group-item"><i class="bi bi-grid-3x3-gap"></i> <b><%= petsShowPage.titles.petCoatPattern %></b> <%= pet.pattern %></li>
-            <li class="list-group-item"><i class="bi bi-gender-ambiguous"></i> <b><%= petsShowPage.titles.petGender %></b> <%= pet.gender %></li>
+            <li class="list-group-item"><i class="bi bi-x-diamond-fill"></i> <b><%= petsShowPage.titles.petBreed %></b><span id="pet-breed"> <%= pet.breed %></span></li>
+            <li class="list-group-item"><i class="bi bi-grid-3x3-gap"></i> <b><%= petsShowPage.titles.petCoatPattern %></b><span id="pet-pattern"> <%= pet.pattern %></span></li>
+            <li class="list-group-item"><i class="bi bi-gender-ambiguous"></i> <b><%= petsShowPage.titles.petGender %></b><span id="pet-gender"> <%= pet.gender %></span></li>
 
             <li class="list-group-item"><i class="bi bi-palette"></i> <b><%= petsShowPage.titles.petColor1 %></b> <%= pet.color[0] %></li>
             <% if (pet.color.length > 1) {%>
@@ -360,10 +360,10 @@
 </div>
 <!-- DOWNLOAD PDF CLIENT SIDE -->
 
-<script>
+<!-- <script>
   // GET PET VALUES
-  let petStatusValue = document.querySelector('#pet-status').textContent;
-  console.log('petStatusValue', petStatusValue);
+  //let petStatusValue = document.querySelector('#pet-status').textContent;
+  //console.log('petStatusValue', petStatusValue);
   //let petSpeciesValue = document.querySelector('#pet-species').textContent
   //let petBreedValue
   //let petCoatPatternValue
@@ -376,13 +376,18 @@
   //let petSizeValue
   //let petIDValue
   //let petDescriptionValue
-</script>
+</script> -->
 <!-- END -->
 
-<button onclick="downloadPDF()">Download PDF client</button>
+<!-- <button onclick="downloadPDF()">Download PDF client</button> -->
 <!-- <button id="downloadBtn">Download PDF server</button> -->
 
-<script>
+<!-- <script>
+  let petStatusValue = document.querySelector('#pet-status').textContent;
+  let petImgSrcValue = document.querySelector('.petImgSrc');
+  // Get the value of the src attribute
+  let srcValue = petImgSrcValue.getAttribute('src');
+  console.log('srcValue', srcValue);
   const { jsPDF } = window.jspdf;
   function downloadPDF() {
     const doc = new jsPDF();
@@ -393,45 +398,58 @@
 
     // Define your HTML template
     const template = `
-<html>
-<head>
-  <style>
-    /* Add your CSS styles here */
-    .header {
-      text-align: center;
-      font-size: 10px;
-      margin-bottom: 20px;
-    }
-    .image {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .text-field {
-      margin-bottom: 10px;
-    }
-  </style>
-</head>
-<body>
-  <div class="header" style="color: red;">
-    PDF Template Example
-  </div>
-  <div class="image">
-    <img src="https://res.cloudinary.com/dymne7cde/image/upload/v1684082424/PetFinder/azltxnekf0v2he30woz4.jpg" style="width: 200px;height:200px;" alt="Image">
-  </div>
-  <div class="text-field">
-    <label for="name">Name:</label>
-    <span id="name">John Doe</span>
-  </div>
-  <div class="text-field">
-    <label for="email">Email:</label>
-    <span id="email">johndoe@example.com</span>
-  </div>
-  <div class="text-field">
-    <label for="phone">Phone:</label>
-    <span id="phone">123-456-7890</span>
-  </div>
-</body>
-</html>`;
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <style>
+        /* Reset some default browser styles */
+        body {
+          margin: 0;
+          padding: 0;
+          font-family: Arial, sans-serif;
+        }
+        /* Add your custom styles here */
+        .header {
+          text-align: center;
+          color: red;
+          font-size: 24px;
+          margin: 20px 0;
+        }
+        .image-container {
+          text-align: center;
+          margin-bottom: 20px;
+        }
+        .image {
+          width: 150px;
+          height: 150px;
+        }
+        .text-field {
+          margin-bottom: 10px;
+        }
+        label {
+          font-weight: bold;
+        }
+        /* Add more custom styles as needed */
+      </style>
+    </head>
+    <body>
+      <div class="header">
+        PDF Template Example
+      </div>
+      <div class="image-container">
+        <img class="image" src="${srcValue}" style="width: 150px;height: 150px;" alt="Image">
+      </div>
+      <div class="text-field">
+        <label for="status">Status:</label>
+        <span id="status">${petStatusValue}</span>
+      </div>
+      <div class="text-field">
+        <label for="email">Email:</label>
+        <span id="email">johndoe@example.com</span>
+      </div>
+    </body>
+    </html>
+    `;
 
     // Convert HTML template to PDF
     doc.html(template, {
@@ -440,7 +458,7 @@
       },
     });
   }
-</script>
+</script> -->
 
 <!-- <script>
   const saveWatchlistBtn = document.querySelector("#saveWatchlistBtn");
@@ -452,6 +470,90 @@
   })
 
 </script> -->
+<div id="qrcode"></div>
+<button id="generatePdf">Generate PDF</button>
+
+<script>
+  // Create a new QRCode instance
+  const qrcode = new QRCode(document.getElementById('qrcode'), {
+    text: window.location.href, // Use the current URL
+    width: 128,
+    height: 128,
+  });
+
+  // Optional: You can style the QR code using CSS
+  document.getElementById('qrcode').style.margin = '20px auto'; // Center the QR code
+
+  let petStatusValue = document.querySelector('#pet-status').textContent;
+  let petImgSrcValue = document.querySelector('.petImgSrc');
+  let srcValue = petImgSrcValue.getAttribute('src');
+
+  let petSpeciesValue = document.querySelector('#pet-species').textContent;
+  let petBreedValue = document.querySelector('#pet-breed').textContent;
+  let petCoatPatternValue = document.querySelector('#pet-species').textContent;
+  let petGenderValue = document.querySelector('#pet-gender').textContent;
+  let petFirstColorValue = document.querySelector('#pet-species').textContent;
+  let petThirdColorValue = document.querySelector('#pet-species').textContent;
+  let petLastSeenValue = document.querySelector('#pet-species').textContent;
+  let petAgeValue = document.querySelector('#pet-species').textContent;
+  let petCoatLengthValue = document.querySelector('#pet-species').textContent;
+  let petSizeValue = document.querySelector('#pet-species').textContent;
+  let petIDValue = document.querySelector('#pet-species').textContent;
+  let petDescriptionValue = document.querySelector('#pet-species').textContent;
+  // Fetch the image and convert it to Base64
+  fetch(`${srcValue}`)
+    .then((response) => response.blob())
+    .then((blob) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const imageData = reader.result.split(',')[1]; // Extract the Base64 data
+
+        // Generate PDF
+        const docDefinition = {
+          content: [
+            {
+              layout: 'noBorders', // Remove borders around the shape
+              table: {
+                widths: ['*'], // Set width to 100% of available space
+                body: [
+                  [
+                    {
+                      fillColor: 'red', // Set the fill color to red
+                      text: 'Hello, this is an HTML to PDF example',
+                      style: 'header',
+                    },
+                  ],
+                ],
+              },
+              margin: [0, 10], // Add top and bottom margin (padding)
+              alignment: 'center', // Center the shape
+            },
+            { text: 'Hello, this is an HTML to PDF example', style: 'header' },
+            { text: 'Hello, this is an HTML to PDF example', style: 'header' },
+            { text: 'This PDF is generated using pdfmake and includes an image.', style: 'paragraph' },
+            {
+              image: `data:image/jpeg;base64,${imageData}`, // Base64-encoded image data
+              width: 400,
+              //height: 400, it will be automatically adjusted
+              alignment: 'center', // Align the image to the center
+            },
+            { text: 'This PDF  and includes an image.', style: 'paragraph' },
+          ],
+          styles: {
+            centeredHeader: { fontSize: 18, alignment: 'center', bold: true, margin: [0, 0, 0, 10] },
+            header: { fontSize: 18, bold: true, margin: [0, 0, 0, 10] },
+            paragraph: { fontSize: 12, margin: [0, 0, 0, 10] },
+          },
+        };
+
+        const pdfDoc = pdfMake.createPdf(docDefinition);
+        document.getElementById('generatePdf').addEventListener('click', function () {
+          pdfDoc.download('example.pdf');
+        });
+      };
+      reader.readAsDataURL(blob);
+    });
+</script>
 
 <script>
   const indicators = document.querySelectorAll('.carousel-indicator');
