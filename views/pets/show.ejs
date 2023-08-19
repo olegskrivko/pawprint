@@ -41,7 +41,8 @@
 
         <ul class="dropdown-menu dropdown-menu-end mx-0 shadow w-220px" data-bs-theme="light">
           <li>
-            <a id="downloadBtn" class="dropdown-item dropdown-item-danger d-flex gap-2 align-items-center" href="#"><i class="bi bi-file-earmark-arrow-down"></i> <%= petsShowPage.buttons.download %> </a>
+            <a id="generatePdf" class="dropdown-item dropdown-item-danger d-flex gap-2 align-items-center" href="#"><i class="bi bi-file-earmark-arrow-down"></i> <%= petsShowPage.buttons.download %></a>
+            <!-- <a id="downloadBtn" class="dropdown-item dropdown-item-danger d-flex gap-2 align-items-center" href="#"><i class="bi bi-file-earmark-arrow-down"></i> <= petsShowPage.buttons.download %> </a> -->
           </li>
           <li>
             <a id="copyBtn" class="dropdown-item dropdown-item-danger d-flex gap-2 align-items-center" href="#"><i class="bi bi-files"></i> <%= petsShowPage.buttons.copyLink %> </a>
@@ -361,106 +362,6 @@
 <!-- DOWNLOAD PDF CLIENT SIDE -->
 
 <!-- <script>
-  // GET PET VALUES
-  //let petStatusValue = document.querySelector('#pet-status').textContent;
-  //console.log('petStatusValue', petStatusValue);
-  //let petSpeciesValue = document.querySelector('#pet-species').textContent
-  //let petBreedValue
-  //let petCoatPatternValue
-  //let petGenderValue
-  //let petFirstColorValue
-  //let petThirdColorValue
-  //let petLastSeenValue
-  //let petAgeValue
-  //let petCoatLengthValue
-  //let petSizeValue
-  //let petIDValue
-  //let petDescriptionValue
-</script> -->
-<!-- END -->
-
-<!-- <button onclick="downloadPDF()">Download PDF client</button> -->
-<!-- <button id="downloadBtn">Download PDF server</button> -->
-
-<!-- <script>
-  let petStatusValue = document.querySelector('#pet-status').textContent;
-  let petImgSrcValue = document.querySelector('.petImgSrc');
-  // Get the value of the src attribute
-  let srcValue = petImgSrcValue.getAttribute('src');
-  console.log('srcValue', srcValue);
-  const { jsPDF } = window.jspdf;
-  function downloadPDF() {
-    const doc = new jsPDF();
-    //const imgData = 'https://res.cloudinary.com/dymne7cde/image/upload/v1684082424/PetFinder/azltxnekf0v2he30woz4.jpg';
-
-    //doc.addImage(imgData, 'JPEG', 10, 10, 50, 50);
-    //doc.save('example.pdf');
-
-    // Define your HTML template
-    const template = `
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <style>
-        /* Reset some default browser styles */
-        body {
-          margin: 0;
-          padding: 0;
-          font-family: Arial, sans-serif;
-        }
-        /* Add your custom styles here */
-        .header {
-          text-align: center;
-          color: red;
-          font-size: 24px;
-          margin: 20px 0;
-        }
-        .image-container {
-          text-align: center;
-          margin-bottom: 20px;
-        }
-        .image {
-          width: 150px;
-          height: 150px;
-        }
-        .text-field {
-          margin-bottom: 10px;
-        }
-        label {
-          font-weight: bold;
-        }
-        /* Add more custom styles as needed */
-      </style>
-    </head>
-    <body>
-      <div class="header">
-        PDF Template Example
-      </div>
-      <div class="image-container">
-        <img class="image" src="${srcValue}" style="width: 150px;height: 150px;" alt="Image">
-      </div>
-      <div class="text-field">
-        <label for="status">Status:</label>
-        <span id="status">${petStatusValue}</span>
-      </div>
-      <div class="text-field">
-        <label for="email">Email:</label>
-        <span id="email">johndoe@example.com</span>
-      </div>
-    </body>
-    </html>
-    `;
-
-    // Convert HTML template to PDF
-    doc.html(template, {
-      callback: function (pdf) {
-        pdf.save('template.pdf');
-      },
-    });
-  }
-</script> -->
-
-<!-- <script>
   const saveWatchlistBtn = document.querySelector("#saveWatchlistBtn");
   saveWatchlistBtn.addEventListener("click", async (e) => {
 
@@ -470,10 +371,12 @@
   })
 
 </script> -->
-<div id="qrcode"></div>
-<button id="generatePdf">Generate PDF</button>
+<div id="qrcode" class="d-none"></div>
+<!-- <button id="generatePdf">Generate PDF</button> -->
 
 <script>
+  // Detect the document language
+  const documentLanguage = document.documentElement.lang;
   // Create a new QRCode instance
   const qrcode = new QRCode(document.getElementById('qrcode'), {
     text: window.location.href, // Use the current URL
@@ -485,23 +388,23 @@
   document.getElementById('qrcode').style.margin = '20px auto'; // Center the QR code
 
   let petStatusValue = document.querySelector('#pet-status').textContent;
-  let petImgSrcValue = document.querySelector('.petImgSrc');
-  let srcValue = petImgSrcValue.getAttribute('src');
-
+  let petImgSrcValue = document.querySelector('.petImgSrc').getAttribute('src');
   let petSpeciesValue = document.querySelector('#pet-species').textContent;
   let petBreedValue = document.querySelector('#pet-breed').textContent;
-  let petCoatPatternValue = document.querySelector('#pet-species').textContent;
   let petGenderValue = document.querySelector('#pet-gender').textContent;
-  let petFirstColorValue = document.querySelector('#pet-species').textContent;
-  let petThirdColorValue = document.querySelector('#pet-species').textContent;
-  let petLastSeenValue = document.querySelector('#pet-species').textContent;
-  let petAgeValue = document.querySelector('#pet-species').textContent;
-  let petCoatLengthValue = document.querySelector('#pet-species').textContent;
-  let petSizeValue = document.querySelector('#pet-species').textContent;
-  let petIDValue = document.querySelector('#pet-species').textContent;
-  let petDescriptionValue = document.querySelector('#pet-species').textContent;
+
+  // let petCoatPatternValue = document.querySelector('#pet-pattern').textContent;
+  // let petFirstColorValue = document.querySelector('#pet-color1').textContent;
+  // let petSecondColorValue = document.querySelector('#pet-color2').textContent;
+  // let petThirdColorValue = document.querySelector('#pet-color3').textContent;
+  // let petLastSeenValue = document.querySelector('#pet-last-seen').textContent;
+  // let petAgeValue = document.querySelector('#pet-age').textContent;
+  // let petCoatLengthValue = document.querySelector('#pet-coat-length').textContent;
+  //let petSizeValue = document.querySelector('#pet-size').textContent;
+  //let petIDValue = document.querySelector('#pet-identifier').textContent;
+  //let petDescriptionValue = document.querySelector('#pet-description').textContent;
   // Fetch the image and convert it to Base64
-  fetch(`${srcValue}`)
+  fetch(`${petImgSrcValue}`)
     .then((response) => response.blob())
     .then((blob) => {
       const reader = new FileReader();
@@ -509,7 +412,9 @@
         const imageData = reader.result.split(',')[1]; // Extract the Base64 data
 
         // Generate PDF
-        const docDefinition = {
+
+        // Define templates for different languages
+        const englishTemplate = {
           content: [
             {
               layout: 'noBorders', // Remove borders around the shape
@@ -518,8 +423,8 @@
                 body: [
                   [
                     {
-                      fillColor: 'red', // Set the fill color to red
-                      text: 'Hello, this is an HTML to PDF example',
+                      //fillColor: 'red', // Set the fill color to red
+                      text: `${petStatusValue} ${petSpeciesValue}!`,
                       style: 'header',
                     },
                   ],
@@ -528,16 +433,30 @@
               margin: [0, 10], // Add top and bottom margin (padding)
               alignment: 'center', // Center the shape
             },
-            { text: 'Hello, this is an HTML to PDF example', style: 'header' },
-            { text: 'Hello, this is an HTML to PDF example', style: 'header' },
-            { text: 'This PDF is generated using pdfmake and includes an image.', style: 'paragraph' },
             {
               image: `data:image/jpeg;base64,${imageData}`, // Base64-encoded image data
-              width: 400,
+              width: 350,
               //height: 400, it will be automatically adjusted
               alignment: 'center', // Align the image to the center
             },
-            { text: 'This PDF  and includes an image.', style: 'paragraph' },
+            { text: `Dzīvnieka dzimums: ${petGenderValue} Šķirne: ${petBreedValue}`, style: 'paragraph' },
+            { text: `Kažoka raksts: Spalvas garums:`, style: 'paragraph' },
+            { text: `Primārā krāsa: Sekundārā krāsa: Trešā krāsa:`, style: 'paragraph' },
+            { text: `Dzīvnieka izmērs: Vecums:`, style: 'paragraph' },
+            { text: `Pēdējo reizi redzēts:`, style: 'paragraph' },
+            { text: `Īss apraksts:`, style: 'paragraph' },
+            {
+              image: document.getElementById('qrcode').querySelector('img').src, // Include QR code image
+              width: 128,
+              height: 128,
+              alignment: 'center',
+            },
+            {
+              text: 'Generated using www.PawClix.com', // Your watermark or credit text
+              fontSize: 10,
+              alignment: 'center',
+              margin: [0, 20, 0, 0], // Add margin to create space between content and credit
+            },
           ],
           styles: {
             centeredHeader: { fontSize: 18, alignment: 'center', bold: true, margin: [0, 0, 0, 10] },
@@ -546,9 +465,124 @@
           },
         };
 
-        const pdfDoc = pdfMake.createPdf(docDefinition);
+        const latvianTemplate = {
+          content: [
+            {
+              layout: 'noBorders', // Remove borders around the shape
+              table: {
+                widths: ['*'], // Set width to 100% of available space
+                body: [
+                  [
+                    {
+                      //fillColor: 'red', // Set the fill color to red
+                      text: `${petStatusValue} ${petSpeciesValue}!`,
+                      style: 'header',
+                    },
+                  ],
+                ],
+              },
+              margin: [0, 10], // Add top and bottom margin (padding)
+              alignment: 'center', // Center the shape
+            },
+            //{ text: 'Hello, this is an HTML to PDF example', style: 'header' },
+            {
+              image: `data:image/jpeg;base64,${imageData}`, // Base64-encoded image data
+              width: 350,
+              //height: 400, it will be automatically adjusted
+              alignment: 'center', // Align the image to the center
+            },
+            { text: `Dzīvnieka dzimums: ${petGenderValue} Šķirne: ${petBreedValue}`, style: 'paragraph' },
+            { text: `Kažoka raksts: Spalvas garums:`, style: 'paragraph' },
+            { text: `Primārā krāsa: Sekundārā krāsa: Trešā krāsa:`, style: 'paragraph' },
+            { text: `Dzīvnieka izmērs: Vecums:`, style: 'paragraph' },
+            { text: `Pēdējo reizi redzēts:`, style: 'paragraph' },
+            { text: `Īss apraksts:`, style: 'paragraph' },
+            {
+              image: document.getElementById('qrcode').querySelector('img').src, // Include QR code image
+              width: 128,
+              height: 128,
+              alignment: 'center',
+            },
+            {
+              text: 'Izveidots www.PawClix.com', // Your watermark or credit text
+              fontSize: 10,
+              alignment: 'center',
+              margin: [0, 20, 0, 0], // Add margin to create space between content and credit
+            },
+          ],
+          styles: {
+            centeredHeader: { fontSize: 18, alignment: 'center', bold: true, margin: [0, 0, 0, 10] },
+            header: { fontSize: 18, bold: true, margin: [0, 0, 0, 10] },
+            paragraph: { fontSize: 12, margin: [0, 0, 0, 10] },
+          },
+        };
+
+        const russianTemplate = {
+          content: [
+            {
+              layout: 'noBorders', // Remove borders around the shape
+              table: {
+                widths: ['*'], // Set width to 100% of available space
+                body: [
+                  [
+                    {
+                      //fillColor: 'red', // Set the fill color to red
+                      text: `${petStatusValue} ${petSpeciesValue}!`,
+                      style: 'header',
+                    },
+                  ],
+                ],
+              },
+              margin: [0, 10], // Add top and bottom margin (padding)
+              alignment: 'center', // Center the shape
+            },
+            {
+              image: `data:image/jpeg;base64,${imageData}`, // Base64-encoded image data
+              width: 350,
+              //height: 400, it will be automatically adjusted
+              alignment: 'center', // Align the image to the center
+            },
+            { text: `Dzīvnieka dzimums: ${petGenderValue} Šķirne: ${petBreedValue}`, style: 'paragraph' },
+            { text: `Kažoka raksts: Spalvas garums:`, style: 'paragraph' },
+            { text: `Primārā krāsa: Sekundārā krāsa: Trešā krāsa:`, style: 'paragraph' },
+            { text: `Dzīvnieka izmērs: Vecums:`, style: 'paragraph' },
+            { text: `Pēdējo reizi redzēts:`, style: 'paragraph' },
+            { text: `Īss apraksts:`, style: 'paragraph' },
+            {
+              image: document.getElementById('qrcode').querySelector('img').src, // Include QR code image
+              width: 128,
+              height: 128,
+              alignment: 'center',
+            },
+            {
+              text: 'Сгенерировать с помощью www.PawClix.com', // Your watermark or credit text
+              fontSize: 10,
+              alignment: 'center',
+              margin: [0, 20, 0, 0], // Add margin to create space between content and credit
+            },
+          ],
+          styles: {
+            centeredHeader: { fontSize: 18, alignment: 'center', bold: true, margin: [0, 0, 0, 10] },
+            header: { fontSize: 18, bold: true, margin: [0, 0, 0, 10] },
+            paragraph: { fontSize: 12, margin: [0, 0, 0, 10] },
+          },
+        };
+
+        // Select the appropriate template based on the language
+        const documentLanguage = document.documentElement.lang;
+        let selectedTemplate;
+        if (documentLanguage === 'en') {
+          selectedTemplate = englishTemplate;
+        } else if (documentLanguage === 'lv') {
+          selectedTemplate = latvianTemplate;
+        } else if (documentLanguage === 'ru') {
+          selectedTemplate = russianTemplate;
+        }
+        // Add more conditions for other languages if needed
+        // Generate the PDF using the selected template
+        const pdfDoc = pdfMake.createPdf(selectedTemplate);
         document.getElementById('generatePdf').addEventListener('click', function () {
-          pdfDoc.download('example.pdf');
+          pdfDoc.download('pet.pdf');
         });
       };
       reader.readAsDataURL(blob);
