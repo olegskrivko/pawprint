@@ -30,19 +30,19 @@
     },
     "descriptions": {
       "section1": "Mūsu lietotne izmanto modernas tehnoloģijas, lai atvieglotu pazudušo dzīvnieku atgriešanos pie saviem īpašniekiem. Mēs nodrošinām platformu, lai publicētu pazudušo dzīvnieku sludinājumus un aktīvi strādātu, lai savienotu īpašniekus ar cilvēkiem, kas tos atraduši.",
-      "section2": "Turklāt mūsu lietotne nodrošina savienojumu ar dažādām dzīvnieku aprūpes pakalpojumiem, tostarp veterinārajiem klīnikām, suku piegādātājiem, audzinātājiem un citiem. Mēs nodrošinām, ka jums ir pieejami pareizie resursi jūsu dzīvnieka konkrētajām vajadzībām.",
+      "section2": "Turklāt mūsu lietotne nodrošina savienojumu ar dzīvnieku dažādiem aprūpes pakalpojumiem, tostarp veterinārajām klīnikām, dzīvnieku pieskatītājiem, suņu dresētājiem un citiem. Mēs nodrošinām, ka jums ir pieejami pareizie resursi jūsu dzīvnieka konkrētajām vajadzībām.",
       "section3": "Mūsu lietotne, kas pielāgota mobīlajiem ierīcēm, izmanto jaunākās tehnoloģijas, lai nodrošinātu drošu platformu pazudušo dzīvnieku atgriešanai pie saviem īpašniekiem.",
-      "section4": "Mūsu lietotne nodrošina vērtīgu informāciju par dzīvnieku veselību un steidzamu aprūpi, tostarp vakcinācijas svarīgumu un regulāriem pārbaudēm, lai nodrošinātu jūsu dzīvnieka veselību un laimi.",
+      "section4": "Mūsu lietotne nodrošina vērtīgu informāciju par dzīvnieku veselību un steidzamu aprūpi, tostarp vakcinācijas svarīgumu un regulārām pārbaudēm, lai nodrošinātu jūsu dzīvnieka veselību un laimi.",
       "section5": "Saņemiet nekavējoties brīdinājumus, kad tiek ziņots par pazudušiem vai atrastiem mājdzīvniekiem jūsu tuvumā. Esiet pirmais, kurš palīdzēs atjaunot pūkainos draugus ar viņu īpašniekiem.",
       "section6": "Sadaļa, kas sniedz padomus un resursus dzīvnieku īpašniekiem par to, kā novērst dzīvnieka pazaudēšanu, kā arī ko darīt, ja dzīvnieks ir pazudis.",
       "section7": "Iespēja, kas ļauj lietotājiem izveidot profilu savam pazudušajam dzīvniekam, iekļaujot fotogrāfiju, aprakstu un kontaktinformāciju.",
       "section8": "Integrācija ar sociālo mediju platformām, lai palīdzētu izplatīt informāciju par pazudušiem dzīvniekiem un veicinātu komunikāciju starp lietotājiem.",
       "section9": "Meklējamā zaudēto un atrasto dzīvnieku datu bāze, kas ļauj lietotājiem meklēt dzīvniekus pēc atrašanās vietas, šķirnes, krāsas un citiem raksturlielumiem.",
-      "section10": "Funkcija, kas parāda karti ar zaudētajiem un atrastajiem dzīvniekiem apkārtnē, ļaujot lietotājiem viegli atrast un atpazīt pazudušos dzīvniekus.",
+      "section10": "Funkcija, kas parāda karti ar pazaudētiem un atrastiem dzīvniekiem jūsu apkārtnē, ļaujot lietotājiem viegli atrast un atpazīt pazudušos dzīvniekus.",
       "section11": "Funkcija, kas ļauj lietotājiem viegli izveidot un drukāt zaudēto dzīvnieku plakātus, ko izplatīt savā vietējā kopienā.",
       "section12": "Jūsu ieguldījums var palīdzēt mums turpināt mūsu misiju atgriezt pazudušos dzīvniekus pie viņu ģimenēm un nodrošināt viņiem nepieciešamo aprūpi. Katrs mazs ieguldījums ir svarīgs, un mēs novērtējam jūsu atbalstu!",
-      "section13": "Jūsu atsauksmes ir ļoti vērtīgas mums, jo mēs cenšamies uzlabot mūsu lietotni un sniegt labāko iespējamo servisu dzīvnieku īpašniekiem. Mēs novērtējam jebkādus komentārus, ieteikumus vai kritiku, kuru jums var būt, un izmantosim tos, lai padarītu mūsu lietotni vēl labāku. Lūdzu, pavērsiet mirkli, lai dalītos savās domās ar mums.",
-      "section14": "Mūsu sponsori spēlē būtisku lomu, palīdzot mums turpināt mūsu misiju atgriezt pazudušos dzīvniekus pie viņu ģimenēm un nodrošināt viņiem nepieciešamo aprūpi. Viņu dāsna atbalsts ne tikai palīdz mums saglabāt darbību, bet arī rada reālu atšķirību zaudēto un pamesto dzīvnieku dzīvēs."
+      "section13": "Jūsu atsauksmes ir ļoti vērtīgas mums, jo mēs cenšamies uzlabot mūsu lietotni un sniegt labāko iespējamo servisu dzīvnieku īpašniekiem. Mēs novērtējam jebkādus komentārus, ieteikumus vai kritiku, un izmantosim to, lai padarītu mūsu lietotni vēl labāku. Lūdzu, vēltiet mirkli, lai dalītos savās domās ar mums.",
+      "section14": "Mūsu sponsori spēlē būtisku lomu, palīdzot mums turpināt mūsu misiju atgriezt pazudušos dzīvniekus pie viņu ģimenēm un nodrošināt viņiem nepieciešamo aprūpi. Viņu dāsns atbalsts ne tikai palīdz mums saglabāt darbību, bet arī rada reālu pavērsienu pazaudēto un atrasto dzīvnieku dzīvēs."
     },
     "buttons": {
       "support": "Atbalstīt",
@@ -52,7 +52,7 @@
   "supportPage": {
     "titles": {
       "section1": "Atbalsts",
-      "section2": "Mūsu tehnoloģiju komplekts"
+      "section2": "Mūsu izmantotās tehnoloģijas"
     },
     "descriptions": {
       "section1": "Mēs esam pateicīgi par jebkādu atbalstu vai sponsoriem, kas var palīdzēt mums atbrīvot pilno potenciālu mūsu tīmekļa lietojumprogrammā. Ja jūs dalāties ar mūsu redzējumu un vēlaties veikt ieguldījumu, lai segtu izmaksas par izmantojot premium pakalpojumus, lūdzu, sazinieties ar mums. Jūsu atbalsts ļaus mums uzlabot mūsu lietotni un nodrošināt vēl labāku pieredzi mūsu lietotājiem.",
@@ -110,9 +110,9 @@
       "petColor": "Dzīvnieka krāsa",
       "petDistance": "Attālums (km)",
       "petAge": "Dzīvnieka vecums",
-      "petCoatType": "Kažoka tips",
+      "petCoatType": "Spalvas garums",
       "petSize": "Dzīvnieka izmērs",
-      "petIdentifier": "Identifikators",
+      "petIdentifier": "Identifikācijas numurs",
       "petLocation": "Atrašanās vieta",
       "petLostOrFoundDate": "Zaudēšanas vai atraduma datums"
     }
@@ -283,11 +283,11 @@
       },
       {
         "value": "Adolescent",
-        "text": "Jaunieši"
+        "text": "Jaunietis"
       },
       {
         "value": "Adult",
-        "text": "Pieaugušais"
+        "text": "Pieaudzis"
       },
       {
         "value": "Senior",
@@ -301,7 +301,7 @@
       },
       {
         "value": "Hairless",
-        "text": "Bezmatīts"
+        "text": "Bezspalvains"
       },
       {
         "value": "Short",
@@ -313,7 +313,7 @@
       },
       {
         "value": "Long",
-        "text": "Garš"
+        "text": "Gara"
       }
     ],
     "pattern": [
@@ -335,11 +335,11 @@
       },
       {
         "value": "Spotted",
-        "text": "Pleķainais"
+        "text": "Plankumains"
       },
       {
         "value": "Striped",
-        "text": "Joslainis"
+        "text": "Strīpains"
       }
     ],
     "location": [
@@ -1115,6 +1115,16 @@
         "value": "Other",
         "text": "Cits"
       }
+    ],
+    "serviceType": [
+      {
+        "value": "Organization",
+        "text": "Kompānija"
+      },
+      {
+        "value": "Individual",
+        "text": "Fiziska persona"
+      }
     ]
   },
   "reportPetPage": {
@@ -1130,23 +1140,23 @@
       "petSpecies": "Suga",
       "petGender": "Dzimums",
       "petAge": "Vecums",
-      "petIdentifier": "Identifikators",
-      "petLostOrFoundDate": "Zaudēšanas vai atradšanas datums",
-      "petCoatType": "Apsējs",
-      "petSize": "Mājdzīvnieka izmērs",
-      "petCoatPattern": "Apsēja raksts",
-      "petColor1": "Galvenā krāsa",
-      "petColor2": "Otrā krāsa",
+      "petIdentifier": "Identifikācijas numurs",
+      "petLostOrFoundDate": "Zaudēšanas vai atrašanas datums",
+      "petCoatType": "Spalvas garums",
+      "petSize": "Mājzīvnieka izmērs",
+      "petCoatPattern": "Kažoka raksts",
+      "petColor1": "Primārā krāsa",
+      "petColor2": "Sekundārā krāsa",
       "petColor3": "Trešā krāsa",
       "petName": "Mājdzīvnieka vārds",
       "petBreed": "Šķirne",
-      "petDescription": "Apraksts",
-      "petImages": "Ielādēt attēlus (max 3)",
-      "petMap": "Lūdzu, ievietojiet marķieri uz kartes, lai norādītu vietu, kur mājdzīvnieks tika zaudēts vai atrasts."
+      "petDescription": "Īss apraksts:",
+      "petImages": "Augšupielādēt attēlus (max 3)",
+      "petMap": "Lūdzu, ievietojiet marķieri uz kartes, lai norādītu vietu, kur mājdzīvnieks tika pazaudēts vai atrasts."
     },
     "notifications": {
       "note": "PIEZĪME:",
-      "notification": "šī informācija tiks padarīta publiska, lūdzu, neparedzētu jutīgu informāciju, ko vēlaties saglabāt privātu."
+      "notification": "šī informācija tiks pieejama publiski, lūdzu, nenorādiet privātu informāciju."
     }
   },
   "profilePage": {
@@ -1220,14 +1230,14 @@
       "addService": "Pievienot Pakalpojumu"
     }
   },
-
   "petsShowPage": {
     "buttons": {
       "send": "Sūtīt",
-      "show": "Rādīt",
-      "location": "Atrašanās vieta",
+      "show": "Rādīt kartē",
+      "addLocation": "Pievienot atrašanās vietu",
+      "removeLocation": "Noņemt atrašanās vietu",
       "share": "Dalīties",
-      "download": "Lejupielādēt",
+      "download": "Lejupielādēt PDF",
       "copyLink": "Kopēt saiti",
       "edit": "Rediģēt",
       "delete": "Dzēst"
@@ -1236,7 +1246,7 @@
       "addComment": "Pievienot komentāru..."
     },
     "titles": {
-      "petStatus": "Dzīvnieka stāvoklis:",
+      "petStatus": "Dzīvnieka statuss:",
       "petSpecies": "Suga:",
       "petLastSeen": "Pēdējo reizi redzēts:",
       "petBreed": "Šķirne:",
@@ -1246,14 +1256,20 @@
       "petCoatPattern": "Kažoka raksts:",
       "spotColor": "Plankumu krāsa:",
       "stripeColor": "Strīpu krāsa:",
-      "petColor1": "Pirmais krāsa:",
-      "petColor2": "Otrais krāsa:",
+      "petColor1": "Primārā krāsa:",
+      "petColor2": "Sekundārā krāsa:",
       "petColor3": "Trešā krāsa:",
-      "petCoatType": "Kažoka tips:",
-      "petIdentifier": "Identifikators:",
-      "petDescription": "Apraksts:",
+      "petCoatType": "Spalvas garums:",
+      "petIdentifier": "Identifikācijas numurs:",
+      "petDescription": "Īss apraksts:",
       "petDistance": "Attālums (km):",
       "petViews": "skatījumi"
+    },
+    "description": {
+      "added": "Ievietots",
+      "updated": "Atjaunināts",
+      "author": "Autors",
+      "noCommentsYet": "Komentāru nav"
     }
   },
   "profileTabs": {
@@ -2844,6 +2860,50 @@
     "veterinary-services": "Veterinārās pakalpojumi",
     "pet-insurance": "Dzīvnieku apdrošināšana",
     "legal-services": "Juridiskie pakalpojumi"
+  },
+  "servicesListPage": {
+    "description": {
+      "noServices": "Pakalpojumu saraksts ir tukšs"
+    }
+  },
+  "newServicesPage": {
+    "description": {
+      "note": "PIEZĪME: šis tiks publiskots, lūdzu, neievietojiet informāciju, kuru jūs vēlaties paturēt privātu",
+      "pleaseProvideLocation": "Lūdzu, norādiet savu aptuveno atrašanās vietu vai tuvāko pilsētu"
+    },
+    "titles": {
+      "section1": "Pievienot pakalpojumu"
+    },
+    "buttons": {
+      "addService": "Pievienot pakalpojumu"
+    },
+    "labels": {
+      "orgIndName": "Organizācijas vai individuālās personas nosaukums",
+      "serviceType": "Pakalpojuma veids",
+      "website": "Vietne",
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "email": "E-pasts",
+      "phone": "Tālrunis",
+      "uploadLogo": "Augšupielādēt logotipu",
+      "description": "Īss apraksts"
+    }
+  },
+  "serviceProviderPage": {
+    "description": {
+      "contacts": "Kontakti"
+    },
+    "title": {
+      "orgIndName": "Organizācijas vai individuālās personas nosaukums",
+      "serviceType": "Pakalpojuma veids",
+      "website": "Vietne:",
+      "facebook": "Facebook:",
+      "instagram": "Instagram:",
+      "email": "E-pasts:",
+      "phone": "Tālrunis:",
+      "uploadLogo": "Augšupielādēt logotipu",
+      "description": "Īss apraksts"
+    }
   },
   "servicesDescription": {
     "animal-shelters": { "title": "Dzīvnieku Patversmes", "description": "Veltītas patversmes, kas sniedz pagaidu mājas un aprūpi aizvestiem vai ielas dzīvniekiem, līdz tie var tikt adoptēti." },

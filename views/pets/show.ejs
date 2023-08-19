@@ -98,7 +98,7 @@
     <div class="card p-3 d-flex flex-row justify-content-between" style="border-radius: 0">
       <div class="d-flex">
         <div class="me-4">
-          <a class="text-secondary" style="text-decoration: none; cursor: default"><%= pet.views %> <i class="bi bi-eye"></i></a>
+          <a class="text-secondary" style="text-decoration: none; cursor: default"><i class="bi bi-eye"></i> <%= pet.views %> </a>
         </div>
         <div class="dropdown-center me-4">
           <a class="text-secondary" type="button" data-bs-toggle="dropdown"><i class="bi bi-share"></i></a>
@@ -222,7 +222,8 @@
               <i class="bi bi-fingerprint"></i> <b><%= petsShowPage.titles.petIdentifier %></b> <% if (pet.identifier !== undefined && pet.identifier !== '' && pet.identifier !== null ) { %> <% let identifierStr = pet.identifier.toString(); %> <%= identifierStr.substring(0, identifierStr.length - 4) + '****' %> <% } else { %>
               <!-- Handle the case when pet.identifier is undefined or empty -->
               <!-- You can display a placeholder or a message -->
-              N/A <% } %>
+              <!-- Unknown -->
+              <% } %>
             </li>
             <li class="list-group-item">
               <p class="card-text">
@@ -233,8 +234,8 @@
           </ul>
         </div>
         <div class="d-flex flex-column">
-          <div class="card-footer small text-muted">Added <%=createDateInWords%></div>
-          <div class="card-footer small text-muted">Updated <%=updateDateInWords%></div>
+          <div class="card-footer small text-muted"><%=petsShowPage.description.added%> <%=createDateInWords%></div>
+          <div class="card-footer small text-muted"><%=petsShowPage.description.updated%> <%=updateDateInWords%></div>
         </div>
       </div>
     </div>
@@ -264,7 +265,7 @@
 
             <div class="mt-1">
               <a href="#" class="text-secondary" onclick="event.preventDefault(); this.closest('form').submit();" style="text-decoration: none"><i class="bi bi-send-fill"></i> <small><%= petsShowPage.buttons.send %></small></a>
-              <a href="#" class="text-secondary ms-2" id="togglePointBtn" style="text-decoration: none"><i class="bi bi-geo-alt-fill" style="pointer-events: none"></i><small class="geo-btn-sign" style="pointer-events: none">+ </small></a>
+              <a href="#" class="text-secondary ms-4" id="togglePointBtn" style="text-decoration: none"><i class="bi bi-geo-alt-fill" style="pointer-events: none"></i><small class="geo-loc-btn-add"><%= petsShowPage.buttons.addLocation %></small><small class="geo-loc-btn-remove"><%= petsShowPage.buttons.removeLocation %></small></a>
             </div>
           </div>
         </form>
@@ -281,7 +282,7 @@
             <div class="valid-feedback">Looks good!</div>
             <div class="mt-1">
               <a href="#" class="text-secondary" onClick="location.href='/auth/login'" style="text-decoration: none"><i class="bi bi-send-fill"></i> <small><%= petsShowPage.buttons.send %></small></a>
-              <a href="#" class="text-secondary ms-2" onClick="location.href='/auth/login'" style="text-decoration: none"><i class="bi bi-geo-alt-fill"></i><small>+ </small></a>
+              <a href="#" class="text-secondary ms-4" onClick="location.href='/auth/login'" style="text-decoration: none"><i class="bi bi-geo-alt-fill"></i><small class="geo-loc-btn-add"><%= petsShowPage.buttons.addLocation %></small><small class="geo-loc-btn-remove"><%= petsShowPage.buttons.removeLocation %></small></a>
             </div>
           </div>
         </form>
@@ -313,9 +314,9 @@
                   <span class="text-danger">Unknown</span>
                   <% } %>
                   <!-- test-->
-                  <% if (pet.author && comment.author && pet.author.email && comment.author.email && pet.author.email.toLowerCase() === comment.author.email.toLowerCase()) { %>
-                  <h6 class="card-text text-muted small ms-1"><i>Author</i></h6>
-                  <% } %>
+                  <!-- < if (pet.author && comment.author && pet.author.email && comment.author.email && pet.author.email.toLowerCase() === comment.author.email.toLowerCase()) { %>
+                  <h6 class="card-text text-muted small ms-1"><i><= petsShowPage.description.author %></i></h6>
+                  < } %> -->
                   <!-- test-->
                   <h6 class="card-text text-muted small ms-1"><i class="bi bi-dot"></i> <%= comment.formattedCreatedAt %></h6>
                 </div>
@@ -347,7 +348,9 @@
           </div>
         </div>
         <% } %> <% } else { %>
-        <p>No comments yet</p>
+
+        <p class="text-muted small ms-5"><%= petsShowPage.description.noCommentsYet %></p>
+
         <% } %>
       </div>
     </div>

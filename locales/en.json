@@ -163,6 +163,7 @@
       "section1": "Services"
     }
   },
+  "addServicePage": {},
   "selectOptions": {
     "status": [
       {
@@ -1115,6 +1116,16 @@
         "value": "Other",
         "text": "Other"
       }
+    ],
+    "serviceType": [
+      {
+        "value": "Organization",
+        "text": "Organization"
+      },
+      {
+        "value": "Individual",
+        "text": "Individual"
+      }
     ]
   },
   "reportPetPage": {
@@ -1224,7 +1235,8 @@
     "buttons": {
       "send": "Send",
       "show": "Show",
-      "location": "Location",
+      "addLocation": "Add Location",
+      "removeLocation": "Remove Location",
       "share": "Share",
       "download": "Download",
       "copyLink": "Copy Link",
@@ -1253,6 +1265,12 @@
       "petDescription": "Description:",
       "petDistance": "Distance (km):",
       "petViews": "views"
+    },
+    "description": {
+      "added": "Added",
+      "updated": "Updated",
+      "author": "Author",
+      "noCommentsYet": "No comments yet"
     }
   },
   "profileTabs": {
@@ -2815,6 +2833,50 @@
     "veterinary-services": "Veterinary Services",
     "pet-insurance": "Pet Insurance",
     "legal-services": "Legal Services"
+  },
+  "servicesListPage": {
+    "description": {
+      "noServices": "No services"
+    }
+  },
+  "newServicesPage": {
+    "description": {
+      "note": "NOTE: this will be made public, please do not provide sensitive information that you would like kept private ",
+      "pleaseProvideLocation": "Please provide your approximate location or nearest city"
+    },
+    "titles": {
+      "section1": "Add service"
+    },
+    "buttons": {
+      "addService": "Add service"
+    },
+    "labels": {
+      "orgIndName": "Organization or Individual Name",
+      "serviceType": "Service Type",
+      "website": "Website",
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "email": "Email",
+      "phone": "Phone",
+      "uploadLogo": "Upload Logo",
+      "description": "Description"
+    }
+  },
+  "serviceProviderPage": {
+    "description": {
+      "contacts": "Contacts"
+    },
+    "title": {
+      "orgIndName": "Organization or Individual Name",
+      "serviceType": "Service Type",
+      "website": "Website:",
+      "facebook": "Facebook:",
+      "instagram": "Instagram:",
+      "email": "Email:",
+      "phone": "Phone:",
+      "uploadLogo": "Upload Logo",
+      "description": "Description"
+    }
   },
   "servicesDescription": {
     "animal-shelters": { "title": "Animal Shelters", "description": "Dedicated shelters that provide temporary homes and care for abandoned or stray animals until they can be adopted." },

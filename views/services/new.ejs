@@ -1,20 +1,22 @@
 <% layout('layouts/boilerplate')%>
-
+<h1 class="text-center fs-3 mb-3"><%= newServicesPage.titles.section1 %></h1>
 <form class="needs-validation" novalidate="" action="/services" method="POST"  enctype="multipart/form-data">
   <div class="row g-3">
     <div class="col-sm-12 col-md-6">
-      
-      <label for="firstName" class="form-label">Organization or Individual Name</label>
+     
+      <label for="firstName" class="form-label"><%= newServicesPage.labels.orgIndName %></label>
 
       <div class="input-group has-validation">
         <span class="input-group-text"><i class="bi bi-buildings"></i></span>
-        <select class="form-control" style="max-width: 20%;"  name="serviceProviderType">
-          <option value=""></option>
-          <option value="Organization">Organization</option>
-          <option value="Individual">Individual</option>
+
+        <select class="form-select" style="max-width: 30%;"  id="petStatus" required name="serviceProviderType">
+          <% selectOptions.serviceType.forEach(option => { %>
+          <option value="<%= option.value %>"><%= option.text %></option>
+          <% }); %>
         </select>
+
       <input
-      style="max-width: 80%;"
+      style="max-width: 70%;"
         type="text"
         class="form-control"
         id="firstName"
@@ -27,7 +29,7 @@
     </div>
   </div>
     <div class="col-sm-12 col-md-6">
-      <label for="state" class="form-label"></i> Service Type</label>
+      <label for="state" class="form-label"></i> <%= newServicesPage.labels.serviceType %></label>
         <div class="input-group has-validation">
         <span class="input-group-text"><i class="bi bi-x-diamond-fill"></i></span>
       <select class="form-select" id="state" required="" name="serviceName">
@@ -56,7 +58,7 @@
     </div>
   </div>
     <div class="col-sm-12 col-md-6">
-      <label for="website" class="form-label">Website</label>
+      <label for="website" class="form-label"><%= newServicesPage.labels.website %></label>
       <div class="input-group has-validation">
       <span class="input-group-text"><i class="bi bi-globe-americas"></i></span>
       <input
@@ -74,7 +76,7 @@
     </div>
 
     <div class="col-12 col-md-6">
-      <label for="username" class="form-label">Facebook</label>
+      <label for="username" class="form-label"><%= newServicesPage.labels.facebook %></label>
       <div class="input-group has-validation">
         <span class="input-group-text"><i class="bi bi-facebook"></i></span>
         <input
@@ -89,7 +91,7 @@
       </div>
     </div>
     <div class="col-12 col-md-6">
-      <label for="username" class="form-label">Instagram</label>
+      <label for="username" class="form-label"><%= newServicesPage.labels.instagram %></label>
       <div class="input-group has-validation">
         <span class="input-group-text"><i class="bi bi-instagram"></i></span>
         <input
@@ -107,7 +109,7 @@
     
     <div class="col-12 col-md-6">
       <label for="email" class="form-label"
-        >Email</label
+        ><%= newServicesPage.labels.email %></label
       >
       <div class="input-group has-validation">
       <span class="input-group-text"><i class="bi bi-envelope"></i></span>
@@ -126,7 +128,7 @@
     </div>
     <div class="col-12 col-md-6">
       <label for="email" class="form-label"
-        >Phone</label
+        ><%= newServicesPage.labels.phone %></label
       >
       <div class="input-group has-validation">
       <span class="input-group-text"><i class="bi bi-telephone"></i></span>
@@ -150,7 +152,7 @@
         type="text"
         class="form-control"
         id="phone"
-        placeholder="28877889"
+        placeholder=""
         name="phone"
       />
       <div class="invalid-feedback">
@@ -160,7 +162,7 @@
     </div>
     
   <div class="col-12 col-md-6">
-    <label for="image" class="form-label">Upload Logo</label>
+    <label for="image" class="form-label"><%= newServicesPage.labels.uploadLogo %></label>
     <input
       class="form-control"
       type="file"
@@ -170,7 +172,7 @@
     />
   </div>
     <div class="col-md-12">
-      <label class="form-label" for="description">Description</label>
+      <label class="form-label" for="description"><%= newServicesPage.labels.description %></label>
       <textarea
         maxlength="400"
         style="resize: none; height: 140px"
@@ -184,7 +186,7 @@
     </div>
     <div class="col-md-12">
      
-        <label for="placemap" class="form-label">Please provide your approximate location or nearest city</label>
+        <label for="placemap" class="form-label"><%= newServicesPage.description.pleaseProvideLocation %></label>
  
   <div
   id="map"
@@ -227,7 +229,7 @@
 
 
   <button class="w-100 btn btn-primary btn-lg mt-5" type="submit">
-    Add Service
+    <%= newServicesPage.buttons.addService %>
   </button>
 </form>
 <div class="alert alert-success d-flex align-items-center mt-3" role="alert">
@@ -241,8 +243,7 @@
     <use xlink:href="#info-fill" />
   </svg>
   <div>
-    NOTE: this will be made public, please do not provide sensitive information
-    that you would like kept private
+    <%= newServicesPage.description.note %>
   </div>
 </div>
 

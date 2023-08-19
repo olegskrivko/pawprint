@@ -4,8 +4,10 @@ const { cloudinary } = require('../cloudinary');
 const i18n = require('i18n');
 
 module.exports.renderAddServiceForm = (req, res) => {
+  const selectOptions = req.__('selectOptions');
+  const newServicesPage = req.__('newServicesPage');
   // Retrieve the language preference and data from the response locals
-  res.render('services/new');
+  res.render('services/new', { selectOptions, newServicesPage });
 };
 
 module.exports.index = async (req, res) => {
@@ -29,6 +31,8 @@ module.exports.index = async (req, res) => {
 module.exports.showService = async (req, res) => {
   try {
     const translationMap = req.__('servicesDescription');
+    const servicesListPage = req.__('servicesListPage');
+
     const slug = req.params.slug;
     const service = await Service.findOne({ slug }).populate('serviceProviders');
     // console.log('service slug', service.slug);
@@ -39,7 +43,7 @@ module.exports.showService = async (req, res) => {
       return res.redirect('/services');
     }
 
-    res.render('services/show', { service, serviceTitle });
+    res.render('services/show', { service, serviceTitle, servicesListPage });
   } catch (error) {
     console.error('Error retrieving service:', error);
     req.flash('error', 'Failed to retrieve service.');
@@ -49,11 +53,13 @@ module.exports.showService = async (req, res) => {
 
 module.exports.addNewService = async (req, res) => {
   try {
+    // const selectOptions = req.__('selectOptions');
+
     const service = await Service.findOne({ slug: req.body.serviceName });
 
     if (req.body.user.latitude === null || req.body.user.longitude === null || req.body.user.latitude === '' || req.body.user.longitude === '' || isNaN(req.body.user.latitude) || isNaN(req.body.user.longitude)) {
       req.flash('error', 'Please enable geolocation to provide service location.');
-      return res.redirect('/pets/new');
+      return res.redirect('/services/new');
     }
 
     const userCoords = req.body.user;

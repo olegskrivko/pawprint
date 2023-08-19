@@ -110,7 +110,7 @@
       "petColor": "Цвет животного",
       "petDistance": "Расстояние (км)",
       "petAge": "Возраст животного",
-      "petCoatType": "Тип шерсти",
+      "petCoatType": "Длина шерсти",
       "petSize": "Размер животного",
       "petIdentifier": "Идентификатор",
       "petLocation": "Местоположение",
@@ -1115,6 +1115,16 @@
         "value": "Other",
         "text": "Другое"
       }
+    ],
+    "serviceType": [
+      {
+        "value": "Organization",
+        "text": "Компания"
+      },
+      {
+        "value": "Individual",
+        "text": "Физическое лицо"
+      }
     ]
   },
   "reportPetPage": {
@@ -1132,7 +1142,7 @@
       "petAge": "Возраст",
       "petIdentifier": "Идентификатор",
       "petLostOrFoundDate": "Дата потери или находки",
-      "petCoatType": "Тип шерсти",
+      "petCoatType": "Длина шерсти",
       "petSize": "Размер питомца",
       "petCoatPattern": "Узор шерсти",
       "petColor1": "Основной цвет",
@@ -1224,8 +1234,9 @@
   "petsShowPage": {
     "buttons": {
       "send": "Отправить",
-      "show": "Показать",
-      "location": "Местоположение",
+      "show": "Показать на карте",
+      "addLocation": "Добавить местоположение",
+      "removeLocation": "Убрать местоположение",
       "share": "Поделиться",
       "download": "Скачать",
       "copyLink": "Копировать ссылку",
@@ -1246,14 +1257,20 @@
       "petCoatPattern": "Рисунок шерсти:",
       "spotColor": "Цвет пятен:",
       "stripeColor": "Цвет полос:",
-      "petColor1": "Первый цвет:",
+      "petColor1": "Главный цвет:",
       "petColor2": "Второй цвет:",
       "petColor3": "Третий цвет:",
-      "petCoatType": "Тип шерсти:",
+      "petCoatType": "Длина шерсти:",
       "petIdentifier": "Идентификатор:",
       "petDescription": "Описание:",
       "petDistance": "Расстояние (км):",
       "petViews": "просмотров"
+    },
+    "description": {
+      "added": "Добавлен",
+      "updated": "Обновлён",
+      "author": "Автор",
+      "noCommentsYet": "Комментариев нет"
     }
   },
   "profileTabs": {
@@ -2844,6 +2861,50 @@
     "veterinary-services": "Ветеринарные услуги",
     "pet-insurance": "Страхование животных",
     "legal-services": "Юридические услуги"
+  },
+  "servicesListPage": {
+    "description": {
+      "noServices": "Список сервисов пуст"
+    }
+  },
+  "newServicesPage": {
+    "description": {
+      "note": "ПРИМЕЧАНИЕ: это будет опубликовано, пожалуйста, не предоставляйте конфиденциальную информацию, которую вы хотели бы сохранить в тайне",
+      "pleaseProvideLocation": "Пожалуйста, укажите ваше приблизительное местоположение или ближайший город"
+    },
+    "titles": {
+      "section1": "Добавить услугу"
+    },
+    "buttons": {
+      "addService": "Добавить услугу"
+    },
+    "labels": {
+      "orgIndName": "Наименование организации или индивида",
+      "serviceType": "Тип услуги",
+      "website": "Веб-сайт",
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "email": "Email",
+      "phone": "Телефон",
+      "uploadLogo": "Загрузить логотип",
+      "description": "Описание"
+    }
+  },
+  "serviceProviderPage": {
+    "description": {
+      "contacts": "Контактная информация"
+    },
+    "title": {
+      "orgIndName": "Наименование организации или индивида",
+      "serviceType": "Тип услуги",
+      "website": "Веб-сайт:",
+      "facebook": "Facebook:",
+      "instagram": "Instagram:",
+      "email": "Email:",
+      "phone": "Телефон:",
+      "uploadLogo": "Загрузить логотип",
+      "description": "Описание"
+    }
   },
   "servicesDescription": {
     "animal-shelters": { "title": "Приюты для животных", "description": "Специализированные приюты, предоставляющие временное убежище и заботу для брошенных или бездомных животных, пока их не удается усыновить." },

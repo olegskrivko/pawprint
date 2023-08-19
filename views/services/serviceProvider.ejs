@@ -6,7 +6,7 @@
         <div class="card-header d-flex justify-content-between">
           <div class="flex-shrink-0 dropdown">
             <% if (serviceProvider.serviceProviderType === 'Organization') { %> <i class="bi bi-buildings-fill"></i> <% } else { %> <i class="bi bi-person-fill"></i> <% } %>
-            <p class="d-inline fw-400"><%= serviceProvider.serviceProviderType %></p>
+            <!-- <p class="d-inline fw-400"><= serviceProvider.serviceProviderType %></p> -->
           </div>
 
           <div class="d-flex jusity-content-center align-items-center">
@@ -55,31 +55,34 @@
               </a> -->
               <div class="mt-3">
                 <ul class="list-group list-group-flush show-pet-list">
-                  <p>Contacts:</p>
+                  <p><%= serviceProviderPage.description.contacts %></p>
                   <div class="row ms-1">
+                    <% if (serviceProvider.phone !== undefined && serviceProvider.phone !== null && serviceProvider.phone !== '') { %>
                     <div class="col-12 col-md-12 col-lg-12 mb-1">
-                      <b><i class="bi bi-telephone-fill"></i> Phone: </b>
+                      <b><i class="bi bi-telephone-fill"></i> <%=serviceProviderPage.title.phone%> </b>
                       <a href="tel:<%=serviceProvider.phonecode%><%=serviceProvider.phone%>"><%=serviceProvider.phonecode%><%=serviceProvider.phone%></a>
                     </div>
-
+                    <% } %> <% if (serviceProvider.email !== undefined && serviceProvider.email !== null && serviceProvider.email !== '') { %>
                     <div class="col-12 col-md-12 col-lg-12 mb-1">
-                      <b><i class="bi bi-envelope-fill"></i> Email: </b>
+                      <b><i class="bi bi-envelope-fill"></i> <%=serviceProviderPage.title.email%> </b>
                       <a href="mailto:<%= serviceProvider.email %>?subject=Hello%20World&body=I%20hope%20you%20are%20doing%20well."><%= serviceProvider.email %></a>
                     </div>
-
+                    <% } %> <% if (serviceProvider.socialMedia !== undefined && serviceProvider.socialMedia.facebook !== null && serviceProvider.socialMedia.facebook !== '') { %>
                     <div class="col-12 col-md-12 col-lg-12 mb-1">
-                      <b><i class="bi bi-facebook"></i> Facebook: </b>
+                      <b><i class="bi bi-facebook"></i> <%=serviceProviderPage.title.facebook%> </b>
                       <a target="_blank" href="https://www.facebook.com/<%=serviceProvider.socialMedia.facebook%>"><%= serviceProvider.socialMedia.facebook %></a>
                     </div>
-
+                    <% } %> <% if (serviceProvider.socialMedia !== undefined && serviceProvider.socialMedia.instagram !== null && serviceProvider.socialMedia.instagram !== '') { %>
                     <div class="col-12 col-md-12 col-lg-12 mb-1">
-                      <b><i class="bi bi-instagram"></i> Instagram: </b>
+                      <b><i class="bi bi-instagram"></i> <%=serviceProviderPage.title.instagram%> </b>
                       <a target="_blank" href="https://www.instagram.com/<%=serviceProvider.socialMedia.instagram%>"><%= serviceProvider.socialMedia.instagram %></a>
                     </div>
+                    <% } %> <% if (serviceProvider.website !== undefined && serviceProvider.phowebsitene !== null && serviceProvider.website !== '') { %>
                     <div class="col-12 col-md-12 col-lg-12 mb-1">
-                      <b><i class="bi bi-globe2"></i> Website: </b>
+                      <b><i class="bi bi-globe2"></i> <%=serviceProviderPage.title.website%> </b>
                       <a href="<%= serviceProvider.website %>" target="_blank"><%= serviceProvider.website %></a>
                     </div>
+                    <% } %>
                   </div>
                   <!-- <div class="card card-body">
                     <p class="card-text"><%= serviceProvider.description %></p>

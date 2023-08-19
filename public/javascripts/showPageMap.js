@@ -34,7 +34,9 @@ function addPetCommentMarkers(map) {
 // Function to handle the toggle point button
 function handleTogglePointButton(map) {
   const togglePointBtn = document.getElementById('togglePointBtn');
-  const geoBtnSign = document.querySelector('.geo-btn-sign');
+  // const geoBtnSign = document.querySelector('.geo-btn-sign');
+  const geoLocBtnAdd = document.querySelector('.geo-loc-btn-add');
+  const geoLocBtnRemove = document.querySelector('.geo-loc-btn-remove');
   const commentlng = document.querySelector('#commentlng');
   const commentlat = document.querySelector('#commentlat');
 
@@ -45,19 +47,27 @@ function handleTogglePointButton(map) {
   iconElement.style.fontSize = '2rem';
   iconElement.style.color = '#BA0F30';
 
+  geoLocBtnAdd.style.display = 'inline';
+  geoLocBtnRemove.style.display = 'none';
+
   togglePointBtn.addEventListener('click', (event) => {
     event.preventDefault();
     if (pointMarker) {
       pointMarker.remove();
       pointMarker = null;
-      geoBtnSign.innerHTML = '</i><small class="geo-btn-sign" style="pointer-events: none">+</small>';
+      geoLocBtnAdd.style.display = 'inline';
+      geoLocBtnRemove.style.display = 'none';
+      //geoBtnSign.innerHTML = '</i><small class="geo-btn-sign" style="pointer-events: none">+</small>';
     } else {
       const mapCenter = map.getCenter();
       const userLat = mapCenter.lat;
       const userLng = mapCenter.lng;
       commentlng.value = userLng;
       commentlat.value = userLat;
-      geoBtnSign.innerHTML = '</i><small class="geo-btn-sign" style="pointer-events: none">-</small>';
+      geoLocBtnAdd.style.display = 'none';
+      geoLocBtnRemove.style.display = 'inline';
+
+      //geoBtnSign.innerHTML = '</i><small class="geo-btn-sign" style="pointer-events: none">-</small>';
 
       pointMarker = new tt.Marker({ element: iconElement, draggable: true }).setLngLat([userLng, userLat]).addTo(map);
 
