@@ -143,8 +143,9 @@ async function generateVerificationToken() {
 // Controller for rendering the registration form
 module.exports.renderRegister = (req, res) => {
   const registerPage = req.__('registerPage');
+  const navbar = req.__('navbar');
   // console.log(registerPage);
-  res.render('auth/register', { registerPage });
+  res.render('auth/register', { registerPage, navbar });
 };
 
 module.exports.verifyEmail = async (req, res, next) => {
@@ -182,9 +183,11 @@ module.exports.verifyEmail = async (req, res, next) => {
 
 module.exports.renderLogin = (req, res) => {
   // Language data is available from the middleware
-  const loginPage = req.__('loginPage');
 
-  res.render('auth/login', { loginPage }); // Render the login view
+  const loginPage = req.__('loginPage');
+  const navbar = req.__('navbar');
+
+  res.render('auth/login', { loginPage, navbar }); // Render the login view
 };
 
 module.exports.login = (req, res, next) => {

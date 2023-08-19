@@ -2,16 +2,19 @@ const ServiceProvider = require('../models/serviceProvider');
 const Service = require('../models/service');
 const { cloudinary } = require('../cloudinary');
 const i18n = require('i18n');
-
+const { phoneCodeOptions } = require('../utils/userSelectOptions');
 module.exports.renderAddServiceForm = (req, res) => {
+  const navbar = req.__('navbar');
+
   const selectOptions = req.__('selectOptions');
   const newServicesPage = req.__('newServicesPage');
   // Retrieve the language preference and data from the response locals
-  res.render('services/new', { selectOptions, newServicesPage });
+  res.render('services/new', { selectOptions, newServicesPage, navbar, phoneCodeOptions });
 };
 
 module.exports.index = async (req, res) => {
   try {
+    const navbar = req.__('navbar');
     const servicesPage = req.__('servicesPage'); // Translate the 'servicesPage' key based on the user's selected language
     const translationMap = req.__('services');
     const services = await Service.find();
@@ -20,7 +23,7 @@ module.exports.index = async (req, res) => {
       const translatedName = translationMap[service.slug] || service.name;
       return { ...service._doc, translatedName };
     });
-    res.render('services/index', { services: translatedServices, servicesPage });
+    res.render('services/index', { services: translatedServices, servicesPage, navbar });
   } catch (error) {
     console.error('Error retrieving services:', error);
     req.flash('error', 'Failed to retrieve services.');
@@ -30,6 +33,7 @@ module.exports.index = async (req, res) => {
 
 module.exports.showService = async (req, res) => {
   try {
+    const navbar = req.__('navbar');
     const translationMap = req.__('servicesDescription');
     const servicesListPage = req.__('servicesListPage');
 
@@ -43,7 +47,7 @@ module.exports.showService = async (req, res) => {
       return res.redirect('/services');
     }
 
-    res.render('services/show', { service, serviceTitle, servicesListPage });
+    res.render('services/show', { service, serviceTitle, servicesListPage, navbar });
   } catch (error) {
     console.error('Error retrieving service:', error);
     req.flash('error', 'Failed to retrieve service.');
@@ -116,13 +120,14 @@ module.exports.addNewService = async (req, res) => {
 
 module.exports.renderEditForm = async (req, res) => {
   const { id } = req.params;
+  const navbar = req.__('navbar');
   //const meid = '64be38477207febe098ce887';
   const serviceProvider = await ServiceProvider.findById(id);
   if (!serviceProvider) {
     req.flash('error', 'Cannot find that service!');
     return res.redirect('/services');
   }
-  res.render('services/edit', { serviceProvider });
+  res.render('services/edit', { serviceProvider, navbar });
 };
 
 module.exports.updateService = async (req, res) => {

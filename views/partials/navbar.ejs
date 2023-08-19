@@ -34,12 +34,12 @@
 
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link" aria-current="page" href="/">Home</a>
-          <a class="nav-link" href="/about">About</a>
-          <a class="nav-link" href="/pets">Pets</a>
-          <a class="nav-link" href="/pets/new">Add Pet</a>
-          <a class="nav-link" href="/services">Services</a>
-          <a class="nav-link" href="/services/new">Add Service</a>
+          <a class="nav-link" aria-current="page" href="/"><% if (typeof navbar !== "undefined") { %> <%= navbar.link.home %> <% } else { %> Home <% } %></a>
+          <a class="nav-link" href="/about"><% if (typeof navbar !== "undefined") { %> <%= navbar.link.about %> <% } else { %> About <% } %></a>
+          <a class="nav-link" href="/pets"><% if (typeof navbar !== "undefined") { %> <%= navbar.link.pets %> <% } else { %> Pets <% } %></a>
+          <a class="nav-link" href="/pets/new"><% if (typeof navbar !== "undefined") { %> <%= navbar.link.addPet %> <% } else { %> Add Pet <% } %></a>
+          <a class="nav-link" href="/services"><% if (typeof navbar !== "undefined") { %> <%= navbar.link.services %> <% } else { %> Services <% } %></a>
+          <a class="nav-link" href="/services/new"><% if (typeof navbar !== "undefined") { %> <%= navbar.link.addService %> <% } else { %> Add Service <% } %></a>
         </div>
       </div>
     </nav>

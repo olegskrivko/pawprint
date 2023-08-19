@@ -18,6 +18,7 @@ module.exports.index = async (req, res) => {
   const { page, limit, age, gender, breed, species, pattern, coat, size, petStatus, identifier, name, location, color, lostdate, maxDistance, userlongitude, userlatitude, selectedRegion } = req.query;
 
   // Translate the 'selectOptions' key based on the user's selected language
+  const navbar = req.__('navbar');
   const selectOptions = req.__('selectOptions');
   const countryRegionOptions = req.__('countryRegionOptions');
   const petsPage = req.__('petsPage');
@@ -157,15 +158,18 @@ module.exports.index = async (req, res) => {
     selectOptions,
     locationByRegion,
     petsPage,
+    navbar,
   });
 };
 
 module.exports.renderNewForm = (req, res) => {
+  const navbar = req.__('navbar');
   const reportPetPage = req.__('reportPetPage');
   const selectOptions = req.__('selectOptions');
   res.render('pets/new', {
     reportPetPage, // Pass the language data to the view
     selectOptions,
+    navbar,
   });
 };
 
@@ -290,6 +294,7 @@ module.exports.createPet = async (req, res, next) => {
 module.exports.showPet = async (req, res) => {
   try {
     // Retrieve the pet from the database
+    const navbar = req.__('navbar');
     const selectOptions = req.__('selectOptions');
     const petsShowPage = req.__('petsShowPage');
     const petId = req.params.id;
@@ -365,6 +370,7 @@ module.exports.showPet = async (req, res) => {
       updateDateInWords,
       lostDateInWords,
       petsShowPage,
+      navbar,
     });
   } catch (error) {
     // Handle any errors that occur
@@ -374,6 +380,7 @@ module.exports.showPet = async (req, res) => {
 };
 
 module.exports.renderEditForm = async (req, res) => {
+  const navbar = req.__('navbar');
   // Retrieve the language preference and data from the response locals
   const petsLocale = req.__('pets'); // Translate the 'pets' key based on the user's selected language
   // options must be taken from another object selecOptions ...
@@ -407,6 +414,7 @@ module.exports.renderEditForm = async (req, res) => {
     regionOptions,
     breedsOptions,
     coatPatternOptions,
+    navbar,
   });
 };
 

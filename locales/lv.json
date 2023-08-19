@@ -1162,7 +1162,8 @@
   "profilePage": {
     "titles": {
       "section1": "Mainiet savu profila informāciju",
-      "section2": "Mainiet konta iestatījumus"
+      "section2": "Mainiet konta iestatījumus",
+      "section3": "Lūdzu, izvēlieties attēlu ar attiecību 1:1."
     },
     "buttons": {
       "saveChanges": "Saglabāt izmaiņas",
@@ -1282,13 +1283,17 @@
     }
   },
   "navbar": {
-    "home": "Home",
-    "about": "About",
-    "pets": "Pets",
-    "services": "Services",
-    "login": "Log in",
-    "signup": "Sign up",
-    "greeting": "Hello"
+    "link": {
+      "home": "Mājas",
+      "about": "Par mums",
+      "pets": "Mājdzīvnieki",
+      "services": "Pakalpojumi",
+      "login": "Pieteikties",
+      "signup": "Reģistrēties",
+      "greeting": "Sveiki",
+      "addPet": "Pievienot dzīvnieku",
+      "addService": "Pievienot pakalpojumu"
+    }
   },
   "footer": {
     "allRightsReserved": "All rights reserved",

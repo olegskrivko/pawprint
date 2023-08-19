@@ -132,20 +132,26 @@
       >
       <div class="input-group has-validation">
       <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+
+          <select class="form-select" style="max-width: 30%;" id="phonecodes" name="phonecode">
+<% phoneCodeOptions.forEach(option => { %>
+<option value="<%= option %>" <% if (option === currentUser.phoneCode) { %>selected<% } %>><%=option%></option>
+<%}) %>
+</select>
       <!-- <select class="form-control">
         <option value=""></option>
         <option value="+371">+371</option>
         <option value="+372">+372</option>
         <option value="+370">+370</option>
       </select> -->
-      <input
+      <!-- <input
       type="text"
       class="form-control"
       id="phonecodes"
       placeholder="+371"
       name="phonecode"
       style="max-width: 30%;"
-    />
+    /> -->
       
       <input
       style="max-width: 70%;"

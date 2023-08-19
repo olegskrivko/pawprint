@@ -1162,7 +1162,8 @@
   "profilePage": {
     "titles": {
       "section1": "Изменить информацию профиля",
-      "section2": "Изменить настройки аккаунта"
+      "section2": "Изменить настройки аккаунта",
+      "section3": "Пожалуйста, выберите изображение с соотношением сторон 1:1."
     },
     "buttons": {
       "saveChanges": "Сохранить изменения",
@@ -1283,13 +1284,17 @@
     }
   },
   "navbar": {
-    "home": "Home",
-    "about": "About",
-    "pets": "Pets",
-    "services": "Services",
-    "login": "Log in",
-    "signup": "Sign up",
-    "greeting": "Hello"
+    "link": {
+      "home": "Главная",
+      "about": "О нас",
+      "pets": "Питомцы",
+      "services": "Услуги",
+      "login": "Войти",
+      "signup": "Зарегистрироваться",
+      "greeting": "Привет",
+      "addPet": "Добавить питомца",
+      "addService": "Добавить услугу"
+    }
   },
   "footer": {
     "allRightsReserved": "All rights reserved",

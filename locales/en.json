@@ -163,7 +163,6 @@
       "section1": "Services"
     }
   },
-  "addServicePage": {},
   "selectOptions": {
     "status": [
       {
@@ -1163,7 +1162,8 @@
   "profilePage": {
     "titles": {
       "section1": "Change Your Profile Information",
-      "section2": "Change Your Account Settings"
+      "section2": "Change Your Account Settings",
+      "section3": "Please select an image with a 1:1 ratio."
     },
     "buttons": {
       "saveChanges": "Save Changes",
@@ -1283,13 +1283,17 @@
     }
   },
   "navbar": {
-    "home": "Home",
-    "about": "About",
-    "pets": "Pets",
-    "services": "Services",
-    "login": "Log in",
-    "signup": "Sign up",
-    "greeting": "Hello"
+    "link": {
+      "home": "Home",
+      "about": "About",
+      "pets": "Pets",
+      "services": "Services",
+      "login": "Log in",
+      "signup": "Sign up",
+      "greeting": "Hello",
+      "addPet": "Add Pet",
+      "addService": "Add Service"
+    }
   },
   "footer": {
     "allRightsReserved": "All rights reserved",

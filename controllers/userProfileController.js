@@ -8,11 +8,12 @@ const { cloudinary } = require('../cloudinary');
 
 module.exports.renderUserProfile = (req, res) => {
   try {
+    const navbar = req.__('navbar');
     const profileTabs = req.__('profileTabs');
     const profilePage = req.__('profilePage');
 
     // Render the account page template
-    res.render('user/profile', { phoneCodeOptions, countryOptions, languageOptions, profilePage, profileTabs });
+    res.render('user/profile', { phoneCodeOptions, countryOptions, languageOptions, profilePage, profileTabs, navbar });
   } catch (error) {
     // Log the error for debugging purposes
     console.error('Error rendering account page:', error);
