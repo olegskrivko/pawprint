@@ -1293,6 +1293,14 @@
       "greeting": "Hello",
       "addPet": "Add Pet",
       "addService": "Add Service"
+    },
+    "footer": {
+      "support": "We are grateful for any support or sponsorship that can help us unlock the full potential of our web application - ",
+      "supportLink": "Support",
+      "copyright": "All rights reserved",
+      "privacyPolicy": "Privacy Policy",
+      "termsofService": "Terms of Service",
+      "cookiePolicy": "Cookie Policy"
     }
   },
   "footer": {

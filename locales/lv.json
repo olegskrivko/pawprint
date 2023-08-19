@@ -1293,6 +1293,14 @@
       "greeting": "Sveiki",
       "addPet": "Pievienot dzīvnieku",
       "addService": "Pievienot pakalpojumu"
+    },
+    "footer": {
+      "support": "Mēs esam pateicīgi par jebkādu atbalstu vai sponsorēšanu, kas var mums palīdzēt atklāt mūsu tīmekļa lietojumprogrammas pilno potenciālu - ",
+      "supportLink": "Atbalsts",
+      "copyright": "Visas tiesības aizsargātas",
+      "privacyPolicy": "Konfidencialitātes politika",
+      "termsofService": "Lietošanas noteikumi",
+      "cookiePolicy": "Sīkdatņu politika"
     }
   },
   "footer": {
