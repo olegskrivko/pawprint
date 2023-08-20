@@ -168,6 +168,8 @@
   <div class="col-md-12">
     <% if (currentUser.isVerified) { %>
       <p><span class="text-success"><i class="bi bi-shield-fill-check"></i></span> <%=profilePage.descriptions.emailIsVerified%></p>
+      <!-- this link should be remove, added just not see error -->
+      <a id="verify-email" class="verify-email d-none" href="#"><%=profilePage.descriptions.here%></a>
     <% } else { %>
       <p><span class="text-danger"><i class="bi bi-shield-fill-x"></i></span> <%=profilePage.descriptions.emailIsNotVerified%></p>
       <p><%=profilePage.descriptions.click%> <a id="verify-email" class="verify-email" href="#"><%=profilePage.descriptions.here%></a><%=profilePage.descriptions.toVerify%></p>

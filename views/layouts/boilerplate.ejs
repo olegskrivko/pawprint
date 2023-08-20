@@ -10,10 +10,31 @@
     <!-- adjustments for PWA-->
     <meta name="theme-color" content="#212529" />
 
-    <!-- Latvian Keywords -->
-    <!-- Russian Keywords -->
-    <!-- English Keywords -->
-    <meta name="keywords" content="lost pets, found pets, pet reunification, pet services, pet care, pet assistance, pet community, pet adoption, pet health, pet safety, animal welfare, cat cafe, dog walking, pet boarding, pet grooming, pet photography, pet supplies, pet training, veterinary service, pet insurance" />
+    <meta id="keywords-meta" name="keywords" content="lost pets, found pets, pet reunification, pet services, pet care, pet assistance, pet community, pet adoption, pet health, pet safety, animal welfare, cat cafe, dog walking, pet boarding, pet grooming, pet photography, pet supplies, pet training, veterinary service, pet insurance" />
+    <!-- dynamic keywords -->
+    <script>
+      const keywordsMeta = document.getElementById('keywords-meta');
+      const currentLang = document.documentElement.lang.toLowerCase();
+
+      let keywords;
+
+      if (currentLang === 'lv') {
+        // Latvian Keywords
+        keywords = 'zagtie dzīvnieki, atrastie dzīvnieki, dzīvnieku saplūdināšana, dzīvnieku pakalpojumi, dzīvnieku aprūpe, dzīvnieku palīdzība, dzīvnieku kopiena, dzīvnieku pieņemšana, dzīvnieku veselība, dzīvnieku drošība, dzīvnieku labklājība, kaķu kafejnīca, suņu pastaiga, dzīvnieku borta pakalpojumi, dzīvnieku grooming, dzīvnieku fotogrāfija, dzīvnieku piederumi, dzīvnieku apmācība, veterinārie pakalpojumi, dzīvnieku apdrošināšana';
+      } else if (currentLang === 'ru') {
+        // Russian Keyword
+        keywords = 'потерянные животные, найденные животные, воссоединение с питомцами, услуги по уходу за питомцами, уход за питомцами, помощь питомцам, питомцы в сообществе, усыновление питомцев, здоровье питомцев, безопасность питомцев, благотворительность в отношении животных, кошачьи кафе, выгул собак, пансионаты для животных, груминг питомцев, фотосессии с питомцами, товары для животных, обучение питомцев, ветеринарные услуги, страхование питомцев';
+      } else {
+        // English Keywords
+        keywords = 'lost pets, found pets, pet reunification, pet services, pet care, pet assistance, pet community, pet adoption, pet health, pet safety, animal welfare, cat cafe, dog walking, pet boarding, pet grooming, pet photography, pet supplies, pet training, veterinary service, pet insurance';
+      }
+
+      keywordsMeta.content = keywords;
+    </script>
+    <script>
+      // Set a cookie with the SameSite and Secure attributes
+      document.cookie = 'lang=en; SameSite=None; Secure';
+    </script>
     <meta name="robots" content="index, follow" />
     <!-- These tags control how your web app is displayed when shared on social media platforms like Facebook. -->
     <meta property="og:title" content="PawClix" />

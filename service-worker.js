@@ -1,7 +1,36 @@
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open('app-cache').then((cache) => {
-      return cache.addAll(['/', '/public/stylesheets/style.css', '/public/javascripts/addServiceMap.js', '/public/javascripts/clusterMap.js', '/public/javascripts/formMap.js', '/public/javascripts/mobile-or-tablet.js', '/public/javascripts/servicePageMap.js', '/public/javascripts/showPageMap.js', '/public/javascripts/showPetShareButtons.js', '/public/javascripts/validateForms.js', '/public/images/**/*']); // Cache all files within the "images" folder and its subfolders
+      return cache.addAll([
+        '/',
+        '/public/stylesheets/style.css',
+        '/public/javascripts/addServiceMap.js',
+        '/public/javascripts/clusterMap.js',
+        '/public/javascripts/formMap.js',
+        '/public/javascripts/mobile-or-tablet.js',
+        '/public/javascripts/servicePageMap.js',
+        '/public/javascripts/showPageMap.js',
+        '/public/javascripts/showPetShareButtons.js',
+        '/public/javascripts/validateForms.js',
+        '/public/images/icons/cat.png',
+        '/public/images/icons/default-user-image.png',
+        '/public/images/icons/dog.png',
+        '/public/images/icons/paw.png',
+        '/public/images/icons/user.png',
+        '/public/images/pwaicons/icon-512.png',
+        '/public/images/pwaicons/icon.png',
+        '/public/images/sponsors/9.jpg',
+        '/public/images/technologystack/bootstraplogo.png',
+        '/public/images/technologystack/cloudinarylogo.png',
+        '/public/images/technologystack/cycliclogo.png',
+        '/public/images/technologystack/ejslogo.png',
+        '/public/images/technologystack/expressjslogo.png',
+        '/public/images/technologystack/monggodblogo.png',
+        '/public/images/technologystack/nodejslogo.png',
+        '/public/images/technologystack/tomtomlogo.png',
+        '/public/images/404.png',
+        '/public/images/placeholder.jpg',
+      ]); // Cache all files within the "images" folder and its subfolders
     }),
   );
 });
