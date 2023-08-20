@@ -402,7 +402,7 @@
   let petBreedValue = document.querySelector('#pet-breed').textContent;
   let petGenderValue = document.querySelector('#pet-gender').textContent;
 
-  // let petCoatPatternValue = document.querySelector('#pet-pattern').textContent;
+  //let petCoatPatternValue = document.querySelector('#pet-pattern').textContent;
   // let petFirstColorValue = document.querySelector('#pet-color1').textContent;
   // let petSecondColorValue = document.querySelector('#pet-color2').textContent;
   // let petThirdColorValue = document.querySelector('#pet-color3').textContent;
@@ -448,12 +448,15 @@
               //height: 400, it will be automatically adjusted
               alignment: 'center', // Align the image to the center
             },
-            { text: `Dzīvnieka dzimums: ${petGenderValue} Šķirne: ${petBreedValue}`, style: 'paragraph' },
-            { text: `Kažoka raksts: Spalvas garums:`, style: 'paragraph' },
-            { text: `Primārā krāsa: Sekundārā krāsa: Trešā krāsa:`, style: 'paragraph' },
-            { text: `Dzīvnieka izmērs: Vecums:`, style: 'paragraph' },
-            { text: `Pēdējo reizi redzēts:`, style: 'paragraph' },
-            { text: `Īss apraksts:`, style: 'paragraph' },
+            { text: `Pet gender: ${petGenderValue}`, style: 'paragraph' },
+            { text: `Breed: ${petBreedValue}`, style: 'paragraph' },
+            { text: `Coat pattern:`, style: 'paragraph' },
+            { text: `Coat length:`, style: 'paragraph' },
+            { text: `Primary color: Secondary color: Tertiary color:`, style: 'paragraph' },
+            { text: `Pet size:`, style: 'paragraph' },
+            { text: `Age:`, style: 'paragraph' },
+            { text: `Last seen:`, style: 'paragraph' },
+            { text: `Brief description:`, style: 'paragraph' },
             {
               image: document.getElementById('qrcode').querySelector('img').src, // Include QR code image
               width: 128,
@@ -470,7 +473,7 @@
           styles: {
             centeredHeader: { fontSize: 18, alignment: 'center', bold: true, margin: [0, 0, 0, 10] },
             header: { fontSize: 18, bold: true, margin: [0, 0, 0, 10] },
-            paragraph: { fontSize: 12, margin: [0, 0, 0, 10] },
+            paragraph: { fontSize: 12, margin: [0, 10, 0, 0] },
           },
         };
 
@@ -500,10 +503,13 @@
               //height: 400, it will be automatically adjusted
               alignment: 'center', // Align the image to the center
             },
-            { text: `Dzīvnieka dzimums: ${petGenderValue} Šķirne: ${petBreedValue}`, style: 'paragraph' },
-            { text: `Kažoka raksts: Spalvas garums:`, style: 'paragraph' },
+            { text: `Dzīvnieka dzimums: ${petGenderValue}`, style: 'paragraph' },
+            { text: `Šķirne: ${petBreedValue}`, style: 'paragraph' },
+            { text: `Kažoka raksts:`, style: 'paragraph' },
+            { text: `Spalvas garums:`, style: 'paragraph' },
             { text: `Primārā krāsa: Sekundārā krāsa: Trešā krāsa:`, style: 'paragraph' },
-            { text: `Dzīvnieka izmērs: Vecums:`, style: 'paragraph' },
+            { text: `Dzīvnieka izmērs:`, style: 'paragraph' },
+            { text: `Vecums:`, style: 'paragraph' },
             { text: `Pēdējo reizi redzēts:`, style: 'paragraph' },
             { text: `Īss apraksts:`, style: 'paragraph' },
             {
@@ -522,7 +528,7 @@
           styles: {
             centeredHeader: { fontSize: 18, alignment: 'center', bold: true, margin: [0, 0, 0, 10] },
             header: { fontSize: 18, bold: true, margin: [0, 0, 0, 10] },
-            paragraph: { fontSize: 12, margin: [0, 0, 0, 10] },
+            paragraph: { fontSize: 12, margin: [0, 10, 0, 0] },
           },
         };
 
@@ -551,12 +557,15 @@
               //height: 400, it will be automatically adjusted
               alignment: 'center', // Align the image to the center
             },
-            { text: `Dzīvnieka dzimums: ${petGenderValue} Šķirne: ${petBreedValue}`, style: 'paragraph' },
-            { text: `Kažoka raksts: Spalvas garums:`, style: 'paragraph' },
-            { text: `Primārā krāsa: Sekundārā krāsa: Trešā krāsa:`, style: 'paragraph' },
-            { text: `Dzīvnieka izmērs: Vecums:`, style: 'paragraph' },
-            { text: `Pēdējo reizi redzēts:`, style: 'paragraph' },
-            { text: `Īss apraksts:`, style: 'paragraph' },
+            { text: `Пол животного: ${petGenderValue}`, style: 'paragraph' },
+            { text: `Порода: ${petBreedValue}`, style: 'paragraph' },
+            { text: `Тип меха:`, style: 'paragraph' },
+            { text: `Длина шерсти:`, style: 'paragraph' },
+            { text: `Основной цвет: Вторичный цвет: Третичный цвет:`, style: 'paragraph' },
+            { text: `Размер животного:`, style: 'paragraph' },
+            { text: `Возраст:`, style: 'paragraph' },
+            { text: `Последний раз видели:`, style: 'paragraph' },
+            { text: `Краткое описание:`, style: 'paragraph' },
             {
               image: document.getElementById('qrcode').querySelector('img').src, // Include QR code image
               width: 128,
@@ -564,7 +573,7 @@
               alignment: 'center',
             },
             {
-              text: 'Сгенерировать с помощью www.PawClix.com', // Your watermark or credit text
+              text: 'Сгенерирован с помощью www.PawClix.com', // Your watermark or credit text
               fontSize: 10,
               alignment: 'center',
               margin: [0, 20, 0, 0], // Add margin to create space between content and credit
@@ -573,7 +582,7 @@
           styles: {
             centeredHeader: { fontSize: 18, alignment: 'center', bold: true, margin: [0, 0, 0, 10] },
             header: { fontSize: 18, bold: true, margin: [0, 0, 0, 10] },
-            paragraph: { fontSize: 12, margin: [0, 0, 0, 10] },
+            paragraph: { fontSize: 12, margin: [0, 10, 0, 0] },
           },
         };
 
