@@ -3,8 +3,11 @@
 <div class="container">
   <div class="text-center">
     <p class="col-lg-12 mx-auto text-muted custom-about-text"><%= supportPage.descriptions.section1 %></p>
-
-    <a class="btn btn-warning btn-lg fw-bold" href="https://www.paypal.com/donate/?hosted_button_id=7WJJTEM6TM84N"><%= supportPage.buttons.donate %></a>
+    <form action="https://www.paypal.com/donate" method="post" target="_top">
+      <input type="hidden" name="hosted_button_id" value="CVSY63PU5AQD6" />
+      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+      <img alt="" border="0" src="https://www.paypal.com/en_LV/i/scr/pixel.gif" width="1" height="1" />
+    </form>
   </div>
 </div>
 <div class="container mt-5">

@@ -1,9 +1,9 @@
 <% layout('layouts/boilerplate')%>
 
 <!-- Main content -->
-<main class="w-100 m-auto" aria-label="Main content">
+<main class="w-100 m-auto">
   <!-- Icon container -->
-  <div class="icon d-flex justify-content-center" aria-label="Icon container">
+  <div class="icon d-flex justify-content-center">
     <!-- SVG Icon -->
     <svg class="bi" width="180" height="144" fill="#6F7174">
       <use xlink:href="#catlogo"></use>
@@ -11,17 +11,17 @@
   </div>
 
   <!-- Title container -->
-  <div class="py-3 my-2 text-center" aria-label="Title container">
+  <div class="py-3 my-2 text-center">
     <!-- Welcome title -->
-    <h1 class="display-5 fw-bold" aria-label="Welcome title"><span class="text-warning"><%= homePage.titles.section2 %></span><%= homePage.titles.section1 %></h1>
+    <h1 class="display-5 fw-bold"><span class="text-warning"><%= homePage.titles.section2 %></span><%= homePage.titles.section1 %></h1>
   </div>
 
   <!-- Welcome text -->
-  <div class="d-grid text-center gap-2 px-4 d-sm-flex justify-content-sm-center mb-5" aria-label="Welcome text"><%= homePage.titles.section3 %></div>
+  <div class="d-grid text-center gap-2 px-4 d-sm-flex justify-content-sm-center mb-5"><%= homePage.titles.section3 %></div>
 
   <% if(!currentUser) { %>
   <!-- Login and signup buttons -->
-  <div class="d-grid gap-2 d-sm-flex justify-content-sm-center" aria-label="Login and signup buttons">
+  <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
     <!-- Login button -->
     <button type="button" onClick="location.href='/auth/login'" class="btn btn-primary btn-lg px-4 gap-3" aria-label="Login button"><%= homePage.buttons.login %></button>
     <!-- Signup button -->
@@ -29,8 +29,8 @@
   </div>
   <% } else if (currentUser) {%>
   <!-- Welcome button -->
-  <div class="d-flex justify-content-center" aria-label="Welcome button">
-    <button type="button" onClick="location.href='/pets'" class="btn btn-warning btn-lg px-4" aria-label="Welcome button"><i class="bi bi-search"></i> <%= homePage.buttons.findaPet %></button>
+  <div class="d-flex justify-content-center">
+    <button type="button" onClick="location.href='/pets'" class="btn btn-warning btn-lg px-4" aria-label="Find a pet button"><i class="bi bi-search"></i> <%= homePage.buttons.findaPet %></button>
   </div>
   <% } %>
 </main>
