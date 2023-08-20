@@ -375,11 +375,20 @@
 <!-- <button id="generatePdf">Generate PDF</button> -->
 
 <script>
+  // Get the current URL
+  const currentURL = window.location.href;
+
+  // Extract the dynamic part from the current URL
+  const dynamicPart = currentURL.split('/').pop();
+
+  // Create the complete URL
+  const completeURL = `https://www.pawclix.com/pets/${dynamicPart}`;
+
   // Detect the document language
   const documentLanguage = document.documentElement.lang;
   // Create a new QRCode instance
   const qrcode = new QRCode(document.getElementById('qrcode'), {
-    text: window.location.href, // Use the current URL
+    text: completeURL, // Use the current URL
     width: 128,
     height: 128,
   });
