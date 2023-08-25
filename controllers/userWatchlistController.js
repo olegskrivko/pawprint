@@ -16,10 +16,6 @@ module.exports.renderUserWatchlist = async (req, res) => {
   } catch (error) {
     // Log the error for debugging purposes
     console.error('Error rendering account watchlist:', error);
-
-    // Handle the error appropriately, such as displaying an error message or redirecting to an error page
-    //req.flash("error", "Failed to render account watchlist.");
-    //res.redirect("/pets"); // Redirect to an appropriate error page or fallback route
   }
 };
 // Controller for updating the account watchlist page
@@ -82,24 +78,3 @@ module.exports.deleteUserWatchlist = async (req, res) => {
     res.status(500).json({ error: 'Failed to remove pet from watchlist' });
   }
 };
-// Controller for deleting all user account watchlist items
-// module.exports.deleteAllUserWatchlist = async (req, res) => {
-//   try {
-//     const userId = req.user._id;
-//     console.log('userId to delete wathclist', userId);
-
-//     // Find the user by ID
-//     const user = await User.findById(userId);
-
-//     // Clear the watchlist array
-//     user.watchlist = [];
-
-//     // Save the updated user data
-//     await user.save();
-
-//     res.status(200).json({ message: 'All watchlist items removed successfully' });
-//   } catch (error) {
-//     console.error('Error removing all watchlist items:', error);
-//     res.status(500).json({ error: 'Failed to remove all watchlist items' });
-//   }
-// };

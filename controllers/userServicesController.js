@@ -17,28 +17,6 @@ module.exports.renderUserServices = async (req, res) => {
   }
 };
 
-// Controller for deleting all user account watchlist items
-// module.exports.deleteAllUserServices = async (req, res) => {
-//   try {
-//     const userId = req.user._id;
-//     console.log('userId to delete services', userId);
-
-//     // Find the user by ID
-//     const user = await User.findById(userId);
-
-//     // Clear the user Services array
-//     user.userServices = [];
-
-//     // Save the updated user data
-//     await user.save();
-
-//     res.status(200).json({ message: 'All user services removed successfully' });
-//   } catch (error) {
-//     console.error('Error removing all user services:', error);
-//     res.status(500).json({ error: 'Failed to remove all user services' });
-//   }
-// };
-
 // Controller for updating the account watchlist page
 module.exports.updateUserServices = async (req, res) => {
   // try {
