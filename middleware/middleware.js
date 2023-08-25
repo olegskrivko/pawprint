@@ -70,14 +70,14 @@ module.exports.languageMiddleware = (req, res, next) => {
         // User is logged in, retrieve language preference from user profile
         const user = await User.findById(req.user.id);
         userLanguage = user.language;
-        console.log('User language from DB: ', userLanguage);
+        //console.log('User language from DB: ', userLanguage);
         res.locals.userLanguage = userLanguage;
       } else {
         // User is not logged in, retrieve language preference from request headers
         userLanguage = req.headers['accept-language'];
         // Determine user's preferred language
         const primaryLanguage = userLanguage.split(',')[0].split('-')[0];
-        console.log('User language from headers: ', primaryLanguage);
+        //console.log('User language from headers: ', primaryLanguage);
         // Set the determined language as a variable accessible in your routes
         res.locals.userLanguage = primaryLanguage;
       }

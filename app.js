@@ -79,7 +79,7 @@ app.use((req, res, next) => {
 
 // Middleware to set the language cookie
 app.use((req, res, next) => {
-  console.log('req.cookies.lang', req.cookies.lang);
+  //console.log('req.cookies.lang', req.cookies.lang);
   const selectedLanguage = req.cookies.lang || req.get('accept-language') || 'lv';
   res.cookie('lang', selectedLanguage, { maxAge: 1000 * 60 * 60 * 24 * 7 }); // Set the language cookie with a maxAge of 7 days
   next();
