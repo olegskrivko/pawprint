@@ -33,8 +33,8 @@ module.exports.register = async (req, res, next) => {
       if (err) return next(err);
 
       // Compose the email message
-      //const verificationLink = `https://pawclix.cyclic.app/auth/verify/${verificationToken}`;
-      const verificationLink = `https://www.pawclix.com/auth/verify/${verificationToken}`;
+      const verificationLink = `https://pawclix.cyclic.app/auth/verify/${verificationToken}`;
+      // const verificationLink = `https://www.pawclix.com/auth/verify/${verificationToken}`;
 
       // Create a transporter using SMTP
       const transporter = nodemailer.createTransport({
@@ -248,8 +248,8 @@ module.exports.emailVerificationLink = async (req, res) => {
     // Log in the registered user
 
     // Compose the email message
-    // const verificationLink = `https://pawclix.cyclic.app/auth/verify/${verificationToken}`;
-    const verificationLink = `https://www.pawclix.com/auth/verify/${verificationToken}`;
+    const verificationLink = `https://pawclix.cyclic.app/auth/verify/${verificationToken}`;
+    // const verificationLink = `https://www.pawclix.com/auth/verify/${verificationToken}`;
 
     const transporter = nodemailer.createTransport({
       service: 'gmail',
