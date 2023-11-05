@@ -11,16 +11,11 @@ module.exports.renderUserProfile = (req, res) => {
     const navbar = req.__('navbar');
     const profileTabs = req.__('profileTabs');
     const profilePage = req.__('profilePage');
-
-    // Render the account page template
     res.render('user/profile', { phoneCodeOptions, countryOptions, languageOptions, profilePage, profileTabs, navbar });
   } catch (error) {
-    // Log the error for debugging purposes
     console.error('Error rendering account page:', error);
-
-    // Handle the error appropriately, such as displaying an error message or redirecting to an error page
     req.flash('error', 'Failed to render account page.');
-    res.redirect('/pets'); // Redirect to an appropriate error page or fallback route
+    res.redirect('/pets');
   }
 };
 
@@ -43,19 +38,14 @@ module.exports.updateUserProfile = async (req, res) => {
       { new: true },
     );
 
-    // Update the session with the new user information
     req.login(updatedUser, (err) => {
       if (err) {
         console.error('Error updating session:', err);
-        // Handle the error appropriately
       }
-
-      // Send a success response to the client
       res.json({ success: true });
     });
   } catch (error) {
     console.error('Error updating account:', error);
-    // Handle the error appropriately
     res.status(500).json({ success: false, message: 'Failed to update account' });
   }
 };
@@ -63,38 +53,10 @@ module.exports.updateUserProfile = async (req, res) => {
 module.exports.deleteUserProfile = async (req, res) => {
   try {
     const user = req.user;
-    // delete user`s created pets and all coments, deletes also favorited pets, his pets, favorited services
-    // Get the IDs of the user's service providers
     const userServiceProviderIds = await ServiceProvider.find({ author: user._id }).distinct('_id');
-    // Update documents referencing the deleted service providers to remove the references
-    // $in: This is a query operator that checks if the specified field contains any of the values in the array that follows.
-    await Service.updateMany(
-      { serviceProviders: { $in: userServiceProviderIds } }, // Update documents with references to the deleted service providers
-      { $pull: { serviceProviders: { $in: userServiceProviderIds } } }, // Remove the references from the array
-    );
-    // Delete the user's pets, comments, and service providers
+    await Service.updateMany({ serviceProviders: { $in: userServiceProviderIds } }, { $pull: { serviceProviders: { $in: userServiceProviderIds } } });
     console.log('DELETED ALL ITEMS');
     await Promise.all([Pet.deleteMany({ author: user._id }), Comment.deleteMany({ author: user._id }), ServiceProvider.deleteMany({ author: user._id })]);
-    // find all service prividers, need to find asociated service categories
-    // should be continued.
-    // 1) find all users services
-    // 2) get their serviceName
-    // 3) find asociated service categories in Slug field.
-    // 4) delete necesary services from Service.serviceProviders
-    // 5) delete from service providers as well
-    //const serviceProviders = await ServiceProvider.find({ author: user._id });
-    //console.log('Service providers:', serviceProviders);
-
-    // this logis is recreated above
-    // Delete the user's pets
-    // await Pet.deleteMany({ author: user._id });
-    // // Delete the user's comments
-    // await Comment.deleteMany({ author: user._id });
-    // // Delete the user's services
-    // await ServiceProvider.deleteMany({ author: user._id });
-
-    // Delete the user account
-    //await user.remove(); // It does not trigger Mongoose middleware hooks.
     await User.findByIdAndDelete(req.user._id); //It also triggers Mongoose middleware hooks (e.g., pre and post hooks) if they are set up.
 
     // Logout the user session with a callback function
@@ -107,18 +69,13 @@ module.exports.deleteUserProfile = async (req, res) => {
         return;
       }
 
-      // Flash a success message
       req.flash('success', 'Account deleted successfully!');
-      console.log('Flash message set. Redirecting...');
-      // Redirect to the homepage or any other appropriate page
+      // console.log('Flash message set. Redirecting...');
       res.redirect('/auth/register');
     });
   } catch (error) {
     console.error('Error deleting account:', error);
-
-    // Flash an error message
     req.flash('error', 'Failed to delete account. Please try again.');
-    // Redirect to the account page or any other appropriate page
     res.redirect('/user/profile');
   }
 };
@@ -166,19 +123,14 @@ module.exports.updateUserSettings = async (req, res, next) => {
       { new: true },
     );
 
-    // Update the session with the new user information
     req.login(updatedUser, (err) => {
       if (err) {
         console.error('Error updating session:', err);
-        // Handle the error appropriately
       }
-
-      // Send a success response to the client
       res.json({ success: true });
     });
   } catch (error) {
     console.error('Error updating account:', error);
-    // Handle the error appropriately
     res.status(500).json({ success: false, message: 'Failed to update account settings' });
   }
 };

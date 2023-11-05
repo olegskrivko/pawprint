@@ -6,33 +6,27 @@ const OneSignal = require('onesignal-node');
 const { PDFDocument, StandardFonts } = require('pdf-lib');
 const axios = require('axios');
 const nodemailer = require('nodemailer');
-
 const User = require('../models/user');
 const { ObjectId } = require('mongoose').Types;
 const path = require('path');
 // const geoip = require('geoip-lite');
-// const tt = require("@tomtom-international/web-sdk-services/dist/services-node.min.js");
 
 module.exports.index = async (req, res) => {
   const ITEMS_PER_PAGE = 10; // Number of items to display per page
   const { page, limit, age, gender, breed, species, pattern, coat, size, petStatus, identifier, name, location, color, lostdate, maxDistance, userlongitude, userlatitude, selectedRegion } = req.query;
 
-  // Translate the 'selectOptions' key based on the user's selected language
   const navbar = req.__('navbar');
   const selectOptions = req.__('selectOptions');
   const countryRegionOptions = req.__('countryRegionOptions');
   const petsPage = req.__('petsPage');
-
   const selectedLocation = await Location.findOne({ region: selectedRegion });
-
-  // new added loc logic
 
   let userCountry;
 
   if (req.user && req.user.address && req.user.address.country) {
     userCountry = req.user.address.country;
   } else {
-    userCountry = 'Latvia'; // Fallback value
+    userCountry = 'Latvia';
   }
 
   // const userCountry = await req.user.address.country;
@@ -43,7 +37,6 @@ module.exports.index = async (req, res) => {
   // }
 
   const locationByRegion = countryRegionOptions[userCountry];
-
   let selectedPolygonCoordinates = [];
 
   if (selectedLocation && selectedLocation.geometry) {
@@ -154,7 +147,6 @@ module.exports.index = async (req, res) => {
     color,
     lostdate,
     selectedPolygonCoordinates,
-    // select options (better to have them in one place on the server or not?)
     selectOptions,
     locationByRegion,
     petsPage,
@@ -251,40 +243,18 @@ module.exports.createPet = async (req, res, next) => {
     },
   });
 
-  // let userLat = 56.946285;
-  // let userLng = 24.105078;
-  // console.log(oneSignalClient);
   const notification = {
     contents: { en: `URGENT! ${pet.petStatus} ${pet.species} alert!` },
     included_segments: ['Subscribed Users'],
-    // filters: [
-    //   {
-    //     field: 'location',
-    //     radius: '20000', // Radius in meters
-    //     lat: 56.946285, // Latitude
-    //     long: 24.105078, // Longitude
-    //   },
-    //   // Add more filters as needed
-    // ],
-    // chrome_web_icon: {
-    //   url: pet.images[0].url,
-    // },
-    // icon: pet.images[0].url,
-
-    // attachments: {},
     web_url: `https://pawclix.cyclic.app/pets/${pet._id}`,
-    // web_url: `https://www.pawclix.com/pets/${pet._id}`,
   };
-  // console.log(notification);
   client
     .createNotification(notification)
     .then((response) => {
       console.log('Push notification sent successfully:', response.body);
-      // Additional code or actions after sending the notification
     })
     .catch((error) => {
       console.log('Error sending push notification:', error);
-      // Handling the error, if any
     });
 
   req.flash('success', 'Successfully created a new pet');
@@ -293,13 +263,10 @@ module.exports.createPet = async (req, res, next) => {
 
 module.exports.showPet = async (req, res) => {
   try {
-    // Retrieve the pet from the database
     const navbar = req.__('navbar');
     const selectOptions = req.__('selectOptions');
     const petsShowPage = req.__('petsShowPage');
     const petId = req.params.id;
-
-    // Check if the user has already visited this pet's page
     const viewedPets = req.session.viewedPets || [];
     if (!viewedPets.includes(petId)) {
       // If the pet has not been viewed by the user, increment the view count
@@ -338,18 +305,6 @@ module.exports.showPet = async (req, res) => {
       addSuffix: true,
     });
 
-    // TRANSLATION FOR PET ATTRIBUTES
-
-    // Iterate through selectedPetStatus to add translated statuses
-    // selectedPetStatus.forEach((status) => {
-    //   console.log(status);
-    //   if (pet.petStatus === status.value) {
-    //     console.log(pet.petStatus);
-    //     newpets.newstatus = status.text;
-    //   }
-    // });
-
-    // const translatedPet = {};
     pet.petStatus = selectOptions.status.find((item) => item.value === pet.petStatus)?.text || '';
     pet.species = selectOptions.species.find((item) => item.value === pet.species)?.text || '';
     pet.gender = selectOptions.gender.find((item) => item.value === pet.gender)?.text || '';
@@ -360,10 +315,7 @@ module.exports.showPet = async (req, res) => {
     pet.coat = selectOptions.coat.find((item) => item.value === pet.coat)?.text || '';
     pet.pattern = selectOptions.pattern.find((item) => item.value === pet.pattern)?.text || '';
     pet.size = selectOptions.size.find((item) => item.value === pet.size)?.text || '';
-    // breeed need more logic or redo its translations .cats .dogs
-    // pet.breed = selectOptions.breed.find((item) => item.value === pet.breed)?.text || '';
 
-    // Render the pet post page with the updated view count
     res.render('pets/show', {
       pet: pet,
       createDateInWords,
@@ -373,7 +325,6 @@ module.exports.showPet = async (req, res) => {
       navbar,
     });
   } catch (error) {
-    // Handle any errors that occur
     console.error('Error retrieving pet:', error);
     res.status(500).json({ message: 'Internal Server Error' });
   }
@@ -381,9 +332,7 @@ module.exports.showPet = async (req, res) => {
 
 module.exports.renderEditForm = async (req, res) => {
   const navbar = req.__('navbar');
-  // Retrieve the language preference and data from the response locals
-  const petsLocale = req.__('pets'); // Translate the 'pets' key based on the user's selected language
-  // options must be taken from another object selecOptions ...
+  const petsLocale = req.__('pets');
   const statusOptions = req.__('statusOptions');
   const speciesOptions = req.__('speciesOptions');
   const genderOptions = req.__('genderOptions');
@@ -403,7 +352,7 @@ module.exports.renderEditForm = async (req, res) => {
   }
   res.render('pets/edit', {
     pet,
-    petsLocale, // Pass the language data to the view
+    petsLocale,
     statusOptions,
     speciesOptions,
     genderOptions,
@@ -443,11 +392,8 @@ module.exports.updatePet = async (req, res) => {
 };
 
 module.exports.deletePet = async (req, res) => {
-  console.log('deletePet');
   const { id } = req.params;
   const user = req.user;
-  // remove from userPets as well
-  // it also should be removed from all users watchlist
   user.userPets = user.userPets.filter((item) => item !== id);
   await user.save();
   await Pet.findByIdAndDelete(id);
@@ -458,22 +404,11 @@ module.exports.deletePet = async (req, res) => {
 module.exports.renderPdf = async (req, res) => {
   try {
     const { id } = req.params;
-
-    // Convert petId to ObjectId
-    // const objectId = ObjectId(petId);
     const pet = await Pet.findById(id);
-
-    // Create a new PDF document
     const pdfDoc = await PDFDocument.create();
-
-    // Add a new page
     const page = pdfDoc.addPage();
-
-    // Set the font and font size
     const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
     const fontSize = 12;
-
-    // Fetch the image data from the URL
     const imageUrl = `${pet.images[0].url}`;
     const imageResponse = await axios.get(imageUrl, {
       responseType: 'arraybuffer',
@@ -546,10 +481,7 @@ module.exports.reportpost = async (req, res) => {
     const firstname = user.firstname;
     const lastname = user.lastname;
     const username = user.username;
-    //console.log(email, firstname, lastname, username, email);
-
     const { selectedReportpetId } = req.body;
-    //console.log(req.body);
 
     // Create a transporter using SMTP
     const transporter = nodemailer.createTransport({
@@ -570,9 +502,7 @@ module.exports.reportpost = async (req, res) => {
       text: `From:\nFirst name: ${firstname}\nLast name: ${lastname}\nEmail: ${email}\nUsername: ${username}\nReported post ID: https://pawclix.cyclic.app/pets/${selectedReportpetId}`,
       // text: `From:\nFirst name: ${firstname}\nLast name: ${lastname}\nEmail: ${email}\nUsername: ${username}\nReported post ID: https://www.pawclix.com/pets/${selectedReportpetId}`,
     };
-    //console.log(mailOptions);
 
-    // Send the email
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.error('Error sending email:', error);
@@ -583,7 +513,7 @@ module.exports.reportpost = async (req, res) => {
       }
       res.redirect('back');
     });
-    console.log(transporter.sendMail);
+    // console.log(transporter.sendMail);
   } catch (err) {
     console.error('Error sending feedback:', err);
     req.flash('error', 'An error occurred while reporting post.');

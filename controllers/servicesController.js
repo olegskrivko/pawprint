@@ -18,7 +18,6 @@ module.exports.index = async (req, res) => {
     const servicesPage = req.__('servicesPage'); // Translate the 'servicesPage' key based on the user's selected language
     const translationMap = req.__('services');
     const services = await Service.find();
-
     const translatedServices = services.map((service) => {
       const translatedName = translationMap[service.slug] || service.name;
       return { ...service._doc, translatedName };
@@ -36,11 +35,8 @@ module.exports.showService = async (req, res) => {
     const navbar = req.__('navbar');
     const translationMap = req.__('servicesDescription');
     const servicesListPage = req.__('servicesListPage');
-
     const slug = req.params.slug;
     const service = await Service.findOne({ slug }).populate('serviceProviders');
-    // console.log('service slug', service.slug);
-    // console.log('result', translationMap[service.slug]);
     const serviceTitle = translationMap[service.slug];
     if (!service) {
       req.flash('error', 'Cannot find that service!');
@@ -51,23 +47,19 @@ module.exports.showService = async (req, res) => {
   } catch (error) {
     console.error('Error retrieving service:', error);
     req.flash('error', 'Failed to retrieve service.');
-    res.redirect('/services'); // Redirect to an appropriate error page or fallback route
+    res.redirect('/services');
   }
 };
 
 module.exports.addNewService = async (req, res) => {
   try {
-    // const selectOptions = req.__('selectOptions');
-
     const service = await Service.findOne({ slug: req.body.serviceName });
-
     if (req.body.user.latitude === null || req.body.user.longitude === null || req.body.user.latitude === '' || req.body.user.longitude === '' || isNaN(req.body.user.latitude) || isNaN(req.body.user.longitude)) {
       req.flash('error', 'Please enable geolocation to provide service location.');
       return res.redirect('/services/new');
     }
 
     const userCoords = req.body.user;
-
     const image = req.file;
     const unprocessedBody = {
       name: req.body.name,
@@ -83,8 +75,8 @@ module.exports.addNewService = async (req, res) => {
       },
       description: req.body.description,
       socialMedia: {
-        facebook: req.body.facebook || '', // Provide a default value if not provided
-        instagram: req.body.instagram || '', // Provide a default value if not provided
+        facebook: req.body.facebook || '',
+        instagram: req.body.instagram || '',
       },
     };
 
@@ -95,9 +87,7 @@ module.exports.addNewService = async (req, res) => {
         logo: { url: cloudinaryRes.url, filename: cloudinaryRes.public_id },
         author: req.user._id,
       });
-
       service.serviceProviders.push(serviceProvider);
-
       const user = req.user;
 
       await serviceProvider.save();
@@ -114,14 +104,13 @@ module.exports.addNewService = async (req, res) => {
   } catch (error) {
     console.error('Error adding new service:', error);
     req.flash('error', 'Failed to add new service.');
-    res.redirect('/services/new'); // Redirect to an appropriate error page or fallback route
+    res.redirect('/services/new');
   }
 };
 
 module.exports.renderEditForm = async (req, res) => {
   const { id } = req.params;
   const navbar = req.__('navbar');
-  //const meid = '64be38477207febe098ce887';
   const serviceProvider = await ServiceProvider.findById(id);
   if (!serviceProvider) {
     req.flash('error', 'Cannot find that service!');
@@ -151,16 +140,14 @@ module.exports.updateService = async (req, res) => {
   } catch (error) {
     console.error('Error updating service:', error);
     req.flash('error', 'Failed to update service');
-    res.redirect('/services'); // Redirect to an appropriate error page or fallback route
+    res.redirect('/services');
   }
 };
 
 module.exports.deleteService = async (req, res) => {
   try {
     const serviceId = req.params.id;
-
     const deletedService = await Service.findByIdAndDelete(serviceId);
-
     if (!deletedService) {
       req.flash('error', 'Service not found');
       return res.redirect('/services');
@@ -171,6 +158,6 @@ module.exports.deleteService = async (req, res) => {
   } catch (error) {
     console.error('Error deleting service:', error);
     req.flash('error', 'Failed to delete service');
-    res.redirect('/services'); // Redirect to an appropriate error page or fallback route
+    res.redirect('/services');
   }
 };

@@ -13,6 +13,5 @@ module.exports.compare = async (req, res) => {
     res.render('compare/compare', { pets, navbar });
   } catch (err) {
     console.log(err);
-    // Handle error and display appropriate message
   }
 };

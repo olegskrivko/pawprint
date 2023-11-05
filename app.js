@@ -3,7 +3,6 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
 }
 
-// Import required libraries
 const express = require('express');
 // const cors = require('cors');
 const path = require('path');
@@ -35,14 +34,10 @@ const userFavouritesRoutes = require('./routes/userFavouritesRoutes');
 const userServicesRoutes = require('./routes/userServicesRoutes');
 const userPetsRoutes = require('./routes/userPetsRoutes');
 
-// Import model
 const User = require('./models/user');
 
 // Create Express app
 const app = express();
-
-// Use the cors middleware
-// app.use(cors());
 
 // Set up Express app
 app.engine('ejs', engine);
@@ -57,16 +52,16 @@ app.use(cookieParser());
 
 // Configure i18n middleware
 i18n.configure({
-  locales: ['en', 'lv', 'ru'], // Add all supported locales here
-  defaultLocale: 'lv', // Set the default locale
-  directory: path.join(__dirname, 'locales'), // Set the directory where translation files are located
-  header: 'accept-language', // Set the header field to retrieve the language preference from the request headers
-  queryParameter: 'lang', // Set the query parameter to specify the language in the URL
-  cookie: 'lang', // Set the cookie name to store the selected language
-  register: global, // Register the i18n module in the global scope for easy access
+  locales: ['en', 'lv', 'ru'],
+  defaultLocale: 'lv',
+  directory: path.join(__dirname, 'locales'),
+  header: 'accept-language',
+  queryParameter: 'lang',
+  cookie: 'lang',
+  register: global,
 });
 
-app.use(i18n.init); // Initialize the i18n module
+app.use(i18n.init);
 
 app.use((req, res, next) => {
   const userLanguage = req.headers['accept-language'];
@@ -142,9 +137,7 @@ app.use('/pets', petRoutes);
 app.use('/about', aboutRoutes);
 app.use('/pets/:id/comments', commentRoutes);
 app.use('/services', serviceRoutes);
-// new
 app.use('/services/:id/serviceprovider', serviceProvidersRoutes);
-
 app.use('/regions', locationRoutes);
 app.use('/user/profile', userProfileRoutes);
 app.use('/user/watchlist', userWatchlistRoutes);
@@ -167,12 +160,6 @@ app.get('/OneSignalSDKWorker.js', (req, res) => {
   res.sendFile(path.join(__dirname, 'OneSignalSDKWorker.js'));
 });
 
-// app.get('/example', (req, res, next) => {
-//   // Throw a custom error
-//   const err = new ExpressError('Custom error message', 400);
-//   next(err);
-// });
-
 // Error handling middleware
 app.use((err, req, res, next) => {
   let statusCode = err.statusCode || 500;
@@ -186,53 +173,6 @@ app.use((err, req, res, next) => {
 
   res.status(err.statusCode).render('error', { err });
 });
-
-// Error handling middleware
-// app.use((err, req, res, next) => {
-//   const { statuscode = 500 } = err;
-//   if (!err.message) {
-//     err.message = 'Something went wrong!';
-//   }
-//   res.status(statuscode).render('error', { err });
-// });
-
-// Example 1: Handling specific error types differently
-// app.use((err, req, res, next) => {
-//   if (err instanceof CustomError) {
-//     // Handle specific error type differently
-//     res.status(400).render('custom-error', { err });
-//   } else if (err instanceof AnotherError) {
-//     // Handle another specific error type differently
-//     res.status(404).render('another-error', { err });
-//   } else {
-//     // For other errors, use the default error template
-//     res.status(500).render('error', { err });
-//   }
-// });
-
-// Example 2: Logging errors
-// app.use((err, req, res, next) => {
-//   // Log the error
-//   console.error(err);
-
-//   // Render the default error template
-//   res.status(500).render('error', { err });
-// });
-
-// Example 3: Customizing error message based on the request
-// app.use((err, req, res, next) => {
-//   let message = 'Something went wrong!';
-
-//   if (req.method === 'POST') {
-//     message = 'Error occurred while processing the form submission.';
-//   }
-
-//   // Create a new instance of ExpressError with the customized message
-//   const customError = new ExpressError(message, 500);
-
-//   // Render the error template
-//   res.status(customError.statusCode).render('error', { err: customError });
-// });
 
 // Start the server
 const port = process.env.PORT || 3000;

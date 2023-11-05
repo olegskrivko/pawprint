@@ -15,18 +15,6 @@ module.exports.isLoggedIn = (req, res, next) => {
   next();
 };
 
-// Middleware function to validate pet data
-// module.exports.validatePet = (req, res, next) => {
-//   const { error } = petSchema.validate(req.body);
-//   if (error) {
-//     console.log('error from middleware', error);
-//     const msg = error.details.map((el) => el.message).join(',');
-//     throw new ExpressError(msg, 400);
-//   } else {
-//     next();
-//   }
-// };
-
 // Middleware function to check if the user is the author of the pet
 module.exports.isAuthor = async (req, res, next) => {
   const { id } = req.params;
@@ -48,17 +36,6 @@ module.exports.isCommentAuthor = async (req, res, next) => {
   }
   next();
 };
-
-// Middleware function to validate comment data
-// module.exports.validateComment = (req, res, next) => {
-//   const { error } = commentSchema.validate(req.body);
-//   if (error) {
-//     const msg = error.details.map((el) => el.message).join(',');
-//     throw new ExpressError(msg, 400);
-//   } else {
-//     next();
-//   }
-// };
 
 module.exports.languageMiddleware = (req, res, next) => {
   i18n.init(req, res, async () => {
@@ -94,8 +71,3 @@ module.exports.languageMiddleware = (req, res, next) => {
     }
   });
 };
-// const userLanguage = req.headers['accept-language'];
-// // Determine user's preferred language
-// const primaryLanguage = userLanguage.split(',')[0].split('-')[0];
-// // Set the determined language as a variable accessible in your routes
-// res.locals.userLanguage = primaryLanguage;

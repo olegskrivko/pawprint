@@ -403,16 +403,6 @@
   let petBreedValue = document.querySelector('#pet-breed').textContent;
   let petGenderValue = document.querySelector('#pet-gender').textContent;
 
-  //let petCoatPatternValue = document.querySelector('#pet-pattern').textContent;
-  // let petFirstColorValue = document.querySelector('#pet-color1').textContent;
-  // let petSecondColorValue = document.querySelector('#pet-color2').textContent;
-  // let petThirdColorValue = document.querySelector('#pet-color3').textContent;
-  // let petLastSeenValue = document.querySelector('#pet-last-seen').textContent;
-  // let petAgeValue = document.querySelector('#pet-age').textContent;
-  // let petCoatLengthValue = document.querySelector('#pet-coat-length').textContent;
-  //let petSizeValue = document.querySelector('#pet-size').textContent;
-  //let petIDValue = document.querySelector('#pet-identifier').textContent;
-  //let petDescriptionValue = document.querySelector('#pet-description').textContent;
   // Fetch the image and convert it to Base64
   fetch(`${petImgSrcValue}`)
     .then((response) => response.blob())
@@ -675,40 +665,6 @@
     location.reload();
   });
 </script>
-<!-- <script>
-  //const reportPetId = e.currentTarget.getAttribute('data-reportpetid');
-  const reporturl = window.location.href;
-  const reportparts = reporturl.split('/');
-
-  const reportpetId = reportparts[reportparts.length - 1];
-  const selectedReportpetId = reportpetId; /* Code to retrieve the selected pets from the UI */
-  console.log(selectedReportpetId);
-
-  reportpetidBtn.addEventListener('click', async (e) => {
-    e.preventDefault();
-
-    fetch(`/pets/${selectedReportpetId}/reportpost`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ selectedReportpetId }),
-    })
-      .then((response) => {
-        if (response.ok) {
-          console.log('Report sent successfully');
-          // Handle success, such as showing a success message
-        } else {
-          console.error('Failed to send report');
-          // Handle error, such as showing an error message
-        }
-      })
-      .catch((error) => {
-        console.error('Error occurred while sending report:', error);
-        // Handle error, such as showing an error message
-      });
-  });
-</script> -->
 
 <script>
   // Function to copy the current URL to the clipboard

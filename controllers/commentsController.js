@@ -6,7 +6,7 @@ module.exports.createComment = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const pet = await Pet.findById(id); // Find the pet by its ID
+    const pet = await Pet.findById(id);
     const { body, lat, lng } = req.body.comment;
     const newComment = new Comment({
       body: body,
@@ -20,11 +20,11 @@ module.exports.createComment = async (req, res) => {
       };
     }
 
-    newComment.author = req.user._id; // Set the author of the comment as the current user
-    pet.comments.push(newComment); // Add the new comment to the pet's comments array
+    newComment.author = req.user._id;
+    pet.comments.push(newComment);
 
-    await newComment.save(); // Save the new comment
-    await pet.save(); // Save the updated pet document
+    await newComment.save();
+    await pet.save();
 
     req.flash('success', 'Successfully added a new comment!');
     res.redirect(`/pets/${pet._id}`);
@@ -35,7 +35,6 @@ module.exports.createComment = async (req, res) => {
   }
 };
 
-// Delete a comment
 module.exports.deleteComment = async (req, res) => {
   const { id, commentId } = req.params;
   try {

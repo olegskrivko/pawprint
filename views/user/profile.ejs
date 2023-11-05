@@ -176,20 +176,6 @@
     <% } %>
   </div>
   
-
-
-<!-- <div class="row row-cols-1 row-cols-md-2 g-3 justify-content-center">
-  <div class="col-md-4">
-      <label class="form-label" for="newpassword">New password</label>
-      <input class="form-control" type="password" id="newpassword" name="" value="" />
-  </div>
-  <div class="col-md-4">
-      <label class="form-label" for="repeatpassword">Repeat new password</label>
-      <input class="form-control" type="password" id="repeatpassword" name="" value="" />
-  </div>
-</div> -->
-
-
     
   <div class="col-lg-12">
     <div class="d-flex justify-content-center">
@@ -199,11 +185,7 @@
     </div>
   </div>
 
-
-
 </div>
-
-
 
 
 <div class="row row-cols-1 row-cols-md-2 g-3 justify-content-center mt-3">
@@ -219,36 +201,6 @@
           <%}) %>
       </select>
     </div>
-
-<!-- <div class="col-md-12">
-<label for="notificationDistance" class="form-label"
-  >Maximum distance</label
->
-<input
-  type="range"
-  class="form-range"
-  min="0"
-  max="5"
-  step="0.5"
-  id="notificationDistance"
-  disabled
-/>
-</div> -->
-
-<!-- <div class="col-md-8">
-<input
-  class="form-check-input"
-  type="checkbox"
-  id="receiveNotifications"
-  name="receiveNotifications"
-  value=""
-/>
-<label class="form-check-label" for="receiveNotifications"
-  >Receive push notifications</label
->
-</div> -->
-
-
 
 
 <div class="col-md-12 d-flex">
@@ -287,34 +239,9 @@
   <!-- web push -->
   <div class="onesignal-customlink-container"></div>
   </div>
-  
-  <!-- <div class="col-md-12 mb-3">
-  <input
-    class="form-check-input"
-    type="checkbox"
-    id="receiveUpdates"
-    name="receiveUpdates"
-    value=""
-    disabled
-  />
-  <label class="form-check-label" for="receiveUpdates"
-    >Receive updates and newsletters</label
-  >
-  </div> -->
-
-
-
-
 </div>
-
 </div>
-
 </div>
-
-
-
-
-
 </div>
 
 
@@ -328,95 +255,8 @@
     </button>
   </div>
 </div>
-
-
-
-
 </div>
 </div>
-
-<!-- <script>
-  const updateAccountAvatar = async (updatedData) => {
-    try {
-      const formData = new FormData();
-      formData.append("avatar", updatedData.avatar);
-
-      const response = await fetch("/user/profile/avatar", {
-        method: "PUT",
-        body: formData,
-      });
-
-      if (response.ok) {
-        // Account updated successfully
-        window.location.href = "/user/profile";
-      } else {
-        throw new Error("Failed to update account");
-      }
-    } catch (err) {
-      console.error(err);
-      // Handle error and display appropriate message
-    }
-  };
-
-  const avatarInput = document.querySelector("#avatarInput");
-  const avatarPreview = document.querySelector("#avatarPreview");
-
-  avatarInput.addEventListener("change", () => {
-    if (avatarInput.files && avatarInput.files[0]) {
-      const reader = new FileReader();
-
-      reader.onload = (e) => {
-        avatarPreview.src = e.target.result;
-      };
-
-      reader.readAsDataURL(avatarInput.files[0]);
-    }
-  });
-
-  const updateUserAvatarBtn = document.querySelector("#updateUserAvatarBtn");
-  updateUserAvatarBtn.addEventListener("click", async () => {
-    const updatedData = {
-      avatar: avatarInput.files[0],
-    };
-
-    await updateAccountAvatar(updatedData);
-  });
-</script> -->
-<!-- <script>
-  const updateAccountAvatar = async (updatedData) => {
-    try {
-      const formData = new FormData();
-      formData.append("avatar", updatedData.avatar);
-  
-      const response = await fetch("/user/profile/avatar", {
-        method: "PUT",
-        body: formData,
-      });
-  
-      if (response.ok) {
-        // Account updated successfully
-        window.location.href = "/user/profile";
-      } else {
-        throw new Error("Failed to update account");
-      }
-    } catch (err) {
-      console.error(err);
-      // Handle error and display appropriate message
-    }
-  };
-  
-  const updateUserAvatarBtn = document.querySelector("#updateUserAvatarBtn");
-  updateUserAvatarBtn.addEventListener("click", async () => {
-    const avatarInput = document.querySelector("#avatar");
-    const updatedData = {
-      avatar: avatarInput.files[0],
-    };
-    console.log('updatedData', updatedData)
-  
-    await updateAccountAvatar(updatedData);
-  });
-  
-</script> -->
 
 <script>
   const updateAccount = async (updatedData) => {
@@ -546,14 +386,9 @@ verifyEmail.addEventListener('click', async (e)=> {
       });
 
       if (response.ok) {
-       // const responseData = await response.json();
-      //  if (responseData.success) {
-          // Account updated successfully
-          // Redirect or perform desired actions here
+
           window.location.href = "/user/profile";
-      //  } else {
-      //    throw new Error("Failed to update account settings");
-      //  }
+
       } else {
         throw new Error("Failed to update account settings");
       }
@@ -567,10 +402,6 @@ verifyEmail.addEventListener('click', async (e)=> {
     "#updateUserSettingsBtn"
   );
   updateUserSettingsBtn.addEventListener("click", async () => {
-    //const firstName = document.querySelector("#firstName").value;
-    //const lastName = document.querySelector("#lastName").value;
-    //const phoneCode = document.querySelector("#phoneCode").value;
-    //const phoneNumber = document.querySelector("#phoneNumber").value;
     const language = document.querySelector("#language").value;
     console.log(language);
 

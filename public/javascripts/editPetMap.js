@@ -21,44 +21,9 @@ map.addControl(new tt.NavigationControl());
 var markersOnTheMap = {};
 var eventListenersAdded = false;
 
-//console.log(pets);
-//console.log(selectedPolygonCoordinates.features);
-// map.on("load", function () {
-//   map.addLayer({
-//     id: "overlay",
-//     type: "fill",
-//     source: {
-//       type: "geojson",
-//       data: {
-//         type: "Feature",
-//         geometry: {
-//           type: "Polygon",
-//           coordinates: [selectedPolygonCoordinates.features],
-//         },
-//       },
-//     },
-//     layout: {},
-//     paint: {
-//       "fill-color": "#8A2BE2",
-//       "fill-opacity": 0.5,
-//       "fill-outline-color": "#4B0082",
-//     },
-//   });
-// });
-//console.log(services);
-//console.log("features -coordinates", services.features[0].location.coordinates);
-//console.log("location", services.location);
-
 var points = services.features.map(function (point, index) {
-  //console.log("point", point.location.coordinates[1]);
-  // console.log("new coords", [
-  //   point.location.coordinates[1],
-  //   point.location.coordinates[0],
-  // ]);
   return {
     coordinates: [point.location.coordinates[0], point.location.coordinates[1]],
-
-    // properties: { id: index, name: `Point ${index}` },
     properties: {
       id: index,
       name: point.name,
@@ -71,7 +36,6 @@ var points = services.features.map(function (point, index) {
 let geoButtonZoomAll = document.querySelectorAll('.geoButtonZoom');
 geoButtonZoomAll.forEach((item) => {
   item.addEventListener('click', (e) => {
-    //var attributeValue = element.getAttribute("data-myattribute");
     let coords = e.target.dataset.servicecoords;
     let coordsArray = coords.split(',');
 
@@ -85,10 +49,6 @@ geoButtonZoomAll.forEach((item) => {
 var geoJson = {
   type: 'FeatureCollection',
   features: points.map(function (point) {
-    //console.log("points2", points);
-    //console.log("points2xxx", point.coordinates[0], point.coordinates[1]);
-    //console.log(point.coordinates);
-
     return {
       type: 'Feature',
       geometry: {
@@ -110,28 +70,10 @@ function refreshMarkers() {
     if (feature.properties && !feature.properties.cluster) {
       var id = parseInt(feature.properties.id, 10);
       if (!markersOnTheMap[id]) {
-        // var markerElement = document.createElement("div");
-        // markerElement.className = "marker";
-
-        // var markerContentElement = document.createElement("div");
-        // markerContentElement.className = "marker-content";
-        // markerContentElement.style.backgroundColor = "#FF0000";
-        // markerElement.appendChild(markerContentElement);
-
-        // var iconElement = document.createElement("div");
-        // iconElement.className = "marker-icon";
-        // iconElement.style.backgroundColor = "#FFF";
-
-        // //iconElement.style.backgroundImage = `url(${feature.properties.img})`;
-        // markerContentElement.appendChild(iconElement);
-
         const iconElement = document.createElement('i');
         iconElement.className = 'bi bi-geo-alt-fill';
         iconElement.style.fontSize = '2rem';
         iconElement.style.color = '#9b59b6';
-
-        // iconElement.style.backgroundImage = `url(/images/icons/paw_2.png)`;
-        // markerContentElement.appendChild(iconElement);
 
         var newMarker = new tt.Marker({
           element: iconElement,
@@ -198,19 +140,6 @@ map.on('load', function () {
       'text-color': 'white',
     },
   });
-  //my added
-  // map.addLayer({
-  //   id: "unclustered-point",
-  //   type: "circle",
-  //   source: "point-source",
-  //   filter: ["!has", "point_count"],
-  //   paint: {
-  //     "circle-color": "#11b4da",
-  //     "circle-radius": 4,
-  //     "circle-stroke-width": 1,
-  //     "circle-stroke-color": "#fff",
-  //   },
-  // });
 
   map.on('data', function (e) {
     if (e.sourceId !== 'point-source' || !map.getSource('point-source').loaded()) {
@@ -249,5 +178,3 @@ map.on('load', function () {
     map.getCanvas().style.cursor = '';
   });
 });
-
-////////////////

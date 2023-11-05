@@ -108,7 +108,7 @@ function refreshMarkers() {
     markersOnTheMap[id].remove();
     delete markersOnTheMap[id];
   });
-  //https://api.tomtom.com/maps-sdk-for-web/cdn/static/accident.colors-white.png
+
   map.querySourceFeatures('point-source').forEach(function (feature) {
     if (feature.properties && !feature.properties.cluster) {
       var id = parseInt(feature.properties.id, 10);
@@ -179,7 +179,6 @@ function refreshMarkers() {
         );
 
         markersOnTheMap[id] = newMarker;
-        //newMarker.togglePopup();
       }
     }
   });
@@ -221,7 +220,7 @@ map.on('load', function () {
       'text-color': 'white',
     },
   });
-  //my added
+
   // map.addLayer({
   //   id: "unclustered-point",
   //   type: "circle",

@@ -1,17 +1,12 @@
 const User = require('../models/user');
 const ServiceProvider = require('../models/serviceProvider');
-//const Service = require('../models/service');
 
 module.exports.renderUserFavorites = async (req, res) => {
   const navbar = req.__('navbar');
   const profileTabs = req.__('profileTabs');
   const favoritesPage = req.__('favoritesPage');
-  // Retrieve the user's favorites from the database
   const favoritesList = req.user.favorites;
-  // Fetch the services from the database based on the service IDs in the favorites
   const favorites = await ServiceProvider.find({ _id: { $in: favoritesList } });
-
-  // Render the favorites page with the service data
   res.render('user/favorites', { favorites, favoritesPage, profileTabs, navbar });
 };
 
@@ -19,25 +14,17 @@ module.exports.updateUserFavorites = async (req, res) => {
   try {
     const userId = req.user._id;
     let { service } = req.body;
-    // Find the user by ID
     const user = await User.findById(userId);
-    //updateUserFavorites
-    // Ensure pets is an array
     service = Array.isArray(service) ? service : [service];
-
-    // Loop through the selected pets' IDs
     service.forEach((serviceId) => {
       const index = user.favorites.indexOf(serviceId);
       if (index !== -1) {
-        // If the petId is already in the watchlist, remove it from the array
         user.favorites.splice(index, 1);
       } else {
-        // If the petId is not in the watchlist, add it to the array
         user.favorites.push(serviceId);
       }
     });
 
-    // Save the updated user data
     await user.save();
 
     res.status(200).json({ message: 'Watchlist updated successfully' });
@@ -51,17 +38,10 @@ module.exports.deleteUserFavorites = async (req, res) => {
   try {
     const userId = req.user._id;
     const favoriteId = req.params.favoriteId;
-
-    // Find the user by ID
     const user = await User.findById(userId);
-
-    // Check if the pet exists in the user's watchlist
     const favoritesIndex = user.favorites.indexOf(favoriteId);
     if (favoritesIndex !== -1) {
-      // Remove the pet from the watchlist array
       user.favorites.splice(favoritesIndex, 1);
-
-      // Save the updated user data
       await user.save();
 
       res.status(200).json({ message: 'Service removed from favorites successfully' });
